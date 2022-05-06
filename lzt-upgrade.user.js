@@ -1,6 +1,6 @@
 // ==UserScript==
-// @name         LztUp
-// @version      1.0
+// @name         LZTUp
+// @version      1.0.1
 // @description  Some useful utilities for lolz.guru
 // @author       Toil
 // @match        *://*.lolz.guru/*
@@ -8,6 +8,7 @@
 // @grant        none
 // ==/UserScript==
 var username = $('.accountUsername span').text();
+const sleep = m => new Promise(r => setTimeout(r, m))
 
 const menuBtn = $('<a>');
 const lztUpIcon = '<img title="love" alt=":love2:" data-smilie="yes" data-src="https://i.imgur.com/ucm5U7v.gif" src="https://i.imgur.com/ucm5U7v.gif" style="width: 14px; hight: auto; padding-right: 4px">';
@@ -292,17 +293,42 @@ function updateNickStyle(style) {
   })
 }
 
+async function reloadNickStyle(dbInited) {
+  if (dbInited === true) {
+    let dbData = await readUniqueStyleDB().then(value => {return(value)}).catch(err => {console.error(err); return false});
+    if (typeof(dbData) === 'object') {
+      updateNickStyle(dbData.nickStyle);
+    }
+  }
+}
+
+async function sendMessageHandler(dbInited) {
+  var sendButton = $('.sendMessageContainer > .simpleRedactor--button.sendMessageButton');
+
+  if (sendButton) {
+    $(sendButton).on('click', async function() {
+      await sleep(600);
+      await reloadNickStyle(dbInited);
+    })
+  }
+
+  var sendProfileButton = $('#ProfilePoster > .submitUnit > .button.primary');
+
+  if (sendProfileButton) {
+    $(sendProfileButton).on('click', async function() {
+      await sleep(600);
+      await reloadNickStyle(dbInited);
+    })
+  }
+}
+
 
 var MenuResult = registerMenuBtn(menuBtn);
 var isDBInited = await initUniqueStyleDB().then(value => {return(value)}).catch(err => {console.error(err); return false});
 
+await reloadNickStyle(isDBInited);
 
-if (isDBInited === true) {
-  let dbData = await readUniqueStyleDB().then(value => {return(value)}).catch(err => {console.error(err); return false});
-  if (typeof(dbData) === 'object') {
-    updateNickStyle(dbData.nickStyle);
-  }
-}
+await sendMessageHandler(isDBInited);
 
 if (MenuResult === true) {
   $(document).on('click', '#LztUpSaveUniqueStyle', async function () {
