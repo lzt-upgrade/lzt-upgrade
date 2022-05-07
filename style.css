@@ -1,0 +1,77 @@
+#LZTUpModalBackdrop {
+  z-index: 10001;
+}
+
+#LZTUpModal::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+
+#LZTUpModal {
+  z-index: 10002;
+  padding-right: 17px;
+  outline: currentcolor none medium;
+  overflow: auto;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+#LZTUpOverlay {
+  top: 10%;
+  margin-bottom: 5%
+}
+
+#LZTUpBtnIcon {
+  width: 14px;
+  height: auto;
+  padding-right: 4px
+}
+
+#LZTUpModalComment {
+  background: rgb(54, 54, 54);
+  margin: 5px 15px;
+  padding: 10px 15px;
+  border-radius: 10px;
+}
+
+#LZTUpModalComment a {
+  color: rgb(0, 186, 120);
+}
+
+#LZTUPModalHeading {
+  margin: 25px 15px 2px;
+}
+
+#LZTUPModalText {
+  margin: 0px 15px 5px;
+  width: 400px;
+}
+
+#LZTUpUniqueStyle, #LZTUpBannerStyle, #LZTUpBadgeIcon {
+  min-height: 75px;
+  width: 400px;
+  margin: 0px 15px;
+  overflow-y: hidden;
+}
+
+#LZTUpSaveUniqueStyle, #LZTUpSaveBannerStyle, #LZTUpSaveBannerText, #LZTUpSaveBannerText {
+  width: 100px;
+  margin: 15px;
+}
+
+#LZTUpBannerText {
+  width: 400px;
+  margin: 0px 15px;
+}
+
+#LZTUpResetSettings {
+  min-width: 150px;
+  margin: 15px
+}
+
+#LZTUpModalExitButtonCenter {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
