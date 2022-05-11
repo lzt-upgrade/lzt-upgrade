@@ -1,5 +1,7 @@
 # Custom
-needed/*
+needed
+.vscode
+server
 
 # Logs
 logs
