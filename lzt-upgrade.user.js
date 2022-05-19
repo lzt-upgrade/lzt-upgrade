@@ -1,13 +1,12 @@
 // ==UserScript==
 // @name         LZTUp
-// @version      1.0.1
+// @version      1.0.2
 // @description  Some useful utilities for lolz.guru
 // @author       Toil
 // @match        *://*.lolz.guru/*
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=lolz.guru
 // @resource     styles https://raw.githubusercontent.com/ilyhalight/lzt-upgrade/master/public/css/style.css
 // @resource     styles2 https://raw.githubusercontent.com/ilyhalight/lzt-upgrade/master/public/css/nano.min.css
-// @require      https://raw.githubusercontent.com/ilyhalight/lzt-upgrade/master/public/static/js/lolzteam/uniq/core.js
 // @require      https://raw.githubusercontent.com/ilyhalight/lzt-upgrade/master/public/static/js/pickr/pickr.es5.min.js
 // @updateURL    https://github.com/ilyhalight/lzt-upgrade/raw/master/lzt-upgrade.user.js
 // @downloadURL  https://github.com/ilyhalight/lzt-upgrade/raw/master/lzt-upgrade.user.js
@@ -32,9 +31,9 @@ const userid = $('input[name="_xfToken"]').attr('value').split(',')[0]
 
 const sleep = m => new Promise(r => setTimeout(r, m))
 
-const menuBtn = $('<a>');
-const lztUpIcon = '<img id="LZTUpBtnIcon" title="love" alt=":love2:" data-smilie="yes" data-src="https://i.imgur.com/ucm5U7v.gif" src="https://i.imgur.com/ucm5U7v.gif">';
-$(menuBtn).attr('id', 'LZTUpButton').text('LZTUp').prepend(lztUpIcon).on('click', async function () {
+const menuBtn = $('<a id="LZTUpButton">LZTUp</a>');
+const lztUpIcon = $('<img id="LZTUpBtnIcon" title="love" alt=":love2:" data-smilie="yes" data-src="https://i.imgur.com/ucm5U7v.gif" src="https://i.imgur.com/ucm5U7v.gif">');
+$(menuBtn).prepend(lztUpIcon).on('click', async function () {
   var dbData = await readUniqueStyleDB().then(value => {return(value)}).catch(err => {console.error(err); return false});
   if (typeof(dbData) === 'object') {
     var nickStyle = dbData.nickStyle;
@@ -172,7 +171,7 @@ $(menuBtn).attr('id', 'LZTUpButton').text('LZTUp').prepend(lztUpIcon).on('click'
         var rgbaColor = ""
       }
       await updateUniqueStyleDB(nickSt = null, bannerSt = null, bannerTxt = null, badgeIcn = null, badgeTxt = null, badgeFll = rgbaColor, badgeStrk = null).then(value => {return(value)}).catch(err => {console.error(err); return false});
-      setIconColor(rgbaColor, 'fill')
+      await setUniqIconColor(rgbaColor)
     });
   });
 
@@ -226,11 +225,11 @@ $(menuBtn).attr('id', 'LZTUpButton').text('LZTUp').prepend(lztUpIcon).on('click'
         var rgbaColor = ""
       }
       await updateUniqueStyleDB(nickSt = null, bannerSt = null, bannerTxt = null, badgeIcn = null, badgeTxt = null, badgeFll = null, badgeStrk = rgbaColor).then(value => {return(value)}).catch(err => {console.error(err); return false});
-      setIconColor(rgbaColor, 'stroke')
+      await setUniqIconColor('', rgbaColor)
     });
   });
-
 });
+
 
 function registerMenuBtn(element) {
   const fragment = new DocumentFragment();
@@ -705,7 +704,15 @@ async function forceReloadBannerStyle() {
   }
 }
 
-function registerUserBadges(bannerStyle = '', badgeText = '', badgeIcon = '') {
+function addUserBadgeToElements(elements, badge) {
+  if (elements.length) {
+    $(elements).each((i, el) => {
+      $(el).parent().prepend($(badge).clone());
+    })
+  }
+}
+
+function registerUserBadges(bannerStyle = '', badgeText = '', badgeIcon = '', badgeFill = '', badgeStroke = '') {
   var tinnyPropper = $(`<div class="tippy-popper" id="tippy-42" style="z-index: 11111; position: absolute; visibility: visible; transition-duration: 0ms; will-change: transform; top: 0px; left: 0px; transform: translate3d(231px, 835px, 0px);" role="tooltip" x-placement="top">
                         <div class="tippy-tooltip dark-theme" style="max-width: 250px; transition-duration: 275ms; top: 5px;" data-size="regular" data-animation="shift-toward" data-state="visible" x-placement="top">
                           <div class="tippy-arrow" style="left: 43px;"></div>
@@ -751,8 +758,8 @@ function registerUserBadges(bannerStyle = '', badgeText = '', badgeIcon = '') {
   var avatarM = $(`.avatarHolder > a.Av${userid}m`)
   var avatarS = $(`.avatarHolder > a.Av${userid}s`)
 
-  $(avatarS).length > 0 ? $(avatarS).parent().prepend($(badge)) : undefined;
-  $(avatarM).length > 0 ? $(avatarM).parent().prepend($(badge)) : undefined;
+  addUserBadgeToElements(avatarS, $(badge))
+  addUserBadgeToElements(avatarM, $(badge))
 
   return true;
 }
@@ -763,12 +770,11 @@ async function reloadUserBadges() {
     if (typeof(dbData) === 'object') {
       if (dbData.badgeText !== '') {
         var isUserBadgesLoaded = $('#LZTUpUserBadges');
-        if (isUserBadgesLoaded.length > 0) {
+        if (isUserBadgesLoaded.length) {
           $(isUserBadgesLoaded).remove()
         }
         registerUserBadges(String(dbData.bannerStyle), String(dbData.badgeText), dbData.badgeIcon);
-        setIconColor(dbData.badgeFill, 'fill')
-        setIconColor(dbData.badgeStroke, 'stroke')
+        await setUniqIconColor(dbData.badgeFill, dbData.badgeStroke)
       }
     }
   } catch (err) {
@@ -793,22 +799,78 @@ async function messageClickUsernameHandler() {
   }
 }
 
-// async function commentClickUsernameHandler() {
-//   var message = $('li.message')
+async function commentMoreHandler() {
+  var commentMoreBtn = $('.commentMore.CommentLoader');
 
-//   if (message.attr('data-author') === username) {
-//     var usernameBtn = $(message).find('.messageInfo > .userText > .item > .username span');
-//     if (usernameBtn.length > 0) {
-//       Array.from($(usernameBtn)).forEach(item => {
-//         $(item).on('click', async function() {
-//           await sleep(600);
-//           await reloadNickStyle();
-//           await reloadUserBadges();
-//         })
-//       });
-//     };
-//   }
-// }
+  if (commentMoreBtn.length > 0) {
+    $(commentMoreBtn).on('click', async function() {
+      await sleep(450);
+      await reloadNickStyle();
+      await reloadUserBadges();
+    })
+  }
+}
+
+async function setUniqIconColor(badgeFill = '', badgeStroke = '') {
+  var elements = $('div#LZTUPCustomUniqIcon > svg')
+  if (elements.length && (badgeFill !== '' || badgeStroke !== '')) {
+    $(elements).each((i, el) => {
+      badgeFill !== '' ? $(el).attr('fill', badgeFill) : undefined;
+      badgeStroke !== '' ? $(el).attr('stroke', badgeStroke) : undefined;
+    })
+  }
+}
+
+async function redactorSendHandler() {
+  var element = $('iframe.redactor_textCtrl.redactor_SubmitOnEnter > html > body')
+  element.addEventListener('keyup', async (e) => {
+    if (e.ctrlKey && e.keyCode == 13) {
+      await sleep(450);
+      await reloadNickStyle();
+      await reloadUserBadges();
+    }
+  })
+}
+
+async function getContestsLinks() {
+  var links = $('div.discussionListItem--Wrapper')
+  .find('a.listBlock.main')
+  .toArray()
+  .map(element => $(element).attr('href'));
+  return links
+}
+
+async function regOpenContestsButton(amount = 10) {
+  var updateButton = $('div.pageNavLinkGroup > div.linkGroup.SelectionCountContainer > span.UpdateFeedButton.UpdateFeedButtonIcon');
+  var getContestsButton = $(`<a class="button OverlayTrigger" data-cacheoverlay="false">Открыть ${amount < 100 ? amount : 'все (ОЗУ 12+ Гб)'}</a>`).on('click', async () => {
+    updateButton.click();
+    await sleep(1000);
+    var links = await getContestsLinks()
+    if (links.length) {
+      $(links).map((element, value) => {
+        if (element <= amount) {
+          var win = window.open(`https://lolz.guru/${value}`)
+          win ? win.focus() : alert('Разрешите доступ к всплывающим окнам для этого сайта')
+        } else {
+          return;
+        }
+      })
+    }
+  });
+
+  updateButton.length ? updateButton.parent().prepend(getContestsButton) : undefined;
+}
+
+async function onClickCategoryContestsHandler() {
+  var categories = $('ol#forums.nodeList');
+  var mainSection = $(categories).find('li.node.category.level_1');
+  var giveaways = $(mainSection).find('ol.nodeList > li.list.node.node9.forum.level_2 > div.nodeInfo > ol.subForumList > li.node.node766.forum.level-n');
+  $(giveaways).on('click', async () => {
+    await sleep(1500);
+    await regOpenContestsButton(10);
+    await regOpenContestsButton(100);
+  });
+}
 
 
 var MenuResult = registerMenuBtn(menuBtn);
@@ -820,9 +882,15 @@ await sendMessageHandler();
 
 await reloadBannerStyle();
 
-await reloadUserBadges()
+await reloadUserBadges();
 
-await messageClickUsernameHandler()
+await messageClickUsernameHandler();
+
+await commentMoreHandler();
+
+await regOpenContestsButton(10);
+await regOpenContestsButton(100);
+await onClickCategoryContestsHandler()
 
 if (MenuResult === true) {
   $(document).on('click', '#LZTUpSaveUniqueStyle', async function () {
