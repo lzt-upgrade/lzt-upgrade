@@ -258,40 +258,7 @@ function removeProfileBtn(element) {
 }
 
 function registerModal(modalName, elementMain = '', scrollable = false) {
-  const fragment = new DocumentFragment();
-  var modalBackdrop = $('<div class="modal-backdrop fade in" id="LZTUpModalBackdrop"></div>');
-  var modalWindow = $(`<div class="modal fade in" id="LZTUpModal" data-z-index="0" tabindex="-1">
-      <div class="xenOverlay" id="LZTUpOverlay">
-        <a class="close OverlayCloser" id="LZTUpOverlayCloser"></a>
-        <div class="sectionMain">
-          <h2 class="heading h1">${modalName}</h2>
-          <div class="primaryContent" ${scrollable ? "id='LZTUPModalScrollContent'" : "id='LZTUPModalContent'"}>
-            <form class="xenForm formOverlay" id="LZTUpFormOverlay">
-              <dd id="LZTUpOverlayCtrldd">
-                ${elementMain}
-              </dd>
-            </form>
-          </div>
-          <dl class="ctrlUnit submitUnit">
-            <div id="LZTUpModalExitButtonRight">
-              <input type='button' value="Закрыть" class="button primary" id="LZTUpModalExitButton"></input>
-            </div>
-          </dl>
-        </div>
-      </div>
-    </div>`);
-  var htmlPre = document.body;
-  fragment.appendChild(modalBackdrop[0]);
-  fragment.appendChild(modalWindow[0]);
-  htmlPre.appendChild(fragment);
-  $('#LZTUpOverlayCloser').on('click', () => {
-    $('#LZTUpModalBackdrop').remove();
-    $('#LZTUpModal').remove();
-    console.log('LZTUp: Модальное окно закрыто')
-  })
-  $('#LZTUpModalExitButton').on('click', () => {
-    $('#LZTUpModalBackdrop').remove();
-    $('#LZTUpModal').remove();
+  XenForo.alert(elementMain, modalName, null, () => {
     console.log('LZTUp: Модальное окно закрыто')
   })
 }
