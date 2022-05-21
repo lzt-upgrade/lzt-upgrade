@@ -670,62 +670,29 @@ async function forceReloadBannerStyle() {
   }
 }
 
-function addUserBadgeToElements(elements, badge) {
-  if (elements.length) {
-    $(elements).each((i, el) => {
-      $(el).parent().prepend($(badge).clone());
-    })
-  }
-}
-
 function registerUserBadges(bannerStyle = '', badgeText = '', badgeIcon = '', badgeFill = '', badgeStroke = '') {
-  var tinnyPropper = $(`<div class="tippy-popper" id="tippy-42" style="z-index: 11111; position: absolute; visibility: visible; transition-duration: 0ms; will-change: transform; top: 0px; left: 0px; transform: translate3d(231px, 835px, 0px);" role="tooltip" x-placement="top">
-                        <div class="tippy-tooltip dark-theme" style="max-width: 250px; transition-duration: 275ms; top: 5px;" data-size="regular" data-animation="shift-toward" data-state="visible" x-placement="top">
-                          <div class="tippy-arrow" style="left: 43px;"></div>
-                          <div class="tippy-content" data-state="hidden" style="transition-duration: 275ms;">${badgeText}</div>
-                        </div>
-                      </div>`)
-
-    var badge = $('<div id="LZTUpUserBadges" class="avatarUserBadges"></div>').append($(
-    `<span id="LZTUpUserBadge" class="avatarUserBadge Tooltip ${badgeIcon === '' ? 'uniq_default' : ''}" style="${bannerStyle}" title="" tabindex="0">
-      <div id="LZTUPCustomUniqIcon" class="customUniqIcon">
-        ${badgeIcon}
-      </div>
-    </span>`
-    ).on({
-      mouseenter: event => {
-        // $(event.target).attr('title', badgeText);
-        // $(event.target).attr('aria-describedby', "tippy-42");
-        // $('.SelectQuotable').append($(tinnyPropper))
-      },
-      mouseleave: event => {
-        // $(event.target).removeAttr('aria-describedby');
-        // $(tinnyPropper).remove()
-        // $(event.target).attr('title', '');
-      },
-      focus: event => {
-        // $(event.target).removeAttr('aria-describedby');
-        // $(tinnyPropper).remove()
-        // $(event.target).attr('title', '');
-      },
-      blur: event => {
-        // $(event.target).removeAttr('aria-describedby');
-        // $(tinnyPropper).remove()
-        // $(event.target).attr('title', '');
-      },
-      click: event => {
-        // $(event.target).removeAttr('aria-describedby');
-        // $(tinnyPropper).remove()
-        // $(event.target).attr('title', '');
-      },
-    })
-  )
-
-  var avatarM = $(`.avatarHolder > a.Av${userid}m`)
-  var avatarS = $(`.avatarHolder > a.Av${userid}s`)
-
-  addUserBadgeToElements(avatarS, $(badge))
-  addUserBadgeToElements(avatarM, $(badge))
+  for(const el of $(`.avatarHolder > a.Av${userid}m`)) {
+    const $avatarHolder = $(el).parent()
+    let $userBadges = $avatarHolder.find('.avatarUserBadges')
+    let badgeId = null
+    
+    if(!$userBadges.length)
+      $userBadges = $('<div class="avatarUserBadges"></div>').prependTo($avatarHolder)
+    
+    const oldBadge = $userBadges.find('.customUniqIcon').parent().remove()
+    if(oldBadge.length)
+      for(const className of oldBadge.attr('class').split(/\s+/))
+        if(/^avatarUserBadge--(\d+)$/.test(className))
+          badgeId = className.match(/^avatarUserBadge--(\d+)$/)[1]
+    
+    $(`<span style="${XenForo.htmlspecialchars(bannerStyle)}" class="avatarUserBadge Tooltip ${badgeIcon === '' ? 'uniq_default' : ''} ${badgeId ? `avatarUserBadge--${badgeId}` : ''}" title="${XenForo.htmlspecialchars(badgeText)}" tabindex="0">
+			<div class="customUniqIcon">
+				${badgeIcon}
+			</div>
+		</span>`
+	).appendTo($avatarHolder.find('.avatarUserBadges')).parent().xfActivate()
+	// TODO: fix self-xss for customUniqIcon
+  }
 
   return true;
 }
