@@ -38,11 +38,11 @@
   color: rgb(0, 186, 120);
 }
 
-#LZTUPModalHeading {
+#LZTUpModalHeading {
   margin: 25px 15px 2px;
 }
 
-#LZTUPModalText {
+#LZTUpModalText {
   margin: 0px 15px 5px;
   width: 400px;
 }
@@ -76,7 +76,7 @@
   justify-content: center;
 }
 
-#LZTUPModalScrollContent {
+#LZTUpModalScrollContent {
   height: 670px;
   overflow-y: scroll;
   scrollbar-width: thin;
@@ -95,7 +95,7 @@
   padding: 10px;
 }
 
-#LZTUPBadgeFillContainer, #LZTUPBadgeStrokeContainer {
+#LZTUpBadgeFillContainer, #LZTUpBadgeStrokeContainer {
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
