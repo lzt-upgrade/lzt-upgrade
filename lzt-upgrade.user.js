@@ -1,6 +1,6 @@
 // ==UserScript==
-// @name         LZTUp
-// @version      1.0.2
+// @name         LZT Upgrade
+// @version      1.0.3
 // @description  Some useful utilities for lolz.guru
 // @author       Toil
 // @match        *://*.lolz.guru/*
@@ -21,17 +21,16 @@ const styles2 = GM_getResourceText("styles2");
 GM_addStyle(styles);
 GM_addStyle(styles2);
 
-const customLZTUPColors = {
-  "red": '#FC5E5E'
-}
-
 
 const username = $('.accountUsername span').text();
-const userid = $('input[name="_xfToken"]').attr('value').split(',')[0]
+
+const userid = () => {
+  return XenForo._csrfToken.split(',')[0]
+}
 
 const sleep = m => new Promise(r => setTimeout(r, m))
 
-const menuBtn = $('<a id="LZTUpButton">LZTUp</a>');
+const menuBtn = $('<a id="LZTUpButton">LZT Upgrade</a>');
 const lztUpIcon = $('<img id="LZTUpBtnIcon" title="love" alt=":love2:" data-smilie="yes" data-src="https://i.imgur.com/ucm5U7v.gif" src="https://i.imgur.com/ucm5U7v.gif">');
 $(menuBtn).prepend(lztUpIcon).on('click', async function () {
   var dbData = await readUniqueStyleDB().then(value => {return(value)}).catch(err => {console.error(err); return false});
@@ -61,29 +60,29 @@ $(menuBtn).prepend(lztUpIcon).on('click', async function () {
       На этой странице можно выбрать стиль вашего ника и лычки. Этот стиль виден только вам. После <a href="https://lolz.guru/account/upgrades?upgrade_id=14" target="_blank">покупки</a> оф. уника его увидят все.
     </div>
 
-    <div id="LZTUPModalHeading" class="textHeading">Стиль ника:</div>
-    <div id="LZTUPModalText" class="muted explain">Максимум 1500 символов. При отсутствии кода используется цвет вашей группы с форума.</div>
+    <div id="LZTUpModalHeading" class="textHeading">Стиль ника:</div>
+    <div id="LZTUpModalText" class="muted explain">Максимум 1500 символов. При отсутствии кода используется цвет вашей группы с форума.</div>
     <nobr>
       <textarea id="LZTUpUniqueStyle" name="username_css" class="UsernameCss textCtrl" maxlength="1500">${nickStyle}</textarea>
       <input id="LZTUpSaveUniqueStyle" type="button" value="Сохранить" class="button primary"></input>
     </nobr>
 
-    <div id="LZTUPModalHeading" class="textHeading">Стиль лычки:</div>
-    <div id="LZTUPModalText" class="muted explain">Максимум 1500 символов.</div>
+    <div id="LZTUpModalHeading" class="textHeading">Стиль лычки:</div>
+    <div id="LZTUpModalText" class="muted explain">Максимум 1500 символов.</div>
     <nobr>
       <textarea id="LZTUpBannerStyle" name="banner_css" class="BannerCss textCtrl" maxlength="1500">${bannerStyle}</textarea>
       <input id="LZTUpSaveBannerStyle" type="button" value="Сохранить" class="button primary"></input>
     </nobr>
 
-    <div id="LZTUPModalHeading" class="textHeading">Текст в лычке:</div>
-    <div id="LZTUPModalText" class="muted explain">Максимум 24 символа. При отсутствии текста лычка не будет видна.</div>
+    <div id="LZTUpModalHeading" class="textHeading">Текст в лычке:</div>
+    <div id="LZTUpModalText" class="muted explain">Максимум 24 символа. При отсутствии текста лычка не будет видна.</div>
     <nobr>
       <input id="LZTUpBannerText" name="banner_text" maxlength="24" class="textCtrl" value=${bannerText}>
       <input id="LZTUpSaveBannerText" type="button" value="Сохранить" class="button primary"></input>
     </nobr>
 
-    <div id="LZTUPModalHeading" class="textHeading">Иконка на аватарке:</div>
-    <div id="LZTUPModalText" class="muted explain">
+    <div id="LZTUpModalHeading" class="textHeading">Иконка на аватарке:</div>
+    <div id="LZTUpModalText" class="muted explain">
       <a href="/threads/3405752/" class="mainc">[Гайд] Как правильно устанавливать свои иконки в уник</a>
       <br>
       <br>
@@ -94,24 +93,23 @@ $(menuBtn).prepend(lztUpIcon).on('click', async function () {
       <input id="LZTUpSaveBadgeIcon" type="button" value="Сохранить" class="button primary"></input>
     </nobr>
 
-    <div id="LZTUPModalHeading" class="textHeading">Цвета иконок на аватарке:</div>
-    <div id="LZTUPModalText" class="muted explain">Убедитесь, что в SVG нету заранее установленных значений 'fill' и 'stroke'.</div>
+    <div id="LZTUpModalHeading" class="textHeading">Цвета иконок на аватарке:</div>
+    <div id="LZTUpModalText" class="muted explain">Убедитесь, что в SVG нету заранее установленных значений 'fill' и 'stroke'.</div>
     <nobr>
-      <div id="LZTUPBadgeFillContainer">
-        <div id="LZTUPModalText" class="muted explain">Цвет иконки (fill):</div>
+      <div id="LZTUpBadgeFillContainer">
+        <div id="LZTUpModalText" class="muted explain">Цвет иконки (fill):</div>
         <div id="LZTUpBadgeFill" class="badge-fill-picker"></div>
       </div>
     </nobr>
     <nobr>
-      <div id="LZTUPBadgeStrokeContainer" style="padding-top: 12px;">
-        <div id="LZTUPModalText" class="muted explain" style="">Цвет иконки (stroke):</div>
+      <div id="LZTUpBadgeStrokeContainer" style="padding-top: 12px;">
+        <div id="LZTUpModalText" class="muted explain" style="">Цвет иконки (stroke):</div>
         <div id="LZTUpStrokeFill" class="badge-stroke-picker"></div>
       </div>
     </nobr>
 
-    <div id="LZTUPModalHeading" class="textHeading">Текст иконки на аватарке:</div>
-    <div id="LZTUPModalText" class="muted explain" style="color: ${customLZTUPColors['red']}">СЕЙЧАС НЕ ОТОБРАЖАЮТСЯ. СКАЖИТЕ КАК СДЕЛАНЫ ТУЛТИПЫ НА ЛОЛЗЕ И Я ВАМ СДЕЛАЮ ИХ (Я ЗАЕБАЛСЯ ПЫТАТЬСЯ РАЗОБРАТЬСЯ КАК ОНИ СДЕЛАНЫ МЕТОДОМ ТЫКА)</div>
-    <div id="LZTUPModalText" class="muted explain">Максимум 24 символа. При отсутствии текста иконка не будет видна.</div>
+    <div id="LZTUpModalHeading" class="textHeading">Текст иконки на аватарке:</div>
+    <div id="LZTUpModalText" class="muted explain">Максимум 24 символа. При отсутствии текста иконка не будет видна.</div>
     <nobr>
       <input id="LZTUpBadgeText" name="badge_text" maxlength="24" class="textCtrl" value=${badgeText}>
       <input id="LZTUpSaveBadgeText" type="button" value="Сохранить" class="button primary"></input>
@@ -263,99 +261,7 @@ function registerModal(modalName, elementMain = '') {
 }
 
 
-// TODO: Мб позже сделаю, но пока идей нету
-// function registerColorPicker() {
-//   const fragment = new DocumentFragment();
-//   var colorPickerBackdrop = $('<div id="exposeMask" style="position: absolute; top: 0px; left: 0px; width: 1359px; height: 1082px; display: block; opacity: 0.6; z-index: 9998; background-color: white;"></div>');
-//   var colorPickerWindow = $(`
-//   <div id="ColorPickerInstance" class="xenOverlay" style="position: fixed; z-index: 10000; top: 92.7px; left: 436.5px; display: block;">
-//     <form class="colorPickerForm formOverlay">
-//       <div id="LZTUPColorPickerTabs" class="ColorPickerTabs">
-//         <ul class="tabs" data-panes="#ColorPickerInstance .tabPanel">
-//           <li class="" style="display: none;"><a class="">Цветовая палитра</a></li>
-//           <li class="active"><a class="active">Выбор цвета</a></li>
-//         </ul>
-//         <fieldset class="tabPanel PaletteTab" style="display: none;"></fieldset>
-//         <fieldset id="LZTUPPickerTab" class="tabPanel PickerTab" style="display: block;">
-//           <div id="LZTUPGradientContainer" class="gradientContainer">
-//             <div id="LZTUPGradient" class="gradient" style="background-color: rgb(255, 0, 0);">
-//               <span id="LZTUPCircle" class="circle" style="top: 256px; left: 1px;"></span>
-//             </div>
-//           </div>
-//           <div id="LZTUPBarContainer" class="barContainer">
-//             <div id="LZTUPBar" class="bar">
-//               <span id="LZTUPArrow" class="arrow" style="top: 256px;"></span>
-//             </div>
-//           </div>
-//         </fieldset>
-//       </div>
-//       <div id="LZTUPFixedColumn" class="fixedColumn">
-//         <div id="LZTUPColorPreview" class="colorPreview">
-//           <div id="LZTUPPreview" class="preview" style="background: transparent none repeat scroll 0% 0%;"></div>
-//           <div id="LZTUPCurrentPreview" class="currentPreview" style="background: transparent none repeat scroll 0% 0%;"></div>
-//         </div>
-//         <ul id="LZTUPInputs" class="inputs">
-//           <li><label for="pctrl_h">#</label> <input type="text" class="textCtrl" id="pctrl_h" name="hex"></li>
-//           <li>
-//             <ul>
-//               <li><label for="pctrl_r">R</label> <input type="text" class="textCtrl ltr" id="pctrl_r" name="r"></li>
-//               <li><label for="pctrl_g">G</label> <input type="text" class="textCtrl ltr" id="pctrl_g" name="g"></li>
-//               <li><label for="pctrl_b">B</label> <input type="text" class="textCtrl ltr" id="pctrl_b" name="b"></li>
-//             </ul>
-//           </li>
-//           <li><label for="pctrl_r">A</label> <input type="text" class="textCtrl ltr" id="pctrl_a" name="a"></li>
-//         </ul>
-//       </div>
-//       <div id="LZTUPFixedBottom" class="fixedBottom">
-//         <input id="LZTUPFinalValue" type="text" name="final" class="textCtrl finalValue ltr">
-//         <label id="LZTUPRemove" class="remove"><input type="checkbox" name="remove" value="1"> Очистить значение</label>
-//         <div>
-// 					<label for="ctrl_status_color">Цвет иконки (fill):</label>
-// 					<input name="badge_color_fill" class="ColorPicker DisablePalette" type="text" style="display: none;"><span class="colorPickerPlaceholder textCtrl" style="border-style: dashed;" title=""><span style="background-color: transparent;">&nbsp;</span></span>
-// 			</div>
-//         <span class="buttons">
-//           <input type="button" class="button primary save" value="Готово">
-//           <input type="button" class="button OverlayCloser" value="Отмена">
-//         </span>
-//       </div>
-//     </form>
-//   </div>`);
-//   var htmlPre = document.body;
-//   fragment.appendChild(colorPickerBackdrop[0]);
-//   fragment.appendChild(colorPickerWindow[0]);
-//   htmlPre.appendChild(fragment);
-// }
-
-
-// function registerColorPicker() {
-//   const fragment = new DocumentFragment();
-//   var colorPickerBackdrop = $('<div id="exposeMask" style="position: absolute; top: 0px; left: 0px; width: 1359px; height: 1082px; display: block; opacity: 0.6; z-index: 9998; background-color: white;"></div>');
-//   var colorPickerWindow = $(`
-//   <div id="ColorPickerInstance" class="xenOverlay" style="position: fixed; z-index: 10000; top: 92.7px; left: 436.5px; display: block;">
-//     <form class="colorPickerForm formOverlay">
-//       <div id="LZTUPColorPickerTabs" class="ColorPickerTabs">
-//         <ul class="tabs" data-panes="#ColorPickerInstance .tabPanel">
-//           <li class="" style="display: none;"><a class="">Цветовая палитра</a></li>
-//           <li class="active"><a class="active">Выбор цвета</a></li>
-//         </ul>
-//       </div>
-//       <div class="color-picker"></div>
-//       <div id="LZTUPFixedBottom" class="fixedBottom">
-//         <span class="buttons">
-//           <input type="button" class="button primary save" value="Готово">
-//           <input type="button" class="button OverlayCloser" value="Отмена">
-//         </span>
-//       </div>
-//     </form>
-//   </div>`);
-//   var htmlPre = document.body;
-//   fragment.appendChild(colorPickerBackdrop[0]);
-//   fragment.appendChild(colorPickerWindow[0]);
-//   htmlPre.appendChild(fragment);
-
-//   return pickr
-// }
-
+// --- IndexedDB functions start:
 function openDB (name) {
   try {
     var openRequest = indexedDB.open(name, 1);
@@ -588,6 +494,8 @@ function readUniqueStyleDB() {
 async function deleteUniqueStylesDB() {
   indexedDB.deleteDatabase('LZTUpProfile');
 }
+// --- IndexedDB functions end
+
 
 function updateNickStyle(style) {
   Array.from($('.username span')).forEach(item => {
@@ -670,8 +578,8 @@ async function forceReloadBannerStyle() {
   }
 }
 
-function registerUserBadges(bannerStyle = '', badgeText = '', badgeIcon = '', badgeFill = '', badgeStroke = '') {
-  for(const el of $(`.avatarHolder > a.Av${userid}m`)) {
+function registerUserBadges(bannerStyle = '', badgeText = '', badgeIcon = '') {
+  for(const el of $(`.avatarHolder > a.Av${userid()}m`)) {
     const $avatarHolder = $(el).parent()
     let $userBadges = $avatarHolder.find('.avatarUserBadges')
     let badgeId = null
@@ -684,14 +592,15 @@ function registerUserBadges(bannerStyle = '', badgeText = '', badgeIcon = '', ba
       for(const className of oldBadge.attr('class').split(/\s+/))
         if(/^avatarUserBadge--(\d+)$/.test(className))
           badgeId = className.match(/^avatarUserBadge--(\d+)$/)[1]
-    
+
     $(`<span style="${XenForo.htmlspecialchars(bannerStyle)}" class="avatarUserBadge Tooltip ${badgeIcon === '' ? 'uniq_default' : ''} ${badgeId ? `avatarUserBadge--${badgeId}` : ''}" title="${XenForo.htmlspecialchars(badgeText)}" tabindex="0">
 			<div class="customUniqIcon">
-				${badgeIcon}
+				${badgeIcon.replaceAll(/<[script|style]*>/gi, '<!--').replaceAll(/<\/[script|style]*>/gi, '-->')}
 			</div>
 		</span>`
 	).appendTo($avatarHolder.find('.avatarUserBadges')).parent().xfActivate()
 	// TODO: fix self-xss for customUniqIcon
+  // * trash fix, but it works (better than nothing)
   }
 
   return true;
@@ -745,7 +654,7 @@ async function commentMoreHandler() {
 }
 
 async function setUniqIconColor(badgeFill = '', badgeStroke = '') {
-  var elements = $('div#LZTUPCustomUniqIcon > svg')
+  var elements = $('div#LZTUpCustomUniqIcon > svg')
   if (elements.length && (badgeFill !== '' || badgeStroke !== '')) {
     $(elements).each((i, el) => {
       badgeFill !== '' ? $(el).attr('fill', badgeFill) : undefined;
@@ -888,19 +797,6 @@ if (MenuResult === true) {
   });
 }
 
-// var mutationObserver = new MutationObserver(async function(mutations) {
-//   mutations.forEach(async function(mutation) {
-//     console.log(mutation)
-//   });
-// });
-
-// mutationObserver.observe(document.documentElement, {
-//   attributes: true,
-//   childList: true,
-//   subtree: true,
-//   attributeOldValue: true,
-// });
-
 var hasPageNav = $('.PageNav > nav > a')
 var isProfile = $('ol#ProfilePostList')
 if (hasPageNav.length > 0 && isProfile.length > 0) {
@@ -921,23 +817,3 @@ if (hasPageNav.length > 0 && isProfile.length > 0) {
     attributeOldValue: true,
   });
 }
-
-
-
-// random realizations
-// updateNickStyle(style);
-// registerMenuBtn(menuBtn);
-// registerModal(
-//               'Тестик <3',
-//               'Lorem Ipsum',
-//               '<input type="submit" value="Тест" accesskey="s" class="button primary"></input>'
-//             );
-// await updateUniqueStyleDB(nickSt = 'color: #000000').then(value => {return(value)}).catch(err => {console.error(err); return false});
-// await readUniqueStyleDB().then(value => {return(value)}).catch(err => {console.error(err); return false});
-// await initUniqueStyleDB().then(value => {return(value)}).catch(err => {console.error(err); return false});
-// registerProfileBtn(`<em style="background: linear-gradient(329deg, rgb(255, 16, 16) 9%, rgb(255, 90, 90) 19%, rgb(255, 64, 64) 41%, rgb(255, 71, 71) 49%, rgb(255, 165, 165) 50%, rgb(255, 73, 73) 59%, rgb(255, 10, 10) 98%); \
-//        color: white;text-shadow: 0px 0px #ffffff, 0px 4px #ffffff4d, 0px 1px 5px #ffffff, 0px 1px 3px #ffffff, 0px 1px 3px #ffffff80" class="userBanner wrapped" itemprop="title"> \
-//   <span class="before"></span> \
-//   <strong>text</strong> \
-//   <span class="after"></span>\
-// </em>`)
