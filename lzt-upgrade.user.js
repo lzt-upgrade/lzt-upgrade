@@ -55,7 +55,7 @@ $(menuBtn).prepend(lztUpIcon).on('click', async function () {
     var badgeStroke = '';
   }
 
-  registerModal(
+  const overlay = registerModal(
     'Локальный Уник',
     `<div id="LZTUpModalComment">
       На этой странице можно выбрать стиль вашего ника и лычки. Этот стиль виден только вам. После <a href="https://lolz.guru/account/upgrades?upgrade_id=14" target="_blank">покупки</a> оф. уника его увидят все.
@@ -117,13 +117,12 @@ $(menuBtn).prepend(lztUpIcon).on('click', async function () {
       <input id="LZTUpSaveBadgeText" type="button" value="Сохранить" class="button primary"></input>
     </nobr>
 
-    <input id="LZTUpResetSettings" type="button" value="Сбросить настройки" class="button primary"></input>`,
-    true
+    <input id="LZTUpResetSettings" type="button" value="Сбросить настройки" class="button primary"></input>`
   )
 
   const pickrFill = Pickr.create({
     el: '.badge-fill-picker',
-    container: '#LZTUpModal',
+    container: overlay[0],
     theme: 'nano', // or 'monolith', or 'nano'
     default: '#ffffff',
 
@@ -177,7 +176,7 @@ $(menuBtn).prepend(lztUpIcon).on('click', async function () {
 
   const pickrStroke = Pickr.create({
     el: '.badge-stroke-picker',
-    container: '#LZTUpModal',
+    container: overlay[0],
     theme: 'nano', // or 'monolith', or 'nano'
     default: '#ffffff',
 
@@ -257,8 +256,8 @@ function removeProfileBtn(element) {
   }
 }
 
-function registerModal(modalName, elementMain = '', scrollable = false) {
-  XenForo.alert(elementMain, modalName, null, () => {
+function registerModal(modalName, elementMain = '') {
+  return XenForo.alert(elementMain, modalName, null, () => {
     console.log('LZTUp: Модальное окно закрыто')
   })
 }
