@@ -55,7 +55,7 @@ $(menuBtn).prepend(lztUpIcon).on('click', async function () {
     var badgeStroke = '';
   }
 
-  registerModal(
+  const overlay = registerModal(
     'Локальный Уник',
     `<div id="LZTUpModalComment">
       На этой странице можно выбрать стиль вашего ника и лычки. Этот стиль виден только вам. После <a href="https://lolz.guru/account/upgrades?upgrade_id=14" target="_blank">покупки</a> оф. уника его увидят все.
@@ -117,13 +117,12 @@ $(menuBtn).prepend(lztUpIcon).on('click', async function () {
       <input id="LZTUpSaveBadgeText" type="button" value="Сохранить" class="button primary"></input>
     </nobr>
 
-    <input id="LZTUpResetSettings" type="button" value="Сбросить настройки" class="button primary"></input>`,
-    true
+    <input id="LZTUpResetSettings" type="button" value="Сбросить настройки" class="button primary"></input>`
   )
 
   const pickrFill = Pickr.create({
     el: '.badge-fill-picker',
-    container: '#LZTUpModal',
+    container: overlay[0],
     theme: 'nano', // or 'monolith', or 'nano'
     default: '#ffffff',
 
@@ -177,7 +176,7 @@ $(menuBtn).prepend(lztUpIcon).on('click', async function () {
 
   const pickrStroke = Pickr.create({
     el: '.badge-stroke-picker',
-    container: '#LZTUpModal',
+    container: overlay[0],
     theme: 'nano', // or 'monolith', or 'nano'
     default: '#ffffff',
 
@@ -257,41 +256,8 @@ function removeProfileBtn(element) {
   }
 }
 
-function registerModal(modalName, elementMain = '', scrollable = false) {
-  const fragment = new DocumentFragment();
-  var modalBackdrop = $('<div class="modal-backdrop fade in" id="LZTUpModalBackdrop"></div>');
-  var modalWindow = $(`<div class="modal fade in" id="LZTUpModal" data-z-index="0" tabindex="-1">
-      <div class="xenOverlay" id="LZTUpOverlay">
-        <a class="close OverlayCloser" id="LZTUpOverlayCloser"></a>
-        <div class="sectionMain">
-          <h2 class="heading h1">${modalName}</h2>
-          <div class="primaryContent" ${scrollable ? "id='LZTUPModalScrollContent'" : "id='LZTUPModalContent'"}>
-            <form class="xenForm formOverlay" id="LZTUpFormOverlay">
-              <dd id="LZTUpOverlayCtrldd">
-                ${elementMain}
-              </dd>
-            </form>
-          </div>
-          <dl class="ctrlUnit submitUnit">
-            <div id="LZTUpModalExitButtonRight">
-              <input type='button' value="Закрыть" class="button primary" id="LZTUpModalExitButton"></input>
-            </div>
-          </dl>
-        </div>
-      </div>
-    </div>`);
-  var htmlPre = document.body;
-  fragment.appendChild(modalBackdrop[0]);
-  fragment.appendChild(modalWindow[0]);
-  htmlPre.appendChild(fragment);
-  $('#LZTUpOverlayCloser').on('click', () => {
-    $('#LZTUpModalBackdrop').remove();
-    $('#LZTUpModal').remove();
-    console.log('LZTUp: Модальное окно закрыто')
-  })
-  $('#LZTUpModalExitButton').on('click', () => {
-    $('#LZTUpModalBackdrop').remove();
-    $('#LZTUpModal').remove();
+function registerModal(modalName, elementMain = '') {
+  return XenForo.alert(elementMain, modalName, null, () => {
     console.log('LZTUp: Модальное окно закрыто')
   })
 }
@@ -704,62 +670,29 @@ async function forceReloadBannerStyle() {
   }
 }
 
-function addUserBadgeToElements(elements, badge) {
-  if (elements.length) {
-    $(elements).each((i, el) => {
-      $(el).parent().prepend($(badge).clone());
-    })
-  }
-}
-
 function registerUserBadges(bannerStyle = '', badgeText = '', badgeIcon = '', badgeFill = '', badgeStroke = '') {
-  var tinnyPropper = $(`<div class="tippy-popper" id="tippy-42" style="z-index: 11111; position: absolute; visibility: visible; transition-duration: 0ms; will-change: transform; top: 0px; left: 0px; transform: translate3d(231px, 835px, 0px);" role="tooltip" x-placement="top">
-                        <div class="tippy-tooltip dark-theme" style="max-width: 250px; transition-duration: 275ms; top: 5px;" data-size="regular" data-animation="shift-toward" data-state="visible" x-placement="top">
-                          <div class="tippy-arrow" style="left: 43px;"></div>
-                          <div class="tippy-content" data-state="hidden" style="transition-duration: 275ms;">${badgeText}</div>
-                        </div>
-                      </div>`)
-
-    var badge = $('<div id="LZTUpUserBadges" class="avatarUserBadges"></div>').append($(
-    `<span id="LZTUpUserBadge" class="avatarUserBadge Tooltip ${badgeIcon === '' ? 'uniq_default' : ''}" style="${bannerStyle}" title="" tabindex="0">
-      <div id="LZTUPCustomUniqIcon" class="customUniqIcon">
-        ${badgeIcon}
-      </div>
-    </span>`
-    ).on({
-      mouseenter: event => {
-        // $(event.target).attr('title', badgeText);
-        // $(event.target).attr('aria-describedby', "tippy-42");
-        // $('.SelectQuotable').append($(tinnyPropper))
-      },
-      mouseleave: event => {
-        // $(event.target).removeAttr('aria-describedby');
-        // $(tinnyPropper).remove()
-        // $(event.target).attr('title', '');
-      },
-      focus: event => {
-        // $(event.target).removeAttr('aria-describedby');
-        // $(tinnyPropper).remove()
-        // $(event.target).attr('title', '');
-      },
-      blur: event => {
-        // $(event.target).removeAttr('aria-describedby');
-        // $(tinnyPropper).remove()
-        // $(event.target).attr('title', '');
-      },
-      click: event => {
-        // $(event.target).removeAttr('aria-describedby');
-        // $(tinnyPropper).remove()
-        // $(event.target).attr('title', '');
-      },
-    })
-  )
-
-  var avatarM = $(`.avatarHolder > a.Av${userid}m`)
-  var avatarS = $(`.avatarHolder > a.Av${userid}s`)
-
-  addUserBadgeToElements(avatarS, $(badge))
-  addUserBadgeToElements(avatarM, $(badge))
+  for(const el of $(`.avatarHolder > a.Av${userid}m`)) {
+    const $avatarHolder = $(el).parent()
+    let $userBadges = $avatarHolder.find('.avatarUserBadges')
+    let badgeId = null
+    
+    if(!$userBadges.length)
+      $userBadges = $('<div class="avatarUserBadges"></div>').prependTo($avatarHolder)
+    
+    const oldBadge = $userBadges.find('.customUniqIcon').parent().remove()
+    if(oldBadge.length)
+      for(const className of oldBadge.attr('class').split(/\s+/))
+        if(/^avatarUserBadge--(\d+)$/.test(className))
+          badgeId = className.match(/^avatarUserBadge--(\d+)$/)[1]
+    
+    $(`<span style="${XenForo.htmlspecialchars(bannerStyle)}" class="avatarUserBadge Tooltip ${badgeIcon === '' ? 'uniq_default' : ''} ${badgeId ? `avatarUserBadge--${badgeId}` : ''}" title="${XenForo.htmlspecialchars(badgeText)}" tabindex="0">
+			<div class="customUniqIcon">
+				${badgeIcon}
+			</div>
+		</span>`
+	).appendTo($avatarHolder.find('.avatarUserBadges')).parent().xfActivate()
+	// TODO: fix self-xss for customUniqIcon
+  }
 
   return true;
 }
