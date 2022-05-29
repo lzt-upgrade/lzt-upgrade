@@ -102,3 +102,56 @@
   justify-content: flex-start;
   width: 100px
 }
+
+#LZTUpTabs {
+  border: none;
+  margin: 15px auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#LZTUpTab {
+  position: relative;
+  padding: 10px;
+  list-style: none;
+}
+
+#LZTUpList {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 20px 15px;
+}
+
+#LZTUpListItem {
+  max-width: 284px;
+  flex-basis: 50%;
+  flex-grow: 1;
+  height: 64px;
+  display: flex;
+  align-items: center;
+
+  transition: all 0.5s ease;
+}
+
+#LZTUpListItem:hover {
+  background: rgba(54, 54, 54, 0.75);
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+#LZTUpListIcon {
+  width: 28px;
+  height: 28px;
+  margin: 20px;
+}
+
+#LZTUpListText {
+  margin-right: 20px;
+  font-size: 15px;
+  font-weight: bold;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  width: 200px;
+}
