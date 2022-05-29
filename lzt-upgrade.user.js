@@ -241,20 +241,16 @@ function createColorPicker(element, elementCont) {
 }
 
 function registerMenuBtn(element) {
-  const fragment = new DocumentFragment();
   var menuForAdd = $('#AccountMenu > a:nth-child(10)');
-  fragment.appendChild(element[0]);
-  menuForAdd.after(fragment);
+  menuForAdd.after(element);
   return true;
 }
 
 function registerProfileBtn(element) {
   Array.from($('.secondaryContent > .button.block')).forEach(item => {
     if ($(item).text() === 'Редактировать') {
-      const fragment = new DocumentFragment();
       var placeForAdd = $('.secondaryContent > .avatarScaler')
-      fragment.appendChild(element[0]);
-      placeForAdd.append(fragment);
+      placeForAdd.append(element);
       return true;
     }
   })
@@ -301,8 +297,7 @@ async function sendMessageHandler() {
   if (sendButton.length > 0) {
     $(sendButton).on('click', async function() {
       await sleep(850);
-      await reloadNickStyle();
-      await reloadUserBadges();
+      await updateUniqueStyles();
     })
   }
 
@@ -311,8 +306,7 @@ async function sendMessageHandler() {
   if (sendProfileButton.length > 0) {
     $(sendProfileButton).on('click', async function() {
       await sleep(850);
-      await reloadNickStyle();
-      await reloadUserBadges();
+      await updateUniqueStyles();
     })
   }
 }
@@ -385,15 +379,13 @@ function registerUserBadges(bannerStyle = '', badgeText = '', badgeIcon = '') {
 async function reloadUserBadges() {
   try {
     var dbData = await readUniqueStyleDB().then(value => {return(value)}).catch(err => {console.error(err); return false});
-    if (typeof(dbData) === 'object') {
-      if (dbData.badgeText !== '') {
-        var isUserBadgesLoaded = $('#LZTUpUserBadges');
-        if (isUserBadgesLoaded.length) {
-          $(isUserBadgesLoaded).remove()
-        }
-        registerUserBadges(String(dbData.bannerStyle), String(dbData.badgeText), dbData.badgeIcon);
-        await setUniqIconColor(dbData.badgeFill, dbData.badgeStroke)
+    if (typeof(dbData) === 'object' && dbData.badgeText !== '') {
+      var isUserBadgesLoaded = $('#LZTUpUserBadges');
+      if (isUserBadgesLoaded.length) {
+        $(isUserBadgesLoaded).remove()
       }
+      registerUserBadges(String(dbData.bannerStyle), String(dbData.badgeText), dbData.badgeIcon);
+      await setUniqIconColor(dbData.badgeFill, dbData.badgeStroke)
     }
   } catch (err) {
     console.error('LZTUp: Не удалось обновить стиль значка аватара юзера ', err);
@@ -409,8 +401,7 @@ async function messageClickUsernameHandler() {
       Array.from($(usernameBtn)).forEach(item => {
         $(item).on('click', async function() {
           await sleep(600);
-          await reloadNickStyle();
-          await reloadUserBadges();
+          await updateUniqueStyles();
         })
       });
     };
@@ -423,17 +414,16 @@ async function commentMoreHandler() {
   if (commentMoreBtn.length > 0) {
     $(commentMoreBtn).on('click', async function() {
       await sleep(450);
-      await reloadNickStyle();
-      await reloadUserBadges();
+      await updateUniqueStyles();
     })
   }
 }
 
 async function setUniqIconColor(badgeFill = '', badgeStroke = '') {
   for(const el of $.merge($(`.avatarHolder > a.Av${userid()}m`), $(`.avatarHolder > a.Av${userid()}s`))) {
-    const $avatarHolder = $(el).parent()
-    var $userBadge = $avatarHolder.find('.avatarUserBadges > .avatarUserBadge')
-    var $svg = $userBadge.find('.customUniqIcon > svg')
+    const $avatarHolder = $(el).parent();
+    var $userBadge = $avatarHolder.find('.avatarUserBadges > .avatarUserBadge');
+    var $svg = $userBadge.find('.customUniqIcon > svg');
     if ($svg.length && (badgeFill !== '' || badgeStroke !== '')) {
       badgeFill !== '' ? $svg.attr('fill', badgeFill) : undefined;
       badgeStroke !== '' ? $svg.attr('stroke', badgeStroke) : undefined;
@@ -446,8 +436,7 @@ async function redactorSendHandler() {
   element.addEventListener('keyup', async (e) => {
     if (e.ctrlKey && e.keyCode == 13) {
       await sleep(450);
-      await reloadNickStyle();
-      await reloadUserBadges();
+      await updateUniqueStyles();
     }
   })
 }
@@ -492,17 +481,19 @@ async function onClickCategoryContestsHandler() {
   });
 }
 
+async function updateUniqueStyles() {
+  await reloadNickStyle();
+  await reloadBannerStyle();
+  await reloadUserBadges();
+}
 
 var MenuResult = registerMenuBtn(menuBtn);
 var isDBInited = await initUniqueStyleDB().then(value => {return(value)}).catch(err => {console.error(err); return false});
 
-await reloadNickStyle();
+
+await updateUniqueStyles();
 
 await sendMessageHandler();
-
-await reloadBannerStyle();
-
-await reloadUserBadges();
 
 await messageClickUsernameHandler();
 
@@ -581,9 +572,7 @@ if (hasPageNav.length > 0 && isProfile.length > 0) {
   var mutationObserver = new MutationObserver(async function(mutations) {
     mutations.forEach(async function(mutation) {
       if (mutation.target === $(isProfile)[0]) {
-        await reloadNickStyle();
-        await reloadBannerStyle();
-        await reloadUserBadges();
+        await updateUniqueStyles();
       }
     });
   });
