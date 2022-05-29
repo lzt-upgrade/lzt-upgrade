@@ -355,7 +355,7 @@ async function forceReloadBannerStyle() {
 }
 
 function registerUserBadges(bannerStyle = '', badgeText = '', badgeIcon = '') {
-  for(const el of $(`.avatarHolder > a.Av${userid()}m`)) {
+  for(const el of $.merge($(`.avatarHolder > a.Av${userid()}m`), $(`.avatarHolder > a.Av${userid()}s`))) {
     const $avatarHolder = $(el).parent()
     let $userBadges = $avatarHolder.find('.avatarUserBadges')
     let badgeId = null
