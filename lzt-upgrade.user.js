@@ -34,199 +34,210 @@ const menuBtn = $('<a id="LZTUpButton">LZT Upgrade</a>');
 const lztUpIcon = $('<img id="LZTUpBtnIcon" title="love" alt=":love2:" data-smilie="yes" data-src="https://i.imgur.com/ucm5U7v.gif" src="https://i.imgur.com/ucm5U7v.gif">');
 $(menuBtn).prepend(lztUpIcon).on('click', async function () {
   var dbData = await readUniqueStyleDB().then(value => {return(value)}).catch(err => {console.error(err); return false});
-  if (typeof(dbData) === 'object') {
-    var nickStyle = dbData.nickStyle;
-    var bannerStyle = dbData.bannerStyle;
-    var bannerText = dbData.bannerText;
-    var badgeText = dbData.badgeText;
-    var badgeIcon = dbData.badgeIcon;
-    var badgeFill = dbData.badgeFill;
-    var badgeStroke = dbData.badgeStroke;
-  } else {
-    var nickStyle = '';
-    var bannerStyle = '';
-    var bannerText = '';
-    var badgeText = '';
-    var badgeIcon = '<svg width="60" height="27" viewBox="0 0 60 27" fill="none" xmlns="http://www.w3.org/2000/svg"> \
-    <path fill-rule="evenodd" clip-rule="evenodd" d="M40 22V4H55.1L59.1 0H7V4H24L12 23H4V0H0V27H59L55 23H40V22ZM17 23H36V22V4H29L17 23Z" fill="#23A86D"/> \
-    </svg>';
-    var badgeFill = '';
-    var badgeStroke = '';
-  }
+  var nickStyle = dbData.nickStyle || '';
+  var bannerStyle = dbData.bannerStyle || '';
+  var bannerText = dbData.bannerText || '';
+  var badgeText = dbData.badgeText || '';
+  var badgeIcon = dbData.badgeIcon || '';
+  var badgeFill = dbData.badgeFill || '';
+  var badgeStroke = dbData.badgeStroke || '';
 
   const overlay = registerModal(
-    'Локальный Уник',
-    `<div id="LZTUpModalComment">
-      На этой странице можно выбрать стиль вашего ника и лычки. Этот стиль виден только вам. После <a href="https://lolz.guru/account/upgrades?upgrade_id=14" target="_blank">покупки</a> оф. уника его увидят все.
-    </div>
-
-    <div id="LZTUpModalHeading" class="textHeading">Стиль ника:</div>
-    <div id="LZTUpModalText" class="muted explain">Максимум 1500 символов. При отсутствии кода используется цвет вашей группы с форума.</div>
-    <nobr>
-      <textarea id="LZTUpUniqueStyle" name="username_css" class="UsernameCss textCtrl" maxlength="1500">${nickStyle}</textarea>
-      <input id="LZTUpSaveUniqueStyle" type="button" value="Сохранить" class="button primary"></input>
-    </nobr>
-
-    <div id="LZTUpModalHeading" class="textHeading">Стиль лычки:</div>
-    <div id="LZTUpModalText" class="muted explain">Максимум 1500 символов.</div>
-    <nobr>
-      <textarea id="LZTUpBannerStyle" name="banner_css" class="BannerCss textCtrl" maxlength="1500">${bannerStyle}</textarea>
-      <input id="LZTUpSaveBannerStyle" type="button" value="Сохранить" class="button primary"></input>
-    </nobr>
-
-    <div id="LZTUpModalHeading" class="textHeading">Текст в лычке:</div>
-    <div id="LZTUpModalText" class="muted explain">Максимум 24 символа. При отсутствии текста лычка не будет видна.</div>
-    <nobr>
-      <input id="LZTUpBannerText" name="banner_text" maxlength="24" class="textCtrl" value=${bannerText}>
-      <input id="LZTUpSaveBannerText" type="button" value="Сохранить" class="button primary"></input>
-    </nobr>
-
-    <div id="LZTUpModalHeading" class="textHeading">Иконка на аватарке:</div>
-    <div id="LZTUpModalText" class="muted explain">
-      <a href="/threads/3405752/" class="mainc">[Гайд] Как правильно устанавливать свои иконки в уник</a>
-      <br>
-      <br>
-      Максимумальная длина SVG - 3000 символов. При отсутствии значения будет установлено стандартная иконка.
-    </div>
-    <nobr>
-      <textarea id="LZTUpBadgeIcon" name="banner_icon" maxlength="3000" class="BadgeCss textCtrl">${badgeIcon}</textarea>
-      <input id="LZTUpSaveBadgeIcon" type="button" value="Сохранить" class="button primary"></input>
-    </nobr>
-
-    <div id="LZTUpModalHeading" class="textHeading">Цвета иконок на аватарке:</div>
-    <div id="LZTUpModalText" class="muted explain">Убедитесь, что в SVG нету заранее установленных значений 'fill' и 'stroke'.</div>
-    <nobr>
-      <div id="LZTUpBadgeFillContainer">
-        <div id="LZTUpModalText" class="muted explain">Цвет иконки (fill):</div>
-        <div id="LZTUpBadgeFill" class="badge-fill-picker"></div>
+    'LZT Upgrade',
+    `
+    <ul class="tabs" id="LZTUpTabs">
+      <li class="active" id="LZTUpTab">
+        <span>Главная</span>
+      </li>
+      <li id="LZTUpTab">
+        <span>Настройки</span>
+      </li>
+    </ul>
+    <div id="LZTUpList" class="LZTUpMainList">
+      <div id="LZTUpListItem" class="LZTUpUniqItem">
+        <img alt="Image" id="LZTUpListIcon" src="http:/localhost:3000/static/img/color.svg" loading=lazy>
+        <span id="LZTUpListText">Локальный Уник</span>
       </div>
-    </nobr>
-    <nobr>
-      <div id="LZTUpBadgeStrokeContainer" style="padding-top: 12px;">
-        <div id="LZTUpModalText" class="muted explain" style="">Цвет иконки (stroke):</div>
-        <div id="LZTUpStrokeFill" class="badge-stroke-picker"></div>
+      <div id="LZTUpListItem" class="LZTUpContestsItem">
+        <img alt="Image" id="LZTUpListIcon" src="http:/localhost:3000/static/img/gift.svg" loading=lazy>
+        <span id="LZTUpListText">Розыгрыши</span>
       </div>
-    </nobr>
+      <div id="LZTUpListItem">
+        <img alt="Image" id="LZTUpListIcon" src="http:/localhost:3000/static/img/more.svg" loading=lazy>
+        <span id="LZTUpListText">Lorem Ipsum</span>
+      </div>
+      <div id="LZTUpListItem">
+        <img alt="Image" id="LZTUpListIcon" src="http:/localhost:3000/static/img/more.svg" loading=lazy>
+        <span id="LZTUpListText">Lorem Ipsum</span>
+      </div>
+      <div id="LZTUpListItem">
+        <img alt="Image" id="LZTUpListIcon" src="http:/localhost:3000/static/img/more.svg" loading=lazy>
+        <span id="LZTUpListText">Lorem Ipsum - это текст-"рыба", часто используемый в печати и вэб-дизайне. Lorem Ipsum является стандартной "рыбой" для текстов на латинице с начала XVI века. В то время некий безымянный печатник создал большую коллекцию размеров и форм шрифтов, используя Lorem Ipsum для распечатки образцов. Lorem Ipsum не только успешно пережил без заметных изменений пять веков, но и перешагнул в электронный дизайн. Его популяризации в новое время послужили публикация листов Letraset с образцами Lorem Ipsum в 60-х годах и, в более недавнее время, программы электронной вёрстки типа Aldus PageMaker, в шаблонах которых используется Lorem Ipsum.</span>
+      </div>
+    </div>
+    <div id="LZTUpList" class="LZTUpSettingsList">
+      <div id="LZTUpListItem">
+        <img alt="Image" id="LZTUpListIcon" src="http:/localhost:3000/static/img/more.svg" loading=lazy>
+        <span id="LZTUpListText">Lorem Ipsum</span>
+      </div>
+      <div id="LZTUpListItem">
+        <img alt="Image" id="LZTUpListIcon" src="http:/localhost:3000/static/img/more.svg" loading=lazy>
+        <span id="LZTUpListText">Lorem Ipsum</span>
+      </div>
+      <div id="LZTUpListItem">
+        <img alt="Image" id="LZTUpListIcon" src="http:/localhost:3000/static/img/more.svg" loading=lazy>
+        <span id="LZTUpListText">Lorem Ipsum - это текст-"рыба", часто используемый в печати и вэб-дизайне. Lorem Ipsum является стандартной "рыбой" для текстов на латинице с начала XVI века. В то время некий безымянный печатник создал большую коллекцию размеров и форм шрифтов, используя Lorem Ipsum для распечатки образцов. Lorem Ipsum не только успешно пережил без заметных изменений пять веков, но и перешагнул в электронный дизайн. Его популяризации в новое время послужили публикация листов Letraset с образцами Lorem Ipsum в 60-х годах и, в более недавнее время, программы электронной вёрстки типа Aldus PageMaker, в шаблонах которых используется Lorem Ipsum.</span>
+      </div>
+    </div>
+    <div id="LZTUpUniqContainer">
+      <div id="LZTUpModalComment">
+        На этой странице можно выбрать стиль вашего ника и лычки. Этот стиль виден только вам. После <a href="https://lolz.guru/account/upgrades?upgrade_id=14" target="_blank">покупки</a> оф. уника его увидят все.
+      </div>
 
-    <div id="LZTUpModalHeading" class="textHeading">Текст иконки на аватарке:</div>
-    <div id="LZTUpModalText" class="muted explain">Максимум 24 символа. При отсутствии текста иконка не будет видна.</div>
-    <nobr>
-      <input id="LZTUpBadgeText" name="badge_text" maxlength="24" class="textCtrl" value=${badgeText}>
-      <input id="LZTUpSaveBadgeText" type="button" value="Сохранить" class="button primary"></input>
-    </nobr>
+      <div id="LZTUpModalHeading" class="textHeading">Стиль ника:</div>
+      <div id="LZTUpModalText" class="muted explain">Максимум 1500 символов. При отсутствии кода используется цвет вашей группы с форума.</div>
+      <nobr>
+        <textarea id="LZTUpUniqueStyle" name="username_css" class="UsernameCss textCtrl" maxlength="1500">${nickStyle}</textarea>
+        <input id="LZTUpSaveUniqueStyle" type="button" value="Сохранить" class="button primary"></input>
+      </nobr>
 
-    <input id="LZTUpResetSettings" type="button" value="Сбросить настройки" class="button primary"></input>`
-  )
+      <div id="LZTUpModalHeading" class="textHeading">Стиль лычки:</div>
+      <div id="LZTUpModalText" class="muted explain">Максимум 1500 символов.</div>
+      <nobr>
+        <textarea id="LZTUpBannerStyle" name="banner_css" class="BannerCss textCtrl" maxlength="1500">${bannerStyle}</textarea>
+        <input id="LZTUpSaveBannerStyle" type="button" value="Сохранить" class="button primary"></input>
+      </nobr>
 
-  const pickrFill = Pickr.create({
-    el: '.badge-fill-picker',
-    container: overlay[0],
-    theme: 'nano', // or 'monolith', or 'nano'
-    default: '#ffffff',
+      <div id="LZTUpModalHeading" class="textHeading">Текст в лычке:</div>
+      <div id="LZTUpModalText" class="muted explain">Максимум 24 символа. При отсутствии текста лычка не будет видна.</div>
+      <nobr>
+        <input id="LZTUpBannerText" name="banner_text" maxlength="24" class="textCtrl" value=${bannerText}>
+        <input id="LZTUpSaveBannerText" type="button" value="Сохранить" class="button primary"></input>
+      </nobr>
 
-    swatches: [
-        'rgba(244, 67, 54, 1)',
-        'rgba(233, 30, 99, 0.95)',
-        'rgba(156, 39, 176, 0.9)',
-        'rgba(103, 58, 183, 0.85)',
-        'rgba(63, 81, 181, 0.8)',
-        'rgba(33, 150, 243, 0.75)',
-        'rgba(3, 169, 244, 0.7)',
-        'rgba(0, 188, 212, 0.7)',
-        'rgba(0, 150, 136, 0.75)',
-        'rgba(76, 175, 80, 0.8)',
-        'rgba(139, 195, 74, 0.85)',
-        'rgba(205, 220, 57, 0.9)',
-        'rgba(255, 235, 59, 0.95)',
-        'rgba(255, 193, 7, 1)'
-    ],
+      <div id="LZTUpModalHeading" class="textHeading">Иконка на аватарке:</div>
+      <div id="LZTUpModalText" class="muted explain">
+        <a href="/threads/3405752/" class="mainc">[Гайд] Как правильно устанавливать свои иконки в уник</a>
+        <br>
+        <br>
+        Максимумальная длина SVG - 3000 символов. При отсутствии значения будет установлено стандартная иконка.
+      </div>
+      <nobr>
+        <textarea id="LZTUpBadgeIcon" name="banner_icon" maxlength="3000" class="BadgeCss textCtrl">${badgeIcon}</textarea>
+        <input id="LZTUpSaveBadgeIcon" type="button" value="Сохранить" class="button primary"></input>
+      </nobr>
 
-    components: {
-        // Main components
-        preview: true,
-        opacity: true,
-        hue: true,
+      <div id="LZTUpModalHeading" class="textHeading">Цвета иконок на аватарке:</div>
+      <div id="LZTUpModalText" class="muted explain">Убедитесь, что в SVG нету заранее установленных значений 'fill' и 'stroke'.</div>
+      <nobr>
+        <div id="LZTUpBadgeFillContainer">
+          <div id="LZTUpModalText" class="muted explain">Цвет иконки (fill):</div>
+          <div id="LZTUpBadgeFill" class="badge-fill-picker"></div>
+        </div>
+      </nobr>
+      <nobr>
+        <div id="LZTUpBadgeStrokeContainer" style="padding-top: 12px;">
+          <div id="LZTUpModalText" class="muted explain" style="">Цвет иконки (stroke):</div>
+          <div id="LZTUpStrokeFill" class="badge-stroke-picker"></div>
+        </div>
+      </nobr>
 
-        // Input / output Options
-        interaction: {
-            hex: true,
-            rgba: true,
-            input: true,
-            clear: true,
-            cancel: true,
-            save: true
-        }
-    }
-  })
+      <div id="LZTUpModalHeading" class="textHeading">Текст иконки на аватарке:</div>
+      <div id="LZTUpModalText" class="muted explain">Максимум 24 символа. При отсутствии текста иконка не будет видна.</div>
+      <nobr>
+        <input id="LZTUpBadgeText" name="badge_text" maxlength="24" class="textCtrl" value=${badgeText}>
+        <input id="LZTUpSaveBadgeText" type="button" value="Сохранить" class="button primary"></input>
+      </nobr>
 
-  pickrFill.on('init', async (instance) => {
-    instance.setColor(badgeFill === '' ? null : badgeFill)
-    instance.on('save', async (color, instance) => {
-      if (color !== null) {
-        var rgbaColor = color.toRGBA().toString(0)
-      } else {
-        var rgbaColor = ""
-      }
-      await updateUniqueStyleDB(nickSt = null, bannerSt = null, bannerTxt = null, badgeIcn = null, badgeTxt = null, badgeFll = rgbaColor, badgeStrk = null).then(value => {return(value)}).catch(err => {console.error(err); return false});
-      await setUniqIconColor(rgbaColor)
-    });
+      <input id="LZTUpResetSettings" type="button" value="Сбросить настройки" class="button primary"></input>
+    </div>
+    `
+  );
+
+  var $LZTUpTabs = $('ul#LZTUpTabs');
+  var $mainList = $('div.LZTUpMainList');
+  var $settingsList = $('div.LZTUpSettingsList');
+  var $uniqContainer = $('div#LZTUpUniqContainer');
+  $settingsList.hide();
+  $uniqContainer.hide();
+  var $menuTab = $('#LZTUpTabs > #LZTUpTab');
+  var $mainTab, $settingsTab;
+  $menuTab.toArray().forEach(element => {
+    $(element)[0].innerText === 'Настройки' ? $settingsTab = $(element) : $mainTab = $(element);
   });
 
-  const pickrStroke = Pickr.create({
-    el: '.badge-stroke-picker',
-    container: overlay[0],
-    theme: 'nano', // or 'monolith', or 'nano'
-    default: '#ffffff',
-
-    swatches: [
-        'rgba(244, 67, 54, 1)',
-        'rgba(233, 30, 99, 0.95)',
-        'rgba(156, 39, 176, 0.9)',
-        'rgba(103, 58, 183, 0.85)',
-        'rgba(63, 81, 181, 0.8)',
-        'rgba(33, 150, 243, 0.75)',
-        'rgba(3, 169, 244, 0.7)',
-        'rgba(0, 188, 212, 0.7)',
-        'rgba(0, 150, 136, 0.75)',
-        'rgba(76, 175, 80, 0.8)',
-        'rgba(139, 195, 74, 0.85)',
-        'rgba(205, 220, 57, 0.9)',
-        'rgba(255, 235, 59, 0.95)',
-        'rgba(255, 193, 7, 1)'
-    ],
-
-    components: {
-        // Main components
-        preview: true,
-        opacity: true,
-        hue: true,
-
-        // Input / output Options
-        interaction: {
-            hex: true,
-            rgba: true,
-            input: true,
-            clear: true,
-            cancel: true,
-            save: true
-        }
-    }
-  })
-
-  pickrStroke.on('init', async (instance) => {
-    instance.setColor(badgeStroke === '' ? null : badgeStroke)
-    instance.on('save', async (color, instance) => {
-      if (color !== null) {
-        var rgbaColor = color.toRGBA().toString(0)
-      } else {
-        var rgbaColor = ""
-      }
-      await updateUniqueStyleDB(nickSt = null, bannerSt = null, bannerTxt = null, badgeIcn = null, badgeTxt = null, badgeFll = null, badgeStrk = rgbaColor).then(value => {return(value)}).catch(err => {console.error(err); return false});
-      await setUniqIconColor('', rgbaColor)
+  if ($menuTab.length) {
+    $mainTab.on('click', () => {
+      $($mainTab)[0].innerText === 'Главная' && !$mainTab.hasClass('active') ? (
+        $settingsTab.removeClass('active'),
+        $mainTab.addClass('active'),
+        $settingsList.hide(),
+        $mainList.show()
+      ) : undefined;
     });
-  });
+
+    $settingsTab.on('click', () => {
+      $($settingsTab)[0].innerText === 'Настройки' && !$settingsTab.hasClass('active') ? (
+        $mainTab.removeClass('active'),
+        $settingsTab.addClass('active'),
+        $mainList.hide(),
+        $settingsList.show()
+      ) : undefined;
+    });
+
+    $('div#LZTUpListItem.LZTUpUniqItem').on('click', async () => {
+      $mainList.remove();
+      $LZTUpTabs.remove();
+      $uniqContainer.show();
+
+      const pickrFill = createColorPicker('.badge-fill-picker', overlay[0]);
+      pickrFill.on('init', async (instance) => {
+        instance.setColor(badgeFill === '' ? null : badgeFill);
+        instance.on('save', async (color, instance) => {
+          color !== null ? rgbaColor = color.toRGBA().toString(0) : rgbaColor = "";
+          await updateUniqueStyleDB(null, null, null, null, null, rgbaColor, null).then(value => {return(value)}).catch(err => {console.error(err); return false});
+          await setUniqIconColor(rgbaColor);
+        });
+      });
+
+      const pickrStroke = createColorPicker('.badge-stroke-picker', overlay[0]);
+      pickrStroke.on('init', async (instance) => {
+        instance.setColor(badgeStroke === '' ? null : badgeStroke);
+        instance.on('save', async (color, instance) => {
+          color !== null ? rgbaColor = color.toRGBA().toString(0) : rgbaColor = "";
+          await updateUniqueStyleDB(null, null, null, null, null, null, rgbaColor).then(value => {return(value)}).catch(err => {console.error(err); return false});
+          await setUniqIconColor('', rgbaColor);
+        });
+      });
+    });
+  };
 });
 
+function createColorPicker(element, elementCont) {
+  return Pickr.create({
+    el: element,
+    container: elementCont,
+    theme: 'nano',
+    default: '#ffffff',
+
+    components: {
+        // Main components
+        preview: true,
+        opacity: true,
+        hue: true,
+
+        // Input / output Options
+        interaction: {
+            hex: true,
+            rgba: true,
+            input: true,
+            clear: true,
+            cancel: true,
+            save: true
+        }
+    }
+  })
+}
 
 function registerMenuBtn(element) {
   const fragment = new DocumentFragment();
@@ -684,7 +695,7 @@ async function getContestsLinks() {
 
 async function regOpenContestsButton(amount = 10) {
   var updateButton = $('div.pageNavLinkGroup > div.linkGroup.SelectionCountContainer > span.UpdateFeedButton.UpdateFeedButtonIcon');
-  var getContestsButton = $(`<a class="button OverlayTrigger" data-cacheoverlay="false">Открыть ${amount < 100 ? amount : 'все (ОЗУ 12+ Гб)'}</a>`).on('click', async () => {
+  var getContestsButton = $(`<a class="button OverlayTrigger" data-cacheoverlay="false">Открыть ${amount < 100 ? amount : 'все (ОЗУ 8+ Гб)'}</a>`).on('click', async () => {
     updateButton.click();
     await sleep(1000);
     var links = await getContestsLinks()
