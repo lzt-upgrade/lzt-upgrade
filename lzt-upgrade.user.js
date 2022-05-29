@@ -430,12 +430,14 @@ async function commentMoreHandler() {
 }
 
 async function setUniqIconColor(badgeFill = '', badgeStroke = '') {
-  var elements = $('div#LZTUpCustomUniqIcon > svg')
-  if (elements.length && (badgeFill !== '' || badgeStroke !== '')) {
-    $(elements).each((i, el) => {
-      badgeFill !== '' ? $(el).attr('fill', badgeFill) : undefined;
-      badgeStroke !== '' ? $(el).attr('stroke', badgeStroke) : undefined;
-    })
+  for(const el of $.merge($(`.avatarHolder > a.Av${userid()}m`), $(`.avatarHolder > a.Av${userid()}s`))) {
+    const $avatarHolder = $(el).parent()
+    var $userBadge = $avatarHolder.find('.avatarUserBadges > .avatarUserBadge')
+    var $svg = $userBadge.find('.customUniqIcon > svg')
+    if ($svg.length && (badgeFill !== '' || badgeStroke !== '')) {
+      badgeFill !== '' ? $svg.attr('fill', badgeFill) : undefined;
+      badgeStroke !== '' ? $svg.attr('stroke', badgeStroke) : undefined;
+    }
   }
 }
 
