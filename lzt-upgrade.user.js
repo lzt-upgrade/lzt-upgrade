@@ -62,25 +62,25 @@ $(menuBtn).prepend(lztUpIcon).on('click', async function () {
     </ul>
     <div id="LZTUpList" class="LZTUpMainList">
       <div id="LZTUpListItem" class="LZTUpUniqItem">
-        <img alt="Image" id="LZTUpListIcon" src="http:/localhost:3000/static/img/color.svg" loading=lazy>
+        <img alt="Image" id="LZTUpListIcon" src="https://raw.githubusercontent.com/ilyhalight/lzt-upgrade/master/public/static/img/color.svg" loading=lazy>
         <span id="LZTUpListText">Локальный Уник</span>
       </div>
       <div id="LZTUpListItem" class="LZTUpContestsItem">
-        <img alt="Image" id="LZTUpListIcon" src="http:/localhost:3000/static/img/gift.svg" loading=lazy>
+        <img alt="Image" id="LZTUpListIcon" src="https://raw.githubusercontent.com/ilyhalight/lzt-upgrade/master/public/static/img/gift.svg" loading=lazy>
         <span id="LZTUpListText">Розыгрыши</span>
       </div>
     </div>
     <div id="LZTUpList" class="LZTUpSettingsList">
       <div id="LZTUpListItem">
-        <img alt="Image" id="LZTUpListIcon" src="http:/localhost:3000/static/img/more.svg" loading=lazy>
+        <img alt="Image" id="LZTUpListIcon" src="https://raw.githubusercontent.com/ilyhalight/lzt-upgrade/master/public/static/img/more.svg" loading=lazy>
         <span id="LZTUpListText">Lorem Ipsum</span>
       </div>
       <div id="LZTUpListItem">
-        <img alt="Image" id="LZTUpListIcon" src="http:/localhost:3000/static/img/more.svg" loading=lazy>
+        <img alt="Image" id="LZTUpListIcon" src="https://raw.githubusercontent.com/ilyhalight/lzt-upgrade/master/public/static/img/more.svg" loading=lazy>
         <span id="LZTUpListText">Lorem Ipsum</span>
       </div>
       <div id="LZTUpListItem">
-        <img alt="Image" id="LZTUpListIcon" src="http:/localhost:3000/static/img/more.svg" loading=lazy>
+        <img alt="Image" id="LZTUpListIcon" src="https://raw.githubusercontent.com/ilyhalight/lzt-upgrade/master/public/static/img/more.svg" loading=lazy>
         <span id="LZTUpListText">Lorem Ipsum - это текст-"рыба", часто используемый в печати и вэб-дизайне. Lorem Ipsum является стандартной "рыбой" для текстов на латинице с начала XVI века. В то время некий безымянный печатник создал большую коллекцию размеров и форм шрифтов, используя Lorem Ipsum для распечатки образцов. Lorem Ipsum не только успешно пережил без заметных изменений пять веков, но и перешагнул в электронный дизайн. Его популяризации в новое время послужили публикация листов Letraset с образцами Lorem Ipsum в 60-х годах и, в более недавнее время, программы электронной вёрстки типа Aldus PageMaker, в шаблонах которых используется Lorem Ipsum.</span>
       </div>
     </div>
