@@ -5,10 +5,11 @@
 // @author       Toil
 // @match        *://*.lolz.guru/*
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=lolz.guru
-// @resource     styles http://localhost:3000/css/style.css
+// @resource     styles https://raw.githubusercontent.com/ilyhalight/lzt-upgrade/master/public/css/style.css
 // @resource     styles2 https://raw.githubusercontent.com/ilyhalight/lzt-upgrade/master/public/css/nano.min.css
 // @require      https://raw.githubusercontent.com/ilyhalight/lzt-upgrade/master/public/static/js/pickr/pickr.es5.min.js
-// @require      http://localhost:3000/static/js/lztupgrade/indexedDB/UniqueStyle.js
+// @require      https://raw.githubusercontent.com/ilyhalight/lzt-upgrade/master/public/static/js/lztupgrade/indexedDB/UniqueStyle.js
+// @require      https://raw.githubusercontent.com/ilyhalight/lzt-upgrade/master/public/static/js/lztupgrade/indexedDB/settings.js
 // @updateURL    https://github.com/ilyhalight/lzt-upgrade/raw/master/lzt-upgrade.user.js
 // @downloadURL  https://github.com/ilyhalight/lzt-upgrade/raw/master/lzt-upgrade.user.js
 // @supportURL   https://github.com/ilyhalight/lzt-upgrade/issues
@@ -25,7 +26,7 @@ GM_addStyle(styles2);
 
 const username = $('.accountUsername span').text();
 
-const userid = () => {
+const getUserid = () => {
   return XenForo._csrfToken.split(',')[0]
 }
 
@@ -35,6 +36,7 @@ const menuBtn = $('<a id="LZTUpButton">LZT Upgrade</a>');
 const lztUpIcon = $('<img id="LZTUpBtnIcon" title="love" alt=":love2:" data-smilie="yes" data-src="https://i.imgur.com/ucm5U7v.gif" src="https://i.imgur.com/ucm5U7v.gif">');
 $(menuBtn).prepend(lztUpIcon).on('click', async function () {
   var dbData = await readUniqueStyleDB().then(value => {return(value)}).catch(err => {console.error(err); return false});
+  var settingsData = await readSettingsDB().then(value => {return(value)}).catch(err => {console.error(err); return false});
   var nickStyle = dbData.nickStyle || '';
   var bannerStyle = dbData.bannerStyle || '';
   var bannerText = dbData.bannerText || '';
@@ -42,6 +44,10 @@ $(menuBtn).prepend(lztUpIcon).on('click', async function () {
   var badgeIcon = dbData.badgeIcon || '';
   var badgeFill = dbData.badgeFill || '';
   var badgeStroke = dbData.badgeStroke || '';
+  var contestsTen = settingsData.contestsTen || 0;
+  var contestsAll = settingsData.contestsAll || 0;
+  var contestsInfoTop = settingsData.contestsInfoTop || 0;
+  var contestsBtnTopInBlock = settingsData.contestsBtnTopInBlock || 0;
 
   const overlay = registerModal(
     'LZT Upgrade',
@@ -62,18 +68,6 @@ $(menuBtn).prepend(lztUpIcon).on('click', async function () {
       <div id="LZTUpListItem" class="LZTUpContestsItem">
         <img alt="Image" id="LZTUpListIcon" src="http:/localhost:3000/static/img/gift.svg" loading=lazy>
         <span id="LZTUpListText">Розыгрыши</span>
-      </div>
-      <div id="LZTUpListItem">
-        <img alt="Image" id="LZTUpListIcon" src="http:/localhost:3000/static/img/more.svg" loading=lazy>
-        <span id="LZTUpListText">Lorem Ipsum</span>
-      </div>
-      <div id="LZTUpListItem">
-        <img alt="Image" id="LZTUpListIcon" src="http:/localhost:3000/static/img/more.svg" loading=lazy>
-        <span id="LZTUpListText">Lorem Ipsum</span>
-      </div>
-      <div id="LZTUpListItem">
-        <img alt="Image" id="LZTUpListIcon" src="http:/localhost:3000/static/img/more.svg" loading=lazy>
-        <span id="LZTUpListText">Lorem Ipsum - это текст-"рыба", часто используемый в печати и вэб-дизайне. Lorem Ipsum является стандартной "рыбой" для текстов на латинице с начала XVI века. В то время некий безымянный печатник создал большую коллекцию размеров и форм шрифтов, используя Lorem Ipsum для распечатки образцов. Lorem Ipsum не только успешно пережил без заметных изменений пять веков, но и перешагнул в электронный дизайн. Его популяризации в новое время послужили публикация листов Letraset с образцами Lorem Ipsum в 60-х годах и, в более недавнее время, программы электронной вёрстки типа Aldus PageMaker, в шаблонах которых используется Lorem Ipsum.</span>
       </div>
     </div>
     <div id="LZTUpList" class="LZTUpSettingsList">
@@ -128,7 +122,7 @@ $(menuBtn).prepend(lztUpIcon).on('click', async function () {
         <input id="LZTUpSaveBadgeIcon" type="button" value="Сохранить" class="button primary"></input>
       </nobr>
 
-      <div id="LZTUpModalHeading" class="textHeading">Цвета иконок на аватарке:</div>
+      <div id="LZTUpModalHeading" class="textHeading">Цвета иконки на аватарке:</div>
       <div id="LZTUpModalText" class="muted explain">Убедитесь, что в SVG нету заранее установленных значений 'fill' и 'stroke'.</div>
       <nobr>
         <div id="LZTUpBadgeFillContainer">
@@ -150,7 +144,26 @@ $(menuBtn).prepend(lztUpIcon).on('click', async function () {
         <input id="LZTUpSaveBadgeText" type="button" value="Сохранить" class="button primary"></input>
       </nobr>
 
-      <input id="LZTUpResetSettings" type="button" value="Сбросить настройки" class="button primary"></input>
+      <input id="LZTUpResetUniqueDB" type="button" value="Сбросить настройки" class="button primary"></input>
+    </div>
+    <div id="LZTUpContestsContainer">
+      <div id="LZTUpModalChecksContainer">
+        <input type="checkbox" name="open_ten" value="1" id="contests_open_ten" ${contestsTen === 1 ? "checked" : ''}>
+        <label for="contests_open_ten">Кнопка "Открыть 10"</label>
+      </div>
+      <div id="LZTUpModalChecksContainer">
+        <input type="checkbox" name="open_all" value="1" id="contests_open_all" ${contestsAll === 1 ? "checked" : ''}>
+        <label for="contests_open_all">Кнопка "Открыть прогруженные"</label>
+      </div>
+      <div id="LZTUpModalChecksContainer">
+        <input type="checkbox" name="open_all" value="1" id="contests_info_top" ${contestsInfoTop === 1 ? "checked" : ''}>
+        <label for="contests_info_top">Отображение информации о розыгрыше сверху темы</label>
+      </div>
+      <div id="LZTUpModalChecksContainer">
+        <input type="checkbox" name="open_all" value="1" id="contests_btn_top_in_block" ${contestsBtnTopInBlock === 1 ? "checked" : ''}>
+        <label for="contests_btn_top_in_block">Отображение кнопки "Участвовать" сверху блока с информацией о розыгрыше</label>
+      </div>
+      <input id="LZTUpResetSettingsDB" type="button" value="Сбросить настройки" class="button primary"></input>
     </div>
     `
   );
@@ -159,8 +172,11 @@ $(menuBtn).prepend(lztUpIcon).on('click', async function () {
   var $mainList = $('div.LZTUpMainList');
   var $settingsList = $('div.LZTUpSettingsList');
   var $uniqContainer = $('div#LZTUpUniqContainer');
+  var $contestsContainer = $('div#LZTUpContestsContainer');
   $settingsList.hide();
+  $contestsContainer.hide();
   $uniqContainer.hide();
+  $('ul#LZTUpTabs').parent().css("white-space", "unset"); // fixes so big free space in overlay
   var $menuTab = $('#LZTUpTabs > #LZTUpTab');
   var $mainTab, $settingsTab;
   $menuTab.toArray().forEach(element => {
@@ -210,6 +226,12 @@ $(menuBtn).prepend(lztUpIcon).on('click', async function () {
           await setUniqIconColor('', rgbaColor);
         });
       });
+    });
+
+    $('div#LZTUpListItem.LZTUpContestsItem').on('click', async () => {
+      $mainList.remove();
+      $LZTUpTabs.remove();
+      $contestsContainer.show();
     });
   };
 });
@@ -349,7 +371,7 @@ async function forceReloadBannerStyle() {
 }
 
 function registerUserBadges(bannerStyle = '', badgeText = '', badgeIcon = '') {
-  for(const el of $.merge($(`.avatarHolder > a.Av${userid()}m`), $(`.avatarHolder > a.Av${userid()}s`))) {
+  for(const el of $.merge($(`.avatarHolder > a.Av${getUserid()}m`), $(`.avatarHolder > a.Av${getUserid()}s`))) {
     const $avatarHolder = $(el).parent()
     let $userBadges = $avatarHolder.find('.avatarUserBadges')
     let badgeId = null
@@ -420,7 +442,7 @@ async function commentMoreHandler() {
 }
 
 async function setUniqIconColor(badgeFill = '', badgeStroke = '') {
-  for(const el of $.merge($(`.avatarHolder > a.Av${userid()}m`), $(`.avatarHolder > a.Av${userid()}s`))) {
+  for(const el of $.merge($(`.avatarHolder > a.Av${getUserid()}m`), $(`.avatarHolder > a.Av${getUserid()}s`))) {
     const $avatarHolder = $(el).parent();
     var $userBadge = $avatarHolder.find('.avatarUserBadges > .avatarUserBadge');
     var $svg = $userBadge.find('.customUniqIcon > svg');
@@ -449,25 +471,35 @@ async function getContestsLinks() {
   return links
 }
 
-async function regOpenContestsButton(amount = 10) {
-  var updateButton = $('div.pageNavLinkGroup > div.linkGroup.SelectionCountContainer > span.UpdateFeedButton.UpdateFeedButtonIcon');
-  var getContestsButton = $(`<a class="button OverlayTrigger" data-cacheoverlay="false">Открыть ${amount < 100 ? amount : 'все (ОЗУ 8+ Гб)'}</a>`).on('click', async () => {
-    updateButton.click();
-    await sleep(1000);
-    var links = await getContestsLinks()
-    if (links.length) {
-      $(links).map((element, value) => {
-        if (element <= amount) {
-          var win = window.open(`https://lolz.guru/${value}`)
-          win ? win.focus() : alert('Разрешите доступ к всплывающим окнам для этого сайта')
-        } else {
-          return;
-        }
-      })
-    }
-  });
+async function regOpenContestsBtn(amount = 10) {
+  if (await isContestsNode()) {
+    await removeOpenContestsBtn(amount);
+    var updateButton = $('div.pageNavLinkGroup > div.linkGroup.SelectionCountContainer > span.UpdateFeedButton.UpdateFeedButtonIcon');
+    var getContestsButton = $(`<a class="button" id="openContestsButton${XenForo.htmlspecialchars(amount)}">Открыть ${amount < 100 ? XenForo.htmlspecialchars(amount) : 'прогруженные'}</a>`).on('click', async () => {
+      updateButton.click();
+      await sleep(1000);
+      var links = await getContestsLinks();
+      if (links.length) {
+        $(links).map((element, value) => {
+          if (element <= amount) {
+            var win = window.open(`https://lolz.guru/${value}`)
+            win ? win.focus() : alert('Разрешите доступ к всплывающим окнам для этого сайта')
+          } else {
+            return;
+          }
+        })
+      }
+    });
 
-  updateButton.length ? updateButton.parent().prepend(getContestsButton) : undefined;
+    updateButton.length ? updateButton.parent().prepend(getContestsButton) : undefined;
+  }
+}
+
+async function removeOpenContestsBtn(amount = 10) {
+  if (await isContestsNode()) {
+    var $oldOpenContestsButton = $(`#openContestsButton${XenForo.htmlspecialchars(amount)}`);
+    $oldOpenContestsButton.length > 0 ? $oldOpenContestsButton.remove() : null;
+  }
 }
 
 async function onClickCategoryContestsHandler() {
@@ -476,8 +508,8 @@ async function onClickCategoryContestsHandler() {
   var giveaways = $(mainSection).find('ol.nodeList > li.list.node.node9.forum.level_2 > div.nodeInfo > ol.subForumList > li.node.node766.forum.level-n');
   $(giveaways).on('click', async () => {
     await sleep(1500);
-    await regOpenContestsButton(10);
-    await regOpenContestsButton(100);
+    await regOpenContestsBtn(10);
+    await regOpenContestsBtn(100);
   });
 }
 
@@ -487,9 +519,79 @@ async function updateUniqueStyles() {
   await reloadUserBadges();
 }
 
-var MenuResult = registerMenuBtn(menuBtn);
-var isDBInited = await initUniqueStyleDB().then(value => {return(value)}).catch(err => {console.error(err); return false});
+async function isContestThread() {
+  var $contestsThreadBlock = $('div.contestThreadBlock');
+  return $contestsThreadBlock.length > 0 ? true : false
+}
 
+async function isContestsNode() {
+  var $contestsTitleBar = $('div.titleBar > h1');
+  return ($contestsTitleBar.length > 0 && $contestsTitleBar.attr('title') === 'Розыгрыши') ? true : false
+}
+
+async function contestThreadBlockMove(toTop = true) {
+  if (await isContestThread()) {
+    var $contestsThreadBlock = $('div.contestThreadBlock');
+    var $messageContent = $('li.firstPost > div.messageInfo > div.messageContent > article > blockquote.messageText');
+    if (toTop) {
+      $contestsThreadBlock.after($messageContent);
+      $contestsThreadBlock.css("border-top", "none").css("border-bottom", "1px solid rgb(45, 45, 45)");
+    } else {
+      $contestsThreadBlock.before($messageContent);
+      $contestsThreadBlock.css("border-top", "1px solid rgb(45, 45, 45)").css("border-bottom", "none");
+    }
+  }
+}
+
+async function contestsBtnInBlockMove(toTop = true) {
+  if (isContestThread()) {
+    var $contestsThreadBlock = $('div.contestThreadBlock');
+    var $participateButton = $contestsThreadBlock.find('a.LztContest--Participate');
+    var contestEnded = $contestsThreadBlock.find('span.button.contestIsFinished').length > 0 ? true : false;
+
+    if (!$participateButton.length > 0) {
+      $participateButton = $contestsThreadBlock.find('span.LztContest--alreadyParticipating');
+      if (!$participateButton.length > 0) {
+        $participateButton = $contestsThreadBlock.find('span.button.contestIsFinished');
+      }
+      $contestCaptcha = undefined;
+    } else {
+      $contestCaptcha = $contestsThreadBlock.find('div.ContestCaptcha');
+    }
+    if (toTop) { // to top
+      var $contestsInfoHeading = $contestsThreadBlock.find('div.textHeading');
+      $participateButton.attr("style", "margin: 0 0 15px"); // fixes big interval between infoHeader and participateButton
+      $contestsThreadBlock.css('padding', "0");
+      $contestsInfoHeading.after($participateButton);
+      $contestCaptcha === undefined ? null : $participateButton.after($contestCaptcha);
+    } else { // to default (bottom)
+      var marginToFind = (contestEnded === true) ? 'div.marginBlock:nth-child(7)' : 'div.marginBlock:nth-child(9)'
+      console.log(marginToFind)
+      var $lastMarginBlock = $contestsThreadBlock.find(marginToFind)
+      $participateButton.attr("style", "margin: 15px 0 0");
+      $contestsThreadBlock.css('padding', "5px");
+      $lastMarginBlock.after($participateButton);
+      $contestCaptcha === undefined ? null : $participateButton.before($contestCaptcha);
+    }
+  }
+}
+
+if (getUserid() === '') return;
+
+var MenuResult = registerMenuBtn(menuBtn);
+var isUniqueDBInited = await initUniqueStyleDB().then(value => {return(value)}).catch(err => {console.error(err); return false});
+var isSettingsDBInited = await initSettingsDB().then(value => {return(value)}).catch(err => {console.error(err); return false});
+
+if (isSettingsDBInited) {
+  var dbData = await readSettingsDB().then(value => {return(value)}).catch(err => {console.error(err); return false});
+  if (dbData.contestsTen === 1 || dbData.contestsAll === 1) {
+    await onClickCategoryContestsHandler();
+    dbData.contestsTen === 1 ? await regOpenContestsBtn(10) : null;
+    dbData.contestsAll === 1 ? await regOpenContestsBtn(100) : null;
+  }
+  dbData.contestsInfoTop === 1 ? await contestThreadBlockMove(true) : null;
+  dbData.contestsBtnTopInBlock === 1 ? await contestsBtnInBlockMove(true) : null;
+}
 
 await updateUniqueStyles();
 
@@ -499,9 +601,6 @@ await messageClickUsernameHandler();
 
 await commentMoreHandler();
 
-await regOpenContestsButton(10);
-await regOpenContestsButton(100);
-await onClickCategoryContestsHandler()
 
 if (MenuResult === true) {
   $(document).on('click', '#LZTUpSaveUniqueStyle', async function () {
@@ -515,10 +614,10 @@ if (MenuResult === true) {
     updateNickStyle(nickStNew);
   });
 
-  $(document).on('click', '#LZTUpResetSettings', async function () {
+  $(document).on('click', '#LZTUpResetUniqueDB', async function () {
     await deleteUniqueStylesDB();
     await initUniqueStyleDB().then(value => {return(value)}).catch(err => {console.error(err); return false});
-    alert('Настройки LZTUp сброшены. Рекомендуем обновить страницу');
+    alert('Кастомные стили сброшены. Рекомендуем обновить страницу');
   });
 
   $(document).on('click', '#LZTUpSaveBannerStyle', async function () {
@@ -564,6 +663,51 @@ if (MenuResult === true) {
     }
     await reloadUserBadges();
   });
+
+  $(document).on('click', '#LZTUpResetSettingsDB', async function () {
+    await deleteSettingsDB();
+    await initSettingsDB().then(value => {return(value)}).catch(err => {console.error(err); return false});
+    alert('Настройки LZTUp сброшены');
+    await sleep(500);
+    window.location.reload();
+  });
+
+  $(document).on('click', '#contests_open_ten', async function () {
+    $('#contests_open_ten')[0].checked ? (
+      await updateSettingsDB(1),
+      await regOpenContestsBtn(10)
+      ): (
+        await updateSettingsDB(0),
+        await removeOpenContestsBtn(10)
+      );
+  })
+  $(document).on('click', '#contests_open_all', async function () {
+    $('#contests_open_all')[0].checked ? (
+      await updateSettingsDB(null, 1),
+      await regOpenContestsBtn(100)
+      ): (
+        await updateSettingsDB(null, 0),
+        await removeOpenContestsBtn(100)
+      );
+  })
+  $(document).on('click', '#contests_info_top', async function () {
+    $('#contests_info_top')[0].checked ? (
+      await updateSettingsDB(null, null, 1),
+      await contestThreadBlockMove(true)
+      ): (
+        await updateSettingsDB(null, null, 0),
+        await contestThreadBlockMove(false)
+      );
+  })
+  $(document).on('click', '#contests_btn_top_in_block', async function () {
+    $('#contests_btn_top_in_block')[0].checked ? (
+      await updateSettingsDB(null, null, null, 1),
+      await contestsBtnInBlockMove(true)
+      ): (
+        await updateSettingsDB(null, null, null, 0),
+        await contestsBtnInBlockMove(false)
+      );
+  })
 }
 
 var hasPageNav = $('.PageNav > nav > a')
