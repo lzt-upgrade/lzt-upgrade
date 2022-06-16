@@ -64,7 +64,7 @@
   margin: 0px 15px;
 }
 
-#LZTUpResetSettings {
+#LZTUpResetUniqueDB, #LZTUpResetSettingsDB {
   min-width: 150px;
   margin: 15px
 }
@@ -154,4 +154,14 @@
   white-space: nowrap;
   overflow: hidden;
   width: 200px;
+}
+
+#LZTUpModalContainer {
+  margin: 15px;
+  width: 400px;
+}
+
+#LZTUpModalChecksContainer {
+  margin: 15px;
+  width: 550px;
 }
