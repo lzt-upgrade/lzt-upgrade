@@ -1,4 +1,4 @@
-// --- IndexedDB functions start:
+// --- IndexedDB UniqueStyle functions start:
 function openDB (name) {
     try {
       var openRequest = indexedDB.open(name, 1);
@@ -231,4 +231,4 @@ function readUniqueStyleDB() {
 async function deleteUniqueStylesDB() {
     indexedDB.deleteDatabase('LZTUpProfile');
 }
-  // --- IndexedDB functions end
+// --- IndexedDB UniqueStyle functions end
