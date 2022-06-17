@@ -9,7 +9,8 @@
 // @resource     styles2 https://raw.githubusercontent.com/ilyhalight/lzt-upgrade/master/public/css/nano.min.css
 // @require      https://raw.githubusercontent.com/ilyhalight/lzt-upgrade/master/public/static/js/pickr/pickr.es5.min.js
 // @require      https://raw.githubusercontent.com/ilyhalight/lzt-upgrade/master/public/static/js/lztupgrade/indexedDB/UniqueStyle.js
-// @require      https://raw.githubusercontent.com/ilyhalight/lzt-upgrade/master/public/static/js/lztupgrade/indexedDB/settings.js
+// @require      https://raw.githubusercontent.com/ilyhalight/lzt-upgrade/master/public/static/js/lztupgrade/indexedDB/contests.js
+// @require      https://raw.githubusercontent.com/ilyhalight/lzt-upgrade/master/public/static/js/lztupgrade/indexedDB/users.js
 // @updateURL    https://github.com/ilyhalight/lzt-upgrade/raw/master/lzt-upgrade.user.js
 // @downloadURL  https://github.com/ilyhalight/lzt-upgrade/raw/master/lzt-upgrade.user.js
 // @supportURL   https://github.com/ilyhalight/lzt-upgrade/issues
@@ -36,7 +37,8 @@ const menuBtn = $('<a id="LZTUpButton">LZT Upgrade</a>');
 const lztUpIcon = $('<img id="LZTUpBtnIcon" title="love" alt=":love2:" data-smilie="yes" data-src="https://i.imgur.com/ucm5U7v.gif" src="https://i.imgur.com/ucm5U7v.gif">');
 $(menuBtn).prepend(lztUpIcon).on('click', async function () {
   var dbData = await readUniqueStyleDB().then(value => {return(value)}).catch(err => {console.error(err); return false});
-  var settingsData = await readSettingsDB().then(value => {return(value)}).catch(err => {console.error(err); return false});
+  var contestsData = await readContestsDB().then(value => {return(value)}).catch(err => {console.error(err); return false});
+  var usersData = await readUsersDB().then(value => {return(value)}).catch(err => {console.error(err); return false});
   var nickStyle = dbData.nickStyle || '';
   var bannerStyle = dbData.bannerStyle || '';
   var bannerText = dbData.bannerText || '';
@@ -44,10 +46,12 @@ $(menuBtn).prepend(lztUpIcon).on('click', async function () {
   var badgeIcon = dbData.badgeIcon || '';
   var badgeFill = dbData.badgeFill || '';
   var badgeStroke = dbData.badgeStroke || '';
-  var contestsTen = settingsData.contestsTen || 0;
-  var contestsAll = settingsData.contestsAll || 0;
-  var contestsInfoTop = settingsData.contestsInfoTop || 0;
-  var contestsBtnTopInBlock = settingsData.contestsBtnTopInBlock || 0;
+  var contestsTen = contestsData.contestsTen || 0;
+  var contestsAll = contestsData.contestsAll || 0;
+  var contestsInfoTop = contestsData.contestsInfoTop || 0;
+  var contestsBtnTopInBlock = contestsData.contestsBtnTopInBlock || 0;
+  var showUseridInProfile = usersData.showUseridInProfile || 0;
+  var showFullRegInProfile = usersData.showFullRegInProfile || 0;
 
   const overlay = registerModal(
     'LZT Upgrade',
@@ -68,6 +72,10 @@ $(menuBtn).prepend(lztUpIcon).on('click', async function () {
       <div id="LZTUpListItem" class="LZTUpContestsItem">
         <img alt="Image" id="LZTUpListIcon" src="https://raw.githubusercontent.com/ilyhalight/lzt-upgrade/master/public/static/img/gift.svg" loading=lazy>
         <span id="LZTUpListText">Розыгрыши</span>
+      </div>
+      <div id="LZTUpListItem" class="LZTUpUsersItem">
+        <img alt="Image" id="LZTUpListIcon" src="https://raw.githubusercontent.com/ilyhalight/lzt-upgrade/master/public/static/img/user.svg" loading=lazy>
+        <span id="LZTUpListText">Пользователи</span>
       </div>
     </div>
     <div id="LZTUpList" class="LZTUpSettingsList">
@@ -163,7 +171,18 @@ $(menuBtn).prepend(lztUpIcon).on('click', async function () {
         <input type="checkbox" name="open_all" value="1" id="contests_btn_top_in_block" ${contestsBtnTopInBlock === 1 ? "checked" : ''}>
         <label for="contests_btn_top_in_block">Отображение кнопки "Участвовать" сверху блока с информацией о розыгрыше</label>
       </div>
-      <input id="LZTUpResetSettingsDB" type="button" value="Сбросить настройки" class="button primary"></input>
+      <input id="LZTUpResetContestsDB" type="button" value="Сбросить настройки" class="button primary"></input>
+    </div>
+    <div id="LZTUpUsersContainer">
+      <div id="LZTUpModalChecksContainer">
+        <input type="checkbox" name="open_ten" value="1" id="show_userid_in_profile" ${showUseridInProfile === 1 ? "checked" : ''}>
+        <label for="show_userid_in_profile">Показывать UserID в профиле пользователя</label>
+      </div>
+      <div id="LZTUpModalChecksContainer">
+        <input type="checkbox" name="open_all" value="1" id="show_fullreg_in_profile" ${showFullRegInProfile === 1 ? "checked" : ''}>
+        <label for="show_fullreg_in_profile">Показывать полную дату регистрации в профиле пользователя</label>
+      </div>
+      <input id="LZTUpResetUsersDB" type="button" value="Сбросить настройки" class="button primary"></input>
     </div>
     `
   );
@@ -173,8 +192,10 @@ $(menuBtn).prepend(lztUpIcon).on('click', async function () {
   var $settingsList = $('div.LZTUpSettingsList');
   var $uniqContainer = $('div#LZTUpUniqContainer');
   var $contestsContainer = $('div#LZTUpContestsContainer');
+  var $usersContainer = $('div#LZTUpUsersContainer');
   $settingsList.hide();
   $contestsContainer.hide();
+  $usersContainer.hide();
   $uniqContainer.hide();
   $('ul#LZTUpTabs').parent().css("white-space", "unset"); // fixes so big free space in overlay
   var $menuTab = $('#LZTUpTabs > #LZTUpTab');
@@ -232,6 +253,11 @@ $(menuBtn).prepend(lztUpIcon).on('click', async function () {
       $mainList.remove();
       $LZTUpTabs.remove();
       $contestsContainer.show();
+    });
+    $('div#LZTUpListItem.LZTUpUsersItem').on('click', async () => {
+      $mainList.remove();
+      $LZTUpTabs.remove();
+      $usersContainer.show();
     });
   };
 });
@@ -529,6 +555,16 @@ async function isContestsNode() {
   return ($contestsTitleBar.length > 0 && $contestsTitleBar.attr('title') === 'Розыгрыши') ? true : false
 }
 
+async function isContestThread() {
+  var $contestsThreadBlock = $('div.contestThreadBlock');
+  return $contestsThreadBlock.length > 0 ? true : false
+}
+
+async function isProfilePage() {
+  var $ProfilePostList = $('ol#ProfilePostList');
+  return $ProfilePostList.length > 0 ? true : false
+}
+
 async function contestThreadBlockMove(toTop = true) {
   if (await isContestThread()) {
     var $contestsThreadBlock = $('div.contestThreadBlock');
@@ -576,21 +612,70 @@ async function contestsBtnInBlockMove(toTop = true) {
   }
 }
 
+async function getProfileUserid() {
+  if (await isProfilePage()) {
+    var marketLink = $('div#page_info_wrap > div.profile_info > div.userContentLinks > a:nth-child(2)').attr('href');
+    var userid = marketLink.replace('market/user/', '').replace('/items', '')
+    return userid
+  }
+}
+
+async function addUserIdInProfileInfo() {
+  if (await isProfilePage()) {
+    var userid = await getProfileUserid()
+    var profileInfoRow1 = $('div#page_info_wrap > div.profile_info > div.pairsJustified > div.clear_fix:nth-child(1)')
+    var row = `
+    <div class="clear_fix profile_info_row" id="LZTUpUserIDRow">
+      <div class="label fl_l">ID:</div>
+      <div class="labeled">${userid}</div>
+    </div>`
+    profileInfoRow1.after(row)
+  }
+}
+
+async function removeUserIdInProfileInfo() {
+  if (await isProfilePage()) {
+    var profileUserIdRow = $('div.clear_fix#LZTUpUserIDRow');
+    profileUserIdRow.remove()
+  }
+}
+
+async function editUserRegInProfileInfo(full = false) {
+  if (await isProfilePage()) {
+    var $DateTime = $('div#page_info_wrap > div.profile_info > div.pairsJustified > div.clear_fix:nth-child(1) > div.labeled > span.DateTime');
+    var FullReg = $DateTime.attr('title');
+    if (full) {
+      $DateTime.text(FullReg);
+    } else {
+      var RegDate = $DateTime.attr('title').split('в');
+      $DateTime.text(RegDate[0]);
+    }
+  }
+}
+
+
 if (getUserid() === '') return;
 
 var MenuResult = registerMenuBtn(menuBtn);
 var isUniqueDBInited = await initUniqueStyleDB().then(value => {return(value)}).catch(err => {console.error(err); return false});
-var isSettingsDBInited = await initSettingsDB().then(value => {return(value)}).catch(err => {console.error(err); return false});
+var isContestsDBInited = await initContestsDB().then(value => {return(value)}).catch(err => {console.error(err); return false});
+var isUsersDBInited = await initUsersDB().then(value => {return(value)}).catch(err => {console.error(err); return false});
 
-if (isSettingsDBInited) {
-  var dbData = await readSettingsDB().then(value => {return(value)}).catch(err => {console.error(err); return false});
-  if (dbData.contestsTen === 1 || dbData.contestsAll === 1) {
+if (isContestsDBInited) {
+  var dbContestsData = await readContestsDB().then(value => {return(value)}).catch(err => {console.error(err); return false});
+  if (dbContestsData.contestsTen === 1 || dbContestsData.contestsAll === 1) {
     await onClickCategoryContestsHandler();
-    dbData.contestsTen === 1 ? await regOpenContestsBtn(10) : null;
-    dbData.contestsAll === 1 ? await regOpenContestsBtn(100) : null;
+    dbContestsData.contestsTen === 1 ? await regOpenContestsBtn(10) : null;
+    dbContestsData.contestsAll === 1 ? await regOpenContestsBtn(100) : null;
   }
-  dbData.contestsInfoTop === 1 ? await contestThreadBlockMove(true) : null;
-  dbData.contestsBtnTopInBlock === 1 ? await contestsBtnInBlockMove(true) : null;
+  dbContestsData.contestsInfoTop === 1 ? await contestThreadBlockMove(true) : null;
+  dbContestsData.contestsBtnTopInBlock === 1 ? await contestsBtnInBlockMove(true) : null;
+}
+
+if (isUsersDBInited) {
+  var dbUsersData = await readUsersDB().then(value => {return(value)}).catch(err => {console.error(err); return false});
+  dbUsersData.showUseridInProfile === 1 ? await addUserIdInProfileInfo() : null;
+  dbUsersData.showFullRegInProfile === 1 ? await editUserRegInProfileInfo(true) : null;
 }
 
 await updateUniqueStyles();
@@ -664,50 +749,81 @@ if (MenuResult === true) {
     await reloadUserBadges();
   });
 
-  $(document).on('click', '#LZTUpResetSettingsDB', async function () {
-    await deleteSettingsDB();
-    await initSettingsDB().then(value => {return(value)}).catch(err => {console.error(err); return false});
-    alert('Настройки LZTUp сброшены');
+  $(document).on('click', '#LZTUpResetContestsDB', async function () {
+    await deleteContestsDB();
+    await initContestsDB().then(value => {return(value)}).catch(err => {console.error(err); return false});
+    alert('Настройки розыгрышей LZT Upgrade сброшены');
     await sleep(500);
     window.location.reload();
   });
 
   $(document).on('click', '#contests_open_ten', async function () {
     $('#contests_open_ten')[0].checked ? (
-      await updateSettingsDB(1),
+      await updateContestsDB(1),
       await regOpenContestsBtn(10)
       ): (
-        await updateSettingsDB(0),
+        await updateContestsDB(0),
         await removeOpenContestsBtn(10)
       );
-  })
+  });
+
   $(document).on('click', '#contests_open_all', async function () {
     $('#contests_open_all')[0].checked ? (
-      await updateSettingsDB(null, 1),
+      await updateContestsDB(null, 1),
       await regOpenContestsBtn(100)
       ): (
-        await updateSettingsDB(null, 0),
+        await updateContestsDB(null, 0),
         await removeOpenContestsBtn(100)
       );
-  })
+  });
+
   $(document).on('click', '#contests_info_top', async function () {
     $('#contests_info_top')[0].checked ? (
-      await updateSettingsDB(null, null, 1),
+      await updateContestsDB(null, null, 1),
       await contestThreadBlockMove(true)
       ): (
-        await updateSettingsDB(null, null, 0),
+        await updateContestsDB(null, null, 0),
         await contestThreadBlockMove(false)
       );
-  })
+  });
+
   $(document).on('click', '#contests_btn_top_in_block', async function () {
     $('#contests_btn_top_in_block')[0].checked ? (
-      await updateSettingsDB(null, null, null, 1),
+      await updateContestsDB(null, null, null, 1),
       await contestsBtnInBlockMove(true)
       ): (
-        await updateSettingsDB(null, null, null, 0),
+        await updateContestsDB(null, null, null, 0),
         await contestsBtnInBlockMove(false)
       );
-  })
+  });
+
+  $(document).on('click', '#LZTUpResetUsersDB', async function () {
+    await deleteUsersDB();
+    await initUsersDB().then(value => {return(value)}).catch(err => {console.error(err); return false});
+    alert('Настройки пользователей LZT Upgrade сброшены');
+    await sleep(500);
+    window.location.reload();
+  });
+
+  $(document).on('click', '#show_userid_in_profile', async function () {
+    $('#show_userid_in_profile')[0].checked ? (
+      await updateUsersDB(1),
+      await addUserIdInProfileInfo()
+      ): (
+        await updateUsersDB(0),
+        await removeUserIdInProfileInfo()
+      );
+  });
+
+  $(document).on('click', '#show_fullreg_in_profile', async function () {
+    $('#show_fullreg_in_profile')[0].checked ? (
+      await updateUsersDB(null, 1),
+      await editUserRegInProfileInfo(true)
+      ): (
+        await updateUsersDB(null, 0),
+        await editUserRegInProfileInfo(false)
+      );
+  });
 }
 
 var hasPageNav = $('.PageNav > nav > a')
