@@ -32,6 +32,7 @@ async function initUsersDB () {
 
         objectStore.createIndex('showUseridInProfile', 'showUseridInProfile', { unique: false })
         objectStore.createIndex('showFullRegInProfile', 'showFullRegInProfile', { unique: false })
+        objectStore.createIndex('showСomplaintBtnInProfile', 'showСomplaintBtnInProfile', { unique: false })
 
         console.log('LZTUp: База Данных создана')
 
@@ -41,6 +42,7 @@ async function initUsersDB () {
             key: 'users',
             showUseridInProfile: 0,
             showFullRegInProfile: 0,
+            showСomplaintBtnInProfile: 0,
           }
           var request = objectStore.add(usersDefault);
 
@@ -76,9 +78,9 @@ async function initUsersDB () {
     })
 }
 
-async function updateUsersDB(showUseridInProfile = null, showFullRegInProfile = null) {
+async function updateUsersDB(showUseridInProfile = null, showFullRegInProfile = null, showСomplaintBtnInProfile = null) {
     return new Promise((resolve, reject) => {
-      if (showUseridInProfile !== null || showFullRegInProfile !== null) {
+      if (showUseridInProfile !== null || showFullRegInProfile !== null || showСomplaintBtnInProfile !== null) {
         var openRequest = openDB("LZTUpUsers");
 
         openRequest.onerror = () => {
@@ -120,6 +122,10 @@ async function updateUsersDB(showUseridInProfile = null, showFullRegInProfile = 
 
             if (typeof(showFullRegInProfile) === 'number') {
               data.showFullRegInProfile = showFullRegInProfile;
+            }
+
+            if (typeof(showСomplaintBtnInProfile) === 'number') {
+              data.showСomplaintBtnInProfile = showСomplaintBtnInProfile;
             }
 
             var requestUpdate = objectStore.put(data);
