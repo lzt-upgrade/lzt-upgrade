@@ -1,10 +1,10 @@
 // ==UserScript==
 // @name         LZT Upgrade
-// @version      1.0.3
+// @version      1.0.4
 // @description  Some useful utilities for lolz.guru
 // @author       Toil
 // @match        *://*.lolz.guru/*
-// @icon         https://www.google.com/s2/favicons?sz=64&domain=lolz.guru
+// @icon         https://lolz.guru/public/2017/og.png
 // @resource     styles https://raw.githubusercontent.com/ilyhalight/lzt-upgrade/master/public/css/style.css
 // @resource     styles2 https://raw.githubusercontent.com/ilyhalight/lzt-upgrade/master/public/css/nano.min.css
 // @require      https://raw.githubusercontent.com/ilyhalight/lzt-upgrade/master/public/static/js/pickr/pickr.es5.min.js
@@ -52,6 +52,7 @@ $(menuBtn).prepend(lztUpIcon).on('click', async function () {
   var contestsBtnTopInBlock = contestsData.contestsBtnTopInBlock || 0;
   var showUseridInProfile = usersData.showUseridInProfile || 0;
   var showFullRegInProfile = usersData.showFullRegInProfile || 0;
+  var showComplaintBtnToProfile = usersData.showComplaintBtnToProfile || 0;
 
   const overlay = registerModal(
     'LZT Upgrade',
@@ -182,6 +183,10 @@ $(menuBtn).prepend(lztUpIcon).on('click', async function () {
         <input type="checkbox" name="open_all" value="1" id="show_fullreg_in_profile" ${showFullRegInProfile === 1 ? "checked" : ''}>
         <label for="show_fullreg_in_profile">Показывать полную дату регистрации в профиле пользователя</label>
       </div>
+      <div id="LZTUpModalChecksContainer">
+        <input type="checkbox" name="open_all" value="1" id="show_complaint_btn_in_profile" ${showComplaintBtnToProfile === 1 ? "checked" : ''}>
+        <label for="show_complaint_btn_in_profile">Показывать кнопку "Подать жалобу" в профиле пользователя</label>
+      </div>
       <input id="LZTUpResetUsersDB" type="button" value="Сбросить настройки" class="button primary"></input>
     </div>
     `
@@ -224,8 +229,10 @@ $(menuBtn).prepend(lztUpIcon).on('click', async function () {
     });
 
     $('div#LZTUpListItem.LZTUpUniqItem').on('click', async () => {
-      $mainList.remove();
-      $LZTUpTabs.remove();
+      removeElement($mainList)
+      removeElement($LZTUpTabs)
+      // $mainList.remove();
+      // $LZTUpTabs.remove();
       $uniqContainer.show();
 
       const pickrFill = createColorPicker('.badge-fill-picker', overlay[0]);
@@ -250,13 +257,17 @@ $(menuBtn).prepend(lztUpIcon).on('click', async function () {
     });
 
     $('div#LZTUpListItem.LZTUpContestsItem').on('click', async () => {
-      $mainList.remove();
-      $LZTUpTabs.remove();
+      removeElement($mainList)
+      removeElement($LZTUpTabs)
+      // $mainList.remove();
+      // $LZTUpTabs.remove();
       $contestsContainer.show();
     });
     $('div#LZTUpListItem.LZTUpUsersItem').on('click', async () => {
-      $mainList.remove();
-      $LZTUpTabs.remove();
+      removeElement($mainList)
+      removeElement($LZTUpTabs)
+      // $mainList.remove();
+      // $LZTUpTabs.remove();
       $usersContainer.show();
     });
   };
@@ -288,7 +299,7 @@ function createColorPicker(element, elementCont) {
   })
 }
 
-function registerMenuBtn(element) {
+async function registerMenuBtn(element) {
   var menuForAdd = $('#AccountMenu > a:nth-child(10)');
   menuForAdd.after(element);
   return true;
@@ -304,7 +315,7 @@ function registerProfileBtn(element) {
   })
 }
 
-function removeProfileBtn(element) {
+function removeElement(element) {
   if ($(element).length > 0) {
     $(element).remove();
   }
@@ -365,7 +376,7 @@ function updateBannerStyle(style, text) {
   <strong>${text}</strong> \
   <span class="after"></span>\
   </em>`);
-  removeProfileBtn('#LZTUpCustomBanner');
+  removeElement('#LZTUpCustomBanner');
   registerProfileBtn(bannerBtn);
 }
 
@@ -388,7 +399,7 @@ async function forceReloadBannerStyle() {
     if (typeof(dbData) === 'object') {
       updateBannerStyle(String(dbData.bannerStyle), String(dbData.bannerText));
       if (dbData.bannerText === '') {
-        removeProfileBtn('#LZTUpCustomBanner');
+        removeElement('#LZTUpCustomBanner');
       }
     }
   } catch (err) {
@@ -620,6 +631,20 @@ async function getProfileUserid() {
   }
 }
 
+async function getProfileUrl() {
+  if (await isProfilePage()) {
+    var username = $('meta[property="og:url"]').attr('content');
+    return username
+  }
+}
+
+async function getProfileUsername() {
+  if (await isProfilePage()) {
+    var username = XenForo.htmlspecialchars($('meta[property="og:title"]').attr('content'));
+    return username
+  }
+}
+
 async function addUserIdInProfileInfo() {
   if (await isProfilePage()) {
     var userid = await getProfileUserid()
@@ -653,10 +678,31 @@ async function editUserRegInProfileInfo(full = false) {
   }
 }
 
+async function showComplaintBtnToProfile() {
+  if (await isProfilePage()) {
+    var userid = await getProfileUserid();
+    var localUserid = getUserid();
+    if (userid !== localUserid) {
+      var username = await getProfileUsername();
+      var url = await getProfileUrl();
+      var text = encodeURIComponent(`1. Никнейм нарушителя и ссылка на профиль: ${url}\n2. Краткое описание жалобы:\n3. Доказательства:`);
+      var title = encodeURIComponent(`Жалоба на ${username}`);
+      var btn = $(`<a class="OverlayTrigger followContainer button red full" href="forums/801/create-thread?title=${title}&message=${text}" id="LZTUpComplaintBtn">Подать жалобу</a>`);
+      removeElement('#LZTUpComplaintBtn');
+      var $arbBtn = $('div.secondaryContent > div.avatarScaler').parent();
+      $arbBtn.append(btn);
+    };
+  };
+};
 
-if (getUserid() === '') return;
 
-var MenuResult = registerMenuBtn(menuBtn);
+
+
+
+// script start
+if (getUserid() === '') return; // superior auth check
+
+var MenuResult = await registerMenuBtn(menuBtn);
 var isUniqueDBInited = await initUniqueStyleDB().then(value => {return(value)}).catch(err => {console.error(err); return false});
 var isContestsDBInited = await initContestsDB().then(value => {return(value)}).catch(err => {console.error(err); return false});
 var isUsersDBInited = await initUsersDB().then(value => {return(value)}).catch(err => {console.error(err); return false});
@@ -676,6 +722,7 @@ if (isUsersDBInited) {
   var dbUsersData = await readUsersDB().then(value => {return(value)}).catch(err => {console.error(err); return false});
   dbUsersData.showUseridInProfile === 1 ? await addUserIdInProfileInfo() : null;
   dbUsersData.showFullRegInProfile === 1 ? await editUserRegInProfileInfo(true) : null;
+  dbUsersData.showСomplaintBtnInProfile === 1 ? await showComplaintBtnToProfile() : null;
 }
 
 await updateUniqueStyles();
@@ -685,7 +732,6 @@ await sendMessageHandler();
 await messageClickUsernameHandler();
 
 await commentMoreHandler();
-
 
 if (MenuResult === true) {
   $(document).on('click', '#LZTUpSaveUniqueStyle', async function () {
@@ -822,6 +868,16 @@ if (MenuResult === true) {
       ): (
         await updateUsersDB(null, 0),
         await editUserRegInProfileInfo(false)
+      );
+  });
+
+  $(document).on('click', '#show_complaint_btn_in_profile', async function () {
+    $('#show_complaint_btn_in_profile')[0].checked ? (
+      await updateUsersDB(null, null, 1),
+      await showComplaintBtnToProfile()
+      ): (
+        await updateUsersDB(null, null, 0),
+        removeElement('#LZTUpComplaintBtn')
       );
   });
 }
