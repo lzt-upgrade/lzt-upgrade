@@ -45,6 +45,7 @@ async function initContestsDB () {
             contestsAll: 0,
             contestsInfoTop: 0,
             contestsBtnTopInBlock: 0,
+            contestsHideTags: 0,
           }
           var request = objectStore.add(contestsDefault);
 
@@ -80,9 +81,9 @@ async function initContestsDB () {
     })
 }
 
-async function updateContestsDB(contestsTen = null, contestsAll = null, contestsInfoTop = null, contestsBtnTopInBlock = null) {
+async function updateContestsDB(contestsTen = null, contestsAll = null, contestsInfoTop = null, contestsBtnTopInBlock = null, contestsHideTags = null) {
     return new Promise((resolve, reject) => {
-      if (contestsTen !== null || contestsAll !== null || contestsInfoTop !== null || contestsBtnTopInBlock !== null) {
+      if (contestsTen !== null || contestsAll !== null || contestsInfoTop !== null || contestsBtnTopInBlock !== null || contestsHideTags !== null) {
         var openRequest = openDB("LZTUpContests");
 
         openRequest.onerror = () => {
@@ -132,6 +133,10 @@ async function updateContestsDB(contestsTen = null, contestsAll = null, contests
 
             if (typeof(contestsBtnTopInBlock) === 'number') {
               data.contestsBtnTopInBlock = contestsBtnTopInBlock;
+            }
+
+            if (typeof(contestsHideTags) === 'number') {
+              data.contestsHideTags = contestsHideTags;
             }
 
             var requestUpdate = objectStore.put(data);
