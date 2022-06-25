@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         LZT Upgrade
-// @version      1.0.4
+// @version      1.0.5
 // @description  Some useful utilities for lolz.guru
 // @author       Toil
 // @match        *://*.lolz.guru/*
@@ -50,6 +50,7 @@ $(menuBtn).prepend(lztUpIcon).on('click', async function () {
   var contestsAll = contestsData.contestsAll || 0;
   var contestsInfoTop = contestsData.contestsInfoTop || 0;
   var contestsBtnTopInBlock = contestsData.contestsBtnTopInBlock || 0;
+  var contestsHideTags = contestsData.contestsHideTags || 0;
   var showUseridInProfile = usersData.showUseridInProfile || 0;
   var showFullRegInProfile = usersData.showFullRegInProfile || 0;
   var showComplaintBtnToProfile = usersData.showComplaintBtnToProfile || 0;
@@ -165,12 +166,16 @@ $(menuBtn).prepend(lztUpIcon).on('click', async function () {
         <label for="contests_open_all">Кнопка "Открыть прогруженные"</label>
       </div>
       <div id="LZTUpModalChecksContainer">
-        <input type="checkbox" name="open_all" value="1" id="contests_info_top" ${contestsInfoTop === 1 ? "checked" : ''}>
+        <input type="checkbox" name="info_top" value="1" id="contests_info_top" ${contestsInfoTop === 1 ? "checked" : ''}>
         <label for="contests_info_top">Отображение информации о розыгрыше сверху темы</label>
       </div>
       <div id="LZTUpModalChecksContainer">
-        <input type="checkbox" name="open_all" value="1" id="contests_btn_top_in_block" ${contestsBtnTopInBlock === 1 ? "checked" : ''}>
+        <input type="checkbox" name="btn_top_in_block" value="1" id="contests_btn_top_in_block" ${contestsBtnTopInBlock === 1 ? "checked" : ''}>
         <label for="contests_btn_top_in_block">Отображение кнопки "Участвовать" сверху блока с информацией о розыгрыше</label>
+      </div>
+      <div id="LZTUpModalChecksContainer">
+        <input type="checkbox" name="hide_tags" value="1" id="contests_hide_tags" ${contestsHideTags === 1 ? "checked" : ''}>
+        <label for="contests_hide_tags">Скрытие тегов в теме розыгрыша</label>
       </div>
       <input id="LZTUpResetContestsDB" type="button" value="Сбросить настройки" class="button primary"></input>
     </div>
@@ -501,11 +506,14 @@ async function redactorSendHandler() {
 }
 
 async function getContestsLinks() {
-  var links = $('div.discussionListItem--Wrapper')
+  var $latestsThreads = $('div.latestThreads');
+  var $stickyThreads = $('div.stickyThreads');
+  $stickyThreads.is(':visible') ? $latestsThreads.add($stickyThreads) : undefined;
+  var links = $latestsThreads.find('div.discussionListItem--Wrapper')
   .find('a.listBlock.main')
   .toArray()
   .map(element => $(element).attr('href'));
-  return links
+  return links;
 }
 
 async function regOpenContestsBtn(amount = 10) {
@@ -613,7 +621,6 @@ async function contestsBtnInBlockMove(toTop = true) {
       $contestCaptcha === undefined ? null : $participateButton.after($contestCaptcha);
     } else { // to default (bottom)
       var marginToFind = (contestEnded === true) ? 'div.marginBlock:nth-child(7)' : 'div.marginBlock:nth-child(9)'
-      console.log(marginToFind)
       var $lastMarginBlock = $contestsThreadBlock.find(marginToFind)
       $participateButton.attr("style", "margin: 15px 0 0");
       $contestsThreadBlock.css('padding', "5px");
@@ -695,6 +702,18 @@ async function showComplaintBtnToProfile() {
   };
 };
 
+async function tagsVisibility(isHidden = true) {
+  var $tagList = $('div.titleBar > div.tagBlock > ul.tagList');
+  if ($tagList.length > 0) {
+    isHidden ? $tagList.hide() : $tagList.show();
+  };
+}
+
+async function contestsTagsVisibility(isHidden = true) {
+  if (isContestThread()) {
+    await tagsVisibility(isHidden);
+  };
+}
 
 
 
@@ -716,6 +735,7 @@ if (isContestsDBInited) {
   }
   dbContestsData.contestsInfoTop === 1 ? await contestThreadBlockMove(true) : null;
   dbContestsData.contestsBtnTopInBlock === 1 ? await contestsBtnInBlockMove(true) : null;
+  dbContestsData.contestsHideTags === 1 ? await contestsTagsVisibility(true) : null;
 }
 
 if (isUsersDBInited) {
@@ -840,6 +860,16 @@ if (MenuResult === true) {
       ): (
         await updateContestsDB(null, null, null, 0),
         await contestsBtnInBlockMove(false)
+      );
+  });
+
+  $(document).on('click', '#contests_hide_tags', async function () {
+    $('#contests_hide_tags')[0].checked ? (
+      await updateContestsDB(null, null, null, null, 1),
+      await contestsTagsVisibility(true)
+      ): (
+        await updateContestsDB(null, null, null, null, 0),
+        await contestsTagsVisibility(false)
       );
   });
 
