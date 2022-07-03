@@ -11,6 +11,7 @@
 // @require      https://raw.githubusercontent.com/ilyhalight/lzt-upgrade/master/public/static/js/lztupgrade/indexedDB/UniqueStyle.js
 // @require      https://raw.githubusercontent.com/ilyhalight/lzt-upgrade/master/public/static/js/lztupgrade/indexedDB/contests.js
 // @require      https://raw.githubusercontent.com/ilyhalight/lzt-upgrade/master/public/static/js/lztupgrade/indexedDB/users.js
+// @require      https://raw.githubusercontent.com/ilyhalight/lzt-upgrade/master/public/static/js/lztupgrade/indexedDB/appear.js
 // @updateURL    https://github.com/ilyhalight/lzt-upgrade/raw/master/lzt-upgrade.user.js
 // @downloadURL  https://github.com/ilyhalight/lzt-upgrade/raw/master/lzt-upgrade.user.js
 // @supportURL   https://github.com/ilyhalight/lzt-upgrade/issues
@@ -33,12 +34,13 @@ const getUserid = () => {
 
 const sleep = m => new Promise(r => setTimeout(r, m))
 
-const menuBtn = $('<a id="LZTUpButton">LZT Upgrade</a>');
-const lztUpIcon = $('<img id="LZTUpBtnIcon" title="love" alt=":love2:" data-smilie="yes" data-src="https://i.imgur.com/ucm5U7v.gif" src="https://i.imgur.com/ucm5U7v.gif">');
-$(menuBtn).prepend(lztUpIcon).on('click', async function () {
+const menuBtn = $('<li><a id="LZTUpButton">LZT Upgrade</a></li>');
+
+$(menuBtn).on('click', async function () {
   var dbData = await readUniqueStyleDB().then(value => {return(value)}).catch(err => {console.error(err); return false});
   var contestsData = await readContestsDB().then(value => {return(value)}).catch(err => {console.error(err); return false});
   var usersData = await readUsersDB().then(value => {return(value)}).catch(err => {console.error(err); return false});
+  var appearData = await readAppearDB().then(value => {return(value)}).catch(err => {console.error(err); return false});
   var nickStyle = dbData.nickStyle || '';
   var bannerStyle = dbData.bannerStyle || '';
   var bannerText = dbData.bannerText || '';
@@ -54,6 +56,8 @@ $(menuBtn).prepend(lztUpIcon).on('click', async function () {
   var showUseridInProfile = usersData.showUseridInProfile || 0;
   var showFullRegInProfile = usersData.showFullRegInProfile || 0;
   var showComplaintBtnToProfile = usersData.showComplaintBtnToProfile || 0;
+  var hideUnreadArticleCircle = appearData.hideUnreadArticleCircle || 0;
+  var hideTagsInThreads = appearData.hideTagsInThreads || 0;
 
   const overlay = registerModal(
     'LZT Upgrade',
@@ -78,6 +82,10 @@ $(menuBtn).prepend(lztUpIcon).on('click', async function () {
       <div id="LZTUpListItem" class="LZTUpUsersItem">
         <img alt="Image" id="LZTUpListIcon" src="https://raw.githubusercontent.com/ilyhalight/lzt-upgrade/master/public/static/img/user.svg" loading=lazy>
         <span id="LZTUpListText">Пользователи</span>
+      </div>
+      <div id="LZTUpListItem" class="LZTUpAppearItem">
+        <img alt="Image" id="LZTUpListIcon" src="https://raw.githubusercontent.com/ilyhalight/lzt-upgrade/master/public/static/img/color.svg" loading=lazy>
+        <span id="LZTUpListText">Внешний вид</span>
       </div>
     </div>
     <div id="LZTUpList" class="LZTUpSettingsList">
@@ -194,6 +202,17 @@ $(menuBtn).prepend(lztUpIcon).on('click', async function () {
       </div>
       <input id="LZTUpResetUsersDB" type="button" value="Сбросить настройки" class="button primary"></input>
     </div>
+    <div id="LZTUpAppearContainer">
+      <div id="LZTUpModalChecksContainer">
+        <input type="checkbox" name="hide_unread_article_circle" value="1" id="hide_unread_article_circle" ${hideUnreadArticleCircle === 1 ? "checked" : ''}>
+        <label for="hide_unread_article_circle">Скрыть значок не прочитанных статей в шапке сайта</label>
+      </div>
+      <div id="LZTUpModalChecksContainer">
+        <input type="checkbox" name="hide_tags_in_threads" value="1" id="hide_tags_in_threads" ${hideTagsInThreads === 1 ? "checked" : ''}>
+        <label for="hide_tags_in_threads">Скрыть теги в темах</label>
+      </div>
+      <input id="LZTUpResetAppearDB" type="button" value="Сбросить настройки" class="button primary"></input>
+    </div>
     `
   );
 
@@ -203,10 +222,12 @@ $(menuBtn).prepend(lztUpIcon).on('click', async function () {
   var $uniqContainer = $('div#LZTUpUniqContainer');
   var $contestsContainer = $('div#LZTUpContestsContainer');
   var $usersContainer = $('div#LZTUpUsersContainer');
+  var $appearContainer = $('div#LZTUpAppearContainer');
   $settingsList.hide();
   $contestsContainer.hide();
   $usersContainer.hide();
   $uniqContainer.hide();
+  $appearContainer.hide();
   $('ul#LZTUpTabs').parent().css("white-space", "unset"); // fixes so big free space in overlay
   var $menuTab = $('#LZTUpTabs > #LZTUpTab');
   var $mainTab, $settingsTab;
@@ -264,16 +285,19 @@ $(menuBtn).prepend(lztUpIcon).on('click', async function () {
     $('div#LZTUpListItem.LZTUpContestsItem').on('click', async () => {
       removeElement($mainList)
       removeElement($LZTUpTabs)
-      // $mainList.remove();
-      // $LZTUpTabs.remove();
       $contestsContainer.show();
     });
+
     $('div#LZTUpListItem.LZTUpUsersItem').on('click', async () => {
       removeElement($mainList)
       removeElement($LZTUpTabs)
-      // $mainList.remove();
-      // $LZTUpTabs.remove();
       $usersContainer.show();
+    });
+
+    $('div#LZTUpListItem.LZTUpAppearItem').on('click', async () => {
+      removeElement($mainList)
+      removeElement($LZTUpTabs)
+      $appearContainer.show();
     });
   };
 });
@@ -305,7 +329,7 @@ function createColorPicker(element, elementCont) {
 }
 
 async function registerMenuBtn(element) {
-  var menuForAdd = $('#AccountMenu > a:nth-child(10)');
+  var menuForAdd = $('#AccountMenu > ul:nth-child(1) > li:nth-child(10)');
   menuForAdd.after(element);
   return true;
 }
@@ -702,11 +726,15 @@ async function showComplaintBtnToProfile() {
   };
 };
 
+async function changeVisibility(elem, isHidden = true) {
+  if (elem.length > 0) {
+    isHidden ? elem.hide() : elem.show();
+  };
+}
+
 async function tagsVisibility(isHidden = true) {
   var $tagList = $('div.titleBar > div.tagBlock > ul.tagList');
-  if ($tagList.length > 0) {
-    isHidden ? $tagList.hide() : $tagList.show();
-  };
+  await changeVisibility($tagList, isHidden)
 }
 
 async function contestsTagsVisibility(isHidden = true) {
@@ -715,7 +743,10 @@ async function contestsTagsVisibility(isHidden = true) {
   };
 }
 
-
+async function unreadArticleCircleVisibility(isHidden = true) {
+  $hasUnreadArticles = $('span.hasUnreadArticles')
+  await changeVisibility($hasUnreadArticles, isHidden)
+}
 
 
 // script start
@@ -725,6 +756,7 @@ var MenuResult = await registerMenuBtn(menuBtn);
 var isUniqueDBInited = await initUniqueStyleDB().then(value => {return(value)}).catch(err => {console.error(err); return false});
 var isContestsDBInited = await initContestsDB().then(value => {return(value)}).catch(err => {console.error(err); return false});
 var isUsersDBInited = await initUsersDB().then(value => {return(value)}).catch(err => {console.error(err); return false});
+var isAppearDBInited = await initAppearDB().then(value => {return(value)}).catch(err => {console.error(err); return false});
 
 if (isContestsDBInited) {
   var dbContestsData = await readContestsDB().then(value => {return(value)}).catch(err => {console.error(err); return false});
@@ -743,6 +775,12 @@ if (isUsersDBInited) {
   dbUsersData.showUseridInProfile === 1 ? await addUserIdInProfileInfo() : null;
   dbUsersData.showFullRegInProfile === 1 ? await editUserRegInProfileInfo(true) : null;
   dbUsersData.showСomplaintBtnInProfile === 1 ? await showComplaintBtnToProfile() : null;
+}
+
+if (isAppearDBInited) {
+  var dbAppearData = await readAppearDB().then(value => {return(value)}).catch(err => {console.error(err); return false});
+  dbAppearData.hideUnreadArticleCircle === 1 ? await unreadArticleCircleVisibility(true) : null;
+  dbAppearData.hideTagsInThreads === 1 ? await tagsVisibility(true) : null;
 }
 
 await updateUniqueStyles();
@@ -908,6 +946,34 @@ if (MenuResult === true) {
       ): (
         await updateUsersDB(null, null, 0),
         removeElement('#LZTUpComplaintBtn')
+      );
+  });
+
+  $(document).on('click', '#LZTUpResetAppearDB', async function () {
+    await deleteAppearDB();
+    await initAppearDB().then(value => {return(value)}).catch(err => {console.error(err); return false});
+    alert('Настройки "Внешнего вида" LZT Upgrade сброшены');
+    await sleep(500);
+    window.location.reload();
+  });
+
+  $(document).on('click', '#hide_unread_article_circle', async function () {
+    $('#hide_unread_article_circle')[0].checked ? (
+      await updateAppearDB(1),
+      await unreadArticleCircleVisibility(true)
+      ): (
+        await updateAppearDB(0),
+        await unreadArticleCircleVisibility(false)
+      );
+  });
+
+  $(document).on('click', '#hide_tags_in_threads', async function () {
+    $('#hide_tags_in_threads')[0].checked ? (
+      await updateAppearDB(1),
+      await tagsVisibility(true)
+      ): (
+        await updateAppearDB(0),
+        await tagsVisibility(false)
       );
   });
 }
