@@ -32,6 +32,7 @@ async function initAppearDB () {
 
         objectStore.createIndex('hideUnreadArticleCircle', 'hideUnreadArticleCircle', { unique: false })
         objectStore.createIndex('hideTagsInThreads', 'hideTagsInThreads', { unique: false })
+        objectStore.createIndex('changeLogo', 'changeLogo', { unique: false })
 
         console.log('LZTUp: База Данных создана')
 
@@ -41,6 +42,7 @@ async function initAppearDB () {
             key: 'appear',
             hideUnreadArticleCircle: 0,
             hideTagsInThreads: 0,
+            changeLogo: 0,
           }
           var request = objectStore.add(appearDefault);
 
@@ -76,14 +78,9 @@ async function initAppearDB () {
     })
 }
 
-async function updateAppearDB(hideUnreadArticleCircle = null, hideTagsInThreads = null) {
+async function updateAppearDB(hideUnreadArticleCircle = null, hideTagsInThreads = null, changeLogo = null) {
     return new Promise((resolve, reject) => {
-      // This looks better than my previous if
-      var settingsArr = [
-        hideUnreadArticleCircle,
-        hideTagsInThreads,
-      ]
-      if (settingsArr.includes(0) || settingsArr.includes(1)) {
+      if (hideUnreadArticleCircle !== null || hideTagsInThreads !== null || changeLogo !== null) {
         var openRequest = openDB("LZTUpAppear");
 
         openRequest.onerror = () => {
@@ -123,12 +120,12 @@ async function updateAppearDB(hideUnreadArticleCircle = null, hideTagsInThreads 
               data.hideUnreadArticleCircle = hideUnreadArticleCircle;
             }
 
-            if (typeof(appearBtnTopInBlock) === 'number') {
-              data.appearBtnTopInBlock = appearBtnTopInBlock;
-            }
-
             if (typeof(hideTagsInThreads) === 'number') {
               data.hideTagsInThreads = hideTagsInThreads;
+            }
+
+            if (typeof(changeLogo) === 'number') {
+              data.changeLogo = changeLogo;
             }
 
             var requestUpdate = objectStore.put(data);
