@@ -87,7 +87,7 @@ $(menuBtn).on('click', async function () {
   var contestsHideTags = contestsData.contestsHideTags;
   var showUseridInProfile = usersData.showUseridInProfile;
   var showFullRegInProfile = usersData.showFullRegInProfile;
-  var showComplaintBtnToProfile = usersData.showComplaintBtnToProfile;
+  var showСomplaintBtnInProfile = usersData.showСomplaintBtnInProfile;
   var hideUnreadArticleCircle = appearData.hideUnreadArticleCircle;
   var hideTagsInThreads = appearData.hideTagsInThreads;
   var changeLogo = appearData.changeLogo;
@@ -230,7 +230,7 @@ $(menuBtn).on('click', async function () {
         <label for="show_fullreg_in_profile">Показывать полную дату регистрации в профиле пользователя</label>
       </div>
       <div id="LZTUpModalChecksContainer">
-        <input type="checkbox" name="open_all" value="1" id="show_complaint_btn_in_profile" ${showComplaintBtnToProfile === 1 ? "checked" : ''}>
+        <input type="checkbox" name="open_all" value="1" id="show_complaint_btn_in_profile" ${showСomplaintBtnInProfile === 1 ? "checked" : ''}>
         <label for="show_complaint_btn_in_profile">Показывать кнопку "Подать жалобу" в профиле пользователя</label>
       </div>
       <input id="LZTUpResetUsersDB" type="button" value="Сбросить настройки" class="button primary"></input>
