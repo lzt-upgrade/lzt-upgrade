@@ -4,9 +4,10 @@
 // @description  Some useful utilities for lolz.guru
 // @author       Toil
 // @match        *://*.lolz.guru/*
+// @match        *://*.zelenka.guru/*
 // @icon         https://lolz.guru/public/2017/og.png
 // @resource     styles https://raw.githubusercontent.com/ilyhalight/lzt-upgrade/master/public/css/style.css
-// @resource     styles2 https://raw.githubusercontent.com/ilyhalight/lzt-upgrade/master/public/css/nano.min.css
+// @resource     nano https://raw.githubusercontent.com/ilyhalight/lzt-upgrade/master/public/css/nano.min.css
 // @require      https://raw.githubusercontent.com/ilyhalight/lzt-upgrade/master/public/static/js/pickr/pickr.es5.min.js
 // @require      https://raw.githubusercontent.com/ilyhalight/lzt-upgrade/master/public/static/js/lztupgrade/indexedDB/UniqueStyle.js
 // @require      https://raw.githubusercontent.com/ilyhalight/lzt-upgrade/master/public/static/js/lztupgrade/indexedDB/contests.js
@@ -21,9 +22,9 @@
 // ==/UserScript==
 
 const styles = GM_getResourceText("styles");
-const styles2 = GM_getResourceText("styles2");
+const nano = GM_getResourceText("nano");
 GM_addStyle(styles);
-GM_addStyle(styles2);
+GM_addStyle(nano);
 
 
 const username = $('.accountUsername span').text();
@@ -35,29 +36,60 @@ const getUserid = () => {
 const sleep = m => new Promise(r => setTimeout(r, m))
 
 const menuBtn = $('<li><a id="LZTUpButton">LZT Upgrade</a></li>');
+const logoList = [
+  {
+    id: 0,
+    name: 'Новый логотип',
+    short: 'new',
+    css: "background-size: 100%;float: left;height: 36px;width: 36px;margin: 4px 10px 0 0;background-image: url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='256' height='256' viewBox='0 0 256 256' fill='none'%3E%3Cg clip-path='url(%23clip0_123_378)'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M70.1504 207.392C91.8146 224.992 116.842 235.022 143.533 235.022C183.225 235.022 219.257 212.775 245.995 176.542C234.706 161.247 221.764 148.436 207.575 138.751L184.794 150.124C189.69 157.741 192.542 166.809 192.542 176.542C192.542 203.577 170.604 225.491 143.533 225.491C122.499 225.491 104.566 212.252 97.6139 193.666L70.1504 207.38V207.392ZM126.67 179.168C127.216 182.721 128.88 186.025 131.459 188.604C134.656 191.8 139.005 193.595 143.533 193.583C152.957 193.583 160.598 185.953 160.598 176.542C160.598 171.919 158.756 167.724 155.761 164.646L126.682 179.168H126.67Z' fill='%232BAD72'/%3E%3Cpath d='M76.3528 176.16L242.405 96.3367L205.91 20.4229L187.062 87.507L164.412 40.3758L145.552 107.46L122.902 60.3287L104.042 127.413L81.3916 80.2816L62.5319 147.366L39.8814 100.235L9.4707 208.318L50.9809 188.365L76.3528 176.172V176.16Z' fill='%232BAD72'/%3E%3C/g%3E%3Cdefs%3E%3CclipPath id='clip0_123_378'%3E%3Crect width='236.512' height='214.598' fill='white' transform='translate(9.4707 20.4229)'/%3E%3C/clipPath%3E%3C/defs%3E%3C/svg%3E\")",
+    preview: "height:24px;width:24px;margin:0px 20px;float:right;background:url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='256' height='256' viewBox='0 0 256 256' fill='none'%3E%3Cg clip-path='url(%23clip0_123_378)'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M70.1504 207.392C91.8146 224.992 116.842 235.022 143.533 235.022C183.225 235.022 219.257 212.775 245.995 176.542C234.706 161.247 221.764 148.436 207.575 138.751L184.794 150.124C189.69 157.741 192.542 166.809 192.542 176.542C192.542 203.577 170.604 225.491 143.533 225.491C122.499 225.491 104.566 212.252 97.6139 193.666L70.1504 207.38V207.392ZM126.67 179.168C127.216 182.721 128.88 186.025 131.459 188.604C134.656 191.8 139.005 193.595 143.533 193.583C152.957 193.583 160.598 185.953 160.598 176.542C160.598 171.919 158.756 167.724 155.761 164.646L126.682 179.168H126.67Z' fill='%232BAD72'/%3E%3Cpath d='M76.3528 176.16L242.405 96.3367L205.91 20.4229L187.062 87.507L164.412 40.3758L145.552 107.46L122.902 60.3287L104.042 127.413L81.3916 80.2816L62.5319 147.366L39.8814 100.235L9.4707 208.318L50.9809 188.365L76.3528 176.172V176.16Z' fill='%232BAD72'/%3E%3C/g%3E%3Cdefs%3E%3CclipPath id='clip0_123_378'%3E%3Crect width='236.512' height='214.598' fill='white' transform='translate(9.4707 20.4229)'/%3E%3C/clipPath%3E%3C/defs%3E%3C/svg%3E\");background-repeat:no-repeat;background-size:100%;"
+  },
+  {
+    id: 1,
+    name: 'Старый логотип',
+    short: 'old',
+    css: "background-size:100%;margin-top:auto;width:87px;height:44px;float:left;margin-left: -5px;background:url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' version='1.1' id='Слой_2' x='0px' y='0px' viewBox='0 0 90 40' style='enable-background:new 0 0 90 40;' xml:space='preserve'%3E%3Cstyle type='text/css'%3E .st0%7Bfill-rule:evenodd;clip-rule:evenodd;fill:%2323A86D;%7D%0A%3C/style%3E%3Cpath class='st0' d='M49,31V13h15.1l4-4H16v4h17L21,32h-8V9H9v27h59l-4-4H49V31 M26,32h19v-1V13h-7L26,32z'/%3E%3C/svg%3E\")",
+    preview: "height:24px;width:36px;margin:0px 11px;float:right;background:url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' version='1.1' id='Слой_2' x='0px' y='0px' viewBox='0 0 90 40' style='enable-background:new 0 0 90 40;' xml:space='preserve'%3E%3Cstyle type='text/css'%3E .st0%7Bfill-rule:evenodd;clip-rule:evenodd;fill:%2323A86D;%7D%0A%3C/style%3E%3Cpath class='st0' d='M49,31V13h15.1l4-4H16v4h17L21,32h-8V9H9v27h59l-4-4H49V31 M26,32h19v-1V13h-7L26,32z'/%3E%3C/svg%3E\");background-repeat:no-repeat;background-size:115%;"
+  },
+  {
+    id: 2,
+    name: 'Анимированный старый логотип',
+    short: 'old_animated',
+    css: "width: 78px;height: 43px;float: left;margin-left: -5px;background-size: 95%;background-image: url(https://i.imgur.com/AClYTdp.gif);",
+    preview: "height:24px;width:36px;margin:0px 11px;float:right;background:url(https://i.imgur.com/AClYTdp.gif);background-repeat:no-repeat;background-size:95%;"
+  },
+  {
+    id: 3,
+    name: 'Мамонт (by Nordea)',
+    short: 'mamont',
+    css: "background-repeat: no-repeat;width: 36px;height: 36px;float: left;margin: 4px 10px 0 0;background-size: 110%;background-image: url(https://imgur.com/IBoICGv.png);",
+    preview: "height:24px;width:24px;margin:0px 20px;float:right;background:url(https://imgur.com/IBoICGv.png);background-repeat:no-repeat;background-size:110%;",
+  },
+]
 
 $(menuBtn).on('click', async function () {
   var dbData = await readUniqueStyleDB().then(value => {return(value)}).catch(err => {console.error(err); return false});
   var contestsData = await readContestsDB().then(value => {return(value)}).catch(err => {console.error(err); return false});
   var usersData = await readUsersDB().then(value => {return(value)}).catch(err => {console.error(err); return false});
   var appearData = await readAppearDB().then(value => {return(value)}).catch(err => {console.error(err); return false});
-  var nickStyle = dbData.nickStyle || '';
-  var bannerStyle = dbData.bannerStyle || '';
-  var bannerText = dbData.bannerText || '';
-  var badgeText = dbData.badgeText || '';
-  var badgeIcon = dbData.badgeIcon || '';
-  var badgeFill = dbData.badgeFill || '';
-  var badgeStroke = dbData.badgeStroke || '';
-  var contestsTen = contestsData.contestsTen || 0;
-  var contestsAll = contestsData.contestsAll || 0;
-  var contestsInfoTop = contestsData.contestsInfoTop || 0;
-  var contestsBtnTopInBlock = contestsData.contestsBtnTopInBlock || 0;
-  var contestsHideTags = contestsData.contestsHideTags || 0;
-  var showUseridInProfile = usersData.showUseridInProfile || 0;
-  var showFullRegInProfile = usersData.showFullRegInProfile || 0;
-  var showComplaintBtnToProfile = usersData.showComplaintBtnToProfile || 0;
-  var hideUnreadArticleCircle = appearData.hideUnreadArticleCircle || 0;
-  var hideTagsInThreads = appearData.hideTagsInThreads || 0;
+  var nickStyle = dbData.nickStyle;
+  var bannerStyle = dbData.bannerStyle;
+  var bannerText = dbData.bannerText;
+  var badgeText = dbData.badgeText;
+  var badgeIcon = dbData.badgeIcon;
+  var badgeFill = dbData.badgeFill;
+  var badgeStroke = dbData.badgeStroke;
+  var contestsTen = contestsData.contestsTen;
+  var contestsAll = contestsData.contestsAll;
+  var contestsInfoTop = contestsData.contestsInfoTop;
+  var contestsBtnTopInBlock = contestsData.contestsBtnTopInBlock;
+  var contestsHideTags = contestsData.contestsHideTags;
+  var showUseridInProfile = usersData.showUseridInProfile;
+  var showFullRegInProfile = usersData.showFullRegInProfile;
+  var showComplaintBtnToProfile = usersData.showComplaintBtnToProfile;
+  var hideUnreadArticleCircle = appearData.hideUnreadArticleCircle;
+  var hideTagsInThreads = appearData.hideTagsInThreads;
+  var changeLogo = appearData.changeLogo;
 
   const overlay = registerModal(
     'LZT Upgrade',
@@ -124,7 +156,7 @@ $(menuBtn).on('click', async function () {
       <div id="LZTUpModalHeading" class="textHeading">Текст в лычке:</div>
       <div id="LZTUpModalText" class="muted explain">Максимум 24 символа. При отсутствии текста лычка не будет видна.</div>
       <nobr>
-        <input id="LZTUpBannerText" name="banner_text" maxlength="24" class="textCtrl" value=${bannerText}>
+        <input id="LZTUpBannerText" name="banner_text" maxlength="24" class="textCtrl" value="${XenForo.htmlspecialchars(bannerText)}">
         <input id="LZTUpSaveBannerText" type="button" value="Сохранить" class="button primary"></input>
       </nobr>
 
@@ -158,7 +190,7 @@ $(menuBtn).on('click', async function () {
       <div id="LZTUpModalHeading" class="textHeading">Текст иконки на аватарке:</div>
       <div id="LZTUpModalText" class="muted explain">Максимум 24 символа. При отсутствии текста иконка не будет видна.</div>
       <nobr>
-        <input id="LZTUpBadgeText" name="badge_text" maxlength="24" class="textCtrl" value=${badgeText}>
+        <input id="LZTUpBadgeText" name="badge_text" maxlength="24" class="textCtrl" value="${XenForo.htmlspecialchars(badgeText)}">
         <input id="LZTUpSaveBadgeText" type="button" value="Сохранить" class="button primary"></input>
       </nobr>
 
@@ -211,10 +243,27 @@ $(menuBtn).on('click', async function () {
         <input type="checkbox" name="hide_tags_in_threads" value="1" id="hide_tags_in_threads" ${hideTagsInThreads === 1 ? "checked" : ''}>
         <label for="hide_tags_in_threads">Скрыть теги в темах</label>
       </div>
+      <div id="LZTUpModalLogoContainer">
+        <div class="bold title">Логотип:</div>
+        <ul>
+				</ul>
+      </div>
       <input id="LZTUpResetAppearDB" type="button" value="Сбросить настройки" class="button primary"></input>
     </div>
     `
   );
+
+  $logoSelect = $('#LZTUpModalLogoContainer > ul');
+  for (var logo of logoList) {
+    $logoSelect.append(`
+      <li style = "list-style: none;">
+        <label for="set_${logo.short}_logo">
+          <input type="radio" name="order" id="set_${logo.short}_logo" value="${logo.short}" ${changeLogo === logo.id ? "checked" : ''}>
+          <span style="${XenForo.htmlspecialchars(logo.preview)}"></span>
+          ${logo.name}
+        </label>
+      </li>`);
+  };
 
   var $LZTUpTabs = $('ul#LZTUpTabs');
   var $mainList = $('div.LZTUpMainList');
@@ -351,11 +400,10 @@ function removeElement(element) {
 }
 
 function registerModal(modalName, elementMain = '') {
-  return XenForo.alert(elementMain, modalName, null, () => {
-    console.log('LZTUp: Модальное окно закрыто')
+  return XenForo.alert(elementMain, modalName, null, (elem) => {
+    $('div.modal.fade').remove()
   })
 }
-
 
 function updateNickStyle(style) {
   Array.from($('.username span')).forEach(item => {
@@ -748,6 +796,10 @@ async function unreadArticleCircleVisibility(isHidden = true) {
   await changeVisibility($hasUnreadArticles, isHidden)
 }
 
+function updateSiteLogo(newStyles) {
+  $('#lzt-logo')[0].style = newStyles;
+  return true;
+}
 
 // script start
 if (getUserid() === '') return; // superior auth check
@@ -781,6 +833,10 @@ if (isAppearDBInited) {
   var dbAppearData = await readAppearDB().then(value => {return(value)}).catch(err => {console.error(err); return false});
   dbAppearData.hideUnreadArticleCircle === 1 ? await unreadArticleCircleVisibility(true) : null;
   dbAppearData.hideTagsInThreads === 1 ? await tagsVisibility(true) : null;
+  if (dbAppearData.changeLogo > 0) {
+    let logo = logoList.find(logo => logo.id === dbAppearData.changeLogo);
+    typeof(logo) === "object" ? updateSiteLogo(logo.css) : undefined;
+  }
 }
 
 await updateUniqueStyles();
@@ -792,6 +848,7 @@ await messageClickUsernameHandler();
 await commentMoreHandler();
 
 if (MenuResult === true) {
+  // UNIQUE
   $(document).on('click', '#LZTUpSaveUniqueStyle', async function () {
     let nickStNew = $('#LZTUpUniqueStyle').val();
     if (nickStNew.length < 1501) {
@@ -817,7 +874,7 @@ if (MenuResult === true) {
       alert('Стиль лычки не должен превышать 1500 символов!')
       console.log('LZTUp: Не удалось сохранить стиль лычки. Стиль лычки не должен превышать 1500 символов!')
     }
-    await reloadBannerStyle();
+    await updateUniqueStyles();
   });
 
   $(document).on('click', '#LZTUpSaveBannerText', async function () {
@@ -836,7 +893,7 @@ if (MenuResult === true) {
     if (badgeIconNew.length < 3001) {
       await updateUniqueStyleDB(nickSt = null, bannerSt = null, bannerTxt = null, badgeIcn = badgeIconNew, badgeTxt = null, badgeFll = null, badgeStrk = null).then(value => {return(value)}).catch(err => {console.error(err); return false});
     } else {
-      alert('Иконка на аватарке не должен превышать 3000 символов!')
+      alert('Иконка на аватарке не должна превышать 3000 символов!')
       console.log('LZTUp: Не удалось сохранить иконку на аватарке. Иконка на аватарке не должен превышать 3000 символов!')
     }
     await reloadUserBadges();
@@ -853,6 +910,7 @@ if (MenuResult === true) {
     await reloadUserBadges();
   });
 
+  // CONTESTS
   $(document).on('click', '#LZTUpResetContestsDB', async function () {
     await deleteContestsDB();
     await initContestsDB().then(value => {return(value)}).catch(err => {console.error(err); return false});
@@ -911,6 +969,7 @@ if (MenuResult === true) {
       );
   });
 
+  // USERS
   $(document).on('click', '#LZTUpResetUsersDB', async function () {
     await deleteUsersDB();
     await initUsersDB().then(value => {return(value)}).catch(err => {console.error(err); return false});
@@ -949,6 +1008,7 @@ if (MenuResult === true) {
       );
   });
 
+  // APPEAR
   $(document).on('click', '#LZTUpResetAppearDB', async function () {
     await deleteAppearDB();
     await initAppearDB().then(value => {return(value)}).catch(err => {console.error(err); return false});
@@ -969,13 +1029,35 @@ if (MenuResult === true) {
 
   $(document).on('click', '#hide_tags_in_threads', async function () {
     $('#hide_tags_in_threads')[0].checked ? (
-      await updateAppearDB(1),
+      await updateAppearDB(null, 1),
       await tagsVisibility(true)
       ): (
-        await updateAppearDB(0),
+        await updateAppearDB(null, 0),
         await tagsVisibility(false)
       );
   });
+
+  $(document).on('click', '#back_old_logo', async function () {
+    $('#back_old_logo')[0].checked ? (
+      await updateAppearDB(null, null, 1),
+      await tagsVisibility(true)
+      ): (
+        await updateAppearDB(null, null, 0),
+        await tagsVisibility(false)
+      );
+  });
+
+  // #LZTUpModalLogoContainer > ul set_${logo.short}_logo
+
+  logoList.forEach(logo => {
+    $(document).on('click', `#set_${logo.short}_logo`, async function () {
+      $(`#set_${logo.short}_logo`)[0].checked ? (
+        console.log(`Выбрано ${logo.id}`),
+        await updateAppearDB(null, null, logo.id),
+        updateSiteLogo(logo.css)
+        ): undefined;
+    });
+  })
 }
 
 var hasPageNav = $('.PageNav > nav > a')
