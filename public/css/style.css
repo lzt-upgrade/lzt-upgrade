@@ -161,7 +161,7 @@
   width: 400px;
 }
 
-#LZTUpModalChecksContainer {
+#LZTUpModalChecksContainer, #LZTUpModalLogoContainer {
   margin: 15px;
   width: 550px;
 }
