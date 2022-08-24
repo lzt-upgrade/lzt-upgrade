@@ -43,6 +43,8 @@ async function initAppearDB () {
             hideUnreadArticleCircle: 0,
             hideTagsInThreads: 0,
             changeLogo: 0,
+            hideCounterAlerts: 0,
+            hideCounterConversations: 0,
           }
           var request = objectStore.add(appearDefault);
 
@@ -78,9 +80,9 @@ async function initAppearDB () {
     })
 }
 
-async function updateAppearDB(hideUnreadArticleCircle = null, hideTagsInThreads = null, changeLogo = null) {
+async function updateAppearDB(hideUnreadArticleCircle = null, hideTagsInThreads = null, changeLogo = null, hideCounterAlerts = null, hideCounterConversations = null) {
     return new Promise((resolve, reject) => {
-      if (hideUnreadArticleCircle !== null || hideTagsInThreads !== null || changeLogo !== null) {
+      if (hideUnreadArticleCircle !== null || hideTagsInThreads !== null || changeLogo !== null || hideCounterAlerts !== null || hideCounterConversations !== null) {
         var openRequest = openDB("LZTUpAppear");
 
         openRequest.onerror = () => {
@@ -126,6 +128,14 @@ async function updateAppearDB(hideUnreadArticleCircle = null, hideTagsInThreads 
 
             if (typeof(changeLogo) === 'number') {
               data.changeLogo = changeLogo;
+            }
+
+            if (typeof(hideCounterAlerts) === 'number') {
+              data.hideCounterAlerts = hideCounterAlerts;
+            }
+
+            if (typeof(hideCounterConversations) === 'number') {
+              data.hideCounterConversations = hideCounterConversations;
             }
 
             var requestUpdate = objectStore.put(data);
