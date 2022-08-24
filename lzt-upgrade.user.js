@@ -859,20 +859,27 @@ async function counterVisibility(type, toggle) {
   };
 }
 
-async function counterHandler(data) {
-  var $accountLinks = $('ul.account-links').children();
-
-  if ($accountLinks.length > 0) {
-    $($accountLinks).on('hover', async function() {
-      if (data.hideCounterAlerts === 1) {
+let $ConversationsCounter = $('div#ConversationsMenu_Counter')
+let $AlertsCounter = $('div#AlertsMenu_Counter')
+const counterMutationObserver = new MutationObserver(async function(mutations) {
+  mutations.forEach(async function(mutation) {
+    if (mutation.target === $AlertsCounter[0] || mutation.target === $ConversationsCounter[0]) {
+      var dbAppearData = await readAppearDB().then(value => {return(value)}).catch(err => {console.error(err); return false});
+      if (dbAppearData.hideCounterAlerts === 1) {
         await counterVisibility('alerts', true);
-      }
-      if (data.hideCounterConversations === 1) {
+      };
+      if (dbAppearData.hideCounterConversations === 1) {
         await counterVisibility('conversations', true)
-      }
-    })
-  }
-}
+      };
+    }
+  });
+});
+
+
+// async function hideAds() {
+
+// }
+
 
 // script start
 if (getUserid() === '') return; // superior auth check
@@ -912,7 +919,7 @@ if (isAppearDBInited) {
   }
   dbAppearData.hideCounterAlerts === 1 ? await counterVisibility('alerts', true) : null;
   dbAppearData.hideCounterConversations === 1 ? await counterVisibility('conversations', true) : null;
-  dbAppearData.hideCounterAlerts === 1 || dbAppearData.hideCounterConversations === 1 ? await counterHandler(dbAppearData) : null;
+  dbAppearData.hideCounterAlerts === 1 || dbAppearData.hideCounterConversations === 1 ? counterMutation(true) : counterMutation(false);
 }
 
 await updateUniqueStyles();
@@ -1126,9 +1133,12 @@ if (MenuResult === true) {
   $(document).on('click', '#hide_counter_alerts', async function () {
     $('#hide_counter_alerts')[0].checked ? (
       await updateAppearDB(null, null, null, 1),
-      await counterVisibility('alerts', true)
+      await counterVisibility('alerts', true),
+      counterMutation(true)
       ): (
+        dbAppearData = await readAppearDB().then(value => {return(value)}).catch(err => {console.error(err); return false}),
         await updateAppearDB(null, null, null, 0),
+        dbAppearData.hideCounterAlerts === 0 && dbAppearData.hideCounterConversations === 0 ? counterMutation(false) : null,
         await counterVisibility('alerts', false)
       );
   });
@@ -1136,9 +1146,12 @@ if (MenuResult === true) {
   $(document).on('click', '#hide_counter_conversations', async function () {
     $('#hide_counter_conversations')[0].checked ? (
       await updateAppearDB(null, null, null, null, 1),
-      await counterVisibility('conversations', true)
+      await counterVisibility('conversations', true),
+      counterMutation(true)
       ): (
+        dbAppearData = await readAppearDB().then(value => {return(value)}).catch(err => {console.error(err); return false}),
         await updateAppearDB(null, null, null, null, 0),
+        dbAppearData.hideCounterAlerts === 0 && dbAppearData.hideCounterConversations === 0 ? counterMutation(false) : null,
         await counterVisibility('conversations', false)
       );
   });
@@ -1161,4 +1174,17 @@ if (hasPageNav.length > 0 && isProfile.length > 0) {
     subtree: true,
     attributeOldValue: true,
   });
+}
+
+function counterMutation(toggle) {
+  if (toggle) {
+    counterMutationObserver.observe(document.documentElement, {
+      attributes: true,
+      childList: true,
+      subtree: true,
+      attributeOldValue: true,
+    });
+  } else {
+    counterMutationObserver.disconnect()
+  }
 }
