@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         LZT Upgrade
-// @version      1.0.6
+// @version      1.0.7
 // @description  Some useful utilities for lolz.guru
 // @description:ru  Полезные улучшения для lolz.guru
 // @author       Toil
@@ -13,7 +13,7 @@
 // @require      https://raw.githubusercontent.com/ilyhalight/lzt-upgrade/master/public/static/js/lztupgrade/indexedDB/UniqueStyle.js
 // @require      https://raw.githubusercontent.com/ilyhalight/lzt-upgrade/master/public/static/js/lztupgrade/indexedDB/contests.js
 // @require      https://raw.githubusercontent.com/ilyhalight/lzt-upgrade/master/public/static/js/lztupgrade/indexedDB/users.js
-// @require      https://raw.githubusercontent.com/ilyhalight/lzt-upgrade/master/public/static/js/lztupgrade/indexedDB/appear.js
+// @require      http://localhost:3000/static/js/lztupgrade/indexedDB/appear.js
 // @updateURL    https://github.com/ilyhalight/lzt-upgrade/raw/master/lzt-upgrade.user.js
 // @downloadURL  https://github.com/ilyhalight/lzt-upgrade/raw/master/lzt-upgrade.user.js
 // @supportURL   https://github.com/ilyhalight/lzt-upgrade/issues
@@ -91,6 +91,8 @@ $(menuBtn).on('click', async function () {
   var hideUnreadArticleCircle = appearData.hideUnreadArticleCircle;
   var hideTagsInThreads = appearData.hideTagsInThreads;
   var changeLogo = appearData.changeLogo;
+  var hideCounterAlerts = appearData.hideCounterAlerts;
+  var hideCounterConversations = appearData.hideCounterConversations;
 
   const overlay = registerModal(
     'LZT Upgrade',
@@ -248,6 +250,14 @@ $(menuBtn).on('click', async function () {
         <div class="bold title">Логотип:</div>
         <ul>
 				</ul>
+      </div>
+      <div id="LZTUpModalChecksContainer">
+        <input type="checkbox" name="hide_counter_alerts" value="1" id="hide_counter_alerts" ${hideCounterAlerts === 1 ? "checked" : ''}>
+        <label for="hide_counter_alerts">Скрыть счётчик уведомлений в навбаре</label>
+      </div>
+      <div id="LZTUpModalChecksContainer">
+        <input type="checkbox" name="hide_counter_conversations" value="1" id="hide_counter_conversations" ${hideCounterConversations === 1 ? "checked" : ''}>
+        <label for="hide_counter_conversations">Скрыть счётчик сообщений в навбаре</label>
       </div>
       <input id="LZTUpResetAppearDB" type="button" value="Сбросить настройки" class="button primary"></input>
     </div>
@@ -802,6 +812,25 @@ function updateSiteLogo(newStyles) {
   return true;
 }
 
+async function counterVisibility(type, toggle) {
+  if (type === 'conversations') {
+    var $conversations = $('div#ConversationsMenu_Counter');
+    if ($conversations.find('.Total').text() === '0') {
+      await changeVisibility($conversations, true);
+    } else {
+      await changeVisibility($conversations, toggle);
+    }
+  } else if (type === 'alerts') {
+    var $alerts = $('div#AlertsMenu_Counter');
+    if ($alerts.find('.Total').text() === '0') {
+      await changeVisibility($alerts, true);
+    } else {
+      await changeVisibility($alerts, toggle);
+    }
+  };
+}
+
+
 // script start
 if (getUserid() === '') return; // superior auth check
 
@@ -838,6 +867,8 @@ if (isAppearDBInited) {
     let logo = logoList.find(logo => logo.id === dbAppearData.changeLogo);
     typeof(logo) === "object" ? updateSiteLogo(logo.css) : undefined;
   }
+  dbAppearData.hideCounterAlerts === 1 ? await counterVisibility('alerts', true) : null;
+  dbAppearData.hideCounterConversations === 1 ? await counterVisibility('conversations', true) : null;
 }
 
 await updateUniqueStyles();
@@ -1038,18 +1069,6 @@ if (MenuResult === true) {
       );
   });
 
-  $(document).on('click', '#back_old_logo', async function () {
-    $('#back_old_logo')[0].checked ? (
-      await updateAppearDB(null, null, 1),
-      await tagsVisibility(true)
-      ): (
-        await updateAppearDB(null, null, 0),
-        await tagsVisibility(false)
-      );
-  });
-
-  // #LZTUpModalLogoContainer > ul set_${logo.short}_logo
-
   logoList.forEach(logo => {
     $(document).on('click', `#set_${logo.short}_logo`, async function () {
       $(`#set_${logo.short}_logo`)[0].checked ? (
@@ -1058,7 +1077,27 @@ if (MenuResult === true) {
         updateSiteLogo(logo.css)
         ): undefined;
     });
-  })
+  });
+
+  $(document).on('click', '#hide_counter_alerts', async function () {
+    $('#hide_counter_alerts')[0].checked ? (
+      await updateAppearDB(null, null, null, 1),
+      await counterVisibility('alerts', true)
+      ): (
+        await updateAppearDB(null, null, null, 0),
+        await counterVisibility('alerts', false)
+      );
+  });
+
+  $(document).on('click', '#hide_counter_conversations', async function () {
+    $('#hide_counter_conversations')[0].checked ? (
+      await updateAppearDB(null, null, null, null, 1),
+      await counterVisibility('conversations', true)
+      ): (
+        await updateAppearDB(null, null, null, null, 0),
+        await counterVisibility('conversations', false)
+      );
+  });
 }
 
 var hasPageNav = $('.PageNav > nav > a')
