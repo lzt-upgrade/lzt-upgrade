@@ -13,7 +13,7 @@
 // @require      https://raw.githubusercontent.com/ilyhalight/lzt-upgrade/master/public/static/js/lztupgrade/indexedDB/UniqueStyle.js
 // @require      https://raw.githubusercontent.com/ilyhalight/lzt-upgrade/master/public/static/js/lztupgrade/indexedDB/contests.js
 // @require      https://raw.githubusercontent.com/ilyhalight/lzt-upgrade/master/public/static/js/lztupgrade/indexedDB/users.js
-// @require      https://raw.githubusercontent.com/ilyhalight/lzt-upgrade/master/public/static/js/lztupgrade/indexedDB/appear.js
+// @require      http://localhost:3000/static/js/lztupgrade/indexedDB/appear.js
 // @updateURL    https://github.com/ilyhalight/lzt-upgrade/raw/master/lzt-upgrade.user.js
 // @downloadURL  https://github.com/ilyhalight/lzt-upgrade/raw/master/lzt-upgrade.user.js
 // @supportURL   https://github.com/ilyhalight/lzt-upgrade/issues
@@ -22,11 +22,40 @@
 // @grant        GM_addStyle
 // ==/UserScript==
 
-const styles = GM_getResourceText("styles");
-const nano = GM_getResourceText("nano");
-GM_addStyle(styles);
-GM_addStyle(nano);
+const USOV4 = [ // Список расширений, последние версии которых не поддерживают Greasemonkey API V3
+  "Greasemonkey",
+  "Userscripts",
+  "FireMonkey"
+];
 
+if (typeof GM_addStyle === 'undefined') {
+  GM_addStyle = (aCss) => {
+    'use strict';
+    let head = document.getElementsByTagName('head')[0];
+    if (head) {
+      let style = document.createElement('style');
+      style.setAttribute('type', 'text/css');
+      style.textContent = aCss;
+      head.appendChild(style);
+      return style;
+    }
+    return null;
+  };
+};
+
+if (!USOV4.includes(GM_info.scriptHandler)) {
+  const styles = GM_getResourceText("styles");
+  const nano = GM_getResourceText("nano");
+  GM_addStyle(styles);
+  GM_addStyle(nano);
+} else {
+  fetch('https://raw.githubusercontent.com/ilyhalight/lzt-upgrade/master/public/css/style.css')
+  .then((response) => response.text().then(styles => GM_addStyle(styles)));
+  fetch('https://raw.githubusercontent.com/ilyhalight/lzt-upgrade/master/public/css/nano.min.css')
+  .then((response) => response.text().then(nano => GM_addStyle(nano)));
+};
+
+const blockAds = '(Native/\\.NET файлов|threads\\/|easyliker\\.ru|niccord\\.ru|vpromotions\\.ru|skysmm\\.ru|VerifTeam|SmmPanelUS\\.com|t\\.me/lztnext|axxishop\\.ru|LIGHTSHOP\\.SU)';
 
 const username = $('.accountUsername span').text();
 
@@ -830,6 +859,20 @@ async function counterVisibility(type, toggle) {
   };
 }
 
+async function counterHandler(data) {
+  var $accountLinks = $('ul.account-links').children();
+
+  if ($accountLinks.length > 0) {
+    $($accountLinks).on('hover', async function() {
+      if (data.hideCounterAlerts === 1) {
+        await counterVisibility('alerts', true);
+      }
+      if (data.hideCounterConversations === 1) {
+        await counterVisibility('conversations', true)
+      }
+    })
+  }
+}
 
 // script start
 if (getUserid() === '') return; // superior auth check
@@ -869,6 +912,7 @@ if (isAppearDBInited) {
   }
   dbAppearData.hideCounterAlerts === 1 ? await counterVisibility('alerts', true) : null;
   dbAppearData.hideCounterConversations === 1 ? await counterVisibility('conversations', true) : null;
+  dbAppearData.hideCounterAlerts === 1 || dbAppearData.hideCounterConversations === 1 ? await counterHandler(dbAppearData) : null;
 }
 
 await updateUniqueStyles();
