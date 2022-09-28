@@ -866,10 +866,13 @@ async function counterVisibility(type, toggle) {
 
 async function contestsAutoCloseFunc(toggle) {
   if (toggle) {
-    var btn = $('a.LztContest--Participate')
-    $(document).on('click', btn, () => {
-      window.close()
-    })
+    var btn = $('.LztContest--Participate')
+    if (btn.length > 0) {
+      $(btn).on('click', async () => {
+          await sleep(600)
+          window.close()
+      })
+    }
   }
 }
 
