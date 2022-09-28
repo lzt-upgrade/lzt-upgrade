@@ -34,6 +34,8 @@ async function initContestsDB () {
         objectStore.createIndex('contestsAll', 'contestsAll', { unique: false })
         objectStore.createIndex('contestsInfoTop', 'contestsInfoTop', { unique: false })
         objectStore.createIndex('contestsBtnTopInBlock', 'contestsBtnTopInBlock', { unique: false })
+        objectStore.createIndex('contestsHideTags', 'contestsHideTags', { unique: false })
+        objectStore.createIndex('contestsAutoClose', 'contestsAutoClose', { unique: false })
 
         console.log('LZTUp: База Данных создана')
 
@@ -46,6 +48,7 @@ async function initContestsDB () {
             contestsInfoTop: 0,
             contestsBtnTopInBlock: 0,
             contestsHideTags: 0,
+            contestsAutoClose: 0,
           }
           var request = objectStore.add(contestsDefault);
 
@@ -81,9 +84,9 @@ async function initContestsDB () {
     })
 }
 
-async function updateContestsDB(contestsTen = null, contestsAll = null, contestsInfoTop = null, contestsBtnTopInBlock = null, contestsHideTags = null) {
+async function updateContestsDB(contestsTen = null, contestsAll = null, contestsInfoTop = null, contestsBtnTopInBlock = null, contestsHideTags = null, contestsAutoClose = null) {
     return new Promise((resolve, reject) => {
-      if (contestsTen !== null || contestsAll !== null || contestsInfoTop !== null || contestsBtnTopInBlock !== null || contestsHideTags !== null) {
+      if (contestsTen !== null || contestsAll !== null || contestsInfoTop !== null || contestsBtnTopInBlock !== null || contestsHideTags !== null || contestsAutoClose !== null) {
         var openRequest = openDB("LZTUpContests");
 
         openRequest.onerror = () => {
@@ -137,6 +140,10 @@ async function updateContestsDB(contestsTen = null, contestsAll = null, contests
 
             if (typeof(contestsHideTags) === 'number') {
               data.contestsHideTags = contestsHideTags;
+            }
+
+            if (typeof(contestsAutoClose) === 'number') {
+              data.contestsAutoClose = contestsAutoClose;
             }
 
             var requestUpdate = objectStore.put(data);

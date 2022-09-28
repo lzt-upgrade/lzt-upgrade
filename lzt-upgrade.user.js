@@ -114,6 +114,7 @@ $(menuBtn).on('click', async function () {
   var contestsInfoTop = contestsData.contestsInfoTop;
   var contestsBtnTopInBlock = contestsData.contestsBtnTopInBlock;
   var contestsHideTags = contestsData.contestsHideTags;
+  var contestsAutoClose = contestsData.contestsAutoClose;
   var showUseridInProfile = usersData.showUseridInProfile;
   var showFullRegInProfile = usersData.showFullRegInProfile;
   var showСomplaintBtnInProfile = usersData.showСomplaintBtnInProfile;
@@ -248,6 +249,10 @@ $(menuBtn).on('click', async function () {
       <div id="LZTUpModalChecksContainer">
         <input type="checkbox" name="hide_tags" value="1" id="contests_hide_tags" ${contestsHideTags === 1 ? "checked" : ''}>
         <label for="contests_hide_tags">Скрытие тегов в теме розыгрыша</label>
+      </div>
+      <div id="LZTUpModalChecksContainer">
+        <input type="checkbox" name="auto_close" value="1" id="contests_auto_close" ${contestsAutoClose === 1 ? "checked" : ''}>
+        <label for="contests_auto_close">Автозакрытие страницы при нажатие на кнопку "Участвовать"</label>
       </div>
       <input id="LZTUpResetContestsDB" type="button" value="Сбросить настройки" class="button primary"></input>
     </div>
@@ -859,6 +864,15 @@ async function counterVisibility(type, toggle) {
   };
 }
 
+async function contestsAutoCloseFunc(toggle) {
+  if (toggle) {
+    var btn = $('a.LztContest--Participate')
+    $(document).on('click', btn, () => {
+      window.close()
+    })
+  }
+}
+
 let $ConversationsCounter = $('div#ConversationsMenu_Counter')
 let $AlertsCounter = $('div#AlertsMenu_Counter')
 const counterMutationObserver = new MutationObserver(async function(mutations) {
@@ -900,6 +914,7 @@ if (isContestsDBInited) {
   dbContestsData.contestsInfoTop === 1 ? await contestThreadBlockMove(true) : null;
   dbContestsData.contestsBtnTopInBlock === 1 ? await contestsBtnInBlockMove(true) : null;
   dbContestsData.contestsHideTags === 1 ? await contestsTagsVisibility(true) : null;
+  dbContestsData.contestsAutoClose === 1 ? await contestsAutoCloseFunc(true) : null;
 }
 
 if (isUsersDBInited) {
@@ -1049,6 +1064,16 @@ if (MenuResult === true) {
       ): (
         await updateContestsDB(null, null, null, null, 0),
         await contestsTagsVisibility(false)
+      );
+  });
+
+  $(document).on('click', '#contests_auto_close', async function () {
+    $('#contests_auto_close')[0].checked ? (
+      await updateContestsDB(null, null, null, null, null, 1),
+      await contestsAutoCloseFunc(true)
+      ): (
+        await updateContestsDB(null, null, null, null, null, 0),
+        await contestsAutoCloseFunc(false)
       );
   });
 
