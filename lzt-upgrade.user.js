@@ -1105,10 +1105,10 @@ if (MenuResult === true) {
 
   $(document).on('click', '#contests_rm_content', async function () {
     $('#contests_rm_content')[0].checked ? (
-      await updateContestsDB(null, null, null, null, null, 1),
+      await updateContestsDB(null, null, null, null, null, null, 1),
       await contestsTagsVisibility(true)
       ): (
-        await updateContestsDB(null, null, null, null, null, 0),
+        await updateContestsDB(null, null, null, null, null, null, 0),
         await contestsTagsVisibility(false)
       );
   });
