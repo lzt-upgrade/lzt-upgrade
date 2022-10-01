@@ -36,6 +36,7 @@ async function initContestsDB () {
         objectStore.createIndex('contestsBtnTopInBlock', 'contestsBtnTopInBlock', { unique: false })
         objectStore.createIndex('contestsHideTags', 'contestsHideTags', { unique: false })
         objectStore.createIndex('contestsAutoClose', 'contestsAutoClose', { unique: false })
+        objectStore.createIndex('contestsRmContent', 'contestsRmContent', { unique: false })
 
         console.log('LZTUp: База Данных создана')
 
@@ -49,6 +50,7 @@ async function initContestsDB () {
             contestsBtnTopInBlock: 0,
             contestsHideTags: 0,
             contestsAutoClose: 0,
+            contestsRmContent: 0,
           }
           var request = objectStore.add(contestsDefault);
 
@@ -84,9 +86,9 @@ async function initContestsDB () {
     })
 }
 
-async function updateContestsDB(contestsTen = null, contestsAll = null, contestsInfoTop = null, contestsBtnTopInBlock = null, contestsHideTags = null, contestsAutoClose = null) {
+async function updateContestsDB(contestsTen = null, contestsAll = null, contestsInfoTop = null, contestsBtnTopInBlock = null, contestsHideTags = null, contestsAutoClose = null, contestsRmContent = null) {
     return new Promise((resolve, reject) => {
-      if (contestsTen !== null || contestsAll !== null || contestsInfoTop !== null || contestsBtnTopInBlock !== null || contestsHideTags !== null || contestsAutoClose !== null) {
+      if (contestsTen !== null || contestsAll !== null || contestsInfoTop !== null || contestsBtnTopInBlock !== null || contestsHideTags !== null || contestsAutoClose !== null || contestsRmContent !== null) {
         var openRequest = openDB("LZTUpContests");
 
         openRequest.onerror = () => {
@@ -144,6 +146,10 @@ async function updateContestsDB(contestsTen = null, contestsAll = null, contests
 
             if (typeof(contestsAutoClose) === 'number') {
               data.contestsAutoClose = contestsAutoClose;
+            }
+
+            if (typeof(contestsRmContent) === 'number') {
+              data.contestsRmContent = contestsRmContent;
             }
 
             var requestUpdate = objectStore.put(data);

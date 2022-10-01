@@ -115,6 +115,7 @@ $(menuBtn).on('click', async function () {
   var contestsBtnTopInBlock = contestsData.contestsBtnTopInBlock;
   var contestsHideTags = contestsData.contestsHideTags;
   var contestsAutoClose = contestsData.contestsAutoClose;
+  var contestsRmContent = contestsData.contestsRmContent;
   var showUseridInProfile = usersData.showUseridInProfile;
   var showFullRegInProfile = usersData.showFullRegInProfile;
   var showСomplaintBtnInProfile = usersData.showСomplaintBtnInProfile;
@@ -253,6 +254,10 @@ $(menuBtn).on('click', async function () {
       <div id="LZTUpModalChecksContainer">
         <input type="checkbox" name="auto_close" value="1" id="contests_auto_close" ${contestsAutoClose === 1 ? "checked" : ''}>
         <label for="contests_auto_close">Автозакрытие страницы при нажатие на кнопку "Участвовать"</label>
+      </div>
+      <div id="LZTUpModalChecksContainer">
+        <input type="checkbox" name="rm_content" value="1" id="contests_rm_content" ${contestsRmContent === 1 ? "checked" : ''}>
+        <label for="contests_rm_content">Скрытие содержимого + голосований в теме розыгрыша</label>
       </div>
       <input id="LZTUpResetContestsDB" type="button" value="Сбросить настройки" class="button primary"></input>
     </div>
@@ -830,9 +835,26 @@ async function tagsVisibility(isHidden = true) {
   await changeVisibility($tagList, isHidden)
 }
 
+async function contentVisibility(isHidden = true) {
+  var $content = $('div.messageContent > article > blockquote');
+  await changeVisibility($content, isHidden)
+}
+
+async function pollVisibility(isHidden = true) {
+  var $pollContainer = $('div.PollContainer');
+  await changeVisibility($pollContainer, isHidden)
+}
+
 async function contestsTagsVisibility(isHidden = true) {
   if (isContestThread()) {
     await tagsVisibility(isHidden);
+    await pollVisibility(isHidden);
+  };
+}
+
+async function contestsContentVisibility(isHidden = true) {
+  if (isContestThread()) {
+    await contentVisibility(isHidden);
   };
 }
 
@@ -918,6 +940,7 @@ if (isContestsDBInited) {
   dbContestsData.contestsBtnTopInBlock === 1 ? await contestsBtnInBlockMove(true) : null;
   dbContestsData.contestsHideTags === 1 ? await contestsTagsVisibility(true) : null;
   dbContestsData.contestsAutoClose === 1 ? await contestsAutoCloseFunc(true) : null;
+  dbContestsData.contestsRmContent === 1 ? await contestsContentVisibility(true) : null;
 }
 
 if (isUsersDBInited) {
@@ -1077,6 +1100,16 @@ if (MenuResult === true) {
       ): (
         await updateContestsDB(null, null, null, null, null, 0),
         await contestsAutoCloseFunc(false)
+      );
+  });
+
+  $(document).on('click', '#contests_rm_content', async function () {
+    $('#contests_rm_content')[0].checked ? (
+      await updateContestsDB(null, null, null, null, null, 1),
+      await contestsTagsVisibility(true)
+      ): (
+        await updateContestsDB(null, null, null, null, null, 0),
+        await contestsTagsVisibility(false)
       );
   });
 
