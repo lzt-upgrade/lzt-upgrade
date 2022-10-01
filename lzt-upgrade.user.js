@@ -696,11 +696,6 @@ async function isContestsNode() {
   return ($contestsTitleBar.length > 0 && $contestsTitleBar.attr('title') === 'Розыгрыши') ? true : false
 }
 
-async function isContestThread() {
-  var $contestsThreadBlock = $('div.contestThreadBlock');
-  return $contestsThreadBlock.length > 0 ? true : false
-}
-
 async function isProfilePage() {
   var $ProfilePostList = $('ol#ProfilePostList');
   return $ProfilePostList.length > 0 ? true : false
@@ -721,7 +716,7 @@ async function contestThreadBlockMove(toTop = true) {
 }
 
 async function contestsBtnInBlockMove(toTop = true) {
-  if (isContestThread()) {
+  if (await isContestThread()) {
     var $contestsThreadBlock = $('div.contestThreadBlock');
     var $participateButton = $contestsThreadBlock.find('a.LztContest--Participate');
     var contestEnded = $contestsThreadBlock.find('span.button.contestIsFinished').length > 0 ? true : false;
@@ -846,15 +841,15 @@ async function pollVisibility(isHidden = true) {
 }
 
 async function contestsTagsVisibility(isHidden = true) {
-  if (isContestThread()) {
+  if (await isContestThread()) {
     await tagsVisibility(isHidden);
-    await pollVisibility(isHidden);
   };
 }
 
 async function contestsContentVisibility(isHidden = true) {
-  if (isContestThread()) {
+  if (await isContestThread()) {
     await contentVisibility(isHidden);
+    await pollVisibility(isHidden);
   };
 }
 
@@ -1106,10 +1101,10 @@ if (MenuResult === true) {
   $(document).on('click', '#contests_rm_content', async function () {
     $('#contests_rm_content')[0].checked ? (
       await updateContestsDB(null, null, null, null, null, null, 1),
-      await contestsTagsVisibility(true)
+      await contestsContentVisibility(true)
       ): (
         await updateContestsDB(null, null, null, null, null, null, 0),
-        await contestsTagsVisibility(false)
+        await contestsContentVisibility(false)
       );
   });
 
