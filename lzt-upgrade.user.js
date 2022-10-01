@@ -118,7 +118,6 @@ $(menuBtn).on('click', async function () {
   var contestsRmContent = contestsData.contestsRmContent;
   var showUseridInProfile = usersData.showUseridInProfile;
   var showFullRegInProfile = usersData.showFullRegInProfile;
-  var showСomplaintBtnInProfile = usersData.showСomplaintBtnInProfile;
   var hideUnreadArticleCircle = appearData.hideUnreadArticleCircle;
   var hideTagsInThreads = appearData.hideTagsInThreads;
   var changeLogo = appearData.changeLogo;
@@ -269,10 +268,6 @@ $(menuBtn).on('click', async function () {
       <div id="LZTUpModalChecksContainer">
         <input type="checkbox" name="open_all" value="1" id="show_fullreg_in_profile" ${showFullRegInProfile === 1 ? "checked" : ''}>
         <label for="show_fullreg_in_profile">Показывать полную дату регистрации в профиле пользователя</label>
-      </div>
-      <div id="LZTUpModalChecksContainer">
-        <input type="checkbox" name="open_all" value="1" id="show_complaint_btn_in_profile" ${showСomplaintBtnInProfile === 1 ? "checked" : ''}>
-        <label for="show_complaint_btn_in_profile">Показывать кнопку "Подать жалобу" в профиле пользователя</label>
       </div>
       <input id="LZTUpResetUsersDB" type="button" value="Сбросить настройки" class="button primary"></input>
     </div>
@@ -802,23 +797,6 @@ async function editUserRegInProfileInfo(full = false) {
   }
 }
 
-async function showComplaintBtnToProfile() {
-  if (await isProfilePage()) {
-    var userid = await getProfileUserid();
-    var localUserid = getUserid();
-    if (userid !== localUserid) {
-      var username = await getProfileUsername();
-      var url = await getProfileUrl();
-      var text = encodeURIComponent(`1. Никнейм нарушителя и ссылка на профиль: ${url}\n2. Краткое описание жалобы:\n3. Доказательства:`);
-      var title = encodeURIComponent(`Жалоба на ${username}`);
-      var btn = $(`<a class="OverlayTrigger followContainer button red full" href="forums/801/create-thread?title=${title}&message=${text}" id="LZTUpComplaintBtn">Подать жалобу</a>`);
-      removeElement('#LZTUpComplaintBtn');
-      var $arbBtn = $('div.secondaryContent > div.avatarScaler').parent();
-      $arbBtn.append(btn);
-    };
-  };
-};
-
 async function changeVisibility(elem, isHidden = true) {
   if (elem.length > 0) {
     isHidden ? elem.hide() : elem.show();
@@ -942,7 +920,6 @@ if (isUsersDBInited) {
   var dbUsersData = await readUsersDB().then(value => {return(value)}).catch(err => {console.error(err); return false});
   dbUsersData.showUseridInProfile === 1 ? await addUserIdInProfileInfo() : null;
   dbUsersData.showFullRegInProfile === 1 ? await editUserRegInProfileInfo(true) : null;
-  dbUsersData.showСomplaintBtnInProfile === 1 ? await showComplaintBtnToProfile() : null;
 }
 
 if (isAppearDBInited) {
@@ -1134,16 +1111,6 @@ if (MenuResult === true) {
       ): (
         await updateUsersDB(null, 0),
         await editUserRegInProfileInfo(false)
-      );
-  });
-
-  $(document).on('click', '#show_complaint_btn_in_profile', async function () {
-    $('#show_complaint_btn_in_profile')[0].checked ? (
-      await updateUsersDB(null, null, 1),
-      await showComplaintBtnToProfile()
-      ): (
-        await updateUsersDB(null, null, 0),
-        removeElement('#LZTUpComplaintBtn')
       );
   });
 
