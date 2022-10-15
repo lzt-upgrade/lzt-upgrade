@@ -1019,70 +1019,70 @@ if (MenuResult === true) {
 
   $(document).on('click', '#contests_open_ten', async function () {
     $('#contests_open_ten')[0].checked ? (
-      await updateContestsDB(1),
+      await updateContestsDB({contestsTen: 1}),
       await regOpenContestsBtn(10)
       ): (
-        await updateContestsDB(0),
+        await updateContestsDB({contestsTen: 0}),
         await removeOpenContestsBtn(10)
       );
   });
 
   $(document).on('click', '#contests_open_all', async function () {
     $('#contests_open_all')[0].checked ? (
-      await updateContestsDB(null, 1),
+      await updateContestsDB({contestsAll: 1}),
       await regOpenContestsBtn(100)
       ): (
-        await updateContestsDB(null, 0),
+        await updateContestsDB({contestsAll: 0}),
         await removeOpenContestsBtn(100)
       );
   });
 
   $(document).on('click', '#contests_info_top', async function () {
     $('#contests_info_top')[0].checked ? (
-      await updateContestsDB(null, null, 1),
+      await updateContestsDB({contestsInfoTop: 1}),
       await contestThreadBlockMove(true)
       ): (
-        await updateContestsDB(null, null, 0),
+        await updateContestsDB({contestsInfoTop: 0}),
         await contestThreadBlockMove(false)
       );
   });
 
   $(document).on('click', '#contests_btn_top_in_block', async function () {
     $('#contests_btn_top_in_block')[0].checked ? (
-      await updateContestsDB(null, null, null, 1),
+      await updateContestsDB({contestsBtnTopInBlock: 1}),
       await contestsBtnInBlockMove(true)
       ): (
-        await updateContestsDB(null, null, null, 0),
+        await updateContestsDB({contestsBtnTopInBlock: 0}),
         await contestsBtnInBlockMove(false)
       );
   });
 
   $(document).on('click', '#contests_hide_tags', async function () {
     $('#contests_hide_tags')[0].checked ? (
-      await updateContestsDB(null, null, null, null, 1),
+      await updateContestsDB({contestsHideTags: 1}),
       await contestsTagsVisibility(true)
       ): (
-        await updateContestsDB(null, null, null, null, 0),
+        await updateContestsDB({contestsHideTags: 0}),
         await contestsTagsVisibility(false)
       );
   });
 
   $(document).on('click', '#contests_auto_close', async function () {
     $('#contests_auto_close')[0].checked ? (
-      await updateContestsDB(null, null, null, null, null, 1),
+      await updateContestsDB({contestsAutoClose: 1}),
       await contestsAutoCloseFunc(true)
       ): (
-        await updateContestsDB(null, null, null, null, null, 0),
+        await updateContestsDB({contestsAutoClose: 0}),
         await contestsAutoCloseFunc(false)
       );
   });
 
   $(document).on('click', '#contests_rm_content', async function () {
     $('#contests_rm_content')[0].checked ? (
-      await updateContestsDB(null, null, null, null, null, null, 1),
+      await updateContestsDB({contestsRmContent: 1}),
       await contestsContentVisibility(true)
       ): (
-        await updateContestsDB(null, null, null, null, null, null, 0),
+        await updateContestsDB({contestsRmContent: 0}),
         await contestsContentVisibility(false)
       );
   });
