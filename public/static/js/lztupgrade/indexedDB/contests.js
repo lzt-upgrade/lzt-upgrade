@@ -86,9 +86,9 @@ async function initContestsDB () {
     })
 }
 
-async function updateContestsDB(contestsTen = null, contestsAll = null, contestsInfoTop = null, contestsBtnTopInBlock = null, contestsHideTags = null, contestsAutoClose = null, contestsRmContent = null) {
+async function updateContestsDB({contestsTen, contestsAll, contestsInfoTop, contestsBtnTopInBlock, contestsHideTags, contestsAutoClose, contestsRmContent}) {
     return new Promise((resolve, reject) => {
-      if (contestsTen !== null || contestsAll !== null || contestsInfoTop !== null || contestsBtnTopInBlock !== null || contestsHideTags !== null || contestsAutoClose !== null || contestsRmContent !== null) {
+      if (typeof(contestsTen) === 'number' || typeof(contestsAll) === 'number' || typeof(contestsInfoTop) === 'number' || typeof(contestsBtnTopInBlock) === 'number' || typeof(contestsHideTags) === 'number' || typeof(contestsAutoClose) === 'number' || typeof(contestsRmContent) === 'number') {
         var openRequest = openDB("LZTUpContests");
 
         openRequest.onerror = () => {
