@@ -90,6 +90,13 @@ const logoList = [
     css: "background-repeat: no-repeat;width: 36px;height: 36px;float: left;margin: 4px 10px 0 0;background-size: 110%;background-image: url(https://imgur.com/IBoICGv.png);",
     preview: "height:24px;width:24px;margin:0px 20px;float:right;background:url(https://imgur.com/IBoICGv.png);background-repeat:no-repeat;background-size:110%;",
   },
+  {
+    id: 4,
+    name: 'Новогодний',
+    short: 'newyear',
+    css: "width: 78px;height: 43px;float: left;margin-left: -5px;background-size: 105%;background-image: url(https://i.imgur.com/dqzURj5.gif);background-repeat: no-repeat;",
+    preview: "height:24px;width:36px;margin:0px 11px;float:right;background:url(https://i.imgur.com/dqzURj5.gif);background-repeat:no-repeat;background-size:110%;",
+  },
 ]
 
 $(menuBtn).on('click', async function () {
