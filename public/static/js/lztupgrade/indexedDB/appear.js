@@ -80,9 +80,9 @@ async function initAppearDB () {
     })
 }
 
-async function updateAppearDB(hideUnreadArticleCircle = null, hideTagsInThreads = null, changeLogo = null, hideCounterAlerts = null, hideCounterConversations = null) {
+async function updateAppearDB({hideUnreadArticleCircle, hideTagsInThreads, changeLogo, hideCounterAlerts, hideCounterConversations}) {
     return new Promise((resolve, reject) => {
-      if (hideUnreadArticleCircle !== null || hideTagsInThreads !== null || changeLogo !== null || hideCounterAlerts !== null || hideCounterConversations !== null) {
+      if (typeof (hideUnreadArticleCircle) === 'number' || typeof(hideTagsInThreads) === 'number' || typeof(changeLogo) === 'number' || typeof(hideCounterAlerts) === 'number' || typeof(hideCounterConversations) === 'number') {
         var openRequest = openDB("LZTUpAppear");
 
         openRequest.onerror = () => {

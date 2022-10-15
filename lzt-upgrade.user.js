@@ -1127,20 +1127,20 @@ if (MenuResult === true) {
 
   $(document).on('click', '#hide_unread_article_circle', async function () {
     $('#hide_unread_article_circle')[0].checked ? (
-      await updateAppearDB(1),
+      await updateAppearDB({hideUnreadArticleCircle: 1}),
       await unreadArticleCircleVisibility(true)
       ): (
-        await updateAppearDB(0),
+        await updateAppearDB({hideUnreadArticleCircle: 0}),
         await unreadArticleCircleVisibility(false)
       );
   });
 
   $(document).on('click', '#hide_tags_in_threads', async function () {
     $('#hide_tags_in_threads')[0].checked ? (
-      await updateAppearDB(null, 1),
+      await updateAppearDB({hideTagsInThreads: 1}),
       await tagsVisibility(true)
       ): (
-        await updateAppearDB(null, 0),
+        await updateAppearDB({hideTagsInThreads: 0}),
         await tagsVisibility(false)
       );
   });
@@ -1149,7 +1149,7 @@ if (MenuResult === true) {
     $(document).on('click', `#set_${logo.short}_logo`, async function () {
       $(`#set_${logo.short}_logo`)[0].checked ? (
         console.log(`Выбрано ${logo.id}`),
-        await updateAppearDB(null, null, logo.id),
+        await updateAppearDB({changeLogo: logo.id}),
         updateSiteLogo(logo.css)
         ): undefined;
     });
@@ -1157,12 +1157,12 @@ if (MenuResult === true) {
 
   $(document).on('click', '#hide_counter_alerts', async function () {
     $('#hide_counter_alerts')[0].checked ? (
-      await updateAppearDB(null, null, null, 1),
+      await updateAppearDB({hideCounterAlerts: 1}),
       await counterVisibility('alerts', true),
       counterMutation(true)
       ): (
         dbAppearData = await readAppearDB().then(value => {return(value)}).catch(err => {console.error(err); return false}),
-        await updateAppearDB(null, null, null, 0),
+        await updateAppearDB({hideCounterAlerts: 0}),
         dbAppearData.hideCounterAlerts === 0 && dbAppearData.hideCounterConversations === 0 ? counterMutation(false) : null,
         await counterVisibility('alerts', false)
       );
@@ -1170,12 +1170,12 @@ if (MenuResult === true) {
 
   $(document).on('click', '#hide_counter_conversations', async function () {
     $('#hide_counter_conversations')[0].checked ? (
-      await updateAppearDB(null, null, null, null, 1),
+      await updateAppearDB({hideCounterConversations: 1}),
       await counterVisibility('conversations', true),
       counterMutation(true)
       ): (
         dbAppearData = await readAppearDB().then(value => {return(value)}).catch(err => {console.error(err); return false}),
-        await updateAppearDB(null, null, null, null, 0),
+        await updateAppearDB({hideCounterConversations: 0}),
         dbAppearData.hideCounterAlerts === 0 && dbAppearData.hideCounterConversations === 0 ? counterMutation(false) : null,
         await counterVisibility('conversations', false)
       );
