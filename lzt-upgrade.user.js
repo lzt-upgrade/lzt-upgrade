@@ -1,8 +1,8 @@
 // ==UserScript==
 // @name         LZT Upgrade
 // @version      1.0.7
-// @description  Some useful utilities for lolz.guru
-// @description:ru  Полезные улучшения для lolz.guru
+// @description  Some useful utilities for Lolzteam
+// @description:ru  Полезные улучшения для Lolzteam
 // @author       Toil
 // @match        *://*.lolz.guru/*
 // @match        *://*.zelenka.guru/*
@@ -22,12 +22,6 @@
 // @grant        GM_addStyle
 // ==/UserScript==
 
-const USOV4 = [ // Список расширений, последние версии которых не поддерживают Greasemonkey API V3
-  "Greasemonkey",
-  "Userscripts",
-  "FireMonkey"
-];
-
 if (typeof GM_addStyle === 'undefined') {
   GM_addStyle = (aCss) => {
     'use strict';
@@ -43,17 +37,18 @@ if (typeof GM_addStyle === 'undefined') {
   };
 };
 
-if (!USOV4.includes(GM_info.scriptHandler)) {
+if (typeof GM_getResourceText === 'undefined') {
+  fetch('https://raw.githubusercontent.com/ilyhalight/lzt-upgrade/master/public/css/style.css')
+  .then((response) => response.text().then(styles => GM_addStyle(styles)));
+  fetch('https://raw.githubusercontent.com/ilyhalight/lzt-upgrade/master/public/css/nano.min.cs')
+  .then((response) => response.text().then(nano => GM_addStyle(nano)));
+} else {
   const styles = GM_getResourceText("styles");
   const nano = GM_getResourceText("nano");
   GM_addStyle(styles);
   GM_addStyle(nano);
-} else {
-  fetch('https://raw.githubusercontent.com/ilyhalight/lzt-upgrade/master/public/css/style.css')
-  .then((response) => response.text().then(styles => GM_addStyle(styles)));
-  fetch('https://raw.githubusercontent.com/ilyhalight/lzt-upgrade/master/public/css/nano.min.css')
-  .then((response) => response.text().then(nano => GM_addStyle(nano)));
-};
+}
+
 
 const blockAds = '(Native/\\.NET файлов|threads\\/|easyliker\\.ru|niccord\\.ru|vpromotions\\.ru|skysmm\\.ru|VerifTeam|SmmPanelUS\\.com|t\\.me/lztnext|axxishop\\.ru|LIGHTSHOP\\.SU)';
 
