@@ -100,17 +100,17 @@ const logoList = [
 ]
 
 $(menuBtn).on('click', async function () {
-  var dbData = await readUniqueStyleDB().then(value => {return(value)}).catch(err => {console.error(err); return false});
+  var uniqueData = await readUniqueStyleDB().then(value => {return(value)}).catch(err => {console.error(err); return false});
   var contestsData = await readContestsDB().then(value => {return(value)}).catch(err => {console.error(err); return false});
   var usersData = await readUsersDB().then(value => {return(value)}).catch(err => {console.error(err); return false});
   var appearData = await readAppearDB().then(value => {return(value)}).catch(err => {console.error(err); return false});
-  var nickStyle = dbData.nickStyle;
-  var bannerStyle = dbData.bannerStyle;
-  var bannerText = dbData.bannerText;
-  var badgeText = dbData.badgeText;
-  var badgeIcon = dbData.badgeIcon;
-  var badgeFill = dbData.badgeFill;
-  var badgeStroke = dbData.badgeStroke;
+  var nickStyle = uniqueData.nickStyle;
+  var bannerStyle = uniqueData.bannerStyle;
+  var bannerText = uniqueData.bannerText;
+  var badgeText = uniqueData.badgeText;
+  var badgeIcon = uniqueData.badgeIcon;
+  var badgeFill = uniqueData.badgeFill;
+  var badgeStroke = uniqueData.badgeStroke;
   var contestsTen = contestsData.contestsTen;
   var contestsAll = contestsData.contestsAll;
   var contestsInfoTop = contestsData.contestsInfoTop;
@@ -362,7 +362,7 @@ $(menuBtn).on('click', async function () {
         instance.setColor(badgeFill === '' ? null : badgeFill);
         instance.on('save', async (color, instance) => {
           color !== null ? rgbaColor = color.toRGBA().toString(0) : rgbaColor = "";
-          await updateUniqueStyleDB(null, null, null, null, null, rgbaColor, null).then(value => {return(value)}).catch(err => {console.error(err); return false});
+          await updateUniqueStyleDB({badgeFill: rgbaColor});
           await setUniqIconColor(rgbaColor);
         });
       });
@@ -372,7 +372,7 @@ $(menuBtn).on('click', async function () {
         instance.setColor(badgeStroke === '' ? null : badgeStroke);
         instance.on('save', async (color, instance) => {
           color !== null ? rgbaColor = color.toRGBA().toString(0) : rgbaColor = "";
-          await updateUniqueStyleDB(null, null, null, null, null, null, rgbaColor).then(value => {return(value)}).catch(err => {console.error(err); return false});
+          await updateUniqueStyleDB({badgeStroke: rgbaColor});
           await setUniqIconColor('', rgbaColor);
         });
       });
@@ -463,10 +463,10 @@ function updateNickStyle(style) {
 
 async function reloadNickStyle() {
   try {
-    var dbData = await readUniqueStyleDB().then(value => {return(value)}).catch(err => {console.error(err); return false});
-    if (typeof(dbData) === 'object') {
-      if (dbData.nickStyle !== '') {
-        updateNickStyle(String(dbData.nickStyle));
+    var uniqueData = await readUniqueStyleDB().then(value => {return(value)}).catch(err => {console.error(err); return false});
+    if (typeof(uniqueData) === 'object') {
+      if (uniqueData.nickStyle !== '') {
+        updateNickStyle(uniqueData.nickStyle);
       }
     }
   } catch (err) {
@@ -506,10 +506,10 @@ function updateBannerStyle(style, text) {
 
 async function reloadBannerStyle() {
   try {
-    var dbData = await readUniqueStyleDB().then(value => {return(value)}).catch(err => {console.error(err); return false});
-    if (typeof(dbData) === 'object') {
-      if (dbData.bannerText !== '') {
-        updateBannerStyle(String(dbData.bannerStyle), String(dbData.bannerText));
+    var uniqueData = await readUniqueStyleDB().then(value => {return(value)}).catch(err => {console.error(err); return false});
+    if (typeof(uniqueData) === 'object') {
+      if (uniqueData.bannerText !== '') {
+        updateBannerStyle(uniqueData.bannerStyle, uniqueData.bannerText);
       }
     }
   } catch (err) {
@@ -519,10 +519,10 @@ async function reloadBannerStyle() {
 
 async function forceReloadBannerStyle() {
   try {
-    var dbData = await readUniqueStyleDB().then(value => {return(value)}).catch(err => {console.error(err); return false});
-    if (typeof(dbData) === 'object') {
-      updateBannerStyle(String(dbData.bannerStyle), String(dbData.bannerText));
-      if (dbData.bannerText === '') {
+    var uniqueData = await readUniqueStyleDB().then(value => {return(value)}).catch(err => {console.error(err); return false});
+    if (typeof(uniqueData) === 'object') {
+      updateBannerStyle(uniqueData.bannerStyle, uniqueData.bannerText);
+      if (uniqueData.bannerText === '') {
         removeElement('#LZTUpCustomBanner');
       }
     }
@@ -561,14 +561,14 @@ function registerUserBadges(bannerStyle = '', badgeText = '', badgeIcon = '') {
 
 async function reloadUserBadges() {
   try {
-    var dbData = await readUniqueStyleDB().then(value => {return(value)}).catch(err => {console.error(err); return false});
-    if (typeof(dbData) === 'object' && dbData.badgeText !== '') {
+    var uniqueData = await readUniqueStyleDB().then(value => {return(value)}).catch(err => {console.error(err); return false});
+    if (typeof(uniqueData) === 'object' && uniqueData.badgeText !== '') {
       var isUserBadgesLoaded = $('#LZTUpUserBadges');
       if (isUserBadgesLoaded.length) {
         $(isUserBadgesLoaded).remove()
       }
-      registerUserBadges(String(dbData.bannerStyle), String(dbData.badgeText), dbData.badgeIcon);
-      await setUniqIconColor(dbData.badgeFill, dbData.badgeStroke)
+      registerUserBadges(uniqueData.bannerStyle, uniqueData.badgeText, uniqueData.badgeIcon);
+      await setUniqIconColor(uniqueData.badgeFill, uniqueData.badgeStroke)
     }
   } catch (err) {
     console.error('LZTUp: Не удалось обновить стиль значка аватара юзера ', err);
@@ -947,71 +947,71 @@ await commentMoreHandler();
 
 if (MenuResult === true) {
   // UNIQUE
+  $(document).on('click', '#LZTUpResetUniqueDB', async function () {
+    await deleteUniqueStylesDB();
+    await initUniqueStyleDB();
+    alert('Кастомные стили сброшены. Рекомендуем обновить страницу');
+  });
+
   $(document).on('click', '#LZTUpSaveUniqueStyle', async function () {
-    let nickStNew = $('#LZTUpUniqueStyle').val();
-    if (nickStNew.length < 1501) {
-      await updateUniqueStyleDB(nickSt = nickStNew, bannerSt = null, bannerTxt = null, badgeIcn = null, badgeTxt = null, badgeFll = null, badgeStrk = null).then(value => {return(value)}).catch(err => {console.error(err); return false});
+    let nickStyleNew = $('#LZTUpUniqueStyle').val();
+    if (nickStyleNew.length < 1501) {
+      await updateUniqueStyleDB({nickStyle: nickStyleNew});
+      updateNickStyle(nickStyleNew);
     } else {
         alert('Стиль ника не должен превышать 1500 символов!')
         console.log('LZTUp: Не удалось сохранить стиль ника. Стиль ника не должен превышать 1500 символов!')
     }
-    updateNickStyle(nickStNew);
-  });
-
-  $(document).on('click', '#LZTUpResetUniqueDB', async function () {
-    await deleteUniqueStylesDB();
-    await initUniqueStyleDB().then(value => {return(value)}).catch(err => {console.error(err); return false});
-    alert('Кастомные стили сброшены. Рекомендуем обновить страницу');
   });
 
   $(document).on('click', '#LZTUpSaveBannerStyle', async function () {
-    let bannerStNew = $('#LZTUpBannerStyle').val();
-    if (bannerStNew.length < 1501) {
-      await updateUniqueStyleDB(nickSt = null, bannerSt = bannerStNew, bannerTxt = null, badgeIcn = null, badgeTxt = null, badgeFll = null, badgeStrk = null).then(value => {return(value)}).catch(err => {console.error(err); return false});
+    let bannerStyleNew = $('#LZTUpBannerStyle').val();
+    if (bannerStyleNew.length < 1501) {
+      await updateUniqueStyleDB({bannerStyle: bannerStyleNew});
+      await updateUniqueStyles();
     } else {
       alert('Стиль лычки не должен превышать 1500 символов!')
       console.log('LZTUp: Не удалось сохранить стиль лычки. Стиль лычки не должен превышать 1500 символов!')
     }
-    await updateUniqueStyles();
   });
 
   $(document).on('click', '#LZTUpSaveBannerText', async function () {
-    let bannerTxtNew = $('#LZTUpBannerText').val();
-    if (bannerTxtNew.length < 25) {
-      await updateUniqueStyleDB(nickSt = null, bannerSt = null, bannerTxt = bannerTxtNew, badgeIcn = null, badgeTxt = null, badgeFll = null, badgeStrk = null).then(value => {return(value)}).catch(err => {console.error(err); return false});
+    let bannerTextNew = $('#LZTUpBannerText').val();
+    if (bannerTextNew.length < 25) {
+      await updateUniqueStyleDB({bannerText: bannerTextNew});
+      await forceReloadBannerStyle();
     } else {
       alert('Текст в лычке не должен превышать 24 символов!')
       console.log('LZTUp: Не удалось сохранить текст в лычке. Текст в лычке не должен превышать 24 символов!')
     }
-    await forceReloadBannerStyle();
   });
 
   $(document).on('click', '#LZTUpSaveBadgeIcon', async function () {
     let badgeIconNew = $('#LZTUpBadgeIcon').val();
     if (badgeIconNew.length < 3001) {
-      await updateUniqueStyleDB(nickSt = null, bannerSt = null, bannerTxt = null, badgeIcn = badgeIconNew, badgeTxt = null, badgeFll = null, badgeStrk = null).then(value => {return(value)}).catch(err => {console.error(err); return false});
+      await updateUniqueStyleDB({badgeIcon: badgeIconNew});
+      await reloadUserBadges();
     } else {
       alert('Иконка на аватарке не должна превышать 3000 символов!')
       console.log('LZTUp: Не удалось сохранить иконку на аватарке. Иконка на аватарке не должен превышать 3000 символов!')
     }
-    await reloadUserBadges();
   });
 
   $(document).on('click', '#LZTUpSaveBadgeText', async function () {
-    let badgeTxtNew = $('#LZTUpBadgeText').val();
-    if (badgeTxtNew.length < 25) {
-      await updateUniqueStyleDB(nickSt = null, bannerSt = null, bannerTxt = null, badgeIcn = null, badgeTxt = badgeTxtNew, badgeFll = null, badgeStrk = null).then(value => {return(value)}).catch(err => {console.error(err); return false});
+    let badgeTextNew  = $('#LZTUpBadgeText').val();
+    if (badgeTextNew .length < 25) {
+      await updateUniqueStyleDB({badgeText: badgeTextNew});
+      await reloadUserBadges();
     } else {
       alert('Текст в иконке аватарки не должен превышать 24 символов!')
       console.log('LZTUp: Не удалось сохранить текст в иконке аватарки. Текст в иконке аватарки не должен превышать 24 символов!')
     }
-    await reloadUserBadges();
   });
 
   // CONTESTS
   $(document).on('click', '#LZTUpResetContestsDB', async function () {
     await deleteContestsDB();
-    await initContestsDB().then(value => {return(value)}).catch(err => {console.error(err); return false});
+    await initContestsDB();
     alert('Настройки розыгрышей LZT Upgrade сброшены');
     await sleep(500);
     window.location.reload();
@@ -1090,7 +1090,7 @@ if (MenuResult === true) {
   // USERS
   $(document).on('click', '#LZTUpResetUsersDB', async function () {
     await deleteUsersDB();
-    await initUsersDB().then(value => {return(value)}).catch(err => {console.error(err); return false});
+    await initUsersDB();
     alert('Настройки пользователей LZT Upgrade сброшены');
     await sleep(500);
     window.location.reload();
@@ -1119,7 +1119,7 @@ if (MenuResult === true) {
   // APPEAR
   $(document).on('click', '#LZTUpResetAppearDB', async function () {
     await deleteAppearDB();
-    await initAppearDB().then(value => {return(value)}).catch(err => {console.error(err); return false});
+    await initAppearDB();
     alert('Настройки "Внешнего вида" LZT Upgrade сброшены');
     await sleep(500);
     window.location.reload();

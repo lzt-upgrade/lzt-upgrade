@@ -86,9 +86,9 @@ async function initUniqueStyleDB () {
     })
 }
 
-async function updateUniqueStyleDB(nickSt = null, bannerSt = null, bannerTxt = null, badgeIcn = null, badgeTxt = null, badgeFll = null, badgeStrk = null) {
+async function updateUniqueStyleDB({nickStyle, bannerStyle, bannerText, badgeIcon, badgeText, badgeFill, badgeStroke}) {
     return new Promise((resolve, reject) => {
-      if (nickSt !== null || bannerSt !== null || bannerTxt !== null || badgeIcn !== null || badgeTxt !== null || badgeFll !== null || badgeStrk !== null) {
+      if (typeof(nickStyle) === 'string' || typeof(bannerStyle) === 'string' || typeof(bannerText) === 'string' || typeof(badgeIcon) === 'string' || typeof(badgeText) === 'string' || typeof(badgeFill) === 'string' || typeof(badgeStroke) === 'string') {
         var openRequest = openDB("LZTUpProfile");
 
         openRequest.onerror = () => {
@@ -124,32 +124,32 @@ async function updateUniqueStyleDB(nickSt = null, bannerSt = null, bannerTxt = n
             console.log('LZTUp: Получены данные из Базы Данных: ', request.result);
             var data = request.result;
 
-            if (nickSt !== null) {
-              data.nickStyle = String(nickSt);
+            if (typeof(nickStyle) === 'string') {
+              data.nickStyle = nickStyle;
             }
 
-            if (bannerSt !== null) {
-              data.bannerStyle = String(bannerSt);
+            if (typeof(bannerStyle) === 'string') {
+              data.bannerStyle = bannerStyle;
             }
 
-            if (bannerTxt !== null) {
-              data.bannerText = String(bannerTxt);
+            if (typeof(bannerText) === 'string') {
+              data.bannerText = bannerText;
             }
 
-            if (badgeIcn !== null) {
-              data.badgeIcon = String(badgeIcn);
+            if (typeof(badgeIcon) === 'string') {
+              data.badgeIcon = badgeIcon;
             }
 
-            if (badgeTxt !== null) {
-              data.badgeText = String(badgeTxt);
+            if (typeof(badgeText) === 'string') {
+              data.badgeText = badgeText;
             }
 
-            if (badgeFll !== null) {
-              data.badgeFill = String(badgeFll);
+            if (typeof(badgeFill) === 'string') {
+              data.badgeFill = badgeFill;
             }
 
-            if (badgeStrk !== null) {
-              data.badgeStroke = String(badgeStrk);
+            if (typeof(badgeStroke) === 'string') {
+              data.badgeStroke = badgeStroke;
             }
 
             var requestUpdate = objectStore.put(data);
