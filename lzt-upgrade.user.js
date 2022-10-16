@@ -1098,20 +1098,20 @@ if (MenuResult === true) {
 
   $(document).on('click', '#show_userid_in_profile', async function () {
     $('#show_userid_in_profile')[0].checked ? (
-      await updateUsersDB(1),
+      await updateUsersDB({showUseridInProfile: 1}),
       await addUserIdInProfileInfo()
       ): (
-        await updateUsersDB(0),
+        await updateUsersDB({showUseridInProfile: 0}),
         await removeUserIdInProfileInfo()
       );
   });
 
   $(document).on('click', '#show_fullreg_in_profile', async function () {
     $('#show_fullreg_in_profile')[0].checked ? (
-      await updateUsersDB(null, 1),
+      await updateUsersDB({showFullRegInProfile: 1}),
       await editUserRegInProfileInfo(true)
       ): (
-        await updateUsersDB(null, 0),
+        await updateUsersDB({showFullRegInProfile: 0}),
         await editUserRegInProfileInfo(false)
       );
   });

@@ -76,9 +76,9 @@ async function initUsersDB () {
     })
 }
 
-async function updateUsersDB(showUseridInProfile = null, showFullRegInProfile = null) {
+async function updateUsersDB({showUseridInProfile, showFullRegInProfile}) {
     return new Promise((resolve, reject) => {
-      if (showUseridInProfile !== null || showFullRegInProfile !== null) {
+      if (typeof(showUseridInProfile) === 'number' || typeof(showFullRegInProfile) === 'number') {
         var openRequest = openDB("LZTUpUsers");
 
         openRequest.onerror = () => {
