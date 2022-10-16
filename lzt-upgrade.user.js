@@ -568,6 +568,7 @@ async function sendMessageHandler() {
     $(sendButton).on('click', async function() {
       await sleep(850);
       await updateUniqueStyles();
+      await reloadReportButtons();
     })
   }
 
@@ -1018,6 +1019,18 @@ async function removeReportBtnInPosts(name) {
   }
 }
 
+async function reloadReportButtons() {
+  let dbAppearData = await readAppearDB().then(value => {return(value)}).catch(err => {console.error(err); return false});
+  if (dbAppearData.reportButtonsInPost.length > 0) {
+    if (typeof (dbAppearData.reportButtonsInPost) === 'string') {
+      let buttons = dbAppearData.reportButtonsInPost.split(',');
+      for (const button of buttons) {
+        let reportBtn = reportButtonsList.find(btn => btn.id === Number(button));
+        typeof(reportBtn) === "object" ? await addReportBtnInPosts(reportBtn.name, reportBtn.reason) : undefined;
+      }
+    }
+  }
+}
 
 // async function hideAds() {
 
@@ -1356,13 +1369,31 @@ if (MenuResult === true) {
   });
 }
 
-var hasPageNav = $('.PageNav > nav > a')
-var isProfile = $('ol#ProfilePostList')
+var hasPageNav = $('.PageNav > nav > a');
+var isProfile = $('ol#ProfilePostList');
+var $messageList = $('ol.messageList');
 if (hasPageNav.length > 0 && isProfile.length > 0) {
   var mutationObserver = new MutationObserver(async function(mutations) {
     mutations.forEach(async function(mutation) {
       if (mutation.target === $(isProfile)[0]) {
         await updateUniqueStyles();
+      }
+    });
+  });
+
+  mutationObserver.observe(document.documentElement, {
+    attributes: true,
+    childList: true,
+    subtree: true,
+    attributeOldValue: true,
+  });
+}
+
+if ($messageList.length) {
+  var mutationObserver = new MutationObserver(async function(mutations) {
+    mutations.forEach(async function(mutation) {
+      if (mutation.target === $($messageList)[0]) {
+        await reloadReportButtons();
       }
     });
   });
