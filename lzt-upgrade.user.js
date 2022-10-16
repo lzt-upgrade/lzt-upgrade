@@ -119,6 +119,28 @@ const marketLogoList = [
   },
 ]
 
+const reportButtonsList = [
+  {
+    id: 1,
+    name: 'Оффтоп',
+    alternativeName: '1.1',
+    reason: 'Флуд / Оффтоп / Спам / Бесполезная тема'
+  },
+  {
+    id: 2,
+    name: 'Раздел',
+    alternativeName: '2.12',
+    reason: 'Создание темы не в соответствующем разделе'
+  },
+  {
+    id: 3,
+    name: 'Оформление',
+    alternativeName: '3.2',
+    reason: 'Неправильное оформление темы'
+  },
+]
+
+
 $(menuBtn).on('click', async function () {
   var uniqueData = await readUniqueStyleDB().then(value => {return(value)}).catch(err => {console.error(err); return false});
   var contestsData = await readContestsDB().then(value => {return(value)}).catch(err => {console.error(err); return false});
@@ -146,6 +168,7 @@ $(menuBtn).on('click', async function () {
   var marketLogo = appearData.marketLogo;
   var hideCounterAlerts = appearData.hideCounterAlerts;
   var hideCounterConversations = appearData.hideCounterConversations;
+  var reportButtonsInPost = appearData.reportButtonsInPost;
 
   const overlay = registerModal(
     'LZT Upgrade',
@@ -303,6 +326,14 @@ $(menuBtn).on('click', async function () {
         <input type="checkbox" name="hide_tags_in_threads" value="1" id="hide_tags_in_threads" ${hideTagsInThreads === 1 ? "checked" : ''}>
         <label for="hide_tags_in_threads">Скрыть теги в темах</label>
       </div>
+      <div id="LZTUpModalChecksContainer">
+        <input type="checkbox" name="hide_counter_alerts" value="1" id="hide_counter_alerts" ${hideCounterAlerts === 1 ? "checked" : ''}>
+        <label for="hide_counter_alerts">Скрыть счётчик уведомлений в навбаре</label>
+      </div>
+      <div id="LZTUpModalChecksContainer">
+        <input type="checkbox" name="hide_counter_conversations" value="1" id="hide_counter_conversations" ${hideCounterConversations === 1 ? "checked" : ''}>
+        <label for="hide_counter_conversations">Скрыть счётчик сообщений в навбаре</label>
+      </div>
       <div id="LZTUpModalLogoContainer">
         <div class="bold title">Логотип:</div>
         <ul>
@@ -313,13 +344,10 @@ $(menuBtn).on('click', async function () {
         <ul>
 				</ul>
       </div>
-      <div id="LZTUpModalChecksContainer">
-        <input type="checkbox" name="hide_counter_alerts" value="1" id="hide_counter_alerts" ${hideCounterAlerts === 1 ? "checked" : ''}>
-        <label for="hide_counter_alerts">Скрыть счётчик уведомлений в навбаре</label>
-      </div>
-      <div id="LZTUpModalChecksContainer">
-        <input type="checkbox" name="hide_counter_conversations" value="1" id="hide_counter_conversations" ${hideCounterConversations === 1 ? "checked" : ''}>
-        <label for="hide_counter_conversations">Скрыть счётчик сообщений в навбаре</label>
+      <div id="LZTUpModalReportButtonsContainer">
+        <div class="bold title">Кнопки быстрого репорта в посте:</div>
+        <ul>
+        </ul>
       </div>
       <input id="LZTUpResetAppearDB" type="button" value="Сбросить настройки" class="button primary"></input>
     </div>
@@ -346,6 +374,27 @@ $(menuBtn).on('click', async function () {
           <input type="radio" name="marketlogo" id="set_${logoMarket.short}_marketlogo" value="${logoMarket.short}" ${marketLogo === logoMarket.id ? "checked" : ''}>
           <span style="${XenForo.htmlspecialchars(logoMarket.preview)}"></span>
           ${logoMarket.name}
+        </label>
+      </li>`);
+  };
+
+  $reportButtonsSelect = $('#LZTUpModalReportButtonsContainer > ul');
+  for (const reportButton of reportButtonsList) {
+    let btnStatus = '';
+    if (typeof (reportButtonsInPost) === 'string') {
+      let btns = reportButtonsInPost.split(',');
+      if (btns.find(letter => Number(letter) === reportButton.id)) {
+        console.log('all good');
+        console.log(reportButton.id)
+        btnStatus = 'checked';
+      }
+    }
+    console.log(btnStatus)
+    $reportButtonsSelect.append(`
+      <li style = "list-style: none;">
+        <label for="set_${reportButton.id}_reportbtn">
+          <input type="checkbox" name="reportButton" id="set_${reportButton.id}_reportbtn" value="${reportButton.name} (${reportButton.reason})" ${btnStatus}>
+          ${reportButton.name} (${reportButton.reason})
         </label>
       </li>`);
   };
@@ -936,6 +985,39 @@ const counterMutationObserver = new MutationObserver(async function(mutations) {
   });
 });
 
+async function addReportBtnInPosts(name, reason) {
+  const $messageList = $('#messageList > li');
+  for (let block of $messageList) {
+    if ($(block).find('.publicControls').length) {
+      if ($(block).find(`.publicControls > #LZTUPReportButton[name$=${name}]`).length === 0) {
+        let $reportButton = $(`<span id = "LZTUPReportButton" name = "${name}">${XenForo.htmlspecialchars(name)}</span>`)
+        $reportButton.on('click', async () => {
+          let formData = new FormData();
+          formData.append("message", reason)
+          formData.append("is_common_reason", 1)
+          formData.append("_xfToken", XenForo._csrfToken);
+          formData.append("_xfNoRedirect", 1)
+          formData.append("_xfToken", XenForo._csrfToken);
+          formData.append("redirect", window.location.href);
+          await fetch('posts/' + block.id.split('-')[1] +'/report', { method: 'POST', body: formData });
+          XenForo.alert('Жалоба отправлена', '', 5000);
+        })
+        $(block).find('.publicControls').prepend($reportButton)
+      }
+    }
+  }
+}
+
+async function removeReportBtnInPosts(name) {
+  const $messageList = $('#messageList > li');
+  for (let block in $messageList) {
+    const $reportBtn = $(block).find(`.publicControls > #LZTUPReportButton[name$=${name}]`)
+    if ($reportBtn.length > 0) {
+      $reportBtn.remove();
+    }
+  }
+}
+
 
 // async function hideAds() {
 
@@ -982,6 +1064,15 @@ if (isAppearDBInited) {
   if (dbAppearData.marketLogo > 0) {
     let logo = marketLogoList.find(logo => logo.id === dbAppearData.marketLogo);
     typeof(logo) === "object" ? updateSiteLogo('market', logo.css) : undefined;
+  }
+  if (dbAppearData.reportButtonsInPost.length > 0) {
+    if (typeof (dbAppearData.reportButtonsInPost) === 'string') {
+      let buttons = dbAppearData.reportButtonsInPost.split(',');
+      for (const button of buttons) {
+        let reportBtn = reportButtonsList.find(btn => btn.id === Number(button));
+        typeof(reportBtn) === "object" ? await addReportBtnInPosts(reportBtn.name, reportBtn.reason) : undefined;
+      }
+    }
   }
   dbAppearData.hideCounterAlerts === 1 ? await counterVisibility('alerts', true) : null;
   dbAppearData.hideCounterConversations === 1 ? await counterVisibility('conversations', true) : null;
@@ -1239,6 +1330,28 @@ if (MenuResult === true) {
         await updateAppearDB({marketLogo: logo.id}),
         updateSiteLogo('market', logo.css)
         ): undefined;
+    });
+  });
+
+  reportButtonsList.forEach(btn => {
+    $(document).on('click', `#set_${btn.id}_reportbtn`, async function () {
+      let appearData = await readAppearDB().then(value => {return(value)}).catch(err => {console.error(err); return false});
+      let usedBtns;
+      if (typeof (appearData.reportButtonsInPost) === 'string') {
+        usedBtns = appearData.reportButtonsInPost.split(',');
+        let emptyCell = usedBtns.indexOf('')
+        emptyCell !== -1 ? usedBtns.splice(emptyCell, 1) : null;
+        if (usedBtns.find(btnId => btnId === String(btn.id))) {
+          let btnIndex = usedBtns.indexOf(String(btn.id));
+          btnIndex !== -1 ? usedBtns.splice(btnIndex, 1) : null;
+        } else {
+          usedBtns.push(String(btn.id));
+        }
+      } else {
+        usedBtns = [String(btn.id)];
+      }
+      await updateAppearDB({reportButtonsInPost: usedBtns.join()}),
+      $(`#set_${btn.id}_reportbtn`)[0].checked ? await addReportBtnInPosts(btn.name, btn.reason) : await removeReportBtnInPosts(btn.name);
     });
   });
 }
