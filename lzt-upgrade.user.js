@@ -64,10 +64,8 @@ const menuBtn = $('<li><a id="LZTUpButton">LZT Upgrade</a></li>');
 const logoList = [
   {
     id: 0,
-    name: 'Новый логотип',
-    short: 'new',
-    css: "background-size: 100%;float: left;height: 36px;width: 36px;margin: 4px 10px 0 0;background-image: url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='256' height='256' viewBox='0 0 256 256' fill='none'%3E%3Cg clip-path='url(%23clip0_123_378)'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M70.1504 207.392C91.8146 224.992 116.842 235.022 143.533 235.022C183.225 235.022 219.257 212.775 245.995 176.542C234.706 161.247 221.764 148.436 207.575 138.751L184.794 150.124C189.69 157.741 192.542 166.809 192.542 176.542C192.542 203.577 170.604 225.491 143.533 225.491C122.499 225.491 104.566 212.252 97.6139 193.666L70.1504 207.38V207.392ZM126.67 179.168C127.216 182.721 128.88 186.025 131.459 188.604C134.656 191.8 139.005 193.595 143.533 193.583C152.957 193.583 160.598 185.953 160.598 176.542C160.598 171.919 158.756 167.724 155.761 164.646L126.682 179.168H126.67Z' fill='%232BAD72'/%3E%3Cpath d='M76.3528 176.16L242.405 96.3367L205.91 20.4229L187.062 87.507L164.412 40.3758L145.552 107.46L122.902 60.3287L104.042 127.413L81.3916 80.2816L62.5319 147.366L39.8814 100.235L9.4707 208.318L50.9809 188.365L76.3528 176.172V176.16Z' fill='%232BAD72'/%3E%3C/g%3E%3Cdefs%3E%3CclipPath id='clip0_123_378'%3E%3Crect width='236.512' height='214.598' fill='white' transform='translate(9.4707 20.4229)'/%3E%3C/clipPath%3E%3C/defs%3E%3C/svg%3E\")",
-    preview: "height:24px;width:24px;margin:0px 20px;float:right;background:url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='256' height='256' viewBox='0 0 256 256' fill='none'%3E%3Cg clip-path='url(%23clip0_123_378)'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M70.1504 207.392C91.8146 224.992 116.842 235.022 143.533 235.022C183.225 235.022 219.257 212.775 245.995 176.542C234.706 161.247 221.764 148.436 207.575 138.751L184.794 150.124C189.69 157.741 192.542 166.809 192.542 176.542C192.542 203.577 170.604 225.491 143.533 225.491C122.499 225.491 104.566 212.252 97.6139 193.666L70.1504 207.38V207.392ZM126.67 179.168C127.216 182.721 128.88 186.025 131.459 188.604C134.656 191.8 139.005 193.595 143.533 193.583C152.957 193.583 160.598 185.953 160.598 176.542C160.598 171.919 158.756 167.724 155.761 164.646L126.682 179.168H126.67Z' fill='%232BAD72'/%3E%3Cpath d='M76.3528 176.16L242.405 96.3367L205.91 20.4229L187.062 87.507L164.412 40.3758L145.552 107.46L122.902 60.3287L104.042 127.413L81.3916 80.2816L62.5319 147.366L39.8814 100.235L9.4707 208.318L50.9809 188.365L76.3528 176.172V176.16Z' fill='%232BAD72'/%3E%3C/g%3E%3Cdefs%3E%3CclipPath id='clip0_123_378'%3E%3Crect width='236.512' height='214.598' fill='white' transform='translate(9.4707 20.4229)'/%3E%3C/clipPath%3E%3C/defs%3E%3C/svg%3E\");background-repeat:no-repeat;background-size:100%;"
+    name: 'По умолчанию',
+    short: 'default',
   },
   {
     id: 1,
@@ -99,6 +97,28 @@ const logoList = [
   },
 ]
 
+const marketLogoList = [
+  {
+    id: 0,
+    name: 'По умолчанию',
+    short: 'default',
+  },
+  {
+    id: 1,
+    name: 'Старый логотип',
+    short: 'old',
+    css: 'background: url(https://svgshare.com/i/nNC.svg) no-repeat;margin: 10px 10px 0 0;',
+    preview: 'height:24px;width:72px;margin:0px 16px;float:right;background: url(https://svgshare.com/i/nNC.svg) no-repeat;',
+  },
+  {
+    id: 2,
+    name: 'Классический',
+    short: 'classic',
+    css: 'background: url(https://i.imgur.com/GJrquyz.png) no-repeat;background-size:85%;margin: 5px -10px 0 4px;',
+    preview: 'height:24px;width:72px;margin:0px 16px;float:right;background: url(https://i.imgur.com/GJrquyz.png) no-repeat;background-size:100%',
+  },
+]
+
 $(menuBtn).on('click', async function () {
   var uniqueData = await readUniqueStyleDB().then(value => {return(value)}).catch(err => {console.error(err); return false});
   var contestsData = await readContestsDB().then(value => {return(value)}).catch(err => {console.error(err); return false});
@@ -123,6 +143,7 @@ $(menuBtn).on('click', async function () {
   var hideUnreadArticleCircle = appearData.hideUnreadArticleCircle;
   var hideTagsInThreads = appearData.hideTagsInThreads;
   var changeLogo = appearData.changeLogo;
+  var marketLogo = appearData.marketLogo;
   var hideCounterAlerts = appearData.hideCounterAlerts;
   var hideCounterConversations = appearData.hideCounterConversations;
 
@@ -287,6 +308,11 @@ $(menuBtn).on('click', async function () {
         <ul>
 				</ul>
       </div>
+      <div id="LZTUpModalMarketLogoContainer">
+        <div class="bold title">Логотип маркета:</div>
+        <ul>
+				</ul>
+      </div>
       <div id="LZTUpModalChecksContainer">
         <input type="checkbox" name="hide_counter_alerts" value="1" id="hide_counter_alerts" ${hideCounterAlerts === 1 ? "checked" : ''}>
         <label for="hide_counter_alerts">Скрыть счётчик уведомлений в навбаре</label>
@@ -301,13 +327,25 @@ $(menuBtn).on('click', async function () {
   );
 
   $logoSelect = $('#LZTUpModalLogoContainer > ul');
-  for (var logo of logoList) {
+  for (const logo of logoList) {
     $logoSelect.append(`
       <li style = "list-style: none;">
         <label for="set_${logo.short}_logo">
-          <input type="radio" name="order" id="set_${logo.short}_logo" value="${logo.short}" ${changeLogo === logo.id ? "checked" : ''}>
+          <input type="radio" name="logo" id="set_${logo.short}_logo" value="${logo.short}" ${changeLogo === logo.id ? "checked" : ''}>
           <span style="${XenForo.htmlspecialchars(logo.preview)}"></span>
           ${logo.name}
+        </label>
+      </li>`);
+  };
+
+  $marketLogoSelect = $('#LZTUpModalMarketLogoContainer > ul');
+  for (const logoMarket of marketLogoList) {
+    $marketLogoSelect.append(`
+      <li style = "list-style: none;">
+        <label for="set_${logoMarket.short}_marketlogo">
+          <input type="radio" name="marketlogo" id="set_${logoMarket.short}_marketlogo" value="${logoMarket.short}" ${marketLogo === logoMarket.id ? "checked" : ''}>
+          <span style="${XenForo.htmlspecialchars(logoMarket.preview)}"></span>
+          ${logoMarket.name}
         </label>
       </li>`);
   };
@@ -838,8 +876,17 @@ async function unreadArticleCircleVisibility(isHidden = true) {
   await changeVisibility($hasUnreadArticles, isHidden)
 }
 
-function updateSiteLogo(newStyles) {
-  $('#lzt-logo')[0].style = newStyles;
+function updateSiteLogo(site, newStyles) {
+  switch (site) {
+    case 'main' || 'forum':
+      $('#lzt-logo').length ? $('#lzt-logo')[0].style = newStyles : null;
+      break;
+    case 'market' || 'shop':
+      $('#lzt-market-logo').length ? $('#lzt-market-logo')[0].style = newStyles : null;
+      break;
+    default:
+      return false;
+  }
   return true;
 }
 
@@ -930,7 +977,11 @@ if (isAppearDBInited) {
   dbAppearData.hideTagsInThreads === 1 ? await tagsVisibility(true) : null;
   if (dbAppearData.changeLogo > 0) {
     let logo = logoList.find(logo => logo.id === dbAppearData.changeLogo);
-    typeof(logo) === "object" ? updateSiteLogo(logo.css) : undefined;
+    typeof(logo) === "object" ? updateSiteLogo('main', logo.css) : undefined;
+  }
+  if (dbAppearData.marketLogo > 0) {
+    let logo = marketLogoList.find(logo => logo.id === dbAppearData.marketLogo);
+    typeof(logo) === "object" ? updateSiteLogo('market', logo.css) : undefined;
   }
   dbAppearData.hideCounterAlerts === 1 ? await counterVisibility('alerts', true) : null;
   dbAppearData.hideCounterConversations === 1 ? await counterVisibility('conversations', true) : null;
@@ -1148,9 +1199,9 @@ if (MenuResult === true) {
   logoList.forEach(logo => {
     $(document).on('click', `#set_${logo.short}_logo`, async function () {
       $(`#set_${logo.short}_logo`)[0].checked ? (
-        console.log(`Выбрано ${logo.id}`),
+        console.log(`Выбрано лого сайта с ID: ${logo.id}`),
         await updateAppearDB({changeLogo: logo.id}),
-        updateSiteLogo(logo.css)
+        updateSiteLogo('main', logo.css)
         ): undefined;
     });
   });
@@ -1179,6 +1230,16 @@ if (MenuResult === true) {
         dbAppearData.hideCounterAlerts === 0 && dbAppearData.hideCounterConversations === 0 ? counterMutation(false) : null,
         await counterVisibility('conversations', false)
       );
+  });
+
+  marketLogoList.forEach(logo => {
+    $(document).on('click', `#set_${logo.short}_marketlogo`, async function () {
+      $(`#set_${logo.short}_marketlogo`)[0].checked ? (
+        console.log(`Выбрано лого маркета с ID:  ${logo.id}`),
+        await updateAppearDB({marketLogo: logo.id}),
+        updateSiteLogo('market', logo.css)
+        ): undefined;
+    });
   });
 }
 
