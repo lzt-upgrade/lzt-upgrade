@@ -93,7 +93,7 @@ const logoList = [
     name: 'Новогодний',
     short: 'newyear',
     css: "width: 78px;height: 43px;float: left;margin-left: -5px;background-size: 105%;background-image: url(https://i.imgur.com/dqzURj5.gif);background-repeat: no-repeat;",
-    preview: "height:24px;width:36px;margin:0px 11px;float:right;background:url(https://i.imgur.com/dqzURj5.gif);background-repeat:no-repeat;background-size:110%;",
+    preview: "height:24px;width:36px;margin:0px 11px;float:right;background:url(https://i.imgur.com/dqzURj5.gif);background-repeat:no-repeat;background-size:100%;",
   },
 ]
 
