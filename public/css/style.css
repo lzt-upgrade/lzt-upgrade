@@ -161,11 +161,20 @@
   width: 400px;
 }
 
-#LZTUpModalChecksContainer, #LZTUpModalLogoContainer, #LZTUpModalMarketLogoContainer {
+#LZTUpModalChecksContainer, #LZTUpModalLogoContainer, #LZTUpModalMarketLogoContainer, #LZTUpModalReportButtonsContainer {
   margin: 15px;
   width: 550px;
 }
 
 #LZTUpModalChecksText {
   margin: 0px 25px 5px;
+}
+
+#LZTUPReportButton {
+  font-weight: bold;
+  padding: 3px 10px;
+  background: #218e5d;
+  border-radius: 50px;
+  margin-right: 5px;
+  cursor: pointer;
 }
