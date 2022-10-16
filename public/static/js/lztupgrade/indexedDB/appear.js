@@ -46,6 +46,7 @@ async function initAppearDB () {
           hideCounterAlerts: 0,
           hideCounterConversations: 0,
           marketLogo: 0,
+          reportButtonsInPost: '',
         }
         var request = objectStore.add(appearDefault);
 
@@ -81,9 +82,9 @@ async function initAppearDB () {
   })
 }
 
-async function updateAppearDB({hideUnreadArticleCircle, hideTagsInThreads, changeLogo, hideCounterAlerts, hideCounterConversations, marketLogo}) {
+async function updateAppearDB({hideUnreadArticleCircle, hideTagsInThreads, changeLogo, hideCounterAlerts, hideCounterConversations, marketLogo, reportButtonsInPost}) {
   return new Promise((resolve, reject) => {
-    if (typeof (hideUnreadArticleCircle) === 'number' || typeof(hideTagsInThreads) === 'number' || typeof(changeLogo) === 'number' || typeof(hideCounterAlerts) === 'number' || typeof(hideCounterConversations) === 'number' || typeof(marketLogo) === 'number') {
+    if (typeof (hideUnreadArticleCircle) === 'number' || typeof(hideTagsInThreads) === 'number' || typeof(changeLogo) === 'number' || typeof(hideCounterAlerts) === 'number' || typeof(hideCounterConversations) === 'number' || typeof(marketLogo) === 'number' || typeof(reportButtonsInPost) === 'string') {
       var openRequest = openDB("LZTUpAppear");
 
       openRequest.onerror = () => {
@@ -141,6 +142,10 @@ async function updateAppearDB({hideUnreadArticleCircle, hideTagsInThreads, chang
 
           if (typeof(marketLogo) === 'number') {
             data.marketLogo = marketLogo;
+          }
+
+          if (typeof(reportButtonsInPost) === 'string') {
+            data.reportButtonsInPost = reportButtonsInPost;
           }
 
           var requestUpdate = objectStore.put(data);
