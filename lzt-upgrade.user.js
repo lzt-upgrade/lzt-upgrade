@@ -6,7 +6,7 @@
 // @author       Toil
 // @match        *://*.lolz.guru/*
 // @match        *://*.zelenka.guru/*
-// @icon         https://lolz.guru/public/2017/og.png
+// @icon         https://zelenka.guru/public/2017/zelenka.png
 // @resource     styles https://raw.githubusercontent.com/ilyhalight/lzt-upgrade/master/public/css/style.css
 // @resource     nano https://raw.githubusercontent.com/ilyhalight/lzt-upgrade/master/public/css/nano.min.css
 // @require      https://raw.githubusercontent.com/ilyhalight/lzt-upgrade/master/public/static/js/pickr/pickr.es5.min.js
