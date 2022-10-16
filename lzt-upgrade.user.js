@@ -734,7 +734,7 @@ async function regOpenContestsBtn(amount = 10) {
       if (links.length) {
         $(links).map((element, value) => {
           if (element <= amount) {
-            var win = window.open(`https://lolz.guru/${value}`)
+            var win = window.open(`https://${window.location.hostname}/${value}`)
             win ? win.focus() : alert('Разрешите доступ к всплывающим окнам для этого сайта')
           } else {
             return;
