@@ -9,6 +9,7 @@
 // @icon         https://zelenka.guru/public/2017/zelenka.png
 // @resource     styles https://raw.githubusercontent.com/ilyhalight/lzt-upgrade/master/public/css/style.css
 // @resource     nano https://raw.githubusercontent.com/ilyhalight/lzt-upgrade/master/public/css/nano.min.css
+// @require      https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js
 // @require      https://raw.githubusercontent.com/ilyhalight/lzt-upgrade/master/public/static/js/pickr/pickr.es5.min.js
 // @require      https://raw.githubusercontent.com/ilyhalight/lzt-upgrade/master/public/static/js/lztupgrade/indexedDB/UniqueStyle.js
 // @require      https://raw.githubusercontent.com/ilyhalight/lzt-upgrade/master/public/static/js/lztupgrade/indexedDB/contests.js
@@ -40,7 +41,7 @@ if (typeof GM_addStyle === 'undefined') {
 if (typeof GM_getResourceText === 'undefined') {
   fetch('https://raw.githubusercontent.com/ilyhalight/lzt-upgrade/master/public/css/style.css')
   .then((response) => response.text().then(styles => GM_addStyle(styles)));
-  fetch('https://raw.githubusercontent.com/ilyhalight/lzt-upgrade/master/public/css/nano.min.cs')
+  fetch('https://raw.githubusercontent.com/ilyhalight/lzt-upgrade/master/public/css/nano.min.css')
   .then((response) => response.text().then(nano => GM_addStyle(nano)));
 } else {
   const styles = GM_getResourceText("styles");
@@ -49,6 +50,13 @@ if (typeof GM_getResourceText === 'undefined') {
   GM_addStyle(nano);
 }
 
+// Error page
+if (/^Error\s[0-9]{3}$/.test($('head title').text())) {
+  let body = $('body');
+  body.attr('id', 'LZTUPErrorPage');
+  body.find('article > div').append('<img src="https://i.imgur.com/iVmKDr7.gif" alt="utya_duck_rain" loading="lazy">')
+  return;
+}
 
 const blockAds = '(Native/\\.NET файлов|threads\\/|easyliker\\.ru|niccord\\.ru|vpromotions\\.ru|skysmm\\.ru|VerifTeam|SmmPanelUS\\.com|t\\.me/lztnext|axxishop\\.ru|LIGHTSHOP\\.SU)';
 
@@ -65,35 +73,42 @@ const logoList = [
   {
     id: 0,
     name: 'По умолчанию',
+    author: 'Lolzteam',
     short: 'default',
+    preview: 'http://localhost:3000/static/img/logos/forum/default.svg'
   },
   {
     id: 1,
-    name: 'Старый логотип',
-    short: 'old',
+    name: 'Старый',
+    author: 'Lolzteam',
+    short: 'old_lolz',
     css: "background-size:100%;margin-top:auto;width:87px;height:44px;float:left;margin-left: -5px;background:url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' version='1.1' id='Слой_2' x='0px' y='0px' viewBox='0 0 90 40' style='enable-background:new 0 0 90 40;' xml:space='preserve'%3E%3Cstyle type='text/css'%3E .st0%7Bfill-rule:evenodd;clip-rule:evenodd;fill:%2323A86D;%7D%0A%3C/style%3E%3Cpath class='st0' d='M49,31V13h15.1l4-4H16v4h17L21,32h-8V9H9v27h59l-4-4H49V31 M26,32h19v-1V13h-7L26,32z'/%3E%3C/svg%3E\")",
-    preview: "height:24px;width:36px;margin:0px 11px;float:right;background:url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' version='1.1' id='Слой_2' x='0px' y='0px' viewBox='0 0 90 40' style='enable-background:new 0 0 90 40;' xml:space='preserve'%3E%3Cstyle type='text/css'%3E .st0%7Bfill-rule:evenodd;clip-rule:evenodd;fill:%2323A86D;%7D%0A%3C/style%3E%3Cpath class='st0' d='M49,31V13h15.1l4-4H16v4h17L21,32h-8V9H9v27h59l-4-4H49V31 M26,32h19v-1V13h-7L26,32z'/%3E%3C/svg%3E\");background-repeat:no-repeat;background-size:115%;"
+    preview: "http://localhost:3000/static/img/logos/forum/old.svg"
   },
   {
     id: 2,
-    name: 'Анимированный старый логотип',
-    short: 'old_animated',
+    name: 'Анимированный старый',
+    author: 'Lolzteam',
+    short: 'old_animated_lolz',
     css: "width: 78px;height: 43px;float: left;margin-left: -5px;background-size: 95%;background-image: url(https://i.imgur.com/AClYTdp.gif);",
-    preview: "height:24px;width:36px;margin:0px 11px;float:right;background:url(https://i.imgur.com/AClYTdp.gif);background-repeat:no-repeat;background-size:95%;"
+    preview: "https://i.imgur.com/AClYTdp.gif"
   },
   {
     id: 3,
-    name: 'Мамонт (by Nordea)',
-    short: 'mamont',
+    name: 'Мамонт',
+    author: 'Nordea',
+    authorID: '242713',
+    short: 'mamont_nordea',
     css: "background-repeat: no-repeat;width: 36px;height: 36px;float: left;margin: 4px 10px 0 0;background-size: 110%;background-image: url(https://imgur.com/IBoICGv.png);",
-    preview: "height:24px;width:24px;margin:0px 20px;float:right;background:url(https://imgur.com/IBoICGv.png);background-repeat:no-repeat;background-size:110%;",
+    preview: "https://imgur.com/IBoICGv.png",
   },
   {
     id: 4,
-    name: 'Новогодний',
-    short: 'newyear',
+    name: 'Новогодний 2022',
+    author: 'Lolzteam',
+    short: 'newyear22_lolz',
     css: "width: 78px;height: 43px;float: left;margin-left: -5px;background-size: 105%;background-image: url(https://i.imgur.com/dqzURj5.gif);background-repeat: no-repeat;",
-    preview: "height:24px;width:36px;margin:0px 11px;float:right;background:url(https://i.imgur.com/dqzURj5.gif);background-repeat:no-repeat;background-size:100%;",
+    preview: "https://i.imgur.com/dqzURj5.gif",
   },
 ]
 
@@ -183,37 +198,49 @@ $(menuBtn).on('click', async function () {
     </ul>
     <div id="LZTUpList" class="LZTUpMainList">
       <div id="LZTUpListItem" class="LZTUpUniqItem">
-        <img alt="Image" id="LZTUpListIcon" src="https://raw.githubusercontent.com/ilyhalight/lzt-upgrade/master/public/static/img/color.svg" loading=lazy>
-        <span id="LZTUpListText">Локальный Уник</span>
+        <img alt="Image" id="LZTUpListIcon" src="https://raw.githubusercontent.com/ilyhalight/lzt-upgrade/master/public/static/img/color.svg" loading="lazy">
+        <div>
+          <span id="LZTUpListText">Локальный Уник</span>
+          <span id="LZTUpListSubText">Представь, ты, мог не платить...</span>
+        </div>
       </div>
       <div id="LZTUpListItem" class="LZTUpContestsItem">
-        <img alt="Image" id="LZTUpListIcon" src="https://raw.githubusercontent.com/ilyhalight/lzt-upgrade/master/public/static/img/gift.svg" loading=lazy>
-        <span id="LZTUpListText">Розыгрыши</span>
+        <img alt="Image" id="LZTUpListIcon" src="https://raw.githubusercontent.com/ilyhalight/lzt-upgrade/master/public/static/img/gift.svg" loading="lazy">
+        <div>
+          <span id="LZTUpListText">Розыгрыши</span>
+          <span id="LZTUpListSubText">Комфорт для розыгрышей</span>
+        </div>
       </div>
       <div id="LZTUpListItem" class="LZTUpUsersItem">
-        <img alt="Image" id="LZTUpListIcon" src="https://raw.githubusercontent.com/ilyhalight/lzt-upgrade/master/public/static/img/user.svg" loading=lazy>
-        <span id="LZTUpListText">Пользователи</span>
+        <img alt="Image" id="LZTUpListIcon" src="https://raw.githubusercontent.com/ilyhalight/lzt-upgrade/master/public/static/img/user.svg" loading="lazy">
+        <div>
+          <span id="LZTUpListText">Пользователи</span>
+          <span id="LZTUpListSubText">Штучки для пользователей</span>
+        </div>
       </div>
       <div id="LZTUpListItem" class="LZTUpAppearItem">
-        <img alt="Image" id="LZTUpListIcon" src="https://raw.githubusercontent.com/ilyhalight/lzt-upgrade/master/public/static/img/color.svg" loading=lazy>
-        <span id="LZTUpListText">Внешний вид</span>
+        <img alt="Image" id="LZTUpListIcon" src="https://raw.githubusercontent.com/ilyhalight/lzt-upgrade/master/public/static/img/color.svg" loading="lazy">
+        <div>
+          <span id="LZTUpListText">Внешний вид</span>
+          <span id="LZTUpListSubText">Темы, логотипы и другое</span>
+        </div>
       </div>
     </div>
     <div id="LZTUpList" class="LZTUpSettingsList">
       <div id="LZTUpListItem">
-        <img alt="Image" id="LZTUpListIcon" src="https://raw.githubusercontent.com/ilyhalight/lzt-upgrade/master/public/static/img/more.svg" loading=lazy>
+        <img alt="Image" id="LZTUpListIcon" src="https://raw.githubusercontent.com/ilyhalight/lzt-upgrade/master/public/static/img/more.svg" loading="lazy">
         <span id="LZTUpListText">Lorem Ipsum</span>
       </div>
       <div id="LZTUpListItem">
-        <img alt="Image" id="LZTUpListIcon" src="https://raw.githubusercontent.com/ilyhalight/lzt-upgrade/master/public/static/img/more.svg" loading=lazy>
+        <img alt="Image" id="LZTUpListIcon" src="https://raw.githubusercontent.com/ilyhalight/lzt-upgrade/master/public/static/img/more.svg" loading="lazy">
         <span id="LZTUpListText">Lorem Ipsum</span>
       </div>
       <div id="LZTUpListItem">
-        <img alt="Image" id="LZTUpListIcon" src="https://raw.githubusercontent.com/ilyhalight/lzt-upgrade/master/public/static/img/more.svg" loading=lazy>
+        <img alt="Image" id="LZTUpListIcon" src="https://raw.githubusercontent.com/ilyhalight/lzt-upgrade/master/public/static/img/more.svg" loading="lazy">
         <span id="LZTUpListText">Lorem Ipsum - это текст-"рыба", часто используемый в печати и вэб-дизайне. Lorem Ipsum является стандартной "рыбой" для текстов на латинице с начала XVI века. В то время некий безымянный печатник создал большую коллекцию размеров и форм шрифтов, используя Lorem Ipsum для распечатки образцов. Lorem Ipsum не только успешно пережил без заметных изменений пять веков, но и перешагнул в электронный дизайн. Его популяризации в новое время послужили публикация листов Letraset с образцами Lorem Ipsum в 60-х годах и, в более недавнее время, программы электронной вёрстки типа Aldus PageMaker, в шаблонах которых используется Lorem Ipsum.</span>
       </div>
     </div>
-    <div id="LZTUpUniqContainer">
+    <div id="LZTUpUniqContainer" class="LZTUpSubMenu">
       <div id="LZTUpModalComment">
         На этой странице можно выбрать стиль вашего ника и лычки. Этот стиль виден только вам. После <a href="https://lolz.guru/account/upgrades?upgrade_id=14" target="_blank">покупки</a> оф. уника его увидят все.
       </div>
@@ -275,7 +302,7 @@ $(menuBtn).on('click', async function () {
 
       <input id="LZTUpResetUniqueDB" type="button" value="Сбросить настройки" class="button primary"></input>
     </div>
-    <div id="LZTUpContestsContainer">
+    <div id="LZTUpContestsContainer" class="LZTUpSubMenu">
       <div id="LZTUpModalChecksContainer">
         <input type="checkbox" name="open_ten" value="1" id="contests_open_ten" ${contestsTen === 1 ? "checked" : ''}>
         <label for="contests_open_ten">Кнопка "Открыть 10"</label>
@@ -306,7 +333,7 @@ $(menuBtn).on('click', async function () {
       </div>
       <input id="LZTUpResetContestsDB" type="button" value="Сбросить настройки" class="button primary"></input>
     </div>
-    <div id="LZTUpUsersContainer">
+    <div id="LZTUpUsersContainer" class="LZTUpSubMenu">
       <div id="LZTUpModalChecksContainer">
         <input type="checkbox" name="open_ten" value="1" id="show_userid_in_profile" ${showUseridInProfile === 1 ? "checked" : ''}>
         <label for="show_userid_in_profile">Показывать UserID в профиле пользователя</label>
@@ -317,7 +344,7 @@ $(menuBtn).on('click', async function () {
       </div>
       <input id="LZTUpResetUsersDB" type="button" value="Сбросить настройки" class="button primary"></input>
     </div>
-    <div id="LZTUpAppearContainer">
+    <div id="LZTUpAppearContainer" class="LZTUpSubMenu">
       <div id="LZTUpModalChecksContainer">
         <input type="checkbox" name="hide_unread_article_circle" value="1" id="hide_unread_article_circle" ${hideUnreadArticleCircle === 1 ? "checked" : ''}>
         <label for="hide_unread_article_circle">Скрыть значок не прочитанных статей в шапке сайта</label>
@@ -334,10 +361,10 @@ $(menuBtn).on('click', async function () {
         <input type="checkbox" name="hide_counter_conversations" value="1" id="hide_counter_conversations" ${hideCounterConversations === 1 ? "checked" : ''}>
         <label for="hide_counter_conversations">Скрыть счётчик сообщений в навбаре</label>
       </div>
-      <div id="LZTUpModalLogoContainer">
+      <div id="LZTUpModalCell">
         <div class="bold title">Логотип:</div>
-        <ul>
-				</ul>
+        <div class="LZTUpModalMesh" id="LZTUpModalLogoContainer">
+        </div>
       </div>
       <div id="LZTUpModalMarketLogoContainer">
         <div class="bold title">Логотип маркета:</div>
@@ -354,19 +381,22 @@ $(menuBtn).on('click', async function () {
     `
   );
 
-  $logoSelect = $('#LZTUpModalLogoContainer > ul');
+  const lztUpgradeModalMain = $('#LZTUpList').parent().parent();
+  const lztUpgradeMainTitle = lztUpgradeModalMain.find('h2.heading');
+  lztUpgradeMainTitle.attr('id', 'LZTUpModalMainTitle');
+
+  // Загрузка логотипов
+  let $logoSelect = $('#LZTUpModalLogoContainer');
   for (const logo of logoList) {
     $logoSelect.append(`
-      <li style = "list-style: none;">
-        <label for="set_${logo.short}_logo">
-          <input type="radio" name="logo" id="set_${logo.short}_logo" value="${logo.short}" ${changeLogo === logo.id ? "checked" : ''}>
-          <span style="${XenForo.htmlspecialchars(logo.preview)}"></span>
-          ${logo.name}
-        </label>
-      </li>`);
+    <div class="LZTUpModalMeshItem ${changeLogo === logo.id ? "active" : ''}" id="set_${logo.short}_logo" data-checked="${changeLogo === logo.id ? "true" : 'false'}">
+      <img src="${logo.preview}" alt="logo" loading="lazy">
+      <span class="LZTUpModalMeshItemName" data-shortname="${logo.short}">${XenForo.htmlspecialchars(logo.name)}</span>
+      <span class="LZTUpModalMeshItemAuthor">${XenForo.htmlspecialchars(logo.author)}</span>
+    </div>`);
   };
 
-  $marketLogoSelect = $('#LZTUpModalMarketLogoContainer > ul');
+  let $marketLogoSelect = $('#LZTUpModalMarketLogoContainer > ul');
   for (const logoMarket of marketLogoList) {
     $marketLogoSelect.append(`
       <li style = "list-style: none;">
@@ -378,18 +408,15 @@ $(menuBtn).on('click', async function () {
       </li>`);
   };
 
-  $reportButtonsSelect = $('#LZTUpModalReportButtonsContainer > ul');
+  let $reportButtonsSelect = $('#LZTUpModalReportButtonsContainer > ul');
   for (const reportButton of reportButtonsList) {
     let btnStatus = '';
     if (typeof (reportButtonsInPost) === 'string') {
       let btns = reportButtonsInPost.split(',');
       if (btns.find(letter => Number(letter) === reportButton.id)) {
-        console.log('all good');
-        console.log(reportButton.id)
         btnStatus = 'checked';
       }
     }
-    console.log(btnStatus)
     $reportButtonsSelect.append(`
       <li style = "list-style: none;">
         <label for="set_${reportButton.id}_reportbtn">
@@ -411,6 +438,20 @@ $(menuBtn).on('click', async function () {
   $usersContainer.hide();
   $uniqContainer.hide();
   $appearContainer.hide();
+
+  async function addGoBackBtn() {
+    lztUpgradeModalMain.prepend($('<button id="LZTUpModalBackButton"><img src="http://localhost:3000/static/img/arrow-left.svg" alt="back" style="height: 1em;vertical-align: -.125em;"></button>'));
+    $('#LZTUpModalBackButton').on('click', () => {
+      console.log('clicked')
+      $('div.LZTUpSubMenu').hide();
+      $mainList.show();
+      $LZTUpTabs.show();
+      removeElement($('button#LZTUpModalBackButton'));
+      lztUpgradeMainTitle.text('LZT Upgrade');
+      $('.pcr-app').length ? $('.pcr-app').remove() : null;
+    });
+  }
+
   $('ul#LZTUpTabs').parent().css("white-space", "unset"); // fixes so big free space in overlay
   var $menuTab = $('#LZTUpTabs > #LZTUpTab');
   var $mainTab, $settingsTab;
@@ -419,7 +460,7 @@ $(menuBtn).on('click', async function () {
   });
 
   if ($menuTab.length) {
-    $mainTab.on('click', () => {
+    $mainTab.on('click', async () => {
       $($mainTab)[0].innerText === 'Главная' && !$mainTab.hasClass('active') ? (
         $settingsTab.removeClass('active'),
         $mainTab.addClass('active'),
@@ -438,18 +479,18 @@ $(menuBtn).on('click', async function () {
     });
 
     $('div#LZTUpListItem.LZTUpUniqItem').on('click', async () => {
-      removeElement($mainList)
-      removeElement($LZTUpTabs)
-      // $mainList.remove();
-      // $LZTUpTabs.remove();
+      $mainList.hide();
+      $LZTUpTabs.hide();
       $uniqContainer.show();
+      lztUpgradeMainTitle.text('Локальный уник');
+      await addGoBackBtn();
 
       const pickrFill = createColorPicker('.badge-fill-picker', overlay[0]);
       pickrFill.on('init', async (instance) => {
         instance.setColor(badgeFill === '' ? null : badgeFill);
         instance.on('save', async (color, instance) => {
           color !== null ? rgbaColor = color.toRGBA().toString(0) : rgbaColor = "";
-          await updateUniqueStyleDB({badgeFill: rgbaColor});
+          await updateUniqueStyles({badgeFill: rgbaColor});
           await setUniqIconColor(rgbaColor);
         });
       });
@@ -459,28 +500,34 @@ $(menuBtn).on('click', async function () {
         instance.setColor(badgeStroke === '' ? null : badgeStroke);
         instance.on('save', async (color, instance) => {
           color !== null ? rgbaColor = color.toRGBA().toString(0) : rgbaColor = "";
-          await updateUniqueStyleDB({badgeStroke: rgbaColor});
+          await updateUniqueStyles({badgeStroke: rgbaColor});
           await setUniqIconColor('', rgbaColor);
         });
       });
     });
 
     $('div#LZTUpListItem.LZTUpContestsItem').on('click', async () => {
-      removeElement($mainList)
-      removeElement($LZTUpTabs)
+      $mainList.hide();
+      $LZTUpTabs.hide();
       $contestsContainer.show();
+      lztUpgradeMainTitle.text('Розыгрыши');
+      await addGoBackBtn();
     });
 
     $('div#LZTUpListItem.LZTUpUsersItem').on('click', async () => {
-      removeElement($mainList)
-      removeElement($LZTUpTabs)
+      $mainList.hide();
+      $LZTUpTabs.hide();
       $usersContainer.show();
+      lztUpgradeMainTitle.text('Пользователи');
+      await addGoBackBtn();
     });
 
     $('div#LZTUpListItem.LZTUpAppearItem').on('click', async () => {
-      removeElement($mainList)
-      removeElement($LZTUpTabs)
+      $mainList.hide();
+      $LZTUpTabs.hide();
       $appearContainer.show();
+      lztUpgradeMainTitle.text('Внешний вид');
+      await addGoBackBtn();
     });
   };
 });
@@ -528,7 +575,7 @@ function registerProfileBtn(element) {
 }
 
 function removeElement(element) {
-  if ($(element).length > 0) {
+  if ($(element).length) {
     $(element).remove();
   }
 }
@@ -1301,12 +1348,15 @@ if (MenuResult === true) {
   });
 
   logoList.forEach(logo => {
-    $(document).on('click', `#set_${logo.short}_logo`, async function () {
-      $(`#set_${logo.short}_logo`)[0].checked ? (
-        console.log(`Выбрано лого сайта с ID: ${logo.id}`),
-        await updateAppearDB({changeLogo: logo.id}),
-        updateSiteLogo('main', logo.css)
-        ): undefined;
+    $(document).on('click', `#set_${logo.short}_logo`, async function (event) {
+      let logoContainerChildrens = $('#LZTUpModalLogoContainer').children();
+      $(logoContainerChildrens).attr('data-checked', 'false');
+      $(logoContainerChildrens).removeClass('active');
+      let currentLogoElement = $(event.target)[0].tagName.toLowerCase() === 'div' ? $(event.target) : $(event.target).parent();
+      $(currentLogoElement).attr('data-checked', 'true');
+      $(currentLogoElement).addClass('active');
+      await updateAppearDB({changeLogo: logo.id});
+      updateSiteLogo('main', logo.css);
     });
   });
 
