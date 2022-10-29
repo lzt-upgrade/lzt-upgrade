@@ -115,6 +115,7 @@
   position: relative;
   padding: 10px;
   list-style: none;
+  font-size: 14px;
 }
 
 #LZTUpList {
@@ -147,6 +148,7 @@
 }
 
 #LZTUpListText {
+  display: block;
   margin-right: 20px;
   font-size: 15px;
   font-weight: bold;
@@ -156,12 +158,23 @@
   width: 200px;
 }
 
+#LZTUpListSubText {
+  display: block;
+  margin-right: 20px;
+  font-size: 13px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  width: 200px;
+  color: rgb(148, 148, 148);
+}
+
 #LZTUpModalContainer {
   margin: 15px;
   width: 400px;
 }
 
-#LZTUpModalChecksContainer, #LZTUpModalLogoContainer, #LZTUpModalMarketLogoContainer, #LZTUpModalReportButtonsContainer {
+#LZTUpModalChecksContainer, #LZTUpModalLogoContainer, #LZTUpModalMarketLogoContainer, #LZTUpModalReportButtonsContainer, #LZTUpModalCell {
   margin: 15px;
   width: 550px;
 }
@@ -177,4 +190,112 @@
   border-radius: 50px;
   margin-right: 5px;
   cursor: pointer;
+}
+
+#LZTUpModalMainTitle {
+  text-align: center;
+  padding: 16px;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+#LZTUPErrorPage {
+  background-color: #272727;
+}
+
+#LZTUPErrorPage article {
+  color: #d6d6d6;
+}
+
+#LZTUPErrorPage article div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#LZTUpModalBackButton {
+  position: absolute;
+  top: 18px;
+  left: 25px;
+  padding: 0px 5px;
+  margin: -4px -5px;
+  cursor: pointer;
+  line-height: 25px;
+  height: 26px;
+  width: 26px;
+  border: 0 !important;
+  background: transparent;
+  color: #d6d6d6;
+  font-size: 18px;
+}
+
+#LZTUpModalBackButton:hover {
+  background: rgb(18 76 50 / 40%);
+  border-radius: 8px;
+}
+
+.LZTUpModalMesh {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.LZTUpModalMeshItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: end;
+  max-width: 220px;
+  flex: 1 1 auto;
+  cursor: pointer;
+  padding: 10px 15px;
+  margin: 10px;
+  border-radius: 8px;
+  background: rgb(52, 52, 52);
+}
+
+.LZTUpModalMeshItem:hover {
+  background: rgb(58, 58, 58);
+}
+
+.LZTUpModalMeshItem.active {
+  border: 3px solid rgb(34, 142, 93);
+}
+
+.LZTUpModalMeshItem img {
+  max-width: 100px;
+  max-height: 60px;
+  min-height: 36px;
+  margin: auto;
+}
+
+.LZTUpModalMeshItemName {
+  display: block;
+  align-self: start;
+  font-size: 13px;
+  margin-top: 5px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.LZTUpModalMeshItemAuthor {
+  display: block;
+  align-self: start;
+  font-size: 12px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  color: rgb(148, 148, 148);
+}
+
+.LZTUpModalMeshItemAuthor a {
+  color: rgb(148, 148, 148);
+}
+
+.LZTUpModalMeshItemAuthor a:visited, .LZTUpModalMeshItemAuthor a:click {
+  outline: none;
+  text-decoration: none;
+  color: inherit;
 }
