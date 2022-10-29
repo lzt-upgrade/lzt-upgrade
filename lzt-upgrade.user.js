@@ -110,27 +110,49 @@ const logoList = [
     css: "width: 78px;height: 43px;float: left;margin-left: -5px;background-size: 105%;background-image: url(https://i.imgur.com/dqzURj5.gif);background-repeat: no-repeat;",
     preview: "https://i.imgur.com/dqzURj5.gif",
   },
+  {
+    id: 5,
+    name: 'Редизайн',
+    author: 'WebFox',
+    authorID: '3833287',
+    short: 'redisign_webfox',
+    css: "width: 48px;height: 36px;float: left;margin: 5px 10px;background-size: 100%;background-image: url(http://localhost:3000/static/img/logos/forum/webfox.png);background-repeat: no-repeat;",
+    preview: "http://localhost:3000/static/img/logos/forum/webfox.png",
+  },
 ]
 
 const marketLogoList = [
   {
     id: 0,
     name: 'По умолчанию',
+    author: 'Lolzteam',
     short: 'default',
+    preview: 'http://localhost:3000/static/img/logos/market/default.svg'
   },
   {
     id: 1,
     name: 'Старый логотип',
-    short: 'old',
+    author: 'Lolzteam',
+    short: 'old_lolz',
     css: 'background: url(https://svgshare.com/i/nNC.svg) no-repeat;margin: 10px 10px 0 0;',
-    preview: 'height:24px;width:72px;margin:0px 16px;float:right;background: url(https://svgshare.com/i/nNC.svg) no-repeat;',
+    preview: 'https://svgshare.com/i/nNC.svg',
   },
   {
     id: 2,
     name: 'Классический',
-    short: 'classic',
+    author: 'Lolzteam',
+    short: 'classic_lolz',
     css: 'background: url(https://i.imgur.com/GJrquyz.png) no-repeat;background-size:85%;margin: 5px -10px 0 4px;',
-    preview: 'height:24px;width:72px;margin:0px 16px;float:right;background: url(https://i.imgur.com/GJrquyz.png) no-repeat;background-size:100%',
+    preview: 'https://i.imgur.com/GJrquyz.png',
+  },
+  {
+    id: 3,
+    name: 'Редизайн',
+    author: 'WebFox',
+    authorID: '3833287',
+    short: 'redisign_webfox',
+    css: 'background: url(http://localhost:3000/static/img/logos/market/webfox.png) no-repeat;background-size:85%;margin: 5px -10px 0 4px;',
+    preview: 'http://localhost:3000/static/img/logos/market/webfox.png',
   },
 ]
 
@@ -366,10 +388,10 @@ $(menuBtn).on('click', async function () {
         <div class="LZTUpModalMesh" id="LZTUpModalLogoContainer">
         </div>
       </div>
-      <div id="LZTUpModalMarketLogoContainer">
+      <div id="LZTUpModalCell">
         <div class="bold title">Логотип маркета:</div>
-        <ul>
-				</ul>
+        <div class="LZTUpModalMesh" id="LZTUpModalMarketLogoContainer">
+        </div>
       </div>
       <div id="LZTUpModalReportButtonsContainer">
         <div class="bold title">Кнопки быстрого репорта в посте:</div>
@@ -392,20 +414,18 @@ $(menuBtn).on('click', async function () {
     <div class="LZTUpModalMeshItem ${changeLogo === logo.id ? "active" : ''}" id="set_${logo.short}_logo" data-checked="${changeLogo === logo.id ? "true" : 'false'}">
       <img src="${logo.preview}" alt="logo" loading="lazy">
       <span class="LZTUpModalMeshItemName" data-shortname="${logo.short}">${XenForo.htmlspecialchars(logo.name)}</span>
-      <span class="LZTUpModalMeshItemAuthor">${XenForo.htmlspecialchars(logo.author)}</span>
+      <span class="LZTUpModalMeshItemAuthor">${logo.authorID ? `<a href="https://${window.location.hostname}/members/${logo.authorID}">` : ''}${XenForo.htmlspecialchars(logo.author)}${logo.authorID ? '</a>' : ''}</span>
     </div>`);
   };
 
-  let $marketLogoSelect = $('#LZTUpModalMarketLogoContainer > ul');
+  let $marketLogoSelect = $('#LZTUpModalMarketLogoContainer');
   for (const logoMarket of marketLogoList) {
     $marketLogoSelect.append(`
-      <li style = "list-style: none;">
-        <label for="set_${logoMarket.short}_marketlogo">
-          <input type="radio" name="marketlogo" id="set_${logoMarket.short}_marketlogo" value="${logoMarket.short}" ${marketLogo === logoMarket.id ? "checked" : ''}>
-          <span style="${XenForo.htmlspecialchars(logoMarket.preview)}"></span>
-          ${logoMarket.name}
-        </label>
-      </li>`);
+    <div class="LZTUpModalMeshItem ${marketLogo === logoMarket.id ? "active" : ''}" id="set_${logoMarket.short}_marketlogo" data-checked="${marketLogo === logoMarket.id ? "true" : 'false'}">
+      <img src="${logoMarket.preview}" alt="logo" loading="lazy">
+      <span class="LZTUpModalMeshItemName" data-shortname="${logoMarket.short}">${XenForo.htmlspecialchars(logoMarket.name)}</span>
+      <span class="LZTUpModalMeshItemAuthor">${logoMarket.authorID ? `<a href="https://${window.location.hostname}/members/${logoMarket.authorID}">` : ''}${XenForo.htmlspecialchars(logoMarket.author)}${logoMarket.authorID ? '</a>' : ''}</span>
+    </div>`);
   };
 
   let $reportButtonsSelect = $('#LZTUpModalReportButtonsContainer > ul');
@@ -1387,12 +1407,15 @@ if (MenuResult === true) {
   });
 
   marketLogoList.forEach(logo => {
-    $(document).on('click', `#set_${logo.short}_marketlogo`, async function () {
-      $(`#set_${logo.short}_marketlogo`)[0].checked ? (
-        console.log(`Выбрано лого маркета с ID:  ${logo.id}`),
-        await updateAppearDB({marketLogo: logo.id}),
-        updateSiteLogo('market', logo.css)
-        ): undefined;
+    $(document).on('click', `#set_${logo.short}_marketlogo`, async function (event) {
+      let logoContainerChildrens = $('#LZTUpModalMarketLogoContainer').children();
+      $(logoContainerChildrens).attr('data-checked', 'false');
+      $(logoContainerChildrens).removeClass('active');
+      let currentLogoElement = $(event.target)[0].tagName.toLowerCase() === 'div' ? $(event.target) : $(event.target).parent();
+      $(currentLogoElement).attr('data-checked', 'true');
+      $(currentLogoElement).addClass('active');
+      await updateAppearDB({marketLogo: logo.id});
+      updateSiteLogo('market', logo.css);
     });
   });
 
