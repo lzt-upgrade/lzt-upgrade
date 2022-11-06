@@ -63,3 +63,5 @@
 
 ### Если вы будете что-либо делать на основе моего скрипт, то прошу хоть где-нибудь отметить :)
 Будут вопросы/идеи пишите в issue/на лолзе/в тг
+
+![script menu](https://github.com/ilyhalight/lzt-upgrade/raw/master/public/static/img/screenshot.png "menu")
