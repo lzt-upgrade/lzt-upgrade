@@ -1,178 +1,272 @@
 // --- IndexedDB Appear functions start:
-function openDB (name) {
+function openDB(name) {
   try {
     var openRequest = indexedDB.open(name, 1);
-    return openRequest
+    return openRequest;
   } catch (e) {
-    console.error(e)
-    return openRequest
+    console.error(e);
+    return openRequest;
   }
 }
 
-async function initAppearDB () {
+async function initAppearDB() {
   return new Promise((resolve, reject) => {
-    var openRequest = openDB("LZTUpAppear")
+    var openRequest = openDB("LZTUpAppear");
 
     openRequest.onerror = () => {
-      alert('LZTUp: Произошла ошибка')
+      alert("LZTUp: Произошла ошибка");
       console.error("LZTUp: Ошибка Базы Данных: " + openRequest.errorCode);
       reject(false);
-    }
+      1;
+    };
 
-    openRequest.onupgradeneeded = event => {
+    openRequest.onupgradeneeded = (event) => {
       var db = openRequest.result;
 
       db.onerror = () => {
-        alert('LZTUp: Не удалось загрузить базу данных')
-        console.error("LZTUp: Не удалось загрузить базу данных: " + openRequest.error);
+        alert("LZTUp: Не удалось загрузить базу данных");
+        console.error(
+          "LZTUp: Не удалось загрузить базу данных: " + openRequest.error
+        );
         reject(false);
-      }
+      };
 
-      var objectStore = db.createObjectStore('appear', {keyPath: 'key'});
+      var objectStore = db.createObjectStore("appear", { keyPath: "key" });
 
-      objectStore.createIndex('hideUnreadArticleCircle', 'hideUnreadArticleCircle', { unique: false })
-      objectStore.createIndex('hideTagsInThreads', 'hideTagsInThreads', { unique: false })
-      objectStore.createIndex('changeLogo', 'changeLogo', { unique: false })
+      objectStore.createIndex(
+        "hideUnreadArticleCircle",
+        "hideUnreadArticleCircle",
+        { unique: false }
+      );
+      objectStore.createIndex("hideTagsInThreads", "hideTagsInThreads", {
+        unique: false,
+      });
+      objectStore.createIndex("changeLogo", "changeLogo", { unique: false });
+      objectStore.createIndex("hideCounterAlerts", "hideCounterAlerts", {
+        unique: false,
+      });
+      objectStore.createIndex(
+        "hideCounterConversations",
+        "hideCounterConversations",
+        { unique: false }
+      );
+      objectStore.createIndex("marketLogo", "marketLogo", { unique: false });
+      objectStore.createIndex("reportButtonsInPost", "reportButtonsInPost", {
+        unique: false,
+      });
+      objectStore.createIndex("theme", "theme", { unique: false });
+      objectStore.createIndex("themeAutoReload", "themeAutoReload", {
+        unique: false,
+      });
 
-      console.log('LZTUp: База Данных создана')
+      console.log("LZTUp: База Данных создана");
 
-      objectStore.transaction.oncomplete = event => {
-        var objectStore = db.transaction('appear', 'readwrite').objectStore('appear');
+      objectStore.transaction.oncomplete = (event) => {
+        var objectStore = db
+          .transaction("appear", "readwrite")
+          .objectStore("appear");
         var appearDefault = {
-          key: 'appear',
+          key: "appear",
           hideUnreadArticleCircle: 0,
           hideTagsInThreads: 0,
           changeLogo: 0,
           hideCounterAlerts: 0,
           hideCounterConversations: 0,
           marketLogo: 0,
-          reportButtonsInPost: '',
-        }
+          reportButtonsInPost: "",
+          theme: 0,
+          themeAutoReload: 0,
+        };
         var request = objectStore.add(appearDefault);
 
         request.onsuccess = () => {
-          console.log("LZTUp: Стандартные настройки \"Внешнего вида\" добавлены в Базу Данных: ", request.result);
+          console.log(
+            'LZTUp: Стандартные настройки "Внешнего вида" добавлены в Базу Данных: ',
+            request.result
+          );
           resolve(true);
         };
         request.onerror = () => {
-          console.log("LZTUp: Ошибка при добавление стандартных настроек \"Внешнего вида\" в Базу Данных: ", request.error);
+          console.log(
+            'LZTUp: Ошибка при добавление стандартных настроек "Внешнего вида" в Базу Данных: ',
+            request.error
+          );
           reject(false);
         };
-      }
-    }
+      };
+    };
 
     openRequest.onsuccess = () => {
-      console.log("LZTUp: База данных инициализована")
+      console.log("LZTUp: База данных инициализована");
       var db = openRequest.result;
       db.onversionchange = () => {
         db.close();
-        alert("Базе данных нужно обновление, пожалуста, перезагрузите страницу.");
-        console.log("LZTUp: Базе данных нужно обновление, пожалуста, перезагрузите страницу");
+        alert(
+          "Базе данных нужно обновление, пожалуста, перезагрузите страницу."
+        );
+        console.log(
+          "LZTUp: Базе данных нужно обновление, пожалуста, перезагрузите страницу"
+        );
         reject(false);
-      }
+      };
       resolve(true);
-    }
+    };
 
     openRequest.onblocked = () => {
       var db = openRequest.result;
-      console.error('LZTUp: База Данных временно заблокирована из-за ошибки: ', db)
-      alert("LZTUp отключен из-за ошибки при обновление Базы Данных. Закройте все открытые вкладки с lolz.guru и попробуйте снова.");
+      console.error(
+        "LZTUp: База Данных временно заблокирована из-за ошибки: ",
+        db
+      );
+      alert(
+        "LZTUp отключен из-за ошибки при обновление Базы Данных. Закройте все открытые вкладки с lolz.guru и попробуйте снова."
+      );
       reject(false);
-    }
-  })
+    };
+  });
 }
 
-async function updateAppearDB({hideUnreadArticleCircle, hideTagsInThreads, changeLogo, hideCounterAlerts, hideCounterConversations, marketLogo, reportButtonsInPost}) {
+async function updateAppearDB({
+  hideUnreadArticleCircle,
+  hideTagsInThreads,
+  changeLogo,
+  hideCounterAlerts,
+  hideCounterConversations,
+  marketLogo,
+  reportButtonsInPost,
+  theme,
+  themeAutoReload,
+}) {
   return new Promise((resolve, reject) => {
-    if (typeof (hideUnreadArticleCircle) === 'number' || typeof(hideTagsInThreads) === 'number' || typeof(changeLogo) === 'number' || typeof(hideCounterAlerts) === 'number' || typeof(hideCounterConversations) === 'number' || typeof(marketLogo) === 'number' || typeof(reportButtonsInPost) === 'string') {
+    if (
+      typeof hideUnreadArticleCircle === "number" ||
+      typeof hideTagsInThreads === "number" ||
+      typeof changeLogo === "number" ||
+      typeof hideCounterAlerts === "number" ||
+      typeof hideCounterConversations === "number" ||
+      typeof marketLogo === "number" ||
+      typeof reportButtonsInPost === "string" ||
+      typeof theme === "number" ||
+      typeof themeAutoReload === "number"
+    ) {
       var openRequest = openDB("LZTUpAppear");
 
       openRequest.onerror = () => {
-        alert('LZTUp: Произошла ошибка');
+        alert("LZTUp: Произошла ошибка");
         console.error("LZTUp: Ошибка Базы Данных: " + openRequest.errorCode);
         reject(false);
-      }
+      };
 
       openRequest.onupgradeneeded = () => {
         var db = openRequest.result;
         db.close();
         initAppearDB();
         resolve(true);
-      }
+      };
 
       openRequest.onsuccess = () => {
         var db = openRequest.result;
         db.onversionchange = () => {
           db.close();
-          alert("LZTUp: База данных устарела, пожалуста, перезагрузите страницу.");
+          alert(
+            "LZTUp: База данных устарела, пожалуста, перезагрузите страницу."
+          );
           reject(false);
-        }
+        };
 
-        var objectStore = db.transaction('appear', 'readwrite').objectStore('appear');
-        var request = objectStore.get('appear');
+        var objectStore = db
+          .transaction("appear", "readwrite")
+          .objectStore("appear");
+        var request = objectStore.get("appear");
 
         request.onerror = (event) => {
-          console.error("LZTUp: Не удалось получить данные из Базы Данных: ", event.error);
+          console.error(
+            "LZTUp: Не удалось получить данные из Базы Данных: ",
+            event.error
+          );
           reject(false);
-        }
+        };
 
         request.onsuccess = () => {
-          console.log('LZTUp: Получены данные из Базы Данных: ', request.result);
+          console.log(
+            "LZTUp: Получены данные из Базы Данных: ",
+            request.result
+          );
           var data = request.result;
 
-          if (typeof(hideUnreadArticleCircle) === 'number') {
+          if (typeof hideUnreadArticleCircle === "number") {
             data.hideUnreadArticleCircle = hideUnreadArticleCircle;
           }
 
-          if (typeof(hideTagsInThreads) === 'number') {
+          if (typeof hideTagsInThreads === "number") {
             data.hideTagsInThreads = hideTagsInThreads;
           }
 
-          if (typeof(changeLogo) === 'number') {
+          if (typeof changeLogo === "number") {
             data.changeLogo = changeLogo;
           }
 
-          if (typeof(hideCounterAlerts) === 'number') {
+          if (typeof hideCounterAlerts === "number") {
             data.hideCounterAlerts = hideCounterAlerts;
           }
 
-          if (typeof(hideCounterConversations) === 'number') {
+          if (typeof hideCounterConversations === "number") {
             data.hideCounterConversations = hideCounterConversations;
           }
 
-          if (typeof(marketLogo) === 'number') {
+          if (typeof marketLogo === "number") {
             data.marketLogo = marketLogo;
           }
 
-          if (typeof(reportButtonsInPost) === 'string') {
+          if (typeof reportButtonsInPost === "string") {
             data.reportButtonsInPost = reportButtonsInPost;
+          }
+
+          if (typeof theme === "number") {
+            data.theme = theme;
+          }
+
+          if (typeof themeAutoReload === "number") {
+            data.themeAutoReload = themeAutoReload;
           }
 
           var requestUpdate = objectStore.put(data);
 
-          requestUpdate.onerror = (event) =>{
-            console.error("LZTUp: Не удалось обновить данные в Базе Данных: ", event.error);
+          requestUpdate.onerror = (event) => {
+            console.error(
+              "LZTUp: Не удалось обновить данные в Базе Данных: ",
+              event.error
+            );
             reject(false);
-          }
+          };
 
           requestUpdate.onsuccess = () => {
-            console.log('LZTUp: Данные в Базе Данных обновлены, вы великолепны!');
+            console.log(
+              "LZTUp: Данные в Базе Данных обновлены, вы великолепны!"
+            );
             resolve(true);
-          }
-        }
-      }
+          };
+        };
+      };
 
       openRequest.onblocked = () => {
         var db = openRequest.result;
-        console.error('LZTUp: База Данных временно заблокирована из-за ошибки: ', db);
-        alert("LZTUp отключен из-за ошибки при обновление Базы Данных. Закройте все открытые вкладки с lolz.guru и попробуйте снова.");
+        console.error(
+          "LZTUp: База Данных временно заблокирована из-за ошибки: ",
+          db
+        );
+        alert(
+          "LZTUp отключен из-за ошибки при обновление Базы Данных. Закройте все открытые вкладки с lolz.guru и попробуйте снова."
+        );
         reject(false);
-      }
+      };
     } else {
-      console.error('LZTUp: В чём смысл делать функцию добавления, которая ничего не добавляет?! wut');
+      console.error(
+        "LZTUp: В чём смысл делать функцию добавления, которая ничего не добавляет?! wut"
+      );
       reject(false);
     }
-  })
+  });
 }
 
 function readAppearDB() {
@@ -180,51 +274,61 @@ function readAppearDB() {
     var openRequest = openDB("LZTUpAppear");
 
     openRequest.onerror = () => {
-      alert('LZTUp: Произошла ошибка');
+      alert("LZTUp: Произошла ошибка");
       console.error("LZTUp: Ошибка Базы Данных: " + openRequest.errorCode);
       reject(false);
-    }
+    };
 
     openRequest.onupgradeneeded = () => {
       var db = openRequest.result;
       db.close();
       initAppearDB();
       resolve(true);
-    }
+    };
 
     openRequest.onsuccess = () => {
       var db = openRequest.result;
       db.onversionchange = () => {
         db.close();
-        alert("LZTUp: База данных устарела, пожалуста, перезагрузите страницу.");
+        alert(
+          "LZTUp: База данных устарела, пожалуста, перезагрузите страницу."
+        );
         reject(false);
-      }
+      };
 
-      var objectStore = db.transaction('appear').objectStore('appear');
-      var request = objectStore.get('appear');
+      var objectStore = db.transaction("appear").objectStore("appear");
+      var request = objectStore.get("appear");
 
       request.onerror = (event) => {
-        console.error("LZTUp: Не удалось получить данные из Базы Данных: ", event.error);
+        console.error(
+          "LZTUp: Не удалось получить данные из Базы Данных: ",
+          event.error
+        );
         reject(false);
-      }
+      };
 
       request.onsuccess = () => {
-        console.log('LZTUp: Получены данные из Базы Данных: ', request.result);
+        console.log("LZTUp: Получены данные из Базы Данных: ", request.result);
         var data = request.result;
         resolve(data);
-      }
-    }
+      };
+    };
 
     openRequest.onblocked = () => {
       var db = openRequest.result;
-      console.error('LZTUp: База Данных временно заблокирована из-за ошибки: ', db);
-      alert("LZTUp отключен из-за ошибки при обновление Базы Данных. Закройте все открытые вкладки с lolz.guru и попробуйте снова.");
+      console.error(
+        "LZTUp: База Данных временно заблокирована из-за ошибки: ",
+        db
+      );
+      alert(
+        "LZTUp отключен из-за ошибки при обновление Базы Данных. Закройте все открытые вкладки с lolz.guru и попробуйте снова."
+      );
       reject(false);
-    }
-  })
+    };
+  });
 }
 
 async function deleteAppearDB() {
-  indexedDB.deleteDatabase('LZTUpAppear');
+  indexedDB.deleteDatabase("LZTUpAppear");
 }
 // --- IndexedDB Appear functions end
