@@ -141,13 +141,23 @@
   cursor: pointer;
 }
 
-#LZTUpListIcon {
+#LZTUpIcon {
   width: 28px;
   height: 28px;
   margin: 20px;
+  font-size: 28px;
+  color: #0daf77;
 }
 
-#LZTUpListText {
+#LZTUpIcon.gray {
+  color: rgb(148, 148, 148);
+}
+
+#LZTUpIcon.right {
+  text-align: right;
+}
+
+#LZTUpText {
   display: block;
   margin-right: 20px;
   font-size: 15px;
@@ -158,7 +168,7 @@
   width: 200px;
 }
 
-#LZTUpListSubText {
+#LZTUpSubText {
   display: block;
   margin-right: 20px;
   font-size: 13px;
@@ -174,7 +184,7 @@
   width: 400px;
 }
 
-#LZTUpModalChecksContainer, #LZTUpModalLogoContainer, #LZTUpModalMarketLogoContainer, #LZTUpModalReportButtonsContainer, #LZTUpModalCell {
+#LZTUpModalChecksContainer, #LZTUpModalMarketLogoContainer, #LZTUpModalReportButtonsContainer, #LZTUpModalCell, .LZTUpModalMesh {
   margin: 15px;
   width: 550px;
 }
@@ -255,6 +265,12 @@
   background: rgb(52, 52, 52);
 }
 
+.LZTUpModalMeshItem.theme {
+  max-width: 130px;
+  max-height: 60px;
+  height: 60px;
+}
+
 .LZTUpModalMeshItem:hover {
   background: rgb(58, 58, 58);
 }
@@ -274,10 +290,15 @@
   display: block;
   align-self: start;
   font-size: 13px;
+  font-weight: bold;
   margin-top: 5px;
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
+}
+
+.LZTUpModalMeshItem.theme > .LZTUpModalMeshItemName {
+  font-size: 15px;
 }
 
 .LZTUpModalMeshItemAuthor {
@@ -298,4 +319,29 @@
   outline: none;
   text-decoration: none;
   color: inherit;
+}
+
+#LZTUpModalSection {
+  margin: 15px;
+  width: 95%;
+  border-radius: 8px;
+  transition: all 0.5s ease;
+}
+
+#LZTUpModalSection:hover {
+  background: rgba(54, 54, 54, 0.75);
+  cursor: pointer;
+}
+
+.LZTUpModalSectionContent {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.LZTUpModalSectionTexts {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex: 1 1 auto;
 }
