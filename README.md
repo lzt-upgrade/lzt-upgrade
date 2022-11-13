@@ -1,3 +1,5 @@
+![script logo](https://github.com/ilyhalight/lzt-upgrade/raw/master/public/static/img/lzt-upgrade.svg "logo")
+
 <h1 align = center> LZT Upgrade </h1>
 
 <p align="center">
@@ -46,6 +48,7 @@
 - Скрытие содержимого темы
 - Скрытие голосований в теме
 - Смена логотипа маркета/форума
+- Выбор темы (включая тему LZTNext (не знаю как она тут оказалась))0 ))
 
 ## 2. Установка скрипта
 Установить скрипт будет даже проще, чем его найти:
