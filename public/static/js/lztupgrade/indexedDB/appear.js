@@ -41,7 +41,7 @@ async function initAppearDB() {
       objectStore.createIndex("hideTagsInThreads", "hideTagsInThreads", {
         unique: false,
       });
-      objectStore.createIndex("changeLogo", "changeLogo", { unique: false });
+      objectStore.createIndex("forumLogo", "forumLogo", { unique: false });
       objectStore.createIndex("hideCounterAlerts", "hideCounterAlerts", {
         unique: false,
       });
@@ -69,7 +69,7 @@ async function initAppearDB() {
           key: "appear",
           hideUnreadArticleCircle: 0,
           hideTagsInThreads: 0,
-          changeLogo: 0,
+          forumLogo: 0,
           hideCounterAlerts: 0,
           hideCounterConversations: 0,
           marketLogo: 0,
@@ -129,7 +129,7 @@ async function initAppearDB() {
 async function updateAppearDB({
   hideUnreadArticleCircle,
   hideTagsInThreads,
-  changeLogo,
+  forumLogo,
   hideCounterAlerts,
   hideCounterConversations,
   marketLogo,
@@ -141,7 +141,7 @@ async function updateAppearDB({
     if (
       typeof hideUnreadArticleCircle === "number" ||
       typeof hideTagsInThreads === "number" ||
-      typeof changeLogo === "number" ||
+      typeof forumLogo === "number" ||
       typeof hideCounterAlerts === "number" ||
       typeof hideCounterConversations === "number" ||
       typeof marketLogo === "number" ||
@@ -202,8 +202,8 @@ async function updateAppearDB({
             data.hideTagsInThreads = hideTagsInThreads;
           }
 
-          if (typeof changeLogo === "number") {
-            data.changeLogo = changeLogo;
+          if (typeof forumLogo === "number") {
+            data.forumLogo = forumLogo;
           }
 
           if (typeof hideCounterAlerts === "number") {
