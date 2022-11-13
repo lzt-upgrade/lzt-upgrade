@@ -349,3 +349,7 @@
 .LZTUpModalSectionTexts > #LZTUpSubText {
   width: 450px;
 }
+
+#LZTUpButton {
+  color: #0daf77;
+}
