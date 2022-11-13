@@ -1,6 +1,6 @@
 async function loadTheme(themeName) {
   return GM_xmlhttpRequest({
-    url: `http://127.0.0.1:5000/static/themes/${themeName}.css`,
+    url: `https://lztupgrade.toiloff.ru/static/themes/${themeName}.css`,
     method: "GET",
     onload: (http) => {
       if (http.status === 200) {
