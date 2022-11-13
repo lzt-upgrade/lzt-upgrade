@@ -321,14 +321,14 @@
   color: inherit;
 }
 
-#LZTUpModalSection {
-  margin: 15px;
-  width: 95%;
+.LZTUpModalSection {
+  margin: 5px 5px;
+  width: 98%;
   border-radius: 8px;
   transition: all 0.5s ease;
 }
 
-#LZTUpModalSection:hover {
+.LZTUpModalSection:hover {
   background: rgba(54, 54, 54, 0.75);
   cursor: pointer;
 }
@@ -344,4 +344,8 @@
   flex-direction: column;
   justify-content: center;
   flex: 1 1 auto;
+}
+
+.LZTUpModalSectionTexts > #LZTUpSubText {
+  width: 450px;
 }
