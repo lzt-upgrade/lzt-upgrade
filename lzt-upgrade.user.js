@@ -84,7 +84,7 @@
     });
   }
 
-  document.addEventListener("DOMContentLoaded", async () => {
+  window.onload = async () => {
 
     // Error page
     if (/^Error\s[0-9]{3}$/.test($('head title').text())) {
@@ -1708,5 +1708,5 @@
         counterMutationObserver.disconnect();
       }
     }
-  });
+  }
 })();
