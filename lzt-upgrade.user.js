@@ -88,7 +88,7 @@
 
   window.onload = async () => {
     // Error page
-    if (/^(Error\s[0-9]{3}|Site Maintenance)$/.test($('head title').text())) {
+    if (/^(Error\s[0-9]{3}|Site\sMaintenance)$/.test($('head title').text())) {
       let body = $('body');
       body.attr('id', 'LZTUPErrorPage');
       body.find('article > div').append('<img src="https://i.imgur.com/iVmKDr7.gif" alt="utya_duck_rain" loading="lazy">')
