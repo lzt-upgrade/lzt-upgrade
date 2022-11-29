@@ -1,3 +1,7 @@
+# Autogen vscode css
+themes/*.css
+static/themes/*.css
+
 # Temporarily db files
 config/themes.json
 config/logos.json
