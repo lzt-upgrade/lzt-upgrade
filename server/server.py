@@ -1,5 +1,3 @@
-import logging
-
 from hypercorn.config import Config
 
 from core.app import app
@@ -8,7 +6,6 @@ from routes import api_router
 
 from worker import init_worker
 
-log = logging.getLogger('server')
 app.include_router(api_router)
 
 async def start():
