@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         LZT Upgrade
-// @version      1.0.8
+// @version      1.0.9
 // @description  Some useful utilities for Lolzteam
 // @description:ru  Полезные улучшения для Lolzteam
 // @icon         https://raw.githubusercontent.com/ilyhalight/lzt-upgrade/master/public/static/img/lzt-upgrade-mini.png
@@ -87,7 +87,7 @@
   window.onload = async () => {
 
     // Error page
-    if (/^Error\s[0-9]{3}$/.test($('head title').text())) {
+    if (/^(Error\s[0-9]{3}|Site Maintenance)$/.test($('head title').text())) {
       let body = $('body');
       body.attr('id', 'LZTUPErrorPage');
       body.find('article > div').append('<img src="https://i.imgur.com/iVmKDr7.gif" alt="utya_duck_rain" loading="lazy">')
