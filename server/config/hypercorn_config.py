@@ -1,5 +1,4 @@
 import os
-import sys
 import logging
 
 from config.load import load_env, load_cfg
