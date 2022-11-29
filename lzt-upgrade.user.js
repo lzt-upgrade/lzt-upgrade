@@ -68,24 +68,25 @@
 
   if (isAppearDBInited) {
     var dbAppearData = await readAppearDB().then(value => {return(value)}).catch(err => {console.error(err); return false});
-    $.ajax({
-      url: api_endpoints['getThemes'],
-      dataType: 'json',
-      success: (value) => {
-        if (value && value.length) {
-          value.forEach(async(theme) => {
-            if (theme.active === 1 && theme.uid === dbAppearData.theme) {
-                await loadTheme(theme.file);
-            };
-          });
-        };
-      },
-      error: (err) => console.log('LZT Upgrade: Не удалось получить список тем ', err)
-    });
+    if (dbAppearData.theme > 0) {
+      $.ajax({
+        url: api_endpoints['getThemes'],
+        dataType: 'json',
+        success: (value) => {
+          if (value && value.length) {
+            value.forEach(async(theme) => {
+              if (theme.active === 1 && theme.uid === dbAppearData.theme) {
+                  await loadTheme(theme.file);
+              };
+            });
+          };
+        },
+        error: (err) => console.log('LZT Upgrade: Не удалось получить список тем ', err)
+      });
+    }
   }
 
   window.onload = async () => {
-
     // Error page
     if (/^(Error\s[0-9]{3}|Site Maintenance)$/.test($('head title').text())) {
       let body = $('body');
@@ -93,6 +94,15 @@
       body.find('article > div').append('<img src="https://i.imgur.com/iVmKDr7.gif" alt="utya_duck_rain" loading="lazy">')
       return;
     }
+
+    function getHeight() {
+      let height = Math.max( document.body.scrollHeight, document.body.offsetHeight,
+        document.documentElement.clientHeight, document.documentElement.scrollHeight, document.documentElement.offsetHeight );
+      console.log('Page height: ' + height);
+      return height;
+    }
+
+    let heightOnLoad;
 
     const blockAds = '(Native/\\.NET файлов|threads\\/|easyliker\\.ru|niccord\\.ru|vpromotions\\.ru|skysmm\\.ru|VerifTeam|SmmPanelUS\\.com|t\\.me/lztnext|axxishop\\.ru|LIGHTSHOP\\.SU)';
 
@@ -177,6 +187,7 @@
       var reportButtonsInPost = appearData.reportButtonsInPost;
       var themeID = appearData.theme;
       var themeAutoReload = appearData.themeAutoReload;
+      var backgroundEffect = appearData.backgroundEffect;
 
       const overlay = registerModal(
         'LZT Upgrade',
@@ -392,6 +403,10 @@
           <div id="LZTUpModalChecksContainer">
             <input type="checkbox" name="hide_counter_conversations" value="1" id="hide_counter_conversations" ${hideCounterConversations === 1 ? "checked" : ''}>
             <label for="hide_counter_conversations">Скрыть счётчик сообщений в навбаре</label>
+          </div>
+          <div id="LZTUpModalChecksContainer">
+            <input type="checkbox" name="enable_background_effect" value="1" id="enable_background_effect" ${backgroundEffect === 1 ? "checked" : ''}>
+            <label for="enable_background_effect">Включить снег (by <a href="/members/576497/" class="muted">Karasu_</a>)</label>
           </div>
           <div id="LZTUpModalReportButtonsContainer">
             <div class="bold title">Кнопки быстрого репорта в посте:</div>
@@ -641,9 +656,9 @@
       }
 
       async function addGoBackBtn(target = '', elementToHide = undefined) {
-        removeElement($('button#LZTUpModalBackButton'));
+        $('button#LZTUpModalBackButton').remove();
         return await createGoBackBtn(async () => {
-          removeElement($('button#LZTUpModalBackButton'));
+          $('button#LZTUpModalBackButton').remove();
           if (target === 'appear' && typeof(elementToHide) !== 'undefined') {
             elementToHide.hide();
             $appearContainer.show();
@@ -805,12 +820,6 @@
       })
     }
 
-    function removeElement(element) {
-      if ($(element).length) {
-        $(element).remove();
-      }
-    }
-
     function registerModal(modalName, elementMain = '') {
       return XenForo.alert(elementMain, modalName, null, (elem) => {
         $('div.modal.fade').remove()
@@ -878,7 +887,7 @@
       <strong>${text}</strong> \
       <span class="after"></span>\
       </em>`);
-      removeElement('#LZTUpCustomBanner');
+      $('#LZTUpCustomBanner').remove();
       registerProfileBtn(bannerBtn);
     }
 
@@ -901,7 +910,7 @@
         if (typeof(uniqueData) === 'object') {
           updateBannerStyle(uniqueData.bannerStyle, uniqueData.bannerText);
           if (uniqueData.bannerText === '') {
-            removeElement('#LZTUpCustomBanner');
+            $('#LZTUpCustomBanner').remove();
           }
         }
       } catch (err) {
@@ -1322,6 +1331,14 @@
       }
     }
 
+    async function addBackgroundEffect() {
+      let height = getHeight();
+      if (heightOnLoad !== height) {
+        heightOnLoad = height;
+        $('.backgroundEffect').css('height', `${height}px`);
+      }
+    }
+
     // script start
     if (getUserid() === '') return; // superior auth check
 
@@ -1385,6 +1402,13 @@
       dbAppearData.hideCounterAlerts === 1 ? await counterVisibility('alerts', true) : null;
       dbAppearData.hideCounterConversations === 1 ? await counterVisibility('conversations', true) : null;
       dbAppearData.hideCounterAlerts === 1 || dbAppearData.hideCounterConversations === 1 ? counterMutation(true) : counterMutation(false);
+      if (dbAppearData.backgroundEffect === 1) {
+        $('body').prepend($('<div class="backgroundEffect"></div>'))
+        await addBackgroundEffect();
+        $(window).on('scroll', async () => {
+          await addBackgroundEffect();
+        })
+      }
     }
 
     await updateUniqueStyles();
@@ -1633,6 +1657,17 @@
             await updateAppearDB({themeAutoReload: 0}),
             await sleep(500),
             window.location.reload()
+          );
+      });
+
+      $(document).on('click', '#enable_background_effect', async function () {
+        $('#enable_background_effect')[0].checked ? (
+          await updateAppearDB({backgroundEffect: 1}),
+          $('body').prepend($('<div class="backgroundEffect"></div>')),
+          await addBackgroundEffect()
+          ): (
+            await updateAppearDB({backgroundEffect: 0}),
+            $('.backgroundEffect').remove()
           );
       });
 
