@@ -58,6 +58,9 @@ async function initAppearDB() {
       objectStore.createIndex("themeAutoReload", "themeAutoReload", {
         unique: false,
       });
+      objectStore.createIndex("backgroundEffect", "backgroundEffect", {
+        unique: false,
+      });
 
       console.log("LZTUp: База Данных создана");
 
@@ -76,6 +79,7 @@ async function initAppearDB() {
           reportButtonsInPost: "",
           theme: 0,
           themeAutoReload: 0,
+          backgroundEffect: 0,
         };
         var request = objectStore.add(appearDefault);
 
@@ -136,6 +140,7 @@ async function updateAppearDB({
   reportButtonsInPost,
   theme,
   themeAutoReload,
+  backgroundEffect,
 }) {
   return new Promise((resolve, reject) => {
     if (
@@ -147,7 +152,8 @@ async function updateAppearDB({
       typeof marketLogo === "number" ||
       typeof reportButtonsInPost === "string" ||
       typeof theme === "number" ||
-      typeof themeAutoReload === "number"
+      typeof themeAutoReload === "number" ||
+      typeof backgroundEffect === "number"
     ) {
       var openRequest = openDB("LZTUpAppear");
 
@@ -228,6 +234,10 @@ async function updateAppearDB({
 
           if (typeof themeAutoReload === "number") {
             data.themeAutoReload = themeAutoReload;
+          }
+
+          if (typeof backgroundEffect === "number") {
+            data.backgroundEffect = backgroundEffect;
           }
 
           var requestUpdate = objectStore.put(data);
