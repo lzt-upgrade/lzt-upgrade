@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         LZT Upgrade
-// @version      1.0.9
+// @version      1.0.10
 // @description  Some useful utilities for Lolzteam
 // @description:ru  Полезные улучшения для Lolzteam
 // @icon         https://raw.githubusercontent.com/ilyhalight/lzt-upgrade/master/public/static/img/lzt-upgrade-mini.png
@@ -188,6 +188,7 @@
       var themeID = appearData.theme;
       var themeAutoReload = appearData.themeAutoReload;
       var backgroundEffect = appearData.backgroundEffect;
+      var hideOnlyfans = appearData.hideOnlyfans;
 
       const overlay = registerModal(
         'LZT Upgrade',
@@ -407,6 +408,13 @@
           <div id="LZTUpModalChecksContainer">
             <input type="checkbox" name="enable_background_effect" value="1" id="enable_background_effect" ${backgroundEffect === 1 ? "checked" : ''}>
             <label for="enable_background_effect">Включить снег (by <a href="/members/576497/" class="muted">Karasu_</a>)</label>
+          </div>
+          <div id="LZTUpModalChecksContainer">
+            <input type="checkbox" name="hide_onlyfans" value="1" id="hide_onlyfans" ${hideOnlyfans === 1 ? "checked" : ''}>
+            <label for="hide_onlyfans">
+              Спрятать все темы с тегом Onlyfans
+              <span class="fa fa-exclamation-triangle Tooltip" title="При включение/отключение этой функции страница будет перезагружена"></span>
+            </label>
           </div>
           <div id="LZTUpModalReportButtonsContainer">
             <div class="bold title">Кнопки быстрого репорта в посте:</div>
@@ -1021,6 +1029,19 @@
       return links;
     }
 
+    async function hideThreadsByTag(name = 'OnlyFans') {
+      var $latestsThreads = $('div.latestThreads');
+      var $stickyThreads = $('div.stickyThreads');
+      $stickyThreads.is(':visible') ? $latestsThreads.add($stickyThreads) : undefined;
+      var threads = $latestsThreads.find('div.discussionListItem--Wrapper').toArray()
+      threads.forEach(thread => {
+        var threadTags = $(thread).find('a.listBlock.main').find('span.secondRow').find('.threadTitle--prefixGroup').find('.prefix').toArray().map(element => $(element).text());
+        if (threadTags.includes(name)) {
+          $(thread).hide();
+        }
+      })
+    }
+
     async function regOpenContestsBtn(amount = 10) {
       if (await isContestsNode()) {
         await removeOpenContestsBtn(amount);
@@ -1262,7 +1283,7 @@
         var btn = $('.LztContest--Participate')
         if (btn.length > 0) {
           $(btn).on('click', async () => {
-              await sleep(600)
+              await sleep(1000)
               window.close()
           })
         }
@@ -1407,6 +1428,12 @@
         await addBackgroundEffect();
         $(window).on('scroll', async () => {
           await addBackgroundEffect();
+        })
+      }
+      if (dbAppearData.hideOnlyfans === 1) {
+        await hideThreadsByTag('OnlyFans');
+        $(window).on('scroll', async () => {
+          await hideThreadsByTag('OnlyFans');
         })
       }
     }
@@ -1668,6 +1695,20 @@
           ): (
             await updateAppearDB({backgroundEffect: 0}),
             $('.backgroundEffect').remove()
+          );
+      });
+
+      $(document).on('click', '#hide_onlyfans', async function () {
+        $('#hide_onlyfans')[0].checked ? (
+          await updateAppearDB({hideOnlyfans: 1}),
+          registerAlert('Включено скрытие тега Onlyfans. Выполняю перезагрузку страницы...', 5000),
+          await sleep(500),
+          window.location.reload()
+          ): (
+            await updateAppearDB({hideOnlyfans: 0}),
+            registerAlert('Скрытие тега Onlyfans отключено. Выполняю перезагрузку страницы...', 5000),
+            await sleep(500),
+            window.location.reload()
           );
       });
 
