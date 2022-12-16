@@ -80,6 +80,7 @@ async function initAppearDB() {
           theme: 0,
           themeAutoReload: 0,
           backgroundEffect: 0,
+          hideOnlyfans: 0
         };
         var request = objectStore.add(appearDefault);
 
@@ -141,6 +142,7 @@ async function updateAppearDB({
   theme,
   themeAutoReload,
   backgroundEffect,
+  hideOnlyfans,
 }) {
   return new Promise((resolve, reject) => {
     if (
@@ -153,7 +155,8 @@ async function updateAppearDB({
       typeof reportButtonsInPost === "string" ||
       typeof theme === "number" ||
       typeof themeAutoReload === "number" ||
-      typeof backgroundEffect === "number"
+      typeof backgroundEffect === "number" ||
+      typeof hideOnlyfans === "number"
     ) {
       var openRequest = openDB("LZTUpAppear");
 
@@ -238,6 +241,10 @@ async function updateAppearDB({
 
           if (typeof backgroundEffect === "number") {
             data.backgroundEffect = backgroundEffect;
+          }
+
+          if (typeof hideOnlyfans === "number") {
+            data.hideOnlyfans = hideOnlyfans;
           }
 
           var requestUpdate = objectStore.put(data);
