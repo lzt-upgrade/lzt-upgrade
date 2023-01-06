@@ -1,12 +1,14 @@
 // ==UserScript==
 // @name         LZT Upgrade
-// @version      1.0.10
+// @version      1.0.11
 // @description  Some useful utilities for Lolzteam
 // @description:ru  Полезные улучшения для Lolzteam
 // @icon         https://raw.githubusercontent.com/ilyhalight/lzt-upgrade/master/public/static/img/lzt-upgrade-mini.png
 // @author       Toil
 // @match        *://*.lolz.guru/*
+// @match        *://*.lolz.live/*
 // @match        *://*.zelenka.guru/*
+// @match        *://*.lzt.market/*
 // @connect      lztupgrade.toiloff.ru
 // @grant        GM_getResourceText
 // @grant        GM_addStyle
@@ -861,7 +863,7 @@
     }
 
     async function sendMessageHandler() {
-      var sendButton = $('.sendMessageContainer > .simpleRedactor--button.sendMessageButton');
+      var sendButton = $('.sendMessageContainer > button.lzt-fe-se-sendMessageButton');
 
       if (sendButton.length > 0) {
         $(sendButton).on('click', async function() {
@@ -880,12 +882,10 @@
         })
       }
 
-      let element = $('iframe.redactor_textCtrl.redactor_SubmitOnEnter > html > body');
+      let element = $('#QuickReply.simpleRedactor');
       element.on('keyup', async (e) => {
-        if (e.ctrlKey && e.keyCode == 13) {
-          await sleep(850);
-          await updateUniqueStyles();
-        }
+        await sleep(1000);
+        await updateUniqueStyles();
       });
     }
 
@@ -1074,9 +1074,7 @@
     }
 
     async function onClickCategoryContestsHandler() {
-      var categories = $('ol#forums.nodeList');
-      var mainSection = $(categories).find('li.node.category.level_1');
-      var giveaways = $(mainSection).find('ol.nodeList > li.list.node.node9.forum.level_2 > div.nodeInfo > ol.subForumList > li.node.node766.forum.level-n');
+      var giveaways = $('li.node.node766.forum.level-n');
       $(giveaways).on('click', async () => {
         await sleep(1500);
         await regOpenContestsBtn(10);
