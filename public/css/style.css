@@ -373,3 +373,9 @@
   animation: backgroundEffectAnimate 20s linear infinite;
   filter: brightness(75%) blur(2px) opacity(50%);
 }
+
+.LZTUpPollResult {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
