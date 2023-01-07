@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         LZT Upgrade
-// @version      1.0.11
+// @version      1.0.12
 // @description  Some useful utilities for Lolzteam
 // @description:ru  Полезные улучшения для Lolzteam
 // @icon         https://raw.githubusercontent.com/ilyhalight/lzt-upgrade/master/public/static/img/lzt-upgrade-mini.png
@@ -191,6 +191,7 @@
       var themeAutoReload = appearData.themeAutoReload;
       var backgroundEffect = appearData.backgroundEffect;
       var hideOnlyfans = appearData.hideOnlyfans;
+      var showPollsResults = appearData.showPollsResults;
 
       const overlay = registerModal(
         'LZT Upgrade',
@@ -416,6 +417,13 @@
             <label for="hide_onlyfans">
               Спрятать все темы с тегом Onlyfans
               <span class="fa fa-exclamation-triangle Tooltip" title="При включение/отключение этой функции страница будет перезагружена"></span>
+            </label>
+          </div>
+          <div id="LZTUpModalChecksContainer">
+            <input type="checkbox" name="show_polls_results" value="1" id="show_polls_results" ${showPollsResults === 1 ? "checked" : ''}>
+            <label for="show_polls_results">
+              Показывать результаты голосований
+              <span class="fa fa-exclamation-triangle Tooltip" title="Доступно, только, в голосованиях, в которых разрешено видеть результаты заранее"></span>
             </label>
           </div>
           <div id="LZTUpModalReportButtonsContainer">
@@ -1104,6 +1112,11 @@
       return $ProfilePostList.length > 0 ? true : false
     }
 
+    async function isThreadPage() {
+      let content = $('div#content.thread_view');
+      return content.length > 0 ? true : false
+    }
+
     async function contestThreadBlockMove(toTop = true) {
       if (await isContestThread()) {
         var $contestsThreadBlock = $('div.contestThreadBlock');
@@ -1205,6 +1218,11 @@
       }
     }
 
+    async function havePoll() {
+      let $pollContainer = $('div.PollContainer');
+      return $pollContainer.length ? true : false;
+    }
+
     async function changeVisibility(elem, isHidden = true) {
       if (elem.length > 0) {
         isHidden ? elem.hide() : elem.show();
@@ -1222,8 +1240,10 @@
     }
 
     async function pollVisibility(isHidden = true) {
-      var $pollContainer = $('div.PollContainer');
-      await changeVisibility($pollContainer, isHidden)
+      if (await havePoll()) {
+        var $pollContainer = $('div.PollContainer');
+        await changeVisibility($pollContainer, isHidden)
+      }
     }
 
     async function contestsTagsVisibility(isHidden = true) {
@@ -1358,6 +1378,57 @@
       }
     }
 
+    async function getPollResults() {
+      let url = window.location;
+      let polls = [];
+      response = await fetch(`https://${url.hostname}/${url.pathname}poll/results?=&_xfRequestUri=${url.pathname}&_xfNoRedirect=1&_xfToken=${XenForo._csrfToken}&_xfResponseType=json`)
+      if (response.status === 200) {
+        let result = await response.json();
+        if (result.templateHtml) {
+          let $pollHtml = $(result.templateHtml);
+          let pollPercentage = $pollHtml.find('.pollResults > .pollResult > .percentage').toArray().map(el => el.innerText.trim());
+          let pollCounts = $pollHtml.find('.pollResults > .pollResult > .barCell > .barContainer > .count').toArray().map(el => el.innerText.trim())
+          for (let i = 0; i < pollPercentage.length && i < pollCounts.length; i++) {
+            polls.push(`${pollPercentage[i]} (${pollCounts[i]} чел.)`)
+          }
+        } else {
+          console.error(`LZT Upgrade: Не удалось найти тело результатов голосования. Статус: ${response.status}`);
+        }
+      } else {
+        console.error(`LZT Upgrade: Не удалось загрузить результаты голосования. Статус: ${response.status}`);
+      }
+      console.log('LZT Upgrade: Результаты голосования: ', polls);
+      return polls;
+    }
+
+    async function checkAndAddPollsResults() {
+      if (await isThreadPage() && await havePoll()) {
+        $pollOptions = $('.pollOptions');
+        if ($pollOptions.length === 0) return;
+        let polls = await getPollResults();
+        if (polls.length > 0) {
+          let $polls = $pollOptions.find('.pollOption').toArray();
+          for (let i = 0; i < $polls.length && i < polls.length; i++) {
+            let poll = $($polls[i]);
+            poll.addClass('LZTUpPollResult');
+            poll.append(`<span>${polls[i]}</span>`)
+          }
+        }
+      }
+    }
+
+    async function removePollsResults() {
+      if (await isThreadPage() && await havePoll()) {
+        $pollOptions = $('.pollOptions');
+        let $polls = $pollOptions.find('.pollOption').toArray();
+        for (let i = 0; i < $polls.length; i++) {
+          let poll = $($polls[i]);
+          poll.addClass('LZTUpPollResult');
+          poll.find('span').remove()
+        }
+      }
+    }
+
     // script start
     if (getUserid() === '') return; // superior auth check
 
@@ -1434,6 +1505,7 @@
           await hideThreadsByTag('OnlyFans');
         })
       }
+      dbAppearData.showPollsResults === 1 ? await checkAndAddPollsResults() : null;
     }
 
     await updateUniqueStyles();
@@ -1707,6 +1779,18 @@
             registerAlert('Скрытие тега Onlyfans отключено. Выполняю перезагрузку страницы...', 5000),
             await sleep(500),
             window.location.reload()
+          );
+      });
+
+      $(document).on('click', '#show_polls_results', async function () {
+        $('#show_polls_results')[0].checked ? (
+          await updateAppearDB({showPollsResults: 1}),
+          registerAlert('Включен показ результатов голосования', 5000),
+          await checkAndAddPollsResults()
+          ): (
+            await updateAppearDB({showPollsResults: 0}),
+            registerAlert('Выключен показ результатов голосования', 5000),
+            await removePollsResults()
           );
       });
 
