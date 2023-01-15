@@ -1,10 +1,12 @@
 // ==UserScript==
 // @name         LZT Upgrade
-// @version      1.0.12
+// @version      1.0.13
 // @description  Some useful utilities for Lolzteam
 // @description:ru  Полезные улучшения для Lolzteam
 // @icon         https://raw.githubusercontent.com/ilyhalight/lzt-upgrade/master/public/static/img/lzt-upgrade-mini.png
 // @author       Toil
+// @license      MIT
+// @namespace    lztupgrade
 // @match        *://*.lolz.guru/*
 // @match        *://*.lolz.live/*
 // @match        *://*.zelenka.guru/*
@@ -88,7 +90,29 @@
     }
   }
 
-  window.onload = async () => {
+  // Проверка наличия элемента на странице
+  // Спасибо дяде Маслову :)
+  function waitForElm(selector) {
+    return new Promise(resolve => {
+        if (document.querySelector(selector)) {
+            return resolve(document.querySelector(selector));
+        }
+
+        const observer = new MutationObserver(mutations => {
+            if (document.querySelector(selector)) {
+                resolve(document.querySelector(selector));
+                observer.disconnect();
+            }
+        });
+
+        observer.observe(document.documentElement, {
+            childList: true,
+            subtree: true
+        });
+    });
+  }
+
+  waitForElm('.index').then(async () => {
     // Error page
     if (/^(Error\s[0-9]{3}|Site\sMaintenance)$/.test($('head title').text())) {
       let body = $('body');
@@ -1866,5 +1890,5 @@
         counterMutationObserver.disconnect();
       }
     }
-  }
+  });
 })();
