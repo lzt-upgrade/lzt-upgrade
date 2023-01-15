@@ -11,6 +11,7 @@
 // @match        *://*.lolz.live/*
 // @match        *://*.zelenka.guru/*
 // @match        *://*.lzt.market/*
+// @match        *://*.lolz.market/*
 // @connect      lztupgrade.toiloff.ru
 // @grant        GM_getResourceText
 // @grant        GM_addStyle
