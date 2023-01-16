@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         LZT Upgrade
-// @version      1.0.13
+// @version      1.0.14
 // @description  Some useful utilities for Lolzteam
 // @description:ru  Полезные улучшения для Lolzteam
 // @icon         https://raw.githubusercontent.com/ilyhalight/lzt-upgrade/master/public/static/img/lzt-upgrade-mini.png
@@ -33,6 +33,7 @@
 // ==/UserScript==
 
 (async function() {
+  let SCRIPT_STATUS = false;
   const api_endpoints = {
     'getThemes': 'https://lztupgrade.toiloff.ru/api/themes',
     'getLogos': 'https://lztupgrade.toiloff.ru/api/logos',
@@ -91,29 +92,20 @@
     }
   }
 
-  // Проверка наличия элемента на странице
-  // Спасибо дяде Маслову :)
-  function waitForElm(selector) {
-    return new Promise(resolve => {
-        if (document.querySelector(selector)) {
-            return resolve(document.querySelector(selector));
-        }
+  const SCRIPT_LOADER = setTimeout(async () => {
+    if ($('body').length) {
+      if (!SCRIPT_STATUS) {
+        console.log('LZT Upgrade: Скрипт был запущен');
+        START_SCRIPT();
+      } else {
+        console.log('LZT Upgrade: Скрипт уже запущен');
+        clearTimeout(SCRIPT_LOADER);
+      }
+    }
+  }, 5)
 
-        const observer = new MutationObserver(mutations => {
-            if (document.querySelector(selector)) {
-                resolve(document.querySelector(selector));
-                observer.disconnect();
-            }
-        });
-
-        observer.observe(document.documentElement, {
-            childList: true,
-            subtree: true
-        });
-    });
-  }
-
-  waitForElm('.index').then(async () => {
+  const START_SCRIPT = async () => {
+    SCRIPT_STATUS = true;
     // Error page
     if (/^(Error\s[0-9]{3}|Site\sMaintenance)$/.test($('head title').text())) {
       let body = $('body');
@@ -1891,5 +1883,5 @@
         counterMutationObserver.disconnect();
       }
     }
-  });
+  };
 })();
