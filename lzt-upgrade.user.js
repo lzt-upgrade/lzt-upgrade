@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         LZT Upgrade
-// @version      1.0.14
+// @version      1.0.15
 // @description  Some useful utilities for Lolzteam
 // @description:ru  Полезные улучшения для Lolzteam
 // @icon         https://raw.githubusercontent.com/ilyhalight/lzt-upgrade/master/public/static/img/lzt-upgrade-mini.png
@@ -92,15 +92,17 @@
     }
   }
 
-  const SCRIPT_LOADER = setTimeout(async () => {
+  const SCRIPT_LOADER = setInterval(async () => {
     if ($('body').length) {
       if (!SCRIPT_STATUS) {
         console.log('LZT Upgrade: Скрипт был запущен');
         START_SCRIPT();
       } else {
         console.log('LZT Upgrade: Скрипт уже запущен');
-        clearTimeout(SCRIPT_LOADER);
+        clearInterval(SCRIPT_LOADER);
       }
+    } else {
+      console.log('LZT Upgrade: Скрипт не был запущен. Ожидание загрузки страницы...');
     }
   }, 5)
 
