@@ -95,11 +95,14 @@
   const SCRIPT_LOADER = setInterval(async () => {
     if ($('body').length) {
       if (!SCRIPT_STATUS) {
-        console.log('LZT Upgrade: Скрипт был запущен');
+        console.log('LZT Upgrade: Пытаемся запустить скрипт...');
         START_SCRIPT();
-      } else {
-        console.log('LZT Upgrade: Скрипт уже запущен');
+      } else if ($('#LZTUpButton').length){
+        console.log('LZT Upgrade: Скрипт уже запущен. Удаление проверки на запуск...');
         clearInterval(SCRIPT_LOADER);
+      } else {
+        console.log('LZT Upgrade: Скрипт не был запущен. Повторяем попытку...');
+        START_SCRIPT();
       }
     } else {
       console.log('LZT Upgrade: Скрипт не был запущен. Ожидание загрузки страницы...');
@@ -107,6 +110,7 @@
   }, 5)
 
   const START_SCRIPT = async () => {
+    console.log('LZT Upgrade: Скрипт был запущен');
     SCRIPT_STATUS = true;
     // Error page
     if (/^(Error\s[0-9]{3}|Site\sMaintenance)$/.test($('head title').text())) {
