@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         LZT Upgrade
-// @version      1.0.16
+// @version      1.0.17
 // @description  Some useful utilities for Lolzteam
 // @description:ru  Полезные улучшения для Lolzteam
 // @icon         https://raw.githubusercontent.com/ilyhalight/lzt-upgrade/master/public/static/img/lzt-upgrade-mini.png
@@ -258,7 +258,7 @@
           </div>
         </div>
         <div id="LZTUpList" class="LZTUpSettingsList">
-          <div id="LZTUpListItem">
+          <div id="LZTUpListItem" class="LZTUpSettingsItem">
             <i id="LZTUpIcon" class="far fa-cog"></i>
             <div>
               <span id="LZTUpText">Настройки</span>
@@ -500,6 +500,12 @@
             </div>
           </div>
         </div>
+        <div id="LZTUpSettingsContainer" class="LZTUpSubMenu">
+          <div id="LZTUpIconButton" class="LZTUpSaveSettings">
+            <i id="LZTUpIcon" class="far fa-file-download"></i>
+            <span id="LZTUpText">Сохранить настройки в файл</span>
+          </div>
+        </div>
         `
       );
 
@@ -678,6 +684,7 @@
       var $logoSubContainer = $('div#LZTUpLogoSubContainer');
       var $marketLogoSubContainer = $('div#LZTUpMarketLogoSubContainer');
       var $themesSubContainer = $('div#LZTUpThemesSubContainer');
+      var $settingsContainer = $('div#LZTUpSettingsContainer');
       $settingsList.hide();
       $contestsContainer.hide();
       $usersContainer.hide();
@@ -686,6 +693,7 @@
       $logoSubContainer.hide();
       $marketLogoSubContainer.hide();
       $themesSubContainer.hide();
+      $settingsContainer.hide();
 
       async function createGoBackBtn(callback) {
         lztUpgradeModalMain.prepend($('<button id="LZTUpModalBackButton"><i class="fas fa-long-arrow-left"></i></button>'));
@@ -708,10 +716,37 @@
           } else {
             $mainList.show();
             $LZTUpTabs.show();
+            $settingsTab.removeClass('active');
+            $mainTab.addClass('active');
             lztUpgradeMainTitle.text('LZT Upgrade');
           }
         });
       }
+
+        /**
+          @param {object} tab - tab object
+          @param {string} text - text to show in title
+        */
+          async function updateMenu(tab, categoryContainer, text) {
+            $(tab).hide();
+            $LZTUpTabs.hide();
+            $(categoryContainer).show();
+            lztUpgradeMainTitle.text(text);
+            await addGoBackBtn();
+          }
+
+        /**
+          @param {object} category - category name (appear, ...)
+          @param {string} categoryContainer - main category container to hide
+          @param {string} subContainer - sub container to show
+          @param {string} text - text to show in title
+        */
+          async function updateSubMenu(category, categoryContainer, subContainer, text) {
+            $(categoryContainer).hide();
+            $(subContainer).show();
+            lztUpgradeMainTitle.text(text);
+            await addGoBackBtn(category, subContainer);
+          }
 
       $('ul#LZTUpTabs').parent().css("white-space", "unset"); // fixes so big free space in overlay
       var $menuTab = $('#LZTUpTabs > #LZTUpTab');
@@ -740,11 +775,7 @@
         });
 
         $('div#LZTUpListItem.LZTUpUniqItem').on('click', async () => {
-          $mainList.hide();
-          $LZTUpTabs.hide();
-          $uniqContainer.show();
-          lztUpgradeMainTitle.text('Локальный уник');
-          await addGoBackBtn();
+          await updateMenu($mainList, $uniqContainer, 'Розыгрыши');
 
           const pickrFill = createColorPicker('.badge-fill-picker', overlay[0]);
           pickrFill.on('init', async (instance) => {
@@ -768,48 +799,31 @@
         });
 
         $('div#LZTUpListItem.LZTUpContestsItem').on('click', async () => {
-          $mainList.hide();
-          $LZTUpTabs.hide();
-          $contestsContainer.show();
-          lztUpgradeMainTitle.text('Розыгрыши');
-          await addGoBackBtn();
+          await updateMenu($mainList, $contestsContainer, 'Розыгрыши');
         });
 
         $('div#LZTUpListItem.LZTUpUsersItem').on('click', async () => {
-          $mainList.hide();
-          $LZTUpTabs.hide();
-          $usersContainer.show();
-          lztUpgradeMainTitle.text('Пользователи');
-          await addGoBackBtn();
+          await updateMenu($mainList, $usersContainer, 'Пользователи');
         });
 
         $('div#LZTUpListItem.LZTUpAppearItem').on('click', async () => {
-          $mainList.hide();
-          $LZTUpTabs.hide();
-          $appearContainer.show();
-          lztUpgradeMainTitle.text('Внешний вид');
-          await addGoBackBtn();
+          await updateMenu($mainList, $appearContainer, 'Внешний вид');
         });
 
         $('div.LZTUpSubMenu#LZTUpAppearContainer > div.LZTUpModalSection#LZTUpLogoSection').on('click', async () => {
-          $appearContainer.hide();
-          $logoSubContainer.show();
-          lztUpgradeMainTitle.text('Внешний вид — Логотип');
-          await addGoBackBtn('appear', $logoSubContainer);
+          await updateSubMenu('appear', $appearContainer, $logoSubContainer, 'Внешний вид — Логотип');
         });
 
         $('div.LZTUpSubMenu#LZTUpAppearContainer > div.LZTUpModalSection#LZTUpMarketLogoSection').on('click', async () => {
-          $appearContainer.hide();
-          $marketLogoSubContainer.show();
-          lztUpgradeMainTitle.text('Внешний вид — Логотип маркета');
-          await addGoBackBtn('appear', $marketLogoSubContainer);
+          await updateSubMenu('appear', $appearContainer, $marketLogoSubContainer, 'Внешний вид — Логотип маркета');
         });
 
         $('div.LZTUpSubMenu#LZTUpAppearContainer > div.LZTUpModalSection#LZTUpThemesSection').on('click', async () => {
-          $appearContainer.hide();
-          $themesSubContainer.show();
-          lztUpgradeMainTitle.text('Внешний вид — Менеджер тем');
-          await addGoBackBtn('appear', $themesSubContainer);
+          await updateSubMenu('appear', $appearContainer, $themesSubContainer, 'Внешний вид — Менеджер тем');
+        });
+
+        $('div#LZTUpListItem.LZTUpSettingsItem').on('click', async () => {
+          await updateMenu($settingsList, $settingsContainer, 'Настройки');
         });
       };
     });
@@ -1815,6 +1829,27 @@
             registerAlert('Выключен показ результатов голосования', 5000),
             await removePollsResults()
           );
+      });
+
+      $(document).on('click', '.LZTUpSaveSettings', async function () {
+        const uniqueStylesSettings = await readUniqueStyleDB().then(value => {return(value)}).catch(err => {console.error(err); return false});
+        const contestsSettings = await readContestsDB().then(value => {return(value)}).catch(err => {console.error(err); return false});
+        const usersSettings = await readUsersDB().then(value => {return(value)}).catch(err => {console.error(err); return false});
+        const appearSettings = await readAppearDB().then(value => {return(value)}).catch(err => {console.error(err); return false});
+        const config = JSON.stringify({
+          uniqueStyle: uniqueStylesSettings,
+          contests: contestsSettings,
+          users: usersSettings,
+          appear: appearSettings
+        });
+
+        const blob = new Blob([config], {
+          type: 'application/json'
+        });
+        const link = document.createElement('a');
+        link.href = window.URL.createObjectURL(blob);
+        link.download = 'LZTUpConfig.json';
+        link.click();
       });
 
       reportButtonsList.forEach(btn => {
