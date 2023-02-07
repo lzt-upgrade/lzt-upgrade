@@ -282,7 +282,7 @@
         </div>
         <div id="LZTUpUniqContainer" class="LZTUpSubMenu">
           <div id="LZTUpModalComment">
-            На этой странице можно выбрать стиль вашего ника и лычки. Этот стиль виден только вам. После <a href="https://lolz.guru/account/upgrades?upgrade_id=14" target="_blank">покупки</a> оф. уника его увидят все.
+            На этой странице можно выбрать стиль вашего ника и лычки. Этот стиль виден только вам. После <a href="https://lolz.guru/account/upgrades?upgrade_id=14" target="_blank">покупки</a> настоящего уника его увидят все.
           </div>
 
           <div id="LZTUpModalHeading" class="textHeading">Стиль ника:</div>
@@ -353,11 +353,11 @@
           </div>
           <div id="LZTUpModalChecksContainer">
             <input type="checkbox" name="info_top" value="1" id="contests_info_top" ${contestsInfoTop === 1 ? "checked" : ''}>
-            <label for="contests_info_top">Отображение информации о розыгрыше сверху темы</label>
+            <label for="contests_info_top">Отображение информации о розыгрыше вверху темы</label>
           </div>
           <div id="LZTUpModalChecksContainer">
             <input type="checkbox" name="btn_top_in_block" value="1" id="contests_btn_top_in_block" ${contestsBtnTopInBlock === 1 ? "checked" : ''}>
-            <label for="contests_btn_top_in_block">Отображение кнопки "Участвовать" сверху блока с информацией о розыгрыше</label>
+            <label for="contests_btn_top_in_block">Отображение кнопки "Участвовать" выше блока с информацией о розыгрыше</label>
           </div>
           <div id="LZTUpModalChecksContainer">
             <input type="checkbox" name="hide_tags" value="1" id="contests_hide_tags" ${contestsHideTags === 1 ? "checked" : ''}>
@@ -369,7 +369,7 @@
           </div>
           <div id="LZTUpModalChecksContainer">
             <input type="checkbox" name="rm_content" value="1" id="contests_rm_content" ${contestsRmContent === 1 ? "checked" : ''}>
-            <label for="contests_rm_content">Скрытие содержимого + голосований в теме розыгрыша</label>
+            <label for="contests_rm_content">Скрытие содержимого и голосований в теме розыгрыша</label>
           </div>
           <input id="LZTUpResetContestsDB" type="button" value="Сбросить настройки" class="button primary"></input>
         </div>
@@ -417,7 +417,7 @@
           </div>
           <div id="LZTUpModalChecksContainer">
             <input type="checkbox" name="hide_unread_article_circle" value="1" id="hide_unread_article_circle" ${hideUnreadArticleCircle === 1 ? "checked" : ''}>
-            <label for="hide_unread_article_circle">Скрыть значок не прочитанных статей в шапке сайта</label>
+            <label for="hide_unread_article_circle">Скрыть значок непрочитанных статей в шапке сайта</label>
           </div>
           <div id="LZTUpModalChecksContainer">
             <input type="checkbox" name="hide_tags_in_threads" value="1" id="hide_tags_in_threads" ${hideTagsInThreads === 1 ? "checked" : ''}>
