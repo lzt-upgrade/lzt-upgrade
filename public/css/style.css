@@ -379,3 +379,24 @@
   align-items: center;
   justify-content: space-between;
 }
+
+#LZTUpIconButton {
+  max-width: 100%;
+  flex-basis: 50%;
+  height: 64px;
+  display: flex;
+  align-items: center;
+
+  transition: all 0.5s ease;
+}
+
+#LZTUpIconButton > #LZTUpText {
+  width: fit-content;
+  white-space: normal;
+}
+
+#LZTUpIconButton:hover {
+  background: rgba(54, 54, 54, 0.75);
+  border-radius: 8px;
+  cursor: pointer;
+}
