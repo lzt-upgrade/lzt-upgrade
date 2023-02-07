@@ -505,6 +505,10 @@
             <i id="LZTUpIcon" class="far fa-file-download"></i>
             <span id="LZTUpText">Сохранить настройки в файл</span>
           </div>
+          <div id="LZTUpIconButton" class="LZTUpUploadSettings">
+            <i id="LZTUpIcon" class="far fa-upload"></i>
+            <span id="LZTUpText">Загрузить настройки из файла</span>
+          </div>
         </div>
         `
       );
@@ -1850,6 +1854,52 @@
         link.href = window.URL.createObjectURL(blob);
         link.download = 'LZTUpConfig.json';
         link.click();
+        registerAlert('Файл настроек выгружен', 5000);
+      });
+
+      $(document).on('click', '.LZTUpUploadSettings', async function () {
+        const input = document.createElement('input');
+        input.type = 'file';
+        input.accept = 'application/json';
+        input.click();
+
+        const file = await new Promise(resolve => {
+          input.onchange = () => {
+            resolve(input.files[0]);
+          };
+        });
+
+        const reader = new FileReader();
+        reader.readAsText(file);
+        const config = await new Promise(resolve => {
+          reader.onload = () => {
+            resolve(reader.result);
+          };
+          reader.error = () => {
+            console.error('LZT Upgrade: Ошибка загрузки файла настроек', reader.error);
+            resolve(false);
+          };
+        });
+
+        if (!config) {
+          registerAlert('Ошибка загрузки файла настроек', 5000);
+          return;
+        }
+
+        const configObj = JSON.parse(config);
+        try {
+          await updateUniqueStyleDB(configObj.uniqueStyle);
+          await updateContestsDB(configObj.contests);
+          await updateUsersDB(configObj.users);
+          await updateAppearDB(configObj.appear);
+          registerAlert('Настройки загружены. Выполняю перезагрузку страницы...', 5000);
+          await sleep(500);
+          window.location.reload();
+        } catch (err) {
+          console.error('LZT Upgrade: Ошибка загрузки файла настроек', err)
+          registerAlert('Ошибка загрузки файла настроек', 5000);
+        }
+
       });
 
       reportButtonsList.forEach(btn => {
