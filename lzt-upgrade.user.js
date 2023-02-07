@@ -232,7 +232,7 @@
             <i id="LZTUpIcon" class="far fa-palette"></i>
             <div>
               <span id="LZTUpText">Локальный Уник</span>
-              <span id="LZTUpSubText">Представь, ты, мог не платить...</span>
+              <span id="LZTUpSubText">Представь, можно не платить...</span>
             </div>
           </div>
           <div id="LZTUpListItem" class="LZTUpContestsItem">
