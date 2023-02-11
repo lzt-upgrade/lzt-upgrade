@@ -9,7 +9,7 @@ async function loadTheme(themeName) {
       }
     },
     onerror: (error) => {
-      console.error(`Error loading ${themeName} theme`, error);
+      Logger.error(`Ошибка загрузки темы ${themeName}`, error);
     },
   });
 }

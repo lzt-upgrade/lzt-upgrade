@@ -4,7 +4,7 @@ function openDB (name) {
       var openRequest = indexedDB.open(name, 1);
       return openRequest
     } catch (e) {
-      console.error(e)
+      Logger.error(e)
       return openRequest
     }
 }
@@ -14,8 +14,8 @@ async function initUsersDB () {
       var openRequest = openDB("LZTUpUsers")
 
       openRequest.onerror = () => {
-        alert('LZTUp: Произошла ошибка')
-        console.error("LZTUp: Ошибка Базы Данных: " + openRequest.errorCode);
+        alert('LZT Upgrade: Произошла ошибка')
+        Logger.error("Ошибка Базы Данных: " + openRequest.errorCode);
         reject(false);
       }
 
@@ -23,8 +23,8 @@ async function initUsersDB () {
         var db = openRequest.result;
 
         db.onerror = () => {
-          alert('LZTUp: Не удалось загрузить базу данных')
-          console.error("LZTUp: Не удалось загрузить базу данных: " + openRequest.error);
+          alert('LZT Upgrade: Не удалось загрузить базу данных')
+          Logger.error("Не удалось загрузить базу данных: " + openRequest.error);
           reject(false);
         }
 
@@ -33,7 +33,7 @@ async function initUsersDB () {
         objectStore.createIndex('showUseridInProfile', 'showUseridInProfile', { unique: false })
         objectStore.createIndex('showFullRegInProfile', 'showFullRegInProfile', { unique: false })
 
-        console.log('LZTUp: База Данных создана')
+        Logger.log('База Данных создана')
 
         objectStore.transaction.oncomplete = event => {
           var objectStore = db.transaction('users', 'readwrite').objectStore('users');
@@ -45,23 +45,23 @@ async function initUsersDB () {
           var request = objectStore.add(usersDefault);
 
           request.onsuccess = () => {
-            console.log("LZTUp: Стандартные настройки пользователей добавлены в Базу Данных: ", request.result);
+            Logger.log("Стандартные настройки пользователей добавлены в Базу Данных: ", request.result);
             resolve(true);
           };
           request.onerror = () => {
-            console.log("LZTUp: Ошибка при добавление стандартных настроек пользователей в Базу Данных: ", request.error);
+            Logger.log("Ошибка при добавление стандартных настроек пользователей в Базу Данных: ", request.error);
             reject(false);
           };
         }
       }
 
       openRequest.onsuccess = () => {
-        console.log("LZTUp: База данных инициализована")
+        Logger.log("База данных инициализована")
         var db = openRequest.result;
         db.onversionchange = () => {
           db.close();
           alert("Базе данных нужно обновление, пожалуста, перезагрузите страницу.");
-          console.log("LZTUp: Базе данных нужно обновление, пожалуста, перезагрузите страницу");
+          Logger.log("Базе данных нужно обновление, пожалуста, перезагрузите страницу");
           reject(false);
         }
         resolve(true);
@@ -69,7 +69,7 @@ async function initUsersDB () {
 
       openRequest.onblocked = () => {
         var db = openRequest.result;
-        console.error('LZTUp: База Данных временно заблокирована из-за ошибки: ', db)
+        Logger.error('База Данных временно заблокирована из-за ошибки: ', db)
         alert("LZTUp отключен из-за ошибки при обновление Базы Данных. Закройте все открытые вкладки с lolz.guru и попробуйте снова.");
         reject(false);
       }
@@ -82,8 +82,8 @@ async function updateUsersDB({showUseridInProfile, showFullRegInProfile}) {
         var openRequest = openDB("LZTUpUsers");
 
         openRequest.onerror = () => {
-          alert('LZTUp: Произошла ошибка');
-          console.error("LZTUp: Ошибка Базы Данных: " + openRequest.errorCode);
+          alert('LZT Upgrade: Произошла ошибка');
+          Logger.error("Ошибка Базы Данных: " + openRequest.errorCode);
           reject(false);
         }
 
@@ -98,7 +98,7 @@ async function updateUsersDB({showUseridInProfile, showFullRegInProfile}) {
           var db = openRequest.result;
           db.onversionchange = () => {
             db.close();
-            alert("LZTUp: База данных устарела, пожалуста, перезагрузите страницу.");
+            alert("База данных устарела, пожалуста, перезагрузите страницу.");
             reject(false);
           }
 
@@ -106,12 +106,12 @@ async function updateUsersDB({showUseridInProfile, showFullRegInProfile}) {
           var request = objectStore.get('users');
 
           request.onerror = (event) => {
-            console.error("LZTUp: Не удалось получить данные из Базы Данных: ", event.error);
+            Logger.error("Не удалось получить данные из Базы Данных: ", event.error);
             reject(false);
           }
 
           request.onsuccess = () => {
-            console.log('LZTUp: Получены данные из Базы Данных: ', request.result);
+            Logger.log('Получены данные из Базы Данных: ', request.result);
             var data = request.result;
 
             if (typeof(showUseridInProfile) === 'number') {
@@ -125,12 +125,12 @@ async function updateUsersDB({showUseridInProfile, showFullRegInProfile}) {
             var requestUpdate = objectStore.put(data);
 
             requestUpdate.onerror = (event) =>{
-              console.error("LZTUp: Не удалось обновить данные в Базе Данных: ", event.error);
+              Logger.error("Не удалось обновить данные в Базе Данных: ", event.error);
               reject(false);
             }
 
             requestUpdate.onsuccess = () => {
-              console.log('LZTUp: Данные в Базе Данных обновлены, вы великолепны!');
+              Logger.log('Данные в Базе Данных обновлены, вы великолепны!');
               resolve(true);
             }
           }
@@ -138,12 +138,12 @@ async function updateUsersDB({showUseridInProfile, showFullRegInProfile}) {
 
         openRequest.onblocked = () => {
           var db = openRequest.result;
-          console.error('LZTUp: База Данных временно заблокирована из-за ошибки: ', db);
+          Logger.error('База Данных временно заблокирована из-за ошибки: ', db);
           alert("LZTUp отключен из-за ошибки при обновление Базы Данных. Закройте все открытые вкладки с lolz.guru и попробуйте снова.");
           reject(false);
         }
       } else {
-        console.error('LZTUp: В чём смысл делать функцию добавления, которая ничего не добавляет?! wut');
+        Logger.error('В чём смысл делать функцию добавления, которая ничего не добавляет?! wut');
         reject(false);
       }
     })
@@ -154,8 +154,8 @@ function readUsersDB() {
       var openRequest = openDB("LZTUpUsers");
 
       openRequest.onerror = () => {
-        alert('LZTUp: Произошла ошибка');
-        console.error("LZTUp: Ошибка Базы Данных: " + openRequest.errorCode);
+        alert('LZT Upgrade: Произошла ошибка');
+        Logger.error("Ошибка Базы Данных: " + openRequest.errorCode);
         reject(false);
       }
 
@@ -170,7 +170,7 @@ function readUsersDB() {
         var db = openRequest.result;
         db.onversionchange = () => {
           db.close();
-          alert("LZTUp: База данных устарела, пожалуста, перезагрузите страницу.");
+          alert("База данных устарела, пожалуста, перезагрузите страницу.");
           reject(false);
         }
 
@@ -178,12 +178,12 @@ function readUsersDB() {
         var request = objectStore.get('users');
 
         request.onerror = (event) => {
-          console.error("LZTUp: Не удалось получить данные из Базы Данных: ", event.error);
+          Logger.error("Не удалось получить данные из Базы Данных: ", event.error);
           reject(false);
         }
 
         request.onsuccess = () => {
-          console.log('LZTUp: Получены данные из Базы Данных: ', request.result);
+          Logger.log('Получены данные из Базы Данных: ', request.result);
           var data = request.result;
           resolve(data);
         }
@@ -191,7 +191,7 @@ function readUsersDB() {
 
       openRequest.onblocked = () => {
         var db = openRequest.result;
-        console.error('LZTUp: База Данных временно заблокирована из-за ошибки: ', db);
+        Logger.error('База Данных временно заблокирована из-за ошибки: ', db);
         alert("LZTUp отключен из-за ошибки при обновление Базы Данных. Закройте все открытые вкладки с lolz.guru и попробуйте снова.");
         reject(false);
       }
