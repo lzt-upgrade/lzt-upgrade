@@ -16,6 +16,7 @@
 // @grant        GM_getResourceText
 // @grant        GM_addStyle
 // @grant        GM_xmlhttpRequest 
+// @grant        GM_info
 // @resource     styles https://raw.githubusercontent.com/ilyhalight/lzt-upgrade/master/public/css/style.css
 // @resource     nano https://raw.githubusercontent.com/ilyhalight/lzt-upgrade/master/public/css/nano.min.css
 // @require      https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js
@@ -25,6 +26,7 @@
 // @require      https://raw.githubusercontent.com/ilyhalight/lzt-upgrade/master/public/static/js/lztupgrade/indexedDB/users.js
 // @require      https://raw.githubusercontent.com/ilyhalight/lzt-upgrade/master/public/static/js/lztupgrade/indexedDB/appear.js
 // @require      https://raw.githubusercontent.com/ilyhalight/lzt-upgrade/master/public/static/js/lztupgrade/api/themes.js
+// @require      https://raw.githubusercontent.com/ilyhalight/lzt-upgrade/master/public/static/js/lztupgrade/Logger.js
 // @updateURL    https://github.com/ilyhalight/lzt-upgrade/raw/master/lzt-upgrade.user.js
 // @downloadURL  https://github.com/ilyhalight/lzt-upgrade/raw/master/lzt-upgrade.user.js
 // @supportURL   https://github.com/ilyhalight/lzt-upgrade/issues
@@ -55,6 +57,8 @@
     };
   };
 
+  if (GM_info?.script?.version) Logger.log(`LZT Upgrade version: ${GM_info?.script?.version}`);
+
   if (typeof GM_getResourceText === 'undefined') {
     fetch('https://raw.githubusercontent.com/ilyhalight/lzt-upgrade/master/public/css/style.css')
     .then((response) => response.text().then(styles => GM_addStyle(styles)));
@@ -67,13 +71,13 @@
     GM_addStyle(nano);
   }
 
-  let isUniqueDBInited = await initUniqueStyleDB().then(value => {return(value)}).catch(err => {console.error(err); return false});
-  let isContestsDBInited = await initContestsDB().then(value => {return(value)}).catch(err => {console.error(err); return false});
-  let isUsersDBInited = await initUsersDB().then(value => {return(value)}).catch(err => {console.error(err); return false});
-  let isAppearDBInited = await initAppearDB().then(value => {return(value)}).catch(err => {console.error(err); return false});
+  let isUniqueDBInited = await initUniqueStyleDB().then(value => {return(value)}).catch(err => {Logger.error(err); return false});
+  let isContestsDBInited = await initContestsDB().then(value => {return(value)}).catch(err => {Logger.error(err); return false});
+  let isUsersDBInited = await initUsersDB().then(value => {return(value)}).catch(err => {Logger.error(err); return false});
+  let isAppearDBInited = await initAppearDB().then(value => {return(value)}).catch(err => {Logger.error(err); return false});
 
   if (isAppearDBInited) {
-    var dbAppearData = await readAppearDB().then(value => {return(value)}).catch(err => {console.error(err); return false});
+    var dbAppearData = await readAppearDB().then(value => {return(value)}).catch(err => {Logger.error(err); return false});
     if (dbAppearData.theme > 0) {
       $.ajax({
         url: api_endpoints['getThemes'],
@@ -87,7 +91,7 @@
             });
           };
         },
-        error: (err) => console.log('LZT Upgrade: Не удалось получить список тем ', err)
+        error: (err) => Logger.log('Не удалось получить список тем ', err)
       });
     }
   }
@@ -95,22 +99,22 @@
   const SCRIPT_LOADER = setInterval(async () => {
     if ($('body').length) {
       if (!SCRIPT_STATUS) {
-        console.log('LZT Upgrade: Пытаемся запустить скрипт...');
+        Logger.log('Пытаемся запустить скрипт...');
         START_SCRIPT();
       } else if ($('#LZTUpButton').length){
-        console.log('LZT Upgrade: Скрипт уже запущен. Удаление проверки на запуск...');
+        Logger.log('Скрипт уже запущен. Удаление проверки на запуск...');
         clearInterval(SCRIPT_LOADER);
       } else {
-        console.log('LZT Upgrade: Скрипт не был запущен. Повторяем попытку...');
+        Logger.log('Скрипт не был запущен. Повторяем попытку...');
         START_SCRIPT();
       }
     } else {
-      console.log('LZT Upgrade: Скрипт не был запущен. Ожидание загрузки страницы...');
+      Logger.log('Скрипт не был запущен. Ожидание загрузки страницы...');
     }
   }, 5)
 
   const START_SCRIPT = async () => {
-    console.log('LZT Upgrade: Скрипт был запущен');
+    Logger.log('Скрипт был запущен');
     SCRIPT_STATUS = true;
     // Error page
     if (/^(Error\s[0-9]{3}|Site\sMaintenance)$/.test($('head title').text())) {
@@ -123,7 +127,7 @@
     function getHeight() {
       let height = Math.max( document.body.scrollHeight, document.body.offsetHeight,
         document.documentElement.clientHeight, document.documentElement.scrollHeight, document.documentElement.offsetHeight );
-      console.log('Page height: ' + height);
+      Logger.log('Page height: ' + height);
       return height;
     }
 
@@ -183,10 +187,10 @@
     }
 
     $(menuBtn).on('click', async function () {
-      var uniqueData = await readUniqueStyleDB().then(value => {return(value)}).catch(err => {console.error(err); return false});
-      var contestsData = await readContestsDB().then(value => {return(value)}).catch(err => {console.error(err); return false});
-      var usersData = await readUsersDB().then(value => {return(value)}).catch(err => {console.error(err); return false});
-      var appearData = await readAppearDB().then(value => {return(value)}).catch(err => {console.error(err); return false});
+      var uniqueData = await readUniqueStyleDB().then(value => {return(value)}).catch(err => {Logger.error(err); return false});
+      var contestsData = await readContestsDB().then(value => {return(value)}).catch(err => {Logger.error(err); return false});
+      var usersData = await readUsersDB().then(value => {return(value)}).catch(err => {Logger.error(err); return false});
+      var appearData = await readAppearDB().then(value => {return(value)}).catch(err => {Logger.error(err); return false});
       var nickStyle = uniqueData.nickStyle;
       var bannerStyle = uniqueData.bannerStyle;
       var bannerText = uniqueData.bannerText;
@@ -564,7 +568,7 @@
         },
         error: (err) => {
           setDefaultInMesh('#LZTUpModalLogosContainer');
-          console.log('LZT Upgrade: Не удалось получить список логотипов форума ', err)
+          Logger.log('Не удалось получить список логотипов форума ', err)
         }
       });
 
@@ -605,7 +609,7 @@
         },
         error: (err) => {
           setDefaultInMesh('#LZTUpModalMarketLogosContainer');
-          console.log('LZT Upgrade: Не удалось получить список логотипов маркета ', err)
+          Logger.log('Не удалось получить список логотипов маркета ', err)
         }
       });
 
@@ -647,7 +651,7 @@
         },
         error: (err) => {
           setDefaultInMesh('#LZTUpModalThemesContainer');
-          console.error('LZT Upgrade: Не удалось получить список тем ', err)
+          Logger.error('Не удалось получить список тем ', err)
         }
       });
 
@@ -900,14 +904,14 @@
 
     async function reloadNickStyle() {
       try {
-        var uniqueData = await readUniqueStyleDB().then(value => {return(value)}).catch(err => {console.error(err); return false});
+        var uniqueData = await readUniqueStyleDB().then(value => {return(value)}).catch(err => {Logger.error(err); return false});
         if (typeof(uniqueData) === 'object') {
           if (uniqueData.nickStyle !== '') {
             updateNickStyle(uniqueData.nickStyle);
           }
         }
       } catch (err) {
-        console.error('LZT Upgrade: Не удалось обновить стиль ника ', err);
+        Logger.error('Не удалось обновить стиль ника ', err);
       }
     }
 
@@ -950,20 +954,20 @@
 
     async function reloadBannerStyle() {
       try {
-        var uniqueData = await readUniqueStyleDB().then(value => {return(value)}).catch(err => {console.error(err); return false});
+        var uniqueData = await readUniqueStyleDB().then(value => {return(value)}).catch(err => {Logger.error(err); return false});
         if (typeof(uniqueData) === 'object') {
           if (uniqueData.bannerText !== '') {
             updateBannerStyle(uniqueData.bannerStyle, uniqueData.bannerText);
           }
         }
       } catch (err) {
-        console.error('LZT Upgrade: Не удалось обновить стиль баннера ', err);
+        Logger.error('Не удалось обновить стиль баннера ', err);
       }
     }
 
     async function forceReloadBannerStyle() {
       try {
-        var uniqueData = await readUniqueStyleDB().then(value => {return(value)}).catch(err => {console.error(err); return false});
+        var uniqueData = await readUniqueStyleDB().then(value => {return(value)}).catch(err => {Logger.error(err); return false});
         if (typeof(uniqueData) === 'object') {
           updateBannerStyle(uniqueData.bannerStyle, uniqueData.bannerText);
           if (uniqueData.bannerText === '') {
@@ -971,7 +975,7 @@
           }
         }
       } catch (err) {
-        console.error('LZT Upgrade: Не удалось обновить стиль баннера ', err);
+        Logger.error('Не удалось обновить стиль баннера ', err);
       }
     }
 
@@ -1004,7 +1008,7 @@
 
     async function reloadUserBadges() {
       try {
-        var uniqueData = await readUniqueStyleDB().then(value => {return(value)}).catch(err => {console.error(err); return false});
+        var uniqueData = await readUniqueStyleDB().then(value => {return(value)}).catch(err => {Logger.error(err); return false});
         if (typeof(uniqueData) === 'object' && uniqueData.badgeText !== '') {
           var isUserBadgesLoaded = $('#LZTUpUserBadges');
           if (isUserBadgesLoaded.length) {
@@ -1014,7 +1018,7 @@
           await setUniqIconColor(uniqueData.badgeFill, uniqueData.badgeStroke)
         }
       } catch (err) {
-        console.error('LZT Upgrade: Не удалось обновить стиль значка аватара юзера ', err);
+        Logger.error('Не удалось обновить стиль значка аватара юзера ', err);
       }
     }
 
@@ -1354,7 +1358,7 @@
     const counterMutationObserver = new MutationObserver(async function(mutations) {
       mutations.forEach(async function(mutation) {
         if (mutation.target === $AlertsCounter[0] || mutation.target === $ConversationsCounter[0]) {
-          var dbAppearData = await readAppearDB().then(value => {return(value)}).catch(err => {console.error(err); return false});
+          var dbAppearData = await readAppearDB().then(value => {return(value)}).catch(err => {Logger.error(err); return false});
           if (dbAppearData.hideCounterAlerts === 1) {
             await counterVisibility('alerts', true);
           };
@@ -1399,7 +1403,7 @@
     }
 
     async function reloadReportButtons() {
-      let dbAppearData = await readAppearDB().then(value => {return(value)}).catch(err => {console.error(err); return false});
+      let dbAppearData = await readAppearDB().then(value => {return(value)}).catch(err => {Logger.error(err); return false});
       if (dbAppearData && dbAppearData.reportButtonsInPost.length > 0) {
         if (typeof (dbAppearData.reportButtonsInPost) === 'string') {
           let buttons = dbAppearData.reportButtonsInPost.split(',');
@@ -1433,12 +1437,12 @@
             polls.push(`${pollPercentage[i]} (${pollCounts[i]} чел.)`)
           }
         } else {
-          console.error(`LZT Upgrade: Не удалось найти тело результатов голосования. Статус: ${response.status}`);
+          Logger.error(`LZT Upgrade: Не удалось найти тело результатов голосования. Статус: ${response.status}`);
         }
       } else {
-        console.error(`LZT Upgrade: Не удалось загрузить результаты голосования. Статус: ${response.status}`);
+        Logger.error(`LZT Upgrade: Не удалось загрузить результаты голосования. Статус: ${response.status}`);
       }
-      console.log('LZT Upgrade: Результаты голосования: ', polls);
+      Logger.log('Результаты голосования: ', polls);
       return polls;
     }
 
@@ -1476,7 +1480,7 @@
     var MenuResult = await registerMenuBtn(menuBtn);
 
     if (isContestsDBInited) {
-      var dbContestsData = await readContestsDB().then(value => {return(value)}).catch(err => {console.error(err); return false});
+      var dbContestsData = await readContestsDB().then(value => {return(value)}).catch(err => {Logger.error(err); return false});
       if (dbContestsData.contestsTen === 1 || dbContestsData.contestsAll === 1) {
         await onClickCategoryContestsHandler();
         dbContestsData.contestsTen === 1 ? await regOpenContestsBtn(10) : null;
@@ -1490,13 +1494,13 @@
     }
 
     if (isUsersDBInited) {
-      var dbUsersData = await readUsersDB().then(value => {return(value)}).catch(err => {console.error(err); return false});
+      var dbUsersData = await readUsersDB().then(value => {return(value)}).catch(err => {Logger.error(err); return false});
       dbUsersData.showUseridInProfile === 1 ? await addUserIdInProfileInfo() : null;
       dbUsersData.showFullRegInProfile === 1 ? await editUserRegInProfileInfo(true) : null;
     }
 
     if (isAppearDBInited) {
-      var dbAppearData = await readAppearDB().then(value => {return(value)}).catch(err => {console.error(err); return false});
+      var dbAppearData = await readAppearDB().then(value => {return(value)}).catch(err => {Logger.error(err); return false});
       dbAppearData.hideUnreadArticleCircle === 1 ? await unreadArticleCircleVisibility(true) : null;
       dbAppearData.hideTagsInThreads === 1 ? await tagsVisibility(true) : null;
       if (dbAppearData.forumLogo > 0) {
@@ -1507,7 +1511,7 @@
             uid: dbAppearData.forumLogo
           }, 
           success: logo => typeof(logo) === 'object' && logo.hasOwnProperty('uid') && logo.hasOwnProperty('css') ? updateSiteLogo('main', logo.css) : undefined,
-          error: err => console.error(`LZT Upgrade: Не удалось загрузить логотип форума `, err)
+          error: err => Logger.error(`LZT Upgrade: Не удалось загрузить логотип форума `, err)
         });
       }
       if (dbAppearData.marketLogo > 0) {
@@ -1518,7 +1522,7 @@
             uid: dbAppearData.marketLogo
           }, 
           success: logo => typeof(logo) === 'object' && logo.hasOwnProperty('uid') && logo.hasOwnProperty('css') ? updateSiteLogo('market', logo.css) : undefined,
-          error: err => console.error(`LZT Upgrade: Не удалось загрузить логотип маркета `, err)
+          error: err => Logger.error(`LZT Upgrade: Не удалось загрузить логотип маркета `, err)
         });
       }
       if (dbAppearData.reportButtonsInPost.length > 0) {
@@ -1574,7 +1578,7 @@
           updateNickStyle(nickStyleNew);
         } else {
             alert('Стиль ника не должен превышать 1500 символов!')
-            console.log('LZT Upgrade: Не удалось сохранить стиль ника. Стиль ника не должен превышать 1500 символов!')
+            Logger.log('Не удалось сохранить стиль ника. Стиль ника не должен превышать 1500 символов!')
         }
       });
 
@@ -1585,7 +1589,7 @@
           await updateUniqueStyles();
         } else {
           alert('Стиль лычки не должен превышать 1500 символов!')
-          console.log('LZT Upgrade: Не удалось сохранить стиль лычки. Стиль лычки не должен превышать 1500 символов!')
+          Logger.log('Не удалось сохранить стиль лычки. Стиль лычки не должен превышать 1500 символов!')
         }
       });
 
@@ -1596,7 +1600,7 @@
           await forceReloadBannerStyle();
         } else {
           alert('Текст в лычке не должен превышать 24 символов!')
-          console.log('LZT Upgrade: Не удалось сохранить текст в лычке. Текст в лычке не должен превышать 24 символов!')
+          Logger.log('Не удалось сохранить текст в лычке. Текст в лычке не должен превышать 24 символов!')
         }
       });
 
@@ -1607,7 +1611,7 @@
           await updateUniqueStyles();
         } else {
           alert('Иконка на аватарке не должна превышать 3000 символов!')
-          console.log('LZT Upgrade: Не удалось сохранить иконку на аватарке. Иконка на аватарке не должен превышать 3000 символов!')
+          Logger.log('Не удалось сохранить иконку на аватарке. Иконка на аватарке не должен превышать 3000 символов!')
         }
       });
 
@@ -1619,7 +1623,7 @@
           
         } else {
           alert('Текст в иконке аватарки не должен превышать 24 символов!')
-          console.log('LZT Upgrade: Не удалось сохранить текст в иконке аватарки. Текст в иконке аватарки не должен превышать 24 символов!')
+          Logger.log('Не удалось сохранить текст в иконке аватарки. Текст в иконке аватарки не должен превышать 24 символов!')
         }
       });
 
@@ -1766,7 +1770,7 @@
           await counterVisibility('alerts', true),
           counterMutation(true)
           ): (
-            dbAppearData = await readAppearDB().then(value => {return(value)}).catch(err => {console.error(err); return false}),
+            dbAppearData = await readAppearDB().then(value => {return(value)}).catch(err => {Logger.error(err); return false}),
             await updateAppearDB({hideCounterAlerts: 0}),
             dbAppearData.hideCounterAlerts === 0 && dbAppearData.hideCounterConversations === 0 ? counterMutation(false) : null,
             await counterVisibility('alerts', false)
@@ -1779,7 +1783,7 @@
           await counterVisibility('conversations', true),
           counterMutation(true)
           ): (
-            dbAppearData = await readAppearDB().then(value => {return(value)}).catch(err => {console.error(err); return false}),
+            dbAppearData = await readAppearDB().then(value => {return(value)}).catch(err => {Logger.error(err); return false}),
             await updateAppearDB({hideCounterConversations: 0}),
             dbAppearData.hideCounterAlerts === 0 && dbAppearData.hideCounterConversations === 0 ? counterMutation(false) : null,
             await counterVisibility('conversations', false)
@@ -1836,10 +1840,10 @@
       });
 
       $(document).on('click', '.LZTUpSaveSettings', async function () {
-        const uniqueStylesSettings = await readUniqueStyleDB().then(value => {return(value)}).catch(err => {console.error(err); return false});
-        const contestsSettings = await readContestsDB().then(value => {return(value)}).catch(err => {console.error(err); return false});
-        const usersSettings = await readUsersDB().then(value => {return(value)}).catch(err => {console.error(err); return false});
-        const appearSettings = await readAppearDB().then(value => {return(value)}).catch(err => {console.error(err); return false});
+        const uniqueStylesSettings = await readUniqueStyleDB().then(value => {return(value)}).catch(err => {Logger.error(err); return false});
+        const contestsSettings = await readContestsDB().then(value => {return(value)}).catch(err => {Logger.error(err); return false});
+        const usersSettings = await readUsersDB().then(value => {return(value)}).catch(err => {Logger.error(err); return false});
+        const appearSettings = await readAppearDB().then(value => {return(value)}).catch(err => {Logger.error(err); return false});
         const config = JSON.stringify({
           uniqueStyle: uniqueStylesSettings,
           contests: contestsSettings,
@@ -1876,7 +1880,7 @@
             resolve(reader.result);
           };
           reader.error = () => {
-            console.error('LZT Upgrade: Ошибка загрузки файла настроек', reader.error);
+            Logger.error('Ошибка загрузки файла настроек', reader.error);
             resolve(false);
           };
         });
@@ -1896,7 +1900,7 @@
           await sleep(500);
           window.location.reload();
         } catch (err) {
-          console.error('LZT Upgrade: Ошибка загрузки файла настроек', err)
+          Logger.error('Ошибка загрузки файла настроек', err)
           registerAlert('Ошибка загрузки файла настроек', 5000);
         }
 
@@ -1904,7 +1908,7 @@
 
       reportButtonsList.forEach(btn => {
         $(document).on('click', `#set_${btn.id}_reportbtn`, async function () {
-          let appearData = await readAppearDB().then(value => {return(value)}).catch(err => {console.error(err); return false});
+          let appearData = await readAppearDB().then(value => {return(value)}).catch(err => {Logger.error(err); return false});
           let usedBtns;
           if (typeof (appearData.reportButtonsInPost) === 'string') {
             usedBtns = appearData.reportButtonsInPost.split(',');
