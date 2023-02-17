@@ -266,13 +266,6 @@
               <span id="LZTUpSubText">Темы, логотипы и другое</span>
             </div>
           </div>
-          <div id="LZTUpListItem" class="LZTUpAppearItem">
-            <i id="LZTUpIcon" class="far fa-drafting-compass"></i>
-            <div>
-              <span id="LZTUpText">Другое</span>
-              <span id="LZTUpSubText">Некоторые другие настройки</span>
-            </div>
-          </div>
         </div>
         <div id="LZTUpList" class="LZTUpSettingsList">
           <div id="LZTUpListItem" class="LZTUpSettingsItem">
