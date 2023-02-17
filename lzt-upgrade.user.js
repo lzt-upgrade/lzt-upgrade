@@ -1586,6 +1586,11 @@
 
     await updateTooltips();
 
+    $('.chatboxStartIcon').on('click', async () => {
+      await sleep(800);
+      await updateUniqueStyles();
+    });
+
     if (MenuResult === true) {
       // UNIQUE
       $(document).on('click', '#LZTUpResetUniqueDB', async function () {
