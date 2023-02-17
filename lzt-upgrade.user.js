@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         LZT Upgrade
-// @version      1.0.19
+// @version      1.1.0
 // @description  Some useful utilities for Lolzteam
 // @description:ru  Полезные улучшения для Lolzteam
 // @icon         https://raw.githubusercontent.com/ilyhalight/lzt-upgrade/master/public/static/img/lzt-upgrade-mini.png
@@ -21,6 +21,7 @@
 // @resource     nano https://raw.githubusercontent.com/ilyhalight/lzt-upgrade/master/public/css/nano.min.css
 // @require      https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js
 // @require      https://raw.githubusercontent.com/ilyhalight/lzt-upgrade/master/public/static/js/pickr/pickr.es5.min.js
+// @require      https://raw.githubusercontent.com/ilyhalight/lzt-upgrade/master/public/static/js/lztupgrade/indexedDB/default.js
 // @require      https://raw.githubusercontent.com/ilyhalight/lzt-upgrade/master/public/static/js/lztupgrade/indexedDB/UniqueStyle.js
 // @require      https://raw.githubusercontent.com/ilyhalight/lzt-upgrade/master/public/static/js/lztupgrade/indexedDB/contests.js
 // @require      https://raw.githubusercontent.com/ilyhalight/lzt-upgrade/master/public/static/js/lztupgrade/indexedDB/users.js
@@ -71,13 +72,18 @@
     GM_addStyle(nano);
   }
 
-  let isUniqueDBInited = await initUniqueStyleDB().then(value => {return(value)}).catch(err => {Logger.error(err); return false});
-  let isContestsDBInited = await initContestsDB().then(value => {return(value)}).catch(err => {Logger.error(err); return false});
-  let isUsersDBInited = await initUsersDB().then(value => {return(value)}).catch(err => {Logger.error(err); return false});
-  let isAppearDBInited = await initAppearDB().then(value => {return(value)}).catch(err => {Logger.error(err); return false});
+  const uniqueStyleDB = new LZTUniqueStyleDB();
+  const contestsDB = new LZTContestsDB();
+  const usersDB = new LZTUsersDB();
+  const appearDB = new LZTAppearDB();
+
+  let isUniqueDBInited = await uniqueStyleDB.init().then(value => {return(value)}).catch(err => {Logger.error(err); return false});
+  let isContestsDBInited = await contestsDB.init().then(value => {return(value)}).catch(err => {Logger.error(err); return false});
+  let isUsersDBInited = await usersDB.init().then(value => {return(value)}).catch(err => {Logger.error(err); return false});
+  let isAppearDBInited = await appearDB.init().then(value => {return(value)}).catch(err => {Logger.error(err); return false});
 
   if (isAppearDBInited) {
-    var dbAppearData = await readAppearDB().then(value => {return(value)}).catch(err => {Logger.error(err); return false});
+    var dbAppearData = await appearDB.read().then(value => {return(value)}).catch(err => {Logger.error(err); return false});
     if (dbAppearData.theme > 0) {
       $.ajax({
         url: api_endpoints['getThemes'],
@@ -187,10 +193,10 @@
     }
 
     $(menuBtn).on('click', async function () {
-      var uniqueData = await readUniqueStyleDB().then(value => {return(value)}).catch(err => {Logger.error(err); return false});
-      var contestsData = await readContestsDB().then(value => {return(value)}).catch(err => {Logger.error(err); return false});
-      var usersData = await readUsersDB().then(value => {return(value)}).catch(err => {Logger.error(err); return false});
-      var appearData = await readAppearDB().then(value => {return(value)}).catch(err => {Logger.error(err); return false});
+      var uniqueData = await uniqueStyleDB.read().then(value => {return(value)}).catch(err => {Logger.error(err); return false});
+      var contestsData = await contestsDB.read().then(value => {return(value)}).catch(err => {Logger.error(err); return false});
+      var usersData = await usersDB.read().then(value => {return(value)}).catch(err => {Logger.error(err); return false});
+      var appearData = await appearDB.read().then(value => {return(value)}).catch(err => {Logger.error(err); return false});
       var nickStyle = uniqueData.nickStyle;
       var bannerStyle = uniqueData.bannerStyle;
       var bannerText = uniqueData.bannerText;
@@ -258,6 +264,13 @@
             <div>
               <span id="LZTUpText">Внешний вид</span>
               <span id="LZTUpSubText">Темы, логотипы и другое</span>
+            </div>
+          </div>
+          <div id="LZTUpListItem" class="LZTUpAppearItem">
+            <i id="LZTUpIcon" class="far fa-drafting-compass"></i>
+            <div>
+              <span id="LZTUpText">Другое</span>
+              <span id="LZTUpSubText">Некоторые другие настройки</span>
             </div>
           </div>
         </div>
@@ -559,7 +572,7 @@
                 </div>`);
                 $(document).on('click', `#set_${shortName}_logo`, async function (event) {
                   await setValueInMesh(event.target, '#LZTUpModalLogosContainer');
-                  await updateAppearDB({forumLogo: logo.uid});
+                  await appearDB.update({forumLogo: logo.uid});
                   updateSiteLogo('main', logo.css);
                 });
               }
@@ -574,7 +587,7 @@
 
       $(document).on('click', `#set_default_logo`, async function (event) {
         await setValueInMesh(event.target, '#LZTUpModalLogosContainer');
-        await updateAppearDB({forumLogo: 0});
+        await appearDB.update({forumLogo: 0});
         updateSiteLogo('main', null);
       });
 
@@ -600,7 +613,7 @@
                 </div>`);
                 $(document).on('click', `#set_${shortName}_marketlogo`, async function (event) {
                   await setValueInMesh(event.target, '#LZTUpModalMarketLogosContainer');
-                  await updateAppearDB({marketLogo: logo.uid});
+                  await appearDB.update({marketLogo: logo.uid});
                   updateSiteLogo('market', logo.css);
                 });
               }
@@ -615,7 +628,7 @@
 
       $(document).on('click', `#set_default_marketlogo`, async function (event) {
         await setValueInMesh(event.target, '#LZTUpModalMarketLogosContainer');
-        await updateAppearDB({marketLogo: 0});
+        await appearDB.update({marketLogo: 0});
         updateSiteLogo('market', null);
       });
 
@@ -637,7 +650,7 @@
                 </div>`);
                 $(document).on('click', `#set_${shortName}_theme`, async function (event) {
                   await setValueInMesh(event.target, '#LZTUpModalThemesContainer');
-                  await updateAppearDB({theme: theme.uid});
+                  await appearDB.update({theme: theme.uid});
                   registerAlert('Тема изменена. Обновите страницу, чтобы избежать багов с некорректным отображением стилей', 5000)
                   await loadTheme(theme.file);
                   if (themeAutoReload) {
@@ -657,7 +670,7 @@
 
       $(document).on('click', `#set_default_theme`, async function (event) {
         await setValueInMesh(event.target, '#LZTUpModalThemesContainer');
-        await updateAppearDB({theme: 0});
+        await appearDB.update({theme: 0});
         registerAlert('Устанаволена стандарная тема. Выполняю перезагрузку страницы...', 5000)
         await sleep(800);
         window.location.reload();
@@ -904,7 +917,7 @@
 
     async function reloadNickStyle() {
       try {
-        var uniqueData = await readUniqueStyleDB().then(value => {return(value)}).catch(err => {Logger.error(err); return false});
+        var uniqueData = await uniqueStyleDB.read().then(value => {return(value)}).catch(err => {Logger.error(err); return false});
         if (typeof(uniqueData) === 'object') {
           if (uniqueData.nickStyle !== '') {
             updateNickStyle(uniqueData.nickStyle);
@@ -977,7 +990,7 @@
 
     async function reloadBannerStyle() {
       try {
-        var uniqueData = await readUniqueStyleDB().then(value => {return(value)}).catch(err => {Logger.error(err); return false});
+        var uniqueData = await uniqueStyleDB.read().then(value => {return(value)}).catch(err => {Logger.error(err); return false});
         if (typeof(uniqueData) === 'object') {
           if (uniqueData.bannerText !== '') {
             updateBannerStyle(uniqueData.bannerStyle, uniqueData.bannerText);
@@ -990,7 +1003,7 @@
 
     async function forceReloadBannerStyle() {
       try {
-        var uniqueData = await readUniqueStyleDB().then(value => {return(value)}).catch(err => {Logger.error(err); return false});
+        var uniqueData = await uniqueStyleDB.read().then(value => {return(value)}).catch(err => {Logger.error(err); return false});
         if (typeof(uniqueData) === 'object') {
           updateBannerStyle(uniqueData.bannerStyle, uniqueData.bannerText);
           if (uniqueData.bannerText === '') {
@@ -1031,7 +1044,7 @@
 
     async function reloadUserBadges() {
       try {
-        var uniqueData = await readUniqueStyleDB().then(value => {return(value)}).catch(err => {Logger.error(err); return false});
+        var uniqueData = await uniqueStyleDB.read().then(value => {return(value)}).catch(err => {Logger.error(err); return false});
         if (typeof(uniqueData) === 'object' && uniqueData.badgeText !== '') {
           var isUserBadgesLoaded = $('#LZTUpUserBadges');
           if (isUserBadgesLoaded.length) {
@@ -1381,7 +1394,7 @@
     const counterMutationObserver = new MutationObserver(async function(mutations) {
       mutations.forEach(async function(mutation) {
         if (mutation.target === $AlertsCounter[0] || mutation.target === $ConversationsCounter[0]) {
-          var dbAppearData = await readAppearDB().then(value => {return(value)}).catch(err => {Logger.error(err); return false});
+          var dbAppearData = await appearDB.read().then(value => {return(value)}).catch(err => {Logger.error(err); return false});
           if (dbAppearData.hideCounterAlerts === 1) {
             await counterVisibility('alerts', true);
           };
@@ -1426,7 +1439,7 @@
     }
 
     async function reloadReportButtons() {
-      let dbAppearData = await readAppearDB().then(value => {return(value)}).catch(err => {Logger.error(err); return false});
+      let dbAppearData = await appearDB.read().then(value => {return(value)}).catch(err => {Logger.error(err); return false});
       if (dbAppearData && dbAppearData.reportButtonsInPost.length > 0) {
         if (typeof (dbAppearData.reportButtonsInPost) === 'string') {
           let buttons = dbAppearData.reportButtonsInPost.split(',');
@@ -1503,7 +1516,7 @@
     var MenuResult = await registerMenuBtn(menuBtn);
 
     if (isContestsDBInited) {
-      var dbContestsData = await readContestsDB().then(value => {return(value)}).catch(err => {Logger.error(err); return false});
+      var dbContestsData = await contestsDB.read().then(value => {return(value)}).catch(err => {Logger.error(err); return false});
       if (dbContestsData.contestsTen === 1 || dbContestsData.contestsAll === 1) {
         await onClickCategoryContestsHandler();
         dbContestsData.contestsTen === 1 ? await regOpenContestsBtn(10) : null;
@@ -1517,13 +1530,13 @@
     }
 
     if (isUsersDBInited) {
-      var dbUsersData = await readUsersDB().then(value => {return(value)}).catch(err => {Logger.error(err); return false});
+      var dbUsersData = await usersDB.read().then(value => {return(value)}).catch(err => {Logger.error(err); return false});
       dbUsersData.showUseridInProfile === 1 ? await addUserIdInProfileInfo() : null;
       dbUsersData.showFullRegInProfile === 1 ? await editUserRegInProfileInfo(true) : null;
     }
 
     if (isAppearDBInited) {
-      var dbAppearData = await readAppearDB().then(value => {return(value)}).catch(err => {Logger.error(err); return false});
+      var dbAppearData = await appearDB.read().then(value => {return(value)}).catch(err => {Logger.error(err); return false});
       dbAppearData.hideUnreadArticleCircle === 1 ? await unreadArticleCircleVisibility(true) : null;
       dbAppearData.hideTagsInThreads === 1 ? await tagsVisibility(true) : null;
       if (dbAppearData.forumLogo > 0) {
@@ -1599,15 +1612,17 @@
     if (MenuResult === true) {
       // UNIQUE
       $(document).on('click', '#LZTUpResetUniqueDB', async function () {
-        await deleteUniqueStylesDB();
-        await initUniqueStyleDB();
-        alert('Кастомные стили сброшены. Рекомендуем обновить страницу');
+        await uniqueStyleDB.delete();
+        await uniqueStyleDB.init();
+        alert('Кастомные стили сброшены');
+        await sleep(500);
+        window.location.reload();
       });
 
       $(document).on('click', '#LZTUpSaveUniqueStyle', async function () {
         let nickStyleNew = $('#LZTUpUniqueStyle').val();
         if (nickStyleNew.length < 1501) {
-          await updateUniqueStyleDB({nickStyle: nickStyleNew});
+          await uniqueStyleDB.update({nickStyle: nickStyleNew});
           updateNickStyle(nickStyleNew);
         } else {
             alert('Стиль ника не должен превышать 1500 символов!')
@@ -1618,7 +1633,7 @@
       $(document).on('click', '#LZTUpSaveBannerStyle', async function () {
         let bannerStyleNew = $('#LZTUpBannerStyle').val();
         if (bannerStyleNew.length < 1501) {
-          await updateUniqueStyleDB({bannerStyle: bannerStyleNew});
+          await uniqueStyleDB.update({bannerStyle: bannerStyleNew});
           await updateUniqueStyles();
         } else {
           alert('Стиль лычки не должен превышать 1500 символов!')
@@ -1629,7 +1644,7 @@
       $(document).on('click', '#LZTUpSaveBannerText', async function () {
         let bannerTextNew = $('#LZTUpBannerText').val();
         if (bannerTextNew.length < 25) {
-          await updateUniqueStyleDB({bannerText: bannerTextNew});
+          await uniqueStyleDB.update({bannerText: bannerTextNew});
           await forceReloadBannerStyle();
         } else {
           alert('Текст в лычке не должен превышать 24 символов!')
@@ -1640,7 +1655,7 @@
       $(document).on('click', '#LZTUpSaveBadgeIcon', async function () {
         let badgeIconNew = $('#LZTUpBadgeIcon').val();
         if (badgeIconNew.length < 3001) {
-          await updateUniqueStyleDB({badgeIcon: badgeIconNew});
+          await uniqueStyleDB.update({badgeIcon: badgeIconNew});
           await updateUniqueStyles();
         } else {
           alert('Иконка на аватарке не должна превышать 3000 символов!')
@@ -1651,7 +1666,7 @@
       $(document).on('click', '#LZTUpSaveBadgeText', async function () {
         let badgeTextNew  = $('#LZTUpBadgeText').val();
         if (badgeTextNew .length < 25) {
-          await updateUniqueStyleDB({badgeText: badgeTextNew});
+          await uniqueStyleDB.update({badgeText: badgeTextNew});
           await updateUniqueStyles();
           
         } else {
@@ -1662,8 +1677,8 @@
 
       // CONTESTS
       $(document).on('click', '#LZTUpResetContestsDB', async function () {
-        await deleteContestsDB();
-        await initContestsDB();
+        await contestsDB.delete();
+        await contestsDB.init();
         alert('Настройки розыгрышей LZT Upgrade сброшены');
         await sleep(500);
         window.location.reload();
@@ -1671,78 +1686,78 @@
 
       $(document).on('click', '#contests_open_ten', async function () {
         $('#contests_open_ten')[0].checked ? (
-          await updateContestsDB({contestsTen: 1}),
+          await contestsDB.update({contestsTen: 1}),
           await regOpenContestsBtn(10)
           ): (
-            await updateContestsDB({contestsTen: 0}),
+            await contestsDB.update({contestsTen: 0}),
             await removeOpenContestsBtn(10)
           );
       });
 
       $(document).on('click', '#contests_open_all', async function () {
         $('#contests_open_all')[0].checked ? (
-          await updateContestsDB({contestsAll: 1}),
+          await contestsDB.update({contestsAll: 1}),
           await regOpenContestsBtn(100)
           ): (
-            await updateContestsDB({contestsAll: 0}),
+            await contestsDB.update({contestsAll: 0}),
             await removeOpenContestsBtn(100)
           );
       });
 
       $(document).on('click', '#contests_info_top', async function () {
         $('#contests_info_top')[0].checked ? (
-          await updateContestsDB({contestsInfoTop: 1}),
+          await contestsDB.update({contestsInfoTop: 1}),
           await contestThreadBlockMove(true)
           ): (
-            await updateContestsDB({contestsInfoTop: 0}),
+            await contestsDB.update({contestsInfoTop: 0}),
             await contestThreadBlockMove(false)
           );
       });
 
       $(document).on('click', '#contests_btn_top_in_block', async function () {
         $('#contests_btn_top_in_block')[0].checked ? (
-          await updateContestsDB({contestsBtnTopInBlock: 1}),
+          await contestsDB.update({contestsBtnTopInBlock: 1}),
           await contestsBtnInBlockMove(true)
           ): (
-            await updateContestsDB({contestsBtnTopInBlock: 0}),
+            await contestsDB.update({contestsBtnTopInBlock: 0}),
             await contestsBtnInBlockMove(false)
           );
       });
 
       $(document).on('click', '#contests_hide_tags', async function () {
         $('#contests_hide_tags')[0].checked ? (
-          await updateContestsDB({contestsHideTags: 1}),
+          await contestsDB.update({contestsHideTags: 1}),
           await contestsTagsVisibility(true)
           ): (
-            await updateContestsDB({contestsHideTags: 0}),
+            await contestsDB.update({contestsHideTags: 0}),
             await contestsTagsVisibility(false)
           );
       });
 
       $(document).on('click', '#contests_auto_close', async function () {
         $('#contests_auto_close')[0].checked ? (
-          await updateContestsDB({contestsAutoClose: 1}),
+          await contestsDB.update({contestsAutoClose: 1}),
           await contestsAutoCloseFunc(true)
           ): (
-            await updateContestsDB({contestsAutoClose: 0}),
+            await contestsDB.update({contestsAutoClose: 0}),
             await contestsAutoCloseFunc(false)
           );
       });
 
       $(document).on('click', '#contests_rm_content', async function () {
         $('#contests_rm_content')[0].checked ? (
-          await updateContestsDB({contestsRmContent: 1}),
+          await contestsDB.update({contestsRmContent: 1}),
           await contestsContentVisibility(true)
           ): (
-            await updateContestsDB({contestsRmContent: 0}),
+            await contestsDB.update({contestsRmContent: 0}),
             await contestsContentVisibility(false)
           );
       });
 
       // USERS
       $(document).on('click', '#LZTUpResetUsersDB', async function () {
-        await deleteUsersDB();
-        await initUsersDB();
+        await usersDB.delete();
+        await usersDB.init();
         alert('Настройки пользователей LZT Upgrade сброшены');
         await sleep(500);
         window.location.reload();
@@ -1750,28 +1765,28 @@
 
       $(document).on('click', '#show_userid_in_profile', async function () {
         $('#show_userid_in_profile')[0].checked ? (
-          await updateUsersDB({showUseridInProfile: 1}),
+          await usersDB.update({showUseridInProfile: 1}),
           await addUserIdInProfileInfo()
           ): (
-            await updateUsersDB({showUseridInProfile: 0}),
+            await usersDB.update({showUseridInProfile: 0}),
             await removeUserIdInProfileInfo()
           );
       });
 
       $(document).on('click', '#show_fullreg_in_profile', async function () {
         $('#show_fullreg_in_profile')[0].checked ? (
-          await updateUsersDB({showFullRegInProfile: 1}),
+          await usersDB.update({showFullRegInProfile: 1}),
           await editUserRegInProfileInfo(true)
           ): (
-            await updateUsersDB({showFullRegInProfile: 0}),
+            await usersDB.update({showFullRegInProfile: 0}),
             await editUserRegInProfileInfo(false)
           );
       });
 
       // APPEAR
       $(document).on('click', '#LZTUpResetAppearDB', async function () {
-        await deleteAppearDB();
-        await initAppearDB();
+        await appearDB.delete();
+        await appearDB.init();
         alert('Настройки "Внешнего вида" LZT Upgrade сброшены');
         await sleep(500);
         window.location.reload();
@@ -1779,32 +1794,32 @@
 
       $(document).on('click', '#hide_unread_article_circle', async function () {
         $('#hide_unread_article_circle')[0].checked ? (
-          await updateAppearDB({hideUnreadArticleCircle: 1}),
+          await appearDB.update({hideUnreadArticleCircle: 1}),
           await unreadArticleCircleVisibility(true)
           ): (
-            await updateAppearDB({hideUnreadArticleCircle: 0}),
+            await appearDB.update({hideUnreadArticleCircle: 0}),
             await unreadArticleCircleVisibility(false)
           );
       });
 
       $(document).on('click', '#hide_tags_in_threads', async function () {
         $('#hide_tags_in_threads')[0].checked ? (
-          await updateAppearDB({hideTagsInThreads: 1}),
+          await appearDB.update({hideTagsInThreads: 1}),
           await tagsVisibility(true)
           ): (
-            await updateAppearDB({hideTagsInThreads: 0}),
+            await appearDB.update({hideTagsInThreads: 0}),
             await tagsVisibility(false)
           );
       });
 
       $(document).on('click', '#hide_counter_alerts', async function () {
         $('#hide_counter_alerts')[0].checked ? (
-          await updateAppearDB({hideCounterAlerts: 1}),
+          await appearDB.update({hideCounterAlerts: 1}),
           await counterVisibility('alerts', true),
           counterMutation(true)
           ): (
-            dbAppearData = await readAppearDB().then(value => {return(value)}).catch(err => {Logger.error(err); return false}),
-            await updateAppearDB({hideCounterAlerts: 0}),
+            dbAppearData = await appearDB.read().then(value => {return(value)}).catch(err => {Logger.error(err); return false}),
+            await appearDB.update({hideCounterAlerts: 0}),
             dbAppearData.hideCounterAlerts === 0 && dbAppearData.hideCounterConversations === 0 ? counterMutation(false) : null,
             await counterVisibility('alerts', false)
           );
@@ -1812,12 +1827,12 @@
 
       $(document).on('click', '#hide_counter_conversations', async function () {
         $('#hide_counter_conversations')[0].checked ? (
-          await updateAppearDB({hideCounterConversations: 1}),
+          await appearDB.update({hideCounterConversations: 1}),
           await counterVisibility('conversations', true),
           counterMutation(true)
           ): (
-            dbAppearData = await readAppearDB().then(value => {return(value)}).catch(err => {Logger.error(err); return false}),
-            await updateAppearDB({hideCounterConversations: 0}),
+            dbAppearData = await appearDB.read().then(value => {return(value)}).catch(err => {Logger.error(err); return false}),
+            await appearDB.update({hideCounterConversations: 0}),
             dbAppearData.hideCounterAlerts === 0 && dbAppearData.hideCounterConversations === 0 ? counterMutation(false) : null,
             await counterVisibility('conversations', false)
           );
@@ -1825,11 +1840,11 @@
 
       $(document).on('click', '#theme_auto_reload', async function () {
         $('#theme_auto_reload')[0].checked ? (
-          await updateAppearDB({themeAutoReload: 1}),
+          await appearDB.update({themeAutoReload: 1}),
           await sleep(500),
           window.location.reload()
           ): (
-            await updateAppearDB({themeAutoReload: 0}),
+            await appearDB.update({themeAutoReload: 0}),
             await sleep(500),
             window.location.reload()
           );
@@ -1837,23 +1852,23 @@
 
       $(document).on('click', '#enable_background_effect', async function () {
         $('#enable_background_effect')[0].checked ? (
-          await updateAppearDB({backgroundEffect: 1}),
+          await appearDB.update({backgroundEffect: 1}),
           $('body').prepend($('<div class="backgroundEffect"></div>')),
           await addBackgroundEffect()
           ): (
-            await updateAppearDB({backgroundEffect: 0}),
+            await appearDB.update({backgroundEffect: 0}),
             $('.backgroundEffect').remove()
           );
       });
 
       $(document).on('click', '#hide_onlyfans', async function () {
         $('#hide_onlyfans')[0].checked ? (
-          await updateAppearDB({hideOnlyfans: 1}),
+          await appearDB.update({hideOnlyfans: 1}),
           registerAlert('Включено скрытие тега Onlyfans. Выполняю перезагрузку страницы...', 5000),
           await sleep(500),
           window.location.reload()
           ): (
-            await updateAppearDB({hideOnlyfans: 0}),
+            await appearDB.update({hideOnlyfans: 0}),
             registerAlert('Скрытие тега Onlyfans отключено. Выполняю перезагрузку страницы...', 5000),
             await sleep(500),
             window.location.reload()
@@ -1862,21 +1877,21 @@
 
       $(document).on('click', '#show_polls_results', async function () {
         $('#show_polls_results')[0].checked ? (
-          await updateAppearDB({showPollsResults: 1}),
+          await appearDB.update({showPollsResults: 1}),
           registerAlert('Включен показ результатов голосования', 5000),
           await checkAndAddPollsResults()
           ): (
-            await updateAppearDB({showPollsResults: 0}),
+            await appearDB.update({showPollsResults: 0}),
             registerAlert('Выключен показ результатов голосования', 5000),
             await removePollsResults()
           );
       });
 
       $(document).on('click', '.LZTUpSaveSettings', async function () {
-        const uniqueStylesSettings = await readUniqueStyleDB().then(value => {return(value)}).catch(err => {Logger.error(err); return false});
-        const contestsSettings = await readContestsDB().then(value => {return(value)}).catch(err => {Logger.error(err); return false});
-        const usersSettings = await readUsersDB().then(value => {return(value)}).catch(err => {Logger.error(err); return false});
-        const appearSettings = await readAppearDB().then(value => {return(value)}).catch(err => {Logger.error(err); return false});
+        const uniqueStylesSettings = await uniqueStyleDB.read().then(value => {return(value)}).catch(err => {Logger.error(err); return false});
+        const contestsSettings = await contestsDB.read().then(value => {return(value)}).catch(err => {Logger.error(err); return false});
+        const usersSettings = await usersDB.read().then(value => {return(value)}).catch(err => {Logger.error(err); return false});
+        const appearSettings = await appearDB.read().then(value => {return(value)}).catch(err => {Logger.error(err); return false});
         const config = JSON.stringify({
           uniqueStyle: uniqueStylesSettings,
           contests: contestsSettings,
@@ -1889,7 +1904,7 @@
         });
         const link = document.createElement('a');
         link.href = window.URL.createObjectURL(blob);
-        link.download = 'LZTUpConfig.json';
+        link.download = 'LZTUpgradeConfig.json';
         link.click();
         registerAlert('Файл настроек выгружен', 5000);
       });
@@ -1925,10 +1940,10 @@
 
         const configObj = JSON.parse(config);
         try {
-          await updateUniqueStyleDB(configObj.uniqueStyle);
-          await updateContestsDB(configObj.contests);
-          await updateUsersDB(configObj.users);
-          await updateAppearDB(configObj.appear);
+          await uniqueStyleDB.update(configObj.uniqueStyle);
+          await contestsDB.update(configObj.contests);
+          await usersDB.update(configObj.users);
+          await appearDB.update(configObj.appear);
           registerAlert('Настройки загружены. Выполняю перезагрузку страницы...', 5000);
           await sleep(500);
           window.location.reload();
@@ -1941,7 +1956,7 @@
 
       reportButtonsList.forEach(btn => {
         $(document).on('click', `#set_${btn.id}_reportbtn`, async function () {
-          let appearData = await readAppearDB().then(value => {return(value)}).catch(err => {Logger.error(err); return false});
+          let appearData = await appearDB.read().then(value => {return(value)}).catch(err => {Logger.error(err); return false});
           let usedBtns;
           if (typeof (appearData.reportButtonsInPost) === 'string') {
             usedBtns = appearData.reportButtonsInPost.split(',');
@@ -1956,7 +1971,7 @@
           } else {
             usedBtns = [String(btn.id)];
           }
-          await updateAppearDB({reportButtonsInPost: usedBtns.join()}),
+          await appearDB.update({reportButtonsInPost: usedBtns.join()}),
           $(`#set_${btn.id}_reportbtn`)[0].checked ? await addReportBtnInPosts(btn.name, btn.reason) : await removeReportBtnInPosts(btn.name);
         });
       });
