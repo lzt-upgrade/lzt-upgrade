@@ -400,3 +400,173 @@
   border-radius: 8px;
   cursor: pointer;
 }
+.LZTUpModalBlock {
+  display: flex;
+}
+
+.LZTUpModalBlockButtons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 25px;
+}
+
+.LZTUpModalBlockButtons .button {
+  margin: 5px;
+  width: 250px;
+}
+
+.vpnNotice:after {
+  display: inline-block;
+  width: 32px;
+}
+
+.LZTUpSubMenu .previewContainer {
+  float:right;
+  margin-left:25px;
+  margin-top: 25px;
+}
+
+.LZTUpSubMenu .previewContainer > .avatarBox,
+.LZTUpSubMenu .previewContainer > .info {
+  display:table-cell;
+  vertical-align:top
+}
+
+.LZTUpSubMenu .previewContainer .avatarBox {
+  position:relative
+}
+
+.LZTUpSubMenu .previewContainer .avatarBox > .avatarUserBadges .avatarUserBadge {
+
+  position:absolute;
+  bottom: -12px;
+  left:20px;
+  background:rgb(54, 54, 54);
+  border:2px solid rgb(39, 39, 39);
+  font-size:0;
+  width:22px;
+  height:22px;
+  margin:0;
+  line-height:22px;
+  border-radius:50%;
+  text-align:center;
+  text-shadow:none !important;
+  box-shadow:none !important;
+  border-radius:50% !important;
+  -webkit-background-clip:unset !important;
+  -webkit-text-fill-color:unset !important;
+  overflow:hidden
+}
+
+.LZTUpSubMenu .previewContainer .avatarBox > .avatarUserBadges .avatarUserBadge:only-child {
+  left: 35px
+}
+
+.LZTUpSubMenu .previewContainer .avatarBox > .avatarUserBadges .avatarUserBadge.avatarUserBadge--1 {
+  bottom: -10px;
+  left:10px
+}
+
+.LZTUpSubMenu .previewContainer .avatarBox > .avatarUserBadges .avatarUserBadge.avatarUserBadge--2 {
+  bottom: -10px;
+  left:30px
+}
+
+.previewContainer .avatar img{
+  width:66px;
+  height:66px
+}
+
+.LZTUpSubMenu .previewContainer .info{
+  padding:0 0 0 20px
+}
+
+.LZTUpSubMenu .previewContainer .info .username {
+  font-weight:600
+}
+
+.LZTUpSubMenu .previewContainer .bannerOrStatus{
+  min-width:150px;
+  margin:10px 0 0;
+  color:rgb(148, 148, 148)
+}
+
+.LZTUpSubMenu .previewContainer .bannerOrStatus > em{
+  font-style: inherit;
+}
+
+.LZTUpSubMenu .avatarUserBadge .customUniqIcon {
+  padding:2px 0;
+  text-align:center
+}
+
+.LZTUpSubMenu .avatarUserBadge .customUniqIcon svg{
+  width:16px !important;
+  height:16px !important
+}
+
+.LZTUpSubMenu .avatarUserBadge::before{
+  font-family:'Font Awesome 5 Pro';
+  font-weight:600;
+  display:inline-block;
+  font-size:12.32px
+}
+
+.LZTUpSubMenu .avatarUserBadge.admin{
+  background:rgb(150,68,72)
+}
+
+.LZTUpSubMenu .avatarUserBadge.admin::before,
+.LZTUpSubMenu .avatarUserBadge.bot::before{
+  content:'\f0ad'
+}
+
+.LZTUpSubMenu .avatarUserBadge.Designer::before{
+  content:'\f568'
+}
+
+.LZTUpSubMenu .avatarUserBadge.headDesigner::before{
+  content:'\f568'
+}
+
+.LZTUpSubMenu .avatarUserBadge.editor::before{
+  content:'\f303'
+}
+
+.LZTUpSubMenu .avatarUserBadge.sponsor::before{
+  content:'\f155'
+}
+
+.LZTUpSubMenu .avatarUserBadge.coder::before{
+  content:'\f7ea'
+}
+
+.LZTUpSubMenu .avatarUserBadge.uniq_default::before,
+.LZTUpSubMenu .avatarUserBadge.Legend::before,
+.LZTUpSubMenu .avatarUserBadge.Ikarus::before{
+  content:'\f004'
+}
+
+.LZTUpSubMenu .avatarUserBadge.moder{
+  background:#3d6b39
+}
+
+.LZTUpSubMenu .avatarUserBadge.curator{
+  background:#089c7ad9
+}
+
+.LZTUpSubMenu .avatarUserBadge.moder::before,
+.LZTUpSubMenu .avatarUserBadge.main_moder::before,
+.LZTUpSubMenu .avatarUserBadge.curator::before{
+  content:'\f0e7'
+}
+
+.LZTUpSubMenu .avatarUserBadge.arbitr::before,
+.LZTUpSubMenu .avatarUserBadge.main_arbitr::before{
+  content:'\f0e3'
+}
+
+.LZTUpSubMenu .avatarUserBadge.telegramBot::before{
+  content:'\f544'
+}
