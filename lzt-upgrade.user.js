@@ -916,7 +916,7 @@
     }
 
     async function sendMessageHandler() {
-      var sendButton = $('.sendMessageContainer > button.lzt-fe-se-sendMessageButton');
+      const sendButton = $('.sendMessageContainer > button.lzt-fe-se-sendMessageButton');
 
       if (sendButton.length > 0) {
         $(sendButton).on('click', async function() {
@@ -926,7 +926,7 @@
         })
       }
 
-      var sendProfileButton = $('#ProfilePoster > .submitUnit > .button.primary');
+      const sendProfileButton = $('#ProfilePoster > .submitUnit > .button.primary');
 
       if (sendProfileButton.length > 0) {
         $(sendProfileButton).on('click', async function() {
@@ -935,7 +935,7 @@
         })
       }
 
-      let element = $('#QuickReply.simpleRedactor');
+      const element = $('#QuickReply.simpleRedactor');
       element.on('keyup', async (e) => {
         await updateUniqueStyles();
         await reloadReportButtons();
@@ -948,6 +948,21 @@
           await reloadReportButtons();
         }
       });
+    
+      const chatSendButton = $('.chatboxControl--button.sendMessage');
+      chatSendButton.on('click', async (e) => {
+        await sleep(850);
+        await updateUniqueStyles();
+      })
+
+      const ChatboxInput = $('.ChatboxInput');
+      ChatboxInput.on('keydown', async (e) => {
+        const keyCode = e ? (e.which ? e.which : e.keyCode) : e.keyCode;
+        if (keyCode === 13) {
+          await sleep(850);
+          await updateUniqueStyles();
+        }
+      })
     }
 
     function updateBannerStyle(style, text) {
@@ -1962,6 +1977,7 @@
         mutations.forEach(async function(mutation) {
           if (mutation.target === $($messageList)[0]) {
             await reloadReportButtons();
+            await updateUniqueStyles();
           }
         });
       });
