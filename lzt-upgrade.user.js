@@ -783,7 +783,7 @@
         });
 
         $('div#LZTUpListItem.LZTUpUniqItem').on('click', async () => {
-          await updateMenu($mainList, $uniqContainer, 'Розыгрыши');
+          await updateMenu($mainList, $uniqContainer, 'Локальный Уник');
 
           const pickrFill = createColorPicker('.badge-fill-picker', overlay[0]);
           pickrFill.on('init', async (instance) => {
