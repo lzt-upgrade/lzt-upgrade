@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         LZT Upgrade
-// @version      1.0.18
+// @version      1.0.19
 // @description  Some useful utilities for Lolzteam
 // @description:ru  Полезные улучшения для Lolzteam
 // @icon         https://raw.githubusercontent.com/ilyhalight/lzt-upgrade/master/public/static/img/lzt-upgrade-mini.png
@@ -937,8 +937,16 @@
 
       let element = $('#QuickReply.simpleRedactor');
       element.on('keyup', async (e) => {
-        await sleep(1000);
         await updateUniqueStyles();
+        await reloadReportButtons();
+      });
+      element.on('keydown', async (e) => {
+        const keyCode = e ? (e.which ? e.which : e.keyCode) : e.keyCode;
+        if (keyCode === 13) {
+          await sleep(850);
+          await updateUniqueStyles();
+          await reloadReportButtons();
+        }
       });
     }
 
