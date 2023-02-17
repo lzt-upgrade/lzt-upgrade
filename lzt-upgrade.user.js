@@ -21,11 +21,11 @@
 // @resource     nano https://raw.githubusercontent.com/ilyhalight/lzt-upgrade/master/public/css/nano.min.css
 // @require      https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js
 // @require      https://raw.githubusercontent.com/ilyhalight/lzt-upgrade/master/public/static/js/pickr/pickr.es5.min.js
-// @require      https://raw.githubusercontent.com/ilyhalight/lzt-upgrade/master/public/static/js/lztupgrade/indexedDB/default.js
-// @require      https://raw.githubusercontent.com/ilyhalight/lzt-upgrade/master/public/static/js/lztupgrade/indexedDB/UniqueStyle.js
-// @require      https://raw.githubusercontent.com/ilyhalight/lzt-upgrade/master/public/static/js/lztupgrade/indexedDB/contests.js
-// @require      https://raw.githubusercontent.com/ilyhalight/lzt-upgrade/master/public/static/js/lztupgrade/indexedDB/users.js
-// @require      https://raw.githubusercontent.com/ilyhalight/lzt-upgrade/master/public/static/js/lztupgrade/indexedDB/appear.js
+// @require      http://localhost:3000/static/js/lztupgrade/indexedDB/default.js
+// @require      http://localhost:3000/static/js/lztupgrade/indexedDB/UniqueStyle.js
+// @require      http://localhost:3000/static/js/lztupgrade/indexedDB/contests.js
+// @require      http://localhost:3000/static/js/lztupgrade/indexedDB/users.js
+// @require      http://localhost:3000/static/js/lztupgrade/indexedDB/appear.js
 // @require      https://raw.githubusercontent.com/ilyhalight/lzt-upgrade/master/public/static/js/lztupgrade/api/themes.js
 // @require      https://raw.githubusercontent.com/ilyhalight/lzt-upgrade/master/public/static/js/lztupgrade/Logger.js
 // @updateURL    https://github.com/ilyhalight/lzt-upgrade/raw/master/lzt-upgrade.user.js
@@ -145,6 +145,10 @@
 
     const getUserid = () => {
       return XenForo._csrfToken.split(',')[0]
+    }
+
+    const getUserAvatar = () => {
+      return $('img.navTab--visitorAvatar').attr('src');
     }
 
     const sleep = m => new Promise(r => setTimeout(r, m))
@@ -293,6 +297,42 @@
         <div id="LZTUpUniqContainer" class="LZTUpSubMenu">
           <div id="LZTUpModalComment">
             На этой странице можно выбрать стиль вашего ника и лычки. Этот стиль виден только вам. После <a href="https://lolz.guru/account/upgrades?upgrade_id=14" target="_blank">покупки</a> настоящего уника его увидят все.
+          </div>
+
+          <div class="LZTUpModalBlock">
+            <div class="previewContainer">
+              <div class="avatarBox">
+                <div class="avatarUserBadges">
+                  <span id="LZTUpPreviewBadge" class="avatarUserBadge uniq_default Tooltip" tabindex="0" title="${uniqueData.badgeText}" style="${uniqueData.bannerStyle}"></span>
+                </div>
+                <a href="members/${getUserid()}/" class="avatar Av${getUserid()}m" data-avatarhtml="true">
+                  <span class="img m" style="background-image: url(${getUserAvatar()})"></span>
+                </a>
+              </div>
+              <div class="info">
+                <span id="LZTUpUsernameStyle" class="UsernameStyle bold" style="${uniqueData.nickStyle}">${username}</span>
+                <div class="bannerOrStatus">
+                  <em id="LZTUpUserBannerStyle" class="UserBannerStyle userBanner" style="${uniqueData.bannerStyle}">${uniqueData.bannerText}</em>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="LZTUpModalBlockButtons">
+            <button class="button" type="button">
+              <span>
+                <span class="SpoilerTitle">Выбрать из групп форума (WIP)</span>
+              </span>
+            </button>
+            <a href="https://${window.location.hostname}/account/uniq/test" class="button" target="_blank">
+              <span>
+                <span class="SpoilerTitle">Выбрать готовый уник</span>
+              </span>
+            </a>
+            <a href="https://mxidentic.github.io/lolzteam_uniq/" class="button" target="_blank">
+              <span>
+                <span class="SpoilerTitle">Генератор уников</span>
+              </span>
+            </a>
           </div>
 
           <div id="LZTUpModalHeading" class="textHeading">Стиль ника:</div>
@@ -526,6 +566,15 @@
       const lztUpgradeModalMain = $('#LZTUpList').parent().parent();
       const lztUpgradeMainTitle = lztUpgradeModalMain.find('h2.heading');
       lztUpgradeMainTitle.attr('id', 'LZTUpModalMainTitle');
+      const badge = $('#LZTUpPreviewBadge');
+      badge.find('.customUniqIcon').remove();
+      if (uniqueData.badgeIcon.length) {
+        badge.removeClass('uniq_default');
+        badge.append(`<div class="customUniqIcon">${uniqueData.badgeIcon.replaceAll(/<[script|style]*>/gi, '<!--').replaceAll(/<\/[script|style]*>/gi, '-->')}</div>`)
+      } else {
+        const badge = $('#LZTUpPreviewBadge');
+        badge.addClass('uniq_default');
+      }
 
       async function setValueInMesh(target, container) {
         let containerChildrens = $(container).children();
@@ -794,6 +843,29 @@
           const pickrFill = createColorPicker('.badge-fill-picker', overlay[0]);
           pickrFill.on('init', async (instance) => {
             instance.setColor(badgeFill === '' ? null : badgeFill);
+
+            instance.on('change', async (color, instance) => {
+              color !== null ? rgbaColor = color.toRGBA().toString(0) : rgbaColor = "";
+              var $svg = $('#LZTUpPreviewBadge > .customUniqIcon > svg');
+              if ($svg.length && rgbaColor !== '') {
+                $svg.attr('fill', rgbaColor);
+              }
+            });
+
+            instance.on('cancel', async () => {
+              var $svg = $('#LZTUpPreviewBadge > .customUniqIcon > svg');
+              if ($svg.length) {
+                $svg.attr('fill', '');
+              }
+            })
+
+            instance.on('clear', async () => {
+              var $svg = $('#LZTUpPreviewBadge > .customUniqIcon > svg');
+              if ($svg.length) {
+                $svg.attr('fill', '');
+              }
+            })
+
             instance.on('save', async (color, instance) => {
               color !== null ? rgbaColor = color.toRGBA().toString(0) : rgbaColor = "";
               await updateUniqueStyles({badgeFill: rgbaColor});
@@ -804,6 +876,29 @@
           const pickrStroke = createColorPicker('.badge-stroke-picker', overlay[0]);
           pickrStroke.on('init', async (instance) => {
             instance.setColor(badgeStroke === '' ? null : badgeStroke);
+
+            instance.on('change', async (color, instance) => {
+              color !== null ? rgbaColor = color.toRGBA().toString(0) : rgbaColor = "";
+              var $svg = $('#LZTUpPreviewBadge > .customUniqIcon > svg');
+              if ($svg.length && rgbaColor !== '') {
+                $svg.attr('stroke', rgbaColor);
+              }
+            });
+
+            instance.on('cancel', async () => {
+              var $svg = $('#LZTUpPreviewBadge > .customUniqIcon > svg');
+              if ($svg.length) {
+                $svg.attr('stroke', '');
+              }
+            })
+
+            instance.on('clear', async () => {
+              var $svg = $('#LZTUpPreviewBadge > .customUniqIcon > svg');
+              if ($svg.length) {
+                $svg.attr('stroke', '');
+              }
+            })
+
             instance.on('save', async (color, instance) => {
               color !== null ? rgbaColor = color.toRGBA().toString(0) : rgbaColor = "";
               await updateUniqueStyles({badgeStroke: rgbaColor});
@@ -1029,8 +1124,6 @@
           </div>
         </span>`
         ).appendTo($avatarHolder.find('.avatarUserBadges'));
-      // TODO: fix self-xss for customUniqIcon
-      // * trash fix, but it works (better than nothing)
       }
       return true;
     }
@@ -1612,6 +1705,13 @@
         window.location.reload();
       });
 
+      $(document).on('keyup change', '#LZTUpUniqueStyle', () => {
+        let nickStyleNew = $('#LZTUpUniqueStyle').val();
+        if (nickStyleNew.length < 1501) {
+          $('#LZTUpUsernameStyle').attr('style', nickStyleNew);
+        }
+      });
+
       $(document).on('click', '#LZTUpSaveUniqueStyle', async function () {
         let nickStyleNew = $('#LZTUpUniqueStyle').val();
         if (nickStyleNew.length < 1501) {
@@ -1620,6 +1720,14 @@
         } else {
             alert('Стиль ника не должен превышать 1500 символов!')
             Logger.log('Не удалось сохранить стиль ника. Стиль ника не должен превышать 1500 символов!')
+        }
+      });
+
+      $(document).on('keyup change', '#LZTUpBannerStyle', () => {
+        let bannerStyleNew = $('#LZTUpBannerStyle').val();
+        if (bannerStyleNew.length < 1501) {
+          $('#LZTUpUserBannerStyle ').attr('style', bannerStyleNew);
+          $('#LZTUpPreviewBadge ').attr('style', bannerStyleNew);
         }
       });
 
@@ -1634,6 +1742,13 @@
         }
       });
 
+      $(document).on('keyup change', '#LZTUpBannerText', () => {
+        let bannerTextNew = $('#LZTUpBannerText').val();
+        if (bannerTextNew.length < 1501) {
+          $('#LZTUpUserBannerStyle ').text(bannerTextNew);
+        }
+      });
+
       $(document).on('click', '#LZTUpSaveBannerText', async function () {
         let bannerTextNew = $('#LZTUpBannerText').val();
         if (bannerTextNew.length < 25) {
@@ -1642,6 +1757,21 @@
         } else {
           alert('Текст в лычке не должен превышать 24 символов!')
           Logger.log('Не удалось сохранить текст в лычке. Текст в лычке не должен превышать 24 символов!')
+        }
+      });
+
+      $(document).on('keyup change', '#LZTUpBadgeIcon', async function () {
+        let badgeIconNew = $('#LZTUpBadgeIcon').val();
+        if (badgeIconNew.length < 3001) {
+          const badge = $('#LZTUpPreviewBadge');
+          badge.find('.customUniqIcon').remove();
+          if (badgeIconNew.length) {
+            badge.removeClass('uniq_default');
+            badge.append(`<div class="customUniqIcon">${badgeIconNew.replaceAll(/<[script|style]*>/gi, '<!--').replaceAll(/<\/[script|style]*>/gi, '-->')}</div>`)
+          } else {
+            const badge = $('#LZTUpPreviewBadge');
+            badge.addClass('uniq_default');
+          }
         }
       });
 
@@ -1656,12 +1786,25 @@
         }
       });
 
+      $(document).on('keyup change', '#LZTUpBadgeText', async function () {
+        let badgeTextNew  = $('#LZTUpBadgeText').val();
+        if (badgeTextNew.length < 25) {
+          // idk how pretty simple to do
+          const badge = $('#LZTUpPreviewBadge.Tooltip');
+          badge.attr('title', badgeTextNew);;
+          const badgeParent = badge.parent()
+          const badgeClone = badge.clone();
+          badge.remove();
+          badgeParent.append(badgeClone);
+          XenForo.Tooltip(badgeClone);
+        }
+      });
+
       $(document).on('click', '#LZTUpSaveBadgeText', async function () {
         let badgeTextNew  = $('#LZTUpBadgeText').val();
-        if (badgeTextNew .length < 25) {
+        if (badgeTextNew.length < 25) {
           await uniqueStyleDB.update({badgeText: badgeTextNew});
           await updateUniqueStyles();
-          
         } else {
           alert('Текст в иконке аватарки не должен превышать 24 символов!')
           Logger.log('Не удалось сохранить текст в иконке аватарки. Текст в иконке аватарки не должен превышать 24 символов!')
