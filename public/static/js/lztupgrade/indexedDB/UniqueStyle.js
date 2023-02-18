@@ -31,6 +31,9 @@ class LZTUniqueStyleDB extends LZTUpgradeDB {
         'badgeText',
         'badgeFill',
         'badgeStroke',
+        'noticesMarks',
+        'profileBackground',
+        'profileBackgroundEverywhere',
       ],
       { // indexesWithTypes
         'nickStyle': 'string',
@@ -40,6 +43,9 @@ class LZTUniqueStyleDB extends LZTUpgradeDB {
         'badgeText': 'string',
         'badgeFill': 'string',
         'badgeStroke': 'string',
+        'noticesMarks': 'string',
+        'profileBackground': 'string',
+        'profileBackgroundEverywhere': 'number',
       },
       { // defaultData
         key: objectKey,
@@ -50,6 +56,9 @@ class LZTUniqueStyleDB extends LZTUpgradeDB {
         badgeText: '',
         badgeFill: '',
         badgeStroke: '',
+        noticesMarks: '',
+        profileBackground: '',
+        profileBackgroundEverywhere: 0,
       }
     );
   };
@@ -62,6 +71,9 @@ class LZTUniqueStyleDB extends LZTUpgradeDB {
     badgeText,
     badgeFill,
     badgeStroke,
+    noticesMarks,
+    profileBackground,
+    profileBackgroundEverywhere,
   }) {
     super.update(...arguments);
   }
