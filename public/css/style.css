@@ -50,6 +50,8 @@
 #LZTUpUniqueStyle, #LZTUpBannerStyle, #LZTUpBadgeIcon {
   min-height: 75px;
   width: 400px;
+  /* width: 575px;
+  max-width: 95%; */
   margin: 0px 15px;
   overflow-y: hidden;
 }
@@ -61,6 +63,8 @@
 
 #LZTUpBannerText, #LZTUpBadgeText {
   width: 400px;
+  /* width: 575px;
+  max-width: 95%; */
   margin: 0px 15px;
 }
 
@@ -438,11 +442,9 @@
 }
 
 .LZTUpSubMenu .previewContainer .avatarBox > .avatarUserBadges .avatarUserBadge {
-
   position:absolute;
   bottom: -12px;
   left:20px;
-  background:rgb(54, 54, 54);
   border:2px solid rgb(39, 39, 39);
   font-size:0;
   width:22px;
@@ -496,77 +498,241 @@
   font-style: inherit;
 }
 
-.LZTUpSubMenu .avatarUserBadge .customUniqIcon {
+.LZTUpSubMenu #LZTUpPreviewBadge .customUniqIcon {
   padding:2px 0;
   text-align:center
 }
 
-.LZTUpSubMenu .avatarUserBadge .customUniqIcon svg{
+.LZTUpSubMenu #LZTUpPreviewBadge .customUniqIcon svg{
   width:16px !important;
   height:16px !important
 }
 
-.LZTUpSubMenu .avatarUserBadge::before{
+.LZTUpSubMenu #LZTUpPreviewBadge::before{
   font-family:'Font Awesome 5 Pro';
   font-weight:600;
   display:inline-block;
   font-size:12.32px
 }
 
-.LZTUpSubMenu .avatarUserBadge.admin{
+.LZTUpSubMenu #LZTUpPreviewBadge.admin{
   background:rgb(150,68,72)
 }
 
-.LZTUpSubMenu .avatarUserBadge.admin::before,
-.LZTUpSubMenu .avatarUserBadge.bot::before{
+.LZTUpSubMenu #LZTUpPreviewBadge.admin::before,
+.LZTUpSubMenu #LZTUpPreviewBadge.bot::before{
   content:'\f0ad'
 }
 
-.LZTUpSubMenu .avatarUserBadge.Designer::before{
+.LZTUpSubMenu #LZTUpPreviewBadge.Designer::before{
   content:'\f568'
 }
 
-.LZTUpSubMenu .avatarUserBadge.headDesigner::before{
+.LZTUpSubMenu #LZTUpPreviewBadge.headDesigner::before{
   content:'\f568'
 }
 
-.LZTUpSubMenu .avatarUserBadge.editor::before{
+.LZTUpSubMenu #LZTUpPreviewBadge.editor::before{
   content:'\f303'
 }
 
-.LZTUpSubMenu .avatarUserBadge.sponsor::before{
+.LZTUpSubMenu #LZTUpPreviewBadge.sponsor::before{
   content:'\f155'
 }
 
-.LZTUpSubMenu .avatarUserBadge.coder::before{
+.LZTUpSubMenu #LZTUpPreviewBadge.coder::before{
   content:'\f7ea'
 }
 
-.LZTUpSubMenu .avatarUserBadge.uniq_default::before,
-.LZTUpSubMenu .avatarUserBadge.Legend::before,
-.LZTUpSubMenu .avatarUserBadge.Ikarus::before{
+.LZTUpSubMenu #LZTUpPreviewBadge.uniq_default::before,
+.LZTUpSubMenu #LZTUpPreviewBadge.Legend::before,
+.LZTUpSubMenu #LZTUpPreviewBadge.Ikarus::before{
   content:'\f004'
 }
 
-.LZTUpSubMenu .avatarUserBadge.moder{
+.LZTUpSubMenu #LZTUpPreviewBadge.moder{
   background:#3d6b39
 }
 
-.LZTUpSubMenu .avatarUserBadge.curator{
+.LZTUpSubMenu #LZTUpPreviewBadge.curator{
   background:#089c7ad9
 }
 
-.LZTUpSubMenu .avatarUserBadge.moder::before,
-.LZTUpSubMenu .avatarUserBadge.main_moder::before,
-.LZTUpSubMenu .avatarUserBadge.curator::before{
+.LZTUpSubMenu #LZTUpPreviewBadge.moder::before,
+.LZTUpSubMenu #LZTUpPreviewBadge.main_moder::before,
+.LZTUpSubMenu #LZTUpPreviewBadge.curator::before{
   content:'\f0e7'
 }
 
-.LZTUpSubMenu .avatarUserBadge.arbitr::before,
-.LZTUpSubMenu .avatarUserBadge.main_arbitr::before{
+.LZTUpSubMenu #LZTUpPreviewBadge.arbitr::before,
+.LZTUpSubMenu #LZTUpPreviewBadge.main_arbitr::before{
   content:'\f0e3'
 }
 
-.LZTUpSubMenu .avatarUserBadge.telegramBot::before{
+.LZTUpSubMenu #LZTUpPreviewBadge.telegramBot::before{
   content:'\f544'
+}
+
+.LZTUpSubMenu .UsernameStyle.style18 {
+  text-decoration:line-through;
+  color:#aaa
+}
+
+.LZTUpSubMenu .UsernameStyle.style3 {
+  color:#f13838
+}
+
+.LZTUpSubMenu .UsernameStyle.style30{
+  color:rgb(255, 154, 252)
+}
+
+.LZTUpSubMenu .UsernameStyle.style353{
+  background:linear-gradient(98.26deg, #FF42F7 2.08%, #FF24CF 100%);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent
+}
+
+.LZTUpSubMenu .UsernameStyle.style350{
+  background:linear-gradient(90deg, #5c45ff, #feb5f2 100%);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent
+}
+
+.LZTUpSubMenu .UsernameStyle.style12{
+  color:rgb(1, 247, 60)
+}
+
+.LZTUpSubMenu .UsernameStyle.style1{
+  color:#aaa
+}
+
+.LZTUpSubMenu .UsernameStyle.style32{
+  color:rgb(148, 148, 148)
+}
+
+.LZTUpSubMenu .UsernameStyle.style60{
+  color:#ffa8af
+}
+
+.LZTUpSubMenu .UsernameStyle.style9{
+  color:#0075ad
+}
+
+.LZTUpSubMenu .UsernameStyle.style65{
+  color:#a5e3ff
+}
+
+.LZTUpSubMenu .UsernameStyle.style41{
+  color:#aaa
+}
+
+.LZTUpSubMenu .UsernameStyle.style351{
+  color:#ff0076
+}
+
+.LZTUpSubMenu .UsernameStyle.style93{
+  color:rgb(148, 148, 148)
+}
+
+.LZTUpSubMenu .UsernameStyle.style29{
+  color:#0acc9e
+}
+
+.LZTUpSubMenu .UsernameStyle.style26{
+  background:linear-gradient(90deg, #0095dd 0%, #f1094b 100%, #0095dd);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent
+}
+
+.LZTUpSubMenu .UsernameStyle.style21{
+  color:rgb(148, 148, 148)
+}
+
+.LZTUpSubMenu .UsernameStyle.style4{
+  color:#0E9100
+}
+
+.LZTUpSubMenu .UsernameStyle.style144{
+  color:#aaa
+}
+
+.LZTUpSubMenu .UsernameStyle.style360{
+  text-decoration:line-through;
+  color:#aaa
+}
+
+.LZTUpSubMenu .UsernameStyle.style2{
+  color:rgb(148, 148, 148)
+}
+
+.LZTUpSubMenu .UsernameStyle.style22{
+  color:#eee
+}
+
+.LZTUpSubMenu .UsernameStyle.style11{
+  color:#56b5e0
+}
+
+.LZTUpSubMenu .UsernameStyle.style7{
+  color:#FF9304
+}
+
+.LZTUpSubMenu .UsernameStyle.style349{
+  color:rgb(0, 135, 255)
+}
+
+.LZTUpSubMenu .UsernameStyle.style365{
+  color:rgb(0, 135, 255)
+}
+
+.LZTUpSubMenu .UsernameStyle.style354{
+  color:#0FF
+}
+
+.LZTUpSubMenu .UsernameStyle.style218{
+  color:#f13838
+}
+
+.LZTUpSubMenu .UsernameStyle .style359{
+  color:#E5D9A3
+}
+
+.LZTUpSubMenu .UsernameStyle .style8{
+  color:#FFD700
+}
+
+.LZTUpSubMenu .UsernameStyle .style142{
+  color:#aaa
+}
+
+.LZTUpSubMenu .UsernameStyle .style265{
+  background:linear-gradient(35deg, #006eff, #00ff81 52%, #fff 50%, #93cbff);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  text-shadow:0 0 7px #00ffcf80
+}
+
+.LZTUpSubMenu .UsernameStyle .style23{
+  color:#b35ede
+}
+
+.LZTUpSubMenu .UsernameStyle .is_banned,
+.LZTUpSubMenu .UsernameStyle .banned{
+  text-decoration:line-through;
+  background:inherit;
+  -webkit-text-fill-color:inherit;
+  text-shadow:inherit !important;
+  color:#aaa !important
+}
+
+
+#LZTUpSelectGroupsUniq > option {
+  background: #272727;
+  padding: 10px 15px;
+  font-weight: 600;
+  border-radius: 6px;
+}
+
+#LZTUpSelectGroupsUniq > option:hover {
+  background: rgb(45,45,45);
 }
