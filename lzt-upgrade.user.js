@@ -245,7 +245,16 @@
         "bannerText": "Администратор",
         "badgeIcon": ".admin", // if starting with "." - is a class name else style
         "badgeText": "Администратор"
-      }
+      },
+      {
+        "name": "Designer", // value="admin"
+        "groupName": "Дизайнер",
+        "uniqueStyle": ".style9", // if starting with "." - is a class name else style
+        "bannerStyle": ".Designer", // if starting with "." - is a class name else style
+        "bannerText": "Дизайнер",
+        "badgeIcon": ".Designer", // if starting with "." - is a class name else style
+        "badgeText": "Дизайнер"
+      },
     ]
 
     function validateAuthors(authorID, authorName) {
@@ -1213,7 +1222,7 @@
           $userBadges.show()
         }
 
-        $(`<span style="${bannerStyle.startsWith('.') ? '' : XenForo.htmlspecialchars(bannerStyle)}" id="LZTUpTooltip" class="avatarUserBadge Tooltip ${badgeIcon === '' ? 'uniq_default' : badgeIcon.startsWith('.') ? XenForo.htmlspecialchars(badgeIcon.replace('.', '')) : ''} ${badgeId ? `avatarUserBadge--${badgeId}` : ''}" title="${XenForo.htmlspecialchars(badgeText)}" tabindex="0">
+        $(`<span style="${bannerStyle.startsWith('.') ? '' : XenForo.htmlspecialchars(bannerStyle)}" id="LZTUpTooltip" class="avatarUserBadge Tooltip ${badgeIcon === '' ? 'uniq_default' : badgeIcon.startsWith('.') ? XenForo.htmlspecialchars(badgeIcon.replace('.', 'userBanner ')) : ''} ${badgeId ? `avatarUserBadge--${badgeId}` : ''}" title="${XenForo.htmlspecialchars(badgeText)}" tabindex="0">
           ${!badgeIcon.startsWith('.') ? `
             <div class="customUniqIcon">
               ${badgeIcon.replaceAll(/<[script|style]*>/gi, '<!--').replaceAll(/<\/[script|style]*>/gi, '-->')}
@@ -1919,7 +1928,7 @@
           if (badgeIconNew.length) {
             removeExtraClasses(badge, ['avatarUserBadge', 'Tooltip']);
             if (badgeIconNew.startsWith('.')) {
-              badge.addClass(badgeIconNew.replace('.', ''));
+              badge.addClass(badgeIconNew.replace('.', 'userBanner '));
             } else {
               badge.append(`<div class="customUniqIcon">${badgeIconNew.replaceAll(/<[script|style]*>/gi, '<!--').replaceAll(/<\/[script|style]*>/gi, '-->')}</div>`)
             }
