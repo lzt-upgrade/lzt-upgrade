@@ -403,6 +403,8 @@
       var badgeFill = uniqueData.badgeFill;
       var badgeStroke = uniqueData.badgeStroke;
       var noticesMarks = uniqueData.noticesMarks;
+      var profileBackground = uniqueData.profileBackground;
+      var profileBackgroundEverywhere = uniqueData.profileBackgroundEverywhere;
       var contestsTen = contestsData.contestsTen;
       var contestsAll = contestsData.contestsAll;
       var contestsInfoTop = contestsData.contestsInfoTop;
@@ -495,7 +497,7 @@
           </div>
 
           <div class="LZTUpModalBlock">
-            <div class="previewContainer">
+            <div id="LZTUpPreviewContainer" class="previewContainer">
               <div class="avatarBox">
                 <div class="avatarUserBadges">
                   <span id="LZTUpPreviewBadge" class="avatarUserBadge uniq_default Tooltip" tabindex="0" title="${uniqueData.badgeText}" style="${uniqueData.bannerStyle}"></span>
@@ -586,6 +588,17 @@
             <input id="LZTUpBadgeText" name="badge_text" maxlength="24" class="textCtrl" value="${XenForo.htmlspecialchars(badgeText)}">
             <input id="LZTUpSaveBadgeText" type="button" value="Сохранить" class="button primary"></input>
           </nobr>
+
+          <div id="LZTUpModalHeading" class="textHeading">Фон в профиле</div>
+          <nobr>
+            <input id="LZTUpProfileBackground" name="profile_background" class="textCtrl" placeholder="Ссылка на изображение" value="${XenForo.htmlspecialchars(profileBackground)}">
+            <input id="LZTUpSaveProfileBackground" type="button" value="Сохранить" class="button primary"></input>
+          </nobr>
+
+          <div id="LZTUpModalChecksContainer">
+            <input type="checkbox" value="1" id="profile_background_everywhere" ${profileBackgroundEverywhere === 1 ? "checked" : ''}>
+            <label for="profile_background_everywhere">Заменить фон на всех страницах форума</label>
+          </div>
 
           <input id="LZTUpResetUniqueDB" type="button" value="Сбросить настройки" class="button primary"></input>
         </div>
@@ -768,12 +781,14 @@
       const LZTUpBannerText = $('#LZTUpBannerText');
       const LZTUpBadgeIcon = $('#LZTUpBadgeIcon');
       const LZTUpBadgeText = $('#LZTUpBadgeText');
+      const LZTUpProfileBackground = $('#LZTUpProfileBackground');
 
       LZTUpUniqueStyle.trigger('change');
       LZTUpBannerStyle.trigger('change');
       LZTUpBannerText.trigger('change');
       LZTUpBadgeIcon.trigger('change');
       LZTUpBadgeText.trigger('change');
+      LZTUpProfileBackground.trigger('change');
 
       availabledGroups.forEach(group => {
         const selectGroups = $('#LZTUpSelectGroupsUniq');
@@ -930,6 +945,7 @@
           let notices = noticesMarks.split(',');
           if (notices.find(noticeMark => Number(noticeMark) === notice.id)) {
             noticeStatus = 'checked';
+            $('#LZTUpUsernameStyle').after(`<span class="${notice.name}"></span>`);
           }
         }
         noticesContainer.append(`
@@ -1583,8 +1599,7 @@
 
     async function getProfileUrl() {
       if (await isProfilePage()) {
-        var username = $('meta[property="og:url"]').attr('content');
-        return username
+        return $('meta[property="og:url"]').attr('content');
       }
     }
 
@@ -1880,11 +1895,10 @@
 
     async function reloadUserNoticeMarks() {
       let dbUniqueStyleData = await uniqueStyleDB.read().then(value => {return(value)}).catch(err => {Logger.error(err); return false});
-      if (dbUniqueStyleData && dbUniqueStyleData.noticesMarks.length > 0) {
+      if (dbUniqueStyleData && dbUniqueStyleData.noticesMarks.length) {
         if (typeof (dbUniqueStyleData.noticesMarks) === 'string') {
           let noticesMarks = dbUniqueStyleData.noticesMarks.split(',');
           for (const noticeMark of noticesMarks) {
-            console.log(noticeMark)
             let noticeMarkSpan = noticesList.find(notice => notice.id === Number(noticeMark));
             typeof(noticeMarkSpan) === "object" ? await addNoticeMark(noticeMarkSpan.name) : undefined;
           }
@@ -1892,6 +1906,32 @@
       }
     }
 
+    async function updateBackground() {
+      let dbUniqueStyleData = await uniqueStyleDB.read().then(value => {return(value)}).catch(err => {Logger.error(err); return false});
+      if (dbUniqueStyleData && dbUniqueStyleData.profileBackground !== undefined) {
+        if (await getProfileUrl() === $('#AccountMenu > ul:nth-child(1) > li:nth-child(1) > a').attr('href') || typeof(dbUniqueStyleData.profileBackgroundEverywhere) === 'number') {
+          if (await isProfilePage() && await getProfileUrl() !== $('#AccountMenu > ul:nth-child(1) > li:nth-child(1) > a').attr('href')) {
+            // Don't change it on other profiles
+            return;
+          }
+
+          const body = $('body');
+          if (dbUniqueStyleData.profileBackgroundEverywhere === 0 && dbUniqueStyleData.profileBackground.length) {
+            body.attr('id', '');
+            body.css('background-image', '');
+            return;
+          }
+
+          if (dbUniqueStyleData.profileBackground.length) {
+            body.attr('id', 'LZTUpCustomBackground');
+            body.css('background-image', `linear-gradient(rgba(54, 54, 54, 0.85), rgba(54, 54, 54, 0.85)), url(${dbUniqueStyleData.profileBackground})`);
+          } else {
+            body.attr('id', '');
+            body.css('background-image', '');
+          }
+        }
+      }
+    }
 
     // script start
     if (getUserid() === '') return; // superior auth check
@@ -1981,6 +2021,8 @@
     await commentMoreHandler();
 
     await updateTooltips();
+
+    await updateBackground()
 
     $('.chatboxStartIcon').on('click', async () => {
       await sleep(800);
@@ -2159,6 +2201,60 @@
           alert('Текст в иконке аватарки не должен превышать 24 символов!')
           Logger.log('Не удалось сохранить текст в иконке аватарки. Текст в иконке аватарки не должен превышать 24 символов!')
         }
+      });
+
+      noticesList.forEach(notice => {
+        $(document).on('click', `#set_${notice.id}_noticemark`, async function () {
+          let uniqueData = await uniqueStyleDB.read().then(value => {return(value)}).catch(err => {Logger.error(err); return false});
+          let usedNoticesMarks;
+          if (typeof (uniqueData.noticesMarks) === 'string') {
+            usedNoticesMarks = uniqueData.noticesMarks.split(',');
+            let emptyCell = usedNoticesMarks.indexOf('')
+            emptyCell !== -1 ? usedNoticesMarks.splice(emptyCell, 1) : null;
+            if (usedNoticesMarks.find(noticeId => noticeId === String(notice.id))) {
+              let noticeIndex = usedNoticesMarks.indexOf(String(notice.id));
+              noticeIndex !== -1 ? usedNoticesMarks.splice(noticeIndex, 1) : null;
+            } else {
+              usedNoticesMarks.push(String(notice.id));
+            }
+          } else {
+            usedNoticesMarks = [String(notice.id)];
+          }
+          await uniqueStyleDB.update({noticesMarks: z.join()});
+          $(`#set_${notice.id}_noticemark`)[0].checked ? (
+            await addNoticeMark(notice.name),
+            $('#LZTUpUsernameStyle').after(`<span class="${notice.name}"></span>`)
+          ) : (
+            await removeNoticeMark(notice.name),
+            $('#LZTUpUsernameStyle').parent().find(`span.${notice.name}`).remove()
+          );
+        });
+      });
+
+      $(document).on('keyup change', '#LZTUpProfileBackground', async function () {
+        let profileBackgroundNew  = $('#LZTUpProfileBackground').val();
+        const previewContainer = $('#LZTUpPreviewContainer');
+        if (profileBackgroundNew.length) {
+          previewContainer.css('background-image', `linear-gradient(rgba(54, 54, 54, 0.85), rgba(54, 54, 54, 0.85)), url(${profileBackgroundNew})`);
+        } else {
+          previewContainer.css('background-image', '');
+        }
+      });
+
+      $(document).on('click', '#LZTUpSaveProfileBackground', async function () {
+        let profileBackgroundNew  = $('#LZTUpProfileBackground').val();
+        await uniqueStyleDB.update({profileBackground: profileBackgroundNew});
+        await updateBackground();
+      });
+
+      $(document).on('click', '#profile_background_everywhere', async function () {
+        $('#profile_background_everywhere')[0].checked ? (
+          await uniqueStyleDB.update({profileBackgroundEverywhere: 1}),
+          await updateBackground()
+          ): (
+            await uniqueStyleDB.update({profileBackgroundEverywhere: 0}),
+            await updateBackground()
+          );
       });
 
       // CONTESTS
@@ -2459,28 +2555,6 @@
           }
           await appearDB.update({reportButtonsInPost: usedBtns.join()});
           $(`#set_${btn.id}_reportbtn`)[0].checked ? await addReportBtnInPosts(btn.name, btn.reason) : await removeReportBtnInPosts(btn.name);
-        });
-      });
-
-      noticesList.forEach(notice => {
-        $(document).on('click', `#set_${notice.id}_noticemark`, async function () {
-          let uniqueData = await uniqueStyleDB.read().then(value => {return(value)}).catch(err => {Logger.error(err); return false});
-          let usedNoticesMarks;
-          if (typeof (uniqueData.noticesMarks) === 'string') {
-            usedNoticesMarks = uniqueData.noticesMarks.split(',');
-            let emptyCell = usedNoticesMarks.indexOf('')
-            emptyCell !== -1 ? usedNoticesMarks.splice(emptyCell, 1) : null;
-            if (usedNoticesMarks.find(noticeId => noticeId === String(notice.id))) {
-              let noticeIndex = usedNoticesMarks.indexOf(String(notice.id));
-              noticeIndex !== -1 ? usedNoticesMarks.splice(noticeIndex, 1) : null;
-            } else {
-              usedNoticesMarks.push(String(notice.id));
-            }
-          } else {
-            usedNoticesMarks = [String(notice.id)];
-          }
-          await uniqueStyleDB.update({noticesMarks: usedNoticesMarks.join()});
-          $(`#set_${notice.id}_noticemark`)[0].checked ? await addNoticeMark(notice.name) : await removeNoticeMark(notice.name);
         });
       });
     }
