@@ -18,9 +18,9 @@
 // @grant        GM_xmlhttpRequest 
 // @grant        GM_info
 // @resource     styles https://raw.githubusercontent.com/ilyhalight/lzt-upgrade/master/public/css/style.css
-// @resource     nano https://raw.githubusercontent.com/ilyhalight/lzt-upgrade/master/public/css/nano.min.css
+// @resource     coloris http://localhost:3000/css/coloris.css
 // @require      https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js
-// @require      https://raw.githubusercontent.com/ilyhalight/lzt-upgrade/master/public/static/js/pickr/pickr.es5.min.js
+// @require      https://cdn.jsdelivr.net/gh/mdbassit/Coloris@latest/dist/coloris.min.js
 // @require      http://localhost:3000/static/js/lztupgrade/indexedDB/default.js
 // @require      http://localhost:3000/static/js/lztupgrade/indexedDB/UniqueStyle.js
 // @require      http://localhost:3000/static/js/lztupgrade/indexedDB/contests.js
@@ -63,13 +63,13 @@
   if (typeof GM_getResourceText === 'undefined') {
     fetch('https://raw.githubusercontent.com/ilyhalight/lzt-upgrade/master/public/css/style.css')
     .then((response) => response.text().then(styles => GM_addStyle(styles)));
-    fetch('https://raw.githubusercontent.com/ilyhalight/lzt-upgrade/master/public/css/nano.min.css')
-    .then((response) => response.text().then(nano => GM_addStyle(nano)));
+    fetch('https://raw.githubusercontent.com/ilyhalight/lzt-upgrade/master/public/css/coloris.css')
+    .then((response) => response.text().then(coloris => GM_addStyle(coloris)));
   } else {
     const styles = GM_getResourceText("styles");
-    const nano = GM_getResourceText("nano");
+    const coloris = GM_getResourceText("coloris");
     GM_addStyle(styles);
-    GM_addStyle(nano);
+    GM_addStyle(coloris);
   }
 
   const uniqueStyleDB = new LZTUniqueStyleDB();
@@ -500,7 +500,7 @@
             <div id="LZTUpPreviewContainer" class="previewContainer">
               <div class="avatarBox">
                 <div class="avatarUserBadges">
-                  <span id="LZTUpPreviewBadge" class="avatarUserBadge uniq_default Tooltip" tabindex="0" title="${uniqueData.badgeText}" style="${uniqueData.bannerStyle}"></span>
+                  <span id="LZTUpPreviewBadge" class="avatarUserBadge uniq_default badgeDefaultBackground Tooltip" tabindex="0" title="${uniqueData.badgeText}" style="${uniqueData.bannerStyle}"></span>
                 </div>
                 <a href="members/${getUserid()}/" class="avatar Av${getUserid()}m" data-avatarhtml="true">
                   <span class="img m" style="background-image: url(${getUserAvatar()})"></span>
@@ -558,15 +558,15 @@
           <div id="LZTUpModalHeading" class="textHeading">Цвета иконки на аватарке:</div>
           <div id="LZTUpModalText" class="muted explain">Убедитесь, что в SVG нету заранее установленных значений 'fill' и 'stroke'.</div>
           <nobr>
-            <div id="LZTUpBadgeFillContainer">
+            <div id="LZTUpBadgeFillContainer" class="mini">
               <div id="LZTUpModalText" class="muted explain">Цвет иконки (fill):</div>
-              <div id="LZTUpBadgeFill" class="badge-fill-picker"></div>
+              <input id="LZTUpBadgeFill" type="text" data-coloris class="textCtrl badge-fill-picker" value="${badgeFill}"></input>
             </div>
           </nobr>
           <nobr>
-            <div id="LZTUpBadgeStrokeContainer" style="padding-top: 12px;">
+            <div id="LZTUpBadgeStrokeContainer" class="mini" style="padding-top: 12px;">
               <div id="LZTUpModalText" class="muted explain" style="">Цвет иконки (stroke):</div>
-              <div id="LZTUpStrokeFill" class="badge-stroke-picker"></div>
+              <input id="LZTUpStrokeFill" type="text" data-coloris class="textCtrl badge-stroke-picker" value="${badgeStroke}"></input>
             </div>
           </nobr>
 
@@ -1060,72 +1060,31 @@
           LZTUpBadgeIcon.trigger('change');
           LZTUpBadgeText.trigger('change');
           LZTUpProfileBackground.trigger('change');
+          const $svg = $('#LZTUpPreviewBadge > .customUniqIcon > svg');
+          if ($svg.length) {
+            $svg.attr('fill', badgeFill);
+          }
+          if ($svg.length) {
+            $svg.attr('stroke', badgeStroke);
+          }
+
           
-          const pickrFill = createColorPicker('.badge-fill-picker', overlay[0]);
-          pickrFill.on('init', async (instance) => {
-            instance.setColor(badgeFill === '' ? null : badgeFill);
-
-            instance.on('change', async (color, instance) => {
-              color !== null ? rgbaColor = color.toRGBA().toString(0) : rgbaColor = "";
-              var $svg = $('#LZTUpPreviewBadge > .customUniqIcon > svg');
-              if ($svg.length && rgbaColor !== '') {
-                $svg.attr('fill', rgbaColor);
-              }
-            });
-
-            instance.on('cancel', async () => {
-              var $svg = $('#LZTUpPreviewBadge > .customUniqIcon > svg');
-              if ($svg.length) {
-                $svg.attr('fill', '');
-              }
-            })
-
-            instance.on('clear', async () => {
-              var $svg = $('#LZTUpPreviewBadge > .customUniqIcon > svg');
-              if ($svg.length) {
-                $svg.attr('fill', '');
-              }
-            })
-
-            instance.on('save', async (color, instance) => {
-              color !== null ? rgbaColor = color.toRGBA().toString(0) : rgbaColor = "";
-              await updateUniqueStyles({badgeFill: rgbaColor});
-              await setUniqIconColor(rgbaColor);
-            });
+          createColorPicker('.badge-fill-picker', '.xenOverlay');
+          $('#LZTUpBadgeFill').on('input', (event) => {
+            const $svg = $('#LZTUpPreviewBadge > .customUniqIcon > svg');
+            if ($svg.length) {
+              $svg.attr('fill', event.target.value);
+            }
           });
-
-          const pickrStroke = createColorPicker('.badge-stroke-picker', overlay[0]);
-          pickrStroke.on('init', async (instance) => {
-            instance.setColor(badgeStroke === '' ? null : badgeStroke);
-
-            instance.on('change', async (color, instance) => {
-              color !== null ? rgbaColor = color.toRGBA().toString(0) : rgbaColor = "";
-              var $svg = $('#LZTUpPreviewBadge > .customUniqIcon > svg');
-              if ($svg.length && rgbaColor !== '') {
-                $svg.attr('stroke', rgbaColor);
-              }
-            });
-
-            instance.on('cancel', async () => {
-              var $svg = $('#LZTUpPreviewBadge > .customUniqIcon > svg');
-              if ($svg.length) {
-                $svg.attr('stroke', '');
-              }
-            })
-
-            instance.on('clear', async () => {
-              var $svg = $('#LZTUpPreviewBadge > .customUniqIcon > svg');
-              if ($svg.length) {
-                $svg.attr('stroke', '');
-              }
-            })
-
-            instance.on('save', async (color, instance) => {
-              color !== null ? rgbaColor = color.toRGBA().toString(0) : rgbaColor = "";
-              await updateUniqueStyles({badgeStroke: rgbaColor});
-              await setUniqIconColor('', rgbaColor);
-            });
+          
+          createColorPicker('.badge-stroke-picker', '.xenOverlay');
+          $('#LZTUpStrokeFill').on('input', (event) => {
+            const $svg = $('#LZTUpPreviewBadge > .customUniqIcon > svg');
+            if ($svg.length) {
+              $svg.attr('stroke', event.target.value);
+            }
           });
+        
         });
 
         $('div#LZTUpListItem.LZTUpContestsItem').on('click', async () => {
@@ -1159,29 +1118,16 @@
     });
 
     function createColorPicker(element, elementCont) {
-      return Pickr.create({
+      return Coloris({
         el: element,
-        container: elementCont,
-        theme: 'nano',
-        default: '#ffffff',
-
-        components: {
-            // Main components
-            preview: true,
-            opacity: true,
-            hue: true,
-
-            // Input / output Options
-            interaction: {
-                hex: true,
-                rgba: true,
-                input: true,
-                clear: true,
-                cancel: true,
-                save: true
-            }
-        }
-      })
+        parent: elementCont,
+        theme: 'polaroid',
+        themeMode: 'lztupgrade',
+        formatToggle: true,
+        closeButton: true,
+        clearButton: true,
+        alpha: true,
+      });
     }
 
     async function updateTooltips() {
@@ -2086,6 +2032,12 @@
           Logger.log('Не удалось сохранить иконку на аватарке. Иконка на аватарке не должен превышать 3000 символов!')
         }
 
+        const badgeFill = $('#LZTUpBadgeFill').val();
+        await uniqueStyleDB.update({badgeFill: badgeFill});
+
+        const strokeFill = $('#LZTUpStrokeFill').val();
+        await uniqueStyleDB.update({badgeStroke: strokeFill});
+
         const badgeTextNew  = $('#LZTUpBadgeText').val();
         if (badgeTextNew.length < 25) {
           await uniqueStyleDB.update({badgeText: badgeTextNew});
@@ -2191,10 +2143,12 @@
               badge.addClass(badgeIconNew.replace('.', 'userBanner '));
             } else {
               badge.append(`<div class="customUniqIcon">${badgeIconNew.replaceAll(/<[script|style]*>/gi, '<!--').replaceAll(/<\/[script|style]*>/gi, '-->')}</div>`)
+              badge.addClass('badgeDefaultBackground');
             }
           } else {
             const badge = $('#LZTUpPreviewBadge');
             badge.addClass('uniq_default');
+            badge.addClass('badgeDefaultBackground');
           }
         }
       });
