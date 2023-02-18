@@ -464,6 +464,10 @@
   margin-right: 10px;
 }
 
+.LZTUpSubMenu .previewContainer .avatarBox > .avatarUserBadges .badgeDefaultBackground {
+  background: rgb(54, 54, 54);
+}
+
 .LZTUpSubMenu .previewContainer .avatarBox > .avatarUserBadges .avatarUserBadge {
   position:absolute;
   bottom: -12px;
