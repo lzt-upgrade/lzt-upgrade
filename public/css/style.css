@@ -47,29 +47,27 @@
   width: 400px;
 }
 
-#LZTUpUniqueStyle, #LZTUpBannerStyle, #LZTUpBadgeIcon {
+#LZTUpUniqContainer > textarea {
   min-height: 75px;
-  width: 400px;
-  /* width: 575px;
-  max-width: 95%; */
+  width: 575px;
+  max-width: 95%;
   margin: 0px 15px;
   overflow-y: hidden;
 }
 
-#LZTUpSaveUniqueStyle, #LZTUpSaveBannerStyle, #LZTUpSaveBadgeIcon {
-  width: 100px;
-  margin: 15px;
-}
-
-#LZTUpBannerText, #LZTUpBadgeText, #LZTUpProfileBackground {
-  width: 400px;
-  /* width: 575px;
-  max-width: 95%; */
+#LZTUpUniqContainer > input[type="text"] {
+  width: 575px;
+  max-width: 95%;
   margin: 0px 15px;
 }
 
-#LZTUpResetUniqueDB, #LZTUpResetSettingsDB {
+.reset_button {
   min-width: 150px;
+  margin: 15px
+}
+
+.save_button {
+  min-width: 250px;
   margin: 15px
 }
 
@@ -84,11 +82,6 @@
   height: 670px;
   overflow-y: scroll;
   scrollbar-width: thin;
-}
-
-#LZTUpSaveBannerText, #LZTUpSaveBadgeText, #LZTUpSaveProfileBackgroundText {
-  width: 100px;
-  margin: 0px 15px;
 }
 
 #LZTUpModalExitButtonRight {
