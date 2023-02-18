@@ -176,66 +176,17 @@
       },
     ]
 
-    // <option value="admin">
-    //   Администратор
-    // </option>
-    // <option value="designer">
-    //   Дизайнер
-    // </option>
-    // <option value="headDesigner">
-    //   Главный дизайнер
-    // </option>
-    // <option value="redactor">
-    //   Редактор
-    // </option>
-    // <option value="editor">
-    //   Спонсор
-    // </option>
-    // <option value="coder">
-    //   Разработчик
-    // </option>
-    // <option value="moder">
-    //   Модератор
-    // </option>
-    // <option value="curator">
-    //   Куратор
-    // </option>
-    // <option value="arbitr">
-    //   Арбитр
-    // </option>
-    // <option value="legend">
-    //   Легенда
-    // </option>
-    // <option class="Item" value="ai">
-    //   Искусственный интеллект
-    // </option>
-    // <option class="Item" value="guru">
-    //   Гуру
-    // </option>
-    // <option class="Item" value="expert">
-    //   Эксперт
-    // </option>
-    // <option class="Item" value="lodger">
-    //   Постоялец
-    // </option>
-    // <option class="Item" value="newbie">
-    //   Новичок
-    // </option>
-    // <option value="telegramBot">
-    //   Телеграм бот
-    // </option>
-    // <option value="banned">
-    //   Заблокированный
-    // </option>
-    // <option value="marketSeller">
-    //   Продавец на маркете
-    // </option>
-    // <option value="forumSeller">
-    //   Продавец на форуме
-    // </option>
-    // <option value="supreme">
-    //   Суприм
-    // </option>
+    const noticesList = [
+      {
+        id: 1,
+        name: 'scamNotice'
+      },
+      {
+        id: 2,
+        name: 'vpnNotice'
+      },
+    ]
+
     const availabledGroups = [
       {
         "name": "admin", // value="admin"
@@ -247,13 +198,175 @@
         "badgeText": "Администратор"
       },
       {
-        "name": "Designer", // value="admin"
+        "name": "Designer",
         "groupName": "Дизайнер",
-        "uniqueStyle": ".style9", // if starting with "." - is a class name else style
-        "bannerStyle": ".Designer", // if starting with "." - is a class name else style
+        "uniqueStyle": ".style9",
+        "bannerStyle": ".Designer",
         "bannerText": "Дизайнер",
-        "badgeIcon": ".Designer", // if starting with "." - is a class name else style
+        "badgeIcon": ".Designer",
         "badgeText": "Дизайнер"
+      },
+      {
+        "name": "headDesigner",
+        "groupName": "Главный дизайнер",
+        "uniqueStyle": ".style350",
+        "bannerStyle": ".headDesigner",
+        "bannerText": "Главный дизайнер",
+        "badgeIcon": ".headDesigner",
+        "badgeText": "Главный дизайнер"
+      },
+      {
+        "name": "editor",
+        "groupName": "Редактор",
+        "uniqueStyle": ".style349",
+        "bannerStyle": ".editor",
+        "bannerText": "Редактор",
+        "badgeIcon": ".editor",
+        "badgeText": "Редактор"
+      },
+      {
+        "name": "sponsor",
+        "groupName": "Спонсор",
+        "uniqueStyle": ".style359",
+        "bannerStyle": ".sponsor",
+        "bannerText": "Спонсор",
+        "badgeIcon": ".sponsor",
+        "badgeText": "Спонсор"
+      },
+      {
+        "name": "coder",
+        "groupName": "Разработчик",
+        "uniqueStyle": ".style7",
+        "bannerStyle": ".coder",
+        "bannerText": "Разработчик",
+        "badgeIcon": ".coder",
+        "badgeText": "Разработчик"
+      },
+      {
+        "name": "moder",
+        "groupName": "Модератор",
+        "uniqueStyle": ".style4",
+        "bannerStyle": ".moder",
+        "bannerText": "Модератор",
+        "badgeIcon": ".moder",
+        "badgeText": "Модератор"
+      },
+      {
+        "name": "curator",
+        "groupName": "Куратор",
+        "uniqueStyle": ".style29",
+        "bannerStyle": ".curator",
+        "bannerText": "Куратор",
+        "badgeIcon": ".curator",
+        "badgeText": "Куратор"
+      },
+      {
+        "name": "arbitr",
+        "groupName": "Арбитр",
+        "uniqueStyle": ".style30",
+        "bannerStyle": ".arbitr",
+        "bannerText": "Арбитр",
+        "badgeIcon": ".arbitr",
+        "badgeText": "Арбитр"
+      },
+      {
+        "name": "Legend",
+        "groupName": "Легенда",
+        "uniqueStyle": ".style26",
+        "bannerStyle": ".Legend",
+        "bannerText": "Легенда",
+        "badgeIcon": ".Legend",
+        "badgeText": "Легенда"
+      },
+      {
+        "name": "Supreme",
+        "groupName": "Суприм",
+        "uniqueStyle": ".style8",
+        "bannerStyle": "",
+        "bannerText": "",
+        "badgeIcon": "",
+        "badgeText": ""
+      },
+      {
+        "name": "Ikarus",
+        "groupName": "Искусственный интеллект",
+        "uniqueStyle": ".style351",
+        "bannerStyle": ".Ikarus",
+        "bannerText": "Искусственный интеллект",
+        "badgeIcon": ".Ikarus",
+        "badgeText": "Искусственный интеллект"
+      },
+      {
+        "name": "guru",
+        "groupName": "Гуру",
+        "uniqueStyle": ".style60",
+        "bannerStyle": "",
+        "bannerText": "",
+        "badgeIcon": "",
+        "badgeText": ""
+      },
+      {
+        "name": "expert",
+        "groupName": "Эксперт",
+        "uniqueStyle": ".style23",
+        "bannerStyle": "",
+        "bannerText": "",
+        "badgeIcon": "",
+        "badgeText": ""
+      },
+      {
+        "name": "lodger",
+        "groupName": "Постоялец",
+        "uniqueStyle": ".style22",
+        "bannerStyle": "",
+        "bannerText": "",
+        "badgeIcon": "",
+        "badgeText": ""
+      },
+      {
+        "name": "newbie",
+        "groupName": "Новичок",
+        "uniqueStyle": ".style21",
+        "bannerStyle": "",
+        "bannerText": "",
+        "badgeIcon": "",
+        "badgeText": ""
+      },
+      {
+        "name": "telegramBot",
+        "groupName": "Телеграм бот",
+        "uniqueStyle": ".style21",
+        "bannerStyle": ".telegramBot",
+        "bannerText": "Телеграм бот",
+        "badgeIcon": ".telegramBot",
+        "badgeText": "Телеграм бот"
+      },
+      {
+        "name": "banned",
+        "groupName": "Заблокированный",
+        "uniqueStyle": ".banned",
+        "bannerStyle": "",
+        "bannerText": "",
+        "badgeIcon": "",
+        "badgeText": ""
+      },
+      {
+        "name": "marketSeller",
+        "groupName": "Привилегии на маркете",
+        "uniqueStyle": ".style65",
+        "bannerStyle": "",
+        "bannerText": "",
+        "badgeIcon": "",
+        "badgeText": ""
+      },
+      {
+        "name": "forumSeller",
+        "groupName": "Продавец на форуме",
+        "uniqueStyle": ".style11",
+        "bannerStyle": "",
+        "bannerText": "",
+        "badgeIcon": "",
+        "badgeText": ""
       },
     ]
 
@@ -289,6 +402,7 @@
       var badgeIcon = uniqueData.badgeIcon;
       var badgeFill = uniqueData.badgeFill;
       var badgeStroke = uniqueData.badgeStroke;
+      var noticesMarks = uniqueData.noticesMarks;
       var contestsTen = contestsData.contestsTen;
       var contestsAll = contestsData.contestsAll;
       var contestsInfoTop = contestsData.contestsInfoTop;
@@ -412,6 +526,10 @@
                 <span class="SpoilerTitle">Генератор уников</span>
               </span>
             </a>
+          </div>
+
+          <div id="LZTUpModalNoticesContainer">
+          
           </div>
 
           <div id="LZTUpModalHeading" class="textHeading">Стиль ника:</div>
@@ -803,6 +921,24 @@
         await sleep(800);
         window.location.reload();
       });
+
+      // Загрузка меток профиля
+      const noticesContainer = $('#LZTUpModalNoticesContainer');
+      for (const notice of noticesList) {
+        let noticeStatus = '';
+        if (typeof(noticesMarks) === 'string') {
+          let notices = noticesMarks.split(',');
+          if (notices.find(noticeMark => Number(noticeMark) === notice.id)) {
+            noticeStatus = 'checked';
+          }
+        }
+        noticesContainer.append(`
+          <input type="checkbox" id="set_${notice.id}_noticemark" value="${notice.name}" ${noticeStatus}>
+          <label for="set_${notice.id}_noticemark">
+            Метка <span class="${notice.name}"></span>
+          </label>
+        `);
+      }
 
       // Загрузка кнопок быстрого репорта
       let $reportButtonsSelect = $('#LZTUpModalReportButtonsContainer > ul');
@@ -1368,6 +1504,7 @@
       await reloadBannerStyle();
       await reloadUserBadges();
       await updateTooltips();
+      await reloadUserNoticeMarks();
     }
 
     async function isContestThread() {
@@ -1634,6 +1771,7 @@
     }
 
     async function reloadReportButtons() {
+      // TODO: Вынести получение данных из функции и передавать их как аргумент либо вынести логику в отдельную функцию
       let dbAppearData = await appearDB.read().then(value => {return(value)}).catch(err => {Logger.error(err); return false});
       if (dbAppearData && dbAppearData.reportButtonsInPost.length > 0) {
         if (typeof (dbAppearData.reportButtonsInPost) === 'string') {
@@ -1711,6 +1849,49 @@
         if (!defaultClasses.includes(selectedClass)) $(element).removeClass(selectedClass);
       })
     }
+
+    
+    async function addNoticeMark(name) {
+      Array.from($('.username span')).forEach(item => {
+        if ($(item).text() === username) {
+          const headerContent = $(item).parent()
+          if (!headerContent.parent()[0].classList.contains('navLink') && !headerContent.parent().find(`span.${name}`).length) {
+            let tooltipText = '';
+            if (name === 'scamNotice') {
+              tooltipText = 'Внимание! На данного пользователя недавно жаловались в связи с мошенничеством. Советуем вам быть осторожным и пользоваться гарантом, имея дело с ним.'
+            } else if (name === 'vpnNotice') {
+              tooltipText = 'Внимание! Данный пользователь использует VPN, будьте осторожны.'
+            }
+            const notice = $(`<span class="${name} Tooltip" title="${tooltipText}"></span>`);
+            headerContent.after(notice);
+            XenForo.Tooltip(notice);
+          }
+        }
+      });
+    }
+
+    async function removeNoticeMark(name) {
+      Array.from($('.username span')).forEach(item => {
+        if ($(item).text() === username) {
+          $(item).parent().parent().find(`span.${name}`).remove();
+        }
+      });
+    }
+
+    async function reloadUserNoticeMarks() {
+      let dbUniqueStyleData = await uniqueStyleDB.read().then(value => {return(value)}).catch(err => {Logger.error(err); return false});
+      if (dbUniqueStyleData && dbUniqueStyleData.noticesMarks.length > 0) {
+        if (typeof (dbUniqueStyleData.noticesMarks) === 'string') {
+          let noticesMarks = dbUniqueStyleData.noticesMarks.split(',');
+          for (const noticeMark of noticesMarks) {
+            console.log(noticeMark)
+            let noticeMarkSpan = noticesList.find(notice => notice.id === Number(noticeMark));
+            typeof(noticeMarkSpan) === "object" ? await addNoticeMark(noticeMarkSpan.name) : undefined;
+          }
+        }
+      }
+    }
+
 
     // script start
     if (getUserid() === '') return; // superior auth check
@@ -2276,8 +2457,30 @@
           } else {
             usedBtns = [String(btn.id)];
           }
-          await appearDB.update({reportButtonsInPost: usedBtns.join()}),
+          await appearDB.update({reportButtonsInPost: usedBtns.join()});
           $(`#set_${btn.id}_reportbtn`)[0].checked ? await addReportBtnInPosts(btn.name, btn.reason) : await removeReportBtnInPosts(btn.name);
+        });
+      });
+
+      noticesList.forEach(notice => {
+        $(document).on('click', `#set_${notice.id}_noticemark`, async function () {
+          let uniqueData = await uniqueStyleDB.read().then(value => {return(value)}).catch(err => {Logger.error(err); return false});
+          let usedNoticesMarks;
+          if (typeof (uniqueData.noticesMarks) === 'string') {
+            usedNoticesMarks = uniqueData.noticesMarks.split(',');
+            let emptyCell = usedNoticesMarks.indexOf('')
+            emptyCell !== -1 ? usedNoticesMarks.splice(emptyCell, 1) : null;
+            if (usedNoticesMarks.find(noticeId => noticeId === String(notice.id))) {
+              let noticeIndex = usedNoticesMarks.indexOf(String(notice.id));
+              noticeIndex !== -1 ? usedNoticesMarks.splice(noticeIndex, 1) : null;
+            } else {
+              usedNoticesMarks.push(String(notice.id));
+            }
+          } else {
+            usedNoticesMarks = [String(notice.id)];
+          }
+          await uniqueStyleDB.update({noticesMarks: usedNoticesMarks.join()});
+          $(`#set_${notice.id}_noticemark`)[0].checked ? await addNoticeMark(notice.name) : await removeNoticeMark(notice.name);
         });
       });
     }
