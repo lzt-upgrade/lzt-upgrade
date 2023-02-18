@@ -404,6 +404,7 @@
   border-radius: 8px;
   cursor: pointer;
 }
+
 .LZTUpModalBlock {
   display: flex;
 }
@@ -439,6 +440,20 @@
 
 .LZTUpSubMenu .previewContainer .avatarBox {
   position:relative
+}
+
+#LZTUpUserBannerStyle {
+  padding: 0 20px;
+}
+
+#LZTUpModalNoticesContainer {
+  display: flex;
+  justify-content: center;
+  margin: 20px;
+}
+
+#LZTUpModalNoticesContainer > label {
+  margin-right: 10px;
 }
 
 .LZTUpSubMenu .previewContainer .avatarBox > .avatarUserBadges .avatarUserBadge {
@@ -693,31 +708,31 @@
   color:#f13838
 }
 
-.LZTUpSubMenu .UsernameStyle .style359{
+.LZTUpSubMenu .UsernameStyle.style359{
   color:#E5D9A3
 }
 
-.LZTUpSubMenu .UsernameStyle .style8{
+.LZTUpSubMenu .UsernameStyle.style8{
   color:#FFD700
 }
 
-.LZTUpSubMenu .UsernameStyle .style142{
+.LZTUpSubMenu .UsernameStyle.style142{
   color:#aaa
 }
 
-.LZTUpSubMenu .UsernameStyle .style265{
+.LZTUpSubMenu .UsernameStyle.style265{
   background:linear-gradient(35deg, #006eff, #00ff81 52%, #fff 50%, #93cbff);
   -webkit-background-clip:text;
   -webkit-text-fill-color:transparent;
   text-shadow:0 0 7px #00ffcf80
 }
 
-.LZTUpSubMenu .UsernameStyle .style23{
+.LZTUpSubMenu .UsernameStyle.style23{
   color:#b35ede
 }
 
-.LZTUpSubMenu .UsernameStyle .is_banned,
-.LZTUpSubMenu .UsernameStyle .banned{
+.LZTUpSubMenu .UsernameStyle.is_banned,
+.LZTUpSubMenu .UsernameStyle.banned{
   text-decoration:line-through;
   background:inherit;
   -webkit-text-fill-color:inherit;
