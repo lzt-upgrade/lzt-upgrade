@@ -636,15 +636,17 @@
       const lztUpgradeModalMain = $('#LZTUpList').parent().parent();
       const lztUpgradeMainTitle = lztUpgradeModalMain.find('h2.heading');
       lztUpgradeMainTitle.attr('id', 'LZTUpModalMainTitle');
-      const badge = $('#LZTUpPreviewBadge');
-      badge.find('.customUniqIcon').remove();
-      if (uniqueData.badgeIcon.length) {
-        badge.removeClass('uniq_default');
-        badge.append(`<div class="customUniqIcon">${uniqueData.badgeIcon.replaceAll(/<[script|style]*>/gi, '<!--').replaceAll(/<\/[script|style]*>/gi, '-->')}</div>`)
-      } else {
-        const badge = $('#LZTUpPreviewBadge');
-        badge.addClass('uniq_default');
-      }
+      const LZTUpUniqueStyle = $('#LZTUpUniqueStyle');
+      const LZTUpBannerStyle = $('#LZTUpBannerStyle');
+      const LZTUpBannerText = $('#LZTUpBannerText');
+      const LZTUpBadgeIcon = $('#LZTUpBadgeIcon');
+      const LZTUpBadgeText = $('#LZTUpBadgeText');
+
+      LZTUpUniqueStyle.trigger('change');
+      LZTUpBannerStyle.trigger('change');
+      LZTUpBannerText.trigger('change');
+      LZTUpBadgeIcon.trigger('change');
+      LZTUpBadgeText.trigger('change');
 
       availabledGroups.forEach(group => {
         const selectGroups = $('#LZTUpSelectGroupsUniq');
@@ -1196,18 +1198,26 @@
         let badgeId = null
         
         if(!$userBadges.length)
-          $userBadges = $('<div class="avatarUserBadges"></div>').prependTo($avatarHolder)
-        
-        const oldBadge = $userBadges.find('.customUniqIcon').parent().remove()
+          $userBadges = $('<div class="avatarUserBadges" id="LZTUpUserBadges"></div>').prependTo($avatarHolder)
+
+        const oldBadge = $userBadges.find('.customUniqIcon').parent();
+        $userBadges.find('.avatarUserBadge').remove();
         if(oldBadge.length)
           for(const className of oldBadge.attr('class').split(/\s+/))
             if(/^avatarUserBadge--(\d+)$/.test(className))
               badgeId = className.match(/^avatarUserBadge--(\d+)$/)[1]
 
-        $(`<span style="${XenForo.htmlspecialchars(bannerStyle)}" id="LZTUpTooltip" class="avatarUserBadge Tooltip ${badgeIcon === '' ? 'uniq_default' : ''} ${badgeId ? `avatarUserBadge--${badgeId}` : ''}" title="${XenForo.htmlspecialchars(badgeText)}" tabindex="0">
-          <div class="customUniqIcon">
-            ${badgeIcon.replaceAll(/<[script|style]*>/gi, '<!--').replaceAll(/<\/[script|style]*>/gi, '-->')}
-          </div>
+        if (!badgeText.length) {
+          $userBadges.hide()
+        } else {
+          $userBadges.show()
+        }
+
+        $(`<span style="${bannerStyle.startsWith('.') ? '' : XenForo.htmlspecialchars(bannerStyle)}" id="LZTUpTooltip" class="avatarUserBadge Tooltip ${badgeIcon === '' ? 'uniq_default' : badgeIcon.startsWith('.') ? XenForo.htmlspecialchars(badgeIcon.replace('.', '')) : ''} ${badgeId ? `avatarUserBadge--${badgeId}` : ''}" title="${XenForo.htmlspecialchars(badgeText)}" tabindex="0">
+          ${!badgeIcon.startsWith('.') ? `
+            <div class="customUniqIcon">
+              ${badgeIcon.replaceAll(/<[script|style]*>/gi, '<!--').replaceAll(/<\/[script|style]*>/gi, '-->')}
+            </div>` : ''}
         </span>`
         ).appendTo($avatarHolder.find('.avatarUserBadges'));
       }
@@ -1217,10 +1227,10 @@
     async function reloadUserBadges() {
       try {
         var uniqueData = await uniqueStyleDB.read().then(value => {return(value)}).catch(err => {Logger.error(err); return false});
-        if (typeof(uniqueData) === 'object' && uniqueData.badgeText !== '') {
-          var isUserBadgesLoaded = $('#LZTUpUserBadges');
+        if (typeof(uniqueData) === 'object') {
+          const isUserBadgesLoaded = $('#LZTUpUserBadges');
           if (isUserBadgesLoaded.length) {
-            $(isUserBadgesLoaded).remove()
+            isUserBadgesLoaded.remove()
           }
           await registerUserBadges(uniqueData.bannerStyle, uniqueData.badgeText, uniqueData.badgeIcon);
           await setUniqIconColor(uniqueData.badgeFill, uniqueData.badgeStroke)
@@ -1941,7 +1951,12 @@
           const badgeClone = badge.clone();
           badge.remove();
           badgeParent.append(badgeClone);
-          XenForo.Tooltip(badgeClone);
+          if (!badgeTextNew.length) {
+            badgeClone.hide()
+          } else {
+            badgeClone.show()
+            XenForo.Tooltip(badgeClone);
+          }
         }
       });
 
