@@ -176,6 +176,78 @@
       },
     ]
 
+    // <option value="admin">
+    //   Администратор
+    // </option>
+    // <option value="designer">
+    //   Дизайнер
+    // </option>
+    // <option value="headDesigner">
+    //   Главный дизайнер
+    // </option>
+    // <option value="redactor">
+    //   Редактор
+    // </option>
+    // <option value="editor">
+    //   Спонсор
+    // </option>
+    // <option value="coder">
+    //   Разработчик
+    // </option>
+    // <option value="moder">
+    //   Модератор
+    // </option>
+    // <option value="curator">
+    //   Куратор
+    // </option>
+    // <option value="arbitr">
+    //   Арбитр
+    // </option>
+    // <option value="legend">
+    //   Легенда
+    // </option>
+    // <option class="Item" value="ai">
+    //   Искусственный интеллект
+    // </option>
+    // <option class="Item" value="guru">
+    //   Гуру
+    // </option>
+    // <option class="Item" value="expert">
+    //   Эксперт
+    // </option>
+    // <option class="Item" value="lodger">
+    //   Постоялец
+    // </option>
+    // <option class="Item" value="newbie">
+    //   Новичок
+    // </option>
+    // <option value="telegramBot">
+    //   Телеграм бот
+    // </option>
+    // <option value="banned">
+    //   Заблокированный
+    // </option>
+    // <option value="marketSeller">
+    //   Продавец на маркете
+    // </option>
+    // <option value="forumSeller">
+    //   Продавец на форуме
+    // </option>
+    // <option value="supreme">
+    //   Суприм
+    // </option>
+    const availabledGroups = [
+      {
+        "name": "admin", // value="admin"
+        "groupName": "Администратор",
+        "uniqueStyle": ".style3", // if starting with "." - is a class name else style
+        "bannerStyle": ".admin", // if starting with "." - is a class name else style
+        "bannerText": "Администратор",
+        "badgeIcon": ".admin", // if starting with "." - is a class name else style
+        "badgeText": "Администратор"
+      }
+    ]
+
     function validateAuthors(authorID, authorName) {
       if (typeof (authorID) === 'string') {
         if (authorID.includes(',') && authorName.includes(',')) {
@@ -318,11 +390,9 @@
             </div>
           </div>
           <div class="LZTUpModalBlockButtons">
-            <button class="button" type="button">
-              <span>
-                <span class="SpoilerTitle">Выбрать из групп форума (WIP)</span>
-              </span>
-            </button>
+            <select id="LZTUpSelectGroupsUniq" class="button" type="button">
+              <option disabled selected value="none">Выбрать из групп форума</option>
+            </select>
             <a href="https://${window.location.hostname}/account/uniq/test" class="button" target="_blank">
               <span>
                 <span class="SpoilerTitle">Выбрать готовый уник</span>
@@ -575,6 +645,11 @@
         const badge = $('#LZTUpPreviewBadge');
         badge.addClass('uniq_default');
       }
+
+      availabledGroups.forEach(group => {
+        const selectGroups = $('#LZTUpSelectGroupsUniq');
+        selectGroups.append(`<option value="${group.name}">${group.groupName}</option>`)
+      })
 
       async function setValueInMesh(target, container) {
         let containerChildrens = $(container).children();
@@ -998,7 +1073,12 @@
       Array.from($('.username span')).forEach(item => {
         if ($(item).text() === username) {
           $(item).removeAttr('class');
-          $(item).attr('style', style);
+          if (style.startsWith('.')) {
+            $(item).addClass(style.replace('.', ''));
+            $(item).attr('style', '');
+          } else {
+            $(item).attr('style', style);
+          }
         }
       })
     }
@@ -1067,7 +1147,13 @@
     }
 
     function updateBannerStyle(style, text) {
-      var bannerBtn = $(`<em style="${style}" class="userBanner wrapped" id="LZTUpCustomBanner" itemprop="title"> \
+      if (style.startsWith('.')) {
+        bannerStyle = `class="userBanner wrapped ${style.replace('.', '')}"`
+      } else {
+        bannerStyle = `class="userBanner wrapped" style="${style}"`
+      }
+
+      const bannerBtn = $(`<em ${bannerStyle} id="LZTUpCustomBanner" itemprop="title"> \
       <span class="before"></span> \
       <strong>${text}</strong> \
       <span class="after"></span>\
@@ -1161,11 +1247,12 @@
     }
 
     async function commentMoreHandler() {
-      var commentMoreBtn = $('.commentMore.CommentLoader');
+      const commentMoreBtn = $('.CommentLoader');
 
       if (commentMoreBtn.length > 0) {
-        $(commentMoreBtn).on('click', async function() {
-          await sleep(450);
+        $(commentMoreBtn).on('click', async function(event) {
+          await sleep(2600);
+          Logger.log('123')
           await updateUniqueStyles();
         })
       }
@@ -1495,21 +1582,24 @@
       const $messageList = $('#messageList > li');
       for (let block of $messageList) {
         if ($(block).find('.publicControls').length) {
-          if ($(block).find(`.publicControls > #LZTUPReportButton[name$=${name}]`).length === 0) {
-            let $reportButton = $(`<span id = "LZTUPReportButton" name = "${name}">${XenForo.htmlspecialchars(name)}</span>`)
-            $reportButton.on('click', async () => {
-              let formData = new FormData();
-              formData.append("message", reason)
-              formData.append("is_common_reason", 1)
-              formData.append("_xfToken", XenForo._csrfToken);
-              formData.append("_xfNoRedirect", 1)
-              formData.append("_xfToken", XenForo._csrfToken);
-              formData.append("redirect", window.location.href);
-              await fetch('posts/' + block.id.split('-')[1] +'/report', { method: 'POST', body: formData });
-              registerAlert('Жалоба отправлена', 5000);
-            })
-            $(block).find('.publicControls').prepend($reportButton)
-          }
+          let publicControls = $(block).find('.publicControls').toArray();
+          publicControls.forEach(control => {
+            if ($(control).find(`#LZTUPReportButton[name$=${name}]`).length === 0) {
+              let $reportButton = $(`<span id = "LZTUPReportButton" name = "${name}">${XenForo.htmlspecialchars(name)}</span>`)
+              $reportButton.on('click', async () => {
+                let formData = new FormData();
+                formData.append("message", reason)
+                formData.append("is_common_reason", 1)
+                formData.append("_xfToken", XenForo._csrfToken);
+                formData.append("_xfNoRedirect", 1)
+                formData.append("_xfToken", XenForo._csrfToken);
+                formData.append("redirect", window.location.href);
+                await fetch('posts/' + block.id.split('-')[1] +'/report', { method: 'POST', body: formData });
+                registerAlert('Жалоба отправлена', 5000);
+              })
+              $(control).prepend($reportButton)
+            }
+          })
         }
       }
     }
@@ -1594,6 +1684,13 @@
           poll.find('span').remove()
         }
       }
+    }
+
+    function removeExtraClasses(element, defaultClasses) {
+      const elementClassList = $(element).attr('class').split(/\s+/);
+      elementClassList.forEach(selectedClass => {
+        if (!defaultClasses.includes(selectedClass)) $(element).removeClass(selectedClass);
+      })
     }
 
     // script start
@@ -1697,6 +1794,32 @@
 
     if (MenuResult === true) {
       // UNIQUE
+      $(document).on('click', '#LZTUpSelectGroupsUniq', () => {
+        const selectedGroup = $('#LZTUpSelectGroupsUniq').val();
+        const uniqueStyle = $('#LZTUpUniqueStyle');
+        const bannerStyle = $('#LZTUpBannerStyle');
+        const bannerText = $('#LZTUpBannerText');
+        const badgeIcon = $('#LZTUpBadgeIcon');
+        const badgeText = $('#LZTUpBadgeText');
+        
+        for (const group of availabledGroups) {
+          switch (selectedGroup) {
+            case group.name:
+              uniqueStyle.val(group.uniqueStyle);
+              bannerStyle.val(group.bannerStyle);
+              bannerText.val(group.bannerText);
+              badgeIcon.val(group.badgeIcon);
+              badgeText.val(group.badgeText);
+          }
+        }
+
+        uniqueStyle.trigger('change');
+        bannerStyle.trigger('change');
+        bannerText.trigger('change');
+        badgeIcon.trigger('change');
+        badgeText.trigger('change');
+      });
+
       $(document).on('click', '#LZTUpResetUniqueDB', async function () {
         await uniqueStyleDB.delete();
         await uniqueStyleDB.init();
@@ -1707,8 +1830,15 @@
 
       $(document).on('keyup change', '#LZTUpUniqueStyle', () => {
         let nickStyleNew = $('#LZTUpUniqueStyle').val();
+        const usernameStyle = $('#LZTUpUsernameStyle')
         if (nickStyleNew.length < 1501) {
-          $('#LZTUpUsernameStyle').attr('style', nickStyleNew);
+          removeExtraClasses(usernameStyle, ['UsernameStyle', 'bold']);
+          if (nickStyleNew.startsWith('.')) {
+            usernameStyle.addClass(nickStyleNew.replace('.', ''));
+            usernameStyle.attr('style', '');
+          } else {
+            usernameStyle.attr('style', nickStyleNew);
+          }
         }
       });
 
@@ -1718,16 +1848,27 @@
           await uniqueStyleDB.update({nickStyle: nickStyleNew});
           updateNickStyle(nickStyleNew);
         } else {
-            alert('Стиль ника не должен превышать 1500 символов!')
-            Logger.log('Не удалось сохранить стиль ника. Стиль ника не должен превышать 1500 символов!')
+          alert('Стиль ника не должен превышать 1500 символов!')
+          Logger.log('Не удалось сохранить стиль ника. Стиль ника не должен превышать 1500 символов!')
         }
       });
 
       $(document).on('keyup change', '#LZTUpBannerStyle', () => {
         let bannerStyleNew = $('#LZTUpBannerStyle').val();
-        if (bannerStyleNew.length < 1501) {
-          $('#LZTUpUserBannerStyle ').attr('style', bannerStyleNew);
-          $('#LZTUpPreviewBadge ').attr('style', bannerStyleNew);
+        const bannerStyle = $('#LZTUpUserBannerStyle');
+        const previewBadge = $('#LZTUpPreviewBadge');
+        if (bannerStyleNew.length < 1501) { 
+          removeExtraClasses(bannerStyle, ['UserBannerStyle', 'userBanner']);
+          removeExtraClasses(previewBadge, ['avatarUserBadge', 'Tooltip']);
+          if (bannerStyleNew.startsWith('.')) {
+            bannerStyle.addClass(bannerStyleNew.replace('.', ''));
+            previewBadge.addClass(bannerStyleNew.replace('.', ''))
+            bannerStyle.attr('style', '')
+            previewBadge.attr('style', '')
+          } else {
+            bannerStyle.attr('style', bannerStyleNew);
+            previewBadge.attr('style', bannerStyleNew);
+          }
         }
       });
 
@@ -1745,7 +1886,7 @@
       $(document).on('keyup change', '#LZTUpBannerText', () => {
         let bannerTextNew = $('#LZTUpBannerText').val();
         if (bannerTextNew.length < 1501) {
-          $('#LZTUpUserBannerStyle ').text(bannerTextNew);
+          $('#LZTUpUserBannerStyle').text(bannerTextNew);
         }
       });
 
@@ -1766,8 +1907,12 @@
           const badge = $('#LZTUpPreviewBadge');
           badge.find('.customUniqIcon').remove();
           if (badgeIconNew.length) {
-            badge.removeClass('uniq_default');
-            badge.append(`<div class="customUniqIcon">${badgeIconNew.replaceAll(/<[script|style]*>/gi, '<!--').replaceAll(/<\/[script|style]*>/gi, '-->')}</div>`)
+            removeExtraClasses(badge, ['avatarUserBadge', 'Tooltip']);
+            if (badgeIconNew.startsWith('.')) {
+              badge.addClass(badgeIconNew.replace('.', ''));
+            } else {
+              badge.append(`<div class="customUniqIcon">${badgeIconNew.replaceAll(/<[script|style]*>/gi, '<!--').replaceAll(/<\/[script|style]*>/gi, '-->')}</div>`)
+            }
           } else {
             const badge = $('#LZTUpPreviewBadge');
             badge.addClass('uniq_default');
@@ -2136,14 +2281,14 @@
     if ($messageList.length) {
       var mutationObserver = new MutationObserver(async function(mutations) {
         mutations.forEach(async function(mutation) {
-          if (mutation.target === $($messageList)[0]) {
+          if (mutation.target === $($messageList)[0] || mutation.target.classList.contains('CommentPostList')) {
             await reloadReportButtons();
             await updateUniqueStyles();
           }
         });
       });
 
-      mutationObserver.observe(document.documentElement, {
+      mutationObserver.observe($messageList.parent()[0], {
         attributes: true,
         childList: true,
         subtree: true,
