@@ -61,7 +61,7 @@
   margin: 15px;
 }
 
-#LZTUpBannerText, #LZTUpBadgeText {
+#LZTUpBannerText, #LZTUpBadgeText, #LZTUpProfileBackground {
   width: 400px;
   /* width: 575px;
   max-width: 95%; */
@@ -86,7 +86,7 @@
   scrollbar-width: thin;
 }
 
-#LZTUpSaveBannerText, #LZTUpSaveBadgeText {
+#LZTUpSaveBannerText, #LZTUpSaveBadgeText, #LZTUpSaveProfileBackgroundText {
   width: 100px;
   margin: 0px 15px;
 }
@@ -426,10 +426,25 @@
   width: 32px;
 }
 
+#LZTUpCustomBackground {
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+}
+
 .LZTUpSubMenu .previewContainer {
-  float:right;
-  margin-left:25px;
+  float: right;
+  margin-left: 15px;
   margin-top: 25px;
+  padding: 10px 10px 15px 10px;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  border-radius: 10px;
+  width: 92%;
+  max-width: 92%;
 }
 
 .LZTUpSubMenu .previewContainer > .avatarBox,
