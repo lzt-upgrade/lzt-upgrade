@@ -536,24 +536,15 @@
 
           <div id="LZTUpModalHeading" class="textHeading">Стиль ника:</div>
           <div id="LZTUpModalText" class="muted explain">Максимум 1500 символов. При отсутствии кода используется цвет вашей группы с форума.</div>
-          <nobr>
-            <textarea id="LZTUpUniqueStyle" name="username_css" class="UsernameCss textCtrl" maxlength="1500">${nickStyle}</textarea>
-            <input id="LZTUpSaveUniqueStyle" type="button" value="Сохранить" class="button primary"></input>
-          </nobr>
+          <textarea id="LZTUpUniqueStyle" name="username_css" class="UsernameCss textCtrl" maxlength="1500">${nickStyle}</textarea>
 
           <div id="LZTUpModalHeading" class="textHeading">Стиль лычки:</div>
           <div id="LZTUpModalText" class="muted explain">Максимум 1500 символов.</div>
-          <nobr>
-            <textarea id="LZTUpBannerStyle" name="banner_css" class="BannerCss textCtrl" maxlength="1500">${bannerStyle}</textarea>
-            <input id="LZTUpSaveBannerStyle" type="button" value="Сохранить" class="button primary"></input>
-          </nobr>
+          <textarea id="LZTUpBannerStyle" name="banner_css" class="BannerCss textCtrl" maxlength="1500">${bannerStyle}</textarea>
 
           <div id="LZTUpModalHeading" class="textHeading">Текст в лычке:</div>
           <div id="LZTUpModalText" class="muted explain">Максимум 24 символа. При отсутствии текста лычка не будет видна.</div>
-          <nobr>
-            <input id="LZTUpBannerText" name="banner_text" maxlength="24" class="textCtrl" value="${XenForo.htmlspecialchars(bannerText)}">
-            <input id="LZTUpSaveBannerText" type="button" value="Сохранить" class="button primary"></input>
-          </nobr>
+          <input id="LZTUpBannerText" name="banner_text" type="text" maxlength="24" class="textCtrl" value="${XenForo.htmlspecialchars(bannerText)}">
 
           <div id="LZTUpModalHeading" class="textHeading">Иконка на аватарке:</div>
           <div id="LZTUpModalText" class="muted explain">
@@ -562,10 +553,7 @@
             <br>
             Максимумальная длина SVG - 3000 символов. При отсутствии значения будет установлено стандартная иконка.
           </div>
-          <nobr>
-            <textarea id="LZTUpBadgeIcon" name="banner_icon" maxlength="3000" class="BadgeCss textCtrl">${badgeIcon}</textarea>
-            <input id="LZTUpSaveBadgeIcon" type="button" value="Сохранить" class="button primary"></input>
-          </nobr>
+          <textarea id="LZTUpBadgeIcon" name="banner_icon" maxlength="3000" class="BadgeCss textCtrl">${badgeIcon}</textarea>
 
           <div id="LZTUpModalHeading" class="textHeading">Цвета иконки на аватарке:</div>
           <div id="LZTUpModalText" class="muted explain">Убедитесь, что в SVG нету заранее установленных значений 'fill' и 'stroke'.</div>
@@ -584,23 +572,18 @@
 
           <div id="LZTUpModalHeading" class="textHeading">Текст иконки на аватарке:</div>
           <div id="LZTUpModalText" class="muted explain">Максимум 24 символа. При отсутствии текста иконка не будет видна.</div>
-          <nobr>
-            <input id="LZTUpBadgeText" name="badge_text" maxlength="24" class="textCtrl" value="${XenForo.htmlspecialchars(badgeText)}">
-            <input id="LZTUpSaveBadgeText" type="button" value="Сохранить" class="button primary"></input>
-          </nobr>
+          <input id="LZTUpBadgeText" name="badge_text" maxlength="24" type="text" class="textCtrl" value="${XenForo.htmlspecialchars(badgeText)}">
 
           <div id="LZTUpModalHeading" class="textHeading">Фон в профиле</div>
-          <nobr>
-            <input id="LZTUpProfileBackground" name="profile_background" class="textCtrl" placeholder="Ссылка на изображение" value="${XenForo.htmlspecialchars(profileBackground)}">
-            <input id="LZTUpSaveProfileBackground" type="button" value="Сохранить" class="button primary"></input>
-          </nobr>
+          <input id="LZTUpProfileBackground" name="profile_background" type="text" class="textCtrl" placeholder="Ссылка на изображение" value="${XenForo.htmlspecialchars(profileBackground)}">
 
           <div id="LZTUpModalChecksContainer">
             <input type="checkbox" value="1" id="profile_background_everywhere" ${profileBackgroundEverywhere === 1 ? "checked" : ''}>
             <label for="profile_background_everywhere">Заменить фон на всех страницах форума</label>
           </div>
 
-          <input id="LZTUpResetUniqueDB" type="button" value="Сбросить настройки" class="button primary"></input>
+          <input id="LZTUpSaveUniqueDB" type="button" value="Сохранить" class="button primary save_button"></input>
+          <input id="LZTUpResetUniqueDB" type="button" value="Сбросить настройки" class="button reset_button"></input>
         </div>
         <div id="LZTUpContestsContainer" class="LZTUpSubMenu">
           <div id="LZTUpModalChecksContainer">
@@ -631,7 +614,7 @@
             <input type="checkbox" name="rm_content" value="1" id="contests_rm_content" ${contestsRmContent === 1 ? "checked" : ''}>
             <label for="contests_rm_content">Скрытие содержимого и голосований в теме розыгрыша</label>
           </div>
-          <input id="LZTUpResetContestsDB" type="button" value="Сбросить настройки" class="button primary"></input>
+          <input id="LZTUpResetContestsDB" type="button" value="Сбросить настройки" class="button reset_button"></input>
         </div>
         <div id="LZTUpUsersContainer" class="LZTUpSubMenu">
           <div id="LZTUpModalChecksContainer">
@@ -642,7 +625,7 @@
             <input type="checkbox" name="open_all" value="1" id="show_fullreg_in_profile" ${showFullRegInProfile === 1 ? "checked" : ''}>
             <label for="show_fullreg_in_profile">Показывать полную дату регистрации в профиле пользователя</label>
           </div>
-          <input id="LZTUpResetUsersDB" type="button" value="Сбросить настройки" class="button primary"></input>
+          <input id="LZTUpResetUsersDB" type="button" value="Сбросить настройки" class="button reset_button"></input>
         </div>
         <div id="LZTUpAppearContainer" class="LZTUpSubMenu">
           <div id="LZTUpLogoSection" class="LZTUpModalSection">
@@ -714,7 +697,7 @@
             <ul>
             </ul>
           </div>
-          <input id="LZTUpResetAppearDB" type="button" value="Сбросить настройки" class="button primary"></input>
+          <input id="LZTUpResetAppearDB" type="button" value="Сбросить настройки" class="button reset_button"></input>
         </div>
         <div id="LZTUpLogoSubContainer" class="LZTUpSubMenu">
           <div id="LZTUpModalCell">
@@ -776,19 +759,6 @@
       const lztUpgradeModalMain = $('#LZTUpList').parent().parent();
       const lztUpgradeMainTitle = lztUpgradeModalMain.find('h2.heading');
       lztUpgradeMainTitle.attr('id', 'LZTUpModalMainTitle');
-      const LZTUpUniqueStyle = $('#LZTUpUniqueStyle');
-      const LZTUpBannerStyle = $('#LZTUpBannerStyle');
-      const LZTUpBannerText = $('#LZTUpBannerText');
-      const LZTUpBadgeIcon = $('#LZTUpBadgeIcon');
-      const LZTUpBadgeText = $('#LZTUpBadgeText');
-      const LZTUpProfileBackground = $('#LZTUpProfileBackground');
-
-      LZTUpUniqueStyle.trigger('change');
-      LZTUpBannerStyle.trigger('change');
-      LZTUpBannerText.trigger('change');
-      LZTUpBadgeIcon.trigger('change');
-      LZTUpBadgeText.trigger('change');
-      LZTUpProfileBackground.trigger('change');
 
       availabledGroups.forEach(group => {
         const selectGroups = $('#LZTUpSelectGroupsUniq');
@@ -1077,7 +1047,20 @@
 
         $('div#LZTUpListItem.LZTUpUniqItem').on('click', async () => {
           await updateMenu($mainList, $uniqContainer, 'Локальный Уник');
-
+          const LZTUpUniqueStyle = $('#LZTUpUniqueStyle');
+          const LZTUpBannerStyle = $('#LZTUpBannerStyle');
+          const LZTUpBannerText = $('#LZTUpBannerText');
+          const LZTUpBadgeIcon = $('#LZTUpBadgeIcon');
+          const LZTUpBadgeText = $('#LZTUpBadgeText');
+          const LZTUpProfileBackground = $('#LZTUpProfileBackground');
+    
+          LZTUpUniqueStyle.trigger('change');
+          LZTUpBannerStyle.trigger('change');
+          LZTUpBannerText.trigger('change');
+          LZTUpBadgeIcon.trigger('change');
+          LZTUpBadgeText.trigger('change');
+          LZTUpProfileBackground.trigger('change');
+          
           const pickrFill = createColorPicker('.badge-fill-picker', overlay[0]);
           pickrFill.on('init', async (instance) => {
             instance.setColor(badgeFill === '' ? null : badgeFill);
@@ -2070,9 +2053,96 @@
         window.location.reload();
       });
 
+      $(document).on('click', '#LZTUpSaveUniqueDB', async function () {
+        const nickStyleNew = $('#LZTUpUniqueStyle').val();
+        if (nickStyleNew.length < 1501) {
+          await uniqueStyleDB.update({nickStyle: nickStyleNew});
+        } else {
+          alert('Стиль ника не должен превышать 1500 символов!')
+          Logger.log('Не удалось сохранить стиль ника. Стиль ника не должен превышать 1500 символов!')
+        }
+
+        const bannerStyleNew = $('#LZTUpBannerStyle').val();
+        if (bannerStyleNew.length < 1501) {
+          await uniqueStyleDB.update({bannerStyle: bannerStyleNew});
+        } else {
+          alert('Стиль лычки не должен превышать 1500 символов!')
+          Logger.log('Не удалось сохранить стиль лычки. Стиль лычки не должен превышать 1500 символов!')
+        }
+
+        const bannerTextNew = $('#LZTUpBannerText').val();
+        if (bannerTextNew.length < 25) {
+          await uniqueStyleDB.update({bannerText: bannerTextNew});
+        } else {
+          alert('Текст в лычке не должен превышать 24 символов!')
+          Logger.log('Не удалось сохранить текст в лычке. Текст в лычке не должен превышать 24 символов!')
+        }
+
+        const badgeIconNew = $('#LZTUpBadgeIcon').val();
+        if (badgeIconNew.length < 3001) {
+          await uniqueStyleDB.update({badgeIcon: badgeIconNew});
+        } else {
+          alert('Иконка на аватарке не должна превышать 3000 символов!')
+          Logger.log('Не удалось сохранить иконку на аватарке. Иконка на аватарке не должен превышать 3000 символов!')
+        }
+
+        const badgeTextNew  = $('#LZTUpBadgeText').val();
+        if (badgeTextNew.length < 25) {
+          await uniqueStyleDB.update({badgeText: badgeTextNew});
+        } else {
+          alert('Текст в иконке аватарки не должен превышать 24 символов!')
+          Logger.log('Не удалось сохранить текст в иконке аватарки. Текст в иконке аватарки не должен превышать 24 символов!')
+        }
+
+        let profileBackgroundNew  = $('#LZTUpProfileBackground').val();
+        await uniqueStyleDB.update({profileBackground: profileBackgroundNew});
+        await updateUniqueStyles();
+        await forceReloadBannerStyle();
+        await updateBackground();
+      });
+
+
+      $(document).on('click', '#profile_background_everywhere', async function () {
+        $('#profile_background_everywhere')[0].checked ? (
+          await uniqueStyleDB.update({profileBackgroundEverywhere: 1}),
+          await updateBackground()
+          ): (
+            await uniqueStyleDB.update({profileBackgroundEverywhere: 0}),
+            await updateBackground()
+          );
+      });
+
+      noticesList.forEach(notice => {
+        $(document).on('click', `#set_${notice.id}_noticemark`, async function () {
+          let uniqueData = await uniqueStyleDB.read().then(value => {return(value)}).catch(err => {Logger.error(err); return false});
+          let usedNoticesMarks;
+          if (typeof (uniqueData.noticesMarks) === 'string') {
+            usedNoticesMarks = uniqueData.noticesMarks.split(',');
+            let emptyCell = usedNoticesMarks.indexOf('')
+            emptyCell !== -1 ? usedNoticesMarks.splice(emptyCell, 1) : null;
+            if (usedNoticesMarks.find(noticeId => noticeId === String(notice.id))) {
+              let noticeIndex = usedNoticesMarks.indexOf(String(notice.id));
+              noticeIndex !== -1 ? usedNoticesMarks.splice(noticeIndex, 1) : null;
+            } else {
+              usedNoticesMarks.push(String(notice.id));
+            }
+          } else {
+            usedNoticesMarks = [String(notice.id)];
+          }
+          await uniqueStyleDB.update({noticesMarks: usedNoticesMarks.join()});
+          $(`#set_${notice.id}_noticemark`)[0].checked ? (
+            await addNoticeMark(notice.name),
+            $('#LZTUpUsernameStyle').after(`<span class="${notice.name}"></span>`)
+          ) : (
+            await removeNoticeMark(notice.name),
+            $('#LZTUpUsernameStyle').parent().find(`span.${notice.name}`).remove()
+          );
+        });
+      });
+
       $(document).on('keyup change', '#LZTUpUniqueStyle', () => {
         let nickStyleNew = $('#LZTUpUniqueStyle').val();
-        const usernameStyle = $('#LZTUpUsernameStyle')
+        const usernameStyle = $('#LZTUpUsernameStyle');
         if (nickStyleNew.length < 1501) {
           removeExtraClasses(usernameStyle, ['UsernameStyle', 'bold']);
           if (nickStyleNew.startsWith('.')) {
@@ -2081,17 +2151,6 @@
           } else {
             usernameStyle.attr('style', nickStyleNew);
           }
-        }
-      });
-
-      $(document).on('click', '#LZTUpSaveUniqueStyle', async function () {
-        let nickStyleNew = $('#LZTUpUniqueStyle').val();
-        if (nickStyleNew.length < 1501) {
-          await uniqueStyleDB.update({nickStyle: nickStyleNew});
-          updateNickStyle(nickStyleNew);
-        } else {
-          alert('Стиль ника не должен превышать 1500 символов!')
-          Logger.log('Не удалось сохранить стиль ника. Стиль ника не должен превышать 1500 символов!')
         }
       });
 
@@ -2114,32 +2173,10 @@
         }
       });
 
-      $(document).on('click', '#LZTUpSaveBannerStyle', async function () {
-        let bannerStyleNew = $('#LZTUpBannerStyle').val();
-        if (bannerStyleNew.length < 1501) {
-          await uniqueStyleDB.update({bannerStyle: bannerStyleNew});
-          await updateUniqueStyles();
-        } else {
-          alert('Стиль лычки не должен превышать 1500 символов!')
-          Logger.log('Не удалось сохранить стиль лычки. Стиль лычки не должен превышать 1500 символов!')
-        }
-      });
-
       $(document).on('keyup change', '#LZTUpBannerText', () => {
         let bannerTextNew = $('#LZTUpBannerText').val();
         if (bannerTextNew.length < 1501) {
           $('#LZTUpUserBannerStyle').text(bannerTextNew);
-        }
-      });
-
-      $(document).on('click', '#LZTUpSaveBannerText', async function () {
-        let bannerTextNew = $('#LZTUpBannerText').val();
-        if (bannerTextNew.length < 25) {
-          await uniqueStyleDB.update({bannerText: bannerTextNew});
-          await forceReloadBannerStyle();
-        } else {
-          alert('Текст в лычке не должен превышать 24 символов!')
-          Logger.log('Не удалось сохранить текст в лычке. Текст в лычке не должен превышать 24 символов!')
         }
       });
 
@@ -2162,24 +2199,13 @@
         }
       });
 
-      $(document).on('click', '#LZTUpSaveBadgeIcon', async function () {
-        let badgeIconNew = $('#LZTUpBadgeIcon').val();
-        if (badgeIconNew.length < 3001) {
-          await uniqueStyleDB.update({badgeIcon: badgeIconNew});
-          await updateUniqueStyles();
-        } else {
-          alert('Иконка на аватарке не должна превышать 3000 символов!')
-          Logger.log('Не удалось сохранить иконку на аватарке. Иконка на аватарке не должен превышать 3000 символов!')
-        }
-      });
-
       $(document).on('keyup change', '#LZTUpBadgeText', async function () {
         let badgeTextNew  = $('#LZTUpBadgeText').val();
         if (badgeTextNew.length < 25) {
           // idk how pretty simple to do
           const badge = $('#LZTUpPreviewBadge.Tooltip');
           badge.attr('title', badgeTextNew);;
-          const badgeParent = badge.parent()
+          const badgeParent = badge.parent();
           const badgeClone = badge.clone();
           badge.remove();
           badgeParent.append(badgeClone);
@@ -2192,45 +2218,6 @@
         }
       });
 
-      $(document).on('click', '#LZTUpSaveBadgeText', async function () {
-        let badgeTextNew  = $('#LZTUpBadgeText').val();
-        if (badgeTextNew.length < 25) {
-          await uniqueStyleDB.update({badgeText: badgeTextNew});
-          await updateUniqueStyles();
-        } else {
-          alert('Текст в иконке аватарки не должен превышать 24 символов!')
-          Logger.log('Не удалось сохранить текст в иконке аватарки. Текст в иконке аватарки не должен превышать 24 символов!')
-        }
-      });
-
-      noticesList.forEach(notice => {
-        $(document).on('click', `#set_${notice.id}_noticemark`, async function () {
-          let uniqueData = await uniqueStyleDB.read().then(value => {return(value)}).catch(err => {Logger.error(err); return false});
-          let usedNoticesMarks;
-          if (typeof (uniqueData.noticesMarks) === 'string') {
-            usedNoticesMarks = uniqueData.noticesMarks.split(',');
-            let emptyCell = usedNoticesMarks.indexOf('')
-            emptyCell !== -1 ? usedNoticesMarks.splice(emptyCell, 1) : null;
-            if (usedNoticesMarks.find(noticeId => noticeId === String(notice.id))) {
-              let noticeIndex = usedNoticesMarks.indexOf(String(notice.id));
-              noticeIndex !== -1 ? usedNoticesMarks.splice(noticeIndex, 1) : null;
-            } else {
-              usedNoticesMarks.push(String(notice.id));
-            }
-          } else {
-            usedNoticesMarks = [String(notice.id)];
-          }
-          await uniqueStyleDB.update({noticesMarks: z.join()});
-          $(`#set_${notice.id}_noticemark`)[0].checked ? (
-            await addNoticeMark(notice.name),
-            $('#LZTUpUsernameStyle').after(`<span class="${notice.name}"></span>`)
-          ) : (
-            await removeNoticeMark(notice.name),
-            $('#LZTUpUsernameStyle').parent().find(`span.${notice.name}`).remove()
-          );
-        });
-      });
-
       $(document).on('keyup change', '#LZTUpProfileBackground', async function () {
         let profileBackgroundNew  = $('#LZTUpProfileBackground').val();
         const previewContainer = $('#LZTUpPreviewContainer');
@@ -2239,22 +2226,6 @@
         } else {
           previewContainer.css('background-image', '');
         }
-      });
-
-      $(document).on('click', '#LZTUpSaveProfileBackground', async function () {
-        let profileBackgroundNew  = $('#LZTUpProfileBackground').val();
-        await uniqueStyleDB.update({profileBackground: profileBackgroundNew});
-        await updateBackground();
-      });
-
-      $(document).on('click', '#profile_background_everywhere', async function () {
-        $('#profile_background_everywhere')[0].checked ? (
-          await uniqueStyleDB.update({profileBackgroundEverywhere: 1}),
-          await updateBackground()
-          ): (
-            await uniqueStyleDB.update({profileBackgroundEverywhere: 0}),
-            await updateBackground()
-          );
       });
 
       // CONTESTS
