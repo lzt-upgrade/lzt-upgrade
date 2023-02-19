@@ -20,14 +20,14 @@
 // @resource     styles https://cdn.jsdelivr.net/gh/ilyhalight/lzt-upgrade@1.1.0/public/css/style.css
 // @resource     coloris https://cdn.jsdelivr.net/gh/ilyhalight/lzt-upgrade@1.1.0/public/css/coloris.css
 // @require      https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js
-// @require      https://cdn.jsdelivr.net/gh/ilyhalight/lzt-upgrade@1.1.0/public/static/js/coloris/coloris.min.js
-// @require      https://cdn.jsdelivr.net/gh/ilyhalight/lzt-upgrade@1.1.0/public/static/js/lztupgrade/indexedDB/default.js
-// @require      https://cdn.jsdelivr.net/gh/ilyhalight/lzt-upgrade@1.1.0/public/static/js/lztupgrade/indexedDB/UniqueStyle.js
-// @require      https://cdn.jsdelivr.net/gh/ilyhalight/lzt-upgrade@1.1.0/public/static/js/lztupgrade/indexedDB/contests.js
-// @require      https://cdn.jsdelivr.net/gh/ilyhalight/lzt-upgrade@1.1.0/public/static/js/lztupgrade/indexedDB/users.js
-// @require      https://cdn.jsdelivr.net/gh/ilyhalight/lzt-upgrade@1.1.0/public/static/js/lztupgrade/indexedDB/appear.js
-// @require      https://cdn.jsdelivr.net/gh/ilyhalight/lzt-upgrade@1.1.0/public/static/js/lztupgrade/api/themes.js
-// @require      https://cdn.jsdelivr.net/gh/ilyhalight/lzt-upgrade@1.1.0/public/static/js/lztupgrade/Logger.js
+// @require      https://cdn.jsdelivr.net/gh/ilyhalight/lzt-upgrade@b357ca50bee257e07a09360c05d735626aec01e5/public/static/js/coloris/coloris.min.js
+// @require      https://cdn.jsdelivr.net/gh/ilyhalight/lzt-upgrade@f3cf121434e8d948a759fb92512647e6d6a28380/public/static/js/lztupgrade/indexedDB/default.js
+// @require      https://cdn.jsdelivr.net/gh/ilyhalight/lzt-upgrade@2e8ad48d0a318d06c84743640eec36cb917fb6ad/public/static/js/lztupgrade/indexedDB/UniqueStyle.js
+// @require      https://cdn.jsdelivr.net/gh/ilyhalight/lzt-upgrade@f3cf121434e8d948a759fb92512647e6d6a28380/public/static/js/lztupgrade/indexedDB/contests.js
+// @require      https://cdn.jsdelivr.net/gh/ilyhalight/lzt-upgrade@f3cf121434e8d948a759fb92512647e6d6a28380/public/static/js/lztupgrade/indexedDB/users.js
+// @require      https://cdn.jsdelivr.net/gh/ilyhalight/lzt-upgrade@f3cf121434e8d948a759fb92512647e6d6a28380/public/static/js/lztupgrade/indexedDB/appear.js
+// @require      https://cdn.jsdelivr.net/gh/ilyhalight/lzt-upgrade@b3e7c27772ba3e8cab987e262b9ed86cfec2c30a/public/static/js/lztupgrade/api/themes.js
+// @require      https://cdn.jsdelivr.net/gh/ilyhalight/lzt-upgrade@9da314f6a1280655b2c94c8e2664d7121cb5766f/public/static/js/lztupgrade/Logger.js
 // @updateURL    https://github.com/ilyhalight/lzt-upgrade/raw/master/lzt-upgrade.user.js
 // @downloadURL  https://github.com/ilyhalight/lzt-upgrade/raw/master/lzt-upgrade.user.js
 // @supportURL   https://github.com/ilyhalight/lzt-upgrade/issues
