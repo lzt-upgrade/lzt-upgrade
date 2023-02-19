@@ -3,7 +3,7 @@
 // @version      1.1.0
 // @description  Some useful utilities for Lolzteam
 // @description:ru  Полезные улучшения для Lolzteam
-// @icon         https://raw.githubusercontent.com/ilyhalight/lzt-upgrade/master/public/static/img/lzt-upgrade-mini.png
+// @icon         https://cdn.jsdelivr.net/gh/ilyhalight/lzt-upgrade@1.1.0/public/static/img/lzt-upgrade-mini.png
 // @author       Toil
 // @license      MIT
 // @namespace    lztupgrade
@@ -17,17 +17,17 @@
 // @grant        GM_addStyle
 // @grant        GM_xmlhttpRequest 
 // @grant        GM_info
-// @resource     styles https://raw.githubusercontent.com/ilyhalight/lzt-upgrade/master/public/css/style.css
-// @resource     coloris https://raw.githubusercontent.com/ilyhalight/lzt-upgrade/master/public/css/coloris.css
+// @resource     styles https://cdn.jsdelivr.net/gh/ilyhalight/lzt-upgrade@1.1.0/public/css/style.css
+// @resource     coloris https://cdn.jsdelivr.net/gh/ilyhalight/lzt-upgrade@1.1.0/public/css/coloris.css
 // @require      https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js
-// @require      https://raw.githubusercontent.com/ilyhalight/lzt-upgrade/master/public/static/js/coloris/coloris.min.js
-// @require      https://raw.githubusercontent.com/ilyhalight/lzt-upgrade/master/public/static/js/lztupgrade/indexedDB/default.js
-// @require      https://raw.githubusercontent.com/ilyhalight/lzt-upgrade/master/public/static/js/lztupgrade/indexedDB/UniqueStyle.js
-// @require      https://raw.githubusercontent.com/ilyhalight/lzt-upgrade/master/public/static/js/lztupgrade/indexedDB/contests.js
-// @require      https://raw.githubusercontent.com/ilyhalight/lzt-upgrade/master/public/static/js/lztupgrade/indexedDB/users.js
-// @require      https://raw.githubusercontent.com/ilyhalight/lzt-upgrade/master/public/static/js/lztupgrade/indexedDB/appear.js
-// @require      https://raw.githubusercontent.com/ilyhalight/lzt-upgrade/master/public/static/js/lztupgrade/api/themes.js
-// @require      https://raw.githubusercontent.com/ilyhalight/lzt-upgrade/master/public/static/js/lztupgrade/Logger.js
+// @require      https://cdn.jsdelivr.net/gh/ilyhalight/lzt-upgrade@1.1.0/public/static/js/coloris/coloris.min.js
+// @require      https://cdn.jsdelivr.net/gh/ilyhalight/lzt-upgrade@1.1.0/public/static/js/lztupgrade/indexedDB/default.js
+// @require      https://cdn.jsdelivr.net/gh/ilyhalight/lzt-upgrade@1.1.0/public/static/js/lztupgrade/indexedDB/UniqueStyle.js
+// @require      https://cdn.jsdelivr.net/gh/ilyhalight/lzt-upgrade@1.1.0/public/static/js/lztupgrade/indexedDB/contests.js
+// @require      https://cdn.jsdelivr.net/gh/ilyhalight/lzt-upgrade@1.1.0/public/static/js/lztupgrade/indexedDB/users.js
+// @require      https://cdn.jsdelivr.net/gh/ilyhalight/lzt-upgrade@1.1.0/public/static/js/lztupgrade/indexedDB/appear.js
+// @require      https://cdn.jsdelivr.net/gh/ilyhalight/lzt-upgrade@1.1.0/public/static/js/lztupgrade/api/themes.js
+// @require      https://cdn.jsdelivr.net/gh/ilyhalight/lzt-upgrade@1.1.0/public/static/js/lztupgrade/Logger.js
 // @updateURL    https://github.com/ilyhalight/lzt-upgrade/raw/master/lzt-upgrade.user.js
 // @downloadURL  https://github.com/ilyhalight/lzt-upgrade/raw/master/lzt-upgrade.user.js
 // @supportURL   https://github.com/ilyhalight/lzt-upgrade/issues
