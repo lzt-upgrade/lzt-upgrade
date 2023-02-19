@@ -18,14 +18,14 @@
 // @grant        GM_xmlhttpRequest 
 // @grant        GM_info
 // @resource     styles https://raw.githubusercontent.com/ilyhalight/lzt-upgrade/master/public/css/style.css
-// @resource     coloris http://localhost:3000/css/coloris.css
+// @resource     coloris https://raw.githubusercontent.com/ilyhalight/lzt-upgrade/master/public/css/coloris.css
 // @require      https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js
-// @require      https://cdn.jsdelivr.net/gh/mdbassit/Coloris@latest/dist/coloris.min.js
-// @require      http://localhost:3000/static/js/lztupgrade/indexedDB/default.js
-// @require      http://localhost:3000/static/js/lztupgrade/indexedDB/UniqueStyle.js
-// @require      http://localhost:3000/static/js/lztupgrade/indexedDB/contests.js
-// @require      http://localhost:3000/static/js/lztupgrade/indexedDB/users.js
-// @require      http://localhost:3000/static/js/lztupgrade/indexedDB/appear.js
+// @require      https://raw.githubusercontent.com/ilyhalight/lzt-upgrade/master/public/static/js/coloris/coloris.min.js
+// @require      https://raw.githubusercontent.com/ilyhalight/lzt-upgrade/master/public/static/js/lztupgrade/indexedDB/default.js
+// @require      https://raw.githubusercontent.com/ilyhalight/lzt-upgrade/master/public/static/js/lztupgrade/indexedDB/UniqueStyle.js
+// @require      https://raw.githubusercontent.com/ilyhalight/lzt-upgrade/master/public/static/js/lztupgrade/indexedDB/contests.js
+// @require      https://raw.githubusercontent.com/ilyhalight/lzt-upgrade/master/public/static/js/lztupgrade/indexedDB/users.js
+// @require      https://raw.githubusercontent.com/ilyhalight/lzt-upgrade/master/public/static/js/lztupgrade/indexedDB/appear.js
 // @require      https://raw.githubusercontent.com/ilyhalight/lzt-upgrade/master/public/static/js/lztupgrade/api/themes.js
 // @require      https://raw.githubusercontent.com/ilyhalight/lzt-upgrade/master/public/static/js/lztupgrade/Logger.js
 // @updateURL    https://github.com/ilyhalight/lzt-upgrade/raw/master/lzt-upgrade.user.js
