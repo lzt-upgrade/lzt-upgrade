@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         LZT Upgrade
-// @version      1.1.0
+// @version      1.1.1
 // @description  Some useful utilities for Lolzteam
 // @description:ru  Полезные улучшения для Lolzteam
 // @icon         https://cdn.jsdelivr.net/gh/ilyhalight/lzt-upgrade@1.1.0/public/static/img/lzt-upgrade-mini.png
@@ -23,7 +23,7 @@
 // @require      https://cdn.jsdelivr.net/gh/ilyhalight/lzt-upgrade@b357ca50bee257e07a09360c05d735626aec01e5/public/static/js/coloris/coloris.min.js
 // @require      https://cdn.jsdelivr.net/gh/ilyhalight/lzt-upgrade@f3cf121434e8d948a759fb92512647e6d6a28380/public/static/js/lztupgrade/indexedDB/default.js
 // @require      https://cdn.jsdelivr.net/gh/ilyhalight/lzt-upgrade@2e8ad48d0a318d06c84743640eec36cb917fb6ad/public/static/js/lztupgrade/indexedDB/UniqueStyle.js
-// @require      https://cdn.jsdelivr.net/gh/ilyhalight/lzt-upgrade@f3cf121434e8d948a759fb92512647e6d6a28380/public/static/js/lztupgrade/indexedDB/contests.js
+// @require      https://cdn.jsdelivr.net/gh/ilyhalight/lzt-upgrade@0dd8e78b30777652f596830d2aff8be7acf58cbb/public/static/js/lztupgrade/indexedDB/contests.js
 // @require      https://cdn.jsdelivr.net/gh/ilyhalight/lzt-upgrade@f3cf121434e8d948a759fb92512647e6d6a28380/public/static/js/lztupgrade/indexedDB/users.js
 // @require      https://cdn.jsdelivr.net/gh/ilyhalight/lzt-upgrade@f3cf121434e8d948a759fb92512647e6d6a28380/public/static/js/lztupgrade/indexedDB/appear.js
 // @require      https://cdn.jsdelivr.net/gh/ilyhalight/lzt-upgrade@b3e7c27772ba3e8cab987e262b9ed86cfec2c30a/public/static/js/lztupgrade/api/themes.js
@@ -412,6 +412,7 @@
       var contestsHideTags = contestsData.contestsHideTags;
       var contestsAutoClose = contestsData.contestsAutoClose;
       var contestsRmContent = contestsData.contestsRmContent;
+      var contestsShowWinChance = contestsData.contestsShowWinChance;
       var showUseridInProfile = usersData.showUseridInProfile;
       var showFullRegInProfile = usersData.showFullRegInProfile;
       var hideUnreadArticleCircle = appearData.hideUnreadArticleCircle;
@@ -536,15 +537,15 @@
 
           <div id="LZTUpModalHeading" class="textHeading">Стиль ника:</div>
           <div id="LZTUpModalText" class="muted explain">Максимум 1500 символов. При отсутствии кода используется цвет вашей группы с форума.</div>
-          <textarea id="LZTUpUniqueStyle" name="username_css" class="UsernameCss textCtrl" maxlength="1500">${nickStyle}</textarea>
+          <textarea id="LZTUpUniqueStyle" class="UsernameCss textCtrl" maxlength="1500">${nickStyle}</textarea>
 
           <div id="LZTUpModalHeading" class="textHeading">Стиль лычки:</div>
           <div id="LZTUpModalText" class="muted explain">Максимум 1500 символов.</div>
-          <textarea id="LZTUpBannerStyle" name="banner_css" class="BannerCss textCtrl" maxlength="1500">${bannerStyle}</textarea>
+          <textarea id="LZTUpBannerStyle" class="BannerCss textCtrl" maxlength="1500">${bannerStyle}</textarea>
 
           <div id="LZTUpModalHeading" class="textHeading">Текст в лычке:</div>
           <div id="LZTUpModalText" class="muted explain">Максимум 24 символа. При отсутствии текста лычка не будет видна.</div>
-          <input id="LZTUpBannerText" name="banner_text" type="text" maxlength="24" class="textCtrl" value="${XenForo.htmlspecialchars(bannerText)}">
+          <input id="LZTUpBannerText" type="text" maxlength="24" class="textCtrl" value="${XenForo.htmlspecialchars(bannerText)}">
 
           <div id="LZTUpModalHeading" class="textHeading">Иконка на аватарке:</div>
           <div id="LZTUpModalText" class="muted explain">
@@ -553,7 +554,7 @@
             <br>
             Максимумальная длина SVG - 3000 символов. При отсутствии значения будет установлено стандартная иконка.
           </div>
-          <textarea id="LZTUpBadgeIcon" name="banner_icon" maxlength="3000" class="BadgeCss textCtrl">${badgeIcon}</textarea>
+          <textarea id="LZTUpBadgeIcon" maxlength="3000" class="BadgeCss textCtrl">${badgeIcon}</textarea>
 
           <div id="LZTUpModalHeading" class="textHeading">Цвета иконки на аватарке:</div>
           <div id="LZTUpModalText" class="muted explain">Убедитесь, что в SVG нету заранее установленных значений 'fill' и 'stroke'.</div>
@@ -572,10 +573,10 @@
 
           <div id="LZTUpModalHeading" class="textHeading">Текст иконки на аватарке:</div>
           <div id="LZTUpModalText" class="muted explain">Максимум 24 символа. При отсутствии текста иконка не будет видна.</div>
-          <input id="LZTUpBadgeText" name="badge_text" maxlength="24" type="text" class="textCtrl" value="${XenForo.htmlspecialchars(badgeText)}">
+          <input id="LZTUpBadgeText" maxlength="24" type="text" class="textCtrl" value="${XenForo.htmlspecialchars(badgeText)}">
 
           <div id="LZTUpModalHeading" class="textHeading">Фон в профиле</div>
-          <input id="LZTUpProfileBackground" name="profile_background" type="text" class="textCtrl" placeholder="Ссылка на изображение" value="${XenForo.htmlspecialchars(profileBackground)}">
+          <input id="LZTUpProfileBackground" type="text" class="textCtrl" placeholder="Ссылка на изображение" value="${XenForo.htmlspecialchars(profileBackground)}">
 
           <div id="LZTUpModalChecksContainer">
             <input type="checkbox" value="1" id="profile_background_everywhere" ${profileBackgroundEverywhere === 1 ? "checked" : ''}>
@@ -587,42 +588,46 @@
         </div>
         <div id="LZTUpContestsContainer" class="LZTUpSubMenu">
           <div id="LZTUpModalChecksContainer">
-            <input type="checkbox" name="open_ten" value="1" id="contests_open_ten" ${contestsTen === 1 ? "checked" : ''}>
+            <input type="checkbox" id="contests_open_ten" ${contestsTen === 1 ? "checked" : ''}>
             <label for="contests_open_ten">Кнопка "Открыть 10"</label>
           </div>
           <div id="LZTUpModalChecksContainer">
-            <input type="checkbox" name="open_all" value="1" id="contests_open_all" ${contestsAll === 1 ? "checked" : ''}>
+            <input type="checkbox" id="contests_open_all" ${contestsAll === 1 ? "checked" : ''}>
             <label for="contests_open_all">Кнопка "Открыть прогруженные"</label>
           </div>
           <div id="LZTUpModalChecksContainer">
-            <input type="checkbox" name="info_top" value="1" id="contests_info_top" ${contestsInfoTop === 1 ? "checked" : ''}>
+            <input type="checkbox" id="contests_info_top" ${contestsInfoTop === 1 ? "checked" : ''}>
             <label for="contests_info_top">Отображение информации о розыгрыше вверху темы</label>
           </div>
           <div id="LZTUpModalChecksContainer">
-            <input type="checkbox" name="btn_top_in_block" value="1" id="contests_btn_top_in_block" ${contestsBtnTopInBlock === 1 ? "checked" : ''}>
+            <input type="checkbox" id="contests_btn_top_in_block" ${contestsBtnTopInBlock === 1 ? "checked" : ''}>
             <label for="contests_btn_top_in_block">Отображение кнопки "Участвовать" выше блока с информацией о розыгрыше</label>
           </div>
           <div id="LZTUpModalChecksContainer">
-            <input type="checkbox" name="hide_tags" value="1" id="contests_hide_tags" ${contestsHideTags === 1 ? "checked" : ''}>
+            <input type="checkbox" id="contests_hide_tags" ${contestsHideTags === 1 ? "checked" : ''}>
             <label for="contests_hide_tags">Скрытие тегов в теме розыгрыша</label>
           </div>
           <div id="LZTUpModalChecksContainer">
-            <input type="checkbox" name="auto_close" value="1" id="contests_auto_close" ${contestsAutoClose === 1 ? "checked" : ''}>
+            <input type="checkbox" id="contests_auto_close" ${contestsAutoClose === 1 ? "checked" : ''}>
             <label for="contests_auto_close">Автозакрытие страницы при нажатие на кнопку "Участвовать"</label>
           </div>
           <div id="LZTUpModalChecksContainer">
-            <input type="checkbox" name="rm_content" value="1" id="contests_rm_content" ${contestsRmContent === 1 ? "checked" : ''}>
+            <input type="checkbox" id="contests_rm_content" ${contestsRmContent === 1 ? "checked" : ''}>
             <label for="contests_rm_content">Скрытие содержимого и голосований в теме розыгрыша</label>
+          </div>
+          <div id="LZTUpModalChecksContainer">
+            <input type="checkbox" id="contests_show_win_chance" ${contestsShowWinChance === 1 ? "checked" : ''}>
+            <label for="contests_show_win_chance">Показывать шанс победы в розыгрыше</label>
           </div>
           <input id="LZTUpResetContestsDB" type="button" value="Сбросить настройки" class="button reset_button"></input>
         </div>
         <div id="LZTUpUsersContainer" class="LZTUpSubMenu">
           <div id="LZTUpModalChecksContainer">
-            <input type="checkbox" name="open_ten" value="1" id="show_userid_in_profile" ${showUseridInProfile === 1 ? "checked" : ''}>
+            <input type="checkbox" id="show_userid_in_profile" ${showUseridInProfile === 1 ? "checked" : ''}>
             <label for="show_userid_in_profile">Показывать UserID в профиле пользователя</label>
           </div>
           <div id="LZTUpModalChecksContainer">
-            <input type="checkbox" name="open_all" value="1" id="show_fullreg_in_profile" ${showFullRegInProfile === 1 ? "checked" : ''}>
+            <input type="checkbox" id="show_fullreg_in_profile" ${showFullRegInProfile === 1 ? "checked" : ''}>
             <label for="show_fullreg_in_profile">Показывать полную дату регистрации в профиле пользователя</label>
           </div>
           <input id="LZTUpResetUsersDB" type="button" value="Сбросить настройки" class="button reset_button"></input>
@@ -659,34 +664,34 @@
             </div>
           </div>
           <div id="LZTUpModalChecksContainer">
-            <input type="checkbox" name="hide_unread_article_circle" value="1" id="hide_unread_article_circle" ${hideUnreadArticleCircle === 1 ? "checked" : ''}>
+            <input type="checkbox" id="hide_unread_article_circle" ${hideUnreadArticleCircle === 1 ? "checked" : ''}>
             <label for="hide_unread_article_circle">Скрыть значок непрочитанных статей в шапке сайта</label>
           </div>
           <div id="LZTUpModalChecksContainer">
-            <input type="checkbox" name="hide_tags_in_threads" value="1" id="hide_tags_in_threads" ${hideTagsInThreads === 1 ? "checked" : ''}>
+            <input type="checkbox" id="hide_tags_in_threads" ${hideTagsInThreads === 1 ? "checked" : ''}>
             <label for="hide_tags_in_threads">Скрыть теги в темах</label>
           </div>
           <div id="LZTUpModalChecksContainer">
-            <input type="checkbox" name="hide_counter_alerts" value="1" id="hide_counter_alerts" ${hideCounterAlerts === 1 ? "checked" : ''}>
+            <input type="checkbox" id="hide_counter_alerts" ${hideCounterAlerts === 1 ? "checked" : ''}>
             <label for="hide_counter_alerts">Скрыть счётчик уведомлений в навбаре</label>
           </div>
           <div id="LZTUpModalChecksContainer">
-            <input type="checkbox" name="hide_counter_conversations" value="1" id="hide_counter_conversations" ${hideCounterConversations === 1 ? "checked" : ''}>
+            <input type="checkbox" id="hide_counter_conversations" ${hideCounterConversations === 1 ? "checked" : ''}>
             <label for="hide_counter_conversations">Скрыть счётчик сообщений в навбаре</label>
           </div>
           <div id="LZTUpModalChecksContainer">
-            <input type="checkbox" name="enable_background_effect" value="1" id="enable_background_effect" ${backgroundEffect === 1 ? "checked" : ''}>
+            <input type="checkbox" id="enable_background_effect" ${backgroundEffect === 1 ? "checked" : ''}>
             <label for="enable_background_effect">Включить снег (by <a href="/members/576497/" class="muted">Karasu_</a>)</label>
           </div>
           <div id="LZTUpModalChecksContainer">
-            <input type="checkbox" name="hide_onlyfans" value="1" id="hide_onlyfans" ${hideOnlyfans === 1 ? "checked" : ''}>
+            <input type="checkbox" id="hide_onlyfans" ${hideOnlyfans === 1 ? "checked" : ''}>
             <label for="hide_onlyfans">
               Спрятать все темы с тегом Onlyfans
               <span class="fa fa-exclamation-triangle Tooltip" title="При включение/отключение этой функции страница будет перезагружена"></span>
             </label>
           </div>
           <div id="LZTUpModalChecksContainer">
-            <input type="checkbox" name="show_polls_results" value="1" id="show_polls_results" ${showPollsResults === 1 ? "checked" : ''}>
+            <input type="checkbox" id="show_polls_results" ${showPollsResults === 1 ? "checked" : ''}>
             <label for="show_polls_results">
               Показывать результаты голосований
               <span class="fa fa-exclamation-triangle Tooltip" title="Доступно, только, в голосованиях, в которых разрешено видеть результаты заранее"></span>
@@ -939,7 +944,7 @@
         $reportButtonsSelect.append(`
           <li style = "list-style: none;">
             <label for="set_${reportButton.id}_reportbtn">
-              <input type="checkbox" name="reportButton" id="set_${reportButton.id}_reportbtn" value="${reportButton.name} (${reportButton.reason})" ${btnStatus}>
+              <input type="checkbox" id="set_${reportButton.id}_reportbtn" value="${reportButton.name} (${reportButton.reason})" ${btnStatus}>
               ${reportButton.name} (${reportButton.reason})
             </label>
           </li>`);
@@ -1613,6 +1618,68 @@
       };
     }
 
+    async function getContestParticipants(contestBlock) {
+      let participants;
+      if (contestBlock.includes('Приняли участие: ')) {
+        participants = contestBlock.split('Приняли участие: ')[1].split(' пользовател')[0];
+      } else if (contestBlock.includes('Took part: ')) {
+        participants = contestBlock.split('Took part: ')[1].split(' user')[0];
+      } else {
+        return 'Не удалось найти число участников розыгрыша';
+      }
+      return participants;
+    }
+
+    async function getContestWinnersNumber() {
+      const titleBar = $('.titleBar');
+      if (titleBar.length ) {
+        const moneyContestWithValue = titleBar.find('.moneyContestWithValue');
+        if (moneyContestWithValue.length) {
+          const winners = moneyContestWithValue.text().split('x');
+          return winners.length > 1 ? winners[0] : 1;
+        }
+      }
+      return 1;
+    }
+
+    async function contestCalculateWinChance(participants, winners) {
+      console.log(typeof(winners))
+      console.log(winners)
+      console.log(typeof(participants))
+      console.log(participants)
+      return (100 * winners/participants).toFixed(2);
+    }
+
+    async function contestsWinChance() {
+      const $contestThreadBlock = $('.contestThreadBlock');
+      const participants = await getContestParticipants($contestThreadBlock.text());
+      const winners = await getContestWinnersNumber();
+      if (participants === 'Не удалось найти число участников розыгрыша') {
+        return participants;
+      }
+
+      return `${await contestCalculateWinChance(participants, winners)}%`;
+    }
+
+    async function contestsShowWinChance(show = true) {
+      if (await isContestThread()) {
+        if (!$('#LZTUpWinChance').length && show) {
+          const winChance = await contestsWinChance();
+          const firstContestThreadBlock = $('.contestThreadBlock > .marginBlock').first();
+          const winChanceHtml = $(`
+            <div id="LZTUpWinChance" class="marginBlock">
+              <span class="info-separator m-right"></span><span>Шанс на победу:</span>
+              ${winChance}
+            </div>`);
+          firstContestThreadBlock.before(winChanceHtml);
+        }
+
+        if ($('#LZTUpWinChance').length) {
+          show ? $('#LZTUpWinChance').show() : $('#LZTUpWinChance').hide();
+        }
+      };
+    }
+
     async function unreadArticleCircleVisibility(isHidden = true) {
       $hasUnreadArticles = $('span.hasUnreadArticles')
       await changeVisibility($hasUnreadArticles, isHidden)
@@ -1879,6 +1946,7 @@
       dbContestsData.contestsHideTags === 1 ? await contestsTagsVisibility(true) : null;
       dbContestsData.contestsAutoClose === 1 ? await contestsAutoCloseFunc(true) : null;
       dbContestsData.contestsRmContent === 1 ? await contestsContentVisibility(true) : null;
+      dbContestsData.contestsShowWinChance === 1 ? await contestsShowWinChance(true) : null;
     }
 
     if (isUsersDBInited) {
@@ -2113,6 +2181,7 @@
         if (bannerStyleNew.length < 1501) { 
           removeExtraClasses(bannerStyle, ['UserBannerStyle', 'userBanner']);
           removeExtraClasses(previewBadge, ['avatarUserBadge', 'Tooltip']);
+          $('#LZTUpBadgeIcon').trigger('change');
           if (bannerStyleNew.startsWith('.')) {
             bannerStyle.addClass(bannerStyleNew.replace('.', ''));
             previewBadge.addClass(bannerStyleNew.replace('.', ''))
@@ -2258,6 +2327,16 @@
           ): (
             await contestsDB.update({contestsRmContent: 0}),
             await contestsContentVisibility(false)
+          );
+      });
+
+      $(document).on('click', '#contests_show_win_chance', async function () {
+        $('#contests_show_win_chance')[0].checked ? (
+          await contestsDB.update({contestsShowWinChance: 1}),
+          await contestsShowWinChance(true)
+          ): (
+            await contestsDB.update({contestsShowWinChance: 0}),
+            await contestsShowWinChance(false)
           );
       });
 
