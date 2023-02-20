@@ -31,7 +31,7 @@ class LZTSettingsDB extends LZTUpgradeDB {
       },
       { // defaultData
         key: objectKey,
-        checkUpdatesOnLoad: 0,
+        checkUpdatesOnLoad: 1,
       }
     );
   };
