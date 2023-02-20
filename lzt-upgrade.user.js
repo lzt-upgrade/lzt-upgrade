@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         LZT Upgrade
-// @version      1.1.1
+// @version      1.1.2
 // @description  Some useful utilities for Lolzteam
 // @description:ru  Полезные улучшения для Lolzteam
 // @icon         https://cdn.jsdelivr.net/gh/ilyhalight/lzt-upgrade@1.1.0/public/static/img/lzt-upgrade-mini.png
@@ -13,21 +13,25 @@
 // @match        *://*.lzt.market/*
 // @match        *://*.lolz.market/*
 // @connect      lztupgrade.toiloff.ru
+// @connect      greasyfork.org
 // @grant        GM_getResourceText
 // @grant        GM_addStyle
 // @grant        GM_xmlhttpRequest 
 // @grant        GM_info
-// @resource     styles https://cdn.jsdelivr.net/gh/ilyhalight/lzt-upgrade@1.1.0/public/css/style.css
+// @resource     styles https://cdn.jsdelivr.net/gh/ilyhalight/lzt-upgrade@48ff9195f918e7be3862d620a35f87d4cc1656bd/public/css/style.css
 // @resource     coloris https://cdn.jsdelivr.net/gh/ilyhalight/lzt-upgrade@1.1.0/public/css/coloris.css
 // @require      https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js
+// @require      https://cdn.jsdelivr.net/gh/ilyhalight/lzt-upgrade@e81964a65edee7f7a3e1d7027ef2d29d8759e9b8/public/static/js/lztupgrade/utils.js
 // @require      https://cdn.jsdelivr.net/gh/ilyhalight/lzt-upgrade@b357ca50bee257e07a09360c05d735626aec01e5/public/static/js/coloris/coloris.min.js
 // @require      https://cdn.jsdelivr.net/gh/ilyhalight/lzt-upgrade@f3cf121434e8d948a759fb92512647e6d6a28380/public/static/js/lztupgrade/indexedDB/default.js
 // @require      https://cdn.jsdelivr.net/gh/ilyhalight/lzt-upgrade@2e8ad48d0a318d06c84743640eec36cb917fb6ad/public/static/js/lztupgrade/indexedDB/UniqueStyle.js
 // @require      https://cdn.jsdelivr.net/gh/ilyhalight/lzt-upgrade@0dd8e78b30777652f596830d2aff8be7acf58cbb/public/static/js/lztupgrade/indexedDB/contests.js
-// @require      https://cdn.jsdelivr.net/gh/ilyhalight/lzt-upgrade@f3cf121434e8d948a759fb92512647e6d6a28380/public/static/js/lztupgrade/indexedDB/users.js
+// @require      https://cdn.jsdelivr.net/gh/ilyhalight/lzt-upgrade@7cee5cb0b8cfd1b38eed5d3b7fdbab2f1aa46f40/public/static/js/lztupgrade/indexedDB/users.js
 // @require      https://cdn.jsdelivr.net/gh/ilyhalight/lzt-upgrade@f3cf121434e8d948a759fb92512647e6d6a28380/public/static/js/lztupgrade/indexedDB/appear.js
+// @require      https://cdn.jsdelivr.net/gh/ilyhalight/lzt-upgrade@3e3ddeec0f2a177a66e68dc490e256edc031af3c/public/static/js/lztupgrade/indexedDB/settings.js
 // @require      https://cdn.jsdelivr.net/gh/ilyhalight/lzt-upgrade@b3e7c27772ba3e8cab987e262b9ed86cfec2c30a/public/static/js/lztupgrade/api/themes.js
 // @require      https://cdn.jsdelivr.net/gh/ilyhalight/lzt-upgrade@9da314f6a1280655b2c94c8e2664d7121cb5766f/public/static/js/lztupgrade/Logger.js
+// @require      https://cdn.jsdelivr.net/gh/ilyhalight/lzt-upgrade@9d185c1feb1738b233a4f9f19f76bb68d29a11b1/public/static/js/lztupgrade/checkUpdate.js
 // @updateURL    https://github.com/ilyhalight/lzt-upgrade/raw/master/lzt-upgrade.user.js
 // @downloadURL  https://github.com/ilyhalight/lzt-upgrade/raw/master/lzt-upgrade.user.js
 // @supportURL   https://github.com/ilyhalight/lzt-upgrade/issues
@@ -76,11 +80,13 @@
   const contestsDB = new LZTContestsDB();
   const usersDB = new LZTUsersDB();
   const appearDB = new LZTAppearDB();
+  const settingsDB = new LZTSettingsDB();
 
-  let isUniqueDBInited = await uniqueStyleDB.init().then(value => {return(value)}).catch(err => {Logger.error(err); return false});
+  let isUniqueDBInited = uniqueStyleDB.init().then(value => {return(value)}).catch(err => {Logger.error(err); return false});
   let isContestsDBInited = await contestsDB.init().then(value => {return(value)}).catch(err => {Logger.error(err); return false});
   let isUsersDBInited = await usersDB.init().then(value => {return(value)}).catch(err => {Logger.error(err); return false});
   let isAppearDBInited = await appearDB.init().then(value => {return(value)}).catch(err => {Logger.error(err); return false});
+  let isSettingsDBInited = await settingsDB.init().then(value => {return(value)}).catch(err => {Logger.error(err); return false});
 
   if (isAppearDBInited) {
     var dbAppearData = await appearDB.read().then(value => {return(value)}).catch(err => {Logger.error(err); return false});
@@ -101,12 +107,16 @@
       });
     }
   }
-
+  
   const SCRIPT_LOADER = setInterval(async () => {
-    if ($('body').length) {
+    if ($('body').length && $('head title').length) {
       if (!SCRIPT_STATUS) {
         Logger.log('Пытаемся запустить скрипт...');
-        START_SCRIPT();
+        const res = START_SCRIPT();
+        if (res === 'not auth') {
+          Logger.log('Вы не авторизованы');
+          clearInterval(SCRIPT_LOADER);
+        };
       } else if ($('#LZTUpButton').length){
         Logger.log('Скрипт уже запущен. Удаление проверки на запуск...');
         clearInterval(SCRIPT_LOADER);
@@ -125,9 +135,11 @@
     // Error page
     if (/^(Error\s[0-9]{3}|Site\sMaintenance)$/.test($('head title').text())) {
       let body = $('body');
-      body.attr('id', 'LZTUPErrorPage');
-      body.find('article > div').append('<img src="https://i.imgur.com/iVmKDr7.gif" alt="utya_duck_rain" loading="lazy">')
-      return;
+      if (body.attr('id') !== 'LZTUpErrorPage') {
+        body.attr('id', 'LZTUpErrorPage');
+        body.find('article > div').append('<img src="https://i.imgur.com/iVmKDr7.gif" alt="utya_duck_rain" loading="lazy">');
+      }
+      return 'not auth';
     }
 
     function getHeight() {
@@ -139,6 +151,7 @@
 
     let heightOnLoad;
 
+    // TODO: realize this
     const blockAds = '(Native/\\.NET файлов|threads\\/|easyliker\\.ru|niccord\\.ru|vpromotions\\.ru|skysmm\\.ru|VerifTeam|SmmPanelUS\\.com|t\\.me/lztnext|axxishop\\.ru|LIGHTSHOP\\.SU)';
 
     const username = $('.accountUsername span').text();
@@ -391,10 +404,11 @@
     }
 
     $(menuBtn).on('click', async function () {
-      var uniqueData = await uniqueStyleDB.read().then(value => {return(value)}).catch(err => {Logger.error(err); return false});
-      var contestsData = await contestsDB.read().then(value => {return(value)}).catch(err => {Logger.error(err); return false});
-      var usersData = await usersDB.read().then(value => {return(value)}).catch(err => {Logger.error(err); return false});
-      var appearData = await appearDB.read().then(value => {return(value)}).catch(err => {Logger.error(err); return false});
+      const uniqueData = await uniqueStyleDB.read().then(value => {return(value)}).catch(err => {Logger.error(err); return false});
+      const contestsData = await contestsDB.read().then(value => {return(value)}).catch(err => {Logger.error(err); return false});
+      const usersData = await usersDB.read().then(value => {return(value)}).catch(err => {Logger.error(err); return false});
+      const appearData = await appearDB.read().then(value => {return(value)}).catch(err => {Logger.error(err); return false});
+      const settingsData = await settingsDB.read().then(value => {return(value)}).catch(err => {Logger.error(err); return false});
       var nickStyle = uniqueData.nickStyle;
       var bannerStyle = uniqueData.bannerStyle;
       var bannerText = uniqueData.bannerText;
@@ -415,6 +429,7 @@
       var contestsShowWinChance = contestsData.contestsShowWinChance;
       var showUseridInProfile = usersData.showUseridInProfile;
       var showFullRegInProfile = usersData.showFullRegInProfile;
+      var disableShowTyping = usersData.disableShowTyping;
       var hideUnreadArticleCircle = appearData.hideUnreadArticleCircle;
       var hideTagsInThreads = appearData.hideTagsInThreads;
       var forumLogo = appearData.forumLogo;
@@ -427,6 +442,7 @@
       var backgroundEffect = appearData.backgroundEffect;
       var hideOnlyfans = appearData.hideOnlyfans;
       var showPollsResults = appearData.showPollsResults;
+      var checkUpdatesOnLoad = settingsData.checkUpdatesOnLoad;
 
       const overlay = registerModal(
         'LZT Upgrade',
@@ -477,18 +493,11 @@
               <span id="LZTUpSubText">Настройки расширения</span>
             </div>
           </div>
-          <div id="LZTUpListItem">
-            <i id="LZTUpIcon" class="far fa-ellipsis-h"></i>
+          <div id="LZTUpListItem" class="LZTUpUpdateItem">
+            <i id="LZTUpIcon" class="far fa-cloud-download"></i>
             <div>
-              <span id="LZTUpText">Lorem</span>
-              <span id="LZTUpSubText">lorem ipsum</span>
-            </div>
-          </div>
-          <div id="LZTUpListItem">
-            <i id="LZTUpIcon" class="far fa-ellipsis-h"></i>
-            <div>
-              <span id="LZTUpText">Lorem</span>
-              <span id="LZTUpSubText">lorem ipsum</span>
+              <span id="LZTUpText">Обновления</span>
+              <span id="LZTUpSubText">Установка и проверка обновлений расширения</span>
             </div>
           </div>
         </div>
@@ -579,7 +588,7 @@
           <input id="LZTUpProfileBackground" type="text" class="textCtrl" placeholder="Ссылка на изображение" value="${XenForo.htmlspecialchars(profileBackground)}">
 
           <div id="LZTUpModalChecksContainer">
-            <input type="checkbox" value="1" id="profile_background_everywhere" ${profileBackgroundEverywhere === 1 ? "checked" : ''}>
+            <input type="checkbox" id="profile_background_everywhere" ${profileBackgroundEverywhere === 1 ? "checked" : ''}>
             <label for="profile_background_everywhere">Заменить фон на всех страницах форума</label>
           </div>
 
@@ -629,6 +638,13 @@
           <div id="LZTUpModalChecksContainer">
             <input type="checkbox" id="show_fullreg_in_profile" ${showFullRegInProfile === 1 ? "checked" : ''}>
             <label for="show_fullreg_in_profile">Показывать полную дату регистрации в профиле пользователя</label>
+          </div>
+          <div id="LZTUpModalChecksContainer">
+            <input type="checkbox" id="disable_show_typing" ${disableShowTyping === 1 ? "checked" : ''}>
+            <label for="disable_show_typing">
+              Отключить отправку информации о наборе сообщения
+              <span class="fa fa-exclamation-triangle Tooltip" title="При включение/отключение этой функции страница будет перезагружена"></spa
+            </label>
           </div>
           <input id="LZTUpResetUsersDB" type="button" value="Сбросить настройки" class="button reset_button"></input>
         </div>
@@ -731,7 +747,7 @@
         <div id="LZTUpThemesSubContainer" class="LZTUpSubMenu">
           <div id="LZTUpModalCell">
             <div id="LZTUpModalChecksContainer">
-              <input type="checkbox" name="theme_auto_reload" value="1" id="theme_auto_reload" ${themeAutoReload === 1 ? "checked" : ''}>
+              <input type="checkbox" id="theme_auto_reload" ${themeAutoReload === 1 ? "checked" : ''}>
               <label for="theme_auto_reload">
                 Автоматически обновлять страницу после смены темы
                 <span class="fa fa-exclamation-triangle Tooltip" title="При включение/отключение этой функции страница будет перезагружена"></span>
@@ -756,6 +772,16 @@
           <div id="LZTUpIconButton" class="LZTUpUploadSettings">
             <i id="LZTUpIcon" class="far fa-upload"></i>
             <span id="LZTUpText">Загрузить настройки из файла</span>
+          </div>
+        </div>
+        <div id="LZTUpUpdateContainer" class="LZTUpSubMenu">
+          <div id="LZTUpIconButton" class="LZTUpCheckUpdate">
+            <i id="LZTUpIcon" class="far fa-cloud-download"></i>
+            <span id="LZTUpText">Проверить наличие обновлений</span>
+          </div>
+          <div id="LZTUpModalChecksContainer">
+            <input type="checkbox" id="check_updates_on_load" ${checkUpdatesOnLoad === 1 ? "checked" : ''}>
+            <label for="check_updates_on_load">Проверять обновления при загрузке страницы</label>
           </div>
         </div>
         `
@@ -787,6 +813,7 @@
       }
 
       // Загрузка логотипов форума
+      // TODO: rewrite with market logo
       $.ajax({
         url: api_endpoints['getLogos'],
         dataType: 'json',
@@ -869,6 +896,7 @@
       });
 
       // Загрузка тем
+      // TODO: rewrite with logos
       $.ajax({
         url: api_endpoints['getThemes'],
         dataType: 'json',
@@ -961,6 +989,7 @@
       var $marketLogoSubContainer = $('div#LZTUpMarketLogoSubContainer');
       var $themesSubContainer = $('div#LZTUpThemesSubContainer');
       var $settingsContainer = $('div#LZTUpSettingsContainer');
+      var $updateContainer = $('div#LZTUpUpdateContainer');
       $settingsList.hide();
       $contestsContainer.hide();
       $usersContainer.hide();
@@ -970,6 +999,7 @@
       $marketLogoSubContainer.hide();
       $themesSubContainer.hide();
       $settingsContainer.hide();
+      $updateContainer.hide();
 
       async function createGoBackBtn(callback) {
         lztUpgradeModalMain.prepend($('<button id="LZTUpModalBackButton"><i class="fas fa-long-arrow-left"></i></button>'));
@@ -1073,7 +1103,6 @@
             $svg.attr('stroke', badgeStroke);
           }
 
-          
           createColorPicker('.badge-fill-picker', '.xenOverlay');
           $('#LZTUpBadgeFill').on('input', (event) => {
             const $svg = $('#LZTUpPreviewBadge > .customUniqIcon > svg');
@@ -1119,6 +1148,10 @@
         $('div#LZTUpListItem.LZTUpSettingsItem').on('click', async () => {
           await updateMenu($settingsList, $settingsContainer, 'Настройки');
         });
+
+        $('div#LZTUpListItem.LZTUpUpdateItem').on('click', async () => {
+          await updateMenu($settingsList, $updateContainer, 'Обновления');
+        });
       };
     });
 
@@ -1154,16 +1187,6 @@
           return true;
         }
       })
-    }
-
-    function registerModal(modalName, elementMain = '') {
-      return XenForo.alert(elementMain, modalName, null, (elem) => {
-        $('div.modal.fade').remove()
-      })
-    }
-
-    function registerAlert(text, timeout = 5000) {
-      return XenForo.alert(text, '', timeout);
     }
 
     function updateNickStyle(style) {
@@ -1929,10 +1952,20 @@
       }
     }
 
-    // script start
-    if (getUserid() === '') return; // superior auth check
+    async function disableShowTypingExecute() {
+      XenForo.hasOwnProperty('threadNotify') && XenForo.threadNotify.hasOwnProperty('shareTypingActivity') ? XenForo.threadNotify.shareTypingActivity = 0 : null;
+      XenForo.hasOwnProperty('ChatboxRTC') && XenForo.ChatboxRTC.hasOwnProperty('Start') ? XenForo.ChatboxRTC.Start.prototype.sendTypingMessage = () => {return} : null;
+    }
 
+    // * script start actions
+    if (getUserid() === '') return 'not auth'; // superior auth check
+  
     var MenuResult = await registerMenuBtn(menuBtn);
+
+    if (isSettingsDBInited) {
+      const dbSettingsData = await settingsDB.read().then(value => {return(value)}).catch(err => {Logger.error(err); return false});
+      dbSettingsData.checkUpdatesOnLoad === 1 ? await checkUpdate() : null;
+    }
 
     if (isContestsDBInited) {
       var dbContestsData = await contestsDB.read().then(value => {return(value)}).catch(err => {Logger.error(err); return false});
@@ -1953,6 +1986,7 @@
       var dbUsersData = await usersDB.read().then(value => {return(value)}).catch(err => {Logger.error(err); return false});
       dbUsersData.showUseridInProfile === 1 ? await addUserIdInProfileInfo() : null;
       dbUsersData.showFullRegInProfile === 1 ? await editUserRegInProfileInfo(true) : null;
+      dbUsersData.disableShowTyping === 1 ? await disableShowTypingExecute() : null;
     }
 
     if (isAppearDBInited) {
@@ -2369,6 +2403,20 @@
           );
       });
 
+      $(document).on('click', '#disable_show_typing', async function () {
+        $('#disable_show_typing')[0].checked ? (
+          await usersDB.update({disableShowTyping: 1}),
+          registerAlert('Отправка информации о наборе сообщения отключена', 5000),
+          await sleep(500),
+          window.location.reload()
+          ): (
+            await usersDB.update({disableShowTyping: 0}),
+            registerAlert('Отправка информации о наборе сообщения включена', 5000),
+            await sleep(500),
+            window.location.reload()
+          );
+      });
+
       // APPEAR
       $(document).on('click', '#LZTUpResetAppearDB', async function () {
         await appearDB.delete();
@@ -2561,6 +2609,21 @@
           $(`#set_${btn.id}_reportbtn`)[0].checked ? await addReportBtnInPosts(btn.name, btn.reason) : await removeReportBtnInPosts(btn.name);
         });
       });
+
+      // Updates
+      $(document).on('click', '#LZTUpCheckUpdate', async () => await checkUpdate())
+
+      $(document).on('click', '#check_updates_on_load', async function () {
+        $('#check_updates_on_load')[0].checked ? (
+          await settingsDB.update({checkUpdatesOnLoad: 1}),
+          registerAlert('Включено автообновление расширения', 5000),
+          await checkUpdate()
+          ): (
+            await settingsDB.update({checkUpdatesOnLoad: 0}),
+            registerAlert('Выключено автообновление расширения', 5000)
+          );
+      });
+
     }
 
     var hasPageNav = $('.PageNav > nav > a');
