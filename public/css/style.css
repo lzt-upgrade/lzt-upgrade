@@ -206,15 +206,15 @@
   font-weight: bold;
 }
 
-#LZTUPErrorPage {
+#LZTUpErrorPage {
   background-color: #272727;
 }
 
-#LZTUPErrorPage article {
+#LZTUpErrorPage article {
   color: #d6d6d6;
 }
 
-#LZTUPErrorPage article div {
+#LZTUpErrorPage article div {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -462,6 +462,12 @@
 
 #LZTUpModalNoticesContainer > label {
   margin-right: 10px;
+}
+
+#LZTUpUpdateAlert {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .LZTUpSubMenu .previewContainer .avatarBox > .avatarUserBadges .badgeDefaultBackground {
