@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         LZT Upgrade
-// @version      1.1.2
+// @version      1.1.2.1
 // @description  Some useful utilities for Lolzteam
 // @description:ru  Полезные улучшения для Lolzteam
 // @icon         https://cdn.jsdelivr.net/gh/ilyhalight/lzt-upgrade@1.1.0/public/static/img/lzt-upgrade-mini.png
@@ -2611,7 +2611,7 @@
       });
 
       // Updates
-      $(document).on('click', '#LZTUpCheckUpdate', async () => await checkUpdate())
+      $(document).on('click', '.LZTUpCheckUpdate', async () => await checkUpdate())
 
       $(document).on('click', '#check_updates_on_load', async function () {
         $('#check_updates_on_load')[0].checked ? (
