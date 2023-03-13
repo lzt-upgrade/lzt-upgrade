@@ -1533,7 +1533,7 @@
           var $contestsInfoHeading = $contestsThreadBlock.find('div.textHeading');
           $participateButton.attr("style", "margin: 0 0 15px"); // fixes big interval between infoHeader and participateButton
           $contestsThreadBlock.css('padding', "0");
-          $contestsInfoHeading.after($participateButton);
+          $contestsInfoHeading.before($participateButton);
           $contestCaptcha === undefined ? null : $participateButton.after($contestCaptcha);
         } else { // to default (bottom)
           var marginToFind = (contestEnded === true) ? 'div.marginBlock:nth-child(7)' : 'div.marginBlock:nth-child(9)'
@@ -1688,13 +1688,13 @@
       if (await isContestThread()) {
         if (!$('#LZTUpWinChance').length && show) {
           const winChance = await contestsWinChance();
-          const firstContestThreadBlock = $('.contestThreadBlock > .marginBlock').first();
+          const contestInformationText = $('.contestThreadBlock > .textHeading').first();
           const winChanceHtml = $(`
             <div id="LZTUpWinChance" class="marginBlock">
               <span class="info-separator m-right"></span><span>Шанс на победу:</span>
               ${winChance}
             </div>`);
-          firstContestThreadBlock.before(winChanceHtml);
+            contestInformationText.after(winChanceHtml);
         }
 
         if ($('#LZTUpWinChance').length) {
