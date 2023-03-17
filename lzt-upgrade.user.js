@@ -89,7 +89,7 @@
   let isSettingsDBInited = await settingsDB.init().then(value => {return(value)}).catch(err => {Logger.error(err); return false});
 
   if (isAppearDBInited) {
-    var dbAppearData = await appearDB.read().then(value => {return(value)}).catch(err => {Logger.error(err); return false});
+    var dbAppearData = await appearDB.read().then(value => {return(value)}).catch(err => {Logger.error(err); return false}) || {};
     if (dbAppearData.theme > 0) {
       $.ajax({
         url: api_endpoints['getThemes'],
@@ -404,11 +404,11 @@
     }
 
     $(menuBtn).on('click', async function () {
-      const uniqueData = await uniqueStyleDB.read().then(value => {return(value)}).catch(err => {Logger.error(err); return false});
-      const contestsData = await contestsDB.read().then(value => {return(value)}).catch(err => {Logger.error(err); return false});
-      const usersData = await usersDB.read().then(value => {return(value)}).catch(err => {Logger.error(err); return false});
-      const appearData = await appearDB.read().then(value => {return(value)}).catch(err => {Logger.error(err); return false});
-      const settingsData = await settingsDB.read().then(value => {return(value)}).catch(err => {Logger.error(err); return false});
+      const uniqueData = await uniqueStyleDB.read().then(value => {return(value)}).catch(err => {Logger.error(err); return false}) || {};
+      const contestsData = await contestsDB.read().then(value => {return(value)}).catch(err => {Logger.error(err); return false}) || {};
+      const usersData = await usersDB.read().then(value => {return(value)}).catch(err => {Logger.error(err); return false}) || {};
+      const appearData = await appearDB.read().then(value => {return(value)}).catch(err => {Logger.error(err); return false}) || {};
+      const settingsData = await settingsDB.read().then(value => {return(value)}).catch(err => {Logger.error(err); return false}) || {};
       var nickStyle = uniqueData.nickStyle;
       var bannerStyle = uniqueData.bannerStyle;
       var bannerText = uniqueData.bannerText;
@@ -1205,7 +1205,7 @@
 
     async function reloadNickStyle() {
       try {
-        var uniqueData = await uniqueStyleDB.read().then(value => {return(value)}).catch(err => {Logger.error(err); return false});
+        var uniqueData = await uniqueStyleDB.read().then(value => {return(value)}).catch(err => {Logger.error(err); return false}) || {};
         if (typeof(uniqueData) === 'object') {
           if (uniqueData.nickStyle !== '') {
             updateNickStyle(uniqueData.nickStyle);
@@ -1284,7 +1284,7 @@
 
     async function reloadBannerStyle() {
       try {
-        var uniqueData = await uniqueStyleDB.read().then(value => {return(value)}).catch(err => {Logger.error(err); return false});
+        var uniqueData = await uniqueStyleDB.read().then(value => {return(value)}).catch(err => {Logger.error(err); return false}) || {};
         if (typeof(uniqueData) === 'object') {
           if (uniqueData.bannerText !== '') {
             updateBannerStyle(uniqueData.bannerStyle, uniqueData.bannerText);
@@ -1297,7 +1297,7 @@
 
     async function forceReloadBannerStyle() {
       try {
-        var uniqueData = await uniqueStyleDB.read().then(value => {return(value)}).catch(err => {Logger.error(err); return false});
+        var uniqueData = await uniqueStyleDB.read().then(value => {return(value)}).catch(err => {Logger.error(err); return false}) || {};
         if (typeof(uniqueData) === 'object') {
           updateBannerStyle(uniqueData.bannerStyle, uniqueData.bannerText);
           if (uniqueData.bannerText === '') {
@@ -1344,7 +1344,7 @@
 
     async function reloadUserBadges() {
       try {
-        var uniqueData = await uniqueStyleDB.read().then(value => {return(value)}).catch(err => {Logger.error(err); return false});
+        var uniqueData = await uniqueStyleDB.read().then(value => {return(value)}).catch(err => {Logger.error(err); return false}) || {};
         if (typeof(uniqueData) === 'object') {
           const isUserBadgesLoaded = $('#LZTUpUserBadges');
           if (isUserBadgesLoaded.length) {
@@ -1666,10 +1666,6 @@
     }
 
     async function contestCalculateWinChance(participants, winners) {
-      console.log(typeof(winners))
-      console.log(winners)
-      console.log(typeof(participants))
-      console.log(participants)
       return (100 * winners/participants).toFixed(2);
     }
 
@@ -1745,8 +1741,10 @@
         var btn = $('.LztContest--Participate')
         if (btn.length > 0) {
           $(btn).on('click', async () => {
-              await sleep(1000)
-              window.close()
+            if (!$(btn).hasClass('disabled')) {
+              await sleep(1000);
+              window.close();
+            }
           })
         }
       }
@@ -1757,7 +1755,7 @@
     const counterMutationObserver = new MutationObserver(async function(mutations) {
       mutations.forEach(async function(mutation) {
         if (mutation.target === $AlertsCounter[0] || mutation.target === $ConversationsCounter[0]) {
-          var dbAppearData = await appearDB.read().then(value => {return(value)}).catch(err => {Logger.error(err); return false});
+          var dbAppearData = await appearDB.read().then(value => {return(value)}).catch(err => {Logger.error(err); return false}) || {};
           if (dbAppearData.hideCounterAlerts === 1) {
             await counterVisibility('alerts', true);
           };
@@ -1806,7 +1804,7 @@
 
     async function reloadReportButtons() {
       // TODO: Вынести получение данных из функции и передавать их как аргумент либо вынести логику в отдельную функцию
-      let dbAppearData = await appearDB.read().then(value => {return(value)}).catch(err => {Logger.error(err); return false});
+      let dbAppearData = await appearDB.read().then(value => {return(value)}).catch(err => {Logger.error(err); return false}) || {};
       if (dbAppearData && dbAppearData.reportButtonsInPost.length > 0) {
         if (typeof (dbAppearData.reportButtonsInPost) === 'string') {
           let buttons = dbAppearData.reportButtonsInPost.split(',');
@@ -1913,7 +1911,7 @@
     }
 
     async function reloadUserNoticeMarks() {
-      let dbUniqueStyleData = await uniqueStyleDB.read().then(value => {return(value)}).catch(err => {Logger.error(err); return false});
+      let dbUniqueStyleData = await uniqueStyleDB.read().then(value => {return(value)}).catch(err => {Logger.error(err); return false}) || {};
       if (dbUniqueStyleData && dbUniqueStyleData.noticesMarks.length) {
         if (typeof (dbUniqueStyleData.noticesMarks) === 'string') {
           let noticesMarks = dbUniqueStyleData.noticesMarks.split(',');
@@ -1926,7 +1924,7 @@
     }
 
     async function updateBackground() {
-      let dbUniqueStyleData = await uniqueStyleDB.read().then(value => {return(value)}).catch(err => {Logger.error(err); return false});
+      let dbUniqueStyleData = await uniqueStyleDB.read().then(value => {return(value)}).catch(err => {Logger.error(err); return false}) || {};
       if (dbUniqueStyleData && dbUniqueStyleData.profileBackground !== undefined) {
         if (await getProfileUrl() === $('#AccountMenu > ul:nth-child(1) > li:nth-child(1) > a').attr('href') || typeof(dbUniqueStyleData.profileBackgroundEverywhere) === 'number') {
           if (await isProfilePage() && await getProfileUrl() !== $('#AccountMenu > ul:nth-child(1) > li:nth-child(1) > a').attr('href')) {
@@ -1963,12 +1961,12 @@
     var MenuResult = await registerMenuBtn(menuBtn);
 
     if (isSettingsDBInited) {
-      const dbSettingsData = await settingsDB.read().then(value => {return(value)}).catch(err => {Logger.error(err); return false});
+      const dbSettingsData = await settingsDB.read().then(value => {return(value)}).catch(err => {Logger.error(err); return false}) || {};
       dbSettingsData.checkUpdatesOnLoad === 1 ? await checkUpdate() : null;
     }
 
     if (isContestsDBInited) {
-      var dbContestsData = await contestsDB.read().then(value => {return(value)}).catch(err => {Logger.error(err); return false});
+      var dbContestsData = await contestsDB.read().then(value => {return(value)}).catch(err => {Logger.error(err); return false}) || {};
       if (dbContestsData.contestsTen === 1 || dbContestsData.contestsAll === 1) {
         await onClickCategoryContestsHandler();
         dbContestsData.contestsTen === 1 ? await regOpenContestsBtn(10) : null;
@@ -1983,14 +1981,14 @@
     }
 
     if (isUsersDBInited) {
-      var dbUsersData = await usersDB.read().then(value => {return(value)}).catch(err => {Logger.error(err); return false});
+      var dbUsersData = await usersDB.read().then(value => {return(value)}).catch(err => {Logger.error(err); return false}) || {};
       dbUsersData.showUseridInProfile === 1 ? await addUserIdInProfileInfo() : null;
       dbUsersData.showFullRegInProfile === 1 ? await editUserRegInProfileInfo(true) : null;
       dbUsersData.disableShowTyping === 1 ? await disableShowTypingExecute() : null;
     }
 
     if (isAppearDBInited) {
-      var dbAppearData = await appearDB.read().then(value => {return(value)}).catch(err => {Logger.error(err); return false});
+      var dbAppearData = await appearDB.read().then(value => {return(value)}).catch(err => {Logger.error(err); return false}) || {};
       dbAppearData.hideUnreadArticleCircle === 1 ? await unreadArticleCircleVisibility(true) : null;
       dbAppearData.hideTagsInThreads === 1 ? await tagsVisibility(true) : null;
       if (dbAppearData.forumLogo > 0) {
@@ -2168,7 +2166,7 @@
 
       noticesList.forEach(notice => {
         $(document).on('click', `#set_${notice.id}_noticemark`, async function () {
-          let uniqueData = await uniqueStyleDB.read().then(value => {return(value)}).catch(err => {Logger.error(err); return false});
+          let uniqueData = await uniqueStyleDB.read().then(value => {return(value)}).catch(err => {Logger.error(err); return false}) || {};
           let usedNoticesMarks;
           if (typeof (uniqueData.noticesMarks) === 'string') {
             usedNoticesMarks = uniqueData.noticesMarks.split(',');
@@ -2452,7 +2450,7 @@
           await counterVisibility('alerts', true),
           counterMutation(true)
           ): (
-            dbAppearData = await appearDB.read().then(value => {return(value)}).catch(err => {Logger.error(err); return false}),
+            dbAppearData = await appearDB.read().then(value => {return(value)}).catch(err => {Logger.error(err); return false}) || {},
             await appearDB.update({hideCounterAlerts: 0}),
             dbAppearData.hideCounterAlerts === 0 && dbAppearData.hideCounterConversations === 0 ? counterMutation(false) : null,
             await counterVisibility('alerts', false)
@@ -2465,7 +2463,7 @@
           await counterVisibility('conversations', true),
           counterMutation(true)
           ): (
-            dbAppearData = await appearDB.read().then(value => {return(value)}).catch(err => {Logger.error(err); return false}),
+            dbAppearData = await appearDB.read().then(value => {return(value)}).catch(err => {Logger.error(err); return false}) || {},
             await appearDB.update({hideCounterConversations: 0}),
             dbAppearData.hideCounterAlerts === 0 && dbAppearData.hideCounterConversations === 0 ? counterMutation(false) : null,
             await counterVisibility('conversations', false)
@@ -2522,10 +2520,10 @@
       });
 
       $(document).on('click', '.LZTUpSaveSettings', async function () {
-        const uniqueStylesSettings = await uniqueStyleDB.read().then(value => {return(value)}).catch(err => {Logger.error(err); return false});
-        const contestsSettings = await contestsDB.read().then(value => {return(value)}).catch(err => {Logger.error(err); return false});
-        const usersSettings = await usersDB.read().then(value => {return(value)}).catch(err => {Logger.error(err); return false});
-        const appearSettings = await appearDB.read().then(value => {return(value)}).catch(err => {Logger.error(err); return false});
+        const uniqueStylesSettings = await uniqueStyleDB.read().then(value => {return(value)}).catch(err => {Logger.error(err); return false}) || {};
+        const contestsSettings = await contestsDB.read().then(value => {return(value)}).catch(err => {Logger.error(err); return false}) || {};
+        const usersSettings = await usersDB.read().then(value => {return(value)}).catch(err => {Logger.error(err); return false}) || {};
+        const appearSettings = await appearDB.read().then(value => {return(value)}).catch(err => {Logger.error(err); return false}) || {};
         const config = JSON.stringify({
           uniqueStyle: uniqueStylesSettings,
           contests: contestsSettings,
@@ -2590,7 +2588,7 @@
 
       reportButtonsList.forEach(btn => {
         $(document).on('click', `#set_${btn.id}_reportbtn`, async function () {
-          let appearData = await appearDB.read().then(value => {return(value)}).catch(err => {Logger.error(err); return false});
+          let appearData = await appearDB.read().then(value => {return(value)}).catch(err => {Logger.error(err); return false}) || {};
           let usedBtns;
           if (typeof (appearData.reportButtonsInPost) === 'string') {
             usedBtns = appearData.reportButtonsInPost.split(',');
