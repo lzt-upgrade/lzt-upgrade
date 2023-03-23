@@ -32,6 +32,7 @@
 ### 1.3. Пользователи
 - Отображение UserID в профиле пользователя
 - Показывать полную дату регистрации в профиле пользователя
+- Отключить отправку информации о наборе сообщения
 ### 1.4. Внешний вид
 - Выбор логотипа форума из нескольких представленных
 - Выбор логотипа маркета из нескольких представленных
@@ -48,14 +49,35 @@
 - Сохранение файла настроек на компьютере
 - Загрузка файла настроек с компьютера
 
-## 2. Установка скрипта
+### 2. Доступные темы
+- LZT Next
+- OldSchool
+- Summer
+- Cry
+- Winter
+- DarkSea
+- Lavender
+- BetterLZT
+- Amoled
+- Light Blue
+- Purple
+
+## 3. Установка скрипта
 Установить скрипт будет даже проще, чем его найти:
 1. Установите расширение **[Tampermonkey](https://www.tampermonkey.net/)**
 2. **[«Установите Скрипт»](https://github.com/ilyhalight/lzt-upgrade/raw/master/lzt-upgrade.user.js)**
 
 ## Благодарности:
-1. **[Simonwep/pickr](https://github.com/Simonwep/pickr)** за создание ColorPicker "Pickr"
+1. **[mdbassit/Coloris](https://github.com/mdbassit/Coloris)** за создание ColorPicker "Coloris"
 2. **[Всем дизайнерам и разработчикам LOLZTEAM](https://zelenka.guru/pages/brand/)** за лучший форум :)
+3. **[кустик](https://zelenka.guru/members/968161)**, **[поплачь](https://zelenka.guru/members/1009255/)** за тему LZT Next, Amoled
+4. **[RichEizenwert](https://zelenka.guru/members/2538048)** за тему OldSchool
+5. **[Karasu_san](https://zelenka.guru/members/576497)** за тему Summer, Winter
+6. **[LOOSER](https://zelenka.guru/members/4851151)** за тему Cry
+7. **[OpenSea](https://zelenka.guru/members/4362069)** за тему DarkSea
+8. **[кустик](https://zelenka.guru/members/968161)** за тему Lavender, LZT Purple
+9. **[DearFriend](https://zelenka.guru/members/3303341)** за тему BetterLZT 
+10. **[vuchaev2015](https://zelenka.guru/members/302690)** за тему Light Blue 
 
 ## Примечание:
 Используя скрипт, вы соглашаетесь с тем, что:
