@@ -1,4 +1,4 @@
-async function checkUpdate() {
+async function checkUpdate(useAlert = false) {
   try {
     $.ajax('https://greasyfork.org/ru/scripts/460328-lzt-upgrade').done((e) => {
       if ($(e).find('.script-show-version:last').text() !== GM_info.script.version) {
@@ -10,6 +10,8 @@ async function checkUpdate() {
             <button class="button primary" type="button" onClick="location.href='https://greasyfork.org/ru/scripts/460328-lzt-upgrade/code/lzt-upgrade.user.js?${Math.floor(Date.now() / 1000)}'">Обновиться</button>
           </div>
         `);
+      } else if (useAlert) {
+        registerAlert('Обновление не требуется. У вас установлена последняя версия расширения LZT Upgrade.', 5000);
       }
     });
   } catch (e) {
