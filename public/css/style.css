@@ -138,6 +138,18 @@
   cursor: pointer;
 }
 
+#LZTUpListLinks {
+  display: flex;
+  flex-direction: column;
+}
+
+#LZTUpListLinks > #LZTUpListItem, 
+#LZTUpListLinks > #LZTUpListItem #LZTUpText,
+#LZTUpListLinks > #LZTUpListItem #LZTUpSubText {
+  max-width: 100%;
+  width: 100%;
+}
+
 #LZTUpIcon {
   width: 28px;
   height: 28px;
