@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         LZT Upgrade
-// @version      1.1.3
+// @version      1.1.3.1
 // @description  Some useful utilities for Lolzteam
 // @description:ru  Полезные улучшения для Lolzteam
 // @icon         https://cdn.jsdelivr.net/gh/ilyhalight/lzt-upgrade@1.1.0/public/static/img/lzt-upgrade-mini.png
@@ -18,7 +18,7 @@
 // @grant        GM_addStyle
 // @grant        GM_xmlhttpRequest 
 // @grant        GM_info
-// @resource     styles https://cdn.jsdelivr.net/gh/ilyhalight/lzt-upgrade@48ff9195f918e7be3862d620a35f87d4cc1656bd/public/css/style.css
+// @resource     styles https://cdn.jsdelivr.net/gh/ilyhalight/lzt-upgrade@6916805398745a36449b3da302c4369f8380a96e/public/css/style.css
 // @resource     coloris https://cdn.jsdelivr.net/gh/ilyhalight/lzt-upgrade@1.1.0/public/css/coloris.css
 // @require      https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js
 // @require      https://cdn.jsdelivr.net/gh/ilyhalight/lzt-upgrade@e81964a65edee7f7a3e1d7027ef2d29d8759e9b8/public/static/js/lztupgrade/utils.js
