@@ -23,7 +23,7 @@ def init_worker():
         log.info('DB initialized')
 
     @app.on_event("startup")
-    @repeat_every(seconds = 60 * 10)  # 1 hour
+    @repeat_every(seconds = 60 * 10)  # 10 minutes
     async def worker():
         try:
             await check_themes(True)
