@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         LZT Upgrade
-// @version      1.1.3.1
+// @version      1.1.4
 // @description  Some useful utilities for Lolzteam
 // @description:ru  Полезные улучшения для Lolzteam
 // @icon         https://cdn.jsdelivr.net/gh/ilyhalight/lzt-upgrade@1.1.0/public/static/img/lzt-upgrade-mini.png
@@ -18,7 +18,7 @@
 // @grant        GM_addStyle
 // @grant        GM_xmlhttpRequest 
 // @grant        GM_info
-// @resource     styles https://cdn.jsdelivr.net/gh/ilyhalight/lzt-upgrade@6916805398745a36449b3da302c4369f8380a96e/public/css/style.css
+// @resource     styles https://cdn.jsdelivr.net/gh/ilyhalight/lzt-upgrade@2b62070fa48ae8fd9bb32902f4761680105aca46/public/css/style.css
 // @resource     coloris https://cdn.jsdelivr.net/gh/ilyhalight/lzt-upgrade@1.1.0/public/css/coloris.css
 // @require      https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js
 // @require      https://cdn.jsdelivr.net/gh/ilyhalight/lzt-upgrade@e81964a65edee7f7a3e1d7027ef2d29d8759e9b8/public/static/js/lztupgrade/utils.js
@@ -31,7 +31,7 @@
 // @require      https://cdn.jsdelivr.net/gh/ilyhalight/lzt-upgrade@3e3ddeec0f2a177a66e68dc490e256edc031af3c/public/static/js/lztupgrade/indexedDB/settings.js
 // @require      https://cdn.jsdelivr.net/gh/ilyhalight/lzt-upgrade@b3e7c27772ba3e8cab987e262b9ed86cfec2c30a/public/static/js/lztupgrade/api/themes.js
 // @require      https://cdn.jsdelivr.net/gh/ilyhalight/lzt-upgrade@9da314f6a1280655b2c94c8e2664d7121cb5766f/public/static/js/lztupgrade/Logger.js
-// @require      https://cdn.jsdelivr.net/gh/ilyhalight/lzt-upgrade@9d185c1feb1738b233a4f9f19f76bb68d29a11b1/public/static/js/lztupgrade/checkUpdate.js
+// @require      https://cdn.jsdelivr.net/gh/ilyhalight/lzt-upgrade@226918eb06d1c75e60d49a2352d6abd53afb341a/public/static/js/lztupgrade/checkUpdate.js
 // @updateURL    https://github.com/ilyhalight/lzt-upgrade/raw/master/lzt-upgrade.user.js
 // @downloadURL  https://github.com/ilyhalight/lzt-upgrade/raw/master/lzt-upgrade.user.js
 // @supportURL   https://github.com/ilyhalight/lzt-upgrade/issues
@@ -46,6 +46,8 @@
     'getLogos': 'https://lztupgrade.toiloff.ru/api/logos',
     'getLogoByUID': 'https://lztupgrade.toiloff.ru/api/logo',
   }
+
+  const currentDomain = window.location.hostname;
 
   if (typeof GM_addStyle === 'undefined') {
     GM_addStyle = (aCss) => {
@@ -383,6 +385,37 @@
       },
     ]
 
+    const informationLinks = [
+      {
+        id: 1,
+        icon: 'far fa-donate',
+        name: 'Поддержать разработку',
+        desc: 'Все донаты идут на улучшение расширения',
+        href: `https://lzt.market/balance/transfer?redirect=https%3A%2F%2Fzelenka.guru&username=${GM_info?.script?.author}`
+      },
+      // {
+      //   id: 2,
+      //   icon: 'far fa-comments',
+      //   name: 'Тема на форуме',
+      //   desc: 'Обсуждение расширения на форуме',
+      //   href: `https://${currentDomain}/threads/XXXXXXX`
+      // },
+      {
+        id: 2,
+        icon: 'fab fa-telegram-plane',
+        name: 'Telegram-Канал',
+        desc: 'Информирование о новых обновлениях',
+        href: `https://t.me/lzt_upgrade`
+      },
+      {
+        id: 3,
+        icon: 'fab fa-telegram-plane',
+        name: 'Telegram-Чат',
+        desc: 'Обсуждение расширения в Telegram',
+        href: `https://t.me/lzt_upgrade_chat`
+      },
+    ]
+
     function validateAuthors(authorID, authorName) {
       if (typeof (authorID) === 'string') {
         if (authorID.includes(',') && authorName.includes(',')) {
@@ -498,6 +531,13 @@
             <div>
               <span id="LZTUpText">Обновления</span>
               <span id="LZTUpSubText">Установка и проверка обновлений расширения</span>
+            </div>
+          </div>
+          <div id="LZTUpListItem" class="LZTUpInformationItem">
+            <i id="LZTUpIcon" class="far fa-info-circle"></i>
+            <div>
+              <span id="LZTUpText">Информация</span>
+              <span id="LZTUpSubText">Версия: ${GM_info?.script?.version}</span>
             </div>
           </div>
         </div>
@@ -784,6 +824,9 @@
             <label for="check_updates_on_load">Проверять обновления при загрузке страницы</label>
           </div>
         </div>
+        <div id="LZTUpInformationContainer" class="LZTUpSubMenu">
+          <div id="LZTUpListLinks"></div>
+        </div>
         `
       );
 
@@ -978,6 +1021,23 @@
           </li>`);
       };
 
+      // Загрузка информационных ссылок
+      const listLinks = $('#LZTUpListLinks');
+      for (const link of informationLinks) {
+        const element = $(`
+          <div id="LZTUpListItem">
+            <i id="LZTUpIcon" class="${link.icon}"></i>
+            <div>
+              <span id="LZTUpText">${link.name}</span>
+              <span id="LZTUpSubText">${link.desc}</span>
+            </div>
+          </div>
+        `)
+
+        element.on('click', () => window.open(link.href))
+        listLinks.append(element)
+      }
+
       var $LZTUpTabs = $('ul#LZTUpTabs');
       var $mainList = $('div.LZTUpMainList');
       var $settingsList = $('div.LZTUpSettingsList');
@@ -990,6 +1050,7 @@
       var $themesSubContainer = $('div#LZTUpThemesSubContainer');
       var $settingsContainer = $('div#LZTUpSettingsContainer');
       var $updateContainer = $('div#LZTUpUpdateContainer');
+      var $informationContainer = $('div#LZTUpInformationContainer');
       $settingsList.hide();
       $contestsContainer.hide();
       $usersContainer.hide();
@@ -1000,6 +1061,7 @@
       $themesSubContainer.hide();
       $settingsContainer.hide();
       $updateContainer.hide();
+      $informationContainer.hide();
 
       async function createGoBackBtn(callback) {
         lztUpgradeModalMain.prepend($('<button id="LZTUpModalBackButton"><i class="fas fa-long-arrow-left"></i></button>'));
@@ -1151,6 +1213,10 @@
 
         $('div#LZTUpListItem.LZTUpUpdateItem').on('click', async () => {
           await updateMenu($settingsList, $updateContainer, 'Обновления');
+        });
+
+        $('div#LZTUpListItem.LZTUpInformationItem').on('click', async () => {
+          await updateMenu($settingsList, $informationContainer, 'Информация');
         });
       };
     });
@@ -2609,13 +2675,13 @@
       });
 
       // Updates
-      $(document).on('click', '.LZTUpCheckUpdate', async () => await checkUpdate())
+      $(document).on('click', '.LZTUpCheckUpdate', async () => await checkUpdate(true))
 
       $(document).on('click', '#check_updates_on_load', async function () {
         $('#check_updates_on_load')[0].checked ? (
           await settingsDB.update({checkUpdatesOnLoad: 1}),
           registerAlert('Включено автообновление расширения', 5000),
-          await checkUpdate()
+          await checkUpdate(true)
           ): (
             await settingsDB.update({checkUpdatesOnLoad: 0}),
             registerAlert('Выключено автообновление расширения', 5000)
