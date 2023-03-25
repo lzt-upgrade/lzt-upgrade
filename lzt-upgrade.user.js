@@ -437,45 +437,467 @@
     }
 
     $(menuBtn).on('click', async function () {
-      const uniqueData = await uniqueStyleDB.read().then(value => {return(value)}).catch(err => {Logger.error(err); return false}) || {};
-      const contestsData = await contestsDB.read().then(value => {return(value)}).catch(err => {Logger.error(err); return false}) || {};
-      const usersData = await usersDB.read().then(value => {return(value)}).catch(err => {Logger.error(err); return false}) || {};
-      const appearData = await appearDB.read().then(value => {return(value)}).catch(err => {Logger.error(err); return false}) || {};
-      const settingsData = await settingsDB.read().then(value => {return(value)}).catch(err => {Logger.error(err); return false}) || {};
-      var nickStyle = uniqueData.nickStyle;
-      var bannerStyle = uniqueData.bannerStyle;
-      var bannerText = uniqueData.bannerText;
-      var badgeText = uniqueData.badgeText;
-      var badgeIcon = uniqueData.badgeIcon;
-      var badgeFill = uniqueData.badgeFill;
-      var badgeStroke = uniqueData.badgeStroke;
-      var noticesMarks = uniqueData.noticesMarks;
-      var profileBackground = uniqueData.profileBackground;
-      var profileBackgroundEverywhere = uniqueData.profileBackgroundEverywhere;
-      var contestsTen = contestsData.contestsTen;
-      var contestsAll = contestsData.contestsAll;
-      var contestsInfoTop = contestsData.contestsInfoTop;
-      var contestsBtnTopInBlock = contestsData.contestsBtnTopInBlock;
-      var contestsHideTags = contestsData.contestsHideTags;
-      var contestsAutoClose = contestsData.contestsAutoClose;
-      var contestsRmContent = contestsData.contestsRmContent;
-      var contestsShowWinChance = contestsData.contestsShowWinChance;
-      var showUseridInProfile = usersData.showUseridInProfile;
-      var showFullRegInProfile = usersData.showFullRegInProfile;
-      var disableShowTyping = usersData.disableShowTyping;
-      var hideUnreadArticleCircle = appearData.hideUnreadArticleCircle;
-      var hideTagsInThreads = appearData.hideTagsInThreads;
-      var forumLogo = appearData.forumLogo;
-      var marketLogo = appearData.marketLogo;
-      var hideCounterAlerts = appearData.hideCounterAlerts;
-      var hideCounterConversations = appearData.hideCounterConversations;
-      var reportButtonsInPost = appearData.reportButtonsInPost;
-      var themeID = appearData.theme;
-      var themeAutoReload = appearData.themeAutoReload;
-      var backgroundEffect = appearData.backgroundEffect;
-      var hideOnlyfans = appearData.hideOnlyfans;
-      var showPollsResults = appearData.showPollsResults;
-      var checkUpdatesOnLoad = settingsData.checkUpdatesOnLoad;
+      let badgeFill;
+      let badgeStroke;
+      let noticesMarks;
+
+      let forumLogo;
+      let marketLogo;
+      
+      let reportButtonsInPost;
+      let themeID;
+      let themeAutoReload;
+
+      async function getUniqueContent() {
+        try {
+          const uniqueData = await uniqueStyleDB.read().then(value => {return(value)}).catch(err => {Logger.error(err); return false});
+  
+          const nickStyle = uniqueData.nickStyle;
+          const bannerStyle = uniqueData.bannerStyle;
+          const bannerText = uniqueData.bannerText;
+          const badgeText = uniqueData.badgeText;
+          const badgeIcon = uniqueData.badgeIcon;
+          badgeFill = uniqueData.badgeFill;
+          badgeStroke = uniqueData.badgeStroke;
+          noticesMarks = uniqueData.noticesMarks;
+          const profileBackground = uniqueData.profileBackground;
+          const profileBackgroundEverywhere = uniqueData.profileBackgroundEverywhere;
+  
+          return `
+            <div id="LZTUpModalComment">
+              На этой странице можно выбрать стиль вашего ника и лычки. Этот стиль виден только вам. После <a href="https://lolz.guru/account/upgrades?upgrade_id=14" target="_blank">покупки</a> настоящего уника его увидят все.
+            </div>
+  
+            <div class="LZTUpModalBlock">
+              <div id="LZTUpPreviewContainer" class="previewContainer">
+                <div class="avatarBox">
+                  <div class="avatarUserBadges">
+                    <span id="LZTUpPreviewBadge" class="avatarUserBadge uniq_default badgeDefaultBackground Tooltip" tabindex="0" title="${uniqueData.badgeText}" style="${uniqueData.bannerStyle}"></span>
+                  </div>
+                  <a href="members/${getUserid()}/" class="avatar Av${getUserid()}m" data-avatarhtml="true">
+                    <span class="img m" style="background-image: url(${getUserAvatar()})"></span>
+                  </a>
+                </div>
+                <div class="info">
+                  <span id="LZTUpUsernameStyle" class="UsernameStyle bold" style="${uniqueData.nickStyle}">${username}</span>
+                  <div class="bannerOrStatus">
+                    <em id="LZTUpUserBannerStyle" class="UserBannerStyle userBanner" style="${uniqueData.bannerStyle}">${uniqueData.bannerText}</em>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="LZTUpModalBlockButtons">
+              <select id="LZTUpSelectGroupsUniq" class="button" type="button">
+                <option disabled selected value="none">Выбрать из групп форума</option>
+              </select>
+              <a href="https://${window.location.hostname}/account/uniq/test" class="button" target="_blank">
+                <span>
+                  <span class="SpoilerTitle">Выбрать готовый уник</span>
+                </span>
+              </a>
+              <a href="https://mxidentic.github.io/lolzteam_uniq/" class="button" target="_blank">
+                <span>
+                  <span class="SpoilerTitle">Генератор уников</span>
+                </span>
+              </a>
+            </div>
+  
+            <div id="LZTUpModalNoticesContainer">
+            
+            </div>
+  
+            <div id="LZTUpModalHeading" class="textHeading">Стиль ника:</div>
+            <div id="LZTUpModalText" class="muted explain">Максимум 1500 символов. При отсутствии кода используется цвет вашей группы с форума.</div>
+            <textarea id="LZTUpUniqueStyle" class="UsernameCss textCtrl" maxlength="1500">${nickStyle}</textarea>
+  
+            <div id="LZTUpModalHeading" class="textHeading">Стиль лычки:</div>
+            <div id="LZTUpModalText" class="muted explain">Максимум 1500 символов.</div>
+            <textarea id="LZTUpBannerStyle" class="BannerCss textCtrl" maxlength="1500">${bannerStyle}</textarea>
+  
+            <div id="LZTUpModalHeading" class="textHeading">Текст в лычке:</div>
+            <div id="LZTUpModalText" class="muted explain">Максимум 24 символа. При отсутствии текста лычка не будет видна.</div>
+            <input id="LZTUpBannerText" type="text" maxlength="24" class="textCtrl" value="${XenForo.htmlspecialchars(bannerText)}">
+  
+            <div id="LZTUpModalHeading" class="textHeading">Иконка на аватарке:</div>
+            <div id="LZTUpModalText" class="muted explain">
+              <a href="/threads/3405752/" class="mainc">[Гайд] Как правильно устанавливать свои иконки в уник</a>
+              <br>
+              <br>
+              Максимумальная длина SVG - 3000 символов. При отсутствии значения будет установлено стандартная иконка.
+            </div>
+            <textarea id="LZTUpBadgeIcon" maxlength="3000" class="BadgeCss textCtrl">${badgeIcon}</textarea>
+  
+            <div id="LZTUpModalHeading" class="textHeading">Цвета иконки на аватарке:</div>
+            <div id="LZTUpModalText" class="muted explain">Убедитесь, что в SVG нету заранее установленных значений 'fill' и 'stroke'.</div>
+            <nobr>
+              <div id="LZTUpBadgeFillContainer" class="mini">
+                <div id="LZTUpModalText" class="muted explain">Цвет иконки (fill):</div>
+                <input id="LZTUpBadgeFill" type="text" data-coloris class="textCtrl badge-fill-picker" value="${badgeFill}">
+              </div>
+            </nobr>
+            <nobr>
+              <div id="LZTUpBadgeStrokeContainer" class="mini" style="padding-top: 12px;">
+                <div id="LZTUpModalText" class="muted explain" style="">Цвет иконки (stroke):</div>
+                <input id="LZTUpStrokeFill" type="text" data-coloris class="textCtrl badge-stroke-picker" value="${badgeStroke}">
+              </div>
+            </nobr>
+  
+            <div id="LZTUpModalHeading" class="textHeading">Текст иконки на аватарке:</div>
+            <div id="LZTUpModalText" class="muted explain">Максимум 24 символа. При отсутствии текста иконка не будет видна.</div>
+            <input id="LZTUpBadgeText" maxlength="24" type="text" class="textCtrl" value="${XenForo.htmlspecialchars(badgeText)}">
+  
+            <div id="LZTUpModalHeading" class="textHeading">Фон в профиле</div>
+            <input id="LZTUpProfileBackground" type="text" class="textCtrl" placeholder="Ссылка на изображение" value="${XenForo.htmlspecialchars(profileBackground)}">
+  
+            <div id="LZTUpModalChecksContainer">
+              <input type="checkbox" id="profile_background_everywhere" ${profileBackgroundEverywhere === 1 ? "checked" : ''}>
+              <label for="profile_background_everywhere">Заменить фон на всех страницах форума</label>
+            </div>
+  
+            <input id="LZTUpSaveUniqueDB" type="button" value="Сохранить" class="button primary save_button">
+            <input id="LZTUpResetUniqueDB" type="button" value="Сбросить настройки" class="button reset_button">
+          `
+        } catch (e) {
+          Logger.error(`Не удалось загрузить меню "Локального уника": ${e.message}`);
+          return `
+            <div id="LZTUpModalComment">
+              Ваша база данных "Локального уника" повреждена. Пожалуйста, сбросьте настройки с помощью кнопки ниже.
+            </div>
+            <input id="LZTUpResetUniqueDB" type="button" value="Сбросить настройки" class="button reset_button">
+          `
+        }
+      }
+
+      async function getContestsContent() {
+        try {
+          const contestsData = await contestsDB.read().then(value => {return(value)}).catch(err => {Logger.error(err); return false});
+  
+          const contestsTen = contestsData.contestsTen;
+          const contestsAll = contestsData.contestsAll;
+          const contestsInfoTop = contestsData.contestsInfoTop;
+          const contestsBtnTopInBlock = contestsData.contestsBtnTopInBlock;
+          const contestsHideTags = contestsData.contestsHideTags;
+          const contestsAutoClose = contestsData.contestsAutoClose;
+          const contestsRmContent = contestsData.contestsRmContent;
+          const contestsShowWinChance = contestsData.contestsShowWinChance;
+  
+          return `
+            <div id="LZTUpModalChecksContainer">
+              <input type="checkbox" id="contests_open_ten" ${contestsTen === 1 ? "checked" : ''}>
+              <label for="contests_open_ten">Кнопка "Открыть 10"</label>
+            </div>
+            <div id="LZTUpModalChecksContainer">
+              <input type="checkbox" id="contests_open_all" ${contestsAll === 1 ? "checked" : ''}>
+              <label for="contests_open_all">Кнопка "Открыть прогруженные"</label>
+            </div>
+            <div id="LZTUpModalChecksContainer">
+              <input type="checkbox" id="contests_info_top" ${contestsInfoTop === 1 ? "checked" : ''}>
+              <label for="contests_info_top">Отображение информации о розыгрыше вверху темы</label>
+            </div>
+            <div id="LZTUpModalChecksContainer">
+              <input type="checkbox" id="contests_btn_top_in_block" ${contestsBtnTopInBlock === 1 ? "checked" : ''}>
+              <label for="contests_btn_top_in_block">Отображение кнопки "Участвовать" выше блока с информацией о розыгрыше</label>
+            </div>
+            <div id="LZTUpModalChecksContainer">
+              <input type="checkbox" id="contests_hide_tags" ${contestsHideTags === 1 ? "checked" : ''}>
+              <label for="contests_hide_tags">Скрытие тегов в теме розыгрыша</label>
+            </div>
+            <div id="LZTUpModalChecksContainer">
+              <input type="checkbox" id="contests_auto_close" ${contestsAutoClose === 1 ? "checked" : ''}>
+              <label for="contests_auto_close">Автозакрытие страницы при нажатие на кнопку "Участвовать"</label>
+            </div>
+            <div id="LZTUpModalChecksContainer">
+              <input type="checkbox" id="contests_rm_content" ${contestsRmContent === 1 ? "checked" : ''}>
+              <label for="contests_rm_content">Скрытие содержимого и голосований в теме розыгрыша</label>
+            </div>
+            <div id="LZTUpModalChecksContainer">
+              <input type="checkbox" id="contests_show_win_chance" ${contestsShowWinChance === 1 ? "checked" : ''}>
+              <label for="contests_show_win_chance">Показывать шанс победы в розыгрыше</label>
+            </div>
+            <input id="LZTUpResetContestsDB" type="button" value="Сбросить настройки" class="button reset_button">
+          `
+        } catch (e) {
+          Logger.error(`Не удалось загрузить меню "Розыгрышей": ${e.message}`);
+          return `
+            <div id="LZTUpModalComment">
+              Ваша база данных "Розыгрышей" повреждена. Пожалуйста, сбросьте настройки с помощью кнопки ниже.
+            </div>
+            <input id="LZTUpResetContestsDB" type="button" value="Сбросить настройки" class="button reset_button">
+          `
+        }
+      }
+
+      async function getUsersContent() {
+        try {
+          const usersData = await usersDB.read().then(value => {return(value)}).catch(err => {Logger.error(err); return false});
+
+          const showUseridInProfile = usersData.showUseridInProfile;
+          const showFullRegInProfile = usersData.showFullRegInProfile;
+          const disableShowTyping = usersData.disableShowTyping;
+  
+          return `
+            <div id="LZTUpModalChecksContainer">
+              <input type="checkbox" id="show_userid_in_profile" ${showUseridInProfile === 1 ? "checked" : ''}>
+              <label for="show_userid_in_profile">Показывать UserID в профиле пользователя</label>
+            </div>
+            <div id="LZTUpModalChecksContainer">
+              <input type="checkbox" id="show_fullreg_in_profile" ${showFullRegInProfile === 1 ? "checked" : ''}>
+              <label for="show_fullreg_in_profile">Показывать полную дату регистрации в профиле пользователя</label>
+            </div>
+            <div id="LZTUpModalChecksContainer">
+              <input type="checkbox" id="disable_show_typing" ${disableShowTyping === 1 ? "checked" : ''}>
+              <label for="disable_show_typing">
+                Отключить отправку информации о наборе сообщения
+                <span class="fa fa-exclamation-triangle Tooltip" title="При включение/отключение этой функции страница будет перезагружена"></span>
+              </label>
+            </div>
+            <input id="LZTUpResetUsersDB" type="button" value="Сбросить настройки" class="button reset_button">
+          `
+        } catch (e) {
+          Logger.error(`Не удалось загрузить меню "Пользователей": ${e.message}`);
+          return `
+            <div id="LZTUpModalComment">
+              Ваша база данных "Пользователей" повреждена. Пожалуйста, сбросьте настройки с помощью кнопки ниже.
+            </div>
+            <input id="LZTUpResetUsersDB" type="button" value="Сбросить настройки" class="button reset_button">
+          `
+        }
+      }
+
+      async function getAppearContent() {
+        try {
+          const appearData = await appearDB.read().then(value => {return(value)}).catch(err => {Logger.error(err); return false});
+
+          const hideUnreadArticleCircle = appearData.hideUnreadArticleCircle;
+          const hideTagsInThreads = appearData.hideTagsInThreads;
+
+          const hideCounterAlerts = appearData.hideCounterAlerts;
+          const hideCounterConversations = appearData.hideCounterConversations;
+
+          const backgroundEffect = appearData.backgroundEffect;
+          const hideOnlyfans = appearData.hideOnlyfans;
+          const showPollsResults = appearData.showPollsResults;
+  
+          return `
+            <div id="LZTUpLogoSection" class="LZTUpModalSection">
+              <div class="LZTUpModalSectionContent">
+                <i id="LZTUpIcon" class="far fa-comments"></i>
+                <div class="LZTUpModalSectionTexts">
+                  <span id="LZTUpText">Логотип</span>
+                  <span id="LZTUpSubText">Выберите логотип для форума из списка</span>
+                </div>
+                <i id="LZTUpIcon" class="far fa-angle-right gray right"></i>
+              </div>
+            </div>
+            <div id="LZTUpMarketLogoSection" class="LZTUpModalSection">
+              <div class="LZTUpModalSectionContent">
+                <i id="LZTUpIcon" class="far fa-shopping-cart"></i>
+                <div class="LZTUpModalSectionTexts">
+                  <span id="LZTUpText">Логотип маркета</span>
+                  <span id="LZTUpSubText">Выберите логотип для маркета из списка</span>
+                </div>
+                <i id="LZTUpIcon" class="far fa-angle-right gray right"></i>
+              </div>
+            </div>
+            <div id="LZTUpThemesSection" class="LZTUpModalSection">
+              <div class="LZTUpModalSectionContent">
+                <i id="LZTUpIcon" class="far fa-paint-brush"></i>
+                <div class="LZTUpModalSectionTexts">
+                  <span id="LZTUpText">Менеджер тем</span>
+                  <span id="LZTUpSubText">Выберите тему для форума из списка</span>
+                </div>
+                <i id="LZTUpIcon" class="far fa-angle-right gray right"></i>
+              </div>
+            </div>
+            <div id="LZTUpModalChecksContainer">
+              <input type="checkbox" id="hide_unread_article_circle" ${hideUnreadArticleCircle === 1 ? "checked" : ''}>
+              <label for="hide_unread_article_circle">Скрыть значок непрочитанных статей в шапке сайта</label>
+            </div>
+            <div id="LZTUpModalChecksContainer">
+              <input type="checkbox" id="hide_tags_in_threads" ${hideTagsInThreads === 1 ? "checked" : ''}>
+              <label for="hide_tags_in_threads">Скрыть теги в темах</label>
+            </div>
+            <div id="LZTUpModalChecksContainer">
+              <input type="checkbox" id="hide_counter_alerts" ${hideCounterAlerts === 1 ? "checked" : ''}>
+              <label for="hide_counter_alerts">Скрыть счётчик уведомлений в навбаре</label>
+            </div>
+            <div id="LZTUpModalChecksContainer">
+              <input type="checkbox" id="hide_counter_conversations" ${hideCounterConversations === 1 ? "checked" : ''}>
+              <label for="hide_counter_conversations">Скрыть счётчик сообщений в навбаре</label>
+            </div>
+            <div id="LZTUpModalChecksContainer">
+              <input type="checkbox" id="enable_background_effect" ${backgroundEffect === 1 ? "checked" : ''}>
+              <label for="enable_background_effect">Включить снег (by <a href="/members/576497/" class="muted">Karasu_</a>)</label>
+            </div>
+            <div id="LZTUpModalChecksContainer">
+              <input type="checkbox" id="hide_onlyfans" ${hideOnlyfans === 1 ? "checked" : ''}>
+              <label for="hide_onlyfans">
+                Спрятать все темы с тегом Onlyfans
+                <span class="fa fa-exclamation-triangle Tooltip" title="При включение/отключение этой функции страница будет перезагружена"></span>
+              </label>
+            </div>
+            <div id="LZTUpModalChecksContainer">
+              <input type="checkbox" id="show_polls_results" ${showPollsResults === 1 ? "checked" : ''}>
+              <label for="show_polls_results">
+                Показывать результаты голосований
+                <span class="fa fa-exclamation-triangle Tooltip" title="Доступно, только, в голосованиях, в которых разрешено видеть результаты заранее"></span>
+              </label>
+            </div>
+            <div id="LZTUpModalReportButtonsContainer">
+              <div class="bold title">Кнопки быстрого репорта в посте:</div>
+              <ul>
+              </ul>
+            </div>
+            <input id="LZTUpResetAppearDB" type="button" value="Сбросить настройки" class="button reset_button">
+          `
+        } catch (e) {
+          Logger.error(`Не удалось загрузить меню "Внешнего вида": ${e.message}`);
+          return `
+            <div id="LZTUpModalComment">
+              Ваша база данных "Внешнего вида" повреждена. Пожалуйста, сбросьте настройки с помощью кнопки ниже.
+            </div>
+            <input id="LZTUpResetAppearDB" type="button" value="Сбросить настройки" class="button reset_button">
+          `
+        }
+      }
+
+      async function getAppearLogosContent() {
+        try {
+          const appearData = await appearDB.read().then(value => {return(value)}).catch(err => {Logger.error(err); return false});
+
+          forumLogo = appearData.forumLogo;
+          const defaultLogoImg = 'https://raw.githubusercontent.com/ilyhalight/lzt-upgrade/master/public/static/img/logos/forum/default.svg';
+
+          return `
+            <div id="LZTUpModalCell">
+              <div class="bold title">Логотип:</div>
+              <div class="LZTUpModalMesh" id="LZTUpModalLogosContainer">
+                <div class="LZTUpModalMeshItem ${forumLogo === 0 ? 'active' : ''}" id="set_default_logo" data-checked="${forumLogo === 0 ? 'true' : 'false'}">
+                  <img src="${defaultLogoImg}" alt="logo">
+                  <span class="LZTUpModalMeshItemName" data-shortname="default">По умолчанию</span>
+                  <span class="LZTUpModalMeshItemAuthor">Lolzteam</span>
+                </div>
+              </div>
+            </div>
+          `
+        } catch (e) {
+          Logger.error(`Не удалось загрузить меню "Внешнего вида (Логотипы)": ${e.message}`);
+          return `
+            <div id="LZTUpModalComment">
+              Ваша база данных "Внешнего вида" повреждена. Пожалуйста, сбросьте настройки с помощью кнопки ниже.
+            </div>
+            <input id="LZTUpResetAppearDB" type="button" value="Сбросить настройки" class="button reset_button">
+          `
+        }
+      }
+
+      async function getAppearMarketLogosContent() {
+        try {
+          const appearData = await appearDB.read().then(value => {return(value)}).catch(err => {Logger.error(err); return false});
+
+          marketLogo = appearData.marketLogo;
+          const defaultMarketLogoImg = 'https://raw.githubusercontent.com/ilyhalight/lzt-upgrade/master/public/static/img/logos/market/default.svg';
+
+          return `
+            <div id="LZTUpModalCell">
+              <div class="bold title">Логотип маркета:</div>
+              <div class="LZTUpModalMesh" id="LZTUpModalMarketLogosContainer">
+                <div class="LZTUpModalMeshItem ${marketLogo === 0 ? 'active' : ''}" id="set_default_marketlogo" data-checked="${marketLogo === 0 ? 'true' : 'false'}">
+                  <img src="${defaultMarketLogoImg}" alt="logo">
+                  <span class="LZTUpModalMeshItemName" data-shortname="default">По умолчанию</span>
+                  <span class="LZTUpModalMeshItemAuthor">Lolzteam</span>
+                </div>
+              </div>
+            </div>
+          `
+        } catch (e) {
+          Logger.error(`Не удалось загрузить меню "Внешнего вида (Логотипы маркета)": ${e.message}`);
+          return `
+            <div id="LZTUpModalComment">
+              Ваша база данных "Внешнего вида" повреждена. Пожалуйста, сбросьте настройки с помощью кнопки ниже.
+            </div>
+            <input id="LZTUpResetAppearDB" type="button" value="Сбросить настройки" class="button reset_button">
+          `
+        }
+      }
+
+      async function getAppearThemesContent() {
+        try {
+          const appearData = await appearDB.read().then(value => {return(value)}).catch(err => {Logger.error(err); return false});
+
+          themeID = appearData.theme;
+          themeAutoReload = appearData.themeAutoReload;
+
+          return `
+            <div id="LZTUpModalCell">
+              <div id="LZTUpModalChecksContainer">
+                <input type="checkbox" id="theme_auto_reload" ${themeAutoReload === 1 ? "checked" : ''}>
+                <label for="theme_auto_reload">
+                  Автоматически обновлять страницу после смены темы
+                  <span class="fa fa-exclamation-triangle Tooltip" title="При включение/отключение этой функции страница будет перезагружена"></span>
+                </label>
+              </div>
+              <div id="LZTUpModalCell">
+                <div class="bold title">Темы:</div>
+                <div class="LZTUpModalMesh" id="LZTUpModalThemesContainer">
+                  <div class="LZTUpModalMeshItem theme ${themeID === 0 ? 'active' : 'none'}" id="set_default_theme" data-checked="${themeID === 0 ? 'true' : 'false'}">
+                    <span class="LZTUpModalMeshItemName" data-shortname="default">Обычная</span>
+                    <span class="LZTUpModalMeshItemAuthor">Lolzteam</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          `
+        } catch (e) {
+          Logger.error(`Не удалось загрузить меню "Внешнего вида (темы)": ${e.message}`);
+          return `
+            <div id="LZTUpModalComment">
+              Ваша база данных "Внешнего вида" повреждена. Пожалуйста, сбросьте настройки с помощью кнопки ниже.
+            </div>
+            <input id="LZTUpResetAppearDB" type="button" value="Сбросить настройки" class="button reset_button">
+          `
+        }
+      }
+
+      async function getSettingsContent() {
+        return `
+          <div id="LZTUpIconButton" class="LZTUpSaveSettings">
+            <i id="LZTUpIcon" class="far fa-file-download"></i>
+            <span id="LZTUpText">Сохранить настройки в файл</span>
+          </div>
+          <div id="LZTUpIconButton" class="LZTUpUploadSettings">
+            <i id="LZTUpIcon" class="far fa-upload"></i>
+            <span id="LZTUpText">Загрузить настройки из файла</span>
+          </div>
+        `
+      }
+
+      async function getUpdatesContent() {
+        try {
+          const settingsData = await settingsDB.read().then(value => {return(value)}).catch(err => {Logger.error(err); return false});
+
+          const checkUpdatesOnLoad = settingsData.checkUpdatesOnLoad;
+
+          return `
+            <div id="LZTUpIconButton" class="LZTUpCheckUpdate">
+              <i id="LZTUpIcon" class="far fa-cloud-download"></i>
+              <span id="LZTUpText">Проверить наличие обновлений</span>
+            </div>
+            <div id="LZTUpModalChecksContainer">
+              <input type="checkbox" id="check_updates_on_load" ${checkUpdatesOnLoad === 1 ? "checked" : ''}>
+              <label for="check_updates_on_load">Проверять обновления при загрузке страницы</label>
+            </div>
+          `
+        } catch (e) {
+          Logger.error(`Не удалось загрузить меню "Настроек": ${e.message}`);
+          return `
+            <div id="LZTUpModalComment">
+              Ваша база данных "Настроек" повреждена. Пожалуйста, сбросьте настройки с помощью кнопки ниже.
+            </div>
+            <input id="LZTUpResetSettingsDB" type="button" value="Сбросить настройки" class="button reset_button">
+          `
+        }
+      }
 
       const overlay = registerModal(
         'LZT Upgrade',
@@ -542,287 +964,31 @@
           </div>
         </div>
         <div id="LZTUpUniqContainer" class="LZTUpSubMenu">
-          <div id="LZTUpModalComment">
-            На этой странице можно выбрать стиль вашего ника и лычки. Этот стиль виден только вам. После <a href="https://lolz.guru/account/upgrades?upgrade_id=14" target="_blank">покупки</a> настоящего уника его увидят все.
-          </div>
-
-          <div class="LZTUpModalBlock">
-            <div id="LZTUpPreviewContainer" class="previewContainer">
-              <div class="avatarBox">
-                <div class="avatarUserBadges">
-                  <span id="LZTUpPreviewBadge" class="avatarUserBadge uniq_default badgeDefaultBackground Tooltip" tabindex="0" title="${uniqueData.badgeText}" style="${uniqueData.bannerStyle}"></span>
-                </div>
-                <a href="members/${getUserid()}/" class="avatar Av${getUserid()}m" data-avatarhtml="true">
-                  <span class="img m" style="background-image: url(${getUserAvatar()})"></span>
-                </a>
-              </div>
-              <div class="info">
-                <span id="LZTUpUsernameStyle" class="UsernameStyle bold" style="${uniqueData.nickStyle}">${username}</span>
-                <div class="bannerOrStatus">
-                  <em id="LZTUpUserBannerStyle" class="UserBannerStyle userBanner" style="${uniqueData.bannerStyle}">${uniqueData.bannerText}</em>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="LZTUpModalBlockButtons">
-            <select id="LZTUpSelectGroupsUniq" class="button" type="button">
-              <option disabled selected value="none">Выбрать из групп форума</option>
-            </select>
-            <a href="https://${window.location.hostname}/account/uniq/test" class="button" target="_blank">
-              <span>
-                <span class="SpoilerTitle">Выбрать готовый уник</span>
-              </span>
-            </a>
-            <a href="https://mxidentic.github.io/lolzteam_uniq/" class="button" target="_blank">
-              <span>
-                <span class="SpoilerTitle">Генератор уников</span>
-              </span>
-            </a>
-          </div>
-
-          <div id="LZTUpModalNoticesContainer">
-          
-          </div>
-
-          <div id="LZTUpModalHeading" class="textHeading">Стиль ника:</div>
-          <div id="LZTUpModalText" class="muted explain">Максимум 1500 символов. При отсутствии кода используется цвет вашей группы с форума.</div>
-          <textarea id="LZTUpUniqueStyle" class="UsernameCss textCtrl" maxlength="1500">${nickStyle}</textarea>
-
-          <div id="LZTUpModalHeading" class="textHeading">Стиль лычки:</div>
-          <div id="LZTUpModalText" class="muted explain">Максимум 1500 символов.</div>
-          <textarea id="LZTUpBannerStyle" class="BannerCss textCtrl" maxlength="1500">${bannerStyle}</textarea>
-
-          <div id="LZTUpModalHeading" class="textHeading">Текст в лычке:</div>
-          <div id="LZTUpModalText" class="muted explain">Максимум 24 символа. При отсутствии текста лычка не будет видна.</div>
-          <input id="LZTUpBannerText" type="text" maxlength="24" class="textCtrl" value="${XenForo.htmlspecialchars(bannerText)}">
-
-          <div id="LZTUpModalHeading" class="textHeading">Иконка на аватарке:</div>
-          <div id="LZTUpModalText" class="muted explain">
-            <a href="/threads/3405752/" class="mainc">[Гайд] Как правильно устанавливать свои иконки в уник</a>
-            <br>
-            <br>
-            Максимумальная длина SVG - 3000 символов. При отсутствии значения будет установлено стандартная иконка.
-          </div>
-          <textarea id="LZTUpBadgeIcon" maxlength="3000" class="BadgeCss textCtrl">${badgeIcon}</textarea>
-
-          <div id="LZTUpModalHeading" class="textHeading">Цвета иконки на аватарке:</div>
-          <div id="LZTUpModalText" class="muted explain">Убедитесь, что в SVG нету заранее установленных значений 'fill' и 'stroke'.</div>
-          <nobr>
-            <div id="LZTUpBadgeFillContainer" class="mini">
-              <div id="LZTUpModalText" class="muted explain">Цвет иконки (fill):</div>
-              <input id="LZTUpBadgeFill" type="text" data-coloris class="textCtrl badge-fill-picker" value="${badgeFill}"></input>
-            </div>
-          </nobr>
-          <nobr>
-            <div id="LZTUpBadgeStrokeContainer" class="mini" style="padding-top: 12px;">
-              <div id="LZTUpModalText" class="muted explain" style="">Цвет иконки (stroke):</div>
-              <input id="LZTUpStrokeFill" type="text" data-coloris class="textCtrl badge-stroke-picker" value="${badgeStroke}"></input>
-            </div>
-          </nobr>
-
-          <div id="LZTUpModalHeading" class="textHeading">Текст иконки на аватарке:</div>
-          <div id="LZTUpModalText" class="muted explain">Максимум 24 символа. При отсутствии текста иконка не будет видна.</div>
-          <input id="LZTUpBadgeText" maxlength="24" type="text" class="textCtrl" value="${XenForo.htmlspecialchars(badgeText)}">
-
-          <div id="LZTUpModalHeading" class="textHeading">Фон в профиле</div>
-          <input id="LZTUpProfileBackground" type="text" class="textCtrl" placeholder="Ссылка на изображение" value="${XenForo.htmlspecialchars(profileBackground)}">
-
-          <div id="LZTUpModalChecksContainer">
-            <input type="checkbox" id="profile_background_everywhere" ${profileBackgroundEverywhere === 1 ? "checked" : ''}>
-            <label for="profile_background_everywhere">Заменить фон на всех страницах форума</label>
-          </div>
-
-          <input id="LZTUpSaveUniqueDB" type="button" value="Сохранить" class="button primary save_button"></input>
-          <input id="LZTUpResetUniqueDB" type="button" value="Сбросить настройки" class="button reset_button"></input>
+          ${await getUniqueContent()}
         </div>
         <div id="LZTUpContestsContainer" class="LZTUpSubMenu">
-          <div id="LZTUpModalChecksContainer">
-            <input type="checkbox" id="contests_open_ten" ${contestsTen === 1 ? "checked" : ''}>
-            <label for="contests_open_ten">Кнопка "Открыть 10"</label>
-          </div>
-          <div id="LZTUpModalChecksContainer">
-            <input type="checkbox" id="contests_open_all" ${contestsAll === 1 ? "checked" : ''}>
-            <label for="contests_open_all">Кнопка "Открыть прогруженные"</label>
-          </div>
-          <div id="LZTUpModalChecksContainer">
-            <input type="checkbox" id="contests_info_top" ${contestsInfoTop === 1 ? "checked" : ''}>
-            <label for="contests_info_top">Отображение информации о розыгрыше вверху темы</label>
-          </div>
-          <div id="LZTUpModalChecksContainer">
-            <input type="checkbox" id="contests_btn_top_in_block" ${contestsBtnTopInBlock === 1 ? "checked" : ''}>
-            <label for="contests_btn_top_in_block">Отображение кнопки "Участвовать" выше блока с информацией о розыгрыше</label>
-          </div>
-          <div id="LZTUpModalChecksContainer">
-            <input type="checkbox" id="contests_hide_tags" ${contestsHideTags === 1 ? "checked" : ''}>
-            <label for="contests_hide_tags">Скрытие тегов в теме розыгрыша</label>
-          </div>
-          <div id="LZTUpModalChecksContainer">
-            <input type="checkbox" id="contests_auto_close" ${contestsAutoClose === 1 ? "checked" : ''}>
-            <label for="contests_auto_close">Автозакрытие страницы при нажатие на кнопку "Участвовать"</label>
-          </div>
-          <div id="LZTUpModalChecksContainer">
-            <input type="checkbox" id="contests_rm_content" ${contestsRmContent === 1 ? "checked" : ''}>
-            <label for="contests_rm_content">Скрытие содержимого и голосований в теме розыгрыша</label>
-          </div>
-          <div id="LZTUpModalChecksContainer">
-            <input type="checkbox" id="contests_show_win_chance" ${contestsShowWinChance === 1 ? "checked" : ''}>
-            <label for="contests_show_win_chance">Показывать шанс победы в розыгрыше</label>
-          </div>
-          <input id="LZTUpResetContestsDB" type="button" value="Сбросить настройки" class="button reset_button"></input>
+          ${await getContestsContent()}
         </div>
         <div id="LZTUpUsersContainer" class="LZTUpSubMenu">
-          <div id="LZTUpModalChecksContainer">
-            <input type="checkbox" id="show_userid_in_profile" ${showUseridInProfile === 1 ? "checked" : ''}>
-            <label for="show_userid_in_profile">Показывать UserID в профиле пользователя</label>
-          </div>
-          <div id="LZTUpModalChecksContainer">
-            <input type="checkbox" id="show_fullreg_in_profile" ${showFullRegInProfile === 1 ? "checked" : ''}>
-            <label for="show_fullreg_in_profile">Показывать полную дату регистрации в профиле пользователя</label>
-          </div>
-          <div id="LZTUpModalChecksContainer">
-            <input type="checkbox" id="disable_show_typing" ${disableShowTyping === 1 ? "checked" : ''}>
-            <label for="disable_show_typing">
-              Отключить отправку информации о наборе сообщения
-              <span class="fa fa-exclamation-triangle Tooltip" title="При включение/отключение этой функции страница будет перезагружена"></spa
-            </label>
-          </div>
-          <input id="LZTUpResetUsersDB" type="button" value="Сбросить настройки" class="button reset_button"></input>
+          ${await getUsersContent()}
         </div>
         <div id="LZTUpAppearContainer" class="LZTUpSubMenu">
-          <div id="LZTUpLogoSection" class="LZTUpModalSection">
-            <div class="LZTUpModalSectionContent">
-              <i id="LZTUpIcon" class="far fa-comments"></i>
-              <div class="LZTUpModalSectionTexts">
-                <span id="LZTUpText">Логотип</span>
-                <span id="LZTUpSubText">Выберите логотип для форума из списка</span>
-              </div>
-              <i id="LZTUpIcon" class="far fa-angle-right gray right"></i>
-            </div>
-          </div>
-          <div id="LZTUpMarketLogoSection" class="LZTUpModalSection">
-            <div class="LZTUpModalSectionContent">
-              <i id="LZTUpIcon" class="far fa-shopping-cart"></i>
-              <div class="LZTUpModalSectionTexts">
-                <span id="LZTUpText">Логотип маркета</span>
-                <span id="LZTUpSubText">Выберите логотип для маркета из списка</span>
-              </div>
-              <i id="LZTUpIcon" class="far fa-angle-right gray right"></i>
-            </div>
-          </div>
-          <div id="LZTUpThemesSection" class="LZTUpModalSection">
-            <div class="LZTUpModalSectionContent">
-              <i id="LZTUpIcon" class="far fa-paint-brush"></i>
-              <div class="LZTUpModalSectionTexts">
-                <span id="LZTUpText">Менеджер тем</span>
-                <span id="LZTUpSubText">Выберите тему для форума из списка</span>
-              </div>
-              <i id="LZTUpIcon" class="far fa-angle-right gray right"></i>
-            </div>
-          </div>
-          <div id="LZTUpModalChecksContainer">
-            <input type="checkbox" id="hide_unread_article_circle" ${hideUnreadArticleCircle === 1 ? "checked" : ''}>
-            <label for="hide_unread_article_circle">Скрыть значок непрочитанных статей в шапке сайта</label>
-          </div>
-          <div id="LZTUpModalChecksContainer">
-            <input type="checkbox" id="hide_tags_in_threads" ${hideTagsInThreads === 1 ? "checked" : ''}>
-            <label for="hide_tags_in_threads">Скрыть теги в темах</label>
-          </div>
-          <div id="LZTUpModalChecksContainer">
-            <input type="checkbox" id="hide_counter_alerts" ${hideCounterAlerts === 1 ? "checked" : ''}>
-            <label for="hide_counter_alerts">Скрыть счётчик уведомлений в навбаре</label>
-          </div>
-          <div id="LZTUpModalChecksContainer">
-            <input type="checkbox" id="hide_counter_conversations" ${hideCounterConversations === 1 ? "checked" : ''}>
-            <label for="hide_counter_conversations">Скрыть счётчик сообщений в навбаре</label>
-          </div>
-          <div id="LZTUpModalChecksContainer">
-            <input type="checkbox" id="enable_background_effect" ${backgroundEffect === 1 ? "checked" : ''}>
-            <label for="enable_background_effect">Включить снег (by <a href="/members/576497/" class="muted">Karasu_</a>)</label>
-          </div>
-          <div id="LZTUpModalChecksContainer">
-            <input type="checkbox" id="hide_onlyfans" ${hideOnlyfans === 1 ? "checked" : ''}>
-            <label for="hide_onlyfans">
-              Спрятать все темы с тегом Onlyfans
-              <span class="fa fa-exclamation-triangle Tooltip" title="При включение/отключение этой функции страница будет перезагружена"></span>
-            </label>
-          </div>
-          <div id="LZTUpModalChecksContainer">
-            <input type="checkbox" id="show_polls_results" ${showPollsResults === 1 ? "checked" : ''}>
-            <label for="show_polls_results">
-              Показывать результаты голосований
-              <span class="fa fa-exclamation-triangle Tooltip" title="Доступно, только, в голосованиях, в которых разрешено видеть результаты заранее"></span>
-            </label>
-          </div>
-          <div id="LZTUpModalReportButtonsContainer">
-            <div class="bold title">Кнопки быстрого репорта в посте:</div>
-            <ul>
-            </ul>
-          </div>
-          <input id="LZTUpResetAppearDB" type="button" value="Сбросить настройки" class="button reset_button"></input>
+          ${await getAppearContent()}
         </div>
         <div id="LZTUpLogoSubContainer" class="LZTUpSubMenu">
-          <div id="LZTUpModalCell">
-            <div class="bold title">Логотип:</div>
-            <div class="LZTUpModalMesh" id="LZTUpModalLogosContainer">
-              <div class="LZTUpModalMeshItem ${forumLogo === 0 ? 'active' : ''}" id="set_default_logo" data-checked="${forumLogo === 0 ? 'true' : 'false'}">
-                <img src="https://raw.githubusercontent.com/ilyhalight/lzt-upgrade/master/public/static/img/logos/forum/default.svg" alt="logo">
-                <span class="LZTUpModalMeshItemName" data-shortname="default">По умолчанию</span>
-                <span class="LZTUpModalMeshItemAuthor">Lolzteam</span>
-              </div>
-            </div>
-          </div>
+          ${await getAppearLogosContent()}
         </div>
         <div id="LZTUpMarketLogoSubContainer" class="LZTUpSubMenu">
-          <div id="LZTUpModalCell">
-            <div class="bold title">Логотип маркета:</div>
-            <div class="LZTUpModalMesh" id="LZTUpModalMarketLogosContainer">
-              <div class="LZTUpModalMeshItem ${marketLogo === 0 ? 'active' : ''}" id="set_default_marketlogo" data-checked="${marketLogo === 0 ? 'true' : 'false'}">
-                <img src="https://raw.githubusercontent.com/ilyhalight/lzt-upgrade/master/public/static/img/logos/market/default.svg" alt="logo">
-                <span class="LZTUpModalMeshItemName" data-shortname="default">По умолчанию</span>
-                <span class="LZTUpModalMeshItemAuthor">Lolzteam</span>
-              </div>
-            </div>
-          </div>
+          ${await getAppearMarketLogosContent()}
         </div>
         <div id="LZTUpThemesSubContainer" class="LZTUpSubMenu">
-          <div id="LZTUpModalCell">
-            <div id="LZTUpModalChecksContainer">
-              <input type="checkbox" id="theme_auto_reload" ${themeAutoReload === 1 ? "checked" : ''}>
-              <label for="theme_auto_reload">
-                Автоматически обновлять страницу после смены темы
-                <span class="fa fa-exclamation-triangle Tooltip" title="При включение/отключение этой функции страница будет перезагружена"></span>
-              </label>
-            </div>
-            <div id="LZTUpModalCell">
-              <div class="bold title">Темы:</div>
-              <div class="LZTUpModalMesh" id="LZTUpModalThemesContainer">
-                <div class="LZTUpModalMeshItem theme ${themeID === 0 ? 'active' : 'none'}" id="set_default_theme" data-checked="${themeID === 0 ? 'true' : 'false'}">
-                  <span class="LZTUpModalMeshItemName" data-shortname="default">Обычная</span>
-                  <span class="LZTUpModalMeshItemAuthor">Lolzteam</span>
-                </div>
-              </div>
-            </div>
-          </div>
+          ${await getAppearThemesContent()}
         </div>
         <div id="LZTUpSettingsContainer" class="LZTUpSubMenu">
-          <div id="LZTUpIconButton" class="LZTUpSaveSettings">
-            <i id="LZTUpIcon" class="far fa-file-download"></i>
-            <span id="LZTUpText">Сохранить настройки в файл</span>
-          </div>
-          <div id="LZTUpIconButton" class="LZTUpUploadSettings">
-            <i id="LZTUpIcon" class="far fa-upload"></i>
-            <span id="LZTUpText">Загрузить настройки из файла</span>
-          </div>
+          ${await getSettingsContent()}
         </div>
         <div id="LZTUpUpdateContainer" class="LZTUpSubMenu">
-          <div id="LZTUpIconButton" class="LZTUpCheckUpdate">
-            <i id="LZTUpIcon" class="far fa-cloud-download"></i>
-            <span id="LZTUpText">Проверить наличие обновлений</span>
-          </div>
-          <div id="LZTUpModalChecksContainer">
-            <input type="checkbox" id="check_updates_on_load" ${checkUpdatesOnLoad === 1 ? "checked" : ''}>
-            <label for="check_updates_on_load">Проверять обновления при загрузке страницы</label>
-          </div>
+          ${await getUpdatesContent()}
         </div>
         <div id="LZTUpInformationContainer" class="LZTUpSubMenu">
           <div id="LZTUpListLinks"></div>
@@ -1012,6 +1178,7 @@
             btnStatus = 'checked';
           }
         }
+
         $reportButtonsSelect.append(`
           <li style = "list-style: none;">
             <label for="set_${reportButton.id}_reportbtn">
@@ -1271,7 +1438,7 @@
 
     async function reloadNickStyle() {
       try {
-        var uniqueData = await uniqueStyleDB.read().then(value => {return(value)}).catch(err => {Logger.error(err); return false}) || {};
+        var uniqueData = await uniqueStyleDB.read().then(value => {return(value)}).catch(err => {Logger.error(err); return false});
         if (typeof(uniqueData) === 'object') {
           if (uniqueData.nickStyle !== '') {
             updateNickStyle(uniqueData.nickStyle);
@@ -1350,7 +1517,7 @@
 
     async function reloadBannerStyle() {
       try {
-        var uniqueData = await uniqueStyleDB.read().then(value => {return(value)}).catch(err => {Logger.error(err); return false}) || {};
+        const uniqueData = await uniqueStyleDB.read().then(value => {return(value)}).catch(err => {Logger.error(err); return false});
         if (typeof(uniqueData) === 'object') {
           if (uniqueData.bannerText !== '') {
             updateBannerStyle(uniqueData.bannerStyle, uniqueData.bannerText);
@@ -1978,7 +2145,7 @@
 
     async function reloadUserNoticeMarks() {
       let dbUniqueStyleData = await uniqueStyleDB.read().then(value => {return(value)}).catch(err => {Logger.error(err); return false}) || {};
-      if (dbUniqueStyleData && dbUniqueStyleData.noticesMarks.length) {
+      if (dbUniqueStyleData && dbUniqueStyleData?.noticesMarks?.length) {
         if (typeof (dbUniqueStyleData.noticesMarks) === 'string') {
           let noticesMarks = dbUniqueStyleData.noticesMarks.split(',');
           for (const noticeMark of noticesMarks) {
@@ -2079,7 +2246,7 @@
           error: err => Logger.error(`LZT Upgrade: Не удалось загрузить логотип маркета `, err)
         });
       }
-      if (dbAppearData.reportButtonsInPost.length > 0) {
+      if (dbAppearData.reportButtonsInPost?.length > 0) {
         if (typeof (dbAppearData.reportButtonsInPost) === 'string') {
           let buttons = dbAppearData.reportButtonsInPost.split(',');
           for (const button of buttons) {
@@ -2160,7 +2327,7 @@
       $(document).on('click', '#LZTUpResetUniqueDB', async function () {
         await uniqueStyleDB.delete();
         await uniqueStyleDB.init();
-        alert('Кастомные стили сброшены');
+        registerAlert('Кастомные стили сброшены');
         await sleep(500);
         window.location.reload();
       });
@@ -2170,7 +2337,7 @@
         if (nickStyleNew.length < 1501) {
           await uniqueStyleDB.update({nickStyle: nickStyleNew});
         } else {
-          alert('Стиль ника не должен превышать 1500 символов!')
+          registerAlert('Стиль ника не должен превышать 1500 символов!')
           Logger.log('Не удалось сохранить стиль ника. Стиль ника не должен превышать 1500 символов!')
         }
 
@@ -2178,7 +2345,7 @@
         if (bannerStyleNew.length < 1501) {
           await uniqueStyleDB.update({bannerStyle: bannerStyleNew});
         } else {
-          alert('Стиль лычки не должен превышать 1500 символов!')
+          registerAlert('Стиль лычки не должен превышать 1500 символов!')
           Logger.log('Не удалось сохранить стиль лычки. Стиль лычки не должен превышать 1500 символов!')
         }
 
@@ -2186,7 +2353,7 @@
         if (bannerTextNew.length < 25) {
           await uniqueStyleDB.update({bannerText: bannerTextNew});
         } else {
-          alert('Текст в лычке не должен превышать 24 символов!')
+          registerAlert('Текст в лычке не должен превышать 24 символов!')
           Logger.log('Не удалось сохранить текст в лычке. Текст в лычке не должен превышать 24 символов!')
         }
 
@@ -2194,7 +2361,7 @@
         if (badgeIconNew.length < 3001) {
           await uniqueStyleDB.update({badgeIcon: badgeIconNew});
         } else {
-          alert('Иконка на аватарке не должна превышать 3000 символов!')
+          registerAlert('Иконка на аватарке не должна превышать 3000 символов!')
           Logger.log('Не удалось сохранить иконку на аватарке. Иконка на аватарке не должен превышать 3000 символов!')
         }
 
@@ -2208,7 +2375,7 @@
         if (badgeTextNew.length < 25) {
           await uniqueStyleDB.update({badgeText: badgeTextNew});
         } else {
-          alert('Текст в иконке аватарки не должен превышать 24 символов!')
+          registerAlert('Текст в иконке аватарки не должен превышать 24 символов!')
           Logger.log('Не удалось сохранить текст в иконке аватарки. Текст в иконке аватарки не должен превышать 24 символов!')
         }
 
@@ -2353,7 +2520,7 @@
       $(document).on('click', '#LZTUpResetContestsDB', async function () {
         await contestsDB.delete();
         await contestsDB.init();
-        alert('Настройки розыгрышей LZT Upgrade сброшены');
+        registerAlert('Настройки розыгрышей LZT Upgrade сброшены');
         await sleep(500);
         window.location.reload();
       });
@@ -2442,7 +2609,7 @@
       $(document).on('click', '#LZTUpResetUsersDB', async function () {
         await usersDB.delete();
         await usersDB.init();
-        alert('Настройки пользователей LZT Upgrade сброшены');
+        registerAlert('Настройки пользователей LZT Upgrade сброшены');
         await sleep(500);
         window.location.reload();
       });
@@ -2485,7 +2652,7 @@
       $(document).on('click', '#LZTUpResetAppearDB', async function () {
         await appearDB.delete();
         await appearDB.init();
-        alert('Настройки "Внешнего вида" LZT Upgrade сброшены');
+        registerAlert('Настройки "Внешнего вида" LZT Upgrade сброшены');
         await sleep(500);
         window.location.reload();
       });
@@ -2675,6 +2842,14 @@
       });
 
       // Updates
+      $(document).on('click', '#LZTUpResetSettingsDB', async function () {
+        await settingsDB.delete();
+        await settingsDB.init();
+        registerAlert('Настройки "Настроек" LZT Upgrade сброшены');
+        await sleep(500);
+        window.location.reload();
+      });
+
       $(document).on('click', '.LZTUpCheckUpdate', async () => await checkUpdate(true))
 
       $(document).on('click', '#check_updates_on_load', async function () {
