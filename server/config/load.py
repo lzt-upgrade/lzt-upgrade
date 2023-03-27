@@ -1,11 +1,15 @@
 import os
-import toml
 from dotenv import load_dotenv
 
+try:
+    import tomllib
+except ModuleNotFoundError:
+    import tomli as tomllib
+
 def load_cfg():
-    """Загружает конфиг файл"""
-    cfg = toml.load('./config/config.cfg')
-    return cfg
+    """ Загружает конфигурационный файл """
+    with open('./config/config.cfg', 'rb') as f:
+        return tomllib.load(f)
 
 def load_env():
     """Загружает .env файл"""
