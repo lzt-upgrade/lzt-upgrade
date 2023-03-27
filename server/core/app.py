@@ -3,12 +3,16 @@ from fastapi.staticfiles import StaticFiles
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.openapi.utils import get_openapi
 
+from config.load import load_cfg
+
+settings = load_cfg()
+
 def custom_openapi():
     if app.openapi_schema:
         return app.openapi_schema
     openapi_schema = get_openapi(
         title="LZT Upgrade",
-        version="1.0.0",
+        version=settings['app']['version'],
         description="API for interaction between the extension and our server",
         terms_of_service="/terms/",
         license_info = {
@@ -26,6 +30,10 @@ tags_meta = [
     {
         'name': 'Themes',
         'description': 'Operations with themes for the extension'
+    },
+    {
+        'name': 'Logos',
+        'description': 'Operations with logos for the extension'
     },
 ]
 
