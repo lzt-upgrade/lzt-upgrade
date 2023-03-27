@@ -53,7 +53,7 @@ def init_logging():
         log_name = f'./logs/main{datetime.now().strftime("%Y%m%d")}.log'
         filehandler = logging.FileHandler(log_name)
         filehandler.setLevel(settings['logging']['level'])
-        log_handlers.append(filehandler)
+        log_handlers.append(filehandler) # type: ignore
 
     logging.basicConfig(
         level = settings['logging']['level'],
