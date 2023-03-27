@@ -1,4 +1,4 @@
-from fastapi import APIRouter, status, HTTPException 
+from fastapi import APIRouter, status, HTTPException, Response
 from fastapi.responses import JSONResponse
 
 from models.logo import Logo
@@ -16,11 +16,10 @@ get_logo_responses = {
     200: {'description': 'OK', 'model': Logo},
     204: {'description': 'No content'},
     404: {'description': 'Not Found'},
-    422: {'description': 'Unprocessable Entity'},
 }
 
-@router.get('/logos', response_class = JSONResponse, summary = 'Get logos', responses = get_logos_responses)
-async def index(target: int = None):
+@router.get('/logos', response_class = JSONResponse, summary = 'Get logos', responses = get_logos_responses) # type: ignore
+async def logos(target: int|None = None) -> Response:
     """
         Get availabled logos from json file (auto-generated from database)
         
@@ -40,8 +39,8 @@ async def index(target: int = None):
         return JSONResponse(content = response, status_code = status.HTTP_200_OK)
     raise HTTPException(status_code = status.HTTP_204_NO_CONTENT)
 
-@router.get('/logo', response_class = JSONResponse, summary = 'Get logo by uid', responses = get_logo_responses)
-async def index(uid: int = None):
+@router.get('/logo', response_class = JSONResponse, summary = 'Get logo by uid', responses = get_logo_responses) # type: ignore
+async def index(uid: int|None = None) -> Response:
     """
         Get logo by uid from json file (auto-generated from database)
         
