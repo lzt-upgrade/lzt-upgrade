@@ -12,7 +12,7 @@ async def save_logos_to_json():
     """Сохраняет темы из базы данных в json файл"""
     logos = await DbLogosController().get_all()
     async with aiofiles.open('config/logos.json', 'w', encoding = 'utf-8') as f:
-        await f.write(json.dumps(logos))
+        await f.write(json.dumps(logos, indent = 4))
         await f.close()
 
 async def get_logos_json(target = None):
