@@ -31,8 +31,8 @@ class DbUserSignsService:
         self.log.error(f'Failed connection to database')
         return False
 
-    async def add_user_signs(self, user_sign: UserSign) -> bool:
-        """Добавляет пользователю значки в базу данных
+    async def add_user_sign(self, user_sign: UserSign) -> bool:
+        """Добавляет пользователю значок в базу данных
 
         Args:
             user_sign (UserSign): Объект пользовательского значка
