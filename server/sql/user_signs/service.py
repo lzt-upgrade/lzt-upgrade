@@ -28,7 +28,7 @@ class DbUserSignsService:
                 return False
             finally:
                 db.close()
-        self.log.error(f'Failled connection to database')
+        self.log.error(f'Failed connection to database')
         return False
 
     async def add_user_signs(self, user_sign: UserSign) -> bool:
@@ -53,7 +53,7 @@ class DbUserSignsService:
                 return False
             finally:
                 db.close()
-        self.log.error(f'Failled connection to database')
+        self.log.error(f'Failed connection to database')
         return False
 
     async def get(self, signid: int|None = None, userid: int|None = None) -> list[UserSign]|bool:
@@ -84,5 +84,5 @@ class DbUserSignsService:
                 return False
             finally:
                 db.close()
-        self.log.error(f'Failled connection to database')
+        self.log.error(f'Failed connection to database')
         return False
