@@ -45,7 +45,8 @@ class DbUserSignsService:
         if type(db) is aiomysql.Connection:
             try:
                 async with db.cursor() as cursor:
-                    await cursor.execute('INSERT INTO `lzt_user_signs` (`userid`, `signid`) VALUES (%s, %s)', (user_sign.userid, user_sign.signid))
+                    await cursor.execute('INSERT INTO `lzt_user_signs` (`userid`, `signid`, `created_at`) VALUES (%s, %s, %s)',
+                                        (user_sign.userid, user_sign.signid, user_sign.created_at))
                     await db.commit()
                     return True
             except Exception as err:
