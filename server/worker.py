@@ -2,8 +2,8 @@ import logging
 from fastapi_utils.tasks import repeat_every
 
 from core.app import app
-from sql.users.controller import DbUsersController
 from sql.user_signs.controller import DbUserSignsController
+from sql.signs.controller import DbSignsController
 from sql.themes.controller import DbThemesController
 from sql.logos.controller import DbLogosController
 from utils.themes import save_themes_to_json, check_themes
@@ -16,8 +16,8 @@ def init_worker():
     @app.on_event('startup')
     async def startup():
         log.info('Worker started')
-        await DbUsersController().init()
         await DbUserSignsController().init()
+        await DbSignsController().init()
         await DbThemesController().init()
         await DbLogosController().init()
         log.info('DB initialized')
