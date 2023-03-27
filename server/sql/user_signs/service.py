@@ -16,7 +16,8 @@ class DbUserSignsService:
                 await cursor.execute("""CREATE TABLE IF NOT EXISTS `lzt_user_signs` (
                     `uid` INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
                     `userid` INT NOT NULL,
-                    `signid` INT NOT NULL
+                    `signid` INT NOT NULL,
+                    `created_at` BIGINT NOT NULL DEFAULT UNIX_TIMESTAMP()
                 )""")
                 return True
         except AttributeError as err:
