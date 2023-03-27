@@ -12,7 +12,7 @@ get_themes_responses = {
     404: {'description': 'Not Found'},
 }
 
-@router.get('/themes', tags = ['Themes'], response_class = JSONResponse, summary = 'Get themes', responses = get_themes_responses)
+@router.get('/themes', response_class = JSONResponse, summary = 'Get themes', responses = get_themes_responses)
 async def index():
     """
         Get availabled themes from json file (auto-generated from database)
@@ -30,7 +30,5 @@ async def index():
     """
     response = await get_themes_json()
     if response and len(response) > 0:
-        status_code = status.HTTP_200_OK
-    else:
-        raise HTTPException(status_code = status.HTTP_204_NO_CONTENT)
-    return JSONResponse(content = response, status_code = status_code)
+        return JSONResponse(content = response, status_code = status.HTTP_200_OK)
+    raise HTTPException(status_code = status.HTTP_204_NO_CONTENT)
