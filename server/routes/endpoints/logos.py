@@ -19,7 +19,7 @@ get_logo_responses = {
     422: {'description': 'Unprocessable Entity'},
 }
 
-@router.get('/logos', tags = ['Logos'], response_class = JSONResponse, summary = 'Get logos', responses = get_logos_responses)
+@router.get('/logos', response_class = JSONResponse, summary = 'Get logos', responses = get_logos_responses)
 async def index(target: int = None):
     """
         Get availabled logos from json file (auto-generated from database)
@@ -37,12 +37,10 @@ async def index(target: int = None):
     """
     response = await get_logos_json(target)
     if response and len(response) > 0:
-        status_code = status.HTTP_200_OK
-    else:
-        raise HTTPException(status_code = status.HTTP_204_NO_CONTENT)
-    return JSONResponse(content = response, status_code = status_code)
+        return JSONResponse(content = response, status_code = status.HTTP_200_OK)
+    raise HTTPException(status_code = status.HTTP_204_NO_CONTENT)
 
-@router.get('/logo', tags = ['Logos'], response_class = JSONResponse, summary = 'Get logo by uid', responses = get_logo_responses)
+@router.get('/logo', response_class = JSONResponse, summary = 'Get logo by uid', responses = get_logo_responses)
 async def index(uid: int = None):
     """
         Get logo by uid from json file (auto-generated from database)
@@ -60,7 +58,5 @@ async def index(uid: int = None):
     """
     response = await get_logo_by_json(uid)
     if response and len(response) > 0:
-        status_code = status.HTTP_200_OK
-    else:
-        raise HTTPException(status_code = status.HTTP_204_NO_CONTENT)
-    return JSONResponse(content = response, status_code = status_code)
+        return JSONResponse(content = response, status_code = status.HTTP_200_OK)
+    raise HTTPException(status_code = status.HTTP_204_NO_CONTENT)
