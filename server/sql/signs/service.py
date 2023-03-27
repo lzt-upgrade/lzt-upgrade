@@ -28,7 +28,7 @@ class DbSignsService:
                 return False
             finally:
                 db.close()
-        self.log.error(f'Failled connection to database')
+        self.log.error(f'Failed connection to database')
         return False
 
     async def add_sign(self, sign: Sign) -> bool:
@@ -53,7 +53,7 @@ class DbSignsService:
                 return False
             finally:
                 db.close()
-        self.log.error(f'Failled connection to database')
+        self.log.error(f'Failed connection to database')
         return False
 
     async def get(self, system_name: str|None = None, uid: int|None = None) -> list[Sign]|bool:
@@ -84,5 +84,5 @@ class DbSignsService:
                 return False
             finally:
                 db.close()
-        self.log.error(f'Failled connection to database')
+        self.log.error(f'Failed connection to database')
         return False
