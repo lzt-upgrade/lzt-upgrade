@@ -16,8 +16,7 @@ class DbUserSignsService:
                 await cursor.execute("""CREATE TABLE IF NOT EXISTS `lzt_user_signs` (
                     `uid` INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
                     `userid` INT NOT NULL,
-                    `donater` INT NOT NULL DEFAULT 0,
-                    `developer` INT NOT NULL DEFAULT 0
+                    `signid` INT NOT NULL
                 )""")
                 return True
         except AttributeError as err:
@@ -29,13 +28,12 @@ class DbUserSignsService:
         finally:
             db.close() if db else None
 
-    async def add_user_signs(self, userid: int, donater: int, developer: int):
+    async def add_user_signs(self, userid: int, signid: int):
         """Добавляет пользователю значки в базу данных
 
         Args:
             userid: id пользователя с лолза
-            donater: галочка донатера
-            developer: галочка разработчика
+            signid: id значка
 
         Returns:
             True: Если удалось добавить пользователя
@@ -44,7 +42,7 @@ class DbUserSignsService:
         db = await DefaultConnector().connect()
         try:
             async with db.cursor() as cursor:
-                await cursor.execute('INSERT INTO `lzt_user_signs` (`userid`, `donater`, `developer`) VALUES (%s)', (userid, donater, developer))
+                await cursor.execute('INSERT INTO `lzt_user_signs` (`userid`, `signid`) VALUES (%s, %s)', (userid, signid))
                 await db.commit()
                 return True
         except AttributeError as err:
@@ -56,12 +54,11 @@ class DbUserSignsService:
         finally:
             db.close() if db else None
 
-    async def get(self, sign: str = None):
+    async def get(self, signid: str = None, userid: int = None):
         """Возвращает пользовательские значки из базы данных
 
         Args:
-            userid: id пользователя (default: None)
-            group: группа пользователя (default: None)
+            signid: id значка
 
         Returns:
             data: Если удалось получить данные
@@ -70,20 +67,19 @@ class DbUserSignsService:
         db = await DefaultConnector().connect()
         try:
             async with db.cursor() as cursor:
-                match (sign):
-                    case 'donater':
-                        await cursor.execute('SELECT * FROM `lzt_user_signs` WHERE `donater` = %s', (1, ))
-                    case 'developer':
-                        await cursor.execute('SELECT * FROM `lzt_user_signs` WHERE `developer` = %s', (1, ))
-                    case _:
-                        await cursor.execute('SELECT * FROM `lzt_user_signs`')
+                if signid:
+                    await cursor.execute('SELECT * FROM `lzt_user_signs` WHERE `signid` = %s', (signid, ))
+                elif userid:
+                    await cursor.execute('SELECT * FROM `lzt_user_signs` WHERE `userid` = %s', (userid, ))
+                else:
+                    await cursor.execute('SELECT * FROM `lzt_user_signs`')
                 result = await cursor.fetchall()
                 return result
         except AttributeError as err:
             self.log.error(f'Failled connection to database: {err}')
             return None
         except Exception as err:
-            self.log.exception(f'Failed to get user signs (sign: {sign}) from database ({self.database_sc}): {err}')
+            self.log.exception(f'Failed to get user signs (signid: {signid}, userid: {userid}) from database ({self.database_sc}): {err}')
             return None
         finally:
             db.close() if db else None
