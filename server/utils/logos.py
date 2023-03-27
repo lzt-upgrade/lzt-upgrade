@@ -30,7 +30,7 @@ async def get_logos_json(target = None):
     except FileNotFoundError:
         return []
 
-async def get_logo_by_json(uid: int):
+async def get_logo_by_json(uid: int|None):
     logos = await get_logos_json()
     if logos:
         for logo in logos:
