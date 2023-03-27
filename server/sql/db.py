@@ -7,14 +7,14 @@ import aiomysql
 class DefaultConnector:
 
     def __init__(self):
-        self._host = os.environ.get('MYSQL_HOST')
+        self._host = os.environ.get('MYSQL_HOST') or ''
         self._db = os.environ.get('MYSQL_DB')
         self._user = os.environ.get('MYSQL_USER')
-        self._pass = os.environ.get('MYSQL_PASS')
+        self._pass = os.environ.get('MYSQL_PASS') or 'root'
         self.log = logging.getLogger('server')
         self.loop = asyncio.get_event_loop()
 
-    async def connect(self):
+    async def connect(self) -> aiomysql.Connection|None|bool:
         try:
             db = await aiomysql.connect(host = self._host,
                                         user = self._user,
