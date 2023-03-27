@@ -1,6 +1,6 @@
 import logging
-
 import aiomysql
+
 from models.sign import Sign
 from sql.db import DefaultConnector
 
