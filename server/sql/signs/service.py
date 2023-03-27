@@ -60,7 +60,8 @@ class DbSignsService:
         """Возвращает значки из базы данных
 
         Args:
-            signid: id значка
+            system_name: системное имя значка
+            uid: уникальный ID значка
 
         Returns:
             data: Если удалось получить данные
