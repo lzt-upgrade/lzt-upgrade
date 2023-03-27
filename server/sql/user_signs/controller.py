@@ -9,7 +9,7 @@ class DbUserSignsController:
 
     async def add_user_signs(self, user_sign: UserSign) -> bool:
         """Добавляет пользователю значок в базе данных"""
-        return await DbUserSignsService().add_user_signs(user_sign)
+        return await DbUserSignsService().add_user_sign(user_sign)
 
     async def get_all(self) -> list[UserSign]|bool:
         """Возвращает значки всех пользователей из базы данных"""
