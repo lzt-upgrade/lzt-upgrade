@@ -49,7 +49,7 @@ async def save_themes_to_json():
     """Сохраняет темы из базы данных в json файл"""
     themes = await DbThemesController().get_all()
     async with aiofiles.open('config/themes.json', 'w', encoding = 'utf-8') as f:
-        await f.write(json.dumps(themes))
+        await f.write(json.dumps(themes, indent = 4))
         await f.close()
 
 async def get_themes_json():
