@@ -7,7 +7,7 @@ from sql.db import DefaultConnector
 
 class DbSignsService:
     def __init__(self) -> None:
-        self.database_sc = 'lzt_signs' # Название таблицы в базе данных (для логов)
+        self.database_sc: str = 'lzt_signs' # Название таблицы в базе данных (для логов)
         self.log = logging.getLogger('mysql')
 
     async def init_table(self) -> bool:
