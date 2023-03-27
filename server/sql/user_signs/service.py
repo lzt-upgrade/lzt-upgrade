@@ -48,9 +48,6 @@ class DbUserSignsService:
                     await cursor.execute('INSERT INTO `lzt_user_signs` (`userid`, `signid`) VALUES (%s, %s)', (user_sign.userid, user_sign.signid))
                     await db.commit()
                     return True
-            except AttributeError as err:
-                self.log.error(f'Failled connection to database: {err}')
-                return False
             except Exception as err:
                 self.log.exception(f'Failed to add a user to the database ({self.database_sc}): {err}')
                 return False
@@ -82,9 +79,6 @@ class DbUserSignsService:
                         await cursor.execute('SELECT * FROM `lzt_user_signs`')
                     result = await cursor.fetchall()
                     return result
-            except AttributeError as err:
-                self.log.error(f'Failled connection to database: {err}')
-                return False
             except Exception as err:
                 self.log.exception(f'Failed to get user signs (signid: {signid}, userid: {userid}) from database ({self.database_sc}): {err}')
                 return False
