@@ -14,10 +14,10 @@ class DbUserSignsController:
         """Возвращает значки всех пользователей из базы данных"""
         return await DbUserSignsService().get()
 
-    async def get_by_signid(self, signid: str):
+    async def get_by_signid(self, signid: int):
         """Возвращает пользователей с заданным значком из базы данных"""
-        return await DbUserSignsService().get(signid)
+        return await DbUserSignsService().get(userid = signid)
 
-    async def get_by_userid(self, userid: str):
+    async def get_by_userid(self, userid: int):
         """Возвращает значки пользователя из базы данных по айди пользователя"""
         return await DbUserSignsService().get(userid = userid)

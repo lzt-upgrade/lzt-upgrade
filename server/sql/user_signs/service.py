@@ -17,7 +17,7 @@ class DbUserSignsService:
                     `uid` INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
                     `userid` INT NOT NULL,
                     `signid` INT NOT NULL,
-                    `created_at` BIGINT NOT NULL DEFAULT UNIX_TIMESTAMP()
+                    `created_at` BIGINT NOT NULL DEFAULT (UNIX_TIMESTAMP())
                 )""")
                 return True
         except AttributeError as err:
@@ -55,7 +55,7 @@ class DbUserSignsService:
         finally:
             db.close() if db else None
 
-    async def get(self, signid: str = None, userid: int = None):
+    async def get(self, signid: int|None = None, userid: int|None = None):
         """Возвращает пользовательские значки из базы данных
 
         Args:
