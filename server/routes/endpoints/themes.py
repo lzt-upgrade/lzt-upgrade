@@ -12,7 +12,7 @@ get_themes_responses = {
     404: {'description': 'Not Found'},
 }
 
-@router.get('/themes', response_class = JSONResponse, summary = 'Get themes', responses = get_themes_responses)
+@router.get('/themes', response_class = JSONResponse, summary = 'Get themes', responses = get_themes_responses) # type: ignore
 async def index():
     """
         Get availabled themes from json file (auto-generated from database)
