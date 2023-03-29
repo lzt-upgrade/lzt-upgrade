@@ -14,6 +14,7 @@ async def save_logos_to_json():
     async with aiofiles.open('config/logos.json', 'w', encoding = 'utf-8') as f:
         await f.write(json.dumps(logos, indent = 4))
         await f.close()
+        log.info('Logos successfully saved to json file')
 
 async def get_logos_json(target = None):
     try:
