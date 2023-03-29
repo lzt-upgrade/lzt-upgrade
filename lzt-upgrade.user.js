@@ -20,6 +20,7 @@
 // @grant        GM_info
 // @resource     styles https://cdn.jsdelivr.net/gh/ilyhalight/lzt-upgrade@2b62070fa48ae8fd9bb32902f4761680105aca46/public/css/style.css
 // @resource     coloris https://cdn.jsdelivr.net/gh/ilyhalight/lzt-upgrade@1.1.0/public/css/coloris.css
+// @resource     sign http://localhost:3000/css/sign.css
 // @require      https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js
 // @require      https://cdn.jsdelivr.net/gh/ilyhalight/lzt-upgrade@e81964a65edee7f7a3e1d7027ef2d29d8759e9b8/public/static/js/lztupgrade/utils.js
 // @require      https://cdn.jsdelivr.net/gh/ilyhalight/lzt-upgrade@b357ca50bee257e07a09360c05d735626aec01e5/public/static/js/coloris/coloris.min.js
@@ -45,6 +46,7 @@
     'getThemes': 'https://lztupgrade.toiloff.ru/api/themes',
     'getLogos': 'https://lztupgrade.toiloff.ru/api/logos',
     'getLogoByUID': 'https://lztupgrade.toiloff.ru/api/logo',
+    'getSigns': 'http://localhost:5000/api/users/signs'
   }
 
   const currentDomain = window.location.hostname;
@@ -71,11 +73,15 @@
     .then((response) => response.text().then(styles => GM_addStyle(styles)));
     fetch('https://raw.githubusercontent.com/ilyhalight/lzt-upgrade/master/public/css/coloris.css')
     .then((response) => response.text().then(coloris => GM_addStyle(coloris)));
+    fetch('https://raw.githubusercontent.com/ilyhalight/lzt-upgrade/master/public/css/sign.css')
+    .then((response) => response.text().then(sign => GM_addStyle(sign)));
   } else {
     const styles = GM_getResourceText("styles");
     const coloris = GM_getResourceText("coloris");
+    const sign = GM_getResourceText("sign");
     GM_addStyle(styles);
     GM_addStyle(coloris);
+    GM_addStyle(sign);
   }
 
   const uniqueStyleDB = new LZTUniqueStyleDB();
@@ -140,6 +146,7 @@
       if (body.attr('id') !== 'LZTUpErrorPage') {
         body.attr('id', 'LZTUpErrorPage');
         body.find('article > div').append('<img src="https://i.imgur.com/iVmKDr7.gif" alt="utya_duck_rain" loading="lazy">');
+        return 'site error';
       }
       return 'not auth';
     }
@@ -423,14 +430,14 @@
           let authorNameArray = authorName.split(',');
           let res = '';
           for (i = 0; i < authorIDArray.length; i++) {
-            res += `<a href="https://${window.location.hostname}/members/${authorIDArray[i]}">${XenForo.htmlspecialchars(authorNameArray[i])}</a>${i === authorIDArray.length - 1 ? '' : ', '}`;
+            res += `<a href="https://${currentDomain}/members/${authorIDArray[i]}">${XenForo.htmlspecialchars(authorNameArray[i])}</a>${i === authorIDArray.length - 1 ? '' : ', '}`;
           }
           return res;
         } else {
-          return `<a href="https://${window.location.hostname}/members/${authorID}">${XenForo.htmlspecialchars(authorName)}</a>`;
+          return `<a href="https://${currentDomain}/members/${authorID}">${XenForo.htmlspecialchars(authorName)}</a>`;
         }
       } else if (typeof (authorID) === 'number') {
-        return `<a href="https://${window.location.hostname}/members/${authorID}">${XenForo.htmlspecialchars(authorName)}</a>`;
+        return `<a href="https://${currentDomain}/members/${authorID}">${XenForo.htmlspecialchars(authorName)}</a>`;
       } else {
         return `${XenForo.htmlspecialchars(authorName)}`;
       }
@@ -490,7 +497,7 @@
               <select id="LZTUpSelectGroupsUniq" class="button" type="button">
                 <option disabled selected value="none">Выбрать из групп форума</option>
               </select>
-              <a href="https://${window.location.hostname}/account/uniq/test" class="button" target="_blank">
+              <a href="https://${currentDomain}/account/uniq/test" class="button" target="_blank">
                 <span>
                   <span class="SpoilerTitle">Выбрать готовый уник</span>
                 </span>
@@ -1676,7 +1683,7 @@
           if (links.length) {
             $(links).map((element, value) => {
               if (element <= amount) {
-                var win = window.open(`https://${window.location.hostname}/${value}`)
+                var win = window.open(`https://${currentDomain}/${value}`)
                 win ? win.focus() : alert('Разрешите доступ к всплывающим окнам для этого сайта')
               } else {
                 return;
