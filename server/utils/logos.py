@@ -2,7 +2,6 @@ import json
 import aiofiles
 import logging
 
-from aiofiles.os import remove as aioremove
 from sql.logos.controller import DbLogosController
 
 static_folder = 'static/themes'
