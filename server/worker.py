@@ -8,6 +8,7 @@ from sql.themes.controller import DbThemesController
 from sql.logos.controller import DbLogosController
 from utils.themes import save_themes_to_json, check_themes
 from utils.logos import save_logos_to_json
+from utils.user_signs import save_user_signs_to_json
 
 
 log = logging.getLogger('worker')
@@ -31,3 +32,4 @@ def init_worker():
             log.error(f'Failed to compile themes: {err}')
         await save_themes_to_json()
         await save_logos_to_json()
+        await save_user_signs_to_json()
