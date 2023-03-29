@@ -14,7 +14,7 @@ class Logo(BaseModel):
     - author (str): имя автора (если авторов больше одного, то через запятую)
     - author_userid (int|None): id автора (если авторов больше одного, то через запятую)
     - active (int): активен ли логотип
-    -created_at (int): время создания
+    - created_at (int): время создания
     """
     uid: int
     name: str
