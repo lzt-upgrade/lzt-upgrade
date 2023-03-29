@@ -6,15 +6,15 @@ class Theme(BaseModel):
     """Класс темы
 
     Args:
-        uid (int): ID темы
-        name (str): имя логотипа
-        file (str): имя CSS файла на сервере
-        author (str): имя автора (если авторов больше одного, то через запятую)
-        author_userid (int|None): id автора (если авторов больше одного, то через запятую)
-        accent_color (str): цвет заднего фона в блоке выбора тем
-        text_color (str): цвет текста в блоке выбора тем
-        active (int): активен ли логотип
-        created_at (int): время создания
+    - uid (int): ID темы
+    - name (str): имя логотипа
+    - file (str): имя CSS файла на сервере
+    - author (str): имя автора (если авторов больше одного, то через запятую)
+    - author_userid (int|None): id автора (если авторов больше одного, то через запятую)
+    - accent_color (str): цвет заднего фона в блоке выбора тем
+    - text_color (str): цвет текста в блоке выбора тем
+    - active (int): активен ли логотип
+    - created_at (int): время создания
     """
     uid: int
     name: str

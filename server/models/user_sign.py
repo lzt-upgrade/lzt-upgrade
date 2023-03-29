@@ -6,10 +6,10 @@ class UserSign(BaseModel):
     """Класс пользовательского значка
 
     Args:
-        uid (int): ID пользовательского значка
-        userid (int): ID пользователя
-        signid (int): ID значка
-        created_at (int): Время создания
+    - uid (int): ID пользовательского значка
+    - userid (int): ID пользователя
+    - signid (int): ID значка
+    - created_at (int): Время создания
     """
     uid: int
     userid: int
