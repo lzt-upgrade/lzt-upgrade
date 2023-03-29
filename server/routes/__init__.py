@@ -1,8 +1,9 @@
 from fastapi import APIRouter
 
-from routes.endpoints import themes, logos
+from routes.endpoints import themes, logos, users
 
-api_router = APIRouter()
-api_router.include_router(themes.router, prefix = '/api', tags = ['Themes'])
-api_router.include_router(logos.router, prefix = '/api', tags = ['Logos'])
+api_router = APIRouter(prefix='/api')
+api_router.include_router(themes.router, tags = ['Themes'])
+api_router.include_router(logos.router, tags = ['Logos'])
+api_router.include_router(users.router, tags = ['Users'])
 
