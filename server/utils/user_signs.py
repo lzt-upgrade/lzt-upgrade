@@ -2,15 +2,14 @@ import json
 import aiofiles
 import logging
 
-from aiofiles.os import remove as aioremove
-from sql.logos.controller import DbLogosController
+from sql.user_signs.controller import DbUserSignsController
 
 static_folder = 'static/themes'
 log = logging.getLogger('worker')
 
 async def save_user_signs_to_json():
     """Сохраняет значки пользователей из базы данных в json файл"""
-    user_signs = await DbLogosController().get_all()
+    user_signs = await DbUserSignsController().get_all()
     async with aiofiles.open('config/user_signs.json', 'w', encoding = 'utf-8') as f:
         await f.write(json.dumps(user_signs, indent = 4))
         await f.close()
