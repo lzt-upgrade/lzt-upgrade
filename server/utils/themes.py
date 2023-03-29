@@ -2,7 +2,7 @@ import json
 import lesscpy
 import logging
 import aiofiles
-from aiofiles.os import listdir as aiolistdir, remove as aioremove
+from aiofiles.os import listdir as aiolistdir, remove as aioremove # type: ignore
 
 from sql.themes.controller import DbThemesController
 
