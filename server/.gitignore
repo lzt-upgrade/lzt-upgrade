@@ -5,6 +5,7 @@ static/themes/*.css
 # Temporarily db files
 config/themes.json
 config/logos.json
+config/user_signs.json
 
 # Editor
 .vscode
