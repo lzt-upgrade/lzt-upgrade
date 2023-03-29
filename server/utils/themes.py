@@ -4,9 +4,13 @@ import logging
 import aiofiles
 from aiofiles.os import listdir as aiolistdir, remove as aioremove # type: ignore
 
+from config.load import load_cfg
 from sql.themes.controller import DbThemesController
 
-static_folder = 'static/themes'
+
+settings = load_cfg()['app']
+
+static_folder = settings['theme_folder']
 log = logging.getLogger('worker')
 
 
