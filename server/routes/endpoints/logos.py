@@ -2,7 +2,7 @@ from fastapi import APIRouter, status, HTTPException, Response
 from fastapi.responses import JSONResponse
 
 from models.logo import Logo
-from utils.logos import get_logos_json, get_logo_by_json
+from utils.cache.logos import get_logos_json, get_logo_by_json
 
 router = APIRouter()
 

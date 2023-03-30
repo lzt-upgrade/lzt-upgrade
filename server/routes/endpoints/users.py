@@ -2,7 +2,7 @@ from fastapi import APIRouter, status, HTTPException
 from fastapi.responses import JSONResponse
 
 from models.user_sign import UserSign
-from utils.user_signs import get_user_signs_json
+from utils.cache.user_signs import get_user_signs_json
 
 router = APIRouter()
 

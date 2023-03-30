@@ -2,7 +2,7 @@ from fastapi import APIRouter, status, HTTPException
 from fastapi.responses import JSONResponse
 
 from models.theme import Theme
-from utils.themes import get_themes_json
+from utils.cache.themes import get_themes_json
 
 router = APIRouter()
 
