@@ -4,7 +4,6 @@ import logging
 
 from sql.logos.controller import DbLogosController
 
-static_folder = 'static/themes'
 log = logging.getLogger('worker')
 
 async def save_logos_to_json():

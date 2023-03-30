@@ -4,7 +4,6 @@ import logging
 
 from sql.user_signs.controller import DbUserSignsController
 
-static_folder = 'static/themes'
 log = logging.getLogger('worker')
 
 async def save_user_signs_to_json():
