@@ -33,6 +33,7 @@
 // @require      https://cdn.jsdelivr.net/gh/ilyhalight/lzt-upgrade@b3e7c27772ba3e8cab987e262b9ed86cfec2c30a/public/static/js/lztupgrade/api/themes.js
 // @require      https://cdn.jsdelivr.net/gh/ilyhalight/lzt-upgrade@9da314f6a1280655b2c94c8e2664d7121cb5766f/public/static/js/lztupgrade/Logger.js
 // @require      https://cdn.jsdelivr.net/gh/ilyhalight/lzt-upgrade@226918eb06d1c75e60d49a2352d6abd53afb341a/public/static/js/lztupgrade/checkUpdate.js
+// @require      http://localhost:3000/static/js/lztupgrade/api/requestJSON.js
 // @updateURL    https://github.com/ilyhalight/lzt-upgrade/raw/master/lzt-upgrade.user.js
 // @downloadURL  https://github.com/ilyhalight/lzt-upgrade/raw/master/lzt-upgrade.user.js
 // @supportURL   https://github.com/ilyhalight/lzt-upgrade/issues
@@ -46,7 +47,8 @@
     'getThemes': 'https://lztupgrade.toiloff.ru/api/themes',
     'getLogos': 'https://lztupgrade.toiloff.ru/api/logos',
     'getLogoByUID': 'https://lztupgrade.toiloff.ru/api/logo',
-    'getSigns': 'http://localhost:5000/api/users/signs'
+    'getUserSigns': 'http://localhost:5000/api/users/signs',
+    'getSigns': 'http://localhost:5000/api/signs',
   }
 
   const currentDomain = window.location.hostname;
@@ -165,12 +167,32 @@
 
     const username = $('.accountUsername span').text();
 
+    // get own userid
     const getUserid = () => {
       return XenForo._csrfToken.split(',')[0]
     }
 
+    // get own avatar
     const getUserAvatar = () => {
       return $('img.navTab--visitorAvatar').attr('src');
+    }
+
+    function getUserAvatarByUserId(userid) {
+      const avatars = $('a.avatar').toArray();
+      return avatars.find(avatar => avatar.classList.contains(`Av${userid}s`) || avatar.classList.contains(`Av${userid}m`));
+    }
+
+    function getUsernameByUserId(userid) {
+      const userAvatar = getUserAvatarByUserId(userid);
+      if (userAvatar !== undefined) {
+        const avatarImg = $(userAvatar).find('img');
+        const targetUsername = avatarImg?.attr('alt');
+        if (targetUsername) {
+          return targetUsername;
+        }
+        return $(userAvatar).parent().find('.username span')?.text();
+      }
+      return undefined;
     }
 
     const sleep = m => new Promise(r => setTimeout(r, m))
@@ -595,7 +617,10 @@
             </div>
             <div id="LZTUpModalChecksContainer">
               <input type="checkbox" id="contests_open_all" ${contestsAll === 1 ? "checked" : ''}>
-              <label for="contests_open_all">Кнопка "Открыть прогруженные"</label>
+              <label for="contests_open_all">
+                Кнопка "Открыть прогруженные"
+                <span class="fa fa-exclamation-triangle Tooltip" title="При частом использование данной кнопки вы можете получить временную блокировку участия в розыгрышах"></span>
+              </label>
             </div>
             <div id="LZTUpModalChecksContainer">
               <input type="checkbox" id="contests_info_top" ${contestsInfoTop === 1 ? "checked" : ''}>
@@ -1396,16 +1421,19 @@
     });
 
     function createColorPicker(element, elementCont) {
-      return Coloris({
-        el: element,
-        parent: elementCont,
-        theme: 'polaroid',
-        themeMode: 'lztupgrade',
-        formatToggle: true,
-        closeButton: true,
-        clearButton: true,
-        alpha: true,
-      });
+      try {
+        const colorPicker = Coloris({
+          el: element,
+          parent: elementCont,
+          theme: 'polaroid',
+          themeMode: 'lztupgrade',
+          formatToggle: true,
+          closeButton: true,
+          clearButton: true,
+          alpha: true,
+        });
+        return colorPicker
+      } catch {}
     }
 
     async function updateTooltips() {
@@ -1717,6 +1745,7 @@
       await reloadBannerStyle();
       await reloadUserBadges();
       await updateTooltips();
+      await reloadUserSigns();
       await reloadUserNoticeMarks();
     }
 
@@ -2194,6 +2223,57 @@
       XenForo.hasOwnProperty('threadNotify') && XenForo.threadNotify.hasOwnProperty('shareTypingActivity') ? XenForo.threadNotify.shareTypingActivity = 0 : null;
       XenForo.hasOwnProperty('ChatboxRTC') && XenForo.ChatboxRTC.hasOwnProperty('Start') ? XenForo.ChatboxRTC.Start.prototype.sendTypingMessage = () => {return} : null;
     }
+
+    // TODO: add by userid
+    function addUserSign(targetUsername, name, tooltipText = '', signLink = '') {
+      if (signLink !== '') {
+        Array.from($('.username span')).forEach(item => {
+          if ($(item).text() === targetUsername) {
+            const headerContent = $(item).parent()
+            if (!headerContent.parent()[0].classList.contains('navLink') && !headerContent.parent().find(`span.${name}`).length) {
+              const notice = $(`
+                <span id="LZTUpCustomSign" class="${name} Tooltip" title="${tooltipText}">
+                  <img src="${signLink}">
+                </span>
+              `);
+              headerContent.after(notice);
+              XenForo.Tooltip(notice);
+            }
+          }
+        });
+      }
+    }
+
+    async function loadUserSigns() {
+      const userSigns = await requestJSON(api_endpoints.getUserSigns);
+      userSigns.sort((a, b) => a.signid < b.signid);
+      if (userSigns && userSigns.length) {
+        const signs = await requestJSON(api_endpoints.getSigns);
+        if (signs && signs.length) {
+          for (const userSign of userSigns) {
+            const sign = signs.find(sign => sign.uid === userSign.signid);
+            if (sign) {
+              let targetUsername
+              if (userSign.uesrid !== getUserid()) {
+                targetUsername = getUsernameByUserId(userSign.userid);
+              } else {
+                targetUsername = username;
+              }
+              
+              if (targetUsername !== undefined) {
+                addUserSign(targetUsername, sign.system_name, sign.name, sign.image_link);
+              }
+            }
+          }
+        }
+      }
+    }
+
+    async function reloadUserSigns() {
+      $('#LZTUpCustomSign').remove();
+      await loadUserSigns();
+    }
+
 
     // * script start actions
     if (getUserid() === '') return 'not auth'; // superior auth check
