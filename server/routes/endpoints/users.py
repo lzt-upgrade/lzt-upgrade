@@ -17,12 +17,12 @@ get_user_signs_responses = {
 }
 
 post_user_sign_response = {
-    200: {'description': 'OK', 'model': UserSign},
+    200: {'description': 'OK'},
     204: {'description': 'No content'},
     404: {'description': 'Not Found'},
 }
 
-@router.get('/users/signs', response_class = JSONResponse, summary = 'Getting all users with signs', responses = get_user_signs_responses) # type: ignore
+@router.get('/users/signs', response_class = JSONResponse, summary = 'Getting all users with signs', responses = {**get_user_signs_responses})
 async def index() -> Response:
     """
         Getting all users with signs
@@ -38,9 +38,9 @@ async def index() -> Response:
         return JSONResponse(content = response, status_code = status.HTTP_200_OK)
     raise HTTPException(status_code = status.HTTP_204_NO_CONTENT)
 
-@router.post('/users/sign', response_class = JSONResponse, summary = 'Add user to user signs database', responses = post_user_sign_response) # type: ignore
+@router.post('/user/{userid}/sign', response_class = JSONResponse, summary = 'Add user to user signs database', responses = {**post_user_sign_response})
 @limiter.limit("5/minute")
-async def user_sign(request: Request, user_sign: UserSign, authorization: Annotated[str, Header()]) -> Response:
+async def user_sign(request: Request, userid: int, user_sign: UserSign, authorization: Annotated[str, Header()]) -> Response:
     """
         Add user to user signs database
         

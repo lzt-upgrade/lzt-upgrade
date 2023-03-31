@@ -18,7 +18,7 @@ get_logo_responses = {
     404: {'description': 'Not Found'},
 }
 
-@router.get('/logos', response_class = JSONResponse, summary = 'Get logos', responses = get_logos_responses) # type: ignore
+@router.get('/logos', response_class = JSONResponse, summary = 'Get logos', responses = {**get_logos_responses})
 async def logos(target: int|None = None) -> Response:
     """
         Get availabled logos from json file (auto-generated from database)
@@ -39,7 +39,7 @@ async def logos(target: int|None = None) -> Response:
         return JSONResponse(content = response, status_code = status.HTTP_200_OK)
     raise HTTPException(status_code = status.HTTP_204_NO_CONTENT)
 
-@router.get('/logo', response_class = JSONResponse, summary = 'Get logo by uid', responses = get_logo_responses) # type: ignore
+@router.get('/logo', response_class = JSONResponse, summary = 'Get logo by uid', responses = {**get_logo_responses})
 async def index(uid: int|None = None) -> Response:
     """
         Get logo by uid from json file (auto-generated from database)

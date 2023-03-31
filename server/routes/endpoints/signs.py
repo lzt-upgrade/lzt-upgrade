@@ -12,7 +12,7 @@ get_signs_responses = {
     404: {'description': 'Not Found'},
 }
 
-@router.get('/signs', response_class = JSONResponse, summary = 'Getting availabled signs', responses = get_signs_responses) # type: ignore
+@router.get('/signs', response_class = JSONResponse, summary = 'Getting availabled signs', responses = {**get_signs_responses}) # type: ignore
 async def index() -> Response:
     """
         Getting all availablerd signs
