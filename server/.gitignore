@@ -6,6 +6,7 @@ static/themes/*.css
 config/themes.json
 config/logos.json
 config/user_signs.json
+config/signs.json
 
 # Editor
 .vscode
