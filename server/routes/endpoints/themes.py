@@ -1,4 +1,4 @@
-from fastapi import APIRouter, status, HTTPException
+from fastapi import APIRouter, Response, status, HTTPException
 from fastapi.responses import JSONResponse
 
 from models.theme import Theme
@@ -13,7 +13,7 @@ get_themes_responses = {
 }
 
 @router.get('/themes', response_class = JSONResponse, summary = 'Get themes', responses = get_themes_responses) # type: ignore
-async def index():
+async def index() -> Response:
     """
         Get availabled themes from json file (auto-generated from database)
         

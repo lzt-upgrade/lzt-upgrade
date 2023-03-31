@@ -1,4 +1,4 @@
-from fastapi import APIRouter, status, HTTPException
+from fastapi import APIRouter, Response, status, HTTPException
 from fastapi.responses import JSONResponse
 
 from models.sign import Sign
@@ -13,7 +13,7 @@ get_signs_responses = {
 }
 
 @router.get('/signs', response_class = JSONResponse, summary = 'Getting availabled signs', responses = get_signs_responses) # type: ignore
-async def index():
+async def index() -> Response:
     """
         Getting all availablerd signs
         
