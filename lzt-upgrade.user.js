@@ -1512,14 +1512,14 @@
 
       const element = $('#QuickReply.simpleRedactor');
       element.on('keyup', async (e) => {
-        await updateUniqueStyles();
+        await updateUniqueStyles(updateSigns = false);
         await reloadReportButtons();
       });
       element.on('keydown', async (e) => {
         const keyCode = e ? (e.which ? e.which : e.keyCode) : e.keyCode;
         if (keyCode === 13) {
           await sleep(850);
-          await updateUniqueStyles();
+          await updateUniqueStyles(updateSigns = false);
           await reloadReportButtons();
         }
       });
@@ -1746,13 +1746,15 @@
       });
     }
 
-    async function updateUniqueStyles() {
+    async function updateUniqueStyles(updateSigns = true) {
       await reloadNickStyle();
       await reloadBannerStyle();
       await reloadUserBadges();
       await updateTooltips();
-      await reloadUserSigns();
-      await reloadUserNoticeMarks();
+      if (updateSigns) {
+        await reloadUserSigns();
+        await reloadUserNoticeMarks();
+      }
     }
 
     async function isContestThread() {
@@ -2161,8 +2163,8 @@
     async function addNoticeMark(name) {
       Array.from($('.username span')).forEach(item => {
         if ($(item).text() === username) {
-          const headerContent = $(item).parent()
-          if (!headerContent.parent()[0].classList.contains('navLink') && !headerContent.parent().find(`span.${name}`).length) {
+          let headerContent = $(item).parent()
+          if (!headerContent.parent()[0].classList.contains('navLink') && !headerContent.parent().parent()[0].classList.contains('fr-element') && !headerContent.parent().find(`span.${name}`).length) {
             let tooltipText = '';
             if (name === 'scamNotice') {
               tooltipText = 'Внимание! На данного пользователя недавно жаловались в связи с мошенничеством. Советуем вам быть осторожным и пользоваться гарантом, имея дело с ним.'
@@ -2170,7 +2172,11 @@
               tooltipText = 'Внимание! Данный пользователь использует VPN, будьте осторожны.'
             }
             const notice = $(`<span class="${name} Tooltip" title="${tooltipText}"></span>`);
-            headerContent.after(notice);
+            if (headerContent[0].tagName === 'DIV') {
+              headerContent = headerContent.append(notice);
+            } else {
+              headerContent.after(notice);
+            }
             XenForo.Tooltip(notice);
           }
         }
@@ -2235,14 +2241,19 @@
       if (signLink !== '') {
         Array.from($('.username span')).forEach(item => {
           if ($(item).text() === targetUsername) {
-            const headerContent = $(item).parent();
+            let headerContent = $(item).parent();
             if (!headerContent.parent()[0].classList.contains('navLink') && !headerContent.parent().parent()[0].classList.contains('fr-element') && !headerContent.parent().find(`span.${name}`).length) {
               const notice = $(`
-                <span id="LZTUpCustomSign" class="${name} Tooltip" title="${tooltipText}">
+                <span id="LZTUpCustomSign" class="${name} Tooltip" title="${tooltipText}" data-username="${targetUsername}">
                   <img src="${signLink}">
                 </span>
               `);
-              headerContent.after(notice);
+
+              if (headerContent[0].tagName === 'DIV') {
+                headerContent = headerContent.append(notice);
+              } else {
+                headerContent.after(notice);
+              }
               XenForo.Tooltip(notice);
             }
           }
