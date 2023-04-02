@@ -123,7 +123,7 @@
       if (!SCRIPT_STATUS) {
         Logger.log('Пытаемся запустить скрипт...');
         const res = START_SCRIPT();
-        if (res === 'not auth') {
+        if (res === 'not auth' || res === 'site_error') {
           Logger.log('Вы не авторизованы');
           clearInterval(SCRIPT_LOADER);
         };
@@ -186,10 +186,16 @@
       const userAvatar = getUserAvatarByUserId(userid);
       if (userAvatar !== undefined) {
         const avatarImg = $(userAvatar).find('img');
-        const targetUsername = avatarImg?.attr('alt');
-        if (targetUsername) {
+        let targetUsername = avatarImg?.attr('alt');
+        if (targetUsername && targetUsername.length) {
           return targetUsername;
         }
+
+        targetUsername = $(userAvatar).attr('data-cachedtitle');
+        if (targetUsername && targetUsername.length) {
+          return targetUsername;
+        }
+
         return $(userAvatar).parent().find('.username span')?.text();
       }
       return undefined;
@@ -2229,8 +2235,8 @@
       if (signLink !== '') {
         Array.from($('.username span')).forEach(item => {
           if ($(item).text() === targetUsername) {
-            const headerContent = $(item).parent()
-            if (!headerContent.parent()[0].classList.contains('navLink') && !headerContent.parent().find(`span.${name}`).length) {
+            const headerContent = $(item).parent();
+            if (!headerContent.parent()[0].classList.contains('navLink') && !headerContent.parent().parent()[0].classList.contains('fr-element') && !headerContent.parent().find(`span.${name}`).length) {
               const notice = $(`
                 <span id="LZTUpCustomSign" class="${name} Tooltip" title="${tooltipText}">
                   <img src="${signLink}">
@@ -2254,13 +2260,13 @@
             const sign = signs.find(sign => sign.uid === userSign.signid);
             if (sign) {
               let targetUsername
-              if (userSign.uesrid !== getUserid()) {
+              if (Number(userSign.userid) !== Number(getUserid())) {
                 targetUsername = getUsernameByUserId(userSign.userid);
               } else {
                 targetUsername = username;
               }
               
-              if (targetUsername !== undefined) {
+              if (targetUsername && targetUsername.length) {
                 addUserSign(targetUsername, sign.system_name, sign.name, sign.image_link);
               }
             }
