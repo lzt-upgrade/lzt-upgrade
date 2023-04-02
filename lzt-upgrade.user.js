@@ -1519,7 +1519,7 @@
         const keyCode = e ? (e.which ? e.which : e.keyCode) : e.keyCode;
         if (keyCode === 13) {
           await sleep(850);
-          await updateUniqueStyles(updateSigns = false);
+          await updateUniqueStyles();
           await reloadReportButtons();
         }
       });
