@@ -1,0 +1,30 @@
+{
+  "private": true,
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare"
+  },
+  "devDependencies": {
+    "@nuxt/image-edge": "^1.0.0-27919678.2f5b64b",
+    "@nuxtjs/color-mode": "^3.2.0",
+    "@nuxtjs/i18n": "^8.0.0-beta.9",
+    "nuxt": "^3.1.2",
+    "nuxt-icon": "^0.2.11",
+    "nuxt-seo-kit": "^1.3.4",
+    "sass": "^1.58.0",
+    "sass-loader": "^13.2.0",
+    "vue-final-modal": "^4.0.3"
+  },
+  "dependencies": {
+    "crypto-js": "^4.1.1",
+    "ipx": "^1.0.0-2",
+    "jose": "^4.13.1",
+    "js-base64": "^3.7.5",
+    "sha.js": "^2.4.11",
+    "uuid": "^9.0.0",
+    "vue-toastification": "^2.0.0-rc.5"
+  }
+}
