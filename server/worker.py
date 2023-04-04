@@ -3,12 +3,14 @@ from fastapi_utils.tasks import repeat_every
 
 from core.app import app
 from sql.user_signs.controller import DbUserSignsController
+from sql.users.controller import DbUsersController
 from sql.signs.controller import DbSignsController
 from sql.themes.controller import DbThemesController
 from sql.logos.controller import DbLogosController
 from utils.cache.themes import save_themes_to_json, check_themes
 from utils.cache.logos import save_logos_to_json
 from utils.cache.user_signs import save_user_signs_to_json
+from utils.cache.signs import save_signs_to_json
 
 
 log = logging.getLogger('worker')
@@ -18,6 +20,7 @@ def init_worker():
     async def startup():
         log.info('Worker started')
         await DbUserSignsController().init()
+        await DbUsersController().init()
         await DbSignsController().init()
         await DbThemesController().init()
         await DbLogosController().init()
@@ -33,3 +36,4 @@ def init_worker():
         await save_themes_to_json()
         await save_logos_to_json()
         await save_user_signs_to_json()
+        await save_signs_to_json()

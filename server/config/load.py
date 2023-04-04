@@ -19,3 +19,11 @@ def load_env():
         load_dotenv(dotenv_path)
         return True
     return False
+
+def load_private_key():
+    with open('./config/private_key.pem', 'rb') as f:
+        return f.read()
+
+def load_public_key():
+    with open('./config/public_key.pem', 'rb') as f:
+        return f.read()

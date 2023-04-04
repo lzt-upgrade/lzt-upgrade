@@ -14,3 +14,5 @@ trio>=0.22.0
 hypercorn[trio]>=0.14.3
 tomli >= 1.1.0 ; python_version < "3.11"
 slowapi>=0.1.7
+PyJWT>=2.6.0
+cryptography>=39.0.1

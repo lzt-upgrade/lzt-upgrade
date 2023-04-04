@@ -50,7 +50,7 @@ class DbUserSignsService:
                     await db.commit()
                     return True
             except Exception as err:
-                self.log.exception(f'Failed to add a user to the database ({self.database_sc}): {err}')
+                self.log.exception(f'Failed to add a user sign to the database ({self.database_sc}): {err}')
                 return False
             finally:
                 db.close()

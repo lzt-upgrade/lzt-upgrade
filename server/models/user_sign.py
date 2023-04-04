@@ -15,3 +15,14 @@ class UserSign(BaseModel):
     userid: int
     signid: int
     created_at: int = int(time.time())
+
+
+class UserSignRequest(BaseModel):
+    """Класс пользовательского значка (создание)
+
+    Args:
+    - signid (int): ID значка
+    - created_at (int): Время создания
+    """
+    signid: int
+    created_at: int

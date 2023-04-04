@@ -1,3 +1,6 @@
+# Private
+config/*.pem
+
 # Autogen vscode css
 themes/*.css
 static/themes/*.css
