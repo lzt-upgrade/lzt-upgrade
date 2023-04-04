@@ -26,9 +26,11 @@ function switchColorMode(currentMode) {
 </script>
 
 <template>
-  <invisible-button @click="switchColorMode($colorMode)">
-    <template #icon>
-      <Icon class="big-icon" :name="colorModes[$colorMode.value].emoji" />
-    </template>
-  </invisible-button>
+  <ClientOnly>
+    <invisible-button @click="switchColorMode($colorMode)">
+      <template #icon>
+        <Icon class="big-icon" :name="colorModes[$colorMode.value].emoji" />
+      </template>
+    </invisible-button>
+  </ClientOnly>
 </template>
