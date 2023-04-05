@@ -3,14 +3,12 @@
   import LoginButton from '~/components/Buttons/LoginButton.vue'
   import { checkAndAuth, logout } from '~/utils/auth.js';
 
-  const access_token = ref('');
+  const accessToken = ref('');
   const state = ref('LOADING');
 
-  if (process.client) {
-    const res = await checkAndAuth();
-    state.value = res.state;
-    access_token.value = res.accessToken;
-  }
+  const res = await checkAndAuth();
+  state.value = res.state;
+  accessToken.value = res.accessToken;
 
   definePageMeta({
     title: 'Auth'
@@ -28,7 +26,7 @@
   async function logoutCaller() {
     const res = await logout();
     state.value = res.state;
-    access_token.value = res.accessToken;
+    accessToken.value = res.accessToken;
   }
 
 </script>
@@ -39,7 +37,7 @@
     <div class="auth-container">
       <div class="box">
         <block-loader v-if="state === 'LOADING'"/>
-        <template v-else-if="access_token && access_token.length && state === 'SUCCESS'">
+        <template v-else-if="accessToken && accessToken.length && state === 'SUCCESS'">
           <p class="success">{{ $t('You are logged in')}}</p>
           <div class="buttons">
             <button class="button error" @click="logoutCaller()">{{ $t('Log out') }}</button>

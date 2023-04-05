@@ -6,6 +6,8 @@ const config = () => {
         'siteDomain': 'https://lztupgrade.toiloff.ru', // Домен сайта (с https)
         'forumDomain': 'zelenka.guru', // Домен форума (без https)
         'clientId': 'APP CLIENT ID', // https://zelenka.guru/account/api
+        'expirationTime': 15_552_000, // Срок действия куки в секундах
+        'productionStatus': true, // Применение настроек для продакшена (https only)
         'support': [
             {
                 'title': 'Telegram', // Название блока

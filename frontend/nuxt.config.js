@@ -49,6 +49,16 @@ export default defineNuxtConfig({
     ogImage: {
         fonts: ['Open Sans:400', 'Open Sans:500', 'Open Sans:600']
     },
+    colorMode: {
+        preference: 'system',
+        fallback: 'dark',
+        hid: 'nuxt-color-mode-script',
+        globalName: '__NUXT_COLOR_MODE__',
+        componentName: 'ColorScheme',
+        classPrefix: '',
+        classSuffix: '-mode',
+        storageKey: 'nuxt-color-mode'
+    },
     css: [
         '~/assets/styles/main.scss',
         'vue-final-modal/style.css',

@@ -1,18 +1,35 @@
-import { LZTAuthDB } from '~/utils/indexedDB/auth.js';
 import { saveAccessToken } from '~/utils/saveAccessToken.js';
 import { base64Encode } from '~/utils/base64.js';
+import config from '~/config/config.js';
+import { getCookie } from '~/utils/cookie.js';
+
+
+function checkAuth() {
+  const accessToken = getCookie('accessToken');
+
+  if (accessToken.value && accessToken.value !== '') {
+    return {
+      state: 'SUCCESS',
+      accessToken: accessToken.value
+    }
+  }
+
+  return {
+    state: 'WAITING',
+    accessToken: ''
+  }
+}
 
 /**
  *  @return {object} - { state: 'WAITING' | 'SUCCESS' | 'FAILURE', accessToken: string }
  */
 async function checkAndAuth() {
-  const LZTAuthIDB = new LZTAuthDB();
-  await LZTAuthIDB.init();
-  const data = await LZTAuthIDB.read();
-  if (data && data.accessToken !== '') {
+  const accessToken = getCookie('accessToken');
+
+  if (accessToken.value && accessToken.value !== '') {
     return {
       state: 'SUCCESS',
-      accessToken: data.accessToken
+      accessToken: accessToken.value
     }
   }
 
@@ -40,10 +57,10 @@ async function checkAndAuth() {
   try {
     const res = await saveAccessToken(encodedQuery);
     if (res.status === 'success' && res.hasOwnProperty('token')) {
-      await LZTAuthIDB.update({ accessToken: res.token});
+      accessToken.value = res.token;
       return {
         state: 'SUCCESS',
-        accessToken: access_token
+        accessToken: res.token
       }
     } else {
       return {
@@ -60,8 +77,9 @@ async function checkAndAuth() {
 }
 
 async function logout() {
-  const LZTAuthIDB = new LZTAuthDB();
-  await LZTAuthIDB.update({ accessToken: '' });
+  const accessToken = getCookie('accessToken');
+
+  accessToken.value = null;
   return {
     state: 'WAITING',
     accessToken: ''
