@@ -1,0 +1,48 @@
+{
+  "name": "lzt-upgrade",
+  "version": "1.0.0",
+  "description": "Some useful utilities for Lolzteam",
+  "source": "src/index.js",
+  "main": "src/index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack build -c webpack.config.js",
+    "dev": "webpack serve --node-env development"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ilyhalight/lzt-upgrade.git"
+  },
+  "keywords": [
+    "lolzteam",
+    "lolz",
+    "utility",
+    "zelenka",
+    "lzt",
+    "lolzhelper",
+    "lztnext",
+    "lztuprade",
+    "lztup",
+    "forum"
+  ],
+  "author": "Toil",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ilyhalight/lzt-upgrade/issues"
+  },
+  "homepage": "https://github.com/ilyhalight/lzt-upgrade#readme",
+  "devDependencies": {
+    "css-loader": "^6.7.3",
+    "sass": "^1.62.0",
+    "sass-loader": "^13.2.2",
+    "style-loader": "^3.3.2",
+    "webpack": "^5.79.0",
+    "webpack-cli": "^5.0.1",
+    "webpack-dev-server": "^4.13.2",
+    "webpack-userscript": "^3.2.1"
+  },
+  "dependencies": {
+    "tslib": "^2.5.0"
+  }
+}
