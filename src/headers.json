@@ -1,0 +1,33 @@
+{
+    "name": "[Preview] LZT Upgrade",
+    "description": "A free extension for Lolzteam with many useful features",
+    "version": "2.0.0",
+    "author": "Toil",
+    "namespace": "lztupgrade",
+    "license": "MIT",
+    "icon": "https://cdn.jsdelivr.net/gh/lzt-upgrade/lzt-upgrade@latest/src/images/logo-mini.png",
+    "updateURL": "https://github.com/lzt-upgrade/lzt-upgrade/raw/master/dist/lzt-upgrade.user.js",
+    "downloadURL": "https://github.com/lzt-upgrade/lzt-upgrade/raw/master/dist/lzt-upgrade.user.js",
+    "supportURL": "https://github.com/lzt-upgrade/lzt-upgrade/issues",
+    "homepageURL": "https://github.com/lzt-upgrade/lzt-upgrade",
+    "run-at": "document-start",
+    "match": [
+        "*://*.lolz.guru/*",
+        "*://*.lolz.live/*",
+        "*://*.zelenka.guru/*",
+        "*://*.lzt.market/*",
+        "*://*.lolz.market/*"
+    ],
+    "require": [
+        "https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"
+    ],
+    "grant": [
+        "GM_xmlhttpRequest",
+        "GM_info",
+        "GM_addStyle"
+    ],
+    "connect": [
+        "lztupgrade.toiloff.ru",
+        "greasyfork.org"
+    ]
+}
