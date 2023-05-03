@@ -1,0 +1,327 @@
+#LZTUpModalBackdrop {
+  z-index: 10001;
+}
+
+#LZTUpModal::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+
+#LZTUpModal {
+  z-index: 10002;
+  padding-right: 17px;
+  outline: currentcolor none medium;
+  overflow: auto;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+#LZTUpOverlay {
+  top: 10%;
+  margin-bottom: 5%
+}
+
+#LZTUpBtnIcon {
+  width: 14px;
+  height: auto;
+  padding-right: 4px
+}
+
+#LZTUpModalHeading {
+  margin: 25px 15px 2px;
+}
+
+#LZTUpModalText {
+  margin: 0px 15px 5px;
+  width: 400px;
+}
+
+#LZTUpUniqContainer > textarea {
+  min-height: 75px;
+  width: 575px;
+  max-width: 95%;
+  margin: 0px 15px;
+  overflow-y: hidden;
+}
+
+#LZTUpUniqContainer > input[type="text"] {
+  width: 575px;
+  max-width: 95%;
+  margin: 0px 15px;
+}
+
+.reset_button {
+  min-width: 150px;
+  margin: 15px
+}
+
+.save_button {
+  min-width: 250px;
+  margin: 15px
+}
+
+#LZTUpModalExitButtonCenter {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#LZTUpModalScrollContent {
+  height: 670px;
+  overflow-y: scroll;
+  scrollbar-width: thin;
+}
+
+#LZTUpModalExitButtonRight {
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+  justify-content: center;
+  padding: 10px;
+}
+
+#LZTUpBadgeFillContainer, #LZTUpBadgeStrokeContainer {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  width: 100px
+}
+
+#LZTUpListLinks {
+  display: flex;
+  flex-direction: column;
+}
+
+#LZTUpListLinks > #LZTUpListItem, 
+#LZTUpListLinks > #LZTUpListItem #LZTUpText,
+#LZTUpListLinks > #LZTUpListItem #LZTUpSubText {
+  max-width: 100%;
+  width: 100%;
+}
+
+#LZTUPReportButton {
+  font-weight: bold;
+  padding: 3px 10px;
+  background: #218e5d;
+  border-radius: 50px;
+  margin-right: 5px;
+  cursor: pointer;
+}
+
+#LZTUpErrorPage {
+  background-color: #272727;
+}
+
+#LZTUpErrorPage article {
+  color: #d6d6d6;
+}
+
+#LZTUpErrorPage article div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.LZTUpModalMesh {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.LZTUpModalMeshItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: end;
+  max-width: 220px;
+  flex: 1 1 auto;
+  cursor: pointer;
+  padding: 10px 15px;
+  margin: 10px;
+  border-radius: 8px;
+  background: rgb(52, 52, 52);
+}
+
+.LZTUpModalMeshItem.theme {
+  max-width: 130px;
+  min-width: 100px;
+  max-height: 60px;
+  height: 60px;
+}
+
+.LZTUpModalMeshItem:hover {
+  background: rgb(58, 58, 58);
+}
+
+.LZTUpModalMeshItem.active {
+  border: 3px solid rgb(34, 142, 93);
+}
+
+.LZTUpModalMeshItem img {
+  max-width: 100px;
+  max-height: 60px;
+  min-height: 36px;
+  margin: auto;
+}
+
+.LZTUpModalMeshItemName {
+  display: block;
+  align-self: start;
+  font-size: 13px;
+  font-weight: bold;
+  margin-top: 5px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.LZTUpModalMeshItem.theme > .LZTUpModalMeshItemName {
+  font-size: 15px;
+}
+
+.LZTUpModalMeshItemAuthor {
+  display: block;
+  align-self: start;
+  font-size: 12px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  color: rgb(148, 148, 148);
+}
+
+.LZTUpModalMeshItemAuthor a {
+  color: rgb(148, 148, 148);
+}
+
+.LZTUpModalMeshItemAuthor a:visited, .LZTUpModalMeshItemAuthor a:click {
+  outline: none;
+  text-decoration: none;
+  color: inherit;
+}
+
+.LZTUpModalSection {
+  margin: 5px 5px;
+  width: 98%;
+  border-radius: 8px;
+  transition: all 0.5s ease;
+}
+
+.LZTUpModalSection:hover {
+  background: rgba(54, 54, 54, 0.75);
+  cursor: pointer;
+}
+
+.LZTUpModalSectionContent {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+@keyframes backgroundEffectAnimate { 
+  0% {
+    background-position: 0 0, 0 0, 0 0;
+  }
+  100% {
+    background-position: 500px 1000px, 400px 400px, 300px 300px;
+  }
+}
+
+.backgroundEffect {
+  display: grid;
+  place-items: center;
+  width: 100%;
+  position: absolute;
+  margin-top: -100px;
+  background-image: url(https://i.imgur.com/ivexJPJ.png), url(https://i.imgur.com/TSvcQA4.png), url(https://i.imgur.com/BEkiDsa.png);
+  animation: backgroundEffectAnimate 20s linear infinite;
+  filter: brightness(75%) blur(2px) opacity(50%);
+}
+
+.LZTUpPollResult {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+#LZTUpIconButton {
+  max-width: 100%;
+  flex-basis: 50%;
+  height: 64px;
+  display: flex;
+  align-items: center;
+
+  transition: all 0.5s ease;
+}
+
+#LZTUpIconButton > #LZTUpText {
+  width: fit-content;
+  white-space: normal;
+}
+
+#LZTUpIconButton:hover {
+  background: rgba(54, 54, 54, 0.75);
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.LZTUpModalBlock {
+  display: flex;
+}
+
+.LZTUpModalBlockButtons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 25px;
+}
+
+.LZTUpModalBlockButtons .button {
+  margin: 5px;
+  width: 250px;
+}
+
+.vpnNotice:after {
+  display: inline-block;
+  width: 32px;
+}
+
+#LZTUpCustomBackground {
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+}
+
+#LZTUpUserBannerStyle {
+  padding: 0 20px;
+}
+
+#LZTUpModalNoticesContainer {
+  display: flex;
+  justify-content: center;
+  margin: 20px;
+}
+
+#LZTUpModalNoticesContainer > label {
+  margin-right: 10px;
+}
+
+#LZTUpUpdateAlert {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#LZTUpSelectGroupsUniq > option {
+  background: #272727;
+  padding: 10px 15px;
+  font-weight: 600;
+  border-radius: 6px;
+}
+
+#LZTUpSelectGroupsUniq > option:hover {
+  background: rgb(45,45,45);
+}
