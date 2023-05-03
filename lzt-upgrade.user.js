@@ -1,9 +1,9 @@
 // ==UserScript==
 // @name         LZT Upgrade
-// @version      1.1.5
+// @version      1.2.0
 // @description  Some useful utilities for Lolzteam
 // @description:ru  Полезные улучшения для Lolzteam
-// @icon         https://cdn.jsdelivr.net/gh/ilyhalight/lzt-upgrade@1.1.0/public/static/img/lzt-upgrade-mini.png
+// @icon         https://cdn.jsdelivr.net/gh/lzt-upgrade/lzt-upgrade@latest/src/images/logo-mini.png
 // @author       Toil
 // @license      MIT
 // @namespace    lztupgrade
@@ -202,6 +202,20 @@
     }
 
     const sleep = m => new Promise(r => setTimeout(r, m))
+
+    async function waitForElement(selector, timeout = 15000) {
+      const start = Date.now();
+    
+      while (Date.now() - start < timeout) {
+        const el = $(selector);
+        if ((el && el.length) || Date.now() - start > timeout) {
+          return el;
+        }
+        await new Promise(resolve => setTimeout(resolve, 1000));
+      }
+    
+      return null;
+    }
 
     const menuBtn = $('<li><a id="LZTUpButton">LZT Upgrade</a></li>');
 
@@ -500,7 +514,7 @@
   
           return `
             <div id="LZTUpModalComment">
-              На этой странице можно выбрать стиль вашего ника и лычки. Этот стиль виден только вам. После <a href="https://lolz.guru/account/upgrades?upgrade_id=14" target="_blank">покупки</a> настоящего уника его увидят все.
+              На этой странице можно выбрать стиль вашего ника и лычки. Этот стиль виден только вам. После <a href="https://${currentDomain}/account/upgrades?upgrade_id=14" target="_blank">покупки</a> настоящего уника его увидят все.
             </div>
   
             <div class="LZTUpModalBlock">
@@ -1654,7 +1668,6 @@
       if (commentMoreBtn.length > 0) {
         $(commentMoreBtn).on('click', async function(event) {
           await sleep(2600);
-          Logger.log('123')
           await updateUniqueStyles();
         })
       }
@@ -1746,13 +1759,29 @@
       });
     }
 
+    function onHoverAlerts() {
+      const alerts = $('a.navLink[href="account/alerts"]');
+      async function eventHandler() {
+        const el = await waitForElement('.alertsPopup', 5000)
+        if (el) {
+          await updateUniqueStyles();
+        }
+      }
+
+      $(alerts).one('mouseover', eventHandler)
+      $(alerts).on('mouseout', () => {
+        $(alerts).one('mouseover', eventHandler)
+      })
+
+    }
+
     async function updateUniqueStyles(updateSigns = true) {
       await reloadNickStyle();
       await reloadBannerStyle();
       await reloadUserBadges();
       await updateTooltips();
       if (updateSigns) {
-        await reloadUserSigns();
+        await loadUserSigns();
         await reloadUserNoticeMarks();
       }
     }
@@ -2171,7 +2200,7 @@
             } else if (name === 'vpnNotice') {
               tooltipText = 'Внимание! Данный пользователь использует VPN, будьте осторожны.'
             }
-            const notice = $(`<span class="${name} Tooltip" title="${tooltipText}"></span>`);
+            const notice = $(`<span id="LZTUpCustomNotice" class="${name} Tooltip" title="${tooltipText}"></span>`);
             if (headerContent[0].tagName === 'DIV') {
               headerContent = headerContent.append(notice);
             } else {
@@ -2261,8 +2290,15 @@
       }
     }
 
+    function checkUserSignExists(targetUsername, name) {
+      return $(`span#LZTUpCustomSign.${name}[data-username="${targetUsername}"]`).length
+    }
+
     async function loadUserSigns() {
-      const userSigns = await requestJSON(api_endpoints.getUserSigns);
+      let userSigns;
+      try {userSigns = await requestJSON(api_endpoints.getUserSigns)} catch {}
+      
+      if (!userSigns) return;
       userSigns.sort((a, b) => a.signid < b.signid);
       if (userSigns && userSigns.length) {
         const signs = await requestJSON(api_endpoints.getSigns);
@@ -2278,19 +2314,15 @@
               }
               
               if (targetUsername && targetUsername.length) {
-                addUserSign(targetUsername, sign.system_name, sign.name, sign.image_link);
+                if (!checkUserSignExists()) {
+                  addUserSign(targetUsername, sign.system_name, sign.name, sign.image_link);
+                }
               }
             }
           }
         }
       }
     }
-
-    async function reloadUserSigns() {
-      $('#LZTUpCustomSign').remove();
-      await loadUserSigns();
-    }
-
 
     // * script start actions
     if (getUserid() === '') return 'not auth'; // superior auth check
@@ -2389,6 +2421,8 @@
     await updateTooltips();
 
     await updateBackground()
+
+    onHoverAlerts();
 
     $('.chatboxStartIcon').on('click', async () => {
       await sleep(800);
