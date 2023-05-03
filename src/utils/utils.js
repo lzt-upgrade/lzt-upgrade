@@ -26,7 +26,7 @@ function getNodeLinks() {
   return latestsThreads.find('div.discussionListItem--Wrapper');
 }
 
-function getContestsLinks() {
+function getThreadLinks() {
   let links = getNodeLinks()
   .find('a.listBlock.main')
   .toArray()
@@ -35,4 +35,4 @@ function getContestsLinks() {
 }
 
 
-export { waitForElement, sleep, updateTooltips, getNodeLinks, getContestsLinks };
+export { waitForElement, sleep, updateTooltips, getNodeLinks, getThreadLinks };
