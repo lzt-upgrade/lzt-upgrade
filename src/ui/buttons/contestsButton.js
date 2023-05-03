@@ -1,5 +1,5 @@
 import { isContestsNode } from 'Utils/checkers';
-import { waitForElement, getContestsLinks } from 'Utils/utils';
+import { waitForElement, getThreadLinks } from 'Utils/utils';
 
 
 function regOpenContestsBtn(amount = 10) {
@@ -17,7 +17,7 @@ function regOpenContestsBtn(amount = 10) {
       const el = await waitForElement('div.forumImprovements--mask.hidden');
       if (!el) return;
 
-      const links = getContestsLinks();
+      const links = getThreadLinks();
       if (links.length) {
         $(links).map((element, value) => {
           if (element <= amount) {
