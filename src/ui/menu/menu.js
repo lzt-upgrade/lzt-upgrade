@@ -7,7 +7,7 @@ import { Checkbox } from 'UI/menu/checkbox';
 import { Comment } from 'UI/menu/comment';
 import { addMenuSectionContainer } from 'UI/menu/sectionContainer';
 import { Logger } from 'Utils/logger';
-import { contestsTagsVisibility } from "Utils/tags";
+import { contestsTagsVisibility } from "Utils/contests";
 import { contestThreadBlockMove, contestsBtnInBlockMove } from 'Utils/contests';
 
 import 'Styles/menu.scss';
@@ -113,11 +113,11 @@ async function generateMenu(tabs) {
       contestsData.contestsBtnTopInBlock,
       async () => {
         await contestsDB.update({contestsBtnTopInBlock: 1})
-        contestThreadBlockMove(true)
+        contestsBtnInBlockMove(true)
       },
       async () => {
         await contestsDB.update({contestsBtnTopInBlock: 0})
-        contestThreadBlockMove(false)
+        contestsBtnInBlockMove(false)
       }),
   ];
 
