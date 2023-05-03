@@ -1,5 +1,6 @@
 import { isContestThread } from 'Utils/checkers';
 import { hideThreadContent } from 'Utils/threads';
+import { tagsVisibility } from 'Utils/tags';
 
 function contestThreadBlockMove(toTop = true) {
   if (isContestThread()) {
@@ -49,10 +50,17 @@ function contestsBtnInBlockMove(toTop = true) {
   }
 }
 
-function hideContestsContent() {
+function hideContestsContent(visible) {
   if (isContestThread()) {
     return hideThreadContent(visible);
   }
 }
 
-export { contestThreadBlockMove, contestsBtnInBlockMove, hideContestsContent };
+function contestsTagsVisibility(isHidden = true) {
+  if (isContestThread()) {
+    tagsVisibility(isHidden);
+  };
+}
+
+
+export { contestThreadBlockMove, contestsBtnInBlockMove, hideContestsContent, contestsTagsVisibility };
