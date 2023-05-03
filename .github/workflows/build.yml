@@ -1,0 +1,39 @@
+name: Build
+
+on: [push, pull_request, release, workflow_dispatch]
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [16.x, 18.x, 19.x]
+
+    steps:
+      - name: Checkout 🛎️
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js ${{ matrix.node-version }} 🛎️
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Check Version 🛎️
+        shell: bash
+        run: node --version && npm --version
+
+      - name: Install 🔧
+        shell: bash
+        run: npm install
+
+      - name: Build 🔧
+        run: npm run build
+
+      - name: Upload Artifact 🚀
+        uses: actions/upload-artifact@v3
+        with:
+          path: dist/lzt-upgrade.user.js
