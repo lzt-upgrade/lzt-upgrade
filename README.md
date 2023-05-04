@@ -1,6 +1,6 @@
 ![script logo](https://github.com/ilyhalight/lzt-upgrade/raw/master/public/static/img/lzt-upgrade.svg "logo")
 
-<h1 align = center> LZT Upgrade </h1>
+<h1 align = center> LZT Upgrade (WIP) </h1>
 
 <p align="center">
   <a href="#user-content-1-доступный-функционал">Функционал</a>
