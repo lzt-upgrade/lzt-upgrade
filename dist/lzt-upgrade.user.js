@@ -602,7 +602,7 @@ function getNodeLinks() {
   return latestsThreads.find('div.discussionListItem--Wrapper');
 }
 
-function getContestsLinks() {
+function getThreadLinks() {
   let links = getNodeLinks()
   .find('a.listBlock.main')
   .toArray()
@@ -1341,7 +1341,7 @@ function regOpenContestsBtn(amount = 10) {
       const el = await waitForElement('div.forumImprovements--mask.hidden');
       if (!el) return;
 
-      const links = getContestsLinks();
+      const links = getThreadLinks();
       if (links.length) {
         $(links).map((element, value) => {
           if (element <= amount) {
@@ -1564,8 +1564,6 @@ function addMenuSectionContainer(className, items) {
 
 
 ;// CONCATENATED MODULE: ./src/utils/tags.js
-
-
 function tagsVisibility(isHidden = true) {
   const tagList = $('ul.tagList');
   if (tagList.length) {
@@ -1573,14 +1571,9 @@ function tagsVisibility(isHidden = true) {
   };
 }
 
-function contestsTagsVisibility(isHidden = true) {
-  if (checkers_isContestThread()) {
-    tagsVisibility(isHidden);
-  };
-}
-
 
 ;// CONCATENATED MODULE: ./src/utils/contests.js
+
 
 
 
@@ -1632,11 +1625,18 @@ function contestsBtnInBlockMove(toTop = true) {
   }
 }
 
-function hideContestsContent() {
+function hideContestsContent(visible) {
   if (isContestThread()) {
     return hideThreadContent(visible);
   }
 }
+
+function contestsTagsVisibility(isHidden = true) {
+  if (checkers_isContestThread()) {
+    tagsVisibility(isHidden);
+  };
+}
+
 
 
 // EXTERNAL MODULE: ./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js
@@ -1804,11 +1804,11 @@ async function generateMenu(tabs) {
       contestsData.contestsBtnTopInBlock,
       async () => {
         await contestsDB.update({contestsBtnTopInBlock: 1})
-        contestThreadBlockMove(true)
+        contestsBtnInBlockMove(true)
       },
       async () => {
         await contestsDB.update({contestsBtnTopInBlock: 0})
-        contestThreadBlockMove(false)
+        contestsBtnInBlockMove(false)
       }),
   ];
 
