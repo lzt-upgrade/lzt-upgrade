@@ -3,8 +3,7 @@ import { waitForElement, getThreadLinks } from 'Utils/utils';
 
 
 function regOpenContestsBtn(amount = 10) {
-  if (isContestsNode()) {
-    removeOpenContestsBtn(amount);
+  if (isContestsNode() && !$(`#openContestsButton${XenForo.htmlspecialchars(amount)}`).length) {
     const updateButton = $('span.UpdateFeedButton.UpdateFeedButtonIcon');
     const openContestsButton = $(`
       <a class="button" id="openContestsButton${XenForo.htmlspecialchars(amount)}">
