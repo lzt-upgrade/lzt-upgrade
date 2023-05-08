@@ -40,8 +40,8 @@ function contestsBtnInBlockMove(toTop = true) {
       contestsInfoHeading.before(participateButton);
       contestCaptcha !== undefined ? participateButton.after(contestCaptcha) : null;
     } else { // to default (bottom)
-      var marginToFind = contestEnded === true ? 'div.marginBlock:nth-child(7)' : 'div.marginBlock:nth-child(9)'
-      var lastMarginBlock = contestsThreadBlock.find(marginToFind)
+      const marginToFind = contestEnded === true ? 'div.marginBlock:nth-child(7)' : 'div.marginBlock:nth-child(9)'
+      const lastMarginBlock = contestsThreadBlock.find(marginToFind)
       participateButton.attr("style", "margin: 15px 0 0");
       contestsThreadBlock.css('padding', "5px");
       lastMarginBlock.after(participateButton);
@@ -50,9 +50,9 @@ function contestsBtnInBlockMove(toTop = true) {
   }
 }
 
-function hideContestsContent(visible) {
+function contestsHideContent(isHidden = true) {
   if (isContestThread()) {
-    return hideThreadContent(visible);
+    return hideThreadContent(isHidden);
   }
 }
 
@@ -63,4 +63,4 @@ function contestsTagsVisibility(isHidden = true) {
 }
 
 
-export { contestThreadBlockMove, contestsBtnInBlockMove, hideContestsContent, contestsTagsVisibility };
+export { contestThreadBlockMove, contestsBtnInBlockMove, contestsHideContent, contestsTagsVisibility };
