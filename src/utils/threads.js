@@ -1,6 +1,6 @@
-function hideThreadContent(visible) {
-  const messageContent = $('.message.firstPost > .messageInfo > .messageContent');
-  return visible ? messageContent.show() : messageContent.hide();
+function hideThreadContent(isHidden) {
+  const messageContent = $('.message.firstPost > .messageInfo > .messageContent > article > blockquote.messageText');
+  return isHidden ? messageContent.hide() : messageContent.show();
 }
 
 export { hideThreadContent }
