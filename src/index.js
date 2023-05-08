@@ -13,12 +13,12 @@ import { LZTSettingsDB } from "IndexedDB/settings";
 import { regOpenContestsBtn } from "UI/buttons/contestsButton";
 import menuButton from "UI/buttons/menuButton";
 
-import { waitForElement } from "Utils/utils";
+import { waitForElement, waitForCSRFToken } from "Utils/utils";
 import { Logger } from "Utils/logger";
 import { registerMenuButton } from "Utils/registers";
 import { onClickCategoryContestsHandler } from "Utils/handlers"
 import { contestsTagsVisibility } from "Utils/contests";
-import { contestThreadBlockMove, contestsBtnInBlockMove } from 'Utils/contests';
+import { contestThreadBlockMove, contestsBtnInBlockMove, contestsHideContent } from 'Utils/contests';
 
 // import 'Styles/main.css';
 
@@ -32,59 +32,70 @@ async function main() {
 
   if (GM_info?.script?.version) Logger.log(`${config.extName} version: ${GM_info?.script?.version}`);
 
-  // Loading selected theme
-  const appearDB = new LZTAppearDB();
-  await appearDB.init();
-  const dbAppearData = await appearDB.read();
-
-  if (dbAppearData?.theme > 0) {
-    const availabledThemes = await getThemes();
-    if (availabledThemes && availabledThemes.length) {
-      availabledThemes.forEach(async(theme) => {
-        if (theme.active === 1 && theme.uid === dbAppearData?.theme) {
-          await loadTheme(theme.file);
-        };
-      });
-    }
-  }
-
   const SCRIPT_LOADED = await waitForElement('body', 120000);
   if (!SCRIPT_LOADED) {
     Logger.error('Не удалось запустить расширение.');
     return;
   }
 
-  const username = $('.accountUsername span').text();
-  const userid = XenForo._csrfToken.split(',')[0];
-  const userAvatar = $('img.navTab--visitorAvatar').attr('src');
+  if (SCRIPT_LOADED.length) {
+    const _csrfToken = await waitForCSRFToken(120000);
+    const username = $('.accountUsername span').text();
+    const userid = _csrfToken.split(',')[0];
+    const userAvatar = $('img.navTab--visitorAvatar').attr('src');
 
-  Logger.debug('┏━━━━━━━━ DEBUG INFO ━━━━━━━━━━┓');
-  Logger.debug(`Script version: ${GM_info?.script?.version}`);
-  Logger.debug(`Account username: ${username}`);
-  Logger.debug(`Account userid: ${userid}`);
-  Logger.debug(`Account userAvatar: ${userAvatar}`);
-  Logger.debug('┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┚');
+    Logger.debug('┏━━━━━━━━ DEBUG INFO ━━━━━━━━━━┓');
+    Logger.debug(`Script version: ${GM_info?.script?.version}`);
+    Logger.debug(`Account username: ${username}`);
+    Logger.debug(`Account userid: ${userid}`);
+    Logger.debug(`Account userAvatar: ${userAvatar}`);
+    Logger.debug('┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┚');
 
-  registerMenuButton(menuButton);
+    registerMenuButton(menuButton);
 
-  const contestsDB = new LZTContestsDB();
-  await contestsDB.init();
-  const dbContestsData = await contestsDB.read();
+    // Loading selected theme
+    const appearDB = new LZTAppearDB();
+    await appearDB.init();
+    const dbAppearData = await appearDB.read();
 
-  if (dbContestsData.contestsTen === 1 || dbContestsData.contestsAll === 1) {
-    dbContestsData.contestsTen === 1 ? regOpenContestsBtn(10) : null;
-    dbContestsData.contestsAll === 1 ? regOpenContestsBtn(100) : null;
+    if (dbAppearData?.theme > 0) {
+      const availabledThemes = await getThemes();
+      if (availabledThemes && availabledThemes.length) {
+        availabledThemes.forEach(async(theme) => {
+          if (theme.active === 1 && theme.uid === dbAppearData?.theme) {
+            await loadTheme(theme.file);
+          };
+        });
+      }
+    }
 
-    onClickCategoryContestsHandler(() => {
-      dbContestsData.contestsTen === 1 ? regOpenContestsBtn(10) : null;
-      dbContestsData.contestsAll === 1 ? regOpenContestsBtn(100) : null;
-    });
 
-    dbContestsData.contestsHideTags === 1 ? contestsTagsVisibility(true) : null;
-    dbContestsData.contestsAutoClose === 1 ? contestsAutoCloseHandler(true) : null;
-    dbContestsData.contestsInfoTop === 1 ? contestThreadBlockMove(true) : null;
-    dbContestsData.contestsBtnTopInBlock === 1 ? contestsBtnInBlockMove(true) : null;
+    const contestsDB = new LZTContestsDB();
+    await contestsDB.init();
+    const dbContestsData = await contestsDB.read();
+
+    if (dbContestsData) {
+      if (dbContestsData.contestsTen === 1 || dbContestsData.contestsAll === 1) {
+        dbContestsData.contestsTen === 1 ? regOpenContestsBtn(10) : null;
+        dbContestsData.contestsAll === 1 ? regOpenContestsBtn(100) : null;
+
+        onClickCategoryContestsHandler(() => {
+          setTimeout(() => {
+            dbContestsData.contestsTen === 1 ? regOpenContestsBtn(10) : null;
+            dbContestsData.contestsAll === 1 ? regOpenContestsBtn(100) : null;
+          }, 1500);
+        });
+      }
+
+      dbContestsData.contestsHideTags === 1 ? contestsTagsVisibility(true) : null;
+      dbContestsData.contestsAutoClose === 1 ? contestsAutoCloseHandler(true) : null;
+      dbContestsData.contestsInfoTop === 1 ? contestThreadBlockMove(true) : null;
+      dbContestsData.contestsBtnTopInBlock === 1 ? contestsBtnInBlockMove(true) : null;
+      dbContestsData.contestsRmContent === 1 ? contestsHideContent(true) : null;
+    }
   }
+
+
 
 
 
