@@ -33,8 +33,7 @@ class LZTContestsDB extends LZTUpgradeDB {
         'contestsBtnTopInBlock',
         'contestsHideTags',
         'contestsAutoClose',
-        'contestsRmContent',
-        'contestsShowWinChance'
+        'contestsRmContent'
       ],
       { // indexesWithTypes
         'contestsTen': 'number',
@@ -43,8 +42,7 @@ class LZTContestsDB extends LZTUpgradeDB {
         'contestsBtnTopInBlock': 'number',
         'contestsHideTags': 'number',
         'contestsAutoClose': 'number',
-        'contestsRmContent': 'number',
-        'contestsShowWinChance': 'number',
+        'contestsRmContent': 'number'
       },
       { // defaultData
         key: objectKey,
@@ -54,8 +52,7 @@ class LZTContestsDB extends LZTUpgradeDB {
         contestsBtnTopInBlock: 0,
         contestsHideTags: 0,
         contestsAutoClose: 0,
-        contestsRmContent: 0,
-        contestsShowWinChance: 0
+        contestsRmContent: 0
       }
     );
   };
@@ -67,8 +64,7 @@ class LZTContestsDB extends LZTUpgradeDB {
     contestsBtnTopInBlock,
     contestsHideTags,
     contestsAutoClose,
-    contestsRmContent,
-    contestsShowWinChance
+    contestsRmContent
   }) {
     super.update(...arguments);
   }
