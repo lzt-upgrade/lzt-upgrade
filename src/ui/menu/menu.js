@@ -8,7 +8,7 @@ import { Comment } from 'UI/menu/comment';
 import { addMenuSectionContainer } from 'UI/menu/sectionContainer';
 import { Logger } from 'Utils/logger';
 import { contestsTagsVisibility } from "Utils/contests";
-import { contestThreadBlockMove, contestsBtnInBlockMove } from 'Utils/contests';
+import { contestThreadBlockMove, contestsBtnInBlockMove, contestsHideContent } from 'Utils/contests';
 
 import 'Styles/menu.scss';
 
@@ -71,8 +71,7 @@ async function generateMenu(tabs) {
         await contestsDB.update({contestsAll: 0})
         removeOpenContestsBtn(100)
       }),
-    new Checkbox('contests_hide_tags',
-      `Скрытие тегов в теме розыгрыша`)
+    new Checkbox('contests_hide_tags', `Скрытие тегов в теме розыгрыша`)
     .createElement(
       contestsData.contestsHideTags,
       async () => {
@@ -118,6 +117,17 @@ async function generateMenu(tabs) {
       async () => {
         await contestsDB.update({contestsBtnTopInBlock: 0})
         contestsBtnInBlockMove(false)
+      }),
+    new Checkbox('contests_rm_content', `Скрытие содержимого темы розыгрыша`)
+    .createElement(
+      contestsData.contestsRmContent,
+      async () => {
+        await contestsDB.update({contestsRmContent: 1})
+        contestsHideContent(true)
+      },
+      async () => {
+        await contestsDB.update({contestsRmContent: 0})
+        contestsHideContent(false)
       }),
   ];
 
