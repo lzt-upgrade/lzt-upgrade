@@ -1,3 +1,26 @@
+import { Logger } from 'Utils/logger.js'
+
+function waitForElm(selector) {
+  // https://stackoverflow.com/questions/5525071/how-to-wait-until-an-element-exists
+  return new Promise(resolve => {
+    if (document.querySelector(selector)) {
+      return resolve(document.querySelector(selector));
+    }
+
+    const observer = new MutationObserver(() => {
+      if (document.querySelector(selector)) {
+        resolve(document.querySelector(selector));
+        observer.disconnect();
+      }
+    });
+
+    observer.observe(document.body, {
+      childList: true,
+      subtree: true
+    });
+  });
+}
+
 async function waitForElement(selector, timeout = 15000) {
   const start = Date.now();
 
@@ -28,9 +51,13 @@ async function waitForCSRFToken(timeout = 15000) {
 
 const sleep = m => new Promise(r => setTimeout(r, m))
 
+function hasOwn(element, property) {
+  return Object.prototype.hasOwnProperty.call(element, property);
+}
+
 function updateTooltips() {
-  let $lztUpTooltips = $('#LZTUpTooltip.Tooltip');
-  return XenForo.Tooltip($lztUpTooltips);
+  let lztUpTooltips = $('#LZTUpTooltip.Tooltip');
+  return XenForo.Tooltip(lztUpTooltips);
 }
 
 function getNodeLinks() {
@@ -49,4 +76,4 @@ function getThreadLinks() {
 }
 
 
-export { waitForElement, sleep, updateTooltips, getNodeLinks, getThreadLinks, waitForCSRFToken };
+export { waitForElm, waitForElement, sleep, hasOwn, updateTooltips, getNodeLinks, getThreadLinks, waitForCSRFToken };
