@@ -10,11 +10,11 @@ class Comment {
   }
 
   createElement() {
-    return $(`
-      <div id="LZTUpModalComment">
-        ${this.content}
-      </div>
-    `)
+    const container = document.createElement('div');
+    container.id = 'LZTUpModalComment';
+    container.innerHTML = this.content;
+
+    return container;
   }
 }
 
