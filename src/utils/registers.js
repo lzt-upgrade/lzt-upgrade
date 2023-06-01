@@ -1,6 +1,6 @@
 function registerModal(modalName, elementMain = '') {
   return XenForo.alert(elementMain, modalName, null, (elem) => {
-      $('div.modal.fade').remove()
+    document.querySelector('div.modal.fade').remove();
   })
 }
 
