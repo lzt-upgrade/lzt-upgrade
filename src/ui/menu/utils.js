@@ -1,44 +1,51 @@
 import config from 'Configs/config';
+import { Button } from 'UI/kit/button.js';
+
 
 function setMenuTitle(title) {
-  const modalOverlay = $('.xenOverlay > .errorOverlay#LZTUpModalOverlay')
-  const modalTitle = modalOverlay.find('h2.heading');
-  modalTitle.attr('id', 'LZTUpModalMainTitle');
-  modalTitle.text(title);
+  const modalOverlay = document.querySelector('.xenOverlay > .errorOverlay#LZTUpModalOverlay')
+  const modalTitle = modalOverlay.querySelector('h2.heading');
+  modalTitle.id = 'LZTUpModalMainTitle';
+  modalTitle.innerText = title;
 }
 
 function createGoBackBtn(callback) {
-  const modalOverlay = $('.xenOverlay > .errorOverlay#LZTUpModalOverlay');
-  modalOverlay.prepend($(`
-    <button id="LZTUpModalBackButton">
-      <i class="fas fa-long-arrow-left"></i>
-    </button>
-  `));
+  const modalOverlay = document.querySelector('.xenOverlay > .errorOverlay#LZTUpModalOverlay');
 
-  $('#LZTUpModalBackButton').on('click', () => {
-    $('div#LZTUpSubMenu').hide();
+  const backButton = new Button('', 'LZTUpModalBackButton', 'fas fa-long-arrow-left').createElement();
+
+  backButton.onclick = () => {
+    document.querySelectorAll('div#LZTUpSubMenu').forEach(submenu => submenu.style.display = 'none');
     callback();
-    // $('.pcr-app').length ? $('.pcr-app').remove() : null;
-  });
+  }
+
+  modalOverlay.insertAdjacentElement('afterbegin', backButton);
 }
 
 function addGoBackBtn(target = '', text = config.extName, elementToHide = undefined, elementToShow = undefined) {
-  $('button#LZTUpModalBackButton').remove();
+  const backButtonSelector = 'button.LZTUpModalBackButton';
+
+  if (document.querySelector(backButtonSelector) !== null) {
+    document.querySelector(backButtonSelector).remove();
+  }
+
   return createGoBackBtn(() => {
-    $('button#LZTUpModalBackButton').remove();
+    document.querySelector(backButtonSelector).remove();
     setMenuTitle(text);
     switch (target) {
       case 'submenu':
-        elementToHide.hide();
-        elementToShow.show();
+        elementToHide.style.display = 'none';
+        elementToShow.style.display = '';
         addGoBackBtn();
         break;
       default:
-        $('#LZTUpSection').first().show();
-        $('#LZTUpTabs').show();
-        const tabs = $('#LZTUpTabs > #LZTUpTab');
-        tabs.removeClass('active');
-        tabs.first().addClass('active');
+        document.querySelector('.LZTUpSection').style.display = '';
+        const tabs = document.querySelector('.LZTUpTabs');
+        tabs.style.display = '';
+
+        const tab = tabs.querySelectorAll('#LZTUpTab');
+        tab.forEach(element => element.classList.remove('active'));
+        tab[0].classList.add('active');
     }
   });
 }
