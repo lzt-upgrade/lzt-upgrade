@@ -1,15 +1,15 @@
 function addMenuSectionContainer(className, items) {
-  const sectionContainer = $(`
-    <div id="LZTUpSubMenu" class="${className}"></div>
-  `);
+  const container = document.createElement('div');
+  container.id = 'LZTUpSubMenu';
+  container.className = className;
 
   for (const item of items) {
-    sectionContainer.append(item);
+    container.appendChild(item);
   }
 
-  sectionContainer.hide();
+  container.style.display = 'none';
 
-  return sectionContainer;
+  return container;
 }
 
 export { addMenuSectionContainer };
