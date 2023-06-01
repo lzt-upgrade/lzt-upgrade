@@ -2,12 +2,13 @@ class Tab {
   /**
    *
    *  @constructor
-   *  @param {string} name - name of the database
+   *  @param {string} name - name of the tab
+   *  @param {string} sectionClassName - class name of the tab
    *  @param {string} sectionClassName - class name of the section
    *  @param {boolean} active - status of tab
    */
 
-  constructor(name, className, sectionClassName, active = false) {
+  constructor(name, className, sectionClassName, active) {
     this.name = name;
     this.className = className;
     this.sectionClassName = sectionClassName;
@@ -15,24 +16,25 @@ class Tab {
   }
 
   createElement() {
-    const tab = $(`
-      <li id="LZTUpTab" class="${this.className}">
-        <span>${this.name}</span>
-      </li>
-    `);
+    const tab = document.createElement('li');
+    tab.id = 'LZTUpTab';
+    tab.className = this.className;
+    const span = document.createElement('span');
+    span.innerText = this.name;
+    tab.appendChild(span);
 
-    tab[0].addEventListener('click', () => this.setActive());
+    tab.addEventListener('click', () => this.setActive());
     return tab;
   }
 
   setActive() {
-    const tabs = $('#LZTUpTabs > #LZTUpTab');
-    tabs.toArray().forEach(tab => $(tab).removeClass('active'));
-    $(`.${this.className}`).addClass('active');
+    document.querySelectorAll('#LZTUpTab').forEach(tab => tab.classList.remove('active'));
 
-    const sections = $('#LZTUpModalContent > #LZTUpSection');
-    sections.toArray().forEach(section => $(section).hide());
-    $(`.${this.sectionClassName}`).show();
+    document.querySelector(`.${this.className}`).classList.add('active');
+
+    document.querySelectorAll('.LZTUpSection').forEach(section => section.style.display = 'none');
+
+    document.querySelector(`#${this.sectionClassName}`).style.display = '';
   }
 }
 
