@@ -1,4 +1,4 @@
-//Returns true if it is a DOM element 
+// Returns true if it is a DOM element
 // https://stackoverflow.com/questions/384286/how-do-you-check-if-a-javascript-object-is-a-dom-object
 function isElement(o){
   return (
@@ -22,6 +22,10 @@ function isProfilePage() {
 
 function isThreadPage() {
   return document.querySelector('div#content.thread_view') !== null;
+}
+
+function isOpenMemberCard() {
+  return document.querySelector('.xenOverlay.memberCard') !== null;
 }
 
 export { isElement, isContestThread, isContestsNode, isProfilePage, isThreadPage }
