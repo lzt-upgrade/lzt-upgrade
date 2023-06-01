@@ -26,29 +26,24 @@ class LZTUsersDB extends LZTUpgradeDB {
       name,
       objectKey,
       version,
-      [ // indexes
-        'showUseridInProfile',
-        'showFullRegInProfile',
-        'disableShowTyping',
-      ],
-      { // indexesWithTypes
-        'showUseridInProfile': 'number',
+      { // indexes
+        'showUserId': 'number',
         'showFullRegInProfile': 'number',
-        'disableShowTyping': 'number',
+        'disableShareTyping': 'number',
       },
       { // defaultData
         key: objectKey,
-        showUseridInProfile: 0,
+        showUserId: 0,
         showFullRegInProfile: 0,
-        disableShowTyping: 0,
+        disableShareTyping: 0,
       }
     );
   };
 
   async update({
-    showUseridInProfile,
+    showUserId,
     showFullRegInProfile,
-    disableShowTyping,
+    disableShareTyping,
   }) {
     super.update(...arguments);
   }

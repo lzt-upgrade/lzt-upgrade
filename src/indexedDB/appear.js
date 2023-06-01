@@ -26,21 +26,7 @@ class LZTAppearDB extends LZTUpgradeDB {
       name,
       objectKey,
       version,
-      [ // indexes
-        'hideUnreadArticleCircle',
-        'hideTagsInThreads',
-        'forumLogo',
-        'hideCounterAlerts',
-        'hideCounterConversations',
-        'marketLogo',
-        'reportButtonsInPost',
-        'theme',
-        'themeAutoReload',
-        'backgroundEffect',
-        'hideOnlyfans',
-        'showPollsResults',
-      ],
-      { // indexesWithTypes
+      { // indexes
         'hideUnreadArticleCircle': 'number',
         'hideTagsInThreads': 'number',
         'forumLogo': 'number',
@@ -48,11 +34,11 @@ class LZTAppearDB extends LZTUpgradeDB {
         'hideCounterConversations': 'number',
         'marketLogo': 'number',
         'reportButtonsInPost': 'string',
-        'theme': 'number',
+        'selectedTheme': 'number',
         'themeAutoReload': 'number',
         'backgroundEffect': 'number',
         'hideOnlyfans': 'number',
-        'showPollsResults': 'number',
+        'showPollResults': 'number',
       },
       { // defaultData
         key: objectKey,
@@ -63,11 +49,11 @@ class LZTAppearDB extends LZTUpgradeDB {
         hideCounterConversations: 0,
         marketLogo: 0,
         reportButtonsInPost: '',
-        theme: 0,
+        selectedTheme: 0,
         themeAutoReload: 0,
         backgroundEffect: 0,
         hideOnlyfans: 0,
-        showPollsResults: 0
+        showPollResults: 0
       }
     );
   };
@@ -80,11 +66,11 @@ class LZTAppearDB extends LZTUpgradeDB {
     hideCounterConversations,
     marketLogo,
     reportButtonsInPost,
-    theme,
+    selectedTheme,
     themeAutoReload,
     backgroundEffect,
     hideOnlyfans,
-    showPollsResults,
+    showPollResults,
   }) {
     super.update(...arguments);
   }

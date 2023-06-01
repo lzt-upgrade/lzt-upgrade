@@ -26,45 +26,33 @@ class LZTContestsDB extends LZTUpgradeDB {
       name,
       objectKey,
       version,
-      [ // indexes
-        'contestsTen',
-        'contestsAll',
-        'contestsInfoTop',
-        'contestsBtnTopInBlock',
-        'contestsHideTags',
-        'contestsAutoClose',
-        'contestsRmContent'
-      ],
-      { // indexesWithTypes
-        'contestsTen': 'number',
-        'contestsAll': 'number',
-        'contestsInfoTop': 'number',
-        'contestsBtnTopInBlock': 'number',
-        'contestsHideTags': 'number',
-        'contestsAutoClose': 'number',
-        'contestsRmContent': 'number'
+      { // indexes
+        'openTenContestsBtn': 'number',
+        'infoTopInThread': 'number',
+        'hideTagsInThread': 'number',
+        'autoCloseOnParticipate': 'number',
+        'removeContent': 'number',
+        'removePoll': 'number',
       },
       { // defaultData
         key: objectKey,
-        contestsTen: 0,
-        contestsAll: 0,
-        contestsInfoTop: 0,
-        contestsBtnTopInBlock: 0,
-        contestsHideTags: 0,
-        contestsAutoClose: 0,
-        contestsRmContent: 0
+        openTenContestsBtn: 0,
+        infoTopInThread: 0,
+        hideTagsInThread: 0,
+        autoCloseOnParticipate: 0,
+        removeContent: 0,
+        removePoll: 0,
       }
     );
   };
 
   async update({
-    contestsTen,
-    contestsAll,
-    contestsInfoTop,
-    contestsBtnTopInBlock,
-    contestsHideTags,
-    contestsAutoClose,
-    contestsRmContent
+    openTenContestsBtn,
+    infoTopInThread,
+    hideTagsInThread,
+    autoCloseOnParticipate,
+    removeContent,
+    removePoll,
   }) {
     super.update(...arguments);
   }

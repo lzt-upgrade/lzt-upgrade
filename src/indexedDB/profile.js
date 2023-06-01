@@ -26,19 +26,7 @@ class LZTProfileDB extends LZTUpgradeDB {
       name,
       objectKey,
       version,
-      [ // indexes
-        'nickStyle',
-        'bannerStyle',
-        'bannerText',
-        'badgeIcon',
-        'badgeText',
-        'badgeFill',
-        'badgeStroke',
-        'noticesMarks',
-        'profileBackground',
-        'profileBackgroundEverywhere',
-      ],
-      { // indexesWithTypes
+      { // indexes
         'nickStyle': 'string',
         'bannerStyle': 'string',
         'bannerText': 'string',

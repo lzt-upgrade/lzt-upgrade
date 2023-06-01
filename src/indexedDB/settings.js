@@ -26,10 +26,7 @@ class LZTSettingsDB extends LZTUpgradeDB {
       name,
       objectKey,
       version,
-      [ // indexes
-        'checkUpdatesOnLoad',
-      ],
-      { // indexesWithTypes
+      { // indexes
         'checkUpdatesOnLoad': 'number',
       },
       { // defaultData
