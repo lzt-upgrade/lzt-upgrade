@@ -9,8 +9,8 @@ function registerAlert(text, timeout = 5000) {
 }
 
 function registerMenuButton(el) {
-  const menu = $('#AccountMenu > ul:nth-child(1) > li:nth-child(10)');
-  menu.after(el);
+  const menu = document.querySelector('#AccountMenu > ul:nth-child(1) > li:nth-child(10)');
+  menu.insertAdjacentElement('afterend', el);
   return true;
 }
 
