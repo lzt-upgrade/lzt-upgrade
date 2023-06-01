@@ -24,6 +24,7 @@ export default {
     extensions: [".js"],
     alias: {
       API: path.resolve(__dirname, 'src/api/'),
+      Events: path.resolve(__dirname, 'src/events/'),
       IndexedDB: path.resolve(__dirname, 'src/indexedDB/'),
       Callbacks: path.resolve(__dirname, 'src/callbacks/'),
       Configs: path.resolve(__dirname, 'src/configs/'),
