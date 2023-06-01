@@ -7,7 +7,7 @@ function regOpenContestsBtn(amount = 10) {
     const updateButton = $('span.UpdateFeedButton.UpdateFeedButtonIcon');
     const openContestsButton = $(`
       <a class="button" id="openContestsButton${XenForo.htmlspecialchars(amount)}">
-        Открыть ${amount < 100 ? XenForo.htmlspecialchars(amount) : 'прогруженные'}
+        Открыть ${XenForo.htmlspecialchars(amount)}
       </a>
     `);
 
