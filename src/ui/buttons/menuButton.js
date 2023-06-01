@@ -3,13 +3,9 @@ import config from 'Configs/config';
 
 import 'Styles/buttons.scss';
 
-const menuButton = $(`
-  <li>
-    <a id="LZTUpButton">${config.extName}</a>
-  </li>
-`);
+const menuButton = document.createElement('li');
+menuButton.innerHTML = `<a id="LZTUpButton">${config.extName}</a>`;
 
-
-menuButton.on('click', menuButtonCallback)
+menuButton.onclick = menuButtonCallback;
 
 export default menuButton;
