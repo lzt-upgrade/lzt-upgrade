@@ -1,16 +1,16 @@
 import { setMenuTitle, addGoBackBtn } from 'UI/menu/utils';
+import { createMenuIcon } from 'UI/kit/icons.js'
 
 function openSubMenu(containerClassName, sectionName) {
-  $('#LZTUpTabs').hide();
+  document.querySelector('.LZTUpTabs').style.display = 'none';
 
-  // $('#LZTUpSubMenu');
   const subMenus = document.querySelectorAll('#LZTUpSubMenu');
-  $(subMenus).hide()
+  subMenus.forEach(subMenu => subMenu.style.display = 'none');
 
-  const sections = document.querySelectorAll('#LZTUpSection');
-  $(sections).hide();
+  const sections = document.querySelectorAll('.LZTUpSection');
+  sections.forEach(section => section.style.display = 'none');
 
-  $(`.${containerClassName}`).show();
+  document.querySelector(`.${containerClassName}`).style.display = '';
   setMenuTitle(sectionName);
   addGoBackBtn();
 }
@@ -24,17 +24,21 @@ function openSubMenu(containerClassName, sectionName) {
  *  @param {string} containerClassName - name of the container class
  */
 function addMenuSectionItem(sectionName, sectionDesc, sectionIconClasses, className, containerClassName) {
-  const sectionItem = $(`
-    <div id="LZTUpSectionItem" class="${className}">
-      <i id="LZTUpIcon" class="${sectionIconClasses}"></i>
-      <div>
-        <span id="LZTUpText">${sectionName}</span>
-        <span id="LZTUpSubText">${sectionDesc}</span>
-      </div>
-    </div>
-  `);
+  const sectionItem = document.createElement('div');
+  sectionItem.id = 'LZTUpSectionItem';
+  sectionItem.className = className;
 
-  sectionItem[0].addEventListener('click', () => openSubMenu(containerClassName, sectionName));
+  const sectionIcon = createMenuIcon(sectionIconClasses);
+  const textContainer = document.createElement('div');
+  textContainer.innerHTML = `
+    <span id="LZTUpText">${sectionName}</span>
+    <span id="LZTUpSubText">${sectionDesc}</span>
+  `;
+
+  sectionItem.appendChild(sectionIcon);
+  sectionItem.appendChild(textContainer);
+
+  sectionItem.addEventListener('click', () => openSubMenu(containerClassName, sectionName));
 
   return sectionItem;
 }
