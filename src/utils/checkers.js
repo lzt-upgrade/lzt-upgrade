@@ -1,5 +1,14 @@
+//Returns true if it is a DOM element 
+// https://stackoverflow.com/questions/384286/how-do-you-check-if-a-javascript-object-is-a-dom-object
+function isElement(o){
+  return (
+    typeof HTMLElement === 'object' ? o instanceof HTMLElement : //DOM2
+    o && typeof o === 'object' && o !== null && o.nodeType === 1 && typeof o.nodeName === 'string'
+  );
+}
+
 function isContestThread() {
-  return $('div.contestThreadBlock').length;
+  return document.querySelector('div.contestThreadBlock') !== null;
 }
 
 function isContestsNode() {
@@ -8,11 +17,11 @@ function isContestsNode() {
 }
 
 function isProfilePage() {
-  return $('ol#ProfilePostList').length;
+  return document.querySelector('ol#ProfilePostList') !== null;
 }
 
 function isThreadPage() {
-  return $('div#content.thread_view').length;
+  return document.querySelector('div#content.thread_view') !== null;
 }
 
-export { isContestThread, isContestsNode, isProfilePage, isThreadPage }
+export { isElement, isContestThread, isContestsNode, isProfilePage, isThreadPage }
