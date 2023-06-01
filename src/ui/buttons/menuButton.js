@@ -1,4 +1,4 @@
-import { menuButtonCallback } from 'Callbacks/MenuButton';
+import { menuButtonCallback } from 'Callbacks/menuButton';
 import config from 'Configs/config';
 
 import 'Styles/buttons.scss';
