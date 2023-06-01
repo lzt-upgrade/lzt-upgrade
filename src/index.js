@@ -1,6 +1,4 @@
 import config from "Configs/config";
-import { getThemes } from "API/lztupgrade/getThemes";
-import { loadTheme } from "API/lztupgrade/loadTheme";
 
 import { contestsAutoCloseHandler } from "Callbacks/contestsAutoClose";
 
@@ -13,12 +11,15 @@ import { LZTSettingsDB } from "IndexedDB/settings";
 import { regOpenContestsBtn } from "UI/buttons/contestsButton";
 import menuButton from "UI/buttons/menuButton";
 
+import onExtensionStart from "Events/extension";
+import onClickCategory from "Events/categories";
+
 import { waitForElement, waitForCSRFToken } from "Utils/utils";
 import { Logger } from "Utils/logger";
 import { registerMenuButton } from "Utils/registers";
-import { onClickCategoryContestsHandler } from "Utils/handlers"
-import { contestsTagsVisibility } from "Utils/contests";
-import { contestThreadBlockMove, contestsBtnInBlockMove, contestsHideContent } from 'Utils/contests';
+import { contestsTagsVisibility, contestThreadBlockMove, contestsHideContent, contestsHidePoll } from 'Utils/contests';
+import { addUserId, showFullRegDateInProfile } from 'Utils/users';
+import { bypassShareTyping } from "Utils/xenforo";
 
 // import 'Styles/main.css';
 
@@ -27,7 +28,6 @@ import { contestThreadBlockMove, contestsBtnInBlockMove, contestsHideContent } f
 
 async function main() {
   const profileDB = new LZTProfileDB();
-  const usersDB = new LZTUsersDB();
   const settingsDB = new LZTSettingsDB();
 
   if (GM_info?.script?.version) Logger.log(`${config.extName} version: ${GM_info?.script?.version}`);
@@ -53,69 +53,53 @@ async function main() {
 
     registerMenuButton(menuButton);
 
-    // Loading selected theme
     const appearDB = new LZTAppearDB();
     await appearDB.init();
     const dbAppearData = await appearDB.read();
-
-    if (dbAppearData?.theme > 0) {
-      const availabledThemes = await getThemes();
-      if (availabledThemes && availabledThemes.length) {
-        availabledThemes.forEach(async(theme) => {
-          if (theme.active === 1 && theme.uid === dbAppearData?.theme) {
-            await loadTheme(theme.file);
-          };
-        });
-      }
-    }
-
 
     const contestsDB = new LZTContestsDB();
     await contestsDB.init();
     const dbContestsData = await contestsDB.read();
 
+    const usersDB = new LZTUsersDB();
+    await usersDB.init();
+    const dbUsersData = await usersDB.read();
+
     if (dbContestsData) {
-      if (dbContestsData.contestsTen === 1 || dbContestsData.contestsAll === 1) {
-        dbContestsData.contestsTen === 1 ? regOpenContestsBtn(10) : null;
-        dbContestsData.contestsAll === 1 ? regOpenContestsBtn(100) : null;
+      dbContestsData.openTenContestsBtn === 1 ? regOpenContestsBtn(10) : null;
 
-        onClickCategoryContestsHandler(() => {
-          setTimeout(() => {
-            dbContestsData.contestsTen === 1 ? regOpenContestsBtn(10) : null;
-            dbContestsData.contestsAll === 1 ? regOpenContestsBtn(100) : null;
-          }, 1500);
-        });
+      onClickCategory(config.nodeSelectors.contests, async () => {
+        const contestsDB = new LZTContestsDB();
+        const dbContestsData = await contestsDB.read();
+        dbContestsData.openTenContestsBtn === 1 ? regOpenContestsBtn(10) : null;
+      });
+
+      dbContestsData.hideTagsInThread === 1 ? contestsTagsVisibility(true) : null;
+      dbContestsData.autoCloseOnParticipate === 1 ? contestsAutoCloseHandler(true) : null;
+      dbContestsData.infoTopInThread === 1 ? contestThreadBlockMove(true) : null;
+      dbContestsData.removeContent === 1 ? contestsHideContent(true) : null;
+      dbContestsData.removePoll === 1 ? contestsHidePoll(true) : null;
+    }
+
+    if (dbUsersData) {
+      dbUsersData.showUserId === 1 ? addUserId() : null;
+      dbUsersData.showFullRegInProfile === 1 ? showFullRegDateInProfile(true) : null;
+      dbUsersData.disableShareTyping === 1 ? bypassShareTyping() : null;
+    }
+
+    // Loading selected theme
+    if (dbAppearData?.theme > 0) {
+      try {
+        Logger.debug(`Requesting theme with id ${dbAppearData.theme}...`);
+        const status = await onExtensionStart(dbAppearData.theme);
+        Logger.debug(`Theme status: ${status}`);
+      } catch (e) {
+        Logger.error(`Failed to request theme with id ${dbAppearData.theme}`, e);
       }
-
-      dbContestsData.contestsHideTags === 1 ? contestsTagsVisibility(true) : null;
-      dbContestsData.contestsAutoClose === 1 ? contestsAutoCloseHandler(true) : null;
-      dbContestsData.contestsInfoTop === 1 ? contestThreadBlockMove(true) : null;
-      dbContestsData.contestsBtnTopInBlock === 1 ? contestsBtnInBlockMove(true) : null;
-      dbContestsData.contestsRmContent === 1 ? contestsHideContent(true) : null;
     }
   }
-
-
-
-
-
-  // let uniqueStyleDBInited = profileDB.init();
-  // Logger.log(uniqueStyleDBInited)
-
-  // if (uniqueStyleDBInited) {
-  //   const dbUniqueStyleData = await profileDB.read()
-  //   console.log(dbUniqueStyleData.nickStyle)
-  //   if (dbUniqueStyleData.nickStyle === '.style7') {
-  //     Logger.log(`LZT Unique Style loaded (1): ${dbUniqueStyleData}`)
-  //     Logger.log(`LZT Unique Style loaded (2): ${dbUniqueStyleData.nickStyle}`)
-  //   } else {
-  //     await profileDB.update({nickStyle: '.style7'});
-  //     Logger.error(`LZT Unique Style not loaded (1): ${dbUniqueStyleData}`)
-  //     Logger.error(`LZT Unique Style not loaded (2): ${dbUniqueStyleData.nickStyle}`)
-  //   }
-  // }
 }
 
 main().catch((e) => {
-  console.log(e);
+  console.error(e);
 });
