@@ -19,7 +19,7 @@ import { Logger } from "Utils/logger";
 import { registerMenuButton } from "Utils/registers";
 import { contestsTagsVisibility, contestThreadBlockMove, contestsHideContent, contestsHidePoll } from 'Utils/contests';
 import { addUserId, showFullRegDateInProfile } from 'Utils/users';
-import { bypassShareTyping } from "Utils/xenforo";
+import { bypassShareTyping } from "Xenforo/bypass";
 
 // import 'Styles/main.css';
 
