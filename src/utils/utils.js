@@ -55,11 +55,6 @@ function hasOwn(element, property) {
   return Object.prototype.hasOwnProperty.call(element, property);
 }
 
-function updateTooltips() {
-  let lztUpTooltips = $('#LZTUpTooltip.Tooltip');
-  return XenForo.Tooltip(lztUpTooltips);
-}
-
 function getNodeLinks() {
   let latestsThreads = $('div.latestThreads');
   const stickyThreads = $('div.stickyThreads');
@@ -76,4 +71,4 @@ function getThreadLinks() {
 }
 
 
-export { waitForElm, waitForElement, sleep, hasOwn, updateTooltips, getNodeLinks, getThreadLinks, waitForCSRFToken };
+export { waitForElm, waitForElement, sleep, hasOwn, getNodeLinks, getThreadLinks, waitForCSRFToken };
