@@ -12,23 +12,26 @@ class Checkbox {
   }
 
   createElement(valueToCheck, callbackChecked = () => {}, callbackUnChecked = () => {}) {
-    const checkbox = $(`
-      <div id="LZTUpModalChecksContainer">
-        <input type="checkbox" id="${this.elementId}" ${valueToCheck === 1 ? "checked" : ''}>
-        <label for="${this.elementId}">
-          ${this.content}
-        </label>
-      </div>
-    `);
+    const checkboxContainer = document.createElement('div');
+    const checkbox = document.createElement('input');
+    const checkboxLabel = document.createElement('label');
 
-    checkbox[0].addEventListener('click', async (event) => {
-      if (event.target.checked) {
-        await callbackChecked();
-      } else {
-        await callbackUnChecked();
-      }
+    checkbox.type = 'checkbox';
+    checkbox.id = this.elementId;
+    checkbox.checked = Boolean(valueToCheck);
+
+    checkboxLabel.htmlFor = this.elementId;
+    checkboxLabel.innerHTML = this.content;
+
+    checkboxContainer.id = 'LZTUpModalChecksContainer';
+    checkboxContainer.appendChild(checkbox);
+    checkboxContainer.appendChild(checkboxLabel);
+
+    checkboxContainer.addEventListener('click', async (event) => {
+      event.target.checked ? await callbackChecked() : await callbackUnChecked();
     });
-    return checkbox;
+
+    return checkboxContainer;
   }
 }
 
