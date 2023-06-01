@@ -5,7 +5,7 @@
   font-weight: bold;
 }
 
-#LZTUpModalBackButton {
+.LZTUpModalBackButton {
   position: absolute;
   top: 18px;
   left: 25px;
@@ -26,9 +26,9 @@
   }
 }
 
-#LZTUpTabs {
+.LZTUpTabs {
   border: none;
-  margin: 15px auto;
+  margin: 15px auto !important;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -41,7 +41,7 @@
   }
 }
 
-#LZTUpSection {
+.LZTUpSection {
   display: flex;
   flex-wrap: wrap;
   margin: 20px 15px;
@@ -56,7 +56,7 @@
 
     transition: all 0.5s ease;
   }
-  
+
   #LZTUpSectionItem:hover {
     background: rgba(54, 54, 54, 0.75);
     border-radius: 8px;
@@ -172,7 +172,7 @@
     color: rgb(148, 148, 148);
     em {
       font-style: inherit;
-    }    
+    }
   }
 
   #LZTUpPreviewBadge {
