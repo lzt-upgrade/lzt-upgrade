@@ -1,15 +1,10 @@
-import { contestsAutoCloseHandler } from "Callbacks/contestsAutoClose";
-import { LZTContestsDB } from "IndexedDB/contests";
-import { regOpenContestsBtn, removeOpenContestsBtn } from 'UI/buttons/contestsButton';
-import { addMenuSection } from 'UI/menu/section';
+import { MenuSection } from 'UI/kit/MenuSection';
 import { addMenuSectionItem } from 'UI/menu/sectionItem';
-import { Checkbox } from 'UI/menu/checkbox';
 import { Comment } from 'UI/menu/comment';
 import { addMenuSectionContainer } from 'UI/menu/sectionContainer';
 import { Logger } from 'Utils/logger';
-import { contestsTagsVisibility } from "Utils/contests";
-import { contestThreadBlockMove, contestsBtnInBlockMove, contestsHideContent } from 'Utils/contests';
-
+import getContestsItems from 'UI/menu/items/contests';
+import getUsersItems from 'UI/menu/items/users';
 import 'Styles/menu.scss';
 
 
@@ -17,11 +12,11 @@ async function generateMenu(tabs) {
   const mainItems = [
     addMenuSectionItem('Локальный Уник', 'Максимальная кастомизация', 'far fa-palette', 'LZTUpUniqItem', 'LZTUpUniqContainer'),
     addMenuSectionItem('Розыгрыши', 'Комфорт для розыгрышей', 'far fa-gift', 'LZTUpContestsItem', 'LZTUpContestsContainer'),
-    addMenuSectionItem('Пользователи', 'Штучки для пользователей', 'far fa-user', 'LZTUpUsersItem', 'LZTUpUniqContainer'),
+    addMenuSectionItem('Пользователи', 'Штучки для пользователей', 'far fa-user', 'LZTUpUsersItem', 'LZTUpUsersContainer'),
     addMenuSectionItem('Внешний вид', 'Темы, логотипы и другое', 'far fa-drafting-compass', 'LZTUpAppearItem', 'LZTUpUniqContainer'),
   ];
 
-  Logger.info('Generated menu main items: ', mainItems)
+  Logger.debug('Generated menu main items: ', mainItems)
 
   const settingsItems = [
     addMenuSectionItem('Настройки', 'Настройки расширения', 'far fa-cog', 'LZTUpSettingsItem', 'LZTUpUniqContainer'),
@@ -29,143 +24,62 @@ async function generateMenu(tabs) {
     addMenuSectionItem('Информация', `Версия: ${GM_info?.script?.version}`, 'far fa-info-circle', 'LZTUpInformationItem', 'LZTUpUniqContainer'),
   ];
 
-  Logger.info('Generated menu settings items: ', settingsItems)
+  Logger.debug('Generated menu settings items: ', settingsItems)
   const sections = [
-    addMenuSection('LZTUpMainSection', mainItems),
-    addMenuSection('LZTUpSettingsSection', settingsItems),
+    new MenuSection('LZTUpMainSection', mainItems).create(),
+    new MenuSection('LZTUpSettingsSection', settingsItems).create(),
   ];
 
-  Logger.info('Generated menu sections: ', sections)
+  Logger.debug('Generated menu sections: ', sections)
+
+  const uniqueText = document.createElement('div')
+  uniqueText.innerText = 'Страница локального уника';
 
   const uniqueItems = [
     new Comment(`Это оформление видно только вам. Мы рекомендуем вам <a href="https://${window.location.hostname}/account/upgrades?upgrade_id=14" target="_blank">приобрести настоящий Уник</a>, чтобы все пользователи смогли увидеть ваше настоящее оформление профиля.`)
-    .createElement(),
-    $('<div>Тестовый предмет</div>'),
+      .createElement(),
+    uniqueText,
   ];
 
-  const contestsDB = new LZTContestsDB();
-  const contestsData = await contestsDB.read();
-
-  const contestsItems = [
-    new Checkbox('contests_open_ten', 'Кнопка "Открыть 10"')
-    .createElement(
-      contestsData.contestsTen,
-      async () => {
-        await contestsDB.update({contestsTen: 1})
-        regOpenContestsBtn(10)
-      },
-      async () => {
-        await contestsDB.update({contestsTen: 0})
-        removeOpenContestsBtn(10)
-      }),
-    new Checkbox('contests_open_uploaded',
-      `Кнопка "Открыть прогруженные"
-      <span class="fa fa-exclamation-triangle Tooltip" id="LZTUpTooltip" title="При частом использование данной кнопки вы можете получить временную блокировку участия в розыгрышах"></span>`)
-    .createElement(
-      contestsData.contestsAll,
-      async () => {
-        await contestsDB.update({contestsAll: 1})
-        regOpenContestsBtn(100)
-      },
-      async () => {
-        await contestsDB.update({contestsAll: 0})
-        removeOpenContestsBtn(100)
-      }),
-    new Checkbox('contests_hide_tags', `Скрытие тегов в теме розыгрыша`)
-    .createElement(
-      contestsData.contestsHideTags,
-      async () => {
-        await contestsDB.update({contestsHideTags: 1})
-        contestsTagsVisibility(true)
-      },
-      async () => {
-        await contestsDB.update({contestsHideTags: 0})
-        contestsTagsVisibility(false)
-      }),
-    new Checkbox('contests_auto_close',
-      `Автозакрытие страницы при нажатие на кнопку "Участвовать"
-      <span class="fa fa-exclamation-triangle Tooltip" title="При отключение этой функции страница будет перезагружена"></span>
-      `)
-    .createElement(
-      contestsData.contestsAutoClose,
-      async () => {
-        await contestsDB.update({contestsAutoClose: 1})
-        contestsAutoCloseHandler(true)
-      },
-      async () => {
-        await contestsDB.update({contestsAutoClose: 0})
-        contestsAutoCloseHandler(false)
-      }),
-    new Checkbox('contests_info_top', `Отображение информации о розыгрыше вверху темы`)
-    .createElement(
-      contestsData.contestsInfoTop,
-      async () => {
-        await contestsDB.update({contestsInfoTop: 1})
-        contestThreadBlockMove(true)
-      },
-      async () => {
-        await contestsDB.update({contestsInfoTop: 0})
-        contestThreadBlockMove(false)
-      }),
-    new Checkbox('contests_btn_top_in_block', `Отображение кнопки "Участвовать" выше блока с информацией о розыгрыше`)
-    .createElement(
-      contestsData.contestsBtnTopInBlock,
-      async () => {
-        await contestsDB.update({contestsBtnTopInBlock: 1})
-        contestsBtnInBlockMove(true)
-      },
-      async () => {
-        await contestsDB.update({contestsBtnTopInBlock: 0})
-        contestsBtnInBlockMove(false)
-      }),
-    new Checkbox('contests_rm_content', `Скрытие содержимого темы розыгрыша`)
-    .createElement(
-      contestsData.contestsRmContent,
-      async () => {
-        await contestsDB.update({contestsRmContent: 1})
-        contestsHideContent(true)
-      },
-      async () => {
-        await contestsDB.update({contestsRmContent: 0})
-        contestsHideContent(false)
-      }),
-  ];
-
+  const updateText = document.createElement('div')
+  updateText.innerText = 'Страница обновлений';
 
   const updateItems = [
-    $('<div>Тестовый предмет</div>'),
+    updateText,
   ];
 
   Logger.debug('Generated menu unique section items: ', uniqueItems)
 
   const sectionContainers = [
     addMenuSectionContainer('LZTUpUniqContainer', uniqueItems),
-    addMenuSectionContainer('LZTUpContestsContainer', contestsItems),
+    addMenuSectionContainer('LZTUpContestsContainer', await getContestsItems()),
+    addMenuSectionContainer('LZTUpUsersContainer', await getUsersItems()),
     addMenuSectionContainer('LZTUpUpdateContainer', updateItems),
   ];
 
   Logger.debug('Generated menu section containers: ', sectionContainers)
 
-  const menuContent = $(`
-    <div id="LZTUpModalContent">
-      <ul class="tabs" id="LZTUpTabs"></ul>
-    </div>
-  `);
+  const menuContent = document.createElement('div')
+  menuContent.classList.add('LZTUpModalContent');
+
+  const tabsContainer = document.createElement('ul');
+  tabsContainer.classList.add('tabs', 'LZTUpTabs');
+  menuContent.appendChild(tabsContainer);
 
   for (const section of sections) {
-    menuContent.append(section);
+    menuContent.appendChild(section);
   }
 
   for (const sectionContainer of sectionContainers) {
-    menuContent.append(sectionContainer);
+    menuContent.appendChild(sectionContainer);
+    sectionContainer.querySelectorAll('.Tooltip').forEach(el => XenForo.Tooltip($(el)));
   }
 
   Logger.debug('Generated menu tabs: ', tabs);
 
   for (const tab of tabs) {
-    const tabsEl = menuContent.find('#LZTUpTabs');
-    const tabEl = tab.createElement();
-    tabsEl.append(tabEl);
+    menuContent.querySelector('.LZTUpTabs')
+      .appendChild(tab.createElement());
   }
 
   return menuContent;
