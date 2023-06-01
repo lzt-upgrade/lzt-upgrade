@@ -19,4 +19,4 @@ Logger.debug = (...text) => {
   if (DEV_MODE) return console.log("%c[DEBUG | LZT Upgrade]", "background: #0daf77; color: #fff; padding: 5px;", ...text);
 }
 
-export { Logger}
+export { Logger };
