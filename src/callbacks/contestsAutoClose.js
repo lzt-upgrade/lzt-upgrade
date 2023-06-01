@@ -1,4 +1,4 @@
-import { onParticipateHandler } from "Utils/handlers";
+import { onParticipateHandler } from "Events/participate";
 
 function contestsAutoCloseHandler(toggle) {
   if (toggle) {
