@@ -1,7 +1,7 @@
 function tagsVisibility(isHidden = true) {
-  const tagList = $('ul.tagList');
-  if (tagList.length) {
-    isHidden ? tagList.hide() : tagList.show();
+  const tagList = document.querySelector('div.tagBlock');
+  if (tagList !== null) {
+    return tagList.style.display = isHidden ? 'none' : '';
   };
 }
 
