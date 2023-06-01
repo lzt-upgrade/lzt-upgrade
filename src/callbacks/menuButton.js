@@ -2,7 +2,7 @@ import { registerModal } from "Utils/registers";
 import { generateMenu } from 'UI/menu/menu';
 import { setMenuTitle } from 'UI/menu/utils';
 import { Tab } from 'UI/menu/tab';
-import { updateTooltips } from "Utils/utils";
+import { updateTooltips } from "Xenforo/utils";
 import config from "Configs/config";
 
 
