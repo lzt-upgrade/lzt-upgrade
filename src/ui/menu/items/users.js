@@ -1,7 +1,6 @@
 import { LZTUsersDB } from "IndexedDB/users";
 import { Checkbox } from 'UI/menu/checkbox';
 import { addUserId, removeUserId, showFullRegDateInProfile } from 'Utils/users';
-import { bypassShareTyping } from "Utils/xenforo";
 import { registerAlert } from "Utils/registers";
 import { sleep } from "Utils/utils";
 
