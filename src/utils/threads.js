@@ -1,6 +1,15 @@
 function hideThreadContent(isHidden) {
-  const messageContent = $('.message.firstPost > .messageInfo > .messageContent > article > blockquote.messageText');
-  return isHidden ? messageContent.hide() : messageContent.show();
+  const messageContent = document.querySelector('.message.firstPost > .messageInfo > .messageContent > article > blockquote.messageText');
+  if (messageContent !== null) {
+    return messageContent.style.display = isHidden ? 'none' : '';
+  }
 }
 
-export { hideThreadContent }
+function hideThreadPoll(isHidden) {
+  const pollContainer = document.querySelector('div.PollContainer');
+  if (pollContainer !== null) {
+    return pollContainer.style.display = isHidden ? 'none' : '';
+  }
+}
+
+export { hideThreadContent, hideThreadPoll }
