@@ -19,15 +19,16 @@ async function menuButtonCallback() {
     '<div id="LZTUpModalBase"></div>'
   );
 
-  const modal = $('#LZTUpModalBase');
-  modal.append(menuContent);
+  const modal = document.querySelector('#LZTUpModalBase');
+  modal.appendChild(menuContent);
   for (const tab of tabs) {
     tab.active ? tab.setActive() : null;
   }
 
-  modal.parent().css("white-space", "unset");
-  const modalErrorOverlay = modal.parent().parent()
-  modalErrorOverlay.attr('id', 'LZTUpModalOverlay');
+  const baseModal = modal.parentElement;
+  baseModal.style.whiteSpace = 'unset';
+  baseModal.parentElement.id = 'LZTUpModalOverlay';
+
   setMenuTitle(config.extName);
   updateTooltips();
 }
