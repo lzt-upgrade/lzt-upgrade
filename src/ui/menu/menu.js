@@ -1,4 +1,4 @@
-import { MenuSection } from 'UI/kit/MenuSection';
+import { MenuSection } from 'UI/kit/menuSection';
 import { addMenuSectionItem } from 'UI/menu/sectionItem';
 import { Comment } from 'UI/menu/comment';
 import { addMenuSectionContainer } from 'UI/menu/sectionContainer';
