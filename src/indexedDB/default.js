@@ -18,37 +18,35 @@ class LZTUpgradeDB {
    *  @param {string} name - name of the database
    *  @param {string} objectKey - name of the future indexedDB object
    *  @param {number} version - version of the database
-   *  @param {object} indexes - array of keys to indexes to storing data in an indexedDB object ([])
-   *  @param {object} indexesWithTypes - array of keys to indexes with types ({})
+   *  @param {object} indexes - array of keys to indexes with types ({})
    *  @param {object} defaultData - array of default values to store ({})
    */
 
-  constructor(name, objectKey, version = 1, indexes = [], indexesWithTypes = {}, defaultData = {}) {
+  constructor(name, objectKey, version = 1, indexes = {}, defaultData = {}) {
     this.name = name;
     this.objectKey = objectKey;
     this.version = version;
     this.indexes = indexes;
-    this.indexesWithTypes = indexesWithTypes;
     this.defaultData = defaultData;
   }
 
-  checker(indexesWithTypes, ...args) {
+  checker(indexes, ...args) {
     let response = false;
     if (typeof arguments[1] !== 'object') return response;
 
     for (const arg of Object.entries(arguments[1])) {
-      if (!arg[0].toString() in indexesWithTypes) continue;
-      if (typeof(arg[1]) === indexesWithTypes[arg[0].toString()]) response = true;
+      if (!arg[0].toString() in indexes) continue;
+      if (typeof(arg[1]) === indexes[arg[0].toString()]) response = true;
     }
     return response;
   }
 
-  callback(indexesWithTypes, data, args) {
+  callback(indexes, data, args) {
     if (typeof args !== 'object') return response;
 
     for (const arg of Object.entries(args)) {
-      if (!arg[0].toString() in indexesWithTypes) continue;
-      if (typeof(arg[1]) === indexesWithTypes[arg[0].toString()]) data[arg[0].toString()] = arg[1];
+      if (!arg[0].toString() in indexes) continue;
+      if (typeof(arg[1]) === indexes[arg[0].toString()]) data[arg[0].toString()] = arg[1];
     }
     return data;
   }
@@ -93,7 +91,8 @@ class LZTUpgradeDB {
           keyPath: "key",
         });
 
-        for (const key of this.indexes) {
+        for (const key in this.indexes) {
+          if (key === undefined) continue;
           objectStore.createIndex(key, key, { unique: false });
         }
 
@@ -203,7 +202,7 @@ class LZTUpgradeDB {
     */
   async update(args) {
     return new Promise((resolve, reject) => {
-      if (this.checker(this.indexesWithTypes, args)) {
+      if (this.checker(this.indexes, args)) {
         const openRequest = this.open(this.name);
 
         openRequest.onerror = () => {
@@ -241,7 +240,7 @@ class LZTUpgradeDB {
           request.onsuccess = () => {
             Logger.log(`Получены данные из Базы Данных ${this.name}: `, request.result);
             let data = request.result;
-            data = this.callback(this.indexesWithTypes, data, args);
+            data = this.callback(this.indexes, data, args);
 
             const requestUpdate = objectStore.put(data);
 
