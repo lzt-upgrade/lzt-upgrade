@@ -14,4 +14,18 @@ function registerMenuButton(el) {
   return true;
 }
 
-export { registerMenuButton, registerModal, registerAlert };
+function registerObserver(callback) {
+  const observer = new MutationObserver((mutationsList, observer) => {
+    for (const mutation of mutationsList) {
+      if (mutation.type === 'childList') {
+        callback(mutation);
+      }
+    }
+  });
+
+  const config = { childList: true, subtree: true };
+  observer.observe(document.body, config);
+  return observer;
+}
+
+export { registerMenuButton, registerModal, registerAlert, registerObserver };
