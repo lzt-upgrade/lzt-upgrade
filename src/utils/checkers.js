@@ -1,3 +1,5 @@
+import extData from "Configs/extData";
+
 // Returns true if it is a DOM element
 // https://stackoverflow.com/questions/384286/how-do-you-check-if-a-javascript-object-is-a-dom-object
 function isElement(o){
@@ -25,7 +27,7 @@ function isThreadPage() {
 }
 
 function isOpenMemberCard() {
-  return document.querySelector('.xenOverlay.memberCard') !== null;
+  return document.querySelector(extData.elements.memberCard) !== null;
 }
 
-export { isElement, isContestThread, isContestsNode, isProfilePage, isThreadPage }
+export { isElement, isContestThread, isContestsNode, isProfilePage, isThreadPage, isOpenMemberCard }
