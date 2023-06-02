@@ -1,4 +1,5 @@
 import config from "Configs/config";
+import extData from 'Configs/extData';
 
 import { contestsAutoCloseHandler } from "Callbacks/contestsAutoClose";
 
@@ -16,9 +17,9 @@ import onClickCategory from "Events/categories";
 
 import { waitForElement, waitForCSRFToken } from "Utils/utils";
 import { Logger } from "Utils/logger";
-import { registerMenuButton } from "Utils/registers";
+import { registerMenuButton, registerObserver } from "Utils/registers";
 import { contestsTagsVisibility, contestThreadBlockMove, contestsHideContent, contestsHidePoll } from 'Utils/contests';
-import { addUserId, showFullRegDateInProfile } from 'Utils/users';
+import { addUserIdToProfile, addUserIdToMemberCard, showFullRegDateInProfile } from 'Utils/users';
 import { bypassShareTyping } from "Xenforo/bypass";
 
 // import 'Styles/main.css';
@@ -68,7 +69,7 @@ async function main() {
     if (dbContestsData) {
       dbContestsData.openTenContestsBtn === 1 ? regOpenContestsBtn(10) : null;
 
-      onClickCategory(config.nodeSelectors.contests, async () => {
+      onClickCategory(extData.nodes.contests, async () => {
         const contestsDB = new LZTContestsDB();
         const dbContestsData = await contestsDB.read();
         dbContestsData.openTenContestsBtn === 1 ? regOpenContestsBtn(10) : null;
@@ -82,7 +83,17 @@ async function main() {
     }
 
     if (dbUsersData) {
-      dbUsersData.showUserId === 1 ? addUserId() : null;
+      dbUsersData.showUserIdInProfile === 1 ? addUserIdToProfile() : null;
+      if (dbUsersData.showUserIdInMemberCard === 1) {
+        addUserIdToMemberCard();
+        registerObserver((mutation) => {
+          if (mutation.nextSibling) {
+            if (mutation.nextSibling?.classList?.contains('modal')) {
+              addUserIdToMemberCard()
+            }
+          }
+        });
+      }
       dbUsersData.showFullRegInProfile === 1 ? showFullRegDateInProfile(true) : null;
       dbUsersData.disableShareTyping === 1 ? bypassShareTyping() : null;
     }
