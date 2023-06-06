@@ -8,6 +8,7 @@ const userIdMemberCardElementId = 'LZTUpUserIDMemberCard';
 function getUserId(target) {
   switch (target) {
     case "profile":
+      // in any profile
       if (isProfilePage()) {
         const userThreadsButton = document.querySelector('#profile_short > .userContentLinks > a:nth-child(1)');
         if (!userThreadsButton || userThreadsButton.href === '') {
@@ -22,6 +23,7 @@ function getUserId(target) {
         return getUserId('me');
       }
     case "membercard":
+      // in any membercard
       if (isOpenMemberCard()) {
         const memberCard = document.querySelectorAll(extData.elements.memberCard);
         const userThreadsButton = memberCard[memberCard.length - 1].querySelector('.memberCardInner > .bottom > .userContentLinks > a:nth-child(1)');
@@ -38,6 +40,29 @@ function getUserId(target) {
     default:
       return null;
   }
+}
+
+function getUsername(target) {
+  switch (target) {
+    // TODO: add get by userid
+    case "self":
+    case "me":
+      return document.querySelector('.accountUsername span').innerText;
+    default:
+      return null;
+  }
+}
+
+function getUserAvatar(userId) {
+  if (userId === getUserId('me')) {
+    return document.querySelector('img.navTab--visitorAvatar').src;
+  }
+
+  const avatars = document.querySelectorAll('a.avatar');
+  const avatar = Array.from(avatars)
+    .find(avatar => avatar.classList?.contains(`Av${userId}s`) || avatar.classList?.contains(`Av${userId}m`));
+
+  return avatar ? avatars.src : null;
 }
 
 function addUserIdToProfile() {
@@ -112,4 +137,4 @@ function showFullRegDateInProfile(full = false) {
   }
 }
 
-export { addUserIdToProfile, addUserIdToMemberCard, removeUserIdFromProfile, removeUserIdFromMemberCard, showFullRegDateInProfile }
+export { getUserId, getUsername, getUserAvatar, addUserIdToProfile, addUserIdToMemberCard, removeUserIdFromProfile, removeUserIdFromMemberCard, showFullRegDateInProfile }
