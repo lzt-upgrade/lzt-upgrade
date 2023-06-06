@@ -1,3 +1,36 @@
+@import url('https://cdn.jsdelivr.net/gh/lzt-upgrade/coloris-lzt-theme@latest/dist/coloris.min.css');
+
+
+.LZTUpColorPickerWrap {
+  display: flex;
+  align-items: center;
+
+  &:not(:first-of-type) {
+    margin-top: 10px;
+  }
+
+  .LZTUpModalDescription {
+    margin-right: 10px !important;
+  }
+
+  .clr-field {
+    input {
+      width: 24px;
+      height: 24px;
+    }
+
+    button {
+      width: 28px;
+      height: 28px;
+    }
+
+    input,
+    button {
+      border-radius: 4px;
+    }
+  }
+}
+
 #LZTUpModalMainTitle {
   text-align: center;
   padding: 16px;
@@ -27,7 +60,10 @@
 }
 
 .LZTUpTabs {
-  border: none;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0 10px;
+  border: none !important;
   margin: 15px auto !important;
   display: flex;
   align-items: center;
@@ -36,8 +72,22 @@
   #LZTUpTab {
     position: relative;
     padding: 10px;
+    margin: 0 4px;
+    float: left;
+    font-weight: 600;
     list-style: none;
     font-size: 14px;
+    &:hover {
+      cursor: pointer;
+    }
+    &.active {
+      box-shadow: inset 0px -2px 0px 0px #0daf77;
+      transform: translateY(-1px);
+      transition: .2s;
+    }
+    &:not(.active):hover {
+      box-shadow: inset 0px -2px 0px 0px rgb(54, 54, 54);
+    }
   }
 }
 
@@ -55,12 +105,11 @@
     align-items: center;
 
     transition: all 0.5s ease;
-  }
-
-  #LZTUpSectionItem:hover {
-    background: rgba(54, 54, 54, 0.75);
-    border-radius: 8px;
-    cursor: pointer;
+    &:hover {
+      background: rgba(54, 54, 54, 0.75);
+      border-radius: 8px;
+      cursor: pointer;
+    }
   }
 }
 
@@ -99,9 +148,34 @@
 #LZTUpModalChecksContainer,
 #LZTUpModalReportButtonsContainer,
 #LZTUpModalCell,
-.LZTUpModalMesh {
+.LZTUpModalMesh,
+.LZTUpModalSeparator {
   margin: 15px;
   width: 550px;
+}
+
+.LZTUpContainer {
+  display: flex;
+  flex-direction: column;
+  margin: 15px;
+  width: 550px;
+}
+
+.LZTUpModalHeading {
+  margin: 10px 0 5px 0 !important;
+}
+
+.LZTUpModalDescription {
+  margin: 0 !important;
+  margin-bottom: 5px !important;
+}
+
+.LZTUpTextArea {
+  min-height: 40px;
+}
+
+.LZTUpModalSeparator {
+  border-bottom: 1px solid rgb(54, 54, 54);
 }
 
 #LZTUpModalChecksText {
@@ -141,6 +215,27 @@
   }
 }
 
+.LZTUpModalBlock {
+  display: flex;
+}
+
+.LZTUpModalBlockButtons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 25px;
+}
+
+.LZTUpModalBlockButtons .button {
+  margin: 5px;
+  width: 250px;
+}
+
+#LZTUpPreviewContainer {
+  display: flex;
+}
+
+
 #LZTUpSubMenu .previewContainer {
   float: right;
   margin-left: 15px;
@@ -153,7 +248,7 @@
   border-radius: 10px;
   width: 92%;
   max-width: 92%;
-  .avatar img{
+  .avatar img {
     width: 66px;
     height: 66px;
   }
@@ -267,19 +362,19 @@
       color: rgb(255, 154, 252);
     }
 
-    &.style353{
+    &.style353 {
       background: linear-gradient(98.26deg, #FF42F7 2.08%, #FF24CF 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
 
-    &.style350{
+    &.style350 {
       background: linear-gradient(90deg, #5c45ff, #feb5f2 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
 
-    &.style12{
+    &.style12 {
       color: rgb(1, 247, 60);
     }
 
@@ -412,20 +507,19 @@
         }
 
         &.avatarUserBadge--1 {
-          bottom: -10px;
-          left: 10px
+          left: 20px
         }
 
         &.avatarUserBadge--2 {
-          bottom: -10px;
-          left: 30px
+          left: 40px
         }
       }
     }
   }
 
-  .avatarBox, .info {
-    display:table-cell;
-    vertical-align:top
+  .avatarBox,
+  .info {
+    display: table-cell;
+    vertical-align: top
   }
 }
