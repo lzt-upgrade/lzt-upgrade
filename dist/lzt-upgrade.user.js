@@ -21,6 +21,8 @@
 // @license MIT
 // @namespace lztupgrade
 // @require https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js
+// @require https://raw.githubusercontent.com/lzt-upgrade/coloris-lzt-theme/main/dist/coloris.js
+// @require https://raw.githubusercontent.com/lzt-upgrade/lzt-upgrade/2.0.0/libs/purify3.0.3.min.js
 // @run-at document-start
 // @updateURL https://github.com/lzt-upgrade/lzt-upgrade/raw/master/dist/lzt-upgrade.user.js
 // ==/UserScript==
@@ -65,8 +67,9 @@ ___CSS_LOADER_EXPORT___.push([module.id, "#LZTUpButton{color:#0daf77;font-weight
 
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
+___CSS_LOADER_EXPORT___.push([module.id, "@import url(https://cdn.jsdelivr.net/gh/lzt-upgrade/coloris-lzt-theme@latest/dist/coloris.min.css);"]);
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "#LZTUpModalMainTitle{text-align:center;padding:16px;font-size:20px;font-weight:bold}.LZTUpModalBackButton{position:absolute;top:18px;left:25px;padding:0px 5px;margin:-4px -5px;cursor:pointer;line-height:25px;height:26px;width:26px;border:0 !important;background:rgba(0,0,0,0);color:#d6d6d6;font-size:18px}.LZTUpModalBackButton:hover{background:rgba(18,76,50,.4);border-radius:8px}.LZTUpTabs{border:none;margin:15px auto !important;display:flex;align-items:center;justify-content:center}.LZTUpTabs #LZTUpTab{position:relative;padding:10px;list-style:none;font-size:14px}.LZTUpSection{display:flex;flex-wrap:wrap;margin:20px 15px}.LZTUpSection #LZTUpSectionItem{max-width:284px;flex-basis:50%;flex-grow:1;height:64px;display:flex;align-items:center;transition:all .5s ease}.LZTUpSection #LZTUpSectionItem:hover{background:rgba(54,54,54,.75);border-radius:8px;cursor:pointer}#LZTUpIcon{width:28px;height:28px;margin:20px;font-size:28px;color:#0daf77}#LZTUpIcon .gray{color:#949494}#LZTUpIcon .right{text-align:right}#LZTUpSubText{display:block;margin-right:20px;font-size:13px;text-overflow:ellipsis;white-space:nowrap;overflow:hidden;width:200px;color:#949494}#LZTUpModalContainer{margin:15px;width:400px}#LZTUpModalChecksContainer,#LZTUpModalReportButtonsContainer,#LZTUpModalCell,.LZTUpModalMesh{margin:15px;width:550px}#LZTUpModalChecksText{margin:0px 25px 5px}#LZTUpText{display:block;margin-right:20px;font-size:15px;font-weight:bold;text-overflow:ellipsis;white-space:nowrap;overflow:hidden;width:200px}.LZTUpModalSectionTexts{display:flex;flex-direction:column;justify-content:center;flex:1 1 auto}.LZTUpModalSectionTexts #LZTUpSubText{width:450px}#LZTUpModalComment{background:#363636;margin:5px 15px;padding:10px 15px;border-radius:10px}#LZTUpModalComment a{color:#00ba78}#LZTUpSubMenu .previewContainer{float:right;margin-left:15px;margin-top:25px;padding:10px 10px 15px 10px;background-size:cover;background-position:center;background-attachment:fixed;background-repeat:no-repeat;border-radius:10px;width:92%;max-width:92%}#LZTUpSubMenu .previewContainer .avatar img{width:66px;height:66px}#LZTUpSubMenu .previewContainer .info{padding:0 0 0 20px}#LZTUpSubMenu .previewContainer .info .username{font-weight:600}#LZTUpSubMenu .previewContainer .bannerOrStatus{min-width:150px;margin:10px 0 0;color:#949494}#LZTUpSubMenu .previewContainer .bannerOrStatus em{font-style:inherit}#LZTUpSubMenu .previewContainer #LZTUpPreviewBadge .customUniqIcon{padding:2px 0;text-align:center}#LZTUpSubMenu .previewContainer #LZTUpPreviewBadge .customUniqIcon svg{width:16px !important;height:16px !important}#LZTUpSubMenu .previewContainer #LZTUpPreviewBadge::before{font-family:\"Font Awesome 5 Pro\";font-weight:600;display:inline-block;font-size:12.32px}#LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.admin{background:#964448}#LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.admin::before,#LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.bot::before{content:\"\"}#LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.Designer::before{content:\"\"}#LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.headDesigner::before{content:\"\"}#LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.editor::before{content:\"\"}#LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.sponsor::before{content:\"\"}#LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.coder::before{content:\"\"}#LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.uniq_default::before,#LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.Legend::before,#LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.Ikarus::before{content:\"\"}#LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.moder{background:#3d6b39}#LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.curator{background:rgba(8,156,122,.8509803922)}#LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.moder::before,#LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.main_moder::before,#LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.curator::before{content:\"\"}#LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.arbitr::before,#LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.main_arbitr::before{content:\"\"}#LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.telegramBot::before{content:\"\"}#LZTUpSubMenu .previewContainer .UsernameStyle.style18,#LZTUpSubMenu .previewContainer .UsernameStyle.style360{text-decoration:line-through;color:#aaa}#LZTUpSubMenu .previewContainer .UsernameStyle.style3{color:#f13838}#LZTUpSubMenu .previewContainer .UsernameStyle.style30{color:#ff9afc}#LZTUpSubMenu .previewContainer .UsernameStyle.style353{background:linear-gradient(98.26deg, #FF42F7 2.08%, #FF24CF 100%);-webkit-background-clip:text;-webkit-text-fill-color:rgba(0,0,0,0)}#LZTUpSubMenu .previewContainer .UsernameStyle.style350{background:linear-gradient(90deg, #5c45ff, #feb5f2 100%);-webkit-background-clip:text;-webkit-text-fill-color:rgba(0,0,0,0)}#LZTUpSubMenu .previewContainer .UsernameStyle.style12{color:#01f73c}#LZTUpSubMenu .previewContainer .UsernameStyle.style1,#LZTUpSubMenu .previewContainer .UsernameStyle.style41,#LZTUpSubMenu .previewContainer .UsernameStyle.style142,#LZTUpSubMenu .previewContainer .UsernameStyle.style144{color:#aaa}#LZTUpSubMenu .previewContainer .UsernameStyle.style32,#LZTUpSubMenu .previewContainer .UsernameStyle.style93,#LZTUpSubMenu .previewContainer .UsernameStyle.style21,#LZTUpSubMenu .previewContainer .UsernameStyle.style2{color:#949494}#LZTUpSubMenu .previewContainer .UsernameStyle.style60{color:#ffa8af}#LZTUpSubMenu .previewContainer .UsernameStyle.style9{color:#0075ad}#LZTUpSubMenu .previewContainer .UsernameStyle.style65{color:#a5e3ff}#LZTUpSubMenu .previewContainer .UsernameStyle.style351{color:#ff0076}#LZTUpSubMenu .previewContainer .UsernameStyle.style29{color:#0acc9e}#LZTUpSubMenu .previewContainer .UsernameStyle.style26{background:linear-gradient(90deg, #0095dd 0%, #f1094b 100%, #0095dd);-webkit-background-clip:text;-webkit-text-fill-color:rgba(0,0,0,0)}#LZTUpSubMenu .previewContainer .UsernameStyle.style4{color:#0e9100}#LZTUpSubMenu .previewContainer .UsernameStyle.style22{color:#eee}#LZTUpSubMenu .previewContainer .UsernameStyle.style11{color:#56b5e0}#LZTUpSubMenu .previewContainer .UsernameStyle.style7{color:#ff9304}#LZTUpSubMenu .previewContainer .UsernameStyle.style349,#LZTUpSubMenu .previewContainer .UsernameStyle.style365{color:#0087ff}#LZTUpSubMenu .previewContainer .UsernameStyle.style354{color:aqua}#LZTUpSubMenu .previewContainer .UsernameStyle.style218{color:#f13838}#LZTUpSubMenu .previewContainer .UsernameStyle.style359{color:#e5d9a3}#LZTUpSubMenu .previewContainer .UsernameStyle.style8{color:gold}#LZTUpSubMenu .previewContainer .UsernameStyle.style265{background:linear-gradient(35deg, #006eff, #00ff81 52%, #fff 50%, #93cbff);-webkit-background-clip:text;-webkit-text-fill-color:rgba(0,0,0,0);text-shadow:0 0 7px rgba(0,255,207,.5019607843)}#LZTUpSubMenu .previewContainer .UsernameStyle.style23{color:#b35ede}#LZTUpSubMenu .previewContainer .UsernameStyle.banned,#LZTUpSubMenu .previewContainer .UsernameStyle.is_banned{text-decoration:line-through;background:inherit;-webkit-text-fill-color:inherit;text-shadow:inherit !important;color:#aaa !important}#LZTUpSubMenu .previewContainer .avatarBox{position:relative}#LZTUpSubMenu .previewContainer .avatarBox .avatarUserBadges .badgeDefaultBackground{background:#363636}#LZTUpSubMenu .previewContainer .avatarBox .avatarUserBadges .avatarUserBadge{position:absolute;bottom:-12px;left:20px;border:2px solid #272727;font-size:0;width:22px;height:22px;margin:0;line-height:22px;border-radius:50%;text-align:center;text-shadow:none !important;box-shadow:none !important;border-radius:50% !important;-webkit-background-clip:unset !important;-webkit-text-fill-color:unset !important;overflow:hidden}#LZTUpSubMenu .previewContainer .avatarBox .avatarUserBadges .avatarUserBadge:only-child{left:35px}#LZTUpSubMenu .previewContainer .avatarBox .avatarUserBadges .avatarUserBadge.avatarUserBadge--1{bottom:-10px;left:10px}#LZTUpSubMenu .previewContainer .avatarBox .avatarUserBadges .avatarUserBadge.avatarUserBadge--2{bottom:-10px;left:30px}#LZTUpSubMenu .previewContainer .avatarBox,#LZTUpSubMenu .previewContainer .info{display:table-cell;vertical-align:top}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".LZTUpColorPickerWrap{display:flex;align-items:center}.LZTUpColorPickerWrap:not(:first-of-type){margin-top:10px}.LZTUpColorPickerWrap .LZTUpModalDescription{margin-right:10px !important}.LZTUpColorPickerWrap .clr-field input{width:24px;height:24px}.LZTUpColorPickerWrap .clr-field button{width:28px;height:28px}.LZTUpColorPickerWrap .clr-field input,.LZTUpColorPickerWrap .clr-field button{border-radius:4px}#LZTUpModalMainTitle{text-align:center;padding:16px;font-size:20px;font-weight:bold}.LZTUpModalBackButton{position:absolute;top:18px;left:25px;padding:0px 5px;margin:-4px -5px;cursor:pointer;line-height:25px;height:26px;width:26px;border:0 !important;background:rgba(0,0,0,0);color:#d6d6d6;font-size:18px}.LZTUpModalBackButton:hover{background:rgba(18,76,50,.4);border-radius:8px}.LZTUpTabs{width:100%;box-sizing:border-box;padding:0 10px;border:none !important;margin:15px auto !important;display:flex;align-items:center;justify-content:center}.LZTUpTabs #LZTUpTab{position:relative;padding:10px;margin:0 4px;float:left;font-weight:600;list-style:none;font-size:14px}.LZTUpTabs #LZTUpTab:hover{cursor:pointer}.LZTUpTabs #LZTUpTab.active{box-shadow:inset 0px -2px 0px 0px #0daf77;transform:translateY(-1px);transition:.2s}.LZTUpTabs #LZTUpTab:not(.active):hover{box-shadow:inset 0px -2px 0px 0px #363636}.LZTUpSection{display:flex;flex-wrap:wrap;margin:20px 15px}.LZTUpSection #LZTUpSectionItem{max-width:284px;flex-basis:50%;flex-grow:1;height:64px;display:flex;align-items:center;transition:all .5s ease}.LZTUpSection #LZTUpSectionItem:hover{background:rgba(54,54,54,.75);border-radius:8px;cursor:pointer}#LZTUpIcon{width:28px;height:28px;margin:20px;font-size:28px;color:#0daf77}#LZTUpIcon .gray{color:#949494}#LZTUpIcon .right{text-align:right}#LZTUpSubText{display:block;margin-right:20px;font-size:13px;text-overflow:ellipsis;white-space:nowrap;overflow:hidden;width:200px;color:#949494}#LZTUpModalContainer{margin:15px;width:400px}#LZTUpModalChecksContainer,#LZTUpModalReportButtonsContainer,#LZTUpModalCell,.LZTUpModalMesh,.LZTUpModalSeparator{margin:15px;width:550px}.LZTUpContainer{display:flex;flex-direction:column;margin:15px;width:550px}.LZTUpModalHeading{margin:10px 0 5px 0 !important}.LZTUpModalDescription{margin:0 !important;margin-bottom:5px !important}.LZTUpTextArea{min-height:40px}.LZTUpModalSeparator{border-bottom:1px solid #363636}#LZTUpModalChecksText{margin:0px 25px 5px}#LZTUpText{display:block;margin-right:20px;font-size:15px;font-weight:bold;text-overflow:ellipsis;white-space:nowrap;overflow:hidden;width:200px}.LZTUpModalSectionTexts{display:flex;flex-direction:column;justify-content:center;flex:1 1 auto}.LZTUpModalSectionTexts #LZTUpSubText{width:450px}#LZTUpModalComment{background:#363636;margin:5px 15px;padding:10px 15px;border-radius:10px}#LZTUpModalComment a{color:#00ba78}.LZTUpModalBlock{display:flex}.LZTUpModalBlockButtons{display:flex;flex-wrap:wrap;justify-content:center;margin-top:25px}.LZTUpModalBlockButtons .button{margin:5px;width:250px}#LZTUpPreviewContainer{display:flex}#LZTUpSubMenu .previewContainer{float:right;margin-left:15px;margin-top:25px;padding:10px 10px 15px 10px;background-size:cover;background-position:center;background-attachment:fixed;background-repeat:no-repeat;border-radius:10px;width:92%;max-width:92%}#LZTUpSubMenu .previewContainer .avatar img{width:66px;height:66px}#LZTUpSubMenu .previewContainer .info{padding:0 0 0 20px}#LZTUpSubMenu .previewContainer .info .username{font-weight:600}#LZTUpSubMenu .previewContainer .bannerOrStatus{min-width:150px;margin:10px 0 0;color:#949494}#LZTUpSubMenu .previewContainer .bannerOrStatus em{font-style:inherit}#LZTUpSubMenu .previewContainer #LZTUpPreviewBadge .customUniqIcon{padding:2px 0;text-align:center}#LZTUpSubMenu .previewContainer #LZTUpPreviewBadge .customUniqIcon svg{width:16px !important;height:16px !important}#LZTUpSubMenu .previewContainer #LZTUpPreviewBadge::before{font-family:\"Font Awesome 5 Pro\";font-weight:600;display:inline-block;font-size:12.32px}#LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.admin{background:#964448}#LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.admin::before,#LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.bot::before{content:\"\"}#LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.Designer::before{content:\"\"}#LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.headDesigner::before{content:\"\"}#LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.editor::before{content:\"\"}#LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.sponsor::before{content:\"\"}#LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.coder::before{content:\"\"}#LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.uniq_default::before,#LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.Legend::before,#LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.Ikarus::before{content:\"\"}#LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.moder{background:#3d6b39}#LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.curator{background:rgba(8,156,122,.8509803922)}#LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.moder::before,#LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.main_moder::before,#LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.curator::before{content:\"\"}#LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.arbitr::before,#LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.main_arbitr::before{content:\"\"}#LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.telegramBot::before{content:\"\"}#LZTUpSubMenu .previewContainer .UsernameStyle.style18,#LZTUpSubMenu .previewContainer .UsernameStyle.style360{text-decoration:line-through;color:#aaa}#LZTUpSubMenu .previewContainer .UsernameStyle.style3{color:#f13838}#LZTUpSubMenu .previewContainer .UsernameStyle.style30{color:#ff9afc}#LZTUpSubMenu .previewContainer .UsernameStyle.style353{background:linear-gradient(98.26deg, #FF42F7 2.08%, #FF24CF 100%);-webkit-background-clip:text;-webkit-text-fill-color:rgba(0,0,0,0)}#LZTUpSubMenu .previewContainer .UsernameStyle.style350{background:linear-gradient(90deg, #5c45ff, #feb5f2 100%);-webkit-background-clip:text;-webkit-text-fill-color:rgba(0,0,0,0)}#LZTUpSubMenu .previewContainer .UsernameStyle.style12{color:#01f73c}#LZTUpSubMenu .previewContainer .UsernameStyle.style1,#LZTUpSubMenu .previewContainer .UsernameStyle.style41,#LZTUpSubMenu .previewContainer .UsernameStyle.style142,#LZTUpSubMenu .previewContainer .UsernameStyle.style144{color:#aaa}#LZTUpSubMenu .previewContainer .UsernameStyle.style32,#LZTUpSubMenu .previewContainer .UsernameStyle.style93,#LZTUpSubMenu .previewContainer .UsernameStyle.style21,#LZTUpSubMenu .previewContainer .UsernameStyle.style2{color:#949494}#LZTUpSubMenu .previewContainer .UsernameStyle.style60{color:#ffa8af}#LZTUpSubMenu .previewContainer .UsernameStyle.style9{color:#0075ad}#LZTUpSubMenu .previewContainer .UsernameStyle.style65{color:#a5e3ff}#LZTUpSubMenu .previewContainer .UsernameStyle.style351{color:#ff0076}#LZTUpSubMenu .previewContainer .UsernameStyle.style29{color:#0acc9e}#LZTUpSubMenu .previewContainer .UsernameStyle.style26{background:linear-gradient(90deg, #0095dd 0%, #f1094b 100%, #0095dd);-webkit-background-clip:text;-webkit-text-fill-color:rgba(0,0,0,0)}#LZTUpSubMenu .previewContainer .UsernameStyle.style4{color:#0e9100}#LZTUpSubMenu .previewContainer .UsernameStyle.style22{color:#eee}#LZTUpSubMenu .previewContainer .UsernameStyle.style11{color:#56b5e0}#LZTUpSubMenu .previewContainer .UsernameStyle.style7{color:#ff9304}#LZTUpSubMenu .previewContainer .UsernameStyle.style349,#LZTUpSubMenu .previewContainer .UsernameStyle.style365{color:#0087ff}#LZTUpSubMenu .previewContainer .UsernameStyle.style354{color:aqua}#LZTUpSubMenu .previewContainer .UsernameStyle.style218{color:#f13838}#LZTUpSubMenu .previewContainer .UsernameStyle.style359{color:#e5d9a3}#LZTUpSubMenu .previewContainer .UsernameStyle.style8{color:gold}#LZTUpSubMenu .previewContainer .UsernameStyle.style265{background:linear-gradient(35deg, #006eff, #00ff81 52%, #fff 50%, #93cbff);-webkit-background-clip:text;-webkit-text-fill-color:rgba(0,0,0,0);text-shadow:0 0 7px rgba(0,255,207,.5019607843)}#LZTUpSubMenu .previewContainer .UsernameStyle.style23{color:#b35ede}#LZTUpSubMenu .previewContainer .UsernameStyle.banned,#LZTUpSubMenu .previewContainer .UsernameStyle.is_banned{text-decoration:line-through;background:inherit;-webkit-text-fill-color:inherit;text-shadow:inherit !important;color:#aaa !important}#LZTUpSubMenu .previewContainer .avatarBox{position:relative}#LZTUpSubMenu .previewContainer .avatarBox .avatarUserBadges .badgeDefaultBackground{background:#363636}#LZTUpSubMenu .previewContainer .avatarBox .avatarUserBadges .avatarUserBadge{position:absolute;bottom:-12px;left:20px;border:2px solid #272727;font-size:0;width:22px;height:22px;margin:0;line-height:22px;border-radius:50%;text-align:center;text-shadow:none !important;box-shadow:none !important;border-radius:50% !important;-webkit-background-clip:unset !important;-webkit-text-fill-color:unset !important;overflow:hidden}#LZTUpSubMenu .previewContainer .avatarBox .avatarUserBadges .avatarUserBadge:only-child{left:35px}#LZTUpSubMenu .previewContainer .avatarBox .avatarUserBadges .avatarUserBadge.avatarUserBadge--1{left:20px}#LZTUpSubMenu .previewContainer .avatarBox .avatarUserBadges .avatarUserBadge.avatarUserBadge--2{left:40px}#LZTUpSubMenu .previewContainer .avatarBox,#LZTUpSubMenu .previewContainer .info{display:table-cell;vertical-align:top}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -494,39 +497,24 @@ var __webpack_exports__ = {};
 const config = () => {
   return {
     'extName':  false ? 0 : 'LZT Upgrade Development Build',
-    'nodeSelectors': {
-      'contests': '.node766'
-    }
   }
 }
 
 /* harmony default export */ const configs_config = (config());
-;// CONCATENATED MODULE: ./src/utils/logger.js
-const Logger = {};
-Logger.log = (...text) => {
-  return console.log("%c[LZT Upgrade]", "background: #0daf77; color: #fff; padding: 5px;", ...text);
+;// CONCATENATED MODULE: ./src/configs/extData.js
+const extData = () => {
+  return {
+    nodes: {
+      contests: '.node766'
+    },
+    elements: {
+      memberCard: '.xenOverlay.memberCard'
+    },
+  }
 }
 
-Logger.error = (...text) => {
-  return console.error("%c[LZT Upgrade]", "background: #0daf77; color: #fff; padding: 5px;", ...text);
-}
-
-Logger.warn = (...text) => {
-  return console.warn("%c[LZT Upgrade]", "background: #0daf77; color: #fff; padding: 5px;", ...text);
-}
-
-Logger.info = (...text) => {
-  return console.info("%c[LZT Upgrade]", "background: #0daf77; color: #fff; padding: 5px;", ...text);
-}
-
-Logger.debug = (...text) => {
-  if (false) {}
-}
-
-
+/* harmony default export */ const configs_extData = (extData());
 ;// CONCATENATED MODULE: ./src/utils/utils.js
-
-
 function waitForElm(selector) {
   // https://stackoverflow.com/questions/5525071/how-to-wait-until-an-element-exists
   return new Promise(resolve => {
@@ -582,9 +570,27 @@ function hasOwn(element, property) {
   return Object.prototype.hasOwnProperty.call(element, property);
 }
 
-function updateTooltips() {
-  let lztUpTooltips = $('#LZTUpTooltip.Tooltip');
-  return XenForo.Tooltip(lztUpTooltips);
+function clearHTML(element) {
+  return DOMPurify.sanitize(element, {
+    USE_PROFILES: {
+        svg: true,
+        html: true
+    },
+    FORBID_TAGS: [
+        "style"
+    ]
+  });
+}
+
+function clearSVG(element) {
+  return DOMPurify.sanitize(element, {
+    USE_PROFILES: {
+        svg: true
+    },
+    FORBID_TAGS: [
+        "style"
+    ]
+  });
 }
 
 function getNodeLinks() {
@@ -604,11 +610,34 @@ function getThreadLinks() {
 
 
 
-;// CONCATENATED MODULE: ./src/utils/handlers.js
+;// CONCATENATED MODULE: ./src/utils/logger.js
+const Logger = {};
+Logger.log = (...text) => {
+  return console.log("%c[LZT Upgrade]", "background: #0daf77; color: #fff; padding: 5px;", ...text);
+}
+
+Logger.error = (...text) => {
+  return console.error("%c[LZT Upgrade]", "background: #0daf77; color: #fff; padding: 5px;", ...text);
+}
+
+Logger.warn = (...text) => {
+  return console.warn("%c[LZT Upgrade]", "background: #0daf77; color: #fff; padding: 5px;", ...text);
+}
+
+Logger.info = (...text) => {
+  return console.info("%c[LZT Upgrade]", "background: #0daf77; color: #fff; padding: 5px;", ...text);
+}
+
+Logger.debug = (...text) => {
+  if (false) {}
+}
+
+
+;// CONCATENATED MODULE: ./src/events/participate.js
 
 
 
-function onParticipateHandler(callback) {
+function onParticipateHandler(callback, sleepTime = 1000) {
   return waitForElm('.LztContest--Participate')
     .then(el => {
       Logger.debug('onParticipateHandler: Participate button finded');
@@ -623,7 +652,7 @@ function onParticipateHandler(callback) {
           }
 
           Logger.debug('onParticipateHandler: alreadyParticipate button finded');
-          await sleep(1000);
+          await sleep(sleepTime);
           callback();
         } else {
           Logger.debug('onParticipateHandler: clicked on disabled contest button');
@@ -1094,13 +1123,15 @@ class LZTUsersDB extends LZTUpgradeDB {
       objectKey,
       version,
       { // indexes
-        'showUserId': 'number',
+        'showUserIdInProfile': 'number',
+        'showUserIdInMemberCard': 'number',
         'showFullRegInProfile': 'number',
         'disableShareTyping': 'number',
       },
       { // defaultData
         key: objectKey,
-        showUserId: 0,
+        showUserIdInProfile: 0,
+        showUserIdInMemberCard: 0,
         showFullRegInProfile: 0,
         disableShareTyping: 0,
       }
@@ -1108,7 +1139,8 @@ class LZTUsersDB extends LZTUpgradeDB {
   };
 
   async update({
-    showUserId,
+    showUserIdInProfile,
+    showUserIdInMemberCard,
     showFullRegInProfile,
     disableShareTyping,
   }) {
@@ -1147,7 +1179,7 @@ class LZTProfileDB extends LZTUpgradeDB {
       objectKey,
       version,
       { // indexes
-        'nickStyle': 'string',
+        'usernameStyle': 'string',
         'bannerStyle': 'string',
         'bannerText': 'string',
         'badgeIcon': 'string',
@@ -1160,7 +1192,7 @@ class LZTProfileDB extends LZTUpgradeDB {
       },
       { // defaultData
         key: objectKey,
-        nickStyle: '',
+        usernameStyle: '',
         bannerStyle: '',
         bannerText: '',
         badgeIcon: '',
@@ -1175,7 +1207,7 @@ class LZTProfileDB extends LZTUpgradeDB {
   };
 
   async update({
-    nickStyle,
+    usernameStyle,
     bannerStyle,
     bannerText,
     badgeIcon,
@@ -1239,7 +1271,9 @@ class LZTSettingsDB extends LZTUpgradeDB {
 
 
 ;// CONCATENATED MODULE: ./src/utils/checkers.js
-//Returns true if it is a DOM element 
+
+
+// Returns true if it is a DOM element
 // https://stackoverflow.com/questions/384286/how-do-you-check-if-a-javascript-object-is-a-dom-object
 function isElement(o){
   return (
@@ -1263,6 +1297,10 @@ function isProfilePage() {
 
 function isThreadPage() {
   return document.querySelector('div#content.thread_view') !== null;
+}
+
+function checkers_isOpenMemberCard() {
+  return document.querySelector(configs_extData.elements.memberCard) !== null;
 }
 
 
@@ -1313,7 +1351,7 @@ function removeOpenContestsBtn(amount = 10) {
 ;// CONCATENATED MODULE: ./src/utils/registers.js
 function registerModal(modalName, elementMain = '') {
   return XenForo.alert(elementMain, modalName, null, (elem) => {
-      $('div.modal.fade').remove()
+    document.querySelector('div.modal.fade').remove();
   })
 }
 
@@ -1327,8 +1365,22 @@ function registerMenuButton(el) {
   return true;
 }
 
+function registerObserver(callback) {
+  const observer = new MutationObserver((mutationsList, observer) => {
+    for (const mutation of mutationsList) {
+      if (mutation.type === 'childList') {
+        callback(mutation);
+      }
+    }
+  });
 
-;// CONCATENATED MODULE: ./src/ui/kit/MenuSection.js
+  const config = { childList: true, subtree: true };
+  observer.observe(document.body, config);
+  return observer;
+}
+
+
+;// CONCATENATED MODULE: ./src/ui/kit/menuSection.js
 class MenuSection {
   /**
    *
@@ -1384,7 +1436,7 @@ class Button {
     this.iconClassName = iconClassName;
   }
 
-  createElement() {
+  createElement(callback = () => {}) {
     const button = document.createElement('button');
     button.className = this.className;
     button.innerText = this.buttonText;
@@ -1394,6 +1446,8 @@ class Button {
       icon.id = '';
       button.appendChild(icon);
     }
+
+    button.onclick = callback;
 
     return button;
   }
@@ -1488,8 +1542,8 @@ function addMenuSectionItem(sectionName, sectionDesc, sectionIconClasses, classN
   const sectionIcon = createMenuIcon(sectionIconClasses);
   const textContainer = document.createElement('div');
   textContainer.innerHTML = `
-    <span id="LZTUpText">${sectionName}</span>
-    <span id="LZTUpSubText">${sectionDesc}</span>
+    <span id="LZTUpText">${XenForo.htmlspecialchars(sectionName)}</span>
+    <span id="LZTUpSubText">${XenForo.htmlspecialchars(sectionDesc)}</span>
   `;
 
   sectionItem.appendChild(sectionIcon);
@@ -1498,28 +1552,6 @@ function addMenuSectionItem(sectionName, sectionDesc, sectionIconClasses, classN
   sectionItem.addEventListener('click', () => openSubMenu(containerClassName, sectionName));
 
   return sectionItem;
-}
-
-
-;// CONCATENATED MODULE: ./src/ui/menu/comment.js
-class Comment {
-  /**
-   *
-   *  @constructor
-   *  @param {string} content - content of the element
-   */
-
-  constructor(content) {
-    this.content = content;
-  }
-
-  createElement() {
-    const container = document.createElement('div');
-    container.id = 'LZTUpModalComment';
-    container.innerHTML = this.content;
-
-    return container;
-  }
 }
 
 
@@ -1540,6 +1572,9 @@ function addMenuSectionContainer(className, items) {
 
 
 ;// CONCATENATED MODULE: ./src/ui/menu/checkbox.js
+
+
+
 class Checkbox {
   /**
    *
@@ -1550,7 +1585,7 @@ class Checkbox {
 
   constructor(elementId, content) {
     this.elementId = elementId;
-    this.content = content;
+    this.content = clearHTML(content);
   }
 
   createElement(valueToCheck, callbackChecked = () => {}, callbackUnChecked = () => {}) {
@@ -1737,6 +1772,7 @@ const getContestsItems = async () => {
 ;// CONCATENATED MODULE: ./src/ui/kit/profileInfoRow.js
 
 
+
 class ProfileInfoRow {
   /**
    *
@@ -1749,7 +1785,7 @@ class ProfileInfoRow {
   constructor(elementId, label, content) {
     this.elementId = elementId;
     this.label = label;
-    this.content = content;
+    this.content = clearHTML(content);
   }
 
   createElement() {
@@ -1781,27 +1817,73 @@ class ProfileInfoRow {
 
 
 
+
 const userIdRowElementId = 'LZTUpUserIDRow';
+const userIdMemberCardElementId = 'LZTUpUserIDMemberCard';
 
-function getUserIdInProfile() {
-  if (isProfilePage()) {
-    const userThreadsButton = document.querySelector('#profile_short > .userContentLinks > a:nth-child(1)');
-    if (!userThreadsButton || userThreadsButton.href === '') {
+function getUserId(target) {
+  switch (target) {
+    case "profile":
+      // in any profile
+      if (isProfilePage()) {
+        const userThreadsButton = document.querySelector('#profile_short > .userContentLinks > a:nth-child(1)');
+        if (!userThreadsButton || userThreadsButton.href === '') {
+          return null;
+        }
+
+        if (!userThreadsButton.href.endsWith('?tab=mythreads')) {
+          const url = new URL(userThreadsButton.href);
+          return url.searchParams.get('user_id');
+        }
+
+        return getUserId('me');
+      }
+    case "membercard":
+      // in any membercard
+      if (checkers_isOpenMemberCard()) {
+        const memberCard = document.querySelectorAll(configs_extData.elements.memberCard);
+        const userThreadsButton = memberCard[memberCard.length - 1].querySelector('.memberCardInner > .bottom > .userContentLinks > a:nth-child(1)');
+        if (!userThreadsButton || userThreadsButton.href === '') {
+          return null;
+        }
+
+        const url = new URL(userThreadsButton.href);
+        return url.searchParams.get('user_id');
+      }
+    case "self":
+    case "me":
+      return XenForo?._csrfToken?.split(',')[0];
+    default:
       return null;
-    }
-
-    if (!userThreadsButton.href.endsWith('?tab=mythreads')) {
-      const url = new URL(userThreadsButton.href);
-      return url.searchParams.get('user_id');
-    }
-
-    return XenForo?._csrfToken?.split(',')[0];
   }
 }
 
-function addUserId() {
-  if (isProfilePage()) {
-    const userId = getUserIdInProfile() ?? 'Не найден';
+function getUsername(target) {
+  switch (target) {
+    // TODO: add get by userid
+    case "self":
+    case "me":
+      return document.querySelector('.accountUsername span').innerText;
+    default:
+      return null;
+  }
+}
+
+function getUserAvatar(userId) {
+  if (userId === getUserId('me')) {
+    return document.querySelector('img.navTab--visitorAvatar').src;
+  }
+
+  const avatars = document.querySelectorAll('a.avatar');
+  const avatar = Array.from(avatars)
+    .find(avatar => avatar.classList?.contains(`Av${userId}s`) || avatar.classList?.contains(`Av${userId}m`));
+
+  return avatar ? avatars.src : null;
+}
+
+function addUserIdToProfile() {
+  if (isProfilePage() && document.querySelector(`#${userIdRowElementId}`) === null) {
+    const userId = getUserId('profile') ?? 'Не найден';
     const profileInfo = document.querySelector('#profile_short > .pairsJustified');
     const userIdRow = new ProfileInfoRow(userIdRowElementId, 'ID', userId).createElement();
     const firstRow = profileInfo.querySelector('.profile_info_row');
@@ -1813,9 +1895,31 @@ function addUserId() {
   }
 }
 
-function removeUserId() {
+function addUserIdToMemberCard() {
+  if (checkers_isOpenMemberCard()) {
+    const memberCards = document.querySelectorAll(configs_extData.elements.memberCard);
+    const userId = getUserId('membercard') ?? 'Не найден';
+    const userContentLinks = memberCards[memberCards.length - 1].querySelector(`#memberCard${userId}.memberCardInner > .bottom > .userContentLinks`);
+    const userIdElement = document.createElement('div');
+    userIdElement.classList.add('title');
+    userIdElement.id = userIdMemberCardElementId;
+    userIdElement.innerText = `ID: ${userId}`;
+    userContentLinks.insertAdjacentElement('afterbegin', userIdElement);
+  }
+}
+
+function removeUserIdFromProfile() {
   if (isProfilePage()) {
     const el = document.querySelector(`.profile_info_row#${userIdRowElementId}`);
+    if (el) {
+      el.remove();
+    }
+  }
+}
+
+function removeUserIdFromMemberCard() {
+  if (isOpenMemberCard()) {
+    const el = document.querySelector(`.title#${userIdMemberCardElementId}`);
     if (el) {
       el.remove();
     }
@@ -1850,24 +1954,7 @@ function showFullRegDateInProfile(full = false) {
 }
 
 
-;// CONCATENATED MODULE: ./src/utils/xenforo.js
-
-
-function bypassShareTyping() {
-  if (hasOwn(XenForo, 'threadNotify') && hasOwn(XenForo.threadNotify, 'shareTypingActivity')) {
-    console.log('bypassShareTyping thread: true');
-    XenForo.threadNotify.shareTypingActivity = 0;
-  }
-
-  // if (hasOwn(XenForo, 'ChatboxRTC') && hasOwn(XenForo.chatboxRTC, 'Start')) {
-  //   console.log('bypassShareTyping chat: true');
-  //   XenForo.ChatboxRTC.Start.prototype.sendTypingMessage = () => {return};
-  // }
-}
-
-
 ;// CONCATENATED MODULE: ./src/ui/menu/items/users.js
-
 
 
 
@@ -1879,16 +1966,34 @@ const getUsersItems = async () => {
   const usersData = await usersDB.read();
 
   return [
-    new Checkbox('show_userid', 'Показывать UserID пользователей')
+    new Checkbox('show_userid_in_profile', 'Показывать ID в профиле пользователя')
     .createElement(
-      usersData.showUserId,
+      usersData.showUserIdInProfile,
       async () => {
-        await usersDB.update({ showUserId: 1 });
-        addUserId();
+        await usersDB.update({ showUserIdInProfile: 1 });
+        addUserIdToProfile();
       },
       async () => {
-        await usersDB.update({ showUserId: 0 });
-        removeUserId();
+        await usersDB.update({ showUserIdInProfile: 0 });
+        removeUserIdFromProfile();
+      }),
+    new Checkbox('show_userid_in_member_card',
+      `Показывать ID в карточке пользователя
+      <span class="fa fa-exclamation-triangle Tooltip" title="При включение/отключение этой функции страница будет перезагружена"></span>
+      `)
+    .createElement(
+      usersData.showUserIdInMemberCard,
+      async () => {
+        await usersDB.update({ showUserIdInMemberCard: 1 });
+        registerAlert('Показывать ID в карточке пользователя включено', 5000);
+        await sleep(500);
+        window.location.reload();
+      },
+      async () => {
+        await usersDB.update({ showUserIdInMemberCard: 0 });
+        registerAlert('Показывать ID в карточке пользователя выключено', 5000);
+        await sleep(500);
+        window.location.reload();
       }),
     new Checkbox('show_fullreg_in_profile', 'Показывать полную дату регистрации в профиле пользователя')
     .createElement(
@@ -1909,13 +2014,13 @@ const getUsersItems = async () => {
       usersData.disableShareTyping,
       async () => {
         await usersDB.update({ disableShareTyping: 1 });
-        registerAlert('Отправка информации о наборе сообщения отключена', 5000);
+        registerAlert('Неписалка в темах включена', 5000);
         await sleep(500);
         window.location.reload();
       },
       async () => {
         await usersDB.update({ disableShareTyping: 0 });
-        registerAlert('Отправка информации о наборе сообщения включена', 5000);
+        registerAlert('Неписалка в темах выключена', 5000);
         await sleep(500);
         window.location.reload();
       }),
@@ -1923,6 +2028,646 @@ const getUsersItems = async () => {
 }
 
 /* harmony default export */ const users = (getUsersItems);
+;// CONCATENATED MODULE: ./src/ui/menu/comment.js
+
+
+
+class Comment {
+  /**
+   *
+   *  @constructor
+   *  @param {string} content - content of the element
+   */
+
+  constructor(content) {
+    this.content = clearHTML(content);
+  }
+
+  createElement() {
+    const container = document.createElement('div');
+    container.id = 'LZTUpModalComment';
+    container.innerHTML = this.content;
+
+    return container;
+  }
+}
+
+
+;// CONCATENATED MODULE: ./src/xenforo/tooltips.js
+function updateTooltips() {
+  let lztUpTooltips = $('#LZTUpTooltip.Tooltip');
+  return XenForo.Tooltip(lztUpTooltips);
+}
+
+function setTooltip(el, text) {
+  el.setAttribute('title', '');
+  el.setAttribute('data-cachedtitle', text);
+
+  return el._tippy.setContent(text);
+}
+
+
+;// CONCATENATED MODULE: ./src/utils/svg.js
+function setSvgAttr(el, type, color) {
+  return el.setAttribute(type, color);
+}
+
+function changeSVGColor(el, type, color, replaceAll = false) {
+  if (!['stroke', 'fill'].includes(type)) {
+    return;
+  }
+
+  if (!replaceAll) {
+    return setSvgAttr(el, type, color);
+  }
+
+  setSvgAttr(el, type, color);
+  const elements = el.querySelectorAll('*');
+  for (const element of elements) {
+    setSvgAttr(element, type, color);
+  }
+}
+
+
+;// CONCATENATED MODULE: ./src/ui/kit/menu/previewProfile.js
+
+
+
+
+
+class PreviewProfile {
+  /**
+   *
+   *  @constructor
+   *  @param {string|number} userid - user id
+   *  @param {string} username - username
+   *  @param {object} data - data for show preview (ex. data from profileDB)
+   */
+
+  constructor(userid, username, data) {
+    this.userid = userid;
+    this.username = username;
+    this.data = data;
+  }
+
+  createElement() {
+    const previewContainer = document.createElement('div');
+    previewContainer.id = 'LZTUpPreviewContainer';
+    previewContainer.classList.add('previewContainer');
+
+    const avatarBox = document.createElement('div');
+    avatarBox.classList.add('avatarBox');
+    avatarBox.innerHTML = `
+      <div class="avatarUserBadges">
+        <span id="LZTUpPreviewBadge" class="avatarUserBadge Tooltip" tabindex="0" title="${XenForo.htmlspecialchars(this.data.badgeText)}"></span>
+      </div>
+      <a href="members/${encodeURIComponent(this.userid)}/" class="avatar Av${XenForo.htmlspecialchars(this.userid)}m" data-avatarhtml="true">
+        <span class="img m" style="background-image: url(${getUserAvatar(this.userid)})"></span>
+      </a>
+    `;
+
+    const info = document.createElement('div');
+    info.classList.add('info');
+    info.innerHTML = `
+      <span id="LZTUpUsernameStyle" class="UsernameStyle bold">${XenForo.htmlspecialchars(this.username)}</span>
+      <div class="bannerOrStatus">
+        <em id="LZTUpUserBannerStyle" class="UserBannerStyle userBanner"></em>
+      </div>
+    `;
+
+    previewContainer.appendChild(avatarBox);
+    previewContainer.appendChild(info);
+    return previewContainer;
+  }
+
+  clearStyle(selector) {
+    const el = document.querySelector(selector);
+    if (!el) {
+      return;
+    }
+
+    el.className = ''
+    el.style = '';
+
+    return el;
+  }
+
+  applyStyle(el, style) {
+    if (style?.length > 1 && style?.startsWith('.')) {
+      style = style.replace('.', '');
+      return el.classList.add(style);
+    } else {
+      return el.style = style;
+    }
+  }
+
+  applyBadge(el, icon) {
+    if (icon?.length > 1 && icon?.startsWith('.')) {
+      icon = icon.replace('.', '');
+      return el.classList.add('userBanner', icon);
+    } else if (icon.startsWith('<svg') && icon.endsWith('svg>')) {
+      el.innerHTML = clearSVG(icon);
+      return el.classList.add('badgeDefaultBackground');
+    } else {
+      return el.classList.add('uniq_default', 'badgeDefaultBackground');
+    }
+  }
+
+  updateUsernameStyle(style) {
+    const usernameEl = this.clearStyle('#LZTUpUsernameStyle');
+    if (!usernameEl) {
+      return;
+    }
+
+    usernameEl.classList.add('UsernameStyle', 'bold');
+    this.applyStyle(usernameEl, style);
+  }
+
+  updateBannerStyle(style) {
+    const userBannerEl = this.clearStyle('#LZTUpUserBannerStyle');
+    if (!userBannerEl) {
+      return;
+    }
+
+    userBannerEl.classList.add('UserBannerStyle', 'userBanner');
+    this.applyStyle(userBannerEl, style);
+  }
+
+  updateBannerText(text) {
+    const userBannerEl = document.querySelector('#LZTUpUserBannerStyle');
+    if (!userBannerEl) {
+      return;
+    }
+
+    userBannerEl.innerText = XenForo.htmlspecialchars(text);
+  }
+
+  updateBadgeIcon(icon) {
+    const userBadgeEl = this.clearStyle('#LZTUpPreviewBadge');
+    if (!userBadgeEl) {
+      return;
+    }
+
+    userBadgeEl.classList.add('avatarUserBadge', 'Tooltip');
+    return this.applyBadge(userBadgeEl, icon);
+  }
+
+  updateBadgeText(text) {
+    const userBadgeEl = document.querySelector('#LZTUpPreviewBadge');
+    if (!userBadgeEl) {
+      return;
+    }
+
+    setTooltip(userBadgeEl, XenForo.htmlspecialchars(text));
+  }
+
+  updateBadgeColor(color, type) {
+    const svg = document.querySelector('#LZTUpPreviewBadge > svg');
+    if (!svg) {
+      return;
+    }
+
+    changeSVGColor(svg, type, color, true);
+  }
+
+  updateBadgeStyle(style) {
+    if (!style || style?.startsWith('.')) {
+      return;
+    }
+
+    const userBadgeEl = document.querySelector('#LZTUpPreviewBadge');
+    if (!userBadgeEl) {
+      return;
+    }
+
+    userBadgeEl.style = style;
+  }
+
+  updateBannerAll(data) {
+    this.updateBannerStyle(data.bannerStyle);
+    this.updateBannerText(data.bannerText);
+  }
+
+  updateBadgeAll(data) {
+    this.updateBadgeIcon(data.badgeIcon);
+    this.updateBadgeText(data.badgeText);
+    this.updateBadgeStyle(data.bannerStyle);
+    this.updateBadgeColor(data.badgeFill, 'fill');
+    this.updateBadgeColor(data.badgeStroke, 'stroke');
+  }
+
+  updateAll(data) {
+    this.updateUsernameStyle(data.usernameStyle);
+    this.updateBannerAll(data);
+    this.updateBadgeAll(data);
+  }
+}
+
+
+;// CONCATENATED MODULE: ./src/ui/kit/menu/textArea.js
+
+
+class TextArea {
+  /**
+   *
+   *  @constructor
+   *  @param {string} text - default text of the text area
+   *  @param {string} placeholder - placeholder for the text area
+   *  @param {number} minLength - min length for the text area
+   *  @param {number} maxLength - max length for the text area
+   */
+
+  constructor(text = '', placeholder = '', minLength = 0, maxLength = 0) {
+    this.text = text;
+    this.placeholder = placeholder;
+    this.minLength = minLength;
+    this.maxLength = maxLength;
+  }
+
+  createElement(callback) {
+    const textarea = document.createElement('textarea');
+    textarea.classList.add('LZTUpTextArea', 'textCtrl');
+    textarea.innerText = this.text;
+    textarea.placeholder = this.placeholder;
+    textarea.minLength = this.minLength;
+    if (this.maxLength > 0)
+      textarea.maxLength = this.maxLength;
+
+    textarea.onkeyup = callback;
+    textarea.onchange = callback;
+    return textarea;
+  }
+}
+
+
+;// CONCATENATED MODULE: ./src/ui/kit/menu/input.js
+class Input {
+  /**
+   *
+   *  @constructor
+   *  @param {string} text - default text of the input
+   *  @param {string} placeholder - placeholder for the input
+   *  @param {number} minLength - min length for the input
+   *  @param {number} maxLength - max length for the input
+   */
+
+  constructor(text = '', placeholder = '', minLength = 0, maxLength = 0) {
+    this.text = text;
+    this.placeholder = placeholder;
+    this.minLength = minLength;
+    this.maxLength = maxLength;
+  }
+
+  createElement(callback) {
+    const input = document.createElement('input');
+    input.classList.add('textCtrl');
+    input.value = this.text;
+    input.placeholder = this.placeholder;
+    input.minLength = this.minLength;
+    if (this.maxLength > 0)
+      input.maxLength = this.maxLength;
+
+    input.onkeyup = callback;
+    input.onchange = callback;
+    return input;
+  }
+}
+
+
+;// CONCATENATED MODULE: ./src/ui/kit/menu/description.js
+class Description {
+  /**
+   *
+   *  @constructor
+   *  @param {string} text - text of the description
+   */
+
+  constructor(text) {
+    this.text = text;
+  }
+
+  createElement() {
+    const desc = document.createElement('p');
+    desc.classList.add('LZTUpModalDescription', 'muted');
+    desc.innerText = this.text;
+
+    return desc;
+  }
+}
+
+
+;// CONCATENATED MODULE: ./src/ui/kit/menu/colorPicker.js
+
+
+class ColorPicker {
+  /**
+   *
+   *  @constructor
+   *  @param {string} id - id of the color picker
+   *  @param {string} value - value of the color picker
+   */
+
+  constructor(id, value, description = '') {
+    this.id = id
+    this.value = value;
+    this.description = description;
+  }
+
+  createElement(callback) {
+    const wrap = document.createElement('div');
+    wrap.classList.add('LZTUpColorPickerWrap');
+
+    const input = document.createElement('input');
+    input.id = this.id;
+    input.classList.add('LZTUpColorPicker');
+    input.value = this.value;
+    input.type = 'text';
+    input.dataset.coloris = '';
+    input.oninput = callback;
+
+    if (this.description !== '') {
+      const description = new Description(this.description).createElement();
+      wrap.appendChild(description);
+    }
+
+    wrap.appendChild(input);
+    return wrap;
+  }
+}
+
+
+;// CONCATENATED MODULE: ./src/ui/kit/menu/heading.js
+class Heading {
+  /**
+   *
+   *  @constructor
+   *  @param {string} text - text of the heading
+   */
+
+  constructor(text) {
+    this.text = text;
+  }
+
+  createElement() {
+    const heading = document.createElement('h2');
+    heading.classList.add('LZTUpModalHeading');
+    heading.innerText = this.text;
+
+    return heading;
+  }
+}
+
+
+;// CONCATENATED MODULE: ./src/ui/kit/menu/container.js
+
+
+
+class Container {
+  /**
+   *
+   *  @constructor
+   *  @param {string} heading - heading of the container
+   *  @param {string} description - description of the container
+   *  @param {object} elements - elements to add to container
+   */
+
+  constructor(elements, heading = '', description = '') {
+    this.elements = elements;
+    this.heading = heading;
+    this.description = description;
+  }
+
+  createElement() {
+    const textareaContainer = document.createElement('div');
+    textareaContainer.classList.add('LZTUpContainer');
+
+    if (this.heading) {
+      const heading = new Heading(this.heading).createElement();
+      textareaContainer.appendChild(heading);
+    }
+
+    if (this.description) {
+      const description = new Description(this.description).createElement();
+      textareaContainer.appendChild(description);
+    }
+
+    for (const element of this.elements) {
+      textareaContainer.appendChild(element);
+    }
+
+    return textareaContainer;
+  }
+}
+
+
+;// CONCATENATED MODULE: ./src/ui/kit/menu/separator.js
+class Separator {
+  /**
+   *
+   *  @constructor
+   *  @param {string} customStyle - custom style for border-bottom
+   */
+
+  constructor(customStyle = '') {
+    this.customStyle = customStyle;
+  }
+
+  createElement() {
+    const sepator = document.createElement('div');
+    sepator.classList.add('LZTUpModalSeparator')
+    if (this.customStyle !== '') {
+      sepator.style.borderBottom = this.customStyle;
+    }
+    return sepator;
+  }
+}
+
+
+;// CONCATENATED MODULE: ./src/ui/menu/items/profile.js
+
+// import { Checkbox } from 'UI/menu/checkbox';
+
+
+
+
+
+
+
+
+
+
+
+const getProfileItems = async () => {
+  const profileDB = new LZTProfileDB();
+  const profileData = await profileDB.read();
+  const currentDomain = window.location.hostname;
+  const userid = getUserId('me');
+  const username = getUsername('me');
+
+  const previewProfile = new PreviewProfile(userid, username, profileData);
+
+  return [
+    new Comment(`В этой вкладке можно выбрать стиль вашего ника и лычки. Этот стиль виден только вам.
+      Чтобы уник был виден всем, рекомендуем <a href="https://${currentDomain}/account/upgrades?upgrade_id=14" target="_blank">купить</a> настоящий уник.`)
+      .createElement(),
+
+    previewProfile.createElement(),
+
+    new Container(
+      [
+        new TextArea(profileData.usernameStyle, 'color: #0daf77', 0, 1500)
+        .createElement(
+          (event) => {
+            let val = event.target.value;
+            if (val.length > 1500) {
+              return registerAlert('Максимальная длина стиля ника 1500 символов. Уменьшите введенный текст для сохранения.')
+            }
+
+            if (val.length > 1 && val.startsWith('.')) {
+              event.target.value = val.replace(/\s/g, '');
+              val = event.target.value;
+            }
+
+            previewProfile.updateUsernameStyle(val);
+            profileDB.update({ usernameStyle: val }); // ! REMOVE AFTER TESTS
+          }
+        ),
+      ],
+      'Стиль ника',
+      'Максимум 1500 символов. При отсутствии кода используется цвет вашей группы с форума.',
+    ).createElement(),
+
+    new Container(
+      [
+        new TextArea(profileData.bannerStyle, 'background: #fff', 0, 1500)
+        .createElement(
+          (event) => {
+            let val = event.target.value;
+            if (val.length > 1500) {
+              return registerAlert('Максимальная длина стиля лычки 1500 символов. Уменьшите введенный текст для сохранения.')
+            }
+
+            if (val.length > 1 && val.startsWith('.')) {
+              event.target.value = val.replace(/\s/g, '');
+              val = event.target.value;
+            }
+
+            previewProfile.updateBannerStyle(val);
+            previewProfile.updateBadgeStyle(val);
+
+            profileDB.update({ bannerStyle: val }); // ! REMOVE AFTER TESTS
+          }
+        ),
+      ],
+      'Стиль лычки',
+      'Максимум 1500 символов. При отсутствии текста и стиля лычка отключается.',
+    ).createElement(),
+
+    new Container(
+      [
+        new Input(profileData.bannerText, 'Внимание анекдот', 0, 24)
+        .createElement(
+          (event) => {
+            let val = event.target.value;
+            if (val.length > 24) {
+              return registerAlert('Максимальная длина текста в лычке 24 символа. Уменьшите введенный текст для сохранения.')
+            }
+
+            previewProfile.updateBannerText(val);
+            profileDB.update({ bannerText: val }); // ! REMOVE AFTER TESTS
+          }
+        ),
+      ],
+      'Текст в лычке',
+      'Максимум 24 символа. При отсутствии текста и стиля лычка отключается.',
+    ).createElement(),
+
+
+    new Separator().createElement(), // * ADD SEPARATOR
+
+
+    new Container(
+      [
+        new TextArea(profileData.badgeIcon, '<svg>...</svg>', 0, 3000)
+        .createElement(
+          async (event) => {
+            // event.target.value = clearSVG(event.target.value); // ! add to save button
+            let val = clearSVG(event.target.value.trim());
+
+            if (val.length > 3000) {
+              return registerAlert('Максимальная длина иконки 3000 символов. Уменьшите введенный текст для сохранения.')
+            }
+
+            let data = await profileDB.read();
+            data['badgeIcon'] = val
+            previewProfile.updateBadgeAll(data);
+
+            profileDB.update({ badgeIcon: val }); // ! REMOVE AFTER TESTS
+          }
+        ),
+      ],
+      'Иконка на аватарке',
+      'Максимум 3000 символов.',
+    ).createElement(),
+
+    new Container(
+      [
+        new Input(profileData.badgeText, 'Идут два сталкера', 0, 24)
+        .createElement(
+          (event) => {
+            let val = event.target.value;
+            if (val.length > 24) {
+              return registerAlert('Максимальная длина текста в лычке 24 символа. Уменьшите введенный текст для сохранения.')
+            }
+
+            previewProfile.updateBadgeText(val);
+            profileDB.update({ badgeText: val }); // ! REMOVE AFTER TESTS
+          }
+        ),
+      ],
+      'Текст при наведение на иконку',
+      'Максимум 24 символа.',
+    ).createElement(),
+
+    new Container(
+      [
+        new ColorPicker('LZTUpColorPickerFill', profileData.badgeFill, 'Цвет иконки (fill):')
+        .createElement(
+          (event) => {
+            let val = event.target.value;
+
+            previewProfile.updateBadgeColor(val, 'fill');
+            profileDB.update({ badgeFill: val }); // ! REMOVE AFTER TESTS
+          }
+        ),
+        new ColorPicker('LZTUpColorPickerStroke', profileData.badgeStroke, 'Цвет иконки (stroke):')
+        .createElement(
+          (event) => {
+            let val = event.target.value;
+
+            previewProfile.updateBadgeColor(val, 'stroke');
+            profileDB.update({ badgeStroke: val }); // ! REMOVE AFTER TESTS
+          }
+        ),
+      ],
+      'Изменение цвета иконки'
+    ).createElement(),
+
+    // new Checkbox('open_ten_contests', 'Кнопка "Открыть 10"')
+    // .createElement(
+    //   profileData.openTenContestsBtn,
+    //   async () => {
+    //     await profileData.update({openTenContestsBtn: 1});
+    //     regOpenContestsBtn(10);
+    //   },
+    //   async () => {
+    //     await profileData.update({openTenContestsBtn: 0});
+    //     removeOpenContestsBtn(10);
+    //   }),
+  ];
+}
+
+/* harmony default export */ const profile = (getProfileItems);
 // EXTERNAL MODULE: ./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js
 var injectStylesIntoStyleTag = __webpack_require__("./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
 var injectStylesIntoStyleTag_default = /*#__PURE__*/__webpack_require__.n(injectStylesIntoStyleTag);
@@ -1991,29 +2736,15 @@ async function generateMenu(tabs) {
     addMenuSectionItem('Внешний вид', 'Темы, логотипы и другое', 'far fa-drafting-compass', 'LZTUpAppearItem', 'LZTUpUniqContainer'),
   ];
 
-  Logger.debug('Generated menu main items: ', mainItems)
-
   const settingsItems = [
     addMenuSectionItem('Настройки', 'Настройки расширения', 'far fa-cog', 'LZTUpSettingsItem', 'LZTUpUniqContainer'),
     addMenuSectionItem('Обновления', 'Установка и проверка обновлений расширения', 'far fa-cloud-download', 'LZTUpUpdateItem', 'LZTUpUpdateContainer'),
     addMenuSectionItem('Информация', `Версия: ${GM_info?.script?.version}`, 'far fa-info-circle', 'LZTUpInformationItem', 'LZTUpUniqContainer'),
   ];
 
-  Logger.debug('Generated menu settings items: ', settingsItems)
   const sections = [
     new MenuSection('LZTUpMainSection', mainItems).create(),
     new MenuSection('LZTUpSettingsSection', settingsItems).create(),
-  ];
-
-  Logger.debug('Generated menu sections: ', sections)
-
-  const uniqueText = document.createElement('div')
-  uniqueText.innerText = 'Страница локального уника';
-
-  const uniqueItems = [
-    new Comment(`Это оформление видно только вам. Мы рекомендуем вам <a href="https://${window.location.hostname}/account/upgrades?upgrade_id=14" target="_blank">приобрести настоящий Уник</a>, чтобы все пользователи смогли увидеть ваше настоящее оформление профиля.`)
-      .createElement(),
-    uniqueText,
   ];
 
   const updateText = document.createElement('div')
@@ -2023,10 +2754,8 @@ async function generateMenu(tabs) {
     updateText,
   ];
 
-  Logger.debug('Generated menu unique section items: ', uniqueItems)
-
   const sectionContainers = [
-    addMenuSectionContainer('LZTUpUniqContainer', uniqueItems),
+    addMenuSectionContainer('LZTUpUniqContainer', await profile()),
     addMenuSectionContainer('LZTUpContestsContainer', await contests()),
     addMenuSectionContainer('LZTUpUsersContainer', await users()),
     addMenuSectionContainer('LZTUpUpdateContainer', updateItems),
@@ -2038,7 +2767,7 @@ async function generateMenu(tabs) {
   menuContent.classList.add('LZTUpModalContent');
 
   const tabsContainer = document.createElement('ul');
-  tabsContainer.classList.add('tabs', 'LZTUpTabs');
+  tabsContainer.classList.add('LZTUpTabs');
   menuContent.appendChild(tabsContainer);
 
   for (const section of sections) {
@@ -2103,7 +2832,44 @@ class Tab {
 }
 
 
-;// CONCATENATED MODULE: ./src/callbacks/MenuButton.js
+;// CONCATENATED MODULE: ./src/utils/colorPicker.js
+// https://github.com/lzt-upgrade/coloris-lzt-theme/blob/47e2a9ebabfc7172bf188cbc06eba73c88b46b09/src/coloris.js#L14
+const colorPickerOptions = {
+  theme: 'lzt', // theme
+  themeMode: 'dark', // theme mode
+  formatToggle: true, // change the format (RGB, HEX, HSV)
+  closeButton: true, // button to close color picker
+  clearButton: true, // button to clear color picker
+  alpha: true, // alpha channel
+  swatches: [] // colors for select
+}
+
+// use .xenOverlay for modals
+function initColorPickers(parent = '.xenOverlay') {
+  const colorPickers = document.querySelectorAll('.LZTUpColorPicker');
+  for (const colorPicker of colorPickers) {
+    // fix for reopen modal
+    if (!document.querySelector('.clr-picker')) {
+      try {
+        // ! read coloris-lzt-theme init description
+        Coloris.init(parent);
+      } catch (e) {
+        console.error(e);
+      }
+    }
+    try {
+      Coloris(Object.assign(colorPickerOptions, { el: `#${colorPicker.id}`, parent: parent }));
+    } catch (e) {
+      console.error(e);
+    }
+  }
+}
+
+
+;// CONCATENATED MODULE: ./src/callbacks/menuButton.js
+
+
+
 
 
 
@@ -2125,17 +2891,26 @@ async function menuButtonCallback() {
     '<div id="LZTUpModalBase"></div>'
   );
 
-  const modal = $('#LZTUpModalBase');
-  modal.append(menuContent);
+  const modal = document.querySelector('#LZTUpModalBase');
+  modal.appendChild(menuContent);
   for (const tab of tabs) {
     tab.active ? tab.setActive() : null;
   }
 
-  modal.parent().css("white-space", "unset");
-  const modalErrorOverlay = modal.parent().parent()
-  modalErrorOverlay.attr('id', 'LZTUpModalOverlay');
+  const baseModal = modal.parentElement;
+  baseModal.style.whiteSpace = 'unset';
+  baseModal.parentElement.id = 'LZTUpModalOverlay';
+  baseModal.parentElement.style = 'margin-bottom: 15px;';
+
   setMenuTitle(configs_config.extName);
   updateTooltips();
+  initColorPickers();
+
+  // Update Profile Preview
+  const profileDB = new LZTProfileDB();
+  const profileData = await profileDB.read();
+  const previewProfile = new PreviewProfile();
+  previewProfile.updateAll(profileData);
 }
 
 
@@ -2177,8 +2952,11 @@ var buttons_update = injectStylesIntoStyleTag_default()(buttons/* default */.Z, 
 
 
 const menuButton = document.createElement('li');
-menuButton.innerHTML = `<a id="LZTUpButton">${configs_config.extName}</a>`;
+const menuButton_link = document.createElement('a');
+menuButton_link.id = 'LZTUpButton';
+menuButton_link.innerText = configs_config.extName;
 
+menuButton.appendChild(menuButton_link);
 menuButton.onclick = menuButtonCallback;
 
 /* harmony default export */ const buttons_menuButton = (menuButton);
@@ -2277,7 +3055,26 @@ function onClickCategory(nodeSelector, callback) {
 }
 
 /* harmony default export */ const categories = (onClickCategory);
+;// CONCATENATED MODULE: ./src/xenforo/bypass.js
+
+
+
+function bypassShareTyping() {
+  if (hasOwn(XenForo, 'threadNotify') && hasOwn(XenForo.threadNotify, 'shareTypingActivity')) {
+    Logger.debug('bypassShareTyping thread: true');
+    XenForo.threadNotify.shareTypingActivity = 0;
+  }
+
+  // if (hasOwn(XenForo, 'ChatboxRTC') && hasOwn(XenForo.chatboxRTC, 'Start')) {
+  //   console.log('bypassShareTyping chat: true');
+  //   XenForo.ChatboxRTC.Start.prototype.sendTypingMessage = () => {return};
+  // }
+}
+
+
 ;// CONCATENATED MODULE: ./src/index.js
+
+
 
 
 
@@ -2307,7 +3104,6 @@ function onClickCategory(nodeSelector, callback) {
 // import 'Styles/coloris.css';
 
 async function main() {
-  const profileDB = new LZTProfileDB();
   const settingsDB = new LZTSettingsDB();
 
   if (GM_info?.script?.version) Logger.log(`${configs_config.extName} version: ${GM_info?.script?.version}`);
@@ -2319,9 +3115,9 @@ async function main() {
   }
 
   if (SCRIPT_LOADED.length) {
-    const _csrfToken = await waitForCSRFToken(120000);
-    const username = $('.accountUsername span').text();
-    const userid = _csrfToken.split(',')[0];
+    await waitForCSRFToken(120000);
+    const username = getUsername('me');
+    const userid = getUserId('me');
     const userAvatar = $('img.navTab--visitorAvatar').attr('src');
 
     Logger.debug('┏━━━━━━━━ DEBUG INFO ━━━━━━━━━━┓');
@@ -2345,10 +3141,13 @@ async function main() {
     await usersDB.init();
     const dbUsersData = await usersDB.read();
 
+    const profileDB = new LZTProfileDB();
+    await profileDB.init();
+
     if (dbContestsData) {
       dbContestsData.openTenContestsBtn === 1 ? regOpenContestsBtn(10) : null;
 
-      categories(configs_config.nodeSelectors.contests, async () => {
+      categories(configs_extData.nodes.contests, async () => {
         const contestsDB = new LZTContestsDB();
         const dbContestsData = await contestsDB.read();
         dbContestsData.openTenContestsBtn === 1 ? regOpenContestsBtn(10) : null;
@@ -2362,7 +3161,17 @@ async function main() {
     }
 
     if (dbUsersData) {
-      dbUsersData.showUserId === 1 ? addUserId() : null;
+      dbUsersData.showUserIdInProfile === 1 ? addUserIdToProfile() : null;
+      if (dbUsersData.showUserIdInMemberCard === 1) {
+        addUserIdToMemberCard();
+        registerObserver((mutation) => {
+          if (mutation.nextSibling) {
+            if (mutation.nextSibling?.classList?.contains('modal')) {
+              addUserIdToMemberCard()
+            }
+          }
+        });
+      }
       dbUsersData.showFullRegInProfile === 1 ? showFullRegDateInProfile(true) : null;
       dbUsersData.disableShareTyping === 1 ? bypassShareTyping() : null;
     }
