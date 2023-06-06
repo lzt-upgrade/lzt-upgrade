@@ -15,7 +15,7 @@ class Button {
     this.iconClassName = iconClassName;
   }
 
-  createElement() {
+  createElement(callback = () => {}) {
     const button = document.createElement('button');
     button.className = this.className;
     button.innerText = this.buttonText;
@@ -25,6 +25,8 @@ class Button {
       icon.id = '';
       button.appendChild(icon);
     }
+
+    button.onclick = callback;
 
     return button;
   }
