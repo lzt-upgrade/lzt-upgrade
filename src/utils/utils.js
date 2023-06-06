@@ -1,5 +1,3 @@
-import { Logger } from 'Utils/logger.js'
-
 function waitForElm(selector) {
   // https://stackoverflow.com/questions/5525071/how-to-wait-until-an-element-exists
   return new Promise(resolve => {
@@ -55,6 +53,29 @@ function hasOwn(element, property) {
   return Object.prototype.hasOwnProperty.call(element, property);
 }
 
+function clearHTML(element) {
+  return DOMPurify.sanitize(element, {
+    USE_PROFILES: {
+        svg: true,
+        html: true
+    },
+    FORBID_TAGS: [
+        "style"
+    ]
+  });
+}
+
+function clearSVG(element) {
+  return DOMPurify.sanitize(element, {
+    USE_PROFILES: {
+        svg: true
+    },
+    FORBID_TAGS: [
+        "style"
+    ]
+  });
+}
+
 function getNodeLinks() {
   let latestsThreads = $('div.latestThreads');
   const stickyThreads = $('div.stickyThreads');
@@ -71,4 +92,4 @@ function getThreadLinks() {
 }
 
 
-export { waitForElm, waitForElement, sleep, hasOwn, getNodeLinks, getThreadLinks, waitForCSRFToken };
+export { waitForElm, waitForElement, sleep, hasOwn, getNodeLinks, getThreadLinks, waitForCSRFToken, clearHTML, clearSVG };
