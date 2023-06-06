@@ -1,4 +1,5 @@
 import { isElement } from 'Utils/checkers';
+import { clearHTML } from 'Utils/utils';
 
 class ProfileInfoRow {
   /**
@@ -12,7 +13,7 @@ class ProfileInfoRow {
   constructor(elementId, label, content) {
     this.elementId = elementId;
     this.label = label;
-    this.content = content;
+    this.content = clearHTML(content);
   }
 
   createElement() {
