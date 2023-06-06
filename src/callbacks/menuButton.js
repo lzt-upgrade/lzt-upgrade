@@ -2,8 +2,11 @@ import { registerModal } from "Utils/registers";
 import { generateMenu } from 'UI/menu/menu';
 import { setMenuTitle } from 'UI/menu/utils';
 import { Tab } from 'UI/menu/tab';
-import { updateTooltips } from "Xenforo/utils";
+import { updateTooltips } from "Xenforo/tooltips";
 import config from "Configs/config";
+import { PreviewProfile } from "UI/kit/menu/previewProfile";
+import { LZTProfileDB } from 'IndexedDB/profile';
+import { initColorPickers } from 'Utils/colorPicker';
 
 
 async function menuButtonCallback() {
@@ -28,9 +31,17 @@ async function menuButtonCallback() {
   const baseModal = modal.parentElement;
   baseModal.style.whiteSpace = 'unset';
   baseModal.parentElement.id = 'LZTUpModalOverlay';
+  baseModal.parentElement.style = 'margin-bottom: 15px;';
 
   setMenuTitle(config.extName);
   updateTooltips();
+  initColorPickers();
+
+  // Update Profile Preview
+  const profileDB = new LZTProfileDB();
+  const profileData = await profileDB.read();
+  const previewProfile = new PreviewProfile();
+  previewProfile.updateAll(profileData);
 }
 
 export { menuButtonCallback };
