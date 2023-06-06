@@ -1,3 +1,6 @@
+import { clearHTML } from 'Utils/utils';
+
+
 class Comment {
   /**
    *
@@ -6,7 +9,7 @@ class Comment {
    */
 
   constructor(content) {
-    this.content = content;
+    this.content = clearHTML(content);
   }
 
   createElement() {

@@ -1,3 +1,6 @@
+import { clearHTML } from 'Utils/utils';
+
+
 class Checkbox {
   /**
    *
@@ -8,7 +11,7 @@ class Checkbox {
 
   constructor(elementId, content) {
     this.elementId = elementId;
-    this.content = content;
+    this.content = clearHTML(content);
   }
 
   createElement(valueToCheck, callbackChecked = () => {}, callbackUnChecked = () => {}) {

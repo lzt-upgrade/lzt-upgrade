@@ -31,8 +31,8 @@ function addMenuSectionItem(sectionName, sectionDesc, sectionIconClasses, classN
   const sectionIcon = createMenuIcon(sectionIconClasses);
   const textContainer = document.createElement('div');
   textContainer.innerHTML = `
-    <span id="LZTUpText">${sectionName}</span>
-    <span id="LZTUpSubText">${sectionDesc}</span>
+    <span id="LZTUpText">${XenForo.htmlspecialchars(sectionName)}</span>
+    <span id="LZTUpSubText">${XenForo.htmlspecialchars(sectionDesc)}</span>
   `;
 
   sectionItem.appendChild(sectionIcon);
