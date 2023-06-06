@@ -21,6 +21,7 @@ import { registerMenuButton, registerObserver } from "Utils/registers";
 import { contestsTagsVisibility, contestThreadBlockMove, contestsHideContent, contestsHidePoll } from 'Utils/contests';
 import { addUserIdToProfile, addUserIdToMemberCard, showFullRegDateInProfile } from 'Utils/users';
 import { bypassShareTyping } from "Xenforo/bypass";
+import { getUserId, getUsername } from 'Utils/users';
 
 // import 'Styles/main.css';
 
@@ -40,9 +41,9 @@ async function main() {
   }
 
   if (SCRIPT_LOADED.length) {
-    const _csrfToken = await waitForCSRFToken(120000);
-    const username = $('.accountUsername span').text();
-    const userid = _csrfToken.split(',')[0];
+    await waitForCSRFToken(120000);
+    const username = getUsername('me');
+    const userid = getUserId('me');
     const userAvatar = $('img.navTab--visitorAvatar').attr('src');
 
     Logger.debug('┏━━━━━━━━ DEBUG INFO ━━━━━━━━━━┓');
