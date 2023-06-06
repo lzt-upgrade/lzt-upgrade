@@ -27,7 +27,7 @@ class LZTProfileDB extends LZTUpgradeDB {
       objectKey,
       version,
       { // indexes
-        'nickStyle': 'string',
+        'usernameStyle': 'string',
         'bannerStyle': 'string',
         'bannerText': 'string',
         'badgeIcon': 'string',
@@ -40,7 +40,7 @@ class LZTProfileDB extends LZTUpgradeDB {
       },
       { // defaultData
         key: objectKey,
-        nickStyle: '',
+        usernameStyle: '',
         bannerStyle: '',
         bannerText: '',
         badgeIcon: '',
@@ -55,7 +55,7 @@ class LZTProfileDB extends LZTUpgradeDB {
   };
 
   async update({
-    nickStyle,
+    usernameStyle,
     bannerStyle,
     bannerText,
     badgeIcon,
