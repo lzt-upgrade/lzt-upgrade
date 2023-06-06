@@ -29,7 +29,6 @@ import { getUserId, getUsername } from 'Utils/users';
 // import 'Styles/coloris.css';
 
 async function main() {
-  const profileDB = new LZTProfileDB();
   const settingsDB = new LZTSettingsDB();
 
   if (GM_info?.script?.version) Logger.log(`${config.extName} version: ${GM_info?.script?.version}`);
@@ -66,6 +65,9 @@ async function main() {
     const usersDB = new LZTUsersDB();
     await usersDB.init();
     const dbUsersData = await usersDB.read();
+
+    const profileDB = new LZTProfileDB();
+    await profileDB.init();
 
     if (dbContestsData) {
       dbContestsData.openTenContestsBtn === 1 ? regOpenContestsBtn(10) : null;
