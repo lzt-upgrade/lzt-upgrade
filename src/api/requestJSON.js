@@ -7,7 +7,7 @@ async function requestJSON(endpoint, errText) {
       dataType: 'json'
     });
   } catch (err) {
-    Logger.log(`${errText}. Ошибка:`, err);
+    Logger.log(errText);
     return false;
   }
 }
