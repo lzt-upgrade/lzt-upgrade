@@ -32,6 +32,7 @@ export default {
       UI: path.resolve(__dirname, 'src/ui/'),
       Utils: path.resolve(__dirname, 'src/utils/'),
       Xenforo: path.resolve(__dirname, 'src/xenforo/'),
+      Visuals: path.resolve(__dirname, 'src/visuals/'),
     },
   },
   performance: {
