@@ -4,7 +4,7 @@ import { createMenuIcon } from 'UI/kit/icons.js'
 function openSubMenu(containerClassName, sectionName) {
   document.querySelector('.LZTUpTabs').style.display = 'none';
 
-  const subMenus = document.querySelectorAll('#LZTUpSubMenu');
+  const subMenus = document.querySelectorAll('#LZTUpSubMenu'); // TODO replace LZTUpSubMenu to class
   subMenus.forEach(subMenu => subMenu.style.display = 'none');
 
   const sections = document.querySelectorAll('.LZTUpSection');
@@ -12,7 +12,7 @@ function openSubMenu(containerClassName, sectionName) {
 
   document.querySelector(`.${containerClassName}`).style.display = '';
   setMenuTitle(sectionName);
-  addGoBackBtn();
+  return addGoBackBtn();
 }
 
 /**
@@ -43,4 +43,4 @@ function addMenuSectionItem(sectionName, sectionDesc, sectionIconClasses, classN
   return sectionItem;
 }
 
-export { addMenuSectionItem };
+export { addMenuSectionItem, openSubMenu };

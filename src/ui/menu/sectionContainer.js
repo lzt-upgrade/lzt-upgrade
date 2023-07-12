@@ -1,6 +1,6 @@
 function addMenuSectionContainer(className, items) {
   const container = document.createElement('div');
-  container.id = 'LZTUpSubMenu';
+  container.id = 'LZTUpSubMenu'; // TODO replace LZTUpSubMenu to class
   container.className = className;
 
   for (const item of items) {
