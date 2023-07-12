@@ -1,4 +1,4 @@
-import { clearHTML } from 'Utils/utils';
+import { clearHTML } from 'Utils/purify';
 
 
 class Checkbox {
