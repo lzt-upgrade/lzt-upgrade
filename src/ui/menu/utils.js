@@ -15,14 +15,14 @@ function createGoBackBtn(callback) {
   const backButton = new Button('', 'LZTUpModalBackButton', 'fas fa-long-arrow-left').createElement();
 
   backButton.onclick = () => {
-    document.querySelectorAll('div#LZTUpSubMenu').forEach(submenu => submenu.style.display = 'none');
+    document.querySelectorAll('div#LZTUpSubMenu').forEach(submenu => submenu.style.display = 'none'); // TODO replace LZTUpSubMenu to class
     callback();
   }
 
   modalOverlay.insertAdjacentElement('afterbegin', backButton);
 }
 
-function addGoBackBtn(target = '', text = config.extName, elementToHide = undefined, elementToShow = undefined) {
+function addGoBackBtn(target = '', text = config.extName, subMenuToShow = null, onCloseCallback = () => {}) {
   const backButtonSelector = 'button.LZTUpModalBackButton';
 
   if (document.querySelector(backButtonSelector) !== null) {
@@ -33,10 +33,11 @@ function addGoBackBtn(target = '', text = config.extName, elementToHide = undefi
     document.querySelector(backButtonSelector).remove();
     setMenuTitle(text);
     switch (target) {
-      case 'submenu':
-        elementToHide.style.display = 'none';
-        elementToShow.style.display = '';
+      case 'tempmenu':
+        document.querySelector('.LZTUpTempSubMenu').style.display = 'none';
+        subMenuToShow.style.display = '';
         addGoBackBtn();
+        onCloseCallback();
         break;
       default:
         document.querySelector('.LZTUpSection').style.display = '';
@@ -46,6 +47,7 @@ function addGoBackBtn(target = '', text = config.extName, elementToHide = undefi
         const tab = tabs.querySelectorAll('#LZTUpTab');
         tab.forEach(element => element.classList.remove('active'));
         tab[0].classList.add('active');
+        onCloseCallback()
     }
   });
 }
