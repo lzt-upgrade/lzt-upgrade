@@ -17,24 +17,24 @@ class Container {
   }
 
   createElement() {
-    const textareaContainer = document.createElement('div');
-    textareaContainer.classList.add('LZTUpContainer');
+    const container = document.createElement('div');
+    container.classList.add('LZTUpContainer');
 
     if (this.heading) {
       const heading = new Heading(this.heading).createElement();
-      textareaContainer.appendChild(heading);
+      container.appendChild(heading);
     }
 
     if (this.description) {
       const description = new Description(this.description).createElement();
-      textareaContainer.appendChild(description);
+      container.appendChild(description);
     }
 
     for (const element of this.elements) {
-      textareaContainer.appendChild(element);
+      container.appendChild(element);
     }
 
-    return textareaContainer;
+    return container;
   }
 }
 
