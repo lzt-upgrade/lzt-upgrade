@@ -2,6 +2,7 @@ import config from "Configs/config";
 import extData from 'Configs/extData';
 
 import { contestsAutoCloseHandler } from "Callbacks/contestsAutoClose";
+import { loadThemeByID } from 'Callbacks/extensionStart';
 
 import { LZTAppearDB } from "IndexedDB/appear";
 import { LZTContestsDB } from "IndexedDB/contests";
@@ -12,7 +13,6 @@ import { LZTSettingsDB } from "IndexedDB/settings";
 import { regOpenContestsBtn } from "UI/buttons/contestsButton";
 import menuButton from "UI/buttons/menuButton";
 
-import onExtensionStart from "Events/extension";
 import onClickCategory from "Events/categories";
 
 import { waitForElement, waitForCSRFToken } from "Utils/utils";
@@ -22,10 +22,12 @@ import { contestsTagsVisibility, contestThreadBlockMove, contestsHideContent, co
 import { addUserIdToProfile, addUserIdToMemberCard, showFullRegDateInProfile } from 'Utils/users';
 import { bypassShareTyping } from "Xenforo/bypass";
 import { getUserId, getUsername } from 'Utils/users';
+import { updateUserStyle, updateUserBanner } from 'Visuals/users';
+
 
 // import 'Styles/main.css';
 
-// import 'Styles/sign.css';
+import 'Styles/errorPage.scss';
 // import 'Styles/coloris.css';
 
 async function main() {
@@ -40,6 +42,56 @@ async function main() {
   }
 
   if (SCRIPT_LOADED.length) {
+    const appearDB = new LZTAppearDB();
+    await appearDB.init();
+    const dbAppearData = await appearDB.read();
+
+    if (/^(Error\s[0-9]{3}|Site\sMaintenance)$/.test(document.head.querySelector('title').innerText)) {
+      if (!dbAppearData || dbAppearData?.newErrorPage === 0) {
+        return;
+      }
+
+      document.body.classList.add('LZTUpErrorPage');
+      const container = document.body.querySelector('article > div');
+      const duckRain = document.createElement('img');
+      duckRain.src = "https://i.imgur.com/iVmKDr7.gif";
+      duckRain.alt = "Duck rain";
+      container.appendChild(duckRain);
+
+      if (dbAppearData?.selfAdOnNewErrorPage === 0) {
+        return;
+      }
+
+      // self ad don't delete me please :(
+      const selfAdBlock = document.createElement('div');
+      selfAdBlock.classList.add('LZTUpErrorPageSelfAd')
+      const selfAdText = document.createElement('p');
+      selfAdText.innerText = 'Пока форум недоступен, рекомендуем ознакомиться с нашими соц. сетями'
+      selfAdText.classList.add('selfAd');
+
+      const selfAdButtonBlock = document.createElement('div');
+      selfAdButtonBlock.classList.add('buttons');
+
+      const selfAdTelegram = document.createElement('a');
+      selfAdTelegram.classList.add('button');
+      selfAdTelegram.innerText = 'Telegram';
+      selfAdTelegram.href = 'https://t.me/lzt_upgrade';
+
+      const selfAdGithub = document.createElement('a');
+      selfAdGithub.classList.add('button');
+      selfAdGithub.innerText = 'Github';
+      selfAdGithub.href = 'https://github.com/lzt-upgrade/lzt-upgrade';
+
+      selfAdButtonBlock.appendChild(selfAdTelegram);
+      selfAdButtonBlock.appendChild(selfAdGithub);
+
+      selfAdBlock.appendChild(selfAdText);
+      selfAdBlock.appendChild(selfAdButtonBlock);
+      container.appendChild(selfAdBlock);
+
+      return;
+    }
+
     await waitForCSRFToken(120000);
     const username = getUsername('me');
     const userid = getUserId('me');
@@ -54,10 +106,6 @@ async function main() {
 
     registerMenuButton(menuButton);
 
-    const appearDB = new LZTAppearDB();
-    await appearDB.init();
-    const dbAppearData = await appearDB.read();
-
     const contestsDB = new LZTContestsDB();
     await contestsDB.init();
     const dbContestsData = await contestsDB.read();
@@ -68,6 +116,42 @@ async function main() {
 
     const profileDB = new LZTProfileDB();
     await profileDB.init();
+    const dbProfileData = await profileDB.read();
+
+    if (dbAppearData) {
+      if (dbAppearData?.theme > 0) {
+        Logger.debug(`Requesting theme with id ${dbAppearData.theme}...`);
+        loadThemeByID(dbAppearData.theme)
+        .catch(err => console.error(err));
+      }
+    }
+
+    if (dbProfileData) {
+      if (dbProfileData.usernameStyle) {
+        updateUserStyle(dbProfileData.usernameStyle);
+        registerObserver(async (mutation) => {
+          Logger.debug(mutation)
+          if (
+            mutation.target.classList.contains('ProfilePostList') ||
+            mutation.target.classList.contains('messageList') ||
+            mutation.target.classList.contains('CommentPostList') ||
+            mutation.target.classList.contains('discussionList') ||
+            mutation.nextSibling?.classList?.contains('modal') ||
+            mutation.previousSibling?.classList?.contains('Alert') ||
+            mutation.previousSibling?.nextSibling?.classList?.contains('Alert') ||
+            mutation.target.id === 'AlertsDestinationWrapper' ||
+            mutation.target.id === 'StackAlerts'
+          ) {
+            const updatedProfileData = await profileDB.read();
+            updateUserStyle(updatedProfileData.usernameStyle)
+          }
+        });
+      }
+
+      if (dbProfileData.bannerStyle && dbProfileData.bannerText) {
+        updateUserBanner(dbProfileData.bannerStyle, dbProfileData.bannerText);
+      }
+    }
 
     if (dbContestsData) {
       dbContestsData.openTenContestsBtn === 1 ? regOpenContestsBtn(10) : null;
@@ -99,17 +183,6 @@ async function main() {
       }
       dbUsersData.showFullRegInProfile === 1 ? showFullRegDateInProfile(true) : null;
       dbUsersData.disableShareTyping === 1 ? bypassShareTyping() : null;
-    }
-
-    // Loading selected theme
-    if (dbAppearData?.theme > 0) {
-      try {
-        Logger.debug(`Requesting theme with id ${dbAppearData.theme}...`);
-        const status = await onExtensionStart(dbAppearData.theme);
-        Logger.debug(`Theme status: ${status}`);
-      } catch (e) {
-        Logger.error(`Failed to request theme with id ${dbAppearData.theme}`, e);
-      }
     }
   }
 }
