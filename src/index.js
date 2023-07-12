@@ -136,6 +136,9 @@ async function main() {
             mutation.target.classList.contains('messageList') ||
             mutation.target.classList.contains('CommentPostList') ||
             mutation.target.classList.contains('discussionList') ||
+            mutation.target.classList.contains('chat2-messages') ||
+            mutation.target.classList.contains('fe-ac-user') ||
+            mutation.target.parentElement?.classList.contains('conversationMessages') ||
             mutation.nextSibling?.classList?.contains('modal') ||
             mutation.previousSibling?.classList?.contains('Alert') ||
             mutation.previousSibling?.nextSibling?.classList?.contains('Alert') ||
@@ -150,6 +153,10 @@ async function main() {
 
       if (dbProfileData.bannerStyle && dbProfileData.bannerText) {
         updateUserBanner(dbProfileData.bannerStyle, dbProfileData.bannerText);
+      }
+
+      if (dbProfileData.badges) {
+        console.log('test')
       }
     }
 
