@@ -7,6 +7,7 @@ import config from "Configs/config";
 import { PreviewProfile } from "UI/kit/menu/previewProfile";
 import { LZTProfileDB } from 'IndexedDB/profile';
 import { initColorPickers } from 'Utils/colorPicker';
+import { getUserId, getUsername } from 'Utils/users';
 
 
 async function menuButtonCallback() {
@@ -40,8 +41,10 @@ async function menuButtonCallback() {
   // Update Profile Preview
   const profileDB = new LZTProfileDB();
   const profileData = await profileDB.read();
-  const previewProfile = new PreviewProfile();
-  previewProfile.updateAll(profileData);
+  const userid = getUserId('me');
+  const username = getUsername('me');
+  const previewProfile = new PreviewProfile(userid, username, profileData);
+  previewProfile.updateAll();
 }
 
 export { menuButtonCallback };
