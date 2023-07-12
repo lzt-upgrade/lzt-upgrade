@@ -1,5 +1,5 @@
 import { isElement } from 'Utils/checkers';
-import { clearHTML } from 'Utils/utils';
+import { clearHTML } from 'Utils/purify';
 
 class ProfileInfoRow {
   /**
