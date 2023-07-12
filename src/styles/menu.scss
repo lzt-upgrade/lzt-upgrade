@@ -31,6 +31,66 @@
   }
 }
 
+.LZTUpIconButton {
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  justify-content: center;
+  &.fit {
+    max-width: fit-content;
+  }
+  i {
+    margin: 0 8px;
+    margin-top: 3.5px;
+  }
+}
+
+.LZTUpSortableItem {
+  display: flex;
+  align-items: center;
+  padding: 16px;
+  margin: 8px 0;
+  border-radius: 8px;
+  background: rgba(54, 54, 54, 0.75);
+  .LZTUpSortableDraggable {
+    color: #8c8c8c;
+    margin-right: 10px;
+    cursor: move;
+  }
+
+  .LZTUPSortableContent {
+    p {
+      margin: 0 !important;
+    }
+  }
+
+  .LZTUpSortableUtility {
+    display: flex;
+    margin-left: auto;
+    div {
+      margin-left: 10px;
+      cursor: pointer;
+      transition: 0.5s color ease;
+    }
+
+    .LZTUpSortableEditButton {
+      color: #6A6A6A;
+
+      &:hover {
+        color: #0daf77;
+      }
+    }
+
+    .LZTUpSortableRemoveButton {
+      color: rgb(150, 68, 72);
+
+      &:hover {
+        color: rgb(241, 56, 56);
+      }
+    }
+  }
+}
+
 #LZTUpModalMainTitle {
   text-align: center;
   padding: 16px;
@@ -142,7 +202,7 @@
 
 #LZTUpModalContainer {
   margin: 15px;
-  width: 400px;
+  max-width: 400px;
 }
 
 #LZTUpModalChecksContainer,
@@ -151,14 +211,16 @@
 .LZTUpModalMesh,
 .LZTUpModalSeparator {
   margin: 15px;
-  width: 550px;
+  // width: 575px;
+  max-width: 95%;
 }
 
 .LZTUpContainer {
   display: flex;
   flex-direction: column;
   margin: 15px;
-  width: 550px;
+  // width: 575px;
+  max-width: 95%;
 }
 
 .LZTUpModalHeading {
@@ -200,7 +262,7 @@
   flex: 1 1 auto;
 
   #LZTUpSubText {
-    width: 450px;
+    max-width: 450px;
   }
 }
 
@@ -234,7 +296,6 @@
 #LZTUpPreviewContainer {
   display: flex;
 }
-
 
 #LZTUpSubMenu .previewContainer {
   float: right;
@@ -289,7 +350,7 @@
     }
 
     &.admin {
-      background:rgb(150,68,72);
+      background:rgb(150, 68, 72);
     }
 
     &.admin::before,
