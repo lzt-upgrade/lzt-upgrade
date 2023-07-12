@@ -37,6 +37,7 @@ class LZTProfileDB extends LZTUpgradeDB {
         'noticesMarks': 'string',
         'profileBackground': 'string',
         'profileBackgroundEverywhere': 'number',
+        'badgeIcons': 'object'
       },
       { // defaultData
         key: objectKey,
@@ -50,6 +51,7 @@ class LZTProfileDB extends LZTUpgradeDB {
         noticesMarks: '',
         profileBackground: '',
         profileBackgroundEverywhere: 0,
+        badgeIcons: []
       }
     );
   };
@@ -65,6 +67,7 @@ class LZTProfileDB extends LZTUpgradeDB {
     noticesMarks,
     profileBackground,
     profileBackgroundEverywhere,
+    badgeIcons
   }) {
     super.update(...arguments);
   }
