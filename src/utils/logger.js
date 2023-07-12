@@ -16,7 +16,7 @@ Logger.info = (...text) => {
 }
 
 Logger.debug = (...text) => {
-  if (DEV_MODE) return console.log("%c[DEBUG | LZT Upgrade]", "background: #0daf77; color: #fff; padding: 5px;", ...text);
+  if (DEV_MODE) return console.log("%c[DEBUG | LZT Upgrade]", "line-height: 1em;display:inline-block;font-size: 11px;background: #0daf77;padding: 4px 9px;border-radius: 30px;border: 1px solid rgba(56, 138, 229, 0.16);margin: 4px 5px 4px 0;color: #fff;", ...text);
 }
 
 export { Logger };
