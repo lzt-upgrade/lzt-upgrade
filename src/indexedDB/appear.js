@@ -39,6 +39,8 @@ class LZTAppearDB extends LZTUpgradeDB {
         'backgroundEffect': 'number',
         'hideOnlyfans': 'number',
         'showPollResults': 'number',
+        'newErrorPage': 'number',
+        'selfAdOnNewErrorPage': 'number',
       },
       { // defaultData
         key: objectKey,
@@ -53,7 +55,9 @@ class LZTAppearDB extends LZTUpgradeDB {
         themeAutoReload: 0,
         backgroundEffect: 0,
         hideOnlyfans: 0,
-        showPollResults: 0
+        showPollResults: 0,
+        newErrorPage: 1,
+        selfAdOnNewErrorPage: 1
       }
     );
   };
@@ -71,6 +75,8 @@ class LZTAppearDB extends LZTUpgradeDB {
     backgroundEffect,
     hideOnlyfans,
     showPollResults,
+    newErrorPage,
+    selfAdOnNewErrorPage,
   }) {
     super.update(...arguments);
   }
