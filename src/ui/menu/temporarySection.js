@@ -1,9 +1,9 @@
 import { setMenuTitle, addGoBackBtn } from 'UI/menu/utils';
 
-const tempClass = 'LZTUpTempSubMenu';
+const tempId = 'LZTUpTempSubMenu';
 
 function openTempMenu(sectionName, fromSectionName, subMenuToShow, onCloseCallback) {
-  const subMenus = document.querySelectorAll('#LZTUpSubMenu'); // TODO replace LZTUpSubMenu to class
+  const subMenus = document.querySelectorAll('.LZTUpSubMenu');
   subMenus.forEach(subMenu => subMenu.style.display = 'none');
   document.querySelector('.LZTUpTempSubMenu').style.display = '';
   setMenuTitle(sectionName);
@@ -17,8 +17,8 @@ function addTemporaryMenuSection(items) {
   }
 
   const container = document.createElement('div');
-  container.id = 'LZTUpSubMenu'; // TODO replace LZTUpSubMenu to class
-  container.classList.add(tempClass);
+  container.id = tempId;
+  container.classList.add('LZTUpSubMenu');
 
   for (const item of items) {
     container.appendChild(item);

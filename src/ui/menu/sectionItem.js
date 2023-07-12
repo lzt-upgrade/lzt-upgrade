@@ -1,16 +1,16 @@
 import { setMenuTitle, addGoBackBtn } from 'UI/menu/utils';
 import { createMenuIcon } from 'UI/kit/icons.js'
 
-function openSubMenu(containerClassName, sectionName) {
+function openSubMenu(containerId, sectionName) {
   document.querySelector('.LZTUpTabs').style.display = 'none';
 
-  const subMenus = document.querySelectorAll('#LZTUpSubMenu'); // TODO replace LZTUpSubMenu to class
+  const subMenus = document.querySelectorAll('.LZTUpSubMenu');
   subMenus.forEach(subMenu => subMenu.style.display = 'none');
 
   const sections = document.querySelectorAll('.LZTUpSection');
   sections.forEach(section => section.style.display = 'none');
 
-  document.querySelector(`.${containerClassName}`).style.display = '';
+  document.querySelector(`#${containerId}`).style.display = '';
   setMenuTitle(sectionName);
   return addGoBackBtn();
 }
@@ -21,9 +21,9 @@ function openSubMenu(containerClassName, sectionName) {
  *  @param {string} sectionDesc - desc of the section
  *  @param {string} sectionIconClasses - font awesome icon classes
  *  @param {string} className - name of the section class
- *  @param {string} containerClassName - name of the container class
+ *  @param {string} containerId - name of the container id
  */
-function addMenuSectionItem(sectionName, sectionDesc, sectionIconClasses, className, containerClassName) {
+function addMenuSectionItem(sectionName, sectionDesc, sectionIconClasses, className, containerId) {
   const sectionItem = document.createElement('div');
   sectionItem.id = 'LZTUpSectionItem';
   sectionItem.className = className;
@@ -38,7 +38,7 @@ function addMenuSectionItem(sectionName, sectionDesc, sectionIconClasses, classN
   sectionItem.appendChild(sectionIcon);
   sectionItem.appendChild(textContainer);
 
-  sectionItem.addEventListener('click', () => openSubMenu(containerClassName, sectionName));
+  sectionItem.addEventListener('click', () => openSubMenu(containerId, sectionName));
 
   return sectionItem;
 }

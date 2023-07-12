@@ -15,7 +15,7 @@ function createGoBackBtn(callback) {
   const backButton = new Button('', 'LZTUpModalBackButton', 'fas fa-long-arrow-left').createElement();
 
   backButton.onclick = () => {
-    document.querySelectorAll('div#LZTUpSubMenu').forEach(submenu => submenu.style.display = 'none'); // TODO replace LZTUpSubMenu to class
+    document.querySelectorAll('div.LZTUpSubMenu').forEach(submenu => submenu.style.display = 'none');
     callback();
   }
 

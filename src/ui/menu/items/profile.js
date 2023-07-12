@@ -23,7 +23,7 @@ const profileDB = new LZTProfileDB();
 async function sortableItemOnEditCallback(e, previewProfile) {
   const badgeId = Number(e.target.parentElement.parentElement.parentElement.dataset?.id);
   const modalContent = document.querySelector('.LZTUpModalContent');
-  const uniqSubMenu = document.querySelector('.LZTUpUniqContainer');
+  const uniqSubMenu = document.querySelector('#LZTUpUniqContainer');
   const profileData = await profileDB.read();
   const thisBadgeArray = profileData.badgeIcons.filter(icon => icon.position === badgeId);
   let badgeData = thisBadgeArray[0];
