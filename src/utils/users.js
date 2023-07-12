@@ -36,7 +36,7 @@ function getUserId(target) {
       }
     case "self":
     case "me":
-      return XenForo?._csrfToken?.split(',')[0];
+      return XenForo?.visitor?.user_id;
     default:
       return null;
   }
@@ -47,7 +47,7 @@ function getUsername(target) {
     // TODO: add get by userid
     case "self":
     case "me":
-      return document.querySelector('.accountUsername span').innerText;
+      return document.querySelector('.accountUsername span')?.innerText;
     default:
       return null;
   }
