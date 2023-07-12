@@ -21,7 +21,8 @@
     "require": [
         "https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js",
         "https://raw.githubusercontent.com/lzt-upgrade/coloris-lzt-theme/main/dist/coloris.js",
-        "https://raw.githubusercontent.com/lzt-upgrade/lzt-upgrade/2.0.0/libs/purify3.0.3.min.js"
+        "https://raw.githubusercontent.com/lzt-upgrade/lzt-upgrade/2.0.0/libs/purify3.0.3.min.js",
+        "https://raw.githubusercontent.com/lzt-upgrade/lzt-upgrade/2.0.0/libs/Sortable1.15.0.min.js"
     ],
     "grant": [
         "GM_xmlhttpRequest",
