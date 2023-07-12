@@ -53,29 +53,6 @@ function hasOwn(element, property) {
   return Object.prototype.hasOwnProperty.call(element, property);
 }
 
-function clearHTML(element) {
-  return DOMPurify.sanitize(element, {
-    USE_PROFILES: {
-        svg: true,
-        html: true
-    },
-    FORBID_TAGS: [
-        "style"
-    ]
-  });
-}
-
-function clearSVG(element) {
-  return DOMPurify.sanitize(element, {
-    USE_PROFILES: {
-        svg: true
-    },
-    FORBID_TAGS: [
-        "style"
-    ]
-  });
-}
-
 function getNodeLinks() {
   let latestsThreads = $('div.latestThreads');
   const stickyThreads = $('div.stickyThreads');
@@ -91,5 +68,35 @@ function getThreadLinks() {
   return links;
 }
 
+function removeStyles(selector) {
+  const el = document.querySelector(selector);
+  if (!el) {
+    return;
+  }
 
-export { waitForElm, waitForElement, sleep, hasOwn, getNodeLinks, getThreadLinks, waitForCSRFToken, clearHTML, clearSVG };
+  el.className = ''
+  el.style = '';
+
+  return el;
+}
+
+function applyStyle(el, style) {
+  if (style?.length > 1 && style?.startsWith('.')) {
+    style = style.replace('.', '');
+    return el.classList.add(style);
+  } else {
+    return el.style = style;
+  }
+}
+
+export {
+  waitForElm,
+  waitForElement,
+  sleep,
+  hasOwn,
+  getNodeLinks,
+  getThreadLinks,
+  waitForCSRFToken,
+  removeStyles,
+  applyStyle
+};
