@@ -1,6 +1,11 @@
 @import url('https://cdn.jsdelivr.net/gh/lzt-upgrade/coloris-lzt-theme@latest/dist/coloris.min.css');
 
 
+// hide color picker on loading page
+.clr-picker {
+  display: none;
+}
+
 .LZTUpColorPickerWrap {
   display: flex;
   align-items: center;

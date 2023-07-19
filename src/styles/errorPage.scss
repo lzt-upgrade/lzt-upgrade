@@ -20,6 +20,8 @@
           display: flex;
           flex-direction: row;
           .button {
+            display: flex;
+            align-items: center;
             background: #0daf77;
             border-radius: 6px;
             color: #fff;
@@ -31,6 +33,13 @@
             transition: 0.5s background ease;
             &:hover {
               background: rgba(13,175,119,.8) !important;
+            }
+
+            svg {
+              width: 24px;
+              height: 24px;
+              margin-right: 5px;
+              fill: #fff;
             }
           }
         }
