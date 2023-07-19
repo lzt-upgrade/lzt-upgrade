@@ -1,11 +1,25 @@
 const extData = () => {
   return {
     nodes: {
-      contests: '.node766'
+      // nodes of the forum
+      contests: '.node766',
     },
-    elements: {
-      memberCard: '.xenOverlay.memberCard'
+    selectors: {
+      // elements of the forum
+      memberCard: '.xenOverlay.memberCard',
     },
+    uiElementsId: {
+      // id of the element for extension UI
+      lztupTempSubMenu: 'LZTUpTempSubMenu'
+    },
+    uiElementsSelectors: {
+      // selectors of the element for extension UI
+      lztupTempSubMenu: '#LZTUpTempSubMenu'
+    },
+    links: {
+      telegramChannel: 'https://t.me/lzt_upgrade',
+      githubPage: 'https://github.com/lzt-upgrade/lzt-upgrade',
+    }
   }
 }
 
