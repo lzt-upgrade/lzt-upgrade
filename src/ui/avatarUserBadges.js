@@ -2,6 +2,7 @@ import { clearSVG } from 'Utils/purify';
 import { setTooltip } from "Xenforo/tooltips";
 import { changeSVGColor } from 'Utils/svg';
 import { Logger } from 'Utils/logger'
+import { removeStylesByEl } from 'Utils/utils'
 
 
 class AvatarUserBadges {
@@ -55,16 +56,8 @@ class AvatarUserBadges {
     return document.querySelector(selector + `[data-position="${position}"]`);
   }
 
-  clearBadge(selector, position) {
-    const el = this.findBadgeElement(selector, position);
-    if (!el) {
-      return { el: undefined, position: undefined };
-    }
-
-    el.className = ''
-    el.style = '';
-
-    return { el, position };
+  findAllBadgeElement(selector, position) {
+    return document.querySelectorAll(selector + `[data-position="${position}"]`);
   }
 
   applyBadge(el, icon) {
@@ -79,53 +72,41 @@ class AvatarUserBadges {
     }
   }
 
-  updateIcon(badge) {
-    const { el, position } = this.clearBadge(
-      this.badgeQuery,
-      badge.position
-    );
-
-    if (!el) {
+  updateIcon(badgeEl, badge) {
+    if (!badgeEl) {
       return;
     }
 
-    el.classList.add('avatarUserBadge', 'Tooltip');
+    removeStylesByEl(badgeEl);
+
+    badgeEl.classList.add('avatarUserBadge', 'Tooltip');
 
     // set position of badge
-    if (el.dataset.multiple === "true") {
-      el.classList.add(`avatarUserBadge--${position}`);
+    if (badgeEl.dataset.multiple === "true") {
+      badgeEl.classList.add(`avatarUserBadge--${badge.position}`);
     }
 
-    return this.applyBadge(el, badge.svg);
+    return this.applyBadge(badgeEl, badge.svg);
   }
 
-  updateText(badge) {
-    const userBadgeEl = this.findBadgeElement(
-      this.badgeQuery,
-      badge.position
-    );
-    if (!userBadgeEl) {
+  updateText(badgeEl, badge) {
+    if (!badgeEl) {
       return;
     }
 
-    if (userBadgeEl._tippy) {
-      setTooltip(userBadgeEl, XenForo.htmlspecialchars(badge.text));
-    } else {
-      XenForo.Tooltip($(userBadgeEl));
+    if (badgeEl._tippy) {
+      return setTooltip(badgeEl, XenForo.htmlspecialchars(badge.text));
     }
 
+    return XenForo.Tooltip($(badgeEl)); // ! "$"" needed in XenForo.Tooltip
   }
 
-  updateColor(badge) {
-    const userBadgeEl = this.findBadgeElement(
-      this.badgeQuery,
-      badge.position
-    );
-    if (!userBadgeEl) {
+  updateColor(badgeEl, badge) {
+    if (!badgeEl) {
       return;
     }
 
-    const svg = userBadgeEl.querySelector('svg');
+    const svg = badgeEl.querySelector('svg');
     if (!svg) {
       return;
     }
@@ -134,27 +115,26 @@ class AvatarUserBadges {
     changeSVGColor(svg, 'fill', badge.fillColor, true);
   }
 
-  updateStyle(badge) {
-    if (!badge.style || badge.style?.startsWith('.')) {
+  updateStyle(badgeEl, badge) {
+    if (!badgeEl || !badge.style || badge.style?.startsWith('.')) {
       return;
     }
 
-    const userBadgeEl = this.findBadgeElement(
-      this.badgeQuery,
-      badge.position
-    );
-    if (!userBadgeEl) {
-      return;
-    }
-
-    userBadgeEl.style = badge.style;
+    return badgeEl.style = badge.style;
   }
 
   updateBadge(badge) {
-    this.updateIcon(badge);
-    this.updateText(badge);
-    this.updateColor(badge);
-    this.updateStyle(badge);
+    const badgeElements = this.findAllBadgeElement(this.badgeQuery, badge.position);
+    if (!badgeElements.length) {
+      return;
+    }
+
+    for (const badgeEl of badgeElements) {
+      this.updateIcon(badgeEl, badge);
+      this.updateText(badgeEl, badge);
+      this.updateColor(badgeEl, badge);
+      this.updateStyle(badgeEl, badge);
+    }
   }
 
   updateBadges() {
