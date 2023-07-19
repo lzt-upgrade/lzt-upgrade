@@ -44,7 +44,7 @@ class SortableItem {
     editButton.appendChild(editIcon);
     editButton.onclick = async (e) => {
       console.log('Edit button clicked');
-      await onClickEdit(e);
+      await onClickEdit(e, sortableItem);
     }
 
     const removeButton = document.createElement('div');
