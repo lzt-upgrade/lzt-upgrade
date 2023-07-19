@@ -12,27 +12,33 @@ import { SortableContainer } from 'UI/kit/menu/sortableContainer';
 import { SortableItem } from 'UI/kit/menu/sortableItem';
 import { getUserId, getUsername } from 'Utils/users';
 import { registerAlert } from 'Utils/registers';
-import { clearSVG, clearHTML } from 'Utils/purify';
+import { clearSVG, clearHTML, clearCSS } from 'Utils/purify';
 import { addTemporaryMenuSection, openTempMenu } from 'UI/menu/temporarySection';
 import { initColorPickers } from 'Utils/colorPicker';
 import { AvatarUserBadges } from 'UI/avatarUserBadges';
-import { updateUserStyle, updateUserBanner } from 'Visuals/users';
+import { updateUserStyle, updateUserBanner, updateUserBadges } from 'Visuals/users';
+
 
 const profileDB = new LZTProfileDB();
 
-async function sortableItemOnEditCallback(e, previewProfile) {
-  const badgeId = Number(e.target.parentElement.parentElement.parentElement.dataset?.id);
+async function sortableItemOnEditCallback(e, sortableItem, previewProfile) {
+  const badgeId = Number(sortableItem.dataset.id);
   const modalContent = document.querySelector('.LZTUpModalContent');
   const uniqSubMenu = document.querySelector('#LZTUpUniqContainer');
   const profileData = await profileDB.read();
   const thisBadgeArray = profileData.badgeIcons.filter(icon => icon.position === badgeId);
   let badgeData = thisBadgeArray[0];
+  console.log(badgeId, '==>', profileData.badgeIcons, '==>', thisBadgeArray, '==>', badgeData); // TODO: delete after tests
 
   async function updateBadgesData(badgeData) {
     // badgeData its current badge (which we are editing)
     const profData = await profileDB.read();
-    const badges = profData.badgeIcons.filter(icon => icon.position !== badgeId);
-    badges.push(badgeData);
+    // const badges = profData.badgeIcons.filter(icon => icon.position !== badgeId);
+    // badges.push(badgeData);
+    let badges = profData.badgeIcons;
+    const currentBadge = badges.find(badge => badge.position === badgeId);
+    const currentBadgeId = badges.indexOf(currentBadge)
+    badges[currentBadgeId] = badgeData;
     return badges;
   }
 
@@ -62,7 +68,7 @@ async function sortableItemOnEditCallback(e, previewProfile) {
           new TextArea(badgeData.style, 'background: #fff', 0, 1500)
           .createElement(
             async (event) => {
-              let val = event.target.value;
+              let val = clearCSS(event.target.value.trim());
 
               if (val.length > 1500) {
                 return registerAlert('Максимальная длина стиля иконки 1500 символов. Уменьшите введенный текст для сохранения.')
@@ -127,6 +133,7 @@ async function sortableItemOnEditCallback(e, previewProfile) {
           registerAlert('Иконка успешно сохранена.')
           const badges = await updateBadgesData(badgeData);
           await profileDB.update({ badgeIcons: badges });
+          updateUserBadges(badges);
         }),
       ]).createElement()
     ]
@@ -155,10 +162,14 @@ function createPreviewProfile(profileData) {
 
 const getProfileItems = async () => {
   function generateBadgeItems(previewProfile, profileData) {
+    console.log('Generating badge items')
     const items = [];
-    for (const badge of profileData.badgeIcons) {
-      items.push(new SortableItem(badge.text, badge.position).createElement((e) => sortableItemOnEditCallback(e, previewProfile), sortableItemOnRemoveCallback));
+    for (const badge of profileData.badgeIcons.sort((a, b) => a.position - b.position)) {
+      console.log(badge.text, badge.position)
+      items.push(new SortableItem(badge.text, badge.position).createElement((e, sortableItem) => sortableItemOnEditCallback(e, sortableItem, previewProfile), sortableItemOnRemoveCallback));
     }
+
+    console.log(items);
 
     return items;
   }
@@ -219,6 +230,7 @@ const getProfileItems = async () => {
     await profileDB.update({ badgeIcons: newBadgeIcons });
     previewProfile.data = profileData;
     previewProfile.updateAll();
+    updateUserBadges(newBadgeIcons);
   }
 
   const profileData = await profileDB.read();
@@ -313,6 +325,7 @@ const getProfileItems = async () => {
           const newProfileData = await profileDB.read();
           newProfileData.badgeIcons.reverse();
           for (let i = 0; i < items.length; i++) {
+            console.log('moving items');
             items[i].dataset.id = i + 1;
             newProfileData.badgeIcons[i].position = i + 1;
           }
@@ -320,6 +333,7 @@ const getProfileItems = async () => {
           profileData.badgeIcons = newProfileData.badgeIcons;
           await profileDB.update({ badgeIcons: newProfileData.badgeIcons });
           reloadUserBadges(profileData);
+          updateUserBadges(newProfileData.badgeIcons);
         }),
 
         new Button('Добавить иконку', 'button LZTUpIconButton', 'far fa-plus')
@@ -348,7 +362,7 @@ const getProfileItems = async () => {
 
           badgeIcons.push(defaultIcon)
 
-          const newItem = new SortableItem(defaultIcon.text, defaultIcon.position).createElement((e) => sortableItemOnEditCallback(e, previewProfile), sortableItemOnRemoveCallback);
+          const newItem = new SortableItem(defaultIcon.text, defaultIcon.position).createElement((e, sortableItem) => sortableItemOnEditCallback(e, sortableItem, previewProfile), sortableItemOnRemoveCallback);
 
           sortableContainer.appendChild(newItem);
           await profileDB.update({ badgeIcons: badgeIcons });
@@ -356,6 +370,7 @@ const getProfileItems = async () => {
           profileData.badgeIcons = badgeIcons;
 
           reloadUserBadges(profileData);
+          updateUserBadges(badgeIcons);
         }),
       ],
       'Управление иконками',
