@@ -27,7 +27,7 @@ function isThreadPage() {
 }
 
 function isOpenMemberCard() {
-  return document.querySelector(extData.elements.memberCard) !== null;
+  return document.querySelector(extData.selectors.memberCard) !== null;
 }
 
 export { isElement, isContestThread, isContestsNode, isProfilePage, isThreadPage, isOpenMemberCard }
