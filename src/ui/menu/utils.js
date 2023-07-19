@@ -1,4 +1,5 @@
 import config from 'Configs/config';
+import extData from 'Configs/extData';
 import { Button } from 'UI/kit/button.js';
 
 
@@ -34,7 +35,7 @@ function addGoBackBtn(target = '', text = config.extName, subMenuToShow = null, 
     setMenuTitle(text);
     switch (target) {
       case 'tempmenu':
-        document.querySelector('.LZTUpTempSubMenu').style.display = 'none';
+        document.querySelector(extData.uiElementsSelectors.lztupTempSubMenu).style.display = 'none';
         subMenuToShow.style.display = '';
         addGoBackBtn();
         onCloseCallback();
