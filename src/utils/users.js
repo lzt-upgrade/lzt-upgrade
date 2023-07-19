@@ -25,7 +25,7 @@ function getUserId(target) {
     case "membercard":
       // in any membercard
       if (isOpenMemberCard()) {
-        const memberCard = document.querySelectorAll(extData.elements.memberCard);
+        const memberCard = document.querySelectorAll(extData.selectors.memberCard);
         const userThreadsButton = memberCard[memberCard.length - 1].querySelector('.memberCardInner > .bottom > .userContentLinks > a:nth-child(1)');
         if (!userThreadsButton || userThreadsButton.href === '') {
           return null;
@@ -81,7 +81,7 @@ function addUserIdToProfile() {
 
 function addUserIdToMemberCard() {
   if (isOpenMemberCard()) {
-    const memberCards = document.querySelectorAll(extData.elements.memberCard);
+    const memberCards = document.querySelectorAll(extData.selectors.memberCard);
     const userId = getUserId('membercard') ?? 'Не найден';
     const userContentLinks = memberCards[memberCards.length - 1].querySelector(`#memberCard${userId}.memberCardInner > .bottom > .userContentLinks`);
     const userIdElement = document.createElement('div');
