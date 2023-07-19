@@ -70,6 +70,10 @@ function getThreadLinks() {
 
 function removeStyles(selector) {
   const el = document.querySelector(selector);
+  return removeStylesByEl(el)
+}
+
+function removeStylesByEl(el) {
   if (!el) {
     return;
   }
@@ -98,5 +102,6 @@ export {
   getThreadLinks,
   waitForCSRFToken,
   removeStyles,
+  removeStylesByEl,
   applyStyle
 };
