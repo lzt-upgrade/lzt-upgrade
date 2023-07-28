@@ -156,6 +156,7 @@ async function main() {
             mutation.target.classList.contains('discussionList') ||
             mutation.target.classList.contains('chat2-messages') ||
             mutation.target.classList.contains('fe-ac-user') ||
+            mutation.target.classList.contains('latestThreads') ||
             mutation.target.parentElement?.classList.contains('conversationMessages') ||
             mutation.nextSibling?.classList?.contains('modal') ||
             mutation.previousSibling?.classList?.contains('Alert') ||
