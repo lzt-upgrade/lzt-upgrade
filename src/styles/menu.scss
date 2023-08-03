@@ -304,8 +304,7 @@
 
 .LZTUpSubMenu .previewContainer {
   float: right;
-  margin-left: 15px;
-  margin-top: 25px;
+  margin: 25px 15px;
   padding: 10px 10px 15px 10px;
   background-size: cover;
   background-position: center;
@@ -314,6 +313,7 @@
   border-radius: 10px;
   width: 92%;
   max-width: 92%;
+
   .avatar img {
     width: 66px;
     height: 66px;
