@@ -69,7 +69,7 @@ ___CSS_LOADER_EXPORT___.push([module.id, "#LZTUpButton{color:#0daf77;font-weight
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".LZTUpErrorPage{background-color:#272727}.LZTUpErrorPage article{color:#d6d6d6}.LZTUpErrorPage article div{display:flex;flex-direction:column;justify-content:center;align-items:center}.LZTUpErrorPage article div .LZTUpErrorPageSelfAd{border-top:1px solid #363636}.LZTUpErrorPage article div .LZTUpErrorPageSelfAd .selfAd{font-size:18px;color:#949494;max-width:75%;text-align:center}.LZTUpErrorPage article div .LZTUpErrorPageSelfAd .buttons{display:flex;flex-direction:row}.LZTUpErrorPage article div .LZTUpErrorPageSelfAd .buttons .button{background:#0daf77;border-radius:6px;color:#fff;padding:0px 15px;margin:10px;line-height:34px;font-size:18px;transition:.5s background ease}.LZTUpErrorPage article div .LZTUpErrorPageSelfAd .buttons .button:hover{background:rgba(13,175,119,.8) !important}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".LZTUpErrorPage{background-color:#272727}.LZTUpErrorPage article{color:#d6d6d6}.LZTUpErrorPage article div{display:flex;flex-direction:column;justify-content:center;align-items:center}.LZTUpErrorPage article div .LZTUpErrorPageSelfAd{border-top:1px solid #363636}.LZTUpErrorPage article div .LZTUpErrorPageSelfAd .selfAd{font-size:18px;color:#949494;max-width:75%;text-align:center}.LZTUpErrorPage article div .LZTUpErrorPageSelfAd .buttons{display:flex;flex-direction:row}.LZTUpErrorPage article div .LZTUpErrorPageSelfAd .buttons .button{display:flex;align-items:center;background:#0daf77;border-radius:6px;color:#fff;padding:0px 15px;margin:10px;line-height:34px;font-size:18px;transition:.5s background ease}.LZTUpErrorPage article div .LZTUpErrorPageSelfAd .buttons .button:hover{background:rgba(13,175,119,.8) !important}.LZTUpErrorPage article div .LZTUpErrorPageSelfAd .buttons .button svg{width:24px;height:24px;margin-right:5px;fill:#fff}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -92,7 +92,29 @@ ___CSS_LOADER_EXPORT___.push([module.id, ".LZTUpErrorPage{background-color:#2727
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 ___CSS_LOADER_EXPORT___.push([module.id, "@import url(https://cdn.jsdelivr.net/gh/lzt-upgrade/coloris-lzt-theme@latest/dist/coloris.min.css);"]);
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".LZTUpColorPickerWrap{display:flex;align-items:center}.LZTUpColorPickerWrap:not(:first-of-type){margin-top:10px}.LZTUpColorPickerWrap .LZTUpModalDescription{margin-right:10px !important}.LZTUpColorPickerWrap .clr-field input{width:24px;height:24px}.LZTUpColorPickerWrap .clr-field button{width:28px;height:28px}.LZTUpColorPickerWrap .clr-field input,.LZTUpColorPickerWrap .clr-field button{border-radius:4px}.LZTUpIconButton{display:flex;flex-direction:row-reverse;align-items:center;justify-content:center}.LZTUpIconButton.fit{max-width:fit-content}.LZTUpIconButton i{margin:0 8px;margin-top:3.5px}.LZTUpSortableItem{display:flex;align-items:center;padding:16px;margin:8px 0;border-radius:8px;background:rgba(54,54,54,.75)}.LZTUpSortableItem .LZTUpSortableDraggable{color:#8c8c8c;margin-right:10px;cursor:move}.LZTUpSortableItem .LZTUPSortableContent p{margin:0 !important}.LZTUpSortableItem .LZTUpSortableUtility{display:flex;margin-left:auto}.LZTUpSortableItem .LZTUpSortableUtility div{margin-left:10px;cursor:pointer;transition:.5s color ease}.LZTUpSortableItem .LZTUpSortableUtility .LZTUpSortableEditButton{color:#6a6a6a}.LZTUpSortableItem .LZTUpSortableUtility .LZTUpSortableEditButton:hover{color:#0daf77}.LZTUpSortableItem .LZTUpSortableUtility .LZTUpSortableRemoveButton{color:#964448}.LZTUpSortableItem .LZTUpSortableUtility .LZTUpSortableRemoveButton:hover{color:#f13838}#LZTUpModalMainTitle{text-align:center;padding:16px;font-size:20px;font-weight:bold}.LZTUpModalBackButton{position:absolute;top:18px;left:25px;padding:0px 5px;margin:-4px -5px;cursor:pointer;line-height:25px;height:26px;width:26px;border:0 !important;background:rgba(0,0,0,0);color:#d6d6d6;font-size:18px}.LZTUpModalBackButton:hover{background:rgba(18,76,50,.4);border-radius:8px}.LZTUpTabs{width:100%;box-sizing:border-box;padding:0 10px;border:none !important;margin:15px auto !important;display:flex;align-items:center;justify-content:center}.LZTUpTabs #LZTUpTab{position:relative;padding:10px;margin:0 4px;float:left;font-weight:600;list-style:none;font-size:14px}.LZTUpTabs #LZTUpTab:hover{cursor:pointer}.LZTUpTabs #LZTUpTab.active{box-shadow:inset 0px -2px 0px 0px #0daf77;transform:translateY(-1px);transition:.2s}.LZTUpTabs #LZTUpTab:not(.active):hover{box-shadow:inset 0px -2px 0px 0px #363636}.LZTUpSection{display:flex;flex-wrap:wrap;margin:20px 15px}.LZTUpSection #LZTUpSectionItem{max-width:284px;flex-basis:50%;flex-grow:1;height:64px;display:flex;align-items:center;transition:all .5s ease}.LZTUpSection #LZTUpSectionItem:hover{background:rgba(54,54,54,.75);border-radius:8px;cursor:pointer}#LZTUpIcon{width:28px;height:28px;margin:20px;font-size:28px;color:#0daf77}#LZTUpIcon .gray{color:#949494}#LZTUpIcon .right{text-align:right}#LZTUpSubText{display:block;margin-right:20px;font-size:13px;text-overflow:ellipsis;white-space:nowrap;overflow:hidden;width:200px;color:#949494}#LZTUpModalContainer{margin:15px;max-width:400px}#LZTUpModalChecksContainer,#LZTUpModalReportButtonsContainer,#LZTUpModalCell,.LZTUpModalMesh,.LZTUpModalSeparator{margin:15px;max-width:95%}.LZTUpContainer{display:flex;flex-direction:column;margin:15px;max-width:95%}.LZTUpModalHeading{margin:10px 0 5px 0 !important}.LZTUpModalDescription{margin:0 !important;margin-bottom:5px !important}.LZTUpTextArea{min-height:40px}.LZTUpModalSeparator{border-bottom:1px solid #363636}#LZTUpModalChecksText{margin:0px 25px 5px}#LZTUpText{display:block;margin-right:20px;font-size:15px;font-weight:bold;text-overflow:ellipsis;white-space:nowrap;overflow:hidden;width:200px}.LZTUpModalSectionTexts{display:flex;flex-direction:column;justify-content:center;flex:1 1 auto}.LZTUpModalSectionTexts #LZTUpSubText{max-width:450px}#LZTUpModalComment{background:#363636;margin:5px 15px;padding:10px 15px;border-radius:10px}#LZTUpModalComment a{color:#00ba78}.LZTUpModalBlock{display:flex}.LZTUpModalBlockButtons{display:flex;flex-wrap:wrap;justify-content:center;margin-top:25px}.LZTUpModalBlockButtons .button{margin:5px;width:250px}#LZTUpPreviewContainer{display:flex}.LZTUpSubMenu .previewContainer{float:right;margin-left:15px;margin-top:25px;padding:10px 10px 15px 10px;background-size:cover;background-position:center;background-attachment:fixed;background-repeat:no-repeat;border-radius:10px;width:92%;max-width:92%}.LZTUpSubMenu .previewContainer .avatar img{width:66px;height:66px}.LZTUpSubMenu .previewContainer .info{padding:0 0 0 20px}.LZTUpSubMenu .previewContainer .info .username{font-weight:600}.LZTUpSubMenu .previewContainer .bannerOrStatus{min-width:150px;margin:10px 0 0;color:#949494}.LZTUpSubMenu .previewContainer .bannerOrStatus em{font-style:inherit}.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge .customUniqIcon{padding:2px 0;text-align:center}.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge .customUniqIcon svg{width:16px !important;height:16px !important}.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge::before{font-family:\"Font Awesome 5 Pro\";font-weight:600;display:inline-block;font-size:12.32px}.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.admin{background:#964448}.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.admin::before,.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.bot::before{content:\"\"}.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.Designer::before{content:\"\"}.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.headDesigner::before{content:\"\"}.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.editor::before{content:\"\"}.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.sponsor::before{content:\"\"}.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.coder::before{content:\"\"}.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.uniq_default::before,.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.Legend::before,.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.Ikarus::before{content:\"\"}.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.moder{background:#3d6b39}.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.curator{background:rgba(8,156,122,.8509803922)}.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.moder::before,.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.main_moder::before,.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.curator::before{content:\"\"}.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.arbitr::before,.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.main_arbitr::before{content:\"\"}.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.telegramBot::before{content:\"\"}.LZTUpSubMenu .previewContainer .UsernameStyle.style18,.LZTUpSubMenu .previewContainer .UsernameStyle.style360{text-decoration:line-through;color:#aaa}.LZTUpSubMenu .previewContainer .UsernameStyle.style3{color:#f13838}.LZTUpSubMenu .previewContainer .UsernameStyle.style30{color:#ff9afc}.LZTUpSubMenu .previewContainer .UsernameStyle.style353{background:linear-gradient(98.26deg, #FF42F7 2.08%, #FF24CF 100%);-webkit-background-clip:text;-webkit-text-fill-color:rgba(0,0,0,0)}.LZTUpSubMenu .previewContainer .UsernameStyle.style350{background:linear-gradient(90deg, #5c45ff, #feb5f2 100%);-webkit-background-clip:text;-webkit-text-fill-color:rgba(0,0,0,0)}.LZTUpSubMenu .previewContainer .UsernameStyle.style12{color:#01f73c}.LZTUpSubMenu .previewContainer .UsernameStyle.style1,.LZTUpSubMenu .previewContainer .UsernameStyle.style41,.LZTUpSubMenu .previewContainer .UsernameStyle.style142,.LZTUpSubMenu .previewContainer .UsernameStyle.style144{color:#aaa}.LZTUpSubMenu .previewContainer .UsernameStyle.style32,.LZTUpSubMenu .previewContainer .UsernameStyle.style93,.LZTUpSubMenu .previewContainer .UsernameStyle.style21,.LZTUpSubMenu .previewContainer .UsernameStyle.style2{color:#949494}.LZTUpSubMenu .previewContainer .UsernameStyle.style60{color:#ffa8af}.LZTUpSubMenu .previewContainer .UsernameStyle.style9{color:#0075ad}.LZTUpSubMenu .previewContainer .UsernameStyle.style65{color:#a5e3ff}.LZTUpSubMenu .previewContainer .UsernameStyle.style351{color:#ff0076}.LZTUpSubMenu .previewContainer .UsernameStyle.style29{color:#0acc9e}.LZTUpSubMenu .previewContainer .UsernameStyle.style26{background:linear-gradient(90deg, #0095dd 0%, #f1094b 100%, #0095dd);-webkit-background-clip:text;-webkit-text-fill-color:rgba(0,0,0,0)}.LZTUpSubMenu .previewContainer .UsernameStyle.style4{color:#0e9100}.LZTUpSubMenu .previewContainer .UsernameStyle.style22{color:#eee}.LZTUpSubMenu .previewContainer .UsernameStyle.style11{color:#56b5e0}.LZTUpSubMenu .previewContainer .UsernameStyle.style7{color:#ff9304}.LZTUpSubMenu .previewContainer .UsernameStyle.style349,.LZTUpSubMenu .previewContainer .UsernameStyle.style365{color:#0087ff}.LZTUpSubMenu .previewContainer .UsernameStyle.style354{color:aqua}.LZTUpSubMenu .previewContainer .UsernameStyle.style218{color:#f13838}.LZTUpSubMenu .previewContainer .UsernameStyle.style359{color:#e5d9a3}.LZTUpSubMenu .previewContainer .UsernameStyle.style8{color:gold}.LZTUpSubMenu .previewContainer .UsernameStyle.style265{background:linear-gradient(35deg, #006eff, #00ff81 52%, #fff 50%, #93cbff);-webkit-background-clip:text;-webkit-text-fill-color:rgba(0,0,0,0);text-shadow:0 0 7px rgba(0,255,207,.5019607843)}.LZTUpSubMenu .previewContainer .UsernameStyle.style23{color:#b35ede}.LZTUpSubMenu .previewContainer .UsernameStyle.banned,.LZTUpSubMenu .previewContainer .UsernameStyle.is_banned{text-decoration:line-through;background:inherit;-webkit-text-fill-color:inherit;text-shadow:inherit !important;color:#aaa !important}.LZTUpSubMenu .previewContainer .avatarBox{position:relative}.LZTUpSubMenu .previewContainer .avatarBox .avatarUserBadges .badgeDefaultBackground{background:#363636}.LZTUpSubMenu .previewContainer .avatarBox .avatarUserBadges .avatarUserBadge{position:absolute;bottom:-12px;left:20px;border:2px solid #272727;font-size:0;width:22px;height:22px;margin:0;line-height:22px;border-radius:50%;text-align:center;text-shadow:none !important;box-shadow:none !important;border-radius:50% !important;-webkit-background-clip:unset !important;-webkit-text-fill-color:unset !important;overflow:hidden}.LZTUpSubMenu .previewContainer .avatarBox .avatarUserBadges .avatarUserBadge:only-child{left:35px}.LZTUpSubMenu .previewContainer .avatarBox .avatarUserBadges .avatarUserBadge.avatarUserBadge--1{left:20px}.LZTUpSubMenu .previewContainer .avatarBox .avatarUserBadges .avatarUserBadge.avatarUserBadge--2{left:40px}.LZTUpSubMenu .previewContainer .avatarBox,.LZTUpSubMenu .previewContainer .info{display:table-cell;vertical-align:top}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".clr-picker{display:none}.LZTUpColorPickerWrap{display:flex;align-items:center}.LZTUpColorPickerWrap:not(:first-of-type){margin-top:10px}.LZTUpColorPickerWrap .LZTUpModalDescription{margin-right:10px !important}.LZTUpColorPickerWrap .clr-field input{width:24px;height:24px}.LZTUpColorPickerWrap .clr-field button{width:28px;height:28px}.LZTUpColorPickerWrap .clr-field input,.LZTUpColorPickerWrap .clr-field button{border-radius:4px}.LZTUpIconButton{display:flex;flex-direction:row-reverse;align-items:center;justify-content:center}.LZTUpIconButton.fit{max-width:fit-content}.LZTUpIconButton i{margin:0 8px;margin-top:3.5px}.LZTUpSortableItem{display:flex;align-items:center;padding:16px;margin:8px 0;border-radius:8px;background:rgba(54,54,54,.75)}.LZTUpSortableItem .LZTUpSortableDraggable{color:#8c8c8c;margin-right:10px;cursor:move}.LZTUpSortableItem .LZTUPSortableContent p{margin:0 !important}.LZTUpSortableItem .LZTUpSortableUtility{display:flex;margin-left:auto}.LZTUpSortableItem .LZTUpSortableUtility div{margin-left:10px;cursor:pointer;transition:.5s color ease}.LZTUpSortableItem .LZTUpSortableUtility .LZTUpSortableEditButton{color:#6a6a6a}.LZTUpSortableItem .LZTUpSortableUtility .LZTUpSortableEditButton:hover{color:#0daf77}.LZTUpSortableItem .LZTUpSortableUtility .LZTUpSortableRemoveButton{color:#964448}.LZTUpSortableItem .LZTUpSortableUtility .LZTUpSortableRemoveButton:hover{color:#f13838}#LZTUpModalMainTitle{text-align:center;padding:16px;font-size:20px;font-weight:bold}.LZTUpModalBackButton{position:absolute;top:18px;left:25px;padding:0px 5px;margin:-4px -5px;cursor:pointer;line-height:25px;height:26px;width:26px;border:0 !important;background:rgba(0,0,0,0);color:#d6d6d6;font-size:18px}.LZTUpModalBackButton:hover{background:rgba(18,76,50,.4);border-radius:8px}.LZTUpTabs{width:100%;box-sizing:border-box;padding:0 10px;border:none !important;margin:15px auto !important;display:flex;align-items:center;justify-content:center}.LZTUpTabs #LZTUpTab{position:relative;padding:10px;margin:0 4px;float:left;font-weight:600;list-style:none;font-size:14px}.LZTUpTabs #LZTUpTab:hover{cursor:pointer}.LZTUpTabs #LZTUpTab.active{box-shadow:inset 0px -2px 0px 0px #0daf77;transform:translateY(-1px);transition:.2s}.LZTUpTabs #LZTUpTab:not(.active):hover{box-shadow:inset 0px -2px 0px 0px #363636}.LZTUpSection{display:flex;flex-wrap:wrap;margin:20px 15px}.LZTUpSection #LZTUpSectionItem{max-width:284px;flex-basis:50%;flex-grow:1;height:64px;display:flex;align-items:center;transition:all .5s ease}.LZTUpSection #LZTUpSectionItem:hover{background:rgba(54,54,54,.75);border-radius:8px;cursor:pointer}#LZTUpIcon{width:28px;height:28px;margin:20px;font-size:28px;color:#0daf77}#LZTUpIcon .gray{color:#949494}#LZTUpIcon .right{text-align:right}#LZTUpSubText{display:block;margin-right:20px;font-size:13px;text-overflow:ellipsis;white-space:nowrap;overflow:hidden;width:200px;color:#949494}#LZTUpModalContainer{margin:15px;max-width:400px}#LZTUpModalChecksContainer,#LZTUpModalReportButtonsContainer,#LZTUpModalCell,.LZTUpModalMesh,.LZTUpModalSeparator{margin:15px;max-width:95%}.LZTUpContainer{display:flex;flex-direction:column;margin:15px;max-width:95%}.LZTUpModalHeading{margin:10px 0 5px 0 !important}.LZTUpModalDescription{margin:0 !important;margin-bottom:5px !important}.LZTUpTextArea{min-height:40px}.LZTUpModalSeparator{border-bottom:1px solid #363636}#LZTUpModalChecksText{margin:0px 25px 5px}#LZTUpText{display:block;margin-right:20px;font-size:15px;font-weight:bold;text-overflow:ellipsis;white-space:nowrap;overflow:hidden;width:200px}.LZTUpModalSectionTexts{display:flex;flex-direction:column;justify-content:center;flex:1 1 auto}.LZTUpModalSectionTexts #LZTUpSubText{max-width:450px}#LZTUpModalComment{background:#363636;margin:5px 15px;padding:10px 15px;border-radius:10px}#LZTUpModalComment a{color:#00ba78}.LZTUpModalBlock{display:flex}.LZTUpModalBlockButtons{display:flex;flex-wrap:wrap;justify-content:center;margin-top:25px}.LZTUpModalBlockButtons .button{margin:5px;width:250px}#LZTUpPreviewContainer{display:flex}.LZTUpSubMenu .previewContainer{float:right;margin:25px 15px;padding:10px 10px 15px 10px;background-size:cover;background-position:center;background-attachment:fixed;background-repeat:no-repeat;border-radius:10px;width:92%;max-width:92%}.LZTUpSubMenu .previewContainer .avatar img{width:66px;height:66px}.LZTUpSubMenu .previewContainer .info{padding:0 0 0 20px}.LZTUpSubMenu .previewContainer .info .username{font-weight:600}.LZTUpSubMenu .previewContainer .bannerOrStatus{min-width:150px;margin:10px 0 0;color:#949494}.LZTUpSubMenu .previewContainer .bannerOrStatus em{font-style:inherit}.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge .customUniqIcon{padding:2px 0;text-align:center}.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge .customUniqIcon svg{width:16px !important;height:16px !important}.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge::before{font-family:\"Font Awesome 5 Pro\";font-weight:600;display:inline-block;font-size:12.32px}.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.admin{background:#964448}.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.admin::before,.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.bot::before{content:\"\"}.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.Designer::before{content:\"\"}.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.headDesigner::before{content:\"\"}.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.editor::before{content:\"\"}.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.sponsor::before{content:\"\"}.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.coder::before{content:\"\"}.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.uniq_default::before,.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.Legend::before,.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.Ikarus::before{content:\"\"}.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.moder{background:#3d6b39}.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.curator{background:rgba(8,156,122,.8509803922)}.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.moder::before,.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.main_moder::before,.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.curator::before{content:\"\"}.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.arbitr::before,.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.main_arbitr::before{content:\"\"}.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.telegramBot::before{content:\"\"}.LZTUpSubMenu .previewContainer .UsernameStyle.style18,.LZTUpSubMenu .previewContainer .UsernameStyle.style360{text-decoration:line-through;color:#aaa}.LZTUpSubMenu .previewContainer .UsernameStyle.style3{color:#f13838}.LZTUpSubMenu .previewContainer .UsernameStyle.style30{color:#ff9afc}.LZTUpSubMenu .previewContainer .UsernameStyle.style353{background:linear-gradient(98.26deg, #FF42F7 2.08%, #FF24CF 100%);-webkit-background-clip:text;-webkit-text-fill-color:rgba(0,0,0,0)}.LZTUpSubMenu .previewContainer .UsernameStyle.style350{background:linear-gradient(90deg, #5c45ff, #feb5f2 100%);-webkit-background-clip:text;-webkit-text-fill-color:rgba(0,0,0,0)}.LZTUpSubMenu .previewContainer .UsernameStyle.style12{color:#01f73c}.LZTUpSubMenu .previewContainer .UsernameStyle.style1,.LZTUpSubMenu .previewContainer .UsernameStyle.style41,.LZTUpSubMenu .previewContainer .UsernameStyle.style142,.LZTUpSubMenu .previewContainer .UsernameStyle.style144{color:#aaa}.LZTUpSubMenu .previewContainer .UsernameStyle.style32,.LZTUpSubMenu .previewContainer .UsernameStyle.style93,.LZTUpSubMenu .previewContainer .UsernameStyle.style21,.LZTUpSubMenu .previewContainer .UsernameStyle.style2{color:#949494}.LZTUpSubMenu .previewContainer .UsernameStyle.style60{color:#ffa8af}.LZTUpSubMenu .previewContainer .UsernameStyle.style9{color:#0075ad}.LZTUpSubMenu .previewContainer .UsernameStyle.style65{color:#a5e3ff}.LZTUpSubMenu .previewContainer .UsernameStyle.style351{color:#ff0076}.LZTUpSubMenu .previewContainer .UsernameStyle.style29{color:#0acc9e}.LZTUpSubMenu .previewContainer .UsernameStyle.style26{background:linear-gradient(90deg, #0095dd 0%, #f1094b 100%, #0095dd);-webkit-background-clip:text;-webkit-text-fill-color:rgba(0,0,0,0)}.LZTUpSubMenu .previewContainer .UsernameStyle.style4{color:#0e9100}.LZTUpSubMenu .previewContainer .UsernameStyle.style22{color:#eee}.LZTUpSubMenu .previewContainer .UsernameStyle.style11{color:#56b5e0}.LZTUpSubMenu .previewContainer .UsernameStyle.style7{color:#ff9304}.LZTUpSubMenu .previewContainer .UsernameStyle.style349,.LZTUpSubMenu .previewContainer .UsernameStyle.style365{color:#0087ff}.LZTUpSubMenu .previewContainer .UsernameStyle.style354{color:aqua}.LZTUpSubMenu .previewContainer .UsernameStyle.style218{color:#f13838}.LZTUpSubMenu .previewContainer .UsernameStyle.style359{color:#e5d9a3}.LZTUpSubMenu .previewContainer .UsernameStyle.style8{color:gold}.LZTUpSubMenu .previewContainer .UsernameStyle.style265{background:linear-gradient(35deg, #006eff, #00ff81 52%, #fff 50%, #93cbff);-webkit-background-clip:text;-webkit-text-fill-color:rgba(0,0,0,0);text-shadow:0 0 7px rgba(0,255,207,.5019607843)}.LZTUpSubMenu .previewContainer .UsernameStyle.style23{color:#b35ede}.LZTUpSubMenu .previewContainer .UsernameStyle.banned,.LZTUpSubMenu .previewContainer .UsernameStyle.is_banned{text-decoration:line-through;background:inherit;-webkit-text-fill-color:inherit;text-shadow:inherit !important;color:#aaa !important}.LZTUpSubMenu .previewContainer .avatarBox{position:relative}.LZTUpSubMenu .previewContainer .avatarBox .avatarUserBadges .badgeDefaultBackground{background:#363636}.LZTUpSubMenu .previewContainer .avatarBox .avatarUserBadges .avatarUserBadge{position:absolute;bottom:-12px;left:20px;border:2px solid #272727;font-size:0;width:22px;height:22px;margin:0;line-height:22px;border-radius:50%;text-align:center;text-shadow:none !important;box-shadow:none !important;border-radius:50% !important;-webkit-background-clip:unset !important;-webkit-text-fill-color:unset !important;overflow:hidden}.LZTUpSubMenu .previewContainer .avatarBox .avatarUserBadges .avatarUserBadge:only-child{left:35px}.LZTUpSubMenu .previewContainer .avatarBox .avatarUserBadges .avatarUserBadge.avatarUserBadge--1{left:20px}.LZTUpSubMenu .previewContainer .avatarBox .avatarUserBadges .avatarUserBadge.avatarUserBadge--2{left:40px}.LZTUpSubMenu .previewContainer .avatarBox,.LZTUpSubMenu .previewContainer .info{display:table-cell;vertical-align:top}", ""]);
+// Exports
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/styles/universal.scss":
+/***/ ((module, __webpack_exports__, __webpack_require__) => {
+
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "Z": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("./node_modules/css-loader/dist/runtime/noSourceMaps.js");
+/* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("./node_modules/css-loader/dist/runtime/api.js");
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__);
+// Imports
+
+
+var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
+// Module
+___CSS_LOADER_EXPORT___.push([module.id, "#LZTUpCustomBackground{background-size:cover;background-position:center;background-attachment:fixed;background-repeat:no-repeat}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -528,11 +550,25 @@ const config = () => {
 const extData = () => {
   return {
     nodes: {
-      contests: '.node766'
+      // nodes of the forum
+      contests: '.node766',
     },
-    elements: {
-      memberCard: '.xenOverlay.memberCard'
+    selectors: {
+      // elements of the forum
+      memberCard: '.xenOverlay.memberCard',
     },
+    uiElementsId: {
+      // id of the element for extension UI
+      lztupTempSubMenu: 'LZTUpTempSubMenu'
+    },
+    uiElementsSelectors: {
+      // selectors of the element for extension UI
+      lztupTempSubMenu: '#LZTUpTempSubMenu'
+    },
+    links: {
+      telegramChannel: 'https://t.me/lzt_upgrade',
+      githubPage: 'https://github.com/lzt-upgrade/lzt-upgrade',
+    }
   }
 }
 
@@ -610,6 +646,10 @@ function getThreadLinks() {
 
 function removeStyles(selector) {
   const el = document.querySelector(selector);
+  return removeStylesByEl(el)
+}
+
+function removeStylesByEl(el) {
   if (!el) {
     return;
   }
@@ -1292,8 +1332,8 @@ class LZTProfileDB extends LZTUpgradeDB {
         'badgeFill': 'string',
         'badgeStroke': 'string',
         'noticesMarks': 'string',
-        'profileBackground': 'string',
-        'profileBackgroundEverywhere': 'number',
+        'backgroundImage': 'string',
+        'backgroundImageEverywhere': 'number',
         'badgeIcons': 'object'
       },
       { // defaultData
@@ -1306,8 +1346,8 @@ class LZTProfileDB extends LZTUpgradeDB {
         badgeFill: '',
         badgeStroke: '',
         noticesMarks: '',
-        profileBackground: '',
-        profileBackgroundEverywhere: 0,
+        backgroundImage: '',
+        backgroundImageEverywhere: 0,
         badgeIcons: []
       }
     );
@@ -1322,8 +1362,8 @@ class LZTProfileDB extends LZTUpgradeDB {
     badgeFill,
     badgeStroke,
     noticesMarks,
-    profileBackground,
-    profileBackgroundEverywhere,
+    backgroundImage,
+    backgroundImageEverywhere,
     badgeIcons
   }) {
     super.update(...arguments);
@@ -1408,7 +1448,7 @@ function isThreadPage() {
 }
 
 function checkers_isOpenMemberCard() {
-  return document.querySelector(configs_extData.elements.memberCard) !== null;
+  return document.querySelector(configs_extData.selectors.memberCard) !== null;
 }
 
 
@@ -1567,6 +1607,7 @@ class Button {
 
 
 
+
 function setMenuTitle(title) {
   const modalOverlay = document.querySelector('.xenOverlay > .errorOverlay#LZTUpModalOverlay')
   const modalTitle = modalOverlay.querySelector('h2.heading');
@@ -1599,7 +1640,7 @@ function addGoBackBtn(target = '', text = configs_config.extName, subMenuToShow 
     setMenuTitle(text);
     switch (target) {
       case 'tempmenu':
-        document.querySelector('.LZTUpTempSubMenu').style.display = 'none';
+        document.querySelector(configs_extData.uiElementsSelectors.lztupTempSubMenu).style.display = 'none';
         subMenuToShow.style.display = '';
         addGoBackBtn();
         onCloseCallback();
@@ -1682,6 +1723,19 @@ function addMenuSectionContainer(sectionId, items) {
 
 
 ;// CONCATENATED MODULE: ./src/utils/purify.js
+
+
+const defaultAvailabledStyles = [
+  'color',
+  'text-shadow',
+  'border-radius',
+  'background',
+  'background-color',
+  'background-image',
+  '-webkit-background-clip',
+  '-webkit-text-fill-color'
+]
+
 function clearHTML(element) {
   return DOMPurify.sanitize(element, {
     USE_PROFILES: {
@@ -1703,6 +1757,26 @@ function clearSVG(element) {
         "style"
     ]
   });
+}
+
+// removes all prohibited styles from the string
+function clearCSS(css, availabledStyles = defaultAvailabledStyles) {
+  let pairs = css.split(';');
+  const goodCSS = [];
+  Logger.debug(pairs);
+  for (const pair of pairs) {
+    const values = pair.split(':');
+    const key = values[0].replace(/\s/, '');
+    Logger.debug(pair, values, key)
+    if (availabledStyles.includes(key)) {;
+      Logger.debug('DETECTED AVAILABLED STYLES');
+      goodCSS.push(pair);
+    }
+  }
+
+  const cssString = goodCSS.length ? goodCSS.join(';') : '';
+  Logger.debug(`CLEARED FINAL STRING: ${cssString}`);
+  return cssString;
 }
 
 
@@ -1748,7 +1822,7 @@ class Checkbox {
 }
 
 
-;// CONCATENATED MODULE: ./src/utils/threads.js
+;// CONCATENATED MODULE: ./src/visuals/threads.js
 // СОЗДАТЬ ОТДЕЛЬНУЮ ФУНКЦИЮ ДЛЯ ЭТОГО А ТО АХУЕТЬ СКОК ДУБЛИРУЕТСЯ
 function hideThreadContent(isHidden) {
   const messageContent = document.querySelector('.message.firstPost > .messageInfo > .messageContent > article > blockquote.messageText');
@@ -1976,7 +2050,7 @@ function getUserId(target) {
     case "membercard":
       // in any membercard
       if (checkers_isOpenMemberCard()) {
-        const memberCard = document.querySelectorAll(configs_extData.elements.memberCard);
+        const memberCard = document.querySelectorAll(configs_extData.selectors.memberCard);
         const userThreadsButton = memberCard[memberCard.length - 1].querySelector('.memberCardInner > .bottom > .userContentLinks > a:nth-child(1)');
         if (!userThreadsButton || userThreadsButton.href === '') {
           return null;
@@ -2032,7 +2106,7 @@ function addUserIdToProfile() {
 
 function addUserIdToMemberCard() {
   if (checkers_isOpenMemberCard()) {
-    const memberCards = document.querySelectorAll(configs_extData.elements.memberCard);
+    const memberCards = document.querySelectorAll(configs_extData.selectors.memberCard);
     const userId = getUserId('membercard') ?? 'Не найден';
     const userContentLinks = memberCards[memberCards.length - 1].querySelector(`#memberCard${userId}.memberCardInner > .bottom > .userContentLinks`);
     const userIdElement = document.createElement('div');
@@ -2231,6 +2305,7 @@ function changeSVGColor(el, type, color, replaceAll = false) {
 
 
 
+
 class AvatarUserBadges {
   /**
    *
@@ -2282,16 +2357,8 @@ class AvatarUserBadges {
     return document.querySelector(selector + `[data-position="${position}"]`);
   }
 
-  clearBadge(selector, position) {
-    const el = this.findBadgeElement(selector, position);
-    if (!el) {
-      return { el: undefined, position: undefined };
-    }
-
-    el.className = ''
-    el.style = '';
-
-    return { el, position };
+  findAllBadgeElement(selector, position) {
+    return document.querySelectorAll(selector + `[data-position="${position}"]`);
   }
 
   applyBadge(el, icon) {
@@ -2306,53 +2373,41 @@ class AvatarUserBadges {
     }
   }
 
-  updateIcon(badge) {
-    const { el, position } = this.clearBadge(
-      this.badgeQuery,
-      badge.position
-    );
-
-    if (!el) {
+  updateIcon(badgeEl, badge) {
+    if (!badgeEl) {
       return;
     }
 
-    el.classList.add('avatarUserBadge', 'Tooltip');
+    removeStylesByEl(badgeEl);
+
+    badgeEl.classList.add('avatarUserBadge', 'Tooltip');
 
     // set position of badge
-    if (el.dataset.multiple === "true") {
-      el.classList.add(`avatarUserBadge--${position}`);
+    if (badgeEl.dataset.multiple === "true") {
+      badgeEl.classList.add(`avatarUserBadge--${badge.position}`);
     }
 
-    return this.applyBadge(el, badge.svg);
+    return this.applyBadge(badgeEl, badge.svg);
   }
 
-  updateText(badge) {
-    const userBadgeEl = this.findBadgeElement(
-      this.badgeQuery,
-      badge.position
-    );
-    if (!userBadgeEl) {
+  updateText(badgeEl, badge) {
+    if (!badgeEl) {
       return;
     }
 
-    if (userBadgeEl._tippy) {
-      setTooltip(userBadgeEl, XenForo.htmlspecialchars(badge.text));
-    } else {
-      XenForo.Tooltip($(userBadgeEl));
+    if (badgeEl._tippy) {
+      return setTooltip(badgeEl, XenForo.htmlspecialchars(badge.text));
     }
 
+    return XenForo.Tooltip($(badgeEl)); // ! "$"" needed in XenForo.Tooltip
   }
 
-  updateColor(badge) {
-    const userBadgeEl = this.findBadgeElement(
-      this.badgeQuery,
-      badge.position
-    );
-    if (!userBadgeEl) {
+  updateColor(badgeEl, badge) {
+    if (!badgeEl) {
       return;
     }
 
-    const svg = userBadgeEl.querySelector('svg');
+    const svg = badgeEl.querySelector('svg');
     if (!svg) {
       return;
     }
@@ -2361,27 +2416,26 @@ class AvatarUserBadges {
     changeSVGColor(svg, 'fill', badge.fillColor, true);
   }
 
-  updateStyle(badge) {
-    if (!badge.style || badge.style?.startsWith('.')) {
+  updateStyle(badgeEl, badge) {
+    if (!badgeEl || !badge.style || badge.style?.startsWith('.')) {
       return;
     }
 
-    const userBadgeEl = this.findBadgeElement(
-      this.badgeQuery,
-      badge.position
-    );
-    if (!userBadgeEl) {
-      return;
-    }
-
-    userBadgeEl.style = badge.style;
+    return badgeEl.style = badge.style;
   }
 
   updateBadge(badge) {
-    this.updateIcon(badge);
-    this.updateText(badge);
-    this.updateColor(badge);
-    this.updateStyle(badge);
+    const badgeElements = this.findAllBadgeElement(this.badgeQuery, badge.position);
+    if (!badgeElements.length) {
+      return;
+    }
+
+    for (const badgeEl of badgeElements) {
+      this.updateIcon(badgeEl, badge);
+      this.updateText(badgeEl, badge);
+      this.updateColor(badgeEl, badge);
+      this.updateStyle(badgeEl, badge);
+    }
   }
 
   updateBadges() {
@@ -2509,9 +2563,25 @@ class PreviewProfile {
     this.updateBannerText(data.bannerText);
   }
 
+  updateBackground(imageUrl) {
+    const previewContainer = document.querySelector('#LZTUpPreviewContainer');
+    if (!previewContainer) {
+      Logger.error('Failed to get element by #LZTUpPreviewContainer in PreviewProfile!');
+      return;
+    }
+
+    if (imageUrl.length) {
+      console.log("add imageURL")
+      imageUrl = `linear-gradient(rgba(54, 54, 54, 0.85), rgba(54, 54, 54, 0.85)), url(${imageUrl})`;
+    }
+
+    previewContainer.style.backgroundImage = imageUrl;
+  }
+
   updateAll() {
     this.updateUsernameStyle(this.data.usernameStyle);
     this.updateBanner(this.data);
+    this.updateBackground(this.data.backgroundImage);
     this.badges.badges = this.data.badgeIcons;
     this.badges.updateBadges();
   }
@@ -2815,7 +2885,7 @@ class SortableItem {
     editButton.appendChild(editIcon);
     editButton.onclick = async (e) => {
       console.log('Edit button clicked');
-      await onClickEdit(e);
+      await onClickEdit(e, sortableItem);
     }
 
     const removeButton = document.createElement('div');
@@ -2844,24 +2914,27 @@ class SortableItem {
 ;// CONCATENATED MODULE: ./src/ui/menu/temporarySection.js
 
 
-const tempId = 'LZTUpTempSubMenu';
+
+const tempSubMenuId = configs_extData.uiElementsId.lztupTempSubMenu;
+const tempSubMenuSelector = configs_extData.uiElementsSelectors.lztupTempSubMenu;
+
 
 function openTempMenu(sectionName, fromSectionName, subMenuToShow, onCloseCallback) {
   const subMenus = document.querySelectorAll('.LZTUpSubMenu');
   subMenus.forEach(subMenu => subMenu.style.display = 'none');
-  document.querySelector('.LZTUpTempSubMenu').style.display = '';
+  document.querySelector(tempSubMenuSelector).style.display = '';
   setMenuTitle(sectionName);
   addGoBackBtn('tempmenu', fromSectionName, subMenuToShow, onCloseCallback);
 }
 
 function addTemporaryMenuSection(items) {
-  const oldTempMenu = document.querySelector(`.${tempClass}`);
+  const oldTempMenu = document.querySelector(tempSubMenuSelector);
   if (oldTempMenu) {
     oldTempMenu.remove();
   }
 
   const container = document.createElement('div');
-  container.id = tempId;
+  container.id = tempSubMenuId;
   container.classList.add('LZTUpSubMenu');
 
   for (const item of items) {
@@ -2949,6 +3022,7 @@ class UserBanner {
 
 
 
+
 function updateUserStyle(style) {
   const username = getUsername('me');
   const usersEl = document.querySelectorAll('.username span');
@@ -2986,10 +3060,66 @@ function updateUserBanner(style, text) {
   }
 }
 
+function updateUserBadges(badgeIconsData) {
+  const userid = getUserId('me');
+  const badges = new AvatarUserBadges(badgeIconsData, false);
+  const avatarsMedium = document.querySelectorAll(`.avatar.Av${userid}m`);
+  const avatarsSmall = document.querySelectorAll(`.avatar.Av${userid}s`);
+  const avatars = [...avatarsMedium, ...avatarsSmall]
+                  .filter(el => el !== undefined)
+                  .filter(el => el.parentElement?.classList.contains('avatarHolder'));
+  console.log(avatars) // TODO: remove after tests
+  for (const avatar of avatars) {
+    console.log(avatar) // TODO: remove after tests
+    const avatarHolder = avatar.parentElement;
+    const badgesEl = badges.createElement();
+
+    console.log(avatarHolder) // TODO: remove after tests
+    avatarHolder.querySelector('.avatarUserBadges')?.remove(); // remove if exists
+    console.log(badgesEl) // TODO: remove after tests
+    // avatarHolder.insertAdjacentElement('afterbegin', badgesEl);
+    avatarHolder.prepend(badgesEl)
+    badges.updateBadges()
+  }
+}
+
+
+;// CONCATENATED MODULE: ./src/visuals/universal.js
+const customBackgroundID = 'LZTUpCustomBackground';
+
+
+function addBackgroundImage(imageUrl) {
+  const body = document.querySelector('body');
+  if (!imageUrl) {
+    body.id = '';
+    body.style.backgroundImage = '';
+    return;
+  }
+
+  body.id = customBackgroundID;
+  body.style.backgroundImage = `linear-gradient(rgba(54, 54, 54, 0.85), rgba(54, 54, 54, 0.85)), url(${imageUrl})`;
+}
+
+
+;// CONCATENATED MODULE: ./src/visuals/profile.js
+
+
+
+
+
+function addBackgroundImageInProfile(imageUrl) {
+  if (isProfilePage() && getUserId('profile') === getUserId('me')) {
+    return addBackgroundImage(imageUrl)
+  }
+}
+
 
 ;// CONCATENATED MODULE: ./src/ui/menu/items/profile.js
 
-// import { Checkbox } from 'UI/menu/checkbox';
+
+
+
+
 
 
 
@@ -3010,19 +3140,24 @@ function updateUserBanner(style, text) {
 
 const profileDB = new LZTProfileDB();
 
-async function sortableItemOnEditCallback(e, previewProfile) {
-  const badgeId = Number(e.target.parentElement.parentElement.parentElement.dataset?.id);
+async function sortableItemOnEditCallback(e, sortableItem, previewProfile) {
+  const badgeId = Number(sortableItem.dataset.id);
   const modalContent = document.querySelector('.LZTUpModalContent');
   const uniqSubMenu = document.querySelector('#LZTUpUniqContainer');
   const profileData = await profileDB.read();
   const thisBadgeArray = profileData.badgeIcons.filter(icon => icon.position === badgeId);
   let badgeData = thisBadgeArray[0];
+  console.log(badgeId, '==>', profileData.badgeIcons, '==>', thisBadgeArray, '==>', badgeData); // TODO: delete after tests
 
   async function updateBadgesData(badgeData) {
     // badgeData its current badge (which we are editing)
     const profData = await profileDB.read();
-    const badges = profData.badgeIcons.filter(icon => icon.position !== badgeId);
-    badges.push(badgeData);
+    // const badges = profData.badgeIcons.filter(icon => icon.position !== badgeId);
+    // badges.push(badgeData);
+    let badges = profData.badgeIcons;
+    const currentBadge = badges.find(badge => badge.position === badgeId);
+    const currentBadgeId = badges.indexOf(currentBadge)
+    badges[currentBadgeId] = badgeData;
     return badges;
   }
 
@@ -3052,7 +3187,7 @@ async function sortableItemOnEditCallback(e, previewProfile) {
           new TextArea(badgeData.style, 'background: #fff', 0, 1500)
           .createElement(
             async (event) => {
-              let val = event.target.value;
+              let val = clearCSS(event.target.value.trim());
 
               if (val.length > 1500) {
                 return registerAlert('Максимальная длина стиля иконки 1500 символов. Уменьшите введенный текст для сохранения.')
@@ -3117,6 +3252,7 @@ async function sortableItemOnEditCallback(e, previewProfile) {
           registerAlert('Иконка успешно сохранена.')
           const badges = await updateBadgesData(badgeData);
           await profileDB.update({ badgeIcons: badges });
+          updateUserBadges(badges);
         }),
       ]).createElement()
     ]
@@ -3145,10 +3281,14 @@ function createPreviewProfile(profileData) {
 
 const getProfileItems = async () => {
   function generateBadgeItems(previewProfile, profileData) {
+    console.log('Generating badge items')
     const items = [];
-    for (const badge of profileData.badgeIcons) {
-      items.push(new SortableItem(badge.text, badge.position).createElement((e) => sortableItemOnEditCallback(e, previewProfile), sortableItemOnRemoveCallback));
+    for (const badge of profileData.badgeIcons.sort((a, b) => a.position - b.position)) {
+      console.log(badge.text, badge.position)
+      items.push(new SortableItem(badge.text, badge.position).createElement((e, sortableItem) => sortableItemOnEditCallback(e, sortableItem, previewProfile), sortableItemOnRemoveCallback));
     }
+
+    console.log(items);
 
     return items;
   }
@@ -3209,6 +3349,7 @@ const getProfileItems = async () => {
     await profileDB.update({ badgeIcons: newBadgeIcons });
     previewProfile.data = profileData;
     previewProfile.updateAll();
+    updateUserBadges(newBadgeIcons);
   }
 
   const profileData = await profileDB.read();
@@ -3303,6 +3444,7 @@ const getProfileItems = async () => {
           const newProfileData = await profileDB.read();
           newProfileData.badgeIcons.reverse();
           for (let i = 0; i < items.length; i++) {
+            console.log('moving items');
             items[i].dataset.id = i + 1;
             newProfileData.badgeIcons[i].position = i + 1;
           }
@@ -3310,6 +3452,7 @@ const getProfileItems = async () => {
           profileData.badgeIcons = newProfileData.badgeIcons;
           await profileDB.update({ badgeIcons: newProfileData.badgeIcons });
           reloadUserBadges(profileData);
+          updateUserBadges(newProfileData.badgeIcons);
         }),
 
         new Button('Добавить иконку', 'button LZTUpIconButton', 'far fa-plus')
@@ -3338,7 +3481,7 @@ const getProfileItems = async () => {
 
           badgeIcons.push(defaultIcon)
 
-          const newItem = new SortableItem(defaultIcon.text, defaultIcon.position).createElement((e) => sortableItemOnEditCallback(e, previewProfile), sortableItemOnRemoveCallback);
+          const newItem = new SortableItem(defaultIcon.text, defaultIcon.position).createElement((e, sortableItem) => sortableItemOnEditCallback(e, sortableItem, previewProfile), sortableItemOnRemoveCallback);
 
           sortableContainer.appendChild(newItem);
           await profileDB.update({ badgeIcons: badgeIcons });
@@ -3346,24 +3489,76 @@ const getProfileItems = async () => {
           profileData.badgeIcons = badgeIcons;
 
           reloadUserBadges(profileData);
+          updateUserBadges(badgeIcons);
         }),
       ],
       'Управление иконками',
       'Ниже вы можете легко настроить иконки уника и их порядок (изменения автоматически применяются)'
     ).createElement(),
 
+    new Separator().createElement(), // * ADD SEPARATOR
+
+    new Container(
+      [
+        new Input(profileData.backgroundImage, 'Ссылка на изображение', 0, 2048)
+        .createElement(
+          (event) => {
+            let val = XenForo.htmlspecialchars(event.target.value);
+            if (val.length > 2048) {
+              return registerAlert('Максимальная длина ссылки на фон 2048 символов. Введите другую ссылку для сохранения.')
+            }
+
+            console.log('execute background');
+            profileData.backgroundImage = val;
+            previewProfile.updateBackground(profileData.backgroundImage);
+          }
+        ),
+      ],
+      'Фон профиля',
+      'Поддерживаются только прямые ссылки на изображения.',
+    ).createElement(),
+
+    new Checkbox('profile_background_everywhere', `Заменить фон на всех страницах форума`)
+    .createElement(
+      profileData.backgroundImageEverywhere,
+      async () => {
+        await profileDB.update({backgroundImageEverywhere: 1});
+        addBackgroundImage(profileData.backgroundImage);
+      },
+      async () => {
+        await profileDB.update({backgroundImageEverywhere: 0});
+        addBackgroundImage('');
+        addBackgroundImageInProfile(profileData.backgroundImage);
+      }),
+
     new Container([
       new Button('Сохранить', 'button primary LZTUpIconButton fit', 'far fa-save').createElement(async () => {
         registerAlert('Настройки локального уника успешно сохранены.');
-        await profileDB.update({ usernameStyle: profileData.usernameStyle });
-        await profileDB.update({ bannerStyle: profileData.bannerStyle });
-        await profileDB.update({ bannerText: profileData.bannerText });
+        // save settings in IndexedDB
+        await profileDB.update({
+          usernameStyle: profileData.usernameStyle,
+          bannerStyle: profileData.bannerStyle,
+          bannerText: profileData.bannerText,
+          backgroundImage: profileData.backgroundImage
+        });
+
         if (profileData.usernameStyle) {
+          // update all user styles in page
           updateUserStyle(profileData.usernameStyle);
         }
 
         if (profileData.bannerStyle && profileData.bannerText) {
+          // update banner in profile
           updateUserBanner(profileData.bannerStyle, profileData.bannerText);
+        }
+
+        if (profileData.backgroundImage) {
+          // update background image of page
+          if (profileData.backgroundImageEverywhere) {
+            addBackgroundImage(profileData.backgroundImage);
+          } else {
+            addBackgroundImageInProfile(profileData.backgroundImage);
+          }
         }
       }),
     ]).createElement()
@@ -3632,6 +3827,33 @@ menuButton.appendChild(menuButton_link);
 menuButton.onclick = menuButtonCallback;
 
 /* harmony default export */ const buttons_menuButton = (menuButton);
+;// CONCATENATED MODULE: ./src/ui/buttons/errorPageButton.js
+class ErrorPageButton {
+  /**
+   *
+   *  @constructor
+   *  @param {string} buttonContent - content of the button
+   *  @param {string} buttonHref - link of the button (https://...)
+   *  @param {string} className - class name of the button
+   */
+
+  constructor(buttonContent, buttonHref = '#', className = 'button') {
+    this.buttonContent = buttonContent;
+    this.buttonHref = buttonHref;
+    this.className = className;
+  }
+
+  createElement() {
+    const button = document.createElement('a');
+    button.href = this.buttonHref;
+    button.className = this.className;
+    button.innerHTML = this.buttonContent;
+
+    return button;
+  }
+}
+
+/* harmony default export */ const errorPageButton = (ErrorPageButton);
 ;// CONCATENATED MODULE: ./src/events/categories.js
 
 
@@ -3693,7 +3915,40 @@ var errorPage_update = injectStylesIntoStyleTag_default()(errorPage/* default */
 
        /* harmony default export */ const styles_errorPage = (errorPage/* default */.Z && errorPage/* default.locals */.Z.locals ? errorPage/* default.locals */.Z.locals : undefined);
 
+// EXTERNAL MODULE: ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/styles/universal.scss
+var universal = __webpack_require__("./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/styles/universal.scss");
+;// CONCATENATED MODULE: ./src/styles/universal.scss
+
+      
+      
+      
+      
+      
+      
+      
+      
+      
+
+var universal_options = {};
+
+universal_options.styleTagTransform = (styleTagTransform_default());
+universal_options.setAttributes = (setAttributesWithoutAttributes_default());
+
+      universal_options.insert = insertBySelector_default().bind(null, "html");
+    
+universal_options.domAPI = (styleDomAPI_default());
+universal_options.insertStyleElement = (insertStyleElement_default());
+
+var universal_update = injectStylesIntoStyleTag_default()(universal/* default */.Z, universal_options);
+
+
+
+
+       /* harmony default export */ const styles_universal = (universal/* default */.Z && universal/* default.locals */.Z.locals ? universal/* default.locals */.Z.locals : undefined);
+
 ;// CONCATENATED MODULE: ./src/index.js
+
+
 
 
 
@@ -3724,7 +3979,8 @@ var errorPage_update = injectStylesIntoStyleTag_default()(errorPage/* default */
 // import 'Styles/main.css';
 
 
-// import 'Styles/coloris.css';
+
+
 
 async function main() {
   const settingsDB = new LZTSettingsDB();
@@ -3768,15 +4024,25 @@ async function main() {
       const selfAdButtonBlock = document.createElement('div');
       selfAdButtonBlock.classList.add('buttons');
 
-      const selfAdTelegram = document.createElement('a');
-      selfAdTelegram.classList.add('button');
-      selfAdTelegram.innerText = 'Telegram';
-      selfAdTelegram.href = 'https://t.me/lzt_upgrade';
+      const selfAdTelegram = new errorPageButton(
+        `
+          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24">
+            <path d="M9.78 18.65l.28-4.23l7.68-6.92c.34-.31-.07-.46-.52-.19L7.74 13.3L3.64 12c-.88-.25-.89-.86.2-1.3l15.97-6.16c.73-.33 1.43.18 1.15 1.3l-2.72 12.81c-.19.91-.74 1.13-1.5.71L12.6 16.3l-1.99 1.93c-.23.23-.42.42-.83.42z"/>
+          </svg>
+          Telegram
+        `,
+        configs_extData.links.telegramChannel
+      ).createElement();
 
-      const selfAdGithub = document.createElement('a');
-      selfAdGithub.classList.add('button');
-      selfAdGithub.innerText = 'Github';
-      selfAdGithub.href = 'https://github.com/lzt-upgrade/lzt-upgrade';
+      const selfAdGithub = new errorPageButton(
+        `
+          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24">
+            <path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5c.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34c-.46-1.16-1.11-1.47-1.11-1.47c-.91-.62.07-.6.07-.6c1 .07 1.53 1.03 1.53 1.03c.87 1.52 2.34 1.07 2.91.83c.09-.65.35-1.09.63-1.34c-2.22-.25-4.55-1.11-4.55-4.92c0-1.11.38-2 1.03-2.71c-.1-.25-.45-1.29.1-2.64c0 0 .84-.27 2.75 1.02c.79-.22 1.65-.33 2.5-.33c.85 0 1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02c.55 1.35.2 2.39.1 2.64c.65.71 1.03 1.6 1.03 2.71c0 3.82-2.34 4.66-4.57 4.91c.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2Z"/>
+          </svg>
+          Github
+        `,
+        configs_extData.links.githubPage
+      ).createElement();
 
       selfAdButtonBlock.appendChild(selfAdTelegram);
       selfAdButtonBlock.appendChild(selfAdGithub);
@@ -3823,8 +4089,15 @@ async function main() {
     }
 
     if (dbProfileData) {
-      if (dbProfileData.usernameStyle) {
-        updateUserStyle(dbProfileData.usernameStyle);
+      if (dbProfileData.usernameStyle || dbProfileData.badgeIcons.length) {
+        if (dbProfileData.usernameStyle) {
+          updateUserStyle(dbProfileData.usernameStyle);
+        }
+
+        if (dbProfileData.badgeIcons.length) {
+          updateUserBadges(dbProfileData.badgeIcons);
+        }
+
         registerObserver(async (mutation) => {
           Logger.debug(mutation)
           if (
@@ -3834,6 +4107,7 @@ async function main() {
             mutation.target.classList.contains('discussionList') ||
             mutation.target.classList.contains('chat2-messages') ||
             mutation.target.classList.contains('fe-ac-user') ||
+            mutation.target.classList.contains('latestThreads') ||
             mutation.target.parentElement?.classList.contains('conversationMessages') ||
             mutation.nextSibling?.classList?.contains('modal') ||
             mutation.previousSibling?.classList?.contains('Alert') ||
@@ -3842,7 +4116,13 @@ async function main() {
             mutation.target.id === 'StackAlerts'
           ) {
             const updatedProfileData = await profileDB.read();
-            updateUserStyle(updatedProfileData.usernameStyle)
+            if (updatedProfileData.usernameStyle) {
+              updateUserStyle(updatedProfileData.usernameStyle)
+            }
+
+            if (updatedProfileData.badgeIcons.length) {
+              updateUserBadges(updatedProfileData.badgeIcons);
+            }
           }
         });
       }
@@ -3851,8 +4131,13 @@ async function main() {
         updateUserBanner(dbProfileData.bannerStyle, dbProfileData.bannerText);
       }
 
-      if (dbProfileData.badges) {
-        console.log('test')
+      if (dbProfileData.backgroundImage) {
+        // update background image of page
+        if (dbProfileData.backgroundImageEverywhere) {
+          addBackgroundImage(dbProfileData.backgroundImage);
+        } else {
+          addBackgroundImageInProfile(dbProfileData.backgroundImage);
+        }
       }
     }
 
