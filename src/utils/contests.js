@@ -1,5 +1,5 @@
 import { isContestThread } from 'Utils/checkers';
-import { hideThreadContent, hideThreadPoll } from 'Utils/threads';
+import { hideThreadContent, hideThreadPoll } from 'Visuals/threads';
 import { tagsVisibility } from 'Utils/tags';
 
 function contestThreadBlockMove(toTop = true) {
