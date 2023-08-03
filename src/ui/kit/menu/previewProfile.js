@@ -107,9 +107,25 @@ class PreviewProfile {
     this.updateBannerText(data.bannerText);
   }
 
+  updateBackground(imageUrl) {
+    const previewContainer = document.querySelector('#LZTUpPreviewContainer');
+    if (!previewContainer) {
+      Logger.error('Failed to get element by #LZTUpPreviewContainer in PreviewProfile!');
+      return;
+    }
+
+    if (imageUrl.length) {
+      console.log("add imageURL")
+      imageUrl = `linear-gradient(rgba(54, 54, 54, 0.85), rgba(54, 54, 54, 0.85)), url(${imageUrl})`;
+    }
+
+    previewContainer.style.backgroundImage = imageUrl;
+  }
+
   updateAll() {
     this.updateUsernameStyle(this.data.usernameStyle);
     this.updateBanner(this.data);
+    this.updateBackground(this.data.backgroundImage);
     this.badges.badges = this.data.badgeIcons;
     this.badges.updateBadges();
   }
