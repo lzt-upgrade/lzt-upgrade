@@ -35,8 +35,8 @@ class LZTProfileDB extends LZTUpgradeDB {
         'badgeFill': 'string',
         'badgeStroke': 'string',
         'noticesMarks': 'string',
-        'profileBackground': 'string',
-        'profileBackgroundEverywhere': 'number',
+        'backgroundImage': 'string',
+        'backgroundImageEverywhere': 'number',
         'badgeIcons': 'object'
       },
       { // defaultData
@@ -49,8 +49,8 @@ class LZTProfileDB extends LZTUpgradeDB {
         badgeFill: '',
         badgeStroke: '',
         noticesMarks: '',
-        profileBackground: '',
-        profileBackgroundEverywhere: 0,
+        backgroundImage: '',
+        backgroundImageEverywhere: 0,
         badgeIcons: []
       }
     );
@@ -65,8 +65,8 @@ class LZTProfileDB extends LZTUpgradeDB {
     badgeFill,
     badgeStroke,
     noticesMarks,
-    profileBackground,
-    profileBackgroundEverywhere,
+    backgroundImage,
+    backgroundImageEverywhere,
     badgeIcons
   }) {
     super.update(...arguments);
