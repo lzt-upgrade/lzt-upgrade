@@ -24,12 +24,14 @@ import { addUserIdToProfile, addUserIdToMemberCard, showFullRegDateInProfile } f
 import { bypassShareTyping } from "Xenforo/bypass";
 import { getUserId, getUsername } from 'Utils/users';
 import { updateUserStyle, updateUserBanner, updateUserBadges } from 'Visuals/users';
-
+import { addBackgroundImage } from 'Visuals/universal';
+import { addBackgroundImageInProfile } from 'Visuals/profile';
 
 // import 'Styles/main.css';
 
 import 'Styles/errorPage.scss';
-// import 'Styles/coloris.css';
+import 'Styles/universal.scss';
+
 
 async function main() {
   const settingsDB = new LZTSettingsDB();
@@ -178,6 +180,15 @@ async function main() {
 
       if (dbProfileData.bannerStyle && dbProfileData.bannerText) {
         updateUserBanner(dbProfileData.bannerStyle, dbProfileData.bannerText);
+      }
+
+      if (dbProfileData.backgroundImage) {
+        // update background image of page
+        if (dbProfileData.backgroundImageEverywhere) {
+          addBackgroundImage(dbProfileData.backgroundImage);
+        } else {
+          addBackgroundImageInProfile(dbProfileData.backgroundImage);
+        }
       }
     }
 

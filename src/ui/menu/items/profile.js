@@ -1,5 +1,5 @@
 import { LZTProfileDB } from 'IndexedDB/profile';
-// import { Checkbox } from 'UI/menu/checkbox';
+import { Checkbox } from 'UI/menu/checkbox';
 import { Comment } from 'UI/menu/comment';
 import { PreviewProfile } from 'UI/kit/menu/previewProfile';
 import { TextArea } from 'UI/kit/menu/textArea';
@@ -17,6 +17,8 @@ import { addTemporaryMenuSection, openTempMenu } from 'UI/menu/temporarySection'
 import { initColorPickers } from 'Utils/colorPicker';
 import { AvatarUserBadges } from 'UI/avatarUserBadges';
 import { updateUserStyle, updateUserBanner, updateUserBadges } from 'Visuals/users';
+import { addBackgroundImage } from 'Visuals/universal';
+import { addBackgroundImageInProfile } from 'Visuals/profile';
 
 
 const profileDB = new LZTProfileDB();
@@ -377,18 +379,69 @@ const getProfileItems = async () => {
       'Ниже вы можете легко настроить иконки уника и их порядок (изменения автоматически применяются)'
     ).createElement(),
 
+    new Separator().createElement(), // * ADD SEPARATOR
+
+    new Container(
+      [
+        new Input(profileData.backgroundImage, 'Ссылка на изображение', 0, 2048)
+        .createElement(
+          (event) => {
+            let val = XenForo.htmlspecialchars(event.target.value);
+            if (val.length > 2048) {
+              return registerAlert('Максимальная длина ссылки на фон 2048 символов. Введите другую ссылку для сохранения.')
+            }
+
+            console.log('execute background');
+            profileData.backgroundImage = val;
+            previewProfile.updateBackground(profileData.backgroundImage);
+          }
+        ),
+      ],
+      'Фон профиля',
+      'Поддерживаются только прямые ссылки на изображения.',
+    ).createElement(),
+
+    new Checkbox('profile_background_everywhere', `Заменить фон на всех страницах форума`)
+    .createElement(
+      profileData.backgroundImageEverywhere,
+      async () => {
+        await profileDB.update({backgroundImageEverywhere: 1});
+        addBackgroundImage(profileData.backgroundImage);
+      },
+      async () => {
+        await profileDB.update({backgroundImageEverywhere: 0});
+        addBackgroundImage('');
+        addBackgroundImageInProfile(profileData.backgroundImage);
+      }),
+
     new Container([
       new Button('Сохранить', 'button primary LZTUpIconButton fit', 'far fa-save').createElement(async () => {
         registerAlert('Настройки локального уника успешно сохранены.');
-        await profileDB.update({ usernameStyle: profileData.usernameStyle });
-        await profileDB.update({ bannerStyle: profileData.bannerStyle });
-        await profileDB.update({ bannerText: profileData.bannerText });
+        // save settings in IndexedDB
+        await profileDB.update({
+          usernameStyle: profileData.usernameStyle,
+          bannerStyle: profileData.bannerStyle,
+          bannerText: profileData.bannerText,
+          backgroundImage: profileData.backgroundImage
+        });
+
         if (profileData.usernameStyle) {
+          // update all user styles in page
           updateUserStyle(profileData.usernameStyle);
         }
 
         if (profileData.bannerStyle && profileData.bannerText) {
+          // update banner in profile
           updateUserBanner(profileData.bannerStyle, profileData.bannerText);
+        }
+
+        if (profileData.backgroundImage) {
+          // update background image of page
+          if (profileData.backgroundImageEverywhere) {
+            addBackgroundImage(profileData.backgroundImage);
+          } else {
+            addBackgroundImageInProfile(profileData.backgroundImage);
+          }
         }
       }),
     ]).createElement()
