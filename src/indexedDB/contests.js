@@ -33,6 +33,8 @@ class LZTContestsDB extends LZTUpgradeDB {
         'autoCloseOnParticipate': 'number',
         'removeContent': 'number',
         'removePoll': 'number',
+        'updateCaptchaButton': 'number',
+        'autoFixCaptcha': 'number',
       },
       { // defaultData
         key: objectKey,
@@ -42,6 +44,8 @@ class LZTContestsDB extends LZTUpgradeDB {
         autoCloseOnParticipate: 0,
         removeContent: 0,
         removePoll: 0,
+        updateCaptchaButton: 0,
+        autoFixCaptcha: 0,
       }
     );
   };
@@ -53,6 +57,8 @@ class LZTContestsDB extends LZTUpgradeDB {
     autoCloseOnParticipate,
     removeContent,
     removePoll,
+    updateCaptchaButton,
+    autoFixCaptcha,
   }) {
     super.update(...arguments);
   }
