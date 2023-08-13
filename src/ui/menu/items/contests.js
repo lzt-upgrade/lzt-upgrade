@@ -2,7 +2,14 @@ import { LZTContestsDB } from "IndexedDB/contests";
 import { contestsAutoCloseHandler } from "Callbacks/contestsAutoClose";
 import { regOpenContestsBtn, removeOpenContestsBtn } from 'UI/buttons/contestsButton';
 import { Checkbox } from 'UI/menu/checkbox';
-import { contestsTagsVisibility, contestThreadBlockMove, contestsHideContent, contestsHidePoll } from 'Utils/contests';
+import {
+  contestsTagsVisibility,
+  contestThreadBlockMove,
+  contestsHideContent,
+  contestsHidePoll,
+  contestsUpdateCapctha,
+  contestsAutoFixCaptcha,
+} from 'Utils/contests';
 
 const getContestsItems = async () => {
   const contestsDB = new LZTContestsDB();
@@ -45,7 +52,7 @@ const getContestsItems = async () => {
       },
       async () => {
         await contestsDB.update({autoCloseOnParticipate: 0});
-        contestsAutoCloseHandler(false);
+        window.location.reload();
       }),
 
     new Checkbox('info_top_in_contests', `Отображение информации о розыгрыше вверху темы`)
@@ -82,6 +89,35 @@ const getContestsItems = async () => {
       async () => {
         await contestsDB.update({removePoll: 0});
         contestsHidePoll(false);
+      }),
+
+    new Checkbox('update_captcha_button_in_contests', `Кнопка "Обновление капчи"`)
+    .createElement(
+      contestsData.updateCaptchaButton,
+      async () => {
+        await contestsDB.update({updateCaptchaButton: 1});
+        contestsUpdateCapctha();
+      },
+      async () => {
+        await contestsDB.update({updateCaptchaButton: 0});
+        document.querySelector('.LZTUpRefreshButton')?.remove();
+      }),
+
+    new Checkbox('auto_fix_captcha_in_contests',
+    `
+      Автофикс капчи
+      <span class="fa fa-question Tooltip" title="Автоматически обновляет капчу, если она не появилась"></span>
+      <span class="fa fa-exclamation-triangle Tooltip" title="При отключение этой функции страница будет перезагружена"></span>
+    `)
+    .createElement(
+      contestsData.autoFixCaptcha,
+      async () => {
+        await contestsDB.update({autoFixCaptcha: 1});
+        contestsAutoFixCaptcha();
+      },
+      async () => {
+        await contestsDB.update({autoFixCaptcha: 0});
+        window.location.reload();
       }),
   ];
 }

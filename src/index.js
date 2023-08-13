@@ -19,7 +19,14 @@ import onClickCategory from "Events/categories";
 import { waitForElement, waitForCSRFToken } from "Utils/utils";
 import { Logger } from "Utils/logger";
 import { registerMenuButton, registerObserver } from "Utils/registers";
-import { contestsTagsVisibility, contestThreadBlockMove, contestsHideContent, contestsHidePoll } from 'Utils/contests';
+import {
+  contestsTagsVisibility,
+  contestThreadBlockMove,
+  contestsHideContent,
+  contestsHidePoll,
+  contestsUpdateCapctha,
+  contestsAutoFixCaptcha
+} from 'Utils/contests';
 import { addUserIdToProfile, addUserIdToMemberCard, showFullRegDateInProfile } from 'Utils/users';
 import { bypassShareTyping } from "Xenforo/bypass";
 import { getUserId, getUsername } from 'Utils/users';
@@ -206,6 +213,8 @@ async function main() {
       dbContestsData.infoTopInThread === 1 ? contestThreadBlockMove(true) : null;
       dbContestsData.removeContent === 1 ? contestsHideContent(true) : null;
       dbContestsData.removePoll === 1 ? contestsHidePoll(true) : null;
+      dbContestsData.updateCaptchaButton === 1 ? contestsUpdateCapctha() : null;
+      dbContestsData.autoFixCaptcha === 1 ? contestsAutoFixCaptcha() : null;
     }
 
     if (dbUsersData) {
