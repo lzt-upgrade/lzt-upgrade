@@ -36,6 +36,18 @@
   }
 }
 
+.LZTUpSelect {
+  option {
+    background: #272727;
+    padding: 10px 15px;
+    font-weight: 600;
+    border-radius: 6px;
+    &:hover {
+      background: rgb(45,45,45);
+    }
+  }
+}
+
 .LZTUpIconButton {
   display: flex;
   flex-direction: row-reverse;
@@ -48,6 +60,11 @@
     margin: 0 8px;
     margin-top: 3.5px;
   }
+}
+
+.LZTUpRefreshButton {
+  min-width: 32px !important;
+  margin-left: 32px !important;
 }
 
 .LZTUpSortableItem {
