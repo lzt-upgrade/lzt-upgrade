@@ -53,6 +53,7 @@ async function main() {
   await appearDB.init();
   const dbAppearData = await appearDB.read();
   let themeName = await new Cache('theme-name').get();
+  Logger.debug(`Founded cached theme ${themeName}`)
 
   if (!themeName && dbAppearData?.theme > 0) {
     Logger.debug(`Requesting theme with id ${dbAppearData.theme}...`);
@@ -61,9 +62,9 @@ async function main() {
     await new Cache('theme-name').set(themeName);
   }
 
-  console.log('Loading theme... ' + new Date());
+  Logger.debug('Loading theme... ' + new Date());
   loadTheme(themeName)
-  console.log('Loading finished... ' + new Date());
+  Logger.debug('Loading finished... ' + new Date());
 
   const SCRIPT_LOADED = await waitForElement('body', 120000);
   if (!SCRIPT_LOADED) {
