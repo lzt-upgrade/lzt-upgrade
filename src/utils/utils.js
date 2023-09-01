@@ -93,6 +93,10 @@ function applyStyle(el, style) {
   }
 }
 
+function getTimestamp() {
+  return Math.floor(Date.now() / 1000);
+}
+
 export {
   waitForElm,
   waitForElement,
@@ -103,5 +107,6 @@ export {
   waitForCSRFToken,
   removeStyles,
   removeStylesByEl,
-  applyStyle
+  applyStyle,
+  getTimestamp
 };

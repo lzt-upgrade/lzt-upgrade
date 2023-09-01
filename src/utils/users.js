@@ -88,7 +88,7 @@ function addUserIdToMemberCard() {
     userIdElement.classList.add('title');
     userIdElement.id = userIdMemberCardElementId;
     userIdElement.innerText = `ID: ${userId}`;
-    userContentLinks.insertAdjacentElement('afterbegin', userIdElement);
+    userContentLinks?.insertAdjacentElement('afterbegin', userIdElement);
   }
 }
 

@@ -1,8 +1,10 @@
+import { loadTheme } from "API/lztupgrade/loadTheme";
+
 import config from "Configs/config";
 import extData from 'Configs/extData';
 
 import { contestsAutoCloseHandler } from "Callbacks/contestsAutoClose";
-import { loadThemeByID } from 'Callbacks/extensionStart';
+import { getThemeByID } from 'Callbacks/extensionStart';
 
 import { LZTAppearDB } from "IndexedDB/appear";
 import { LZTContestsDB } from "IndexedDB/contests";
@@ -33,6 +35,8 @@ import { getUserId, getUsername } from 'Utils/users';
 import { updateUserStyle, updateUserBanner, updateUserBadges } from 'Visuals/users';
 import { addBackgroundImage } from 'Visuals/universal';
 import { addBackgroundImageInProfile } from 'Visuals/profile';
+import Cache from "Utils/cache";
+
 
 // import 'Styles/main.css';
 
@@ -45,6 +49,22 @@ async function main() {
 
   if (GM_info?.script?.version) Logger.log(`${config.extName} version: ${GM_info?.script?.version}`);
 
+  const appearDB = new LZTAppearDB();
+  await appearDB.init();
+  const dbAppearData = await appearDB.read();
+  let themeName = await new Cache('theme-name').get();
+
+  if (!themeName && dbAppearData?.theme > 0) {
+    Logger.debug(`Requesting theme with id ${dbAppearData.theme}...`);
+    themeName = await getThemeByID(dbAppearData.theme)
+      .catch(err => console.error(err));
+    await new Cache('theme-name').set(themeName);
+  }
+
+  console.log('Loading theme... ' + new Date());
+  loadTheme(themeName)
+  console.log('Loading finished... ' + new Date());
+
   const SCRIPT_LOADED = await waitForElement('body', 120000);
   if (!SCRIPT_LOADED) {
     Logger.error('Не удалось запустить расширение.');
@@ -52,15 +72,12 @@ async function main() {
   }
 
   if (SCRIPT_LOADED.length) {
-    const appearDB = new LZTAppearDB();
-    await appearDB.init();
-    const dbAppearData = await appearDB.read();
-
     if (/^(Error\s[0-9]{3}|Site\sMaintenance)$/.test(document.head.querySelector('title').innerText)) {
       if (!dbAppearData || dbAppearData?.newErrorPage === 0) {
         return;
       }
 
+      // custom error page
       document.body.classList.add('LZTUpErrorPage');
       const container = document.body.querySelector('article > div');
       const duckRain = document.createElement('img');
@@ -137,14 +154,6 @@ async function main() {
     const profileDB = new LZTProfileDB();
     await profileDB.init();
     const dbProfileData = await profileDB.read();
-
-    if (dbAppearData) {
-      if (dbAppearData?.theme > 0) {
-        Logger.debug(`Requesting theme with id ${dbAppearData.theme}...`);
-        loadThemeByID(dbAppearData.theme)
-        .catch(err => console.error(err));
-      }
-    }
 
     if (dbProfileData) {
       if (dbProfileData.usernameStyle || dbProfileData.badgeIcons.length) {

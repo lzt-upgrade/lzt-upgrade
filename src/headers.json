@@ -27,7 +27,11 @@
     "grant": [
         "GM_xmlhttpRequest",
         "GM_info",
-        "GM_addStyle"
+        "GM_addStyle",
+        "GM_setValue",
+        "GM_getValue",
+        "GM_deleteValue",
+        "GM_listValue"
     ],
     "connect": [
         "lztupgrade.toiloff.ru",
