@@ -171,6 +171,7 @@ async function main() {
           if (
             mutation.target.classList.contains('ProfilePostList') ||
             mutation.target.classList.contains('messageList') ||
+            mutation.target.classList.contains('messageResponse') ||
             mutation.target.classList.contains('CommentPostList') ||
             mutation.target.classList.contains('discussionList') ||
             mutation.target.classList.contains('chat2-messages') ||
