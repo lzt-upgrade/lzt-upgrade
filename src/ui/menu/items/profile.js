@@ -147,7 +147,7 @@ async function sortableItemOnEditCallback(e, sortableItem, previewProfile) {
     const sortable = document.querySelectorAll('.LZTUpSortableContainer > .LZTUpSortableItem');
     const profileData = await profileDB.read();
     for (let i = 0; i < profileData.badgeIcons.length; i++) {
-      const content = sortable[i].querySelector('.LZTUPSortableContent');
+      const content = sortable[i].querySelector('.LZTUpSortableContent');
       content.innerHTML = clearHTML(profileData.badgeIcons[i].text);
     }
 

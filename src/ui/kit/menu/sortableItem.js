@@ -29,7 +29,7 @@ class SortableItem {
     draggableZone.appendChild(icon);
 
     const contentContaner = document.createElement('div');
-    contentContaner.classList.add('LZTUPSortableContent');
+    contentContaner.classList.add('LZTUpSortableContent');
     // contentContaner.appendChild(this.content);
     contentContaner.innerHTML = `
       <p>${this.content}</p>
