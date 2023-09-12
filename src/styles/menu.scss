@@ -183,10 +183,22 @@
     .LZTUpSectionItem {
       max-width: 284px;
     }
+    .LZTUpSectionTitle, .LZTUpSectionDesc {
+      max-width: 200px;
+    }
   }
 
   &.column {
     flex-direction: column;
+    .LZTUpSectionTitle {
+      max-width: 440px; // IF > 442 RIGHT ARROW NOT VISIBLE
+    }
+    .LZTUpSectionDesc {
+      white-space: break-spaces;
+    }
+    .LZTUpSectionItem {
+      max-width: 580px;
+    }
   }
 
   .LZTUpSectionItem {
@@ -210,6 +222,7 @@
   flex-direction: column;
   justify-content: center;
   flex: 1 1 auto;
+  max-width: 100%;
 }
 
 #LZTUpIcon {
@@ -280,7 +293,6 @@
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
-  width: 200px;
 }
 
 .LZTUpSectionDesc {
@@ -288,6 +300,9 @@
   font-size: 13px;
   font-weight: normal;
   color: rgb(148, 148, 148);
+  .mceSmilie {
+    max-height: 18px !important;
+  }
 }
 
 .LZTUpModalSectionTexts {
