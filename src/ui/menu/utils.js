@@ -53,4 +53,18 @@ function addGoBackBtn(target = '', text = config.extName, subMenuToShow = null, 
   });
 }
 
-export { setMenuTitle, addGoBackBtn };
+function openSubMenu(containerId, sectionName) {
+  document.querySelector('.LZTUpTabs').style.display = 'none';
+
+  const subMenus = document.querySelectorAll('.LZTUpSubMenu');
+  subMenus.forEach(subMenu => subMenu.style.display = 'none');
+
+  const sections = document.querySelectorAll('.LZTUpSection');
+  sections.forEach(section => section.style.display = 'none');
+
+  document.querySelector(`#${containerId}`).style.display = '';
+  setMenuTitle(sectionName);
+  return addGoBackBtn();
+}
+
+export { setMenuTitle, addGoBackBtn, openSubMenu };
