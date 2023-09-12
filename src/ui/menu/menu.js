@@ -1,30 +1,25 @@
-import { MenuSection } from 'UI/kit/menuSection';
-import { addMenuSectionItem } from 'UI/menu/sectionItem';
-import { addMenuSectionContainer } from 'UI/menu/sectionContainer';
+import { Section } from 'UI/kit/menu/section';
 import { Logger } from 'Utils/logger';
 import getContestsItems from 'UI/menu/items/contests';
 import getUsersItems from 'UI/menu/items/users';
 import getProfileItems from 'UI/menu/items/profile';
+import getInfoItems from 'UI/menu/items/info';
 import 'Styles/menu.scss';
 
 
 async function generateMenu(tabs) {
-  const mainItems = [
-    addMenuSectionItem('Локальный Уник', 'Максимальная кастомизация', 'far fa-palette', 'LZTUpUniqItem', 'LZTUpUniqContainer'),
-    addMenuSectionItem('Розыгрыши', 'Комфорт для розыгрышей', 'far fa-gift', 'LZTUpContestsItem', 'LZTUpContestsContainer'),
-    addMenuSectionItem('Пользователи', 'Штучки для пользователей', 'far fa-user', 'LZTUpUsersItem', 'LZTUpUsersContainer'),
-    addMenuSectionItem('Внешний вид', 'Темы, логотипы и другое', 'far fa-drafting-compass', 'LZTUpAppearItem', 'LZTUpUniqContainer'),
+  const appearText = document.createElement('div')
+  appearText.innerText = 'Страница Внешнего вида';
+
+  const appearItems = [
+    appearText,
   ];
 
-  const settingsItems = [
-    addMenuSectionItem('Настройки', 'Настройки расширения', 'far fa-cog', 'LZTUpSettingsItem', 'LZTUpUniqContainer'),
-    addMenuSectionItem('Обновления', 'Установка и проверка обновлений расширения', 'far fa-cloud-download', 'LZTUpUpdateItem', 'LZTUpUpdateContainer'),
-    addMenuSectionItem('Информация', `Версия: ${GM_info?.script?.version}`, 'far fa-info-circle', 'LZTUpInformationItem', 'LZTUpUniqContainer'),
-  ];
+  const settingsText = document.createElement('div')
+  settingsText.innerText = 'Страница настроек';
 
-  const sections = [
-    new MenuSection('LZTUpMainSection', mainItems).create(),
-    new MenuSection('LZTUpSettingsSection', settingsItems).create(),
+  const settingItems = [
+    settingsText,
   ];
 
   const updateText = document.createElement('div')
@@ -34,14 +29,28 @@ async function generateMenu(tabs) {
     updateText,
   ];
 
-  const sectionContainers = [
-    addMenuSectionContainer('LZTUpUniqContainer', await getProfileItems()),
-    addMenuSectionContainer('LZTUpContestsContainer', await getContestsItems()),
-    addMenuSectionContainer('LZTUpUsersContainer', await getUsersItems()),
-    addMenuSectionContainer('LZTUpUpdateContainer', updateItems),
-  ];
+  const menuSection = new Section('LZTUpMainSection')
+    .addSectionItem('Локальный Уник', 'Максимальная кастомизация', 'far fa-palette', 'LZTUpUniqItem', 'LZTUpUniqContainer')
+    .addSectionItem('Розыгрыши', 'Комфорт для розыгрышей', 'far fa-gift', 'LZTUpContestsItem', 'LZTUpContestsContainer')
+    .addSectionItem('Пользователи', 'Штучки для пользователей', 'far fa-user', 'LZTUpUsersItem', 'LZTUpUsersContainer')
+    .addSectionItem('Внешний вид', 'Темы, логотипы и другое', 'far fa-drafting-compass', 'LZTUpAppearItem', 'LZTUpAppearContainer')
+    .addSectionContainer('LZTUpUniqContainer', await getProfileItems())
+    .addSectionContainer('LZTUpContestsContainer', await getContestsItems())
+    .addSectionContainer('LZTUpUsersContainer', await getUsersItems())
+    .addSectionContainer('LZTUpAppearContainer', appearItems)
 
-  Logger.debug('Generated menu section containers: ', sectionContainers)
+  const settingsSection = new Section('LZTUpSettingsSection')
+    .addSectionItem('Настройки', 'Настройки расширения', 'far fa-cog', 'LZTUpSettingsItem', 'LZTUpSettingsContainer')
+    .addSectionItem('Обновления', 'Установка и проверка обновлений расширения', 'far fa-cloud-download', 'LZTUpUpdateItem', 'LZTUpUpdateContainer')
+    .addSectionItem('Информация', `Версия: ${GM_info?.script?.version}`, 'far fa-info-circle', 'LZTUpInformationItem', 'LZTUpInformationContainer')
+    .addSectionContainer('LZTUpSettingsContainer', settingItems)
+    .addSectionContainer('LZTUpUpdateContainer', updateItems)
+    .addSectionContainer('LZTUpInformationContainer', await getInfoItems())
+
+  const sections = [
+    menuSection,
+    settingsSection
+  ]
 
   const menuContent = document.createElement('div')
   menuContent.classList.add('LZTUpModalContent');
@@ -51,12 +60,12 @@ async function generateMenu(tabs) {
   menuContent.appendChild(tabsContainer);
 
   for (const section of sections) {
-    menuContent.appendChild(section);
-  }
-
-  for (const sectionContainer of sectionContainers) {
-    menuContent.appendChild(sectionContainer);
-    sectionContainer.querySelectorAll('.Tooltip').forEach(el => XenForo.Tooltip($(el)));
+    const sectionEl = section.create();
+    menuContent.appendChild(sectionEl);
+    for (const container of section.sectionContainers) {
+      menuContent.append(container)
+      container.querySelectorAll('.Tooltip').forEach(el => XenForo.Tooltip($(el))); // load all tooltips in menu container
+    }
   }
 
   Logger.debug('Generated menu tabs: ', tabs);
