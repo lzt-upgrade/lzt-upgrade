@@ -4,6 +4,7 @@ import getContestsItems from 'UI/menu/items/contests';
 import getUsersItems from 'UI/menu/items/users';
 import getProfileItems from 'UI/menu/items/profile';
 import getInfoItems from 'UI/menu/items/info';
+import { openSubMenu } from 'UI/menu/utils.js'
 import 'Styles/menu.scss';
 
 
@@ -30,19 +31,19 @@ async function generateMenu(tabs) {
   ];
 
   const menuSection = new Section('LZTUpMainSection')
-    .addSectionItem('Локальный Уник', 'Максимальная кастомизация', 'far fa-palette', 'LZTUpUniqItem', 'LZTUpUniqContainer')
-    .addSectionItem('Розыгрыши', 'Комфорт для розыгрышей', 'far fa-gift', 'LZTUpContestsItem', 'LZTUpContestsContainer')
-    .addSectionItem('Пользователи', 'Штучки для пользователей', 'far fa-user', 'LZTUpUsersItem', 'LZTUpUsersContainer')
-    .addSectionItem('Внешний вид', 'Темы, логотипы и другое', 'far fa-drafting-compass', 'LZTUpAppearItem', 'LZTUpAppearContainer')
+    .addSectionItem('Локальный Уник', 'Максимальная кастомизация', 'far fa-palette', 'LZTUpUniqItem', (_, title) => openSubMenu('LZTUpUniqContainer', title))
+    .addSectionItem('Розыгрыши', 'Комфорт для розыгрышей', 'far fa-gift', 'LZTUpContestsItem', (_, title) => openSubMenu('LZTUpContestsContainer', title))
+    .addSectionItem('Пользователи', 'Штучки для пользователей', 'far fa-user', 'LZTUpUsersItem', (_, title) => openSubMenu('LZTUpUsersContainer', title))
+    .addSectionItem('Внешний вид', 'Темы, логотипы и другое', 'far fa-drafting-compass', 'LZTUpAppearItem', (_, title) => openSubMenu('LZTUpAppearContainer', title))
     .addSectionContainer('LZTUpUniqContainer', await getProfileItems())
     .addSectionContainer('LZTUpContestsContainer', await getContestsItems())
     .addSectionContainer('LZTUpUsersContainer', await getUsersItems())
     .addSectionContainer('LZTUpAppearContainer', appearItems)
 
   const settingsSection = new Section('LZTUpSettingsSection')
-    .addSectionItem('Настройки', 'Настройки расширения', 'far fa-cog', 'LZTUpSettingsItem', 'LZTUpSettingsContainer')
-    .addSectionItem('Обновления', 'Установка и проверка обновлений расширения', 'far fa-cloud-download', 'LZTUpUpdateItem', 'LZTUpUpdateContainer')
-    .addSectionItem('Информация', `Версия: ${GM_info?.script?.version}`, 'far fa-info-circle', 'LZTUpInformationItem', 'LZTUpInformationContainer')
+    .addSectionItem('Настройки', 'Настройки расширения', 'far fa-cog', 'LZTUpSettingsItem', (_, title) => openSubMenu('LZTUpSettingsContainer', title))
+    .addSectionItem('Обновления', 'Установка и проверка обновлений расширения', 'far fa-cloud-download', 'LZTUpUpdateItem', (_, title) => openSubMenu('LZTUpUpdateContainer', title))
+    .addSectionItem('Информация', `Версия: ${GM_info?.script?.version}`, 'far fa-info-circle', 'LZTUpInformationItem', (_, title) => openSubMenu('LZTUpInformationContainer', title))
     .addSectionContainer('LZTUpSettingsContainer', settingItems)
     .addSectionContainer('LZTUpUpdateContainer', updateItems)
     .addSectionContainer('LZTUpInformationContainer', await getInfoItems())
@@ -60,7 +61,7 @@ async function generateMenu(tabs) {
   menuContent.appendChild(tabsContainer);
 
   for (const section of sections) {
-    const sectionEl = section.create();
+    const sectionEl = section.createElement();
     menuContent.appendChild(sectionEl);
     for (const container of section.sectionContainers) {
       menuContent.append(container)
