@@ -96,7 +96,7 @@ ___CSS_LOADER_EXPORT___.push([module.id, ".LZTUpErrorPage{background-color:#2727
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 ___CSS_LOADER_EXPORT___.push([module.id, "@import url(https://cdn.jsdelivr.net/gh/lzt-upgrade/coloris-lzt-theme@latest/dist/coloris.min.css);"]);
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".clr-picker{display:none}.LZTUpColorPickerWrap{display:flex;align-items:center}.LZTUpColorPickerWrap:not(:first-of-type){margin-top:10px}.LZTUpColorPickerWrap .LZTUpModalDescription{margin-right:10px !important}.LZTUpColorPickerWrap .clr-field input{width:24px;height:24px}.LZTUpColorPickerWrap .clr-field button{width:28px;height:28px}.LZTUpColorPickerWrap .clr-field input,.LZTUpColorPickerWrap .clr-field button{border-radius:4px}.LZTUpSelect option{background:#272727;padding:10px 15px;font-weight:600;border-radius:6px}.LZTUpSelect option:hover{background:#2d2d2d}.LZTUpIconButton{display:flex;flex-direction:row-reverse;align-items:center;justify-content:center}.LZTUpIconButton.fit{max-width:fit-content}.LZTUpIconButton i{margin:0 8px;margin-top:3.5px}.LZTUpRefreshButton{min-width:32px !important;margin-left:32px !important}.LZTUpSortableItem{display:flex;align-items:center;padding:16px;margin:8px 0;border-radius:8px;background:rgba(54,54,54,.75)}.LZTUpSortableItem .LZTUpSortableDraggable{color:#8c8c8c;margin-right:10px;cursor:move}.LZTUpSortableItem .LZTUpSortableContent p{margin:0 !important}.LZTUpSortableItem .LZTUpSortableUtility{display:flex;margin-left:auto}.LZTUpSortableItem .LZTUpSortableUtility div{margin-left:10px;cursor:pointer;transition:.5s color ease}.LZTUpSortableItem .LZTUpSortableUtility .LZTUpSortableEditButton{color:#6a6a6a}.LZTUpSortableItem .LZTUpSortableUtility .LZTUpSortableEditButton:hover{color:#0daf77}.LZTUpSortableItem .LZTUpSortableUtility .LZTUpSortableRemoveButton{color:#964448}.LZTUpSortableItem .LZTUpSortableUtility .LZTUpSortableRemoveButton:hover{color:#f13838}#LZTUpModalMainTitle{text-align:center;padding:16px;font-size:20px;font-weight:bold}.LZTUpModalBackButton{position:absolute;top:18px;left:25px;padding:0px 5px;margin:-4px -5px;cursor:pointer;line-height:25px;height:26px;width:26px;border:0 !important;background:rgba(0,0,0,0);color:#d6d6d6;font-size:18px}.LZTUpModalBackButton:hover{background:rgba(18,76,50,.4);border-radius:8px}.LZTUpTabs{width:100%;box-sizing:border-box;padding:0 10px;border:none !important;margin:15px auto !important;display:flex;align-items:center;justify-content:center}.LZTUpTabs #LZTUpTab{position:relative;padding:10px;margin:0 4px;float:left;font-weight:600;list-style:none;font-size:14px}.LZTUpTabs #LZTUpTab:hover{cursor:pointer}.LZTUpTabs #LZTUpTab.active{box-shadow:inset 0px -2px 0px 0px #0daf77;transform:translateY(-1px);transition:.2s}.LZTUpTabs #LZTUpTab:not(.active):hover{box-shadow:inset 0px -2px 0px 0px #363636}.LZTUpSection{display:flex;flex-wrap:wrap;margin:20px 15px}.LZTUpSection.row{flex-direction:row}.LZTUpSection.row .LZTUpSectionItem{max-width:284px}.LZTUpSection.column{flex-direction:column}.LZTUpSection .LZTUpSectionItem{flex-basis:50%;flex-grow:1;height:64px;display:flex;align-items:center;transition:all .5s ease}.LZTUpSection .LZTUpSectionItem:hover{background:rgba(54,54,54,.75);border-radius:8px;cursor:pointer}.LZTUpSectionTextContainer{display:flex;flex-direction:column;justify-content:center;flex:1 1 auto}#LZTUpIcon{width:28px;height:28px;margin:20px;font-size:28px;color:#0daf77}#LZTUpIcon.gray{color:#949494}#LZTUpIcon.right{text-align:right}#LZTUpModalContainer{margin:15px;max-width:400px}#LZTUpModalChecksContainer,#LZTUpModalReportButtonsContainer,#LZTUpModalCell,.LZTUpModalMesh,.LZTUpModalSeparator{margin:15px;max-width:95%}.LZTUpContainer{display:flex;flex-direction:column;margin:15px;max-width:95%}.LZTUpModalHeading{margin:10px 0 5px 0 !important}.LZTUpModalDescription{margin:0 !important;margin-bottom:5px !important}.LZTUpTextArea{min-height:40px}.LZTUpModalSeparator{border-bottom:1px solid #363636}#LZTUpModalChecksText{margin:0px 25px 5px}.LZTUpSectionTitle,.LZTUpSectionDesc{display:block;margin-right:20px;font-size:15px;font-weight:bold;text-overflow:ellipsis;white-space:nowrap;overflow:hidden;width:200px}.LZTUpSectionDesc{font-size:13px;font-weight:normal;color:#949494}.LZTUpModalSectionTexts{display:flex;flex-direction:column;justify-content:center;flex:1 1 auto}.LZTUpModalSectionTexts .LZTUpSubText{max-width:450px}#LZTUpModalComment{background:#363636;margin:5px 15px;padding:10px 15px;border-radius:10px}#LZTUpModalComment a{color:#00ba78}.LZTUpModalBlock{display:flex}.LZTUpModalBlockButtons{display:flex;flex-wrap:wrap;justify-content:center;margin-top:25px}.LZTUpModalBlockButtons .button{margin:5px;width:250px}#LZTUpPreviewContainer{display:flex}.LZTUpSubMenu .previewContainer{float:right;margin:25px 15px;padding:10px 10px 15px 10px;background-size:cover;background-position:center;background-attachment:fixed;background-repeat:no-repeat;border-radius:10px;width:92%;max-width:92%}.LZTUpSubMenu .previewContainer .avatar img{width:66px;height:66px}.LZTUpSubMenu .previewContainer .info{padding:0 0 0 20px}.LZTUpSubMenu .previewContainer .info .username{font-weight:600}.LZTUpSubMenu .previewContainer .bannerOrStatus{min-width:150px;margin:10px 0 0;color:#949494}.LZTUpSubMenu .previewContainer .bannerOrStatus em{font-style:inherit}.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge .customUniqIcon{padding:2px 0;text-align:center}.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge .customUniqIcon svg{width:16px !important;height:16px !important}.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge::before{font-family:\"Font Awesome 5 Pro\";font-weight:600;display:inline-block;font-size:12.32px}.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.admin{background:#964448}.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.admin::before,.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.bot::before{content:\"\"}.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.Designer::before{content:\"\"}.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.headDesigner::before{content:\"\"}.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.editor::before{content:\"\"}.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.sponsor::before{content:\"\"}.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.coder::before{content:\"\"}.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.uniq_default::before,.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.Legend::before,.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.Ikarus::before{content:\"\"}.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.moder{background:#3d6b39}.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.curator{background:rgba(8,156,122,.8509803922)}.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.moder::before,.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.main_moder::before,.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.curator::before{content:\"\"}.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.arbitr::before,.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.main_arbitr::before{content:\"\"}.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.telegramBot::before{content:\"\"}.LZTUpSubMenu .previewContainer .UsernameStyle.style18,.LZTUpSubMenu .previewContainer .UsernameStyle.style360{text-decoration:line-through;color:#aaa}.LZTUpSubMenu .previewContainer .UsernameStyle.style3{color:#f13838}.LZTUpSubMenu .previewContainer .UsernameStyle.style30{color:#ff9afc}.LZTUpSubMenu .previewContainer .UsernameStyle.style353{background:linear-gradient(98.26deg, #FF42F7 2.08%, #FF24CF 100%);-webkit-background-clip:text;-webkit-text-fill-color:rgba(0,0,0,0)}.LZTUpSubMenu .previewContainer .UsernameStyle.style350{background:linear-gradient(90deg, #5c45ff, #feb5f2 100%);-webkit-background-clip:text;-webkit-text-fill-color:rgba(0,0,0,0)}.LZTUpSubMenu .previewContainer .UsernameStyle.style12{color:#01f73c}.LZTUpSubMenu .previewContainer .UsernameStyle.style1,.LZTUpSubMenu .previewContainer .UsernameStyle.style41,.LZTUpSubMenu .previewContainer .UsernameStyle.style142,.LZTUpSubMenu .previewContainer .UsernameStyle.style144{color:#aaa}.LZTUpSubMenu .previewContainer .UsernameStyle.style32,.LZTUpSubMenu .previewContainer .UsernameStyle.style93,.LZTUpSubMenu .previewContainer .UsernameStyle.style21,.LZTUpSubMenu .previewContainer .UsernameStyle.style2{color:#949494}.LZTUpSubMenu .previewContainer .UsernameStyle.style60{color:#ffa8af}.LZTUpSubMenu .previewContainer .UsernameStyle.style9{color:#0075ad}.LZTUpSubMenu .previewContainer .UsernameStyle.style65{color:#a5e3ff}.LZTUpSubMenu .previewContainer .UsernameStyle.style351{color:#ff0076}.LZTUpSubMenu .previewContainer .UsernameStyle.style29{color:#0acc9e}.LZTUpSubMenu .previewContainer .UsernameStyle.style26{background:linear-gradient(90deg, #0095dd 0%, #f1094b 100%, #0095dd);-webkit-background-clip:text;-webkit-text-fill-color:rgba(0,0,0,0)}.LZTUpSubMenu .previewContainer .UsernameStyle.style4{color:#0e9100}.LZTUpSubMenu .previewContainer .UsernameStyle.style22{color:#eee}.LZTUpSubMenu .previewContainer .UsernameStyle.style11{color:#56b5e0}.LZTUpSubMenu .previewContainer .UsernameStyle.style7{color:#ff9304}.LZTUpSubMenu .previewContainer .UsernameStyle.style349,.LZTUpSubMenu .previewContainer .UsernameStyle.style365{color:#0087ff}.LZTUpSubMenu .previewContainer .UsernameStyle.style354{color:aqua}.LZTUpSubMenu .previewContainer .UsernameStyle.style218{color:#f13838}.LZTUpSubMenu .previewContainer .UsernameStyle.style359{color:#e5d9a3}.LZTUpSubMenu .previewContainer .UsernameStyle.style8{color:gold}.LZTUpSubMenu .previewContainer .UsernameStyle.style265{background:linear-gradient(35deg, #006eff, #00ff81 52%, #fff 50%, #93cbff);-webkit-background-clip:text;-webkit-text-fill-color:rgba(0,0,0,0);text-shadow:0 0 7px rgba(0,255,207,.5019607843)}.LZTUpSubMenu .previewContainer .UsernameStyle.style23{color:#b35ede}.LZTUpSubMenu .previewContainer .UsernameStyle.banned,.LZTUpSubMenu .previewContainer .UsernameStyle.is_banned{text-decoration:line-through;background:inherit;-webkit-text-fill-color:inherit;text-shadow:inherit !important;color:#aaa !important}.LZTUpSubMenu .previewContainer .avatarBox{position:relative}.LZTUpSubMenu .previewContainer .avatarBox .avatarUserBadges .badgeDefaultBackground{background:#363636}.LZTUpSubMenu .previewContainer .avatarBox .avatarUserBadges .avatarUserBadge{position:absolute;bottom:-12px;left:20px;border:2px solid #272727;font-size:0;width:22px;height:22px;margin:0;line-height:22px;border-radius:50%;text-align:center;text-shadow:none !important;box-shadow:none !important;border-radius:50% !important;-webkit-background-clip:unset !important;-webkit-text-fill-color:unset !important;overflow:hidden}.LZTUpSubMenu .previewContainer .avatarBox .avatarUserBadges .avatarUserBadge:only-child{left:35px}.LZTUpSubMenu .previewContainer .avatarBox .avatarUserBadges .avatarUserBadge.avatarUserBadge--1{left:20px}.LZTUpSubMenu .previewContainer .avatarBox .avatarUserBadges .avatarUserBadge.avatarUserBadge--2{left:40px}.LZTUpSubMenu .previewContainer .avatarBox,.LZTUpSubMenu .previewContainer .info{display:table-cell;vertical-align:top}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".clr-picker{display:none}.LZTUpColorPickerWrap{display:flex;align-items:center}.LZTUpColorPickerWrap:not(:first-of-type){margin-top:10px}.LZTUpColorPickerWrap .LZTUpModalDescription{margin-right:10px !important}.LZTUpColorPickerWrap .clr-field input{width:24px;height:24px}.LZTUpColorPickerWrap .clr-field button{width:28px;height:28px}.LZTUpColorPickerWrap .clr-field input,.LZTUpColorPickerWrap .clr-field button{border-radius:4px}.LZTUpSelect option{background:#272727;padding:10px 15px;font-weight:600;border-radius:6px}.LZTUpSelect option:hover{background:#2d2d2d}.LZTUpIconButton{display:flex;flex-direction:row-reverse;align-items:center;justify-content:center}.LZTUpIconButton.fit{max-width:fit-content}.LZTUpIconButton i{margin:0 8px;margin-top:3.5px}.LZTUpRefreshButton{min-width:32px !important;margin-left:32px !important}.LZTUpSortableItem{display:flex;align-items:center;padding:16px;margin:8px 0;border-radius:8px;background:rgba(54,54,54,.75)}.LZTUpSortableItem .LZTUpSortableDraggable{color:#8c8c8c;margin-right:10px;cursor:move}.LZTUpSortableItem .LZTUpSortableContent p{margin:0 !important}.LZTUpSortableItem .LZTUpSortableUtility{display:flex;margin-left:auto}.LZTUpSortableItem .LZTUpSortableUtility div{margin-left:10px;cursor:pointer;transition:.5s color ease}.LZTUpSortableItem .LZTUpSortableUtility .LZTUpSortableEditButton{color:#6a6a6a}.LZTUpSortableItem .LZTUpSortableUtility .LZTUpSortableEditButton:hover{color:#0daf77}.LZTUpSortableItem .LZTUpSortableUtility .LZTUpSortableRemoveButton{color:#964448}.LZTUpSortableItem .LZTUpSortableUtility .LZTUpSortableRemoveButton:hover{color:#f13838}#LZTUpModalMainTitle{text-align:center;padding:16px;font-size:20px;font-weight:bold}.LZTUpModalBackButton{position:absolute;top:18px;left:25px;padding:0px 5px;margin:-4px -5px;cursor:pointer;line-height:25px;height:26px;width:26px;border:0 !important;background:rgba(0,0,0,0);color:#d6d6d6;font-size:18px}.LZTUpModalBackButton:hover{background:rgba(18,76,50,.4);border-radius:8px}.LZTUpTabs{width:100%;box-sizing:border-box;padding:0 10px;border:none !important;margin:15px auto !important;display:flex;align-items:center;justify-content:center}.LZTUpTabs #LZTUpTab{position:relative;padding:10px;margin:0 4px;float:left;font-weight:600;list-style:none;font-size:14px}.LZTUpTabs #LZTUpTab:hover{cursor:pointer}.LZTUpTabs #LZTUpTab.active{box-shadow:inset 0px -2px 0px 0px #0daf77;transform:translateY(-1px);transition:.2s}.LZTUpTabs #LZTUpTab:not(.active):hover{box-shadow:inset 0px -2px 0px 0px #363636}.LZTUpSection{display:flex;flex-wrap:wrap;margin:20px 15px}.LZTUpSection.row{flex-direction:row}.LZTUpSection.row .LZTUpSectionItem{max-width:284px}.LZTUpSection.row .LZTUpSectionTitle,.LZTUpSection.row .LZTUpSectionDesc{max-width:200px}.LZTUpSection.column{flex-direction:column}.LZTUpSection.column .LZTUpSectionTitle,.LZTUpSection.column .LZTUpSectionDesc{max-width:440px}.LZTUpSection.column .LZTUpSectionDesc{white-space:break-spaces}.LZTUpSection.column .LZTUpSectionItem{max-width:580px}.LZTUpSection .LZTUpSectionItem{flex-basis:50%;flex-grow:1;height:64px;display:flex;align-items:center;transition:all .5s ease}.LZTUpSection .LZTUpSectionItem:hover{background:rgba(54,54,54,.75);border-radius:8px;cursor:pointer}.LZTUpSectionTextContainer{display:flex;flex-direction:column;justify-content:center;flex:1 1 auto;max-width:100%}#LZTUpIcon{width:28px;height:28px;margin:20px;font-size:28px;color:#0daf77}#LZTUpIcon.gray{color:#949494}#LZTUpIcon.right{text-align:right}#LZTUpModalContainer{margin:15px;max-width:400px}#LZTUpModalChecksContainer,#LZTUpModalReportButtonsContainer,#LZTUpModalCell,.LZTUpModalMesh,.LZTUpModalSeparator{margin:15px;max-width:95%}.LZTUpContainer{display:flex;flex-direction:column;margin:15px;max-width:95%}.LZTUpModalHeading{margin:10px 0 5px 0 !important}.LZTUpModalDescription{margin:0 !important;margin-bottom:5px !important}.LZTUpTextArea{min-height:40px}.LZTUpModalSeparator{border-bottom:1px solid #363636}#LZTUpModalChecksText{margin:0px 25px 5px}.LZTUpSectionTitle,.LZTUpSectionDesc{display:block;margin-right:20px;font-size:15px;font-weight:bold;text-overflow:ellipsis;white-space:nowrap;overflow:hidden}.LZTUpSectionDesc{font-size:13px;font-weight:normal;color:#949494}.LZTUpSectionDesc .mceSmilie{max-height:18px !important}.LZTUpModalSectionTexts{display:flex;flex-direction:column;justify-content:center;flex:1 1 auto}.LZTUpModalSectionTexts .LZTUpSubText{max-width:450px}#LZTUpModalComment{background:#363636;margin:5px 15px;padding:10px 15px;border-radius:10px}#LZTUpModalComment a{color:#00ba78}.LZTUpModalBlock{display:flex}.LZTUpModalBlockButtons{display:flex;flex-wrap:wrap;justify-content:center;margin-top:25px}.LZTUpModalBlockButtons .button{margin:5px;width:250px}#LZTUpPreviewContainer{display:flex}.LZTUpSubMenu .previewContainer{float:right;margin:25px 15px;padding:10px 10px 15px 10px;background-size:cover;background-position:center;background-attachment:fixed;background-repeat:no-repeat;border-radius:10px;width:92%;max-width:92%}.LZTUpSubMenu .previewContainer .avatar img{width:66px;height:66px}.LZTUpSubMenu .previewContainer .info{padding:0 0 0 20px}.LZTUpSubMenu .previewContainer .info .username{font-weight:600}.LZTUpSubMenu .previewContainer .bannerOrStatus{min-width:150px;margin:10px 0 0;color:#949494}.LZTUpSubMenu .previewContainer .bannerOrStatus em{font-style:inherit}.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge .customUniqIcon{padding:2px 0;text-align:center}.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge .customUniqIcon svg{width:16px !important;height:16px !important}.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge::before{font-family:\"Font Awesome 5 Pro\";font-weight:600;display:inline-block;font-size:12.32px}.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.admin{background:#964448}.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.admin::before,.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.bot::before{content:\"\"}.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.Designer::before{content:\"\"}.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.headDesigner::before{content:\"\"}.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.editor::before{content:\"\"}.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.sponsor::before{content:\"\"}.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.coder::before{content:\"\"}.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.uniq_default::before,.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.Legend::before,.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.Ikarus::before{content:\"\"}.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.moder{background:#3d6b39}.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.curator{background:rgba(8,156,122,.8509803922)}.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.moder::before,.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.main_moder::before,.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.curator::before{content:\"\"}.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.arbitr::before,.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.main_arbitr::before{content:\"\"}.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.telegramBot::before{content:\"\"}.LZTUpSubMenu .previewContainer .UsernameStyle.style18,.LZTUpSubMenu .previewContainer .UsernameStyle.style360{text-decoration:line-through;color:#aaa}.LZTUpSubMenu .previewContainer .UsernameStyle.style3{color:#f13838}.LZTUpSubMenu .previewContainer .UsernameStyle.style30{color:#ff9afc}.LZTUpSubMenu .previewContainer .UsernameStyle.style353{background:linear-gradient(98.26deg, #FF42F7 2.08%, #FF24CF 100%);-webkit-background-clip:text;-webkit-text-fill-color:rgba(0,0,0,0)}.LZTUpSubMenu .previewContainer .UsernameStyle.style350{background:linear-gradient(90deg, #5c45ff, #feb5f2 100%);-webkit-background-clip:text;-webkit-text-fill-color:rgba(0,0,0,0)}.LZTUpSubMenu .previewContainer .UsernameStyle.style12{color:#01f73c}.LZTUpSubMenu .previewContainer .UsernameStyle.style1,.LZTUpSubMenu .previewContainer .UsernameStyle.style41,.LZTUpSubMenu .previewContainer .UsernameStyle.style142,.LZTUpSubMenu .previewContainer .UsernameStyle.style144{color:#aaa}.LZTUpSubMenu .previewContainer .UsernameStyle.style32,.LZTUpSubMenu .previewContainer .UsernameStyle.style93,.LZTUpSubMenu .previewContainer .UsernameStyle.style21,.LZTUpSubMenu .previewContainer .UsernameStyle.style2{color:#949494}.LZTUpSubMenu .previewContainer .UsernameStyle.style60{color:#ffa8af}.LZTUpSubMenu .previewContainer .UsernameStyle.style9{color:#0075ad}.LZTUpSubMenu .previewContainer .UsernameStyle.style65{color:#a5e3ff}.LZTUpSubMenu .previewContainer .UsernameStyle.style351{color:#ff0076}.LZTUpSubMenu .previewContainer .UsernameStyle.style29{color:#0acc9e}.LZTUpSubMenu .previewContainer .UsernameStyle.style26{background:linear-gradient(90deg, #0095dd 0%, #f1094b 100%, #0095dd);-webkit-background-clip:text;-webkit-text-fill-color:rgba(0,0,0,0)}.LZTUpSubMenu .previewContainer .UsernameStyle.style4{color:#0e9100}.LZTUpSubMenu .previewContainer .UsernameStyle.style22{color:#eee}.LZTUpSubMenu .previewContainer .UsernameStyle.style11{color:#56b5e0}.LZTUpSubMenu .previewContainer .UsernameStyle.style7{color:#ff9304}.LZTUpSubMenu .previewContainer .UsernameStyle.style349,.LZTUpSubMenu .previewContainer .UsernameStyle.style365{color:#0087ff}.LZTUpSubMenu .previewContainer .UsernameStyle.style354{color:aqua}.LZTUpSubMenu .previewContainer .UsernameStyle.style218{color:#f13838}.LZTUpSubMenu .previewContainer .UsernameStyle.style359{color:#e5d9a3}.LZTUpSubMenu .previewContainer .UsernameStyle.style8{color:gold}.LZTUpSubMenu .previewContainer .UsernameStyle.style265{background:linear-gradient(35deg, #006eff, #00ff81 52%, #fff 50%, #93cbff);-webkit-background-clip:text;-webkit-text-fill-color:rgba(0,0,0,0);text-shadow:0 0 7px rgba(0,255,207,.5019607843)}.LZTUpSubMenu .previewContainer .UsernameStyle.style23{color:#b35ede}.LZTUpSubMenu .previewContainer .UsernameStyle.banned,.LZTUpSubMenu .previewContainer .UsernameStyle.is_banned{text-decoration:line-through;background:inherit;-webkit-text-fill-color:inherit;text-shadow:inherit !important;color:#aaa !important}.LZTUpSubMenu .previewContainer .avatarBox{position:relative}.LZTUpSubMenu .previewContainer .avatarBox .avatarUserBadges .badgeDefaultBackground{background:#363636}.LZTUpSubMenu .previewContainer .avatarBox .avatarUserBadges .avatarUserBadge{position:absolute;bottom:-12px;left:20px;border:2px solid #272727;font-size:0;width:22px;height:22px;margin:0;line-height:22px;border-radius:50%;text-align:center;text-shadow:none !important;box-shadow:none !important;border-radius:50% !important;-webkit-background-clip:unset !important;-webkit-text-fill-color:unset !important;overflow:hidden}.LZTUpSubMenu .previewContainer .avatarBox .avatarUserBadges .avatarUserBadge:only-child{left:35px}.LZTUpSubMenu .previewContainer .avatarBox .avatarUserBadges .avatarUserBadge.avatarUserBadge--1{left:20px}.LZTUpSubMenu .previewContainer .avatarBox .avatarUserBadges .avatarUserBadge.avatarUserBadge--2{left:40px}.LZTUpSubMenu .previewContainer .avatarBox,.LZTUpSubMenu .previewContainer .info{display:table-cell;vertical-align:top}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -691,9 +691,55 @@ const extData = () => {
       lztupTempSubMenu: '#LZTUpTempSubMenu'
     },
     links: {
+      // for self-ad on site Maintenance page
       telegramChannel: 'https://t.me/lzt_upgrade',
       githubPage: 'https://github.com/lzt-upgrade/lzt-upgrade',
-    }
+    },
+    infoLinks: [
+      // for info section in menu
+      {
+        icon: 'far fa-donate',
+        title: 'Поддержать разработку',
+        desc: 'Можете немного закинуть, если хотите <img src="/styles/default/xenforo/smilies/ok_lol.png" class="mceSmilie" alt=":ok_lol:" title="Lol">',
+        href: 'https://lzt.market/balance/transfer?redirect=https%3A%2F%2Fzelenka.guru&username=Toil',
+        sectionId: 'LZTUpInfoDonateItem'
+      },
+      {
+        icon: 'far fa-comments',
+        title: 'Тема на форуме',
+        desc: 'Новости об обновлениях и отзывы других пользователей',
+        href: 'https://zelenka.guru/threads/1', // TODO: add link to forum theme after release
+        sectionId: 'LZTUpInfoThreadItem'
+      },
+      {
+        icon: 'fab fa-telegram-plane',
+        title: 'Telegram канал',
+        desc: 'Все новости расширения и анонсы новых функций',
+        href: 'https://t.me/lzt_upgrade',
+        sectionId: 'LZTUpInfoTGChannelItem'
+      },
+      {
+        icon: 'fab fa-telegram-plane',
+        title: 'Telegram чат',
+        desc: 'Чатик для общения с другими пользователями расширения',
+        href: 'https://t.me/lzt_upgrade_chat',
+        sectionId: 'LZTUpInfoTGChatItem'
+      },
+      {
+        icon: 'fab fa-github',
+        title: 'Github',
+        desc: 'Исходники расширения + все версии расширения',
+        href: 'https://github.com/lzt-upgrade/lzt-upgrade',
+        sectionId: 'LZTUpInfoGithubItem'
+      },
+      {
+        icon: 'far fa-code-branch',
+        title: 'Greasy Fork',
+        desc: 'Альтернативный источник для установки расширения',
+        href: 'https://github.com/lzt-upgrade/lzt-upgrade',
+        sectionId: 'LZTUpInfoGreasyForkItem'
+      },
+    ]
   }
 }
 
@@ -1546,260 +1592,6 @@ function createMenuIcon(className, id = 'LZTUpIcon') {
 }
 
 
-;// CONCATENATED MODULE: ./src/ui/components/button.js
-
-
-class Button {
-  /**
-   *
-   *  @constructor
-   *  @param {string} buttonText - text of the button
-   *  @param {string} className - class name of the button
-   *  @param {string} iconClassName - class name of the icon (if undefined icon is not added)
-   */
-
-  constructor(buttonText, className = 'button', iconClassName = undefined) {
-    this.buttonText = buttonText;
-    this.className = className;
-    this.iconClassName = iconClassName;
-  }
-
-  createElement(callback = () => {}) {
-    const button = document.createElement('button');
-    button.className = this.className;
-    button.innerText = this.buttonText;
-
-    if (this.iconClassName) {
-      const icon = createMenuIcon(this.iconClassName);
-      icon.id = '';
-      button.appendChild(icon);
-    }
-
-    button.onclick = callback;
-
-    return button;
-  }
-}
-
-
-;// CONCATENATED MODULE: ./src/ui/menu/utils.js
-
-
-
-
-
-function setMenuTitle(title) {
-  const modalOverlay = document.querySelector('.xenOverlay > .errorOverlay#LZTUpModalOverlay')
-  const modalTitle = modalOverlay.querySelector('h2.heading');
-  modalTitle.id = 'LZTUpModalMainTitle';
-  modalTitle.innerText = title;
-}
-
-function createGoBackBtn(callback) {
-  const modalOverlay = document.querySelector('.xenOverlay > .errorOverlay#LZTUpModalOverlay');
-
-  const backButton = new Button('', 'LZTUpModalBackButton', 'fas fa-long-arrow-left').createElement();
-
-  backButton.onclick = () => {
-    document.querySelectorAll('div.LZTUpSubMenu').forEach(submenu => submenu.style.display = 'none');
-    callback();
-  }
-
-  modalOverlay.insertAdjacentElement('afterbegin', backButton);
-}
-
-function addGoBackBtn(target = '', text = configs_config.extName, subMenuToShow = null, onCloseCallback = () => {}) {
-  const backButtonSelector = 'button.LZTUpModalBackButton';
-
-  if (document.querySelector(backButtonSelector) !== null) {
-    document.querySelector(backButtonSelector).remove();
-  }
-
-  return createGoBackBtn(() => {
-    document.querySelector(backButtonSelector).remove();
-    setMenuTitle(text);
-    switch (target) {
-      case 'tempmenu':
-        document.querySelector(configs_extData.uiElementsSelectors.lztupTempSubMenu).style.display = 'none';
-        subMenuToShow.style.display = '';
-        addGoBackBtn();
-        onCloseCallback();
-        break;
-      default:
-        document.querySelector('.LZTUpSection').style.display = '';
-        const tabs = document.querySelector('.LZTUpTabs');
-        tabs.style.display = '';
-
-        const tab = tabs.querySelectorAll('#LZTUpTab');
-        tab.forEach(element => element.classList.remove('active'));
-        tab[0].classList.add('active');
-        onCloseCallback()
-    }
-  });
-}
-
-function openSubMenu(containerId, sectionName) {
-  document.querySelector('.LZTUpTabs').style.display = 'none';
-
-  const subMenus = document.querySelectorAll('.LZTUpSubMenu');
-  subMenus.forEach(subMenu => subMenu.style.display = 'none');
-
-  const sections = document.querySelectorAll('.LZTUpSection');
-  sections.forEach(section => section.style.display = 'none');
-
-  document.querySelector(`#${containerId}`).style.display = '';
-  setMenuTitle(sectionName);
-  return addGoBackBtn();
-}
-
-
-;// CONCATENATED MODULE: ./src/ui/components/menu/section.js
-
-
-
-
-class SectionDirection {
-  static Row = new SectionDirection('row');
-  static Column = new SectionDirection('column');
-
-  constructor(name) {
-    this.name = name
-  }
-}
-
-
-class SectionText {
-  /**
-   *
-   *  @constructor
-   *  @param {string} text - text of the heading
-   */
-
-  constructor(text) {
-    this.text = text;
-    this.className = 'LZTUpSectionTitle';
-  }
-
-  createElement() {
-    const el = document.createElement('span');
-    el.classList.add(this.className);
-    el.innerText = this.text;
-
-    return el;
-  }
-}
-
-
-class SectionSubText extends SectionText {
-  /**
-   *
-   *  @constructor
-   *  @param {string} text - text of the heading
-   */
-
-  constructor(text) {
-    super(text)
-    this.className = 'LZTUpSectionDesc';
-  }
-}
-
-
-class Section {
-  /**
-   *
-   *  @constructor
-   *  @param {string} id - id of the section
-   *  @param {object} [sectionItems] - array of section items
-   *  @param {SectionDirection} [direction] - direction of elements in the section
-   *  @param {boolean} [hidden] - state of visibility section. If true, the section is hidden by default.
-   */
-
-  // constructor(options) {
-  //   this.doors = options.doors || 4;
-  //   this.state = options.state || 'brand new';
-  //   this.color = options.color || 'white';
-  // }
-
-  constructor(id, options = {}) {
-    this.id = id;
-    this.sectionItems = options.sectionItems || [];
-    this.sectionContainers = options.sectionContainers || [];
-    this.direction = options.direction || SectionDirection.Row;
-    this.hidden = options.hidden || true;
-  }
-
-  create() {
-    const section = document.createElement('div');
-    section.id = this.id;
-    section.classList.add('LZTUpSection', this.direction === SectionDirection.Row ? 'row' : 'column');
-
-    for (const sectionItem of this.sectionItems) {
-      section.appendChild(sectionItem);
-    }
-
-    console.log(this)
-    if (this.hidden) {
-      section.style.display = 'none';
-    }
-
-    return section;
-  }
-
-  /**
-   *
-   *  @param {string} name - title of the item
-   *  @param {string} desc - description of the item
-   *  @param {string} iconClasses - font awesome icon classes
-   *  @param {string} sectionId - id of the section item
-   *  @param {string} containerId - id of the container element (open on click)
-   *  @param {boolean} rightArrow - add a icon of the right arrow in the right side (only for column direction)
-   */
-  addSectionItem(title, desc, iconClasses, sectionId, containerId, rightArrow = false) {
-    const sectionItem = document.createElement('div');
-    sectionItem.id = sectionId;
-    sectionItem.classList.add('LZTUpSectionItem');
-
-    const sectionIcon = createMenuIcon(iconClasses);
-    const textContainer = document.createElement('div');
-    textContainer.classList.add('LZTUpSectionTextContainer')
-    const textEl = new SectionText(title).createElement();
-    const subTextEl = new SectionSubText(desc).createElement();
-
-    textContainer.append(textEl, subTextEl);
-    sectionItem.append(sectionIcon, textContainer);
-    if (this.direction === SectionDirection.Column && rightArrow) {
-      const sectionArrowIcon = createMenuIcon('far fa-angle-right gray right');
-      sectionItem.append(sectionArrowIcon)
-    }
-
-    sectionItem.onclick = () => openSubMenu(containerId, title);
-
-    this.sectionItems.push(sectionItem);
-    return this;
-  }
-
-  /**
-   *
-   *  @param {string} containerId - name of the container id (open menu on click)
-   *  @param {object} items - list of dom elements for add to container
-   */
-  addSectionContainer(containerId, items) {
-    const container = document.createElement('div');
-    container.id = containerId;
-    container.classList.add('LZTUpSubMenu');
-    container.style.display = 'none';
-
-    for (const item of items) {
-      container.appendChild(item);
-    }
-
-
-    this.sectionContainers.push(container);
-    return this;
-  }
-}
-
-
 ;// CONCATENATED MODULE: ./src/utils/purify.js
 
 
@@ -1855,6 +1647,165 @@ function clearCSS(css, availabledStyles = defaultAvailabledStyles) {
   const cssString = goodCSS.length ? goodCSS.join(';') : '';
   Logger.debug(`CLEARED FINAL STRING: ${cssString}`);
   return cssString;
+}
+
+
+;// CONCATENATED MODULE: ./src/ui/components/menu/section.js
+
+
+
+
+class SectionDirection {
+  static Row = new SectionDirection('row');
+  static Column = new SectionDirection('column');
+
+  constructor(name) {
+    this.name = name
+  }
+}
+
+
+class SectionText {
+  /**
+   *
+   *  @constructor
+   *  @param {string} text - text of the heading
+   */
+
+  constructor(text) {
+    this.text = text;
+    this.className = 'LZTUpSectionTitle';
+  }
+
+  createElement() {
+    const el = document.createElement('span');
+    el.classList.add(this.className);
+    el.innerText = this.text;
+
+    return el;
+  }
+}
+
+
+class SectionSubText extends SectionText {
+  /**
+   *
+   *  @constructor
+   *  @param {string} text - text of the heading (html allowed!!!)
+   */
+
+  constructor(text) {
+    super(text)
+    this.className = 'LZTUpSectionDesc';
+  }
+
+  createElement() {
+    const el = document.createElement('span');
+    el.classList.add(this.className);
+    el.innerHTML = clearHTML(this.text);
+
+    return el;
+  }
+}
+
+
+class Section {
+  /**
+   *
+   *  @constructor
+   *  @param {string} id - id of the section
+   *  @param {object} options - additional options (read description below)
+   *
+   *  options params:
+   *  @param {object} [sectionItems] - array of section items
+   *  @param {SectionDirection} [direction] - direction of elements in the section
+   *  @param {boolean} [hidden] - state of visibility section. If true, the section is hidden by default.
+   */
+
+  // constructor(options) {
+  //   this.doors = options.doors || 4;
+  //   this.state = options.state || 'brand new';
+  //   this.color = options.color || 'white';
+  // }
+
+  constructor(id, options = {}) {
+    this.id = id;
+    this.sectionItems = options.sectionItems || [];
+    this.sectionContainers = options.sectionContainers || [];
+    this.direction = options.direction || SectionDirection.Row;
+    this.hidden = options.hidden ?? true;
+  }
+
+  createElement() {
+    const section = document.createElement('div');
+    section.id = this.id;
+    section.classList.add('LZTUpSection', this.direction === SectionDirection.Row ? 'row' : 'column');
+
+    for (const sectionItem of this.sectionItems) {
+      section.appendChild(sectionItem);
+    }
+
+    console.log(this)
+    if (this.hidden) {
+      console.log(this.id, this.hidden)
+      section.style.display = 'none';
+    }
+
+    return section;
+  }
+
+  /**
+   *
+   *  @param {string} name - title of the item
+   *  @param {string} desc - description of the item
+   *  @param {string} iconClasses - font awesome icon classes
+   *  @param {string} sectionId - id of the section item
+   *  @param {string} containerId - id of the container element (open on click)
+   *  @param {boolean} rightArrow - add a icon of the right arrow in the right side (only for column direction)
+   */
+  addSectionItem(title, desc, iconClasses, sectionId, callback = () => {}, rightArrow = false) {
+    const sectionItem = document.createElement('div');
+    sectionItem.id = sectionId;
+    sectionItem.classList.add('LZTUpSectionItem');
+
+    const sectionIcon = createMenuIcon(iconClasses);
+    const textContainer = document.createElement('div');
+    textContainer.classList.add('LZTUpSectionTextContainer')
+    const textEl = new SectionText(title).createElement();
+    const subTextEl = new SectionSubText(desc).createElement();
+
+    textContainer.append(textEl, subTextEl);
+    sectionItem.append(sectionIcon, textContainer);
+    if (this.direction === SectionDirection.Column && rightArrow) {
+      const sectionArrowIcon = createMenuIcon('far fa-angle-right gray right');
+      sectionItem.append(sectionArrowIcon)
+    }
+
+    sectionItem.onclick = (e) => callback(e, title);
+
+    this.sectionItems.push(sectionItem);
+    return this;
+  }
+
+  /**
+   *
+   *  @param {string} containerId - name of the container id (open menu on click)
+   *  @param {object} items - list of dom elements for add to container
+   */
+  addSectionContainer(containerId, items) {
+    const container = document.createElement('div');
+    container.id = containerId;
+    container.classList.add('LZTUpSubMenu');
+    container.style.display = 'none';
+
+    for (const item of items) {
+      container.appendChild(item);
+    }
+
+
+    this.sectionContainers.push(container);
+    return this;
+  }
 }
 
 
@@ -1923,6 +1874,42 @@ function tagsVisibility(isHidden = true) {
   if (tagList !== null) {
     return tagList.style.display = isHidden ? 'none' : '';
   };
+}
+
+
+;// CONCATENATED MODULE: ./src/ui/components/button.js
+
+
+class Button {
+  /**
+   *
+   *  @constructor
+   *  @param {string} buttonText - text of the button
+   *  @param {string} className - class name of the button
+   *  @param {string} iconClassName - class name of the icon (if undefined icon is not added)
+   */
+
+  constructor(buttonText, className = 'button', iconClassName = undefined) {
+    this.buttonText = buttonText;
+    this.className = className;
+    this.iconClassName = iconClassName;
+  }
+
+  createElement(callback = () => {}) {
+    const button = document.createElement('button');
+    button.className = this.className;
+    button.innerText = this.buttonText;
+
+    if (this.iconClassName) {
+      const icon = createMenuIcon(this.iconClassName);
+      icon.id = '';
+      button.appendChild(icon);
+    }
+
+    button.onclick = callback;
+
+    return button;
+  }
 }
 
 
@@ -3065,6 +3052,77 @@ class SortableItem {
 }
 
 
+;// CONCATENATED MODULE: ./src/ui/menu/utils.js
+
+
+
+
+
+function setMenuTitle(title) {
+  const modalOverlay = document.querySelector('.xenOverlay > .errorOverlay#LZTUpModalOverlay')
+  const modalTitle = modalOverlay.querySelector('h2.heading');
+  modalTitle.id = 'LZTUpModalMainTitle';
+  modalTitle.innerText = title;
+}
+
+function createGoBackBtn(callback) {
+  const modalOverlay = document.querySelector('.xenOverlay > .errorOverlay#LZTUpModalOverlay');
+
+  const backButton = new Button('', 'LZTUpModalBackButton', 'fas fa-long-arrow-left').createElement();
+
+  backButton.onclick = () => {
+    document.querySelectorAll('div.LZTUpSubMenu').forEach(submenu => submenu.style.display = 'none');
+    callback();
+  }
+
+  modalOverlay.insertAdjacentElement('afterbegin', backButton);
+}
+
+function addGoBackBtn(target = '', text = configs_config.extName, subMenuToShow = null, onCloseCallback = () => {}) {
+  const backButtonSelector = 'button.LZTUpModalBackButton';
+
+  if (document.querySelector(backButtonSelector) !== null) {
+    document.querySelector(backButtonSelector).remove();
+  }
+
+  return createGoBackBtn(() => {
+    document.querySelector(backButtonSelector).remove();
+    setMenuTitle(text);
+    switch (target) {
+      case 'tempmenu':
+        document.querySelector(configs_extData.uiElementsSelectors.lztupTempSubMenu).style.display = 'none';
+        subMenuToShow.style.display = '';
+        addGoBackBtn();
+        onCloseCallback();
+        break;
+      default:
+        document.querySelector('.LZTUpModalContent > .LZTUpSection').style.display = '';
+        const tabs = document.querySelector('.LZTUpTabs');
+        tabs.style.display = '';
+
+        const tab = tabs.querySelectorAll('#LZTUpTab');
+        tab.forEach(element => element.classList.remove('active'));
+        tab[0].classList.add('active');
+        onCloseCallback()
+    }
+  });
+}
+
+function openSubMenu(containerId, sectionName) {
+  document.querySelector('.LZTUpTabs').style.display = 'none';
+
+  const subMenus = document.querySelectorAll('.LZTUpSubMenu');
+  subMenus.forEach(subMenu => subMenu.style.display = 'none');
+
+  const sections = document.querySelectorAll('.LZTUpModalContent > .LZTUpSection');
+  sections.forEach(section => section.style.display = 'none');
+
+  document.querySelector(`#${containerId}`).style.display = '';
+  setMenuTitle(sectionName);
+  return addGoBackBtn();
+}
+
+
 ;// CONCATENATED MODULE: ./src/ui/menu/temporarySection.js
 
 
@@ -3723,10 +3781,16 @@ const getProfileItems = async () => {
 ;// CONCATENATED MODULE: ./src/ui/menu/items/info.js
 
 
+
+
 const getInfoItems = async () => {
+  const infoSection = new Section('LZTUpInfoSection', { direction: SectionDirection.Column , hidden: false})
+  for (const infoLink of configs_extData.infoLinks) {
+    infoSection.addSectionItem(infoLink.title, infoLink.desc, infoLink.icon, infoLink.sectionId, () => window.open(infoLink.href), true)
+  }
 
   return [
-    new Description('Информационное меню').createElement()
+    infoSection.createElement()
   ];
 }
 
@@ -3790,6 +3854,7 @@ var update = injectStylesIntoStyleTag_default()(menu/* default */.Z, options);
 
 
 
+
 async function generateMenu(tabs) {
   const appearText = document.createElement('div')
   appearText.innerText = 'Страница Внешнего вида';
@@ -3813,19 +3878,19 @@ async function generateMenu(tabs) {
   ];
 
   const menuSection = new Section('LZTUpMainSection')
-    .addSectionItem('Локальный Уник', 'Максимальная кастомизация', 'far fa-palette', 'LZTUpUniqItem', 'LZTUpUniqContainer')
-    .addSectionItem('Розыгрыши', 'Комфорт для розыгрышей', 'far fa-gift', 'LZTUpContestsItem', 'LZTUpContestsContainer')
-    .addSectionItem('Пользователи', 'Штучки для пользователей', 'far fa-user', 'LZTUpUsersItem', 'LZTUpUsersContainer')
-    .addSectionItem('Внешний вид', 'Темы, логотипы и другое', 'far fa-drafting-compass', 'LZTUpAppearItem', 'LZTUpAppearContainer')
+    .addSectionItem('Локальный Уник', 'Максимальная кастомизация', 'far fa-palette', 'LZTUpUniqItem', (_, title) => openSubMenu('LZTUpUniqContainer', title))
+    .addSectionItem('Розыгрыши', 'Комфорт для розыгрышей', 'far fa-gift', 'LZTUpContestsItem', (_, title) => openSubMenu('LZTUpContestsContainer', title))
+    .addSectionItem('Пользователи', 'Штучки для пользователей', 'far fa-user', 'LZTUpUsersItem', (_, title) => openSubMenu('LZTUpUsersContainer', title))
+    .addSectionItem('Внешний вид', 'Темы, логотипы и другое', 'far fa-drafting-compass', 'LZTUpAppearItem', (_, title) => openSubMenu('LZTUpAppearContainer', title))
     .addSectionContainer('LZTUpUniqContainer', await profile())
     .addSectionContainer('LZTUpContestsContainer', await contests())
     .addSectionContainer('LZTUpUsersContainer', await users())
     .addSectionContainer('LZTUpAppearContainer', appearItems)
 
   const settingsSection = new Section('LZTUpSettingsSection')
-    .addSectionItem('Настройки', 'Настройки расширения', 'far fa-cog', 'LZTUpSettingsItem', 'LZTUpSettingsContainer')
-    .addSectionItem('Обновления', 'Установка и проверка обновлений расширения', 'far fa-cloud-download', 'LZTUpUpdateItem', 'LZTUpUpdateContainer')
-    .addSectionItem('Информация', `Версия: ${GM_info?.script?.version}`, 'far fa-info-circle', 'LZTUpInformationItem', 'LZTUpInformationContainer')
+    .addSectionItem('Настройки', 'Настройки расширения', 'far fa-cog', 'LZTUpSettingsItem', (_, title) => openSubMenu('LZTUpSettingsContainer', title))
+    .addSectionItem('Обновления', 'Установка и проверка обновлений расширения', 'far fa-cloud-download', 'LZTUpUpdateItem', (_, title) => openSubMenu('LZTUpUpdateContainer', title))
+    .addSectionItem('Информация', `Версия: ${GM_info?.script?.version}`, 'far fa-info-circle', 'LZTUpInformationItem', (_, title) => openSubMenu('LZTUpInformationContainer', title))
     .addSectionContainer('LZTUpSettingsContainer', settingItems)
     .addSectionContainer('LZTUpUpdateContainer', updateItems)
     .addSectionContainer('LZTUpInformationContainer', await info())
@@ -3843,7 +3908,7 @@ async function generateMenu(tabs) {
   menuContent.appendChild(tabsContainer);
 
   for (const section of sections) {
-    const sectionEl = section.create();
+    const sectionEl = section.createElement();
     menuContent.appendChild(sectionEl);
     for (const container of section.sectionContainers) {
       menuContent.append(container)
@@ -3897,7 +3962,7 @@ class Tab {
 
     document.querySelector(`.${this.className}`).classList.add('active');
 
-    document.querySelectorAll('.LZTUpSection').forEach(section => section.style.display = 'none');
+    document.querySelectorAll('.LZTUpModalContent > .LZTUpSection').forEach(section => section.style.display = 'none');
 
     document.querySelector(`#${this.sectionClassName}`).style.display = '';
   }
