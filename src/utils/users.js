@@ -1,4 +1,4 @@
-import { ProfileInfoRow } from 'UI/kit/profileInfoRow';
+import { ProfileInfoRow } from 'UI/components/profileInfoRow';
 import { isProfilePage, isOpenMemberCard } from 'Utils/checkers';
 import extData from "Configs/extData";
 

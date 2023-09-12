@@ -1,7 +1,7 @@
 import { isContestThread } from 'Utils/checkers';
 import { hideThreadContent, hideThreadPoll } from 'Visuals/threads';
 import { tagsVisibility } from 'Utils/tags';
-import { Button } from 'UI/kit/button';
+import { Button } from 'UI/components/button';
 import { Logger } from 'Utils/logger';
 
 function contestThreadBlockMove(toTop = true) {
