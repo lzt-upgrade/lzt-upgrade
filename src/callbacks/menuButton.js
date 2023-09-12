@@ -4,7 +4,7 @@ import { setMenuTitle } from 'UI/menu/utils';
 import { Tab } from 'UI/menu/tab';
 import { updateTooltips } from "Xenforo/tooltips";
 import config from "Configs/config";
-import { PreviewProfile } from "UI/kit/menu/previewProfile";
+import { PreviewProfile } from "UI/components/menu/previewProfile";
 import { LZTProfileDB } from 'IndexedDB/profile';
 import { initColorPickers } from 'Utils/colorPicker';
 import { getUserId, getUsername } from 'Utils/users';
