@@ -1,9 +1,15 @@
-import { Description } from 'UI/components/menu/description.js';
+import { Section, SectionDirection } from 'UI/components/menu/section';
+import extData from 'Configs/extData';
+
 
 const getInfoItems = async () => {
+  const infoSection = new Section('LZTUpInfoSection', { direction: SectionDirection.Column , hidden: false})
+  for (const infoLink of extData.infoLinks) {
+    infoSection.addSectionItem(infoLink.title, infoLink.desc, infoLink.icon, infoLink.sectionId, () => window.open(infoLink.href), true)
+  }
 
   return [
-    new Description('Информационное меню').createElement()
+    infoSection.createElement()
   ];
 }
 
