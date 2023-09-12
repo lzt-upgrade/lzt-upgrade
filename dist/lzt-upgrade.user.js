@@ -16,6 +16,10 @@
 // @grant GM_xmlhttpRequest
 // @grant GM_info
 // @grant GM_addStyle
+// @grant GM_setValue
+// @grant GM_getValue
+// @grant GM_deleteValue
+// @grant GM_listValue
 // @homepageURL https://github.com/lzt-upgrade/lzt-upgrade
 // @icon https://cdn.jsdelivr.net/gh/lzt-upgrade/lzt-upgrade@latest/src/images/logo-mini.png
 // @license MIT
@@ -92,7 +96,7 @@ ___CSS_LOADER_EXPORT___.push([module.id, ".LZTUpErrorPage{background-color:#2727
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 ___CSS_LOADER_EXPORT___.push([module.id, "@import url(https://cdn.jsdelivr.net/gh/lzt-upgrade/coloris-lzt-theme@latest/dist/coloris.min.css);"]);
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".clr-picker{display:none}.LZTUpColorPickerWrap{display:flex;align-items:center}.LZTUpColorPickerWrap:not(:first-of-type){margin-top:10px}.LZTUpColorPickerWrap .LZTUpModalDescription{margin-right:10px !important}.LZTUpColorPickerWrap .clr-field input{width:24px;height:24px}.LZTUpColorPickerWrap .clr-field button{width:28px;height:28px}.LZTUpColorPickerWrap .clr-field input,.LZTUpColorPickerWrap .clr-field button{border-radius:4px}.LZTUpSelect option{background:#272727;padding:10px 15px;font-weight:600;border-radius:6px}.LZTUpSelect option:hover{background:#2d2d2d}.LZTUpIconButton{display:flex;flex-direction:row-reverse;align-items:center;justify-content:center}.LZTUpIconButton.fit{max-width:fit-content}.LZTUpIconButton i{margin:0 8px;margin-top:3.5px}.LZTUpRefreshButton{min-width:32px !important;margin-left:32px !important}.LZTUpSortableItem{display:flex;align-items:center;padding:16px;margin:8px 0;border-radius:8px;background:rgba(54,54,54,.75)}.LZTUpSortableItem .LZTUpSortableDraggable{color:#8c8c8c;margin-right:10px;cursor:move}.LZTUpSortableItem .LZTUPSortableContent p{margin:0 !important}.LZTUpSortableItem .LZTUpSortableUtility{display:flex;margin-left:auto}.LZTUpSortableItem .LZTUpSortableUtility div{margin-left:10px;cursor:pointer;transition:.5s color ease}.LZTUpSortableItem .LZTUpSortableUtility .LZTUpSortableEditButton{color:#6a6a6a}.LZTUpSortableItem .LZTUpSortableUtility .LZTUpSortableEditButton:hover{color:#0daf77}.LZTUpSortableItem .LZTUpSortableUtility .LZTUpSortableRemoveButton{color:#964448}.LZTUpSortableItem .LZTUpSortableUtility .LZTUpSortableRemoveButton:hover{color:#f13838}#LZTUpModalMainTitle{text-align:center;padding:16px;font-size:20px;font-weight:bold}.LZTUpModalBackButton{position:absolute;top:18px;left:25px;padding:0px 5px;margin:-4px -5px;cursor:pointer;line-height:25px;height:26px;width:26px;border:0 !important;background:rgba(0,0,0,0);color:#d6d6d6;font-size:18px}.LZTUpModalBackButton:hover{background:rgba(18,76,50,.4);border-radius:8px}.LZTUpTabs{width:100%;box-sizing:border-box;padding:0 10px;border:none !important;margin:15px auto !important;display:flex;align-items:center;justify-content:center}.LZTUpTabs #LZTUpTab{position:relative;padding:10px;margin:0 4px;float:left;font-weight:600;list-style:none;font-size:14px}.LZTUpTabs #LZTUpTab:hover{cursor:pointer}.LZTUpTabs #LZTUpTab.active{box-shadow:inset 0px -2px 0px 0px #0daf77;transform:translateY(-1px);transition:.2s}.LZTUpTabs #LZTUpTab:not(.active):hover{box-shadow:inset 0px -2px 0px 0px #363636}.LZTUpSection{display:flex;flex-wrap:wrap;margin:20px 15px}.LZTUpSection #LZTUpSectionItem{max-width:284px;flex-basis:50%;flex-grow:1;height:64px;display:flex;align-items:center;transition:all .5s ease}.LZTUpSection #LZTUpSectionItem:hover{background:rgba(54,54,54,.75);border-radius:8px;cursor:pointer}#LZTUpIcon{width:28px;height:28px;margin:20px;font-size:28px;color:#0daf77}#LZTUpIcon .gray{color:#949494}#LZTUpIcon .right{text-align:right}#LZTUpSubText{display:block;margin-right:20px;font-size:13px;text-overflow:ellipsis;white-space:nowrap;overflow:hidden;width:200px;color:#949494}#LZTUpModalContainer{margin:15px;max-width:400px}#LZTUpModalChecksContainer,#LZTUpModalReportButtonsContainer,#LZTUpModalCell,.LZTUpModalMesh,.LZTUpModalSeparator{margin:15px;max-width:95%}.LZTUpContainer{display:flex;flex-direction:column;margin:15px;max-width:95%}.LZTUpModalHeading{margin:10px 0 5px 0 !important}.LZTUpModalDescription{margin:0 !important;margin-bottom:5px !important}.LZTUpTextArea{min-height:40px}.LZTUpModalSeparator{border-bottom:1px solid #363636}#LZTUpModalChecksText{margin:0px 25px 5px}#LZTUpText{display:block;margin-right:20px;font-size:15px;font-weight:bold;text-overflow:ellipsis;white-space:nowrap;overflow:hidden;width:200px}.LZTUpModalSectionTexts{display:flex;flex-direction:column;justify-content:center;flex:1 1 auto}.LZTUpModalSectionTexts #LZTUpSubText{max-width:450px}#LZTUpModalComment{background:#363636;margin:5px 15px;padding:10px 15px;border-radius:10px}#LZTUpModalComment a{color:#00ba78}.LZTUpModalBlock{display:flex}.LZTUpModalBlockButtons{display:flex;flex-wrap:wrap;justify-content:center;margin-top:25px}.LZTUpModalBlockButtons .button{margin:5px;width:250px}#LZTUpPreviewContainer{display:flex}.LZTUpSubMenu .previewContainer{float:right;margin:25px 15px;padding:10px 10px 15px 10px;background-size:cover;background-position:center;background-attachment:fixed;background-repeat:no-repeat;border-radius:10px;width:92%;max-width:92%}.LZTUpSubMenu .previewContainer .avatar img{width:66px;height:66px}.LZTUpSubMenu .previewContainer .info{padding:0 0 0 20px}.LZTUpSubMenu .previewContainer .info .username{font-weight:600}.LZTUpSubMenu .previewContainer .bannerOrStatus{min-width:150px;margin:10px 0 0;color:#949494}.LZTUpSubMenu .previewContainer .bannerOrStatus em{font-style:inherit}.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge .customUniqIcon{padding:2px 0;text-align:center}.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge .customUniqIcon svg{width:16px !important;height:16px !important}.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge::before{font-family:\"Font Awesome 5 Pro\";font-weight:600;display:inline-block;font-size:12.32px}.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.admin{background:#964448}.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.admin::before,.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.bot::before{content:\"\"}.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.Designer::before{content:\"\"}.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.headDesigner::before{content:\"\"}.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.editor::before{content:\"\"}.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.sponsor::before{content:\"\"}.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.coder::before{content:\"\"}.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.uniq_default::before,.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.Legend::before,.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.Ikarus::before{content:\"\"}.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.moder{background:#3d6b39}.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.curator{background:rgba(8,156,122,.8509803922)}.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.moder::before,.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.main_moder::before,.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.curator::before{content:\"\"}.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.arbitr::before,.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.main_arbitr::before{content:\"\"}.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.telegramBot::before{content:\"\"}.LZTUpSubMenu .previewContainer .UsernameStyle.style18,.LZTUpSubMenu .previewContainer .UsernameStyle.style360{text-decoration:line-through;color:#aaa}.LZTUpSubMenu .previewContainer .UsernameStyle.style3{color:#f13838}.LZTUpSubMenu .previewContainer .UsernameStyle.style30{color:#ff9afc}.LZTUpSubMenu .previewContainer .UsernameStyle.style353{background:linear-gradient(98.26deg, #FF42F7 2.08%, #FF24CF 100%);-webkit-background-clip:text;-webkit-text-fill-color:rgba(0,0,0,0)}.LZTUpSubMenu .previewContainer .UsernameStyle.style350{background:linear-gradient(90deg, #5c45ff, #feb5f2 100%);-webkit-background-clip:text;-webkit-text-fill-color:rgba(0,0,0,0)}.LZTUpSubMenu .previewContainer .UsernameStyle.style12{color:#01f73c}.LZTUpSubMenu .previewContainer .UsernameStyle.style1,.LZTUpSubMenu .previewContainer .UsernameStyle.style41,.LZTUpSubMenu .previewContainer .UsernameStyle.style142,.LZTUpSubMenu .previewContainer .UsernameStyle.style144{color:#aaa}.LZTUpSubMenu .previewContainer .UsernameStyle.style32,.LZTUpSubMenu .previewContainer .UsernameStyle.style93,.LZTUpSubMenu .previewContainer .UsernameStyle.style21,.LZTUpSubMenu .previewContainer .UsernameStyle.style2{color:#949494}.LZTUpSubMenu .previewContainer .UsernameStyle.style60{color:#ffa8af}.LZTUpSubMenu .previewContainer .UsernameStyle.style9{color:#0075ad}.LZTUpSubMenu .previewContainer .UsernameStyle.style65{color:#a5e3ff}.LZTUpSubMenu .previewContainer .UsernameStyle.style351{color:#ff0076}.LZTUpSubMenu .previewContainer .UsernameStyle.style29{color:#0acc9e}.LZTUpSubMenu .previewContainer .UsernameStyle.style26{background:linear-gradient(90deg, #0095dd 0%, #f1094b 100%, #0095dd);-webkit-background-clip:text;-webkit-text-fill-color:rgba(0,0,0,0)}.LZTUpSubMenu .previewContainer .UsernameStyle.style4{color:#0e9100}.LZTUpSubMenu .previewContainer .UsernameStyle.style22{color:#eee}.LZTUpSubMenu .previewContainer .UsernameStyle.style11{color:#56b5e0}.LZTUpSubMenu .previewContainer .UsernameStyle.style7{color:#ff9304}.LZTUpSubMenu .previewContainer .UsernameStyle.style349,.LZTUpSubMenu .previewContainer .UsernameStyle.style365{color:#0087ff}.LZTUpSubMenu .previewContainer .UsernameStyle.style354{color:aqua}.LZTUpSubMenu .previewContainer .UsernameStyle.style218{color:#f13838}.LZTUpSubMenu .previewContainer .UsernameStyle.style359{color:#e5d9a3}.LZTUpSubMenu .previewContainer .UsernameStyle.style8{color:gold}.LZTUpSubMenu .previewContainer .UsernameStyle.style265{background:linear-gradient(35deg, #006eff, #00ff81 52%, #fff 50%, #93cbff);-webkit-background-clip:text;-webkit-text-fill-color:rgba(0,0,0,0);text-shadow:0 0 7px rgba(0,255,207,.5019607843)}.LZTUpSubMenu .previewContainer .UsernameStyle.style23{color:#b35ede}.LZTUpSubMenu .previewContainer .UsernameStyle.banned,.LZTUpSubMenu .previewContainer .UsernameStyle.is_banned{text-decoration:line-through;background:inherit;-webkit-text-fill-color:inherit;text-shadow:inherit !important;color:#aaa !important}.LZTUpSubMenu .previewContainer .avatarBox{position:relative}.LZTUpSubMenu .previewContainer .avatarBox .avatarUserBadges .badgeDefaultBackground{background:#363636}.LZTUpSubMenu .previewContainer .avatarBox .avatarUserBadges .avatarUserBadge{position:absolute;bottom:-12px;left:20px;border:2px solid #272727;font-size:0;width:22px;height:22px;margin:0;line-height:22px;border-radius:50%;text-align:center;text-shadow:none !important;box-shadow:none !important;border-radius:50% !important;-webkit-background-clip:unset !important;-webkit-text-fill-color:unset !important;overflow:hidden}.LZTUpSubMenu .previewContainer .avatarBox .avatarUserBadges .avatarUserBadge:only-child{left:35px}.LZTUpSubMenu .previewContainer .avatarBox .avatarUserBadges .avatarUserBadge.avatarUserBadge--1{left:20px}.LZTUpSubMenu .previewContainer .avatarBox .avatarUserBadges .avatarUserBadge.avatarUserBadge--2{left:40px}.LZTUpSubMenu .previewContainer .avatarBox,.LZTUpSubMenu .previewContainer .info{display:table-cell;vertical-align:top}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".clr-picker{display:none}.LZTUpColorPickerWrap{display:flex;align-items:center}.LZTUpColorPickerWrap:not(:first-of-type){margin-top:10px}.LZTUpColorPickerWrap .LZTUpModalDescription{margin-right:10px !important}.LZTUpColorPickerWrap .clr-field input{width:24px;height:24px}.LZTUpColorPickerWrap .clr-field button{width:28px;height:28px}.LZTUpColorPickerWrap .clr-field input,.LZTUpColorPickerWrap .clr-field button{border-radius:4px}.LZTUpSelect option{background:#272727;padding:10px 15px;font-weight:600;border-radius:6px}.LZTUpSelect option:hover{background:#2d2d2d}.LZTUpIconButton{display:flex;flex-direction:row-reverse;align-items:center;justify-content:center}.LZTUpIconButton.fit{max-width:fit-content}.LZTUpIconButton i{margin:0 8px;margin-top:3.5px}.LZTUpRefreshButton{min-width:32px !important;margin-left:32px !important}.LZTUpSortableItem{display:flex;align-items:center;padding:16px;margin:8px 0;border-radius:8px;background:rgba(54,54,54,.75)}.LZTUpSortableItem .LZTUpSortableDraggable{color:#8c8c8c;margin-right:10px;cursor:move}.LZTUpSortableItem .LZTUPSortableContent p{margin:0 !important}.LZTUpSortableItem .LZTUpSortableUtility{display:flex;margin-left:auto}.LZTUpSortableItem .LZTUpSortableUtility div{margin-left:10px;cursor:pointer;transition:.5s color ease}.LZTUpSortableItem .LZTUpSortableUtility .LZTUpSortableEditButton{color:#6a6a6a}.LZTUpSortableItem .LZTUpSortableUtility .LZTUpSortableEditButton:hover{color:#0daf77}.LZTUpSortableItem .LZTUpSortableUtility .LZTUpSortableRemoveButton{color:#964448}.LZTUpSortableItem .LZTUpSortableUtility .LZTUpSortableRemoveButton:hover{color:#f13838}#LZTUpModalMainTitle{text-align:center;padding:16px;font-size:20px;font-weight:bold}.LZTUpModalBackButton{position:absolute;top:18px;left:25px;padding:0px 5px;margin:-4px -5px;cursor:pointer;line-height:25px;height:26px;width:26px;border:0 !important;background:rgba(0,0,0,0);color:#d6d6d6;font-size:18px}.LZTUpModalBackButton:hover{background:rgba(18,76,50,.4);border-radius:8px}.LZTUpTabs{width:100%;box-sizing:border-box;padding:0 10px;border:none !important;margin:15px auto !important;display:flex;align-items:center;justify-content:center}.LZTUpTabs #LZTUpTab{position:relative;padding:10px;margin:0 4px;float:left;font-weight:600;list-style:none;font-size:14px}.LZTUpTabs #LZTUpTab:hover{cursor:pointer}.LZTUpTabs #LZTUpTab.active{box-shadow:inset 0px -2px 0px 0px #0daf77;transform:translateY(-1px);transition:.2s}.LZTUpTabs #LZTUpTab:not(.active):hover{box-shadow:inset 0px -2px 0px 0px #363636}.LZTUpSection{display:flex;flex-wrap:wrap;margin:20px 15px}.LZTUpSection.row{flex-direction:row}.LZTUpSection.row .LZTUpSectionItem{max-width:284px}.LZTUpSection.column{flex-direction:column}.LZTUpSection .LZTUpSectionItem{flex-basis:50%;flex-grow:1;height:64px;display:flex;align-items:center;transition:all .5s ease}.LZTUpSection .LZTUpSectionItem:hover{background:rgba(54,54,54,.75);border-radius:8px;cursor:pointer}.LZTUpSectionTextContainer{display:flex;flex-direction:column;justify-content:center;flex:1 1 auto}#LZTUpIcon{width:28px;height:28px;margin:20px;font-size:28px;color:#0daf77}#LZTUpIcon.gray{color:#949494}#LZTUpIcon.right{text-align:right}#LZTUpModalContainer{margin:15px;max-width:400px}#LZTUpModalChecksContainer,#LZTUpModalReportButtonsContainer,#LZTUpModalCell,.LZTUpModalMesh,.LZTUpModalSeparator{margin:15px;max-width:95%}.LZTUpContainer{display:flex;flex-direction:column;margin:15px;max-width:95%}.LZTUpModalHeading{margin:10px 0 5px 0 !important}.LZTUpModalDescription{margin:0 !important;margin-bottom:5px !important}.LZTUpTextArea{min-height:40px}.LZTUpModalSeparator{border-bottom:1px solid #363636}#LZTUpModalChecksText{margin:0px 25px 5px}.LZTUpSectionTitle,.LZTUpSectionDesc{display:block;margin-right:20px;font-size:15px;font-weight:bold;text-overflow:ellipsis;white-space:nowrap;overflow:hidden;width:200px}.LZTUpSectionDesc{font-size:13px;font-weight:normal;color:#949494}.LZTUpModalSectionTexts{display:flex;flex-direction:column;justify-content:center;flex:1 1 auto}.LZTUpModalSectionTexts .LZTUpSubText{max-width:450px}#LZTUpModalComment{background:#363636;margin:5px 15px;padding:10px 15px;border-radius:10px}#LZTUpModalComment a{color:#00ba78}.LZTUpModalBlock{display:flex}.LZTUpModalBlockButtons{display:flex;flex-wrap:wrap;justify-content:center;margin-top:25px}.LZTUpModalBlockButtons .button{margin:5px;width:250px}#LZTUpPreviewContainer{display:flex}.LZTUpSubMenu .previewContainer{float:right;margin:25px 15px;padding:10px 10px 15px 10px;background-size:cover;background-position:center;background-attachment:fixed;background-repeat:no-repeat;border-radius:10px;width:92%;max-width:92%}.LZTUpSubMenu .previewContainer .avatar img{width:66px;height:66px}.LZTUpSubMenu .previewContainer .info{padding:0 0 0 20px}.LZTUpSubMenu .previewContainer .info .username{font-weight:600}.LZTUpSubMenu .previewContainer .bannerOrStatus{min-width:150px;margin:10px 0 0;color:#949494}.LZTUpSubMenu .previewContainer .bannerOrStatus em{font-style:inherit}.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge .customUniqIcon{padding:2px 0;text-align:center}.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge .customUniqIcon svg{width:16px !important;height:16px !important}.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge::before{font-family:\"Font Awesome 5 Pro\";font-weight:600;display:inline-block;font-size:12.32px}.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.admin{background:#964448}.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.admin::before,.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.bot::before{content:\"\"}.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.Designer::before{content:\"\"}.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.headDesigner::before{content:\"\"}.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.editor::before{content:\"\"}.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.sponsor::before{content:\"\"}.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.coder::before{content:\"\"}.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.uniq_default::before,.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.Legend::before,.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.Ikarus::before{content:\"\"}.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.moder{background:#3d6b39}.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.curator{background:rgba(8,156,122,.8509803922)}.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.moder::before,.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.main_moder::before,.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.curator::before{content:\"\"}.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.arbitr::before,.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.main_arbitr::before{content:\"\"}.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.telegramBot::before{content:\"\"}.LZTUpSubMenu .previewContainer .UsernameStyle.style18,.LZTUpSubMenu .previewContainer .UsernameStyle.style360{text-decoration:line-through;color:#aaa}.LZTUpSubMenu .previewContainer .UsernameStyle.style3{color:#f13838}.LZTUpSubMenu .previewContainer .UsernameStyle.style30{color:#ff9afc}.LZTUpSubMenu .previewContainer .UsernameStyle.style353{background:linear-gradient(98.26deg, #FF42F7 2.08%, #FF24CF 100%);-webkit-background-clip:text;-webkit-text-fill-color:rgba(0,0,0,0)}.LZTUpSubMenu .previewContainer .UsernameStyle.style350{background:linear-gradient(90deg, #5c45ff, #feb5f2 100%);-webkit-background-clip:text;-webkit-text-fill-color:rgba(0,0,0,0)}.LZTUpSubMenu .previewContainer .UsernameStyle.style12{color:#01f73c}.LZTUpSubMenu .previewContainer .UsernameStyle.style1,.LZTUpSubMenu .previewContainer .UsernameStyle.style41,.LZTUpSubMenu .previewContainer .UsernameStyle.style142,.LZTUpSubMenu .previewContainer .UsernameStyle.style144{color:#aaa}.LZTUpSubMenu .previewContainer .UsernameStyle.style32,.LZTUpSubMenu .previewContainer .UsernameStyle.style93,.LZTUpSubMenu .previewContainer .UsernameStyle.style21,.LZTUpSubMenu .previewContainer .UsernameStyle.style2{color:#949494}.LZTUpSubMenu .previewContainer .UsernameStyle.style60{color:#ffa8af}.LZTUpSubMenu .previewContainer .UsernameStyle.style9{color:#0075ad}.LZTUpSubMenu .previewContainer .UsernameStyle.style65{color:#a5e3ff}.LZTUpSubMenu .previewContainer .UsernameStyle.style351{color:#ff0076}.LZTUpSubMenu .previewContainer .UsernameStyle.style29{color:#0acc9e}.LZTUpSubMenu .previewContainer .UsernameStyle.style26{background:linear-gradient(90deg, #0095dd 0%, #f1094b 100%, #0095dd);-webkit-background-clip:text;-webkit-text-fill-color:rgba(0,0,0,0)}.LZTUpSubMenu .previewContainer .UsernameStyle.style4{color:#0e9100}.LZTUpSubMenu .previewContainer .UsernameStyle.style22{color:#eee}.LZTUpSubMenu .previewContainer .UsernameStyle.style11{color:#56b5e0}.LZTUpSubMenu .previewContainer .UsernameStyle.style7{color:#ff9304}.LZTUpSubMenu .previewContainer .UsernameStyle.style349,.LZTUpSubMenu .previewContainer .UsernameStyle.style365{color:#0087ff}.LZTUpSubMenu .previewContainer .UsernameStyle.style354{color:aqua}.LZTUpSubMenu .previewContainer .UsernameStyle.style218{color:#f13838}.LZTUpSubMenu .previewContainer .UsernameStyle.style359{color:#e5d9a3}.LZTUpSubMenu .previewContainer .UsernameStyle.style8{color:gold}.LZTUpSubMenu .previewContainer .UsernameStyle.style265{background:linear-gradient(35deg, #006eff, #00ff81 52%, #fff 50%, #93cbff);-webkit-background-clip:text;-webkit-text-fill-color:rgba(0,0,0,0);text-shadow:0 0 7px rgba(0,255,207,.5019607843)}.LZTUpSubMenu .previewContainer .UsernameStyle.style23{color:#b35ede}.LZTUpSubMenu .previewContainer .UsernameStyle.banned,.LZTUpSubMenu .previewContainer .UsernameStyle.is_banned{text-decoration:line-through;background:inherit;-webkit-text-fill-color:inherit;text-shadow:inherit !important;color:#aaa !important}.LZTUpSubMenu .previewContainer .avatarBox{position:relative}.LZTUpSubMenu .previewContainer .avatarBox .avatarUserBadges .badgeDefaultBackground{background:#363636}.LZTUpSubMenu .previewContainer .avatarBox .avatarUserBadges .avatarUserBadge{position:absolute;bottom:-12px;left:20px;border:2px solid #272727;font-size:0;width:22px;height:22px;margin:0;line-height:22px;border-radius:50%;text-align:center;text-shadow:none !important;box-shadow:none !important;border-radius:50% !important;-webkit-background-clip:unset !important;-webkit-text-fill-color:unset !important;overflow:hidden}.LZTUpSubMenu .previewContainer .avatarBox .avatarUserBadges .avatarUserBadge:only-child{left:35px}.LZTUpSubMenu .previewContainer .avatarBox .avatarUserBadges .avatarUserBadge.avatarUserBadge--1{left:20px}.LZTUpSubMenu .previewContainer .avatarBox .avatarUserBadges .avatarUserBadge.avatarUserBadge--2{left:40px}.LZTUpSubMenu .previewContainer .avatarBox,.LZTUpSubMenu .previewContainer .info{display:table-cell;vertical-align:top}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -538,41 +542,8 @@ var __webpack_exports__ = {};
 // This entry need to be wrapped in an IIFE because it need to be isolated against other modules in the chunk.
 (() => {
 
-;// CONCATENATED MODULE: ./src/configs/config.js
-const config = () => {
-  return {
-    'extName':  false ? 0 : 'LZT Upgrade Development Build',
-  }
-}
-
-/* harmony default export */ const configs_config = (config());
-;// CONCATENATED MODULE: ./src/configs/extData.js
-const extData = () => {
-  return {
-    nodes: {
-      // nodes of the forum
-      contests: '.node766',
-    },
-    selectors: {
-      // elements of the forum
-      memberCard: '.xenOverlay.memberCard',
-    },
-    uiElementsId: {
-      // id of the element for extension UI
-      lztupTempSubMenu: 'LZTUpTempSubMenu'
-    },
-    uiElementsSelectors: {
-      // selectors of the element for extension UI
-      lztupTempSubMenu: '#LZTUpTempSubMenu'
-    },
-    links: {
-      telegramChannel: 'https://t.me/lzt_upgrade',
-      githubPage: 'https://github.com/lzt-upgrade/lzt-upgrade',
-    }
-  }
-}
-
-/* harmony default export */ const configs_extData = (extData());
+;// CONCATENATED MODULE: ./src/configs/endpoints.json
+const endpoints_namespaceObject = JSON.parse('{"RC":"https://lztupgrade.toiloff.ru/api/themes","I1":"https://lztupgrade.toiloff.ru/static/themes"}');
 ;// CONCATENATED MODULE: ./src/utils/utils.js
 function waitForElm(selector) {
   // https://stackoverflow.com/questions/5525071/how-to-wait-until-an-element-exists
@@ -669,7 +640,64 @@ function applyStyle(el, style) {
   }
 }
 
+function getTimestamp() {
+  return Math.floor(Date.now() / 1000);
+}
 
+
+;// CONCATENATED MODULE: ./src/api/lztupgrade/loadTheme.js
+
+
+
+function loadTheme(themeName) {
+  const link = document.createElement('link');
+  link.href = `${endpoints_namespaceObject.I1}/${themeName}.css`;
+  link.type = 'text/css';
+  link.rel = 'stylesheet';
+  waitForElement('head', 3000).then(() => {
+    document
+      .querySelector('head')
+      .appendChild(link);
+  });
+}
+
+
+;// CONCATENATED MODULE: ./src/configs/config.js
+const config = () => {
+  return {
+    extName:  false ? 0 : 'LZT Upgrade Development Build',
+    cacheTime: 604_800,
+  }
+}
+
+/* harmony default export */ const configs_config = (config());
+;// CONCATENATED MODULE: ./src/configs/extData.js
+const extData = () => {
+  return {
+    nodes: {
+      // nodes of the forum
+      contests: '.node766',
+    },
+    selectors: {
+      // elements of the forum
+      memberCard: '.xenOverlay.memberCard',
+    },
+    uiElementsId: {
+      // id of the element for extension UI
+      lztupTempSubMenu: 'LZTUpTempSubMenu'
+    },
+    uiElementsSelectors: {
+      // selectors of the element for extension UI
+      lztupTempSubMenu: '#LZTUpTempSubMenu'
+    },
+    links: {
+      telegramChannel: 'https://t.me/lzt_upgrade',
+      githubPage: 'https://github.com/lzt-upgrade/lzt-upgrade',
+    }
+  }
+}
+
+/* harmony default export */ const configs_extData = (extData());
 ;// CONCATENATED MODULE: ./src/utils/logger.js
 const Logger = {};
 Logger.log = (...text) => {
@@ -737,8 +765,6 @@ function contestsAutoCloseHandler(toggle) {
 }
 
 
-;// CONCATENATED MODULE: ./src/configs/endpoints.json
-const endpoints_namespaceObject = JSON.parse('{"RC":"https://lztupgrade.toiloff.ru/api/themes","I1":"https://lztupgrade.toiloff.ru/static/themes"}');
 ;// CONCATENATED MODULE: ./src/api/requestJSON.js
 
 
@@ -764,50 +790,27 @@ async function getThemes() {
 }
 
 
-;// CONCATENATED MODULE: ./src/api/lztupgrade/loadTheme.js
-
-
-
-async function loadTheme(themeName) {
-  try {
-    let res = await fetch(`${endpoints_namespaceObject.I1}/${themeName}.css`)
-
-    if (res.status === 200) {
-      Logger.debug("LoadTheme: Status code 200. Adding theme styles...");
-      const styles = await res.text();
-      GM_addStyle(styles); // ! Maybe need to add polyfills
-      return true;
-    }
-
-    Logger.debug(`LoadTheme: Failed to load theme. Status code: ${res.status}, Status message: ${res.statusText}`);
-    return false;
-  } catch (err) {
-    Logger.error(`Failed to load theme ${themeName} (${endpoints_namespaceObject.I1}/${themeName}.css). Error: `, err);
-    return false;
-  }
-}
-
-
 ;// CONCATENATED MODULE: ./src/callbacks/extensionStart.js
 
 
 
 
-function loadThemeByID(themeId) {
+function getThemeByID(themeId) {
   // Loading theme by ID
   return new Promise(async (resolve, reject) => {
+    console.log('Loading theme start... ' + new Date());
     Logger.debug(`onExtensionStart: Start loading theme with id ${themeId}`);
     const availabledThemes = await getThemes();
     if (availabledThemes?.length) {
       Logger.debug('onExtensionStart: Themes arrray getted: ', availabledThemes);
       const findedTheme = availabledThemes.find(theme => theme.uid === themeId && theme.active === 1);
-      Logger.debug(findedTheme);
-      if (findedTheme) {
-        Logger.debug(`onExtensionStart: Finded active theme with id ${findedTheme.uid}`);
-        const status = await loadTheme(findedTheme.file);
-        Logger.debug(`onExtensionStart: Theme loading status: ${status}`);
-        return resolve(status);
-      }
+      return resolve(findedTheme?.file)
+      // Logger.debug(findedTheme);
+      // if (findedTheme) {
+      //   Logger.debug(`onExtensionStart: Finded active theme with id ${findedTheme.uid}`);
+      //   loadTheme(findedTheme.file);
+      //   return resolve(true);
+      // }
     }
 
     Logger.debug(`onExtensionStart: Not finded active theme`);
@@ -1534,35 +1537,6 @@ function registerObserver(callback) {
 }
 
 
-;// CONCATENATED MODULE: ./src/ui/kit/menuSection.js
-class MenuSection {
-  /**
-   *
-   *  @constructor
-   *  @param {string} className - class name of the section
-   *  @param {object} sectionItems - array of section items
-   */
-
-  constructor(id, sectionItems) {
-    this.id = id;
-    this.sectionItems = sectionItems;
-  }
-
-  create() {
-    const section = document.createElement('div');
-    section.id = this.id;
-    section.className = 'LZTUpSection';
-
-    for (const sectionItem of this.sectionItems) {
-      section.appendChild(sectionItem);
-    }
-
-    section.style.display = 'none';
-    return section;
-  }
-}
-
-
 ;// CONCATENATED MODULE: ./src/ui/kit/icons.js
 function createMenuIcon(className, id = 'LZTUpIcon') {
   const icon = document.createElement('i');
@@ -1664,11 +1638,6 @@ function addGoBackBtn(target = '', text = configs_config.extName, subMenuToShow 
   });
 }
 
-
-;// CONCATENATED MODULE: ./src/ui/menu/sectionItem.js
-
-
-
 function openSubMenu(containerId, sectionName) {
   document.querySelector('.LZTUpTabs').style.display = 'none';
 
@@ -1683,48 +1652,151 @@ function openSubMenu(containerId, sectionName) {
   return addGoBackBtn();
 }
 
-/**
- *
- *  @param {string} sectionName - name of the section
- *  @param {string} sectionDesc - desc of the section
- *  @param {string} sectionIconClasses - font awesome icon classes
- *  @param {string} className - name of the section class
- *  @param {string} containerId - name of the container id
- */
-function addMenuSectionItem(sectionName, sectionDesc, sectionIconClasses, className, containerId) {
-  const sectionItem = document.createElement('div');
-  sectionItem.id = 'LZTUpSectionItem';
-  sectionItem.className = className;
 
-  const sectionIcon = createMenuIcon(sectionIconClasses);
-  const textContainer = document.createElement('div');
-  textContainer.innerHTML = `
-    <span id="LZTUpText">${XenForo.htmlspecialchars(sectionName)}</span>
-    <span id="LZTUpSubText">${XenForo.htmlspecialchars(sectionDesc)}</span>
-  `;
+;// CONCATENATED MODULE: ./src/ui/kit/menu/section.js
 
-  sectionItem.appendChild(sectionIcon);
-  sectionItem.appendChild(textContainer);
 
-  sectionItem.addEventListener('click', () => openSubMenu(containerId, sectionName));
 
-  return sectionItem;
+
+class SectionDirection {
+  static Row = new SectionDirection('row');
+  static Column = new SectionDirection('column');
+
+  constructor(name) {
+    this.name = name
+  }
 }
 
 
-;// CONCATENATED MODULE: ./src/ui/menu/sectionContainer.js
-function addMenuSectionContainer(sectionId, items) {
-  const container = document.createElement('div');
-  container.id = sectionId;
-  container.classList.add('LZTUpSubMenu');
+class SectionText {
+  /**
+   *
+   *  @constructor
+   *  @param {string} text - text of the heading
+   */
 
-  for (const item of items) {
-    container.appendChild(item);
+  constructor(text) {
+    this.text = text;
+    this.className = 'LZTUpSectionTitle';
   }
 
-  container.style.display = 'none';
+  createElement() {
+    const el = document.createElement('span');
+    el.classList.add(this.className);
+    el.innerText = this.text;
 
-  return container;
+    return el;
+  }
+}
+
+
+class SectionSubText extends SectionText {
+  /**
+   *
+   *  @constructor
+   *  @param {string} text - text of the heading
+   */
+
+  constructor(text) {
+    super(text)
+    this.className = 'LZTUpSectionDesc';
+  }
+}
+
+
+class Section {
+  /**
+   *
+   *  @constructor
+   *  @param {string} id - id of the section
+   *  @param {object} [sectionItems] - array of section items
+   *  @param {SectionDirection} [direction] - direction of elements in the section
+   *  @param {boolean} [hidden] - state of visibility section. If true, the section is hidden by default.
+   */
+
+  // constructor(options) {
+  //   this.doors = options.doors || 4;
+  //   this.state = options.state || 'brand new';
+  //   this.color = options.color || 'white';
+  // }
+
+  constructor(id, options = {}) {
+    this.id = id;
+    this.sectionItems = options.sectionItems || [];
+    this.sectionContainers = options.sectionContainers || [];
+    this.direction = options.direction || SectionDirection.Row;
+    this.hidden = options.hidden || true;
+  }
+
+  create() {
+    const section = document.createElement('div');
+    section.id = this.id;
+    section.classList.add('LZTUpSection', this.direction === SectionDirection.Row ? 'row' : 'column');
+
+    for (const sectionItem of this.sectionItems) {
+      section.appendChild(sectionItem);
+    }
+
+    console.log(this)
+    if (this.hidden) {
+      section.style.display = 'none';
+    }
+
+    return section;
+  }
+
+  /**
+   *
+   *  @param {string} name - title of the item
+   *  @param {string} desc - description of the item
+   *  @param {string} iconClasses - font awesome icon classes
+   *  @param {string} sectionId - id of the section item
+   *  @param {string} containerId - id of the container element (open on click)
+   *  @param {boolean} rightArrow - add a icon of the right arrow in the right side (only for column direction)
+   */
+  addSectionItem(title, desc, iconClasses, sectionId, containerId, rightArrow = false) {
+    const sectionItem = document.createElement('div');
+    sectionItem.id = sectionId;
+    sectionItem.classList.add('LZTUpSectionItem');
+
+    const sectionIcon = createMenuIcon(iconClasses);
+    const textContainer = document.createElement('div');
+    textContainer.classList.add('LZTUpSectionTextContainer')
+    const textEl = new SectionText(title).createElement();
+    const subTextEl = new SectionSubText(desc).createElement();
+
+    textContainer.append(textEl, subTextEl);
+    sectionItem.append(sectionIcon, textContainer);
+    if (this.direction === SectionDirection.Column && rightArrow) {
+      const sectionArrowIcon = createMenuIcon('far fa-angle-right gray right');
+      sectionItem.append(sectionArrowIcon)
+    }
+
+    sectionItem.onclick = () => openSubMenu(containerId, title);
+
+    this.sectionItems.push(sectionItem);
+    return this;
+  }
+
+  /**
+   *
+   *  @param {string} containerId - name of the container id (open menu on click)
+   *  @param {object} items - list of dom elements for add to container
+   */
+  addSectionContainer(containerId, items) {
+    const container = document.createElement('div');
+    container.id = containerId;
+    container.classList.add('LZTUpSubMenu');
+    container.style.display = 'none';
+
+    for (const item of items) {
+      container.appendChild(item);
+    }
+
+
+    this.sectionContainers.push(container);
+    return this;
+  }
 }
 
 
@@ -3648,6 +3720,17 @@ const getProfileItems = async () => {
 }
 
 /* harmony default export */ const profile = (getProfileItems);
+;// CONCATENATED MODULE: ./src/ui/menu/items/info.js
+
+
+const getInfoItems = async () => {
+
+  return [
+    new Description('Информационное меню').createElement()
+  ];
+}
+
+/* harmony default export */ const info = (getInfoItems);
 // EXTERNAL MODULE: ./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js
 var injectStylesIntoStyleTag = __webpack_require__("./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
 var injectStylesIntoStyleTag_default = /*#__PURE__*/__webpack_require__.n(injectStylesIntoStyleTag);
@@ -3707,24 +3790,19 @@ var update = injectStylesIntoStyleTag_default()(menu/* default */.Z, options);
 
 
 
-
 async function generateMenu(tabs) {
-  const mainItems = [
-    addMenuSectionItem('Локальный Уник', 'Максимальная кастомизация', 'far fa-palette', 'LZTUpUniqItem', 'LZTUpUniqContainer'),
-    addMenuSectionItem('Розыгрыши', 'Комфорт для розыгрышей', 'far fa-gift', 'LZTUpContestsItem', 'LZTUpContestsContainer'),
-    addMenuSectionItem('Пользователи', 'Штучки для пользователей', 'far fa-user', 'LZTUpUsersItem', 'LZTUpUsersContainer'),
-    addMenuSectionItem('Внешний вид', 'Темы, логотипы и другое', 'far fa-drafting-compass', 'LZTUpAppearItem', 'LZTUpUniqContainer'),
+  const appearText = document.createElement('div')
+  appearText.innerText = 'Страница Внешнего вида';
+
+  const appearItems = [
+    appearText,
   ];
 
-  const settingsItems = [
-    addMenuSectionItem('Настройки', 'Настройки расширения', 'far fa-cog', 'LZTUpSettingsItem', 'LZTUpUniqContainer'),
-    addMenuSectionItem('Обновления', 'Установка и проверка обновлений расширения', 'far fa-cloud-download', 'LZTUpUpdateItem', 'LZTUpUpdateContainer'),
-    addMenuSectionItem('Информация', `Версия: ${GM_info?.script?.version}`, 'far fa-info-circle', 'LZTUpInformationItem', 'LZTUpUniqContainer'),
-  ];
+  const settingsText = document.createElement('div')
+  settingsText.innerText = 'Страница настроек';
 
-  const sections = [
-    new MenuSection('LZTUpMainSection', mainItems).create(),
-    new MenuSection('LZTUpSettingsSection', settingsItems).create(),
+  const settingItems = [
+    settingsText,
   ];
 
   const updateText = document.createElement('div')
@@ -3734,14 +3812,28 @@ async function generateMenu(tabs) {
     updateText,
   ];
 
-  const sectionContainers = [
-    addMenuSectionContainer('LZTUpUniqContainer', await profile()),
-    addMenuSectionContainer('LZTUpContestsContainer', await contests()),
-    addMenuSectionContainer('LZTUpUsersContainer', await users()),
-    addMenuSectionContainer('LZTUpUpdateContainer', updateItems),
-  ];
+  const menuSection = new Section('LZTUpMainSection')
+    .addSectionItem('Локальный Уник', 'Максимальная кастомизация', 'far fa-palette', 'LZTUpUniqItem', 'LZTUpUniqContainer')
+    .addSectionItem('Розыгрыши', 'Комфорт для розыгрышей', 'far fa-gift', 'LZTUpContestsItem', 'LZTUpContestsContainer')
+    .addSectionItem('Пользователи', 'Штучки для пользователей', 'far fa-user', 'LZTUpUsersItem', 'LZTUpUsersContainer')
+    .addSectionItem('Внешний вид', 'Темы, логотипы и другое', 'far fa-drafting-compass', 'LZTUpAppearItem', 'LZTUpAppearContainer')
+    .addSectionContainer('LZTUpUniqContainer', await profile())
+    .addSectionContainer('LZTUpContestsContainer', await contests())
+    .addSectionContainer('LZTUpUsersContainer', await users())
+    .addSectionContainer('LZTUpAppearContainer', appearItems)
 
-  Logger.debug('Generated menu section containers: ', sectionContainers)
+  const settingsSection = new Section('LZTUpSettingsSection')
+    .addSectionItem('Настройки', 'Настройки расширения', 'far fa-cog', 'LZTUpSettingsItem', 'LZTUpSettingsContainer')
+    .addSectionItem('Обновления', 'Установка и проверка обновлений расширения', 'far fa-cloud-download', 'LZTUpUpdateItem', 'LZTUpUpdateContainer')
+    .addSectionItem('Информация', `Версия: ${GM_info?.script?.version}`, 'far fa-info-circle', 'LZTUpInformationItem', 'LZTUpInformationContainer')
+    .addSectionContainer('LZTUpSettingsContainer', settingItems)
+    .addSectionContainer('LZTUpUpdateContainer', updateItems)
+    .addSectionContainer('LZTUpInformationContainer', await info())
+
+  const sections = [
+    menuSection,
+    settingsSection
+  ]
 
   const menuContent = document.createElement('div')
   menuContent.classList.add('LZTUpModalContent');
@@ -3751,12 +3843,12 @@ async function generateMenu(tabs) {
   menuContent.appendChild(tabsContainer);
 
   for (const section of sections) {
-    menuContent.appendChild(section);
-  }
-
-  for (const sectionContainer of sectionContainers) {
-    menuContent.appendChild(sectionContainer);
-    sectionContainer.querySelectorAll('.Tooltip').forEach(el => XenForo.Tooltip($(el)));
+    const sectionEl = section.create();
+    menuContent.appendChild(sectionEl);
+    for (const container of section.sectionContainers) {
+      menuContent.append(container)
+      container.querySelectorAll('.Tooltip').forEach(el => XenForo.Tooltip($(el))); // load all tooltips in menu container
+    }
   }
 
   Logger.debug('Generated menu tabs: ', tabs);
@@ -3776,7 +3868,7 @@ class Tab {
    *
    *  @constructor
    *  @param {string} name - name of the tab
-   *  @param {string} sectionClassName - class name of the tab
+   *  @param {string} className - class name of the tab
    *  @param {string} sectionClassName - class name of the section
    *  @param {boolean} active - status of tab
    */
@@ -3966,6 +4058,44 @@ function bypassShareTyping() {
 }
 
 
+;// CONCATENATED MODULE: ./src/utils/cache.js
+class Cache {
+  /**
+   *
+   *  @constructor
+   *  @param {string} name - cache name
+   */
+
+  constructor(name) {
+    this.cachePrefix = 'lztup-';
+    this.name = name;
+    this.fullName = `${this.cachePrefix}${this.name}`;
+  }
+
+  async get() {
+    return GM_getValue(this.fullName);
+  }
+
+  async set(value) {
+    return GM_setValue(this.fullName, value);
+  }
+
+  async remove() {
+    return GM_deleteValue(this.fullName);
+  }
+
+  async list() {
+    return GM_listValue(this.fullName);
+  }
+
+  async clearAll() {
+    for (const val of this.list()) {
+      this.remove(val);
+    }
+  }
+}
+
+/* harmony default export */ const cache = (Cache);
 // EXTERNAL MODULE: ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/styles/errorPage.scss
 var errorPage = __webpack_require__("./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/styles/errorPage.scss");
 ;// CONCATENATED MODULE: ./src/styles/errorPage.scss
@@ -4058,6 +4188,10 @@ var universal_update = injectStylesIntoStyleTag_default()(universal/* default */
 
 
 
+
+
+
+
 // import 'Styles/main.css';
 
 
@@ -4069,6 +4203,23 @@ async function main() {
 
   if (GM_info?.script?.version) Logger.log(`${configs_config.extName} version: ${GM_info?.script?.version}`);
 
+  const appearDB = new LZTAppearDB();
+  await appearDB.init();
+  const dbAppearData = await appearDB.read();
+  let themeName = await new cache('theme-name').get();
+  Logger.debug(`Founded cached theme ${themeName}`)
+
+  if (!themeName && dbAppearData?.theme > 0) {
+    Logger.debug(`Requesting theme with id ${dbAppearData.theme}...`);
+    themeName = await getThemeByID(dbAppearData.theme)
+      .catch(err => console.error(err));
+    await new cache('theme-name').set(themeName);
+  }
+
+  Logger.debug('Loading theme... ' + new Date());
+  loadTheme(themeName)
+  Logger.debug('Loading finished... ' + new Date());
+
   const SCRIPT_LOADED = await waitForElement('body', 120000);
   if (!SCRIPT_LOADED) {
     Logger.error('Не удалось запустить расширение.');
@@ -4076,15 +4227,12 @@ async function main() {
   }
 
   if (SCRIPT_LOADED.length) {
-    const appearDB = new LZTAppearDB();
-    await appearDB.init();
-    const dbAppearData = await appearDB.read();
-
     if (/^(Error\s[0-9]{3}|Site\sMaintenance)$/.test(document.head.querySelector('title').innerText)) {
       if (!dbAppearData || dbAppearData?.newErrorPage === 0) {
         return;
       }
 
+      // custom error page
       document.body.classList.add('LZTUpErrorPage');
       const container = document.body.querySelector('article > div');
       const duckRain = document.createElement('img');
@@ -4162,14 +4310,6 @@ async function main() {
     await profileDB.init();
     const dbProfileData = await profileDB.read();
 
-    if (dbAppearData) {
-      if (dbAppearData?.theme > 0) {
-        Logger.debug(`Requesting theme with id ${dbAppearData.theme}...`);
-        loadThemeByID(dbAppearData.theme)
-        .catch(err => console.error(err));
-      }
-    }
-
     if (dbProfileData) {
       if (dbProfileData.usernameStyle || dbProfileData.badgeIcons.length) {
         if (dbProfileData.usernameStyle) {
@@ -4185,6 +4325,7 @@ async function main() {
           if (
             mutation.target.classList.contains('ProfilePostList') ||
             mutation.target.classList.contains('messageList') ||
+            mutation.target.classList.contains('messageResponse') ||
             mutation.target.classList.contains('CommentPostList') ||
             mutation.target.classList.contains('discussionList') ||
             mutation.target.classList.contains('chat2-messages') ||
