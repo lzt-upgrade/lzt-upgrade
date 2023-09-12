@@ -3,7 +3,7 @@ class Tab {
    *
    *  @constructor
    *  @param {string} name - name of the tab
-   *  @param {string} sectionClassName - class name of the tab
+   *  @param {string} className - class name of the tab
    *  @param {string} sectionClassName - class name of the section
    *  @param {boolean} active - status of tab
    */
