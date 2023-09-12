@@ -1,4 +1,4 @@
-import { Section } from 'UI/kit/menu/section';
+import { Section } from 'UI/components/menu/section';
 import { Logger } from 'Utils/logger';
 import getContestsItems from 'UI/menu/items/contests';
 import getUsersItems from 'UI/menu/items/users';

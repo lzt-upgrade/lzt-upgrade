@@ -1,4 +1,4 @@
-import { createMenuIcon } from 'UI/kit/icons'
+import { createMenuIcon } from 'UI/components/icons'
 
 class SortableItem {
   /**

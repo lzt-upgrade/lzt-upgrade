@@ -1,6 +1,6 @@
 import config from 'Configs/config';
 import extData from 'Configs/extData';
-import { Button } from 'UI/kit/button.js';
+import { Button } from 'UI/components/button.js';
 
 
 function setMenuTitle(title) {

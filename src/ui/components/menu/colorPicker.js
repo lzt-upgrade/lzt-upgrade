@@ -1,4 +1,4 @@
-import { Description } from 'UI/kit/menu/description';
+import { Description } from 'UI/components/menu/description';
 
 class ColorPicker {
   /**

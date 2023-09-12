@@ -1,4 +1,4 @@
-import { createMenuIcon } from "UI/kit/icons.js";
+import { createMenuIcon } from "UI/components/icons.js";
 
 class Button {
   /**

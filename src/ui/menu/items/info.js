@@ -1,4 +1,4 @@
-import { Description } from 'UI/kit/menu/description.js';
+import { Description } from 'UI/components/menu/description.js';
 
 const getInfoItems = async () => {
 

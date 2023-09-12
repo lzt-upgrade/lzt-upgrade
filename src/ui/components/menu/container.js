@@ -1,5 +1,5 @@
-import { Heading } from 'UI/kit/menu/heading';
-import { Description } from 'UI/kit/menu/description';
+import { Heading } from 'UI/components/menu/heading';
+import { Description } from 'UI/components/menu/description';
 
 class Container {
   /**
