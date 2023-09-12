@@ -1,5 +1,5 @@
 import { createMenuIcon } from 'UI/components/icons.js'
-import { openSubMenu } from 'UI/menu/utils.js'
+import { clearHTML } from 'Utils/purify';
 
 
 class SectionDirection {
@@ -38,12 +38,20 @@ class SectionSubText extends SectionText {
   /**
    *
    *  @constructor
-   *  @param {string} text - text of the heading
+   *  @param {string} text - text of the heading (html allowed!!!)
    */
 
   constructor(text) {
     super(text)
     this.className = 'LZTUpSectionDesc';
+  }
+
+  createElement() {
+    const el = document.createElement('span');
+    el.classList.add(this.className);
+    el.innerHTML = clearHTML(this.text);
+
+    return el;
   }
 }
 
@@ -53,6 +61,9 @@ class Section {
    *
    *  @constructor
    *  @param {string} id - id of the section
+   *  @param {object} options - additional options (read description below)
+   *
+   *  options params:
    *  @param {object} [sectionItems] - array of section items
    *  @param {SectionDirection} [direction] - direction of elements in the section
    *  @param {boolean} [hidden] - state of visibility section. If true, the section is hidden by default.
@@ -69,10 +80,10 @@ class Section {
     this.sectionItems = options.sectionItems || [];
     this.sectionContainers = options.sectionContainers || [];
     this.direction = options.direction || SectionDirection.Row;
-    this.hidden = options.hidden || true;
+    this.hidden = options.hidden ?? true;
   }
 
-  create() {
+  createElement() {
     const section = document.createElement('div');
     section.id = this.id;
     section.classList.add('LZTUpSection', this.direction === SectionDirection.Row ? 'row' : 'column');
@@ -83,6 +94,7 @@ class Section {
 
     console.log(this)
     if (this.hidden) {
+      console.log(this.id, this.hidden)
       section.style.display = 'none';
     }
 
@@ -98,7 +110,7 @@ class Section {
    *  @param {string} containerId - id of the container element (open on click)
    *  @param {boolean} rightArrow - add a icon of the right arrow in the right side (only for column direction)
    */
-  addSectionItem(title, desc, iconClasses, sectionId, containerId, rightArrow = false) {
+  addSectionItem(title, desc, iconClasses, sectionId, callback = () => {}, rightArrow = false) {
     const sectionItem = document.createElement('div');
     sectionItem.id = sectionId;
     sectionItem.classList.add('LZTUpSectionItem');
@@ -116,7 +128,7 @@ class Section {
       sectionItem.append(sectionArrowIcon)
     }
 
-    sectionItem.onclick = () => openSubMenu(containerId, title);
+    sectionItem.onclick = (e) => callback(e, title);
 
     this.sectionItems.push(sectionItem);
     return this;
