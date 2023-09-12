@@ -41,7 +41,7 @@ function addGoBackBtn(target = '', text = config.extName, subMenuToShow = null, 
         onCloseCallback();
         break;
       default:
-        document.querySelector('.LZTUpSection').style.display = '';
+        document.querySelector('.LZTUpModalContent > .LZTUpSection').style.display = '';
         const tabs = document.querySelector('.LZTUpTabs');
         tabs.style.display = '';
 
@@ -59,7 +59,7 @@ function openSubMenu(containerId, sectionName) {
   const subMenus = document.querySelectorAll('.LZTUpSubMenu');
   subMenus.forEach(subMenu => subMenu.style.display = 'none');
 
-  const sections = document.querySelectorAll('.LZTUpSection');
+  const sections = document.querySelectorAll('.LZTUpModalContent > .LZTUpSection');
   sections.forEach(section => section.style.display = 'none');
 
   document.querySelector(`#${containerId}`).style.display = '';

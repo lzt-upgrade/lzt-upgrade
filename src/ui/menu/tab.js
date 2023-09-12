@@ -32,7 +32,7 @@ class Tab {
 
     document.querySelector(`.${this.className}`).classList.add('active');
 
-    document.querySelectorAll('.LZTUpSection').forEach(section => section.style.display = 'none');
+    document.querySelectorAll('.LZTUpModalContent > .LZTUpSection').forEach(section => section.style.display = 'none');
 
     document.querySelector(`#${this.sectionClassName}`).style.display = '';
   }
