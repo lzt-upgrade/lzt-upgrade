@@ -3786,7 +3786,7 @@ const getProfileItems = async () => {
 const getInfoItems = async () => {
   const infoSection = new Section('LZTUpInfoSection', { direction: SectionDirection.Column , hidden: false})
   for (const infoLink of configs_extData.infoLinks) {
-    infoSection.addSectionItem(infoLink.title, infoLink.desc, infoLink.icon, infoLink.sectionId, () => window.open(infoLink.href), true)
+    infoSection.addSectionItem(infoLink.title, infoLink.desc, infoLink.icon, infoLink.sectionId, () => window.open(infoLink.href))
   }
 
   return [
