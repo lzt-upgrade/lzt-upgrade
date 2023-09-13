@@ -2,8 +2,8 @@
 needed
 .vscode
 web-server
-dist/lzt-upgrade.meta.js
-dist/lzt-upgrade.proxy.user.js
+dist/*.meta.js
+dist/*.proxy.user.js
 
 # Logs
 logs
