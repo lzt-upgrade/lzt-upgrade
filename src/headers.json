@@ -31,7 +31,7 @@
         "GM_setValue",
         "GM_getValue",
         "GM_deleteValue",
-        "GM_listValue"
+        "GM_listValues"
     ],
     "connect": [
         "lztupgrade.toiloff.ru",
