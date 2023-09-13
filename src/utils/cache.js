@@ -12,24 +12,25 @@ class Cache {
   }
 
   async get() {
-    return GM_getValue(this.fullName);
+    return await GM_getValue(this.fullName);
   }
 
   async set(value) {
-    return GM_setValue(this.fullName, value);
+    return await GM_setValue(this.fullName, value);
   }
 
-  async remove() {
-    return GM_deleteValue(this.fullName);
+  async remove(name) {
+    return await GM_deleteValue(name || this.fullName);
   }
 
   async list() {
-    return GM_listValue(this.fullName);
+    return await GM_listValues(this.fullName);
   }
 
   async clearAll() {
-    for (const val of this.list()) {
-      this.remove(val);
+    for (const val of await this.list()) {
+      // console.log(val)
+      await this.remove(val);
     }
   }
 }
