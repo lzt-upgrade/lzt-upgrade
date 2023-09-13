@@ -128,7 +128,7 @@ class Section {
       sectionItem.append(sectionArrowIcon)
     }
 
-    sectionItem.onclick = (e) => callback(e, title);
+    sectionItem.onclick = async (e) => await callback(e, title);
 
     this.sectionItems.push(sectionItem);
     return this;
