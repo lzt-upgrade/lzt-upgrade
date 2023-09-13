@@ -7,7 +7,9 @@
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack build -c webpack.config.js",
+    "build:default": "webpack build -c webpack.config.js",
+    "build:min": "webpack build -c webpack.config.js --env build_type=minify",
+    "build": "npm run build:default && npm run build:min",
     "dev": "webpack serve --node-env development"
   },
   "repository": {
