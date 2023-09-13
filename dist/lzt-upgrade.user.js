@@ -19,7 +19,7 @@
 // @grant GM_setValue
 // @grant GM_getValue
 // @grant GM_deleteValue
-// @grant GM_listValue
+// @grant GM_listValues
 // @homepageURL https://github.com/lzt-upgrade/lzt-upgrade
 // @icon https://cdn.jsdelivr.net/gh/lzt-upgrade/lzt-upgrade@latest/src/images/logo-mini.png
 // @license MIT
@@ -1781,7 +1781,7 @@ class Section {
       sectionItem.append(sectionArrowIcon)
     }
 
-    sectionItem.onclick = (e) => callback(e, title);
+    sectionItem.onclick = async (e) => await callback(e, title);
 
     this.sectionItems.push(sectionItem);
     return this;
@@ -3795,6 +3795,170 @@ const getInfoItems = async () => {
 }
 
 /* harmony default export */ const info = (getInfoItems);
+;// CONCATENATED MODULE: ./src/utils/files.js
+
+
+function downloadJSONFile(data, name) {
+  const blob = new Blob([data], {
+    type: 'application/json'
+  });
+  const link = document.createElement('a');
+  link.href = window.URL.createObjectURL(blob);
+  link.download = `${name}.json`;
+  link.click();
+  return link;
+}
+
+async function uploadJSONFile() {
+  const input = document.createElement('input');
+  input.type = 'file';
+  input.accept = 'application/json';
+  input.click();
+
+  const file = await new Promise(resolve => {
+    input.onchange = () => {
+      resolve(input.files[0]);
+    };
+  });
+
+  const reader = new FileReader();
+  reader.readAsText(file);
+
+  return await new Promise(resolve => {
+    reader.onload = () => {
+      resolve(reader.result);
+    };
+    reader.onerror = (e) => {
+      Logger.error('Ошибка загрузки файла настроек', e);
+      resolve(false);
+    };
+  });
+}
+
+
+;// CONCATENATED MODULE: ./src/utils/cache.js
+class Cache {
+  /**
+   *
+   *  @constructor
+   *  @param {string} name - cache name
+   */
+
+  constructor(name) {
+    this.cachePrefix = 'lztup-';
+    this.name = name;
+    this.fullName = `${this.cachePrefix}${this.name}`;
+  }
+
+  async get() {
+    return await GM_getValue(this.fullName);
+  }
+
+  async set(value) {
+    return await GM_setValue(this.fullName, value);
+  }
+
+  async remove(name) {
+    return await GM_deleteValue(name || this.fullName);
+  }
+
+  async list() {
+    return await GM_listValues(this.fullName);
+  }
+
+  async clearAll() {
+    for (const val of await this.list()) {
+      // console.log(val)
+      await this.remove(val);
+    }
+  }
+}
+
+/* harmony default export */ const cache = (Cache);
+;// CONCATENATED MODULE: ./src/ui/menu/items/settings.js
+
+
+
+
+
+
+
+
+
+
+
+
+
+const appearDB = new LZTAppearDB()
+const contestsDB = new LZTContestsDB()
+const settings_profileDB = new LZTProfileDB()
+const settingsDB = new LZTSettingsDB()
+const usersDB = new LZTUsersDB()
+
+async function saveSettings() {
+  const appearData = await appearDB.read();
+  const contestsData = await contestsDB.read();
+  const profileData = await settings_profileDB.read();
+  const settingsData = await settingsDB.read();
+  const usersData = await usersDB.read();
+
+  const config = JSON.stringify({
+    appear: appearData,
+    contests: contestsData,
+    profile: profileData,
+    settings: settingsData,
+    users: usersData
+  });
+
+  downloadJSONFile(config, 'LZTUpgradeConfig');
+  registerAlert('Файл настроек выгружен', 5000);
+}
+
+async function uploadSettings() {
+  const config = await uploadJSONFile(); // upload json config file from user pc
+
+  if (!config) {
+    registerAlert('Ошибка загрузки файла настроек', 5000);
+    return;
+  }
+
+  try {
+    const configObj = JSON.parse(config); // read text as json
+
+    // load data to dbs
+    await appearDB.update(configObj?.appear);
+    await contestsDB.update(configObj?.contests)
+    await settings_profileDB.update(configObj?.profile)
+    await settingsDB.update(configObj?.settings)
+    await usersDB.update(configObj?.users)
+    registerAlert('Настройки загружены. Выполняю перезагрузку страницы...', 5000);
+    await sleep(500);
+    window.location.reload();
+  } catch (err) {
+    Logger.error('Ошибка загрузки файла настроек', err)
+    registerAlert('Ошибка загрузки файла настроек', 5000);
+  }
+}
+
+async function clearCache() {
+  await new cache().clearAll();
+  registerAlert('Кеш успешно очищен', 5000);
+  await sleep(1000);
+  window.location.reload();
+}
+
+const getSettingsItems = async () => {
+  const settingsSection = new Section('LZTUpInfoSection', { direction: SectionDirection.Column , hidden: false})
+    .addSectionItem('Сохранить настройки в файл', '', 'far fa-file-download', 'LZTUpSaveSettingsItem', saveSettings)
+    .addSectionItem('Загрузить настройки из файла', '', 'far fa-upload', 'LZTUpUploadSettingsItem', uploadSettings)
+    .addSectionItem('Очистить кеш', '', 'far fa-database', 'LZTUpClearCacheItem', clearCache)
+
+  return [
+    settingsSection.createElement()
+  ];
+}
+
+/* harmony default export */ const settings = (getSettingsItems);
 // EXTERNAL MODULE: ./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js
 var injectStylesIntoStyleTag = __webpack_require__("./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
 var injectStylesIntoStyleTag_default = /*#__PURE__*/__webpack_require__.n(injectStylesIntoStyleTag);
@@ -3855,19 +4019,13 @@ var update = injectStylesIntoStyleTag_default()(menu/* default */.Z, options);
 
 
 
+
 async function generateMenu(tabs) {
   const appearText = document.createElement('div')
   appearText.innerText = 'Страница Внешнего вида';
 
   const appearItems = [
     appearText,
-  ];
-
-  const settingsText = document.createElement('div')
-  settingsText.innerText = 'Страница настроек';
-
-  const settingItems = [
-    settingsText,
   ];
 
   const updateText = document.createElement('div')
@@ -3891,7 +4049,7 @@ async function generateMenu(tabs) {
     .addSectionItem('Настройки', 'Настройки расширения', 'far fa-cog', 'LZTUpSettingsItem', (_, title) => openSubMenu('LZTUpSettingsContainer', title))
     .addSectionItem('Обновления', 'Установка и проверка обновлений расширения', 'far fa-cloud-download', 'LZTUpUpdateItem', (_, title) => openSubMenu('LZTUpUpdateContainer', title))
     .addSectionItem('Информация', `Версия: ${GM_info?.script?.version}`, 'far fa-info-circle', 'LZTUpInformationItem', (_, title) => openSubMenu('LZTUpInformationContainer', title))
-    .addSectionContainer('LZTUpSettingsContainer', settingItems)
+    .addSectionContainer('LZTUpSettingsContainer', await settings())
     .addSectionContainer('LZTUpUpdateContainer', updateItems)
     .addSectionContainer('LZTUpInformationContainer', await info())
 
@@ -4123,44 +4281,6 @@ function bypassShareTyping() {
 }
 
 
-;// CONCATENATED MODULE: ./src/utils/cache.js
-class Cache {
-  /**
-   *
-   *  @constructor
-   *  @param {string} name - cache name
-   */
-
-  constructor(name) {
-    this.cachePrefix = 'lztup-';
-    this.name = name;
-    this.fullName = `${this.cachePrefix}${this.name}`;
-  }
-
-  async get() {
-    return GM_getValue(this.fullName);
-  }
-
-  async set(value) {
-    return GM_setValue(this.fullName, value);
-  }
-
-  async remove() {
-    return GM_deleteValue(this.fullName);
-  }
-
-  async list() {
-    return GM_listValue(this.fullName);
-  }
-
-  async clearAll() {
-    for (const val of this.list()) {
-      this.remove(val);
-    }
-  }
-}
-
-/* harmony default export */ const cache = (Cache);
 // EXTERNAL MODULE: ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/styles/errorPage.scss
 var errorPage = __webpack_require__("./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/styles/errorPage.scss");
 ;// CONCATENATED MODULE: ./src/styles/errorPage.scss
