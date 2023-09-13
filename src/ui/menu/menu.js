@@ -4,6 +4,7 @@ import getContestsItems from 'UI/menu/items/contests';
 import getUsersItems from 'UI/menu/items/users';
 import getProfileItems from 'UI/menu/items/profile';
 import getInfoItems from 'UI/menu/items/info';
+import getSettingsItems from 'UI/menu/items/settings';
 import { openSubMenu } from 'UI/menu/utils.js'
 import 'Styles/menu.scss';
 
@@ -14,13 +15,6 @@ async function generateMenu(tabs) {
 
   const appearItems = [
     appearText,
-  ];
-
-  const settingsText = document.createElement('div')
-  settingsText.innerText = 'Страница настроек';
-
-  const settingItems = [
-    settingsText,
   ];
 
   const updateText = document.createElement('div')
@@ -44,7 +38,7 @@ async function generateMenu(tabs) {
     .addSectionItem('Настройки', 'Настройки расширения', 'far fa-cog', 'LZTUpSettingsItem', (_, title) => openSubMenu('LZTUpSettingsContainer', title))
     .addSectionItem('Обновления', 'Установка и проверка обновлений расширения', 'far fa-cloud-download', 'LZTUpUpdateItem', (_, title) => openSubMenu('LZTUpUpdateContainer', title))
     .addSectionItem('Информация', `Версия: ${GM_info?.script?.version}`, 'far fa-info-circle', 'LZTUpInformationItem', (_, title) => openSubMenu('LZTUpInformationContainer', title))
-    .addSectionContainer('LZTUpSettingsContainer', settingItems)
+    .addSectionContainer('LZTUpSettingsContainer', await getSettingsItems())
     .addSectionContainer('LZTUpUpdateContainer', updateItems)
     .addSectionContainer('LZTUpInformationContainer', await getInfoItems())
 
