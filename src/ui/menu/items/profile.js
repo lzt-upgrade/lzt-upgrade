@@ -19,6 +19,7 @@ import { AvatarUserBadges } from 'UI/avatarUserBadges';
 import { updateUserStyle, updateUserBanner, updateUserBadges } from 'Visuals/users';
 import { addBackgroundImage } from 'Visuals/universal';
 import { addBackgroundImageInProfile } from 'Visuals/profile';
+import Cache from "Utils/cache";
 
 
 const profileDB = new LZTProfileDB();
@@ -152,7 +153,7 @@ async function sortableItemOnEditCallback(e, sortableItem, previewProfile) {
     }
 
     previewProfile.data = profileData;
-    previewProfile.updateAll();
+    await previewProfile.updateAll();
   });
 }
 
@@ -176,7 +177,7 @@ const getProfileItems = async () => {
     return items;
   }
 
-  function reloadUserBadges(updatedProfileData) {
+  async function reloadUserBadges(updatedProfileData) {
     const avatarUserBadgesParent = document.querySelector('#LZTUpPreviewContainer > .avatarBox > .avatarUserBadges');
     if (avatarUserBadgesParent) {
       for (const userBadge of avatarUserBadgesParent.children) {
@@ -187,7 +188,7 @@ const getProfileItems = async () => {
       avatarUserBadgesParent.innerHTML = avatarUserBadges.innerHTML;
 
       previewProfile.data = updatedProfileData;
-      previewProfile.updateAll();
+      await previewProfile.updateAll();
     }
   }
 
@@ -231,11 +232,12 @@ const getProfileItems = async () => {
 
     await profileDB.update({ badgeIcons: newBadgeIcons });
     previewProfile.data = profileData;
-    previewProfile.updateAll();
+    await previewProfile.updateAll();
     updateUserBadges(newBadgeIcons);
   }
 
   const profileData = await profileDB.read();
+  const userGroup = await new Cache('user-group').get();
   const currentDomain = window.location.hostname;
 
   const previewProfile = createPreviewProfile(profileData);
@@ -334,7 +336,7 @@ const getProfileItems = async () => {
 
           profileData.badgeIcons = newProfileData.badgeIcons;
           await profileDB.update({ badgeIcons: newProfileData.badgeIcons });
-          reloadUserBadges(profileData);
+          await reloadUserBadges(profileData);
           updateUserBadges(newProfileData.badgeIcons);
         }),
 
@@ -371,7 +373,7 @@ const getProfileItems = async () => {
 
           profileData.badgeIcons = badgeIcons;
 
-          reloadUserBadges(profileData);
+          await reloadUserBadges(profileData);
           updateUserBadges(badgeIcons);
         }),
       ],
@@ -416,8 +418,9 @@ const getProfileItems = async () => {
 
     new Container([
       new Button('Сохранить', 'button primary LZTUpIconButton fit', 'far fa-save').createElement(async () => {
-        registerAlert('Настройки локального уника успешно сохранены.');
         // save settings in IndexedDB
+        const oldProfileData = await profileDB.read();
+
         await profileDB.update({
           usernameStyle: profileData.usernameStyle,
           bannerStyle: profileData.bannerStyle,
@@ -425,9 +428,13 @@ const getProfileItems = async () => {
           backgroundImage: profileData.backgroundImage
         });
 
+        registerAlert('Настройки локального уника успешно сохранены.');
+
         if (profileData.usernameStyle) {
           // update all user styles in page
           updateUserStyle(profileData.usernameStyle);
+        } else if (oldProfileData.usernameStyle !== '' && profileData.usernameStyle == '') {
+          updateUserStyle(`.${userGroup}`);
         }
 
         if (profileData.bannerStyle && profileData.bannerText) {
