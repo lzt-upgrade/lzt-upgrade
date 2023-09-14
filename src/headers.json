@@ -12,11 +12,11 @@
     "homepageURL": "https://github.com/lzt-upgrade/lzt-upgrade",
     "run-at": "document-start",
     "match": [
-        "*://*.lolz.guru/*",
-        "*://*.lolz.live/*",
-        "*://*.zelenka.guru/*",
-        "*://*.lzt.market/*",
-        "*://*.lolz.market/*"
+        "*://lolz.guru/*",
+        "*://lolz.live/*",
+        "*://zelenka.guru/*",
+        "*://lzt.market/*",
+        "*://lolz.market/*"
     ],
     "require": [
         "https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js",
