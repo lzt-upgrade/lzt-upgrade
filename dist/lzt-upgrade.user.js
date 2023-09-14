@@ -2219,6 +2219,18 @@ function getUsername(target) {
   }
 }
 
+function getUserGroup(target) {
+  switch (target) {
+    case "self":
+    case "me":
+      const userEl = document.querySelector('.accountUsername.username span');
+      return userEl.className;
+    default:
+      return null;
+  }
+}
+
+
 function getUserAvatar(userId) {
   if (userId === getUserId('me')) {
     return document.querySelector('img.navTab--visitorAvatar').src;
@@ -2594,7 +2606,46 @@ class AvatarUserBadges {
 }
 
 
+;// CONCATENATED MODULE: ./src/utils/cache.js
+class Cache {
+  /**
+   *
+   *  @constructor
+   *  @param {string} name - cache name
+   */
+
+  constructor(name) {
+    this.cachePrefix = 'lztup-';
+    this.name = name;
+    this.fullName = `${this.cachePrefix}${this.name}`;
+  }
+
+  async get() {
+    return await GM_getValue(this.fullName);
+  }
+
+  async set(value) {
+    return await GM_setValue(this.fullName, value);
+  }
+
+  async remove() {
+    return await GM_deleteValue(this.fullName);
+  }
+
+  async list() {
+    return await GM_listValues(this.fullName);
+  }
+
+  async clearAll() {
+    for (const val of await this.list()) {
+      await new Cache(val).remove();
+    }
+  }
+}
+
+/* harmony default export */ const cache = (Cache);
 ;// CONCATENATED MODULE: ./src/ui/components/menu/previewProfile.js
+
 
 
 
@@ -2659,12 +2710,16 @@ class PreviewProfile {
     return el;
   }
 
-  updateUsernameStyle(style) {
+  async updateUsernameStyle(style) {
     const usernameEl = this.clearStyle('#LZTUpUsernameStyle');
     if (!usernameEl) {
       return;
     }
 
+    if (style === '') {
+      const userGroup = await new cache('user-group').get();
+      style = `.${userGroup}`;
+    }
     usernameEl.classList.add('UsernameStyle', 'bold');
     applyStyle(usernameEl, style);
   }
@@ -2719,8 +2774,8 @@ class PreviewProfile {
     previewContainer.style.backgroundImage = imageUrl;
   }
 
-  updateAll() {
-    this.updateUsernameStyle(this.data.usernameStyle);
+  async updateAll() {
+    await this.updateUsernameStyle(this.data.usernameStyle);
     this.updateBanner(this.data);
     this.updateBackground(this.data.backgroundImage);
     this.badges.badges = this.data.badgeIcons;
@@ -3235,6 +3290,7 @@ class UserBanner {
 
 
 
+
 function updateUserStyle(style) {
   const username = getUsername('me');
   const usersEl = document.querySelectorAll('.username span');
@@ -3327,6 +3383,7 @@ function addBackgroundImageInProfile(imageUrl) {
 
 
 ;// CONCATENATED MODULE: ./src/ui/menu/items/profile.js
+
 
 
 
@@ -3481,7 +3538,7 @@ async function sortableItemOnEditCallback(e, sortableItem, previewProfile) {
     }
 
     previewProfile.data = profileData;
-    previewProfile.updateAll();
+    await previewProfile.updateAll();
   });
 }
 
@@ -3505,7 +3562,7 @@ const getProfileItems = async () => {
     return items;
   }
 
-  function reloadUserBadges(updatedProfileData) {
+  async function reloadUserBadges(updatedProfileData) {
     const avatarUserBadgesParent = document.querySelector('#LZTUpPreviewContainer > .avatarBox > .avatarUserBadges');
     if (avatarUserBadgesParent) {
       for (const userBadge of avatarUserBadgesParent.children) {
@@ -3516,7 +3573,7 @@ const getProfileItems = async () => {
       avatarUserBadgesParent.innerHTML = avatarUserBadges.innerHTML;
 
       previewProfile.data = updatedProfileData;
-      previewProfile.updateAll();
+      await previewProfile.updateAll();
     }
   }
 
@@ -3560,11 +3617,12 @@ const getProfileItems = async () => {
 
     await profileDB.update({ badgeIcons: newBadgeIcons });
     previewProfile.data = profileData;
-    previewProfile.updateAll();
+    await previewProfile.updateAll();
     updateUserBadges(newBadgeIcons);
   }
 
   const profileData = await profileDB.read();
+  const userGroup = await new cache('user-group').get();
   const currentDomain = window.location.hostname;
 
   const previewProfile = createPreviewProfile(profileData);
@@ -3663,7 +3721,7 @@ const getProfileItems = async () => {
 
           profileData.badgeIcons = newProfileData.badgeIcons;
           await profileDB.update({ badgeIcons: newProfileData.badgeIcons });
-          reloadUserBadges(profileData);
+          await reloadUserBadges(profileData);
           updateUserBadges(newProfileData.badgeIcons);
         }),
 
@@ -3700,7 +3758,7 @@ const getProfileItems = async () => {
 
           profileData.badgeIcons = badgeIcons;
 
-          reloadUserBadges(profileData);
+          await reloadUserBadges(profileData);
           updateUserBadges(badgeIcons);
         }),
       ],
@@ -3745,8 +3803,9 @@ const getProfileItems = async () => {
 
     new Container([
       new Button('Сохранить', 'button primary LZTUpIconButton fit', 'far fa-save').createElement(async () => {
-        registerAlert('Настройки локального уника успешно сохранены.');
         // save settings in IndexedDB
+        const oldProfileData = await profileDB.read();
+
         await profileDB.update({
           usernameStyle: profileData.usernameStyle,
           bannerStyle: profileData.bannerStyle,
@@ -3754,9 +3813,13 @@ const getProfileItems = async () => {
           backgroundImage: profileData.backgroundImage
         });
 
+        registerAlert('Настройки локального уника успешно сохранены.');
+
         if (profileData.usernameStyle) {
           // update all user styles in page
           updateUserStyle(profileData.usernameStyle);
+        } else if (oldProfileData.usernameStyle !== '' && profileData.usernameStyle == '') {
+          updateUserStyle(`.${userGroup}`);
         }
 
         if (profileData.bannerStyle && profileData.bannerText) {
@@ -3836,45 +3899,6 @@ async function uploadJSONFile() {
 }
 
 
-;// CONCATENATED MODULE: ./src/utils/cache.js
-class Cache {
-  /**
-   *
-   *  @constructor
-   *  @param {string} name - cache name
-   */
-
-  constructor(name) {
-    this.cachePrefix = 'lztup-';
-    this.name = name;
-    this.fullName = `${this.cachePrefix}${this.name}`;
-  }
-
-  async get() {
-    return await GM_getValue(this.fullName);
-  }
-
-  async set(value) {
-    return await GM_setValue(this.fullName, value);
-  }
-
-  async remove(name) {
-    return await GM_deleteValue(name || this.fullName);
-  }
-
-  async list() {
-    return await GM_listValues(this.fullName);
-  }
-
-  async clearAll() {
-    for (const val of await this.list()) {
-      // console.log(val)
-      await this.remove(val);
-    }
-  }
-}
-
-/* harmony default export */ const cache = (Cache);
 ;// CONCATENATED MODULE: ./src/ui/menu/items/settings.js
 
 
@@ -4174,7 +4198,7 @@ async function menuButtonCallback() {
   const userid = getUserId('me');
   const username = getUsername('me');
   const previewProfile = new PreviewProfile(userid, username, profileData);
-  previewProfile.updateAll();
+  await previewProfile.updateAll();
 }
 
 
@@ -4472,16 +4496,19 @@ async function main() {
     await waitForCSRFToken(120000);
     const username = getUsername('me');
     const userid = getUserId('me');
+    const userGroup = getUserGroup('me');
     const userAvatar = $('img.navTab--visitorAvatar').attr('src');
 
     Logger.debug('┏━━━━━━━━ DEBUG INFO ━━━━━━━━━━┓');
     Logger.debug(`Script version: ${GM_info?.script?.version}`);
     Logger.debug(`Account username: ${username}`);
     Logger.debug(`Account userid: ${userid}`);
+    Logger.debug(`Account userGroup: ${userGroup}`);
     Logger.debug(`Account userAvatar: ${userAvatar}`);
     Logger.debug('┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┚');
 
     registerMenuButton(buttons_menuButton);
+    await new cache('user-group').set(userGroup);
 
     const contestsDB = new LZTContestsDB();
     await contestsDB.init();
