@@ -19,8 +19,8 @@ class Cache {
     return await GM_setValue(this.fullName, value);
   }
 
-  async remove(name) {
-    return await GM_deleteValue(name || this.fullName);
+  async remove() {
+    return await GM_deleteValue(this.fullName);
   }
 
   async list() {
@@ -29,8 +29,7 @@ class Cache {
 
   async clearAll() {
     for (const val of await this.list()) {
-      // console.log(val)
-      await this.remove(val);
+      await new Cache(val).remove();
     }
   }
 }
