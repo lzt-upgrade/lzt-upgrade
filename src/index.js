@@ -172,8 +172,8 @@ async function main() {
         registerObserver(async (mutation) => {
           Logger.debug(mutation)
           if (
-            mutation.target.classList.contains('ProfilePostList') ||
             mutation.target.classList.contains('messageList') ||
+            mutation.target.classList.contains('messageSimpleList') ||
             mutation.target.classList.contains('messageResponse') ||
             mutation.target.classList.contains('CommentPostList') ||
             mutation.target.classList.contains('discussionList') ||
