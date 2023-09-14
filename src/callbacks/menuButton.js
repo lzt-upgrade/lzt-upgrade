@@ -44,7 +44,7 @@ async function menuButtonCallback() {
   const userid = getUserId('me');
   const username = getUsername('me');
   const previewProfile = new PreviewProfile(userid, username, profileData);
-  previewProfile.updateAll();
+  await previewProfile.updateAll();
 }
 
 export { menuButtonCallback };
