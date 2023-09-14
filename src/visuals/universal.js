@@ -1,7 +1,16 @@
+import { getUserId } from 'Utils/users';
+import { isProfilePage } from 'Utils/checkers';
+
 const customBackgroundID = 'LZTUpCustomBackground';
 
 
-function addBackgroundImage(imageUrl) {
+function addBackgroundImage(imageUrl, skipUserCheck = false) {
+  if (!skipUserCheck && (isProfilePage() && getUserId('profile') !== getUserId('me'))) {
+    // check that this is the profile of the current user
+    // don't show background in other users profiles
+    return false;
+  }
+
   const body = document.querySelector('body');
   if (!imageUrl) {
     body.id = '';
