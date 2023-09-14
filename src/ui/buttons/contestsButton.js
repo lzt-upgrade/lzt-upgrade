@@ -1,5 +1,5 @@
 import { isContestsNode } from 'Utils/checkers';
-import { waitForElement, getThreadLinks } from 'Utils/utils';
+import { waitForElm, getThreadLinks } from 'Utils/utils';
 
 
 function regOpenContestsBtn(amount = 10) {
@@ -13,7 +13,7 @@ function regOpenContestsBtn(amount = 10) {
 
     openContestsButton.on('click', async () => {
       updateButton.click();
-      const el = await waitForElement('div.forumImprovements--mask.hidden');
+      const el = await waitForElm('div.forumImprovements--mask.hidden');
       if (!el) return;
 
       const links = getThreadLinks();
