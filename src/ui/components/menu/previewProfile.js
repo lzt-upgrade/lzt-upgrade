@@ -2,6 +2,7 @@ import { getUserAvatar } from 'Utils/users';
 import { applyStyle } from 'Utils/utils';
 import { AvatarUserBadges } from 'UI/avatarUserBadges';
 import { Logger } from "Utils/logger";
+import Cache from "Utils/cache";
 
 
 class PreviewProfile {
@@ -62,12 +63,16 @@ class PreviewProfile {
     return el;
   }
 
-  updateUsernameStyle(style) {
+  async updateUsernameStyle(style) {
     const usernameEl = this.clearStyle('#LZTUpUsernameStyle');
     if (!usernameEl) {
       return;
     }
 
+    if (style === '') {
+      const userGroup = await new Cache('user-group').get();
+      style = `.${userGroup}`;
+    }
     usernameEl.classList.add('UsernameStyle', 'bold');
     applyStyle(usernameEl, style);
   }
@@ -122,8 +127,8 @@ class PreviewProfile {
     previewContainer.style.backgroundImage = imageUrl;
   }
 
-  updateAll() {
-    this.updateUsernameStyle(this.data.usernameStyle);
+  async updateAll() {
+    await this.updateUsernameStyle(this.data.usernameStyle);
     this.updateBanner(this.data);
     this.updateBackground(this.data.backgroundImage);
     this.badges.badges = this.data.badgeIcons;
