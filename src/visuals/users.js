@@ -4,6 +4,7 @@ import { isProfilePage } from 'Utils/checkers';
 import { UserBanner } from 'UI/components/userBanner';
 import { AvatarUserBadges } from 'UI/avatarUserBadges';
 
+
 function updateUserStyle(style) {
   const username = getUsername('me');
   const usersEl = document.querySelectorAll('.username span');
