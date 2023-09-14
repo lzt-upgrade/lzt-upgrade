@@ -1,5 +1,7 @@
 import { isElement } from 'Utils/checkers';
 import { clearHTML } from 'Utils/purify';
+import CopyButton from 'UI/components/buttons/copyButton';
+
 
 class ProfileInfoRow {
   /**
@@ -10,10 +12,11 @@ class ProfileInfoRow {
    *  @param {string} content - content of row
    */
 
-  constructor(elementId, label, content) {
+  constructor(elementId, label, content, copyButton) {
     this.elementId = elementId;
     this.label = label;
     this.content = clearHTML(content);
+    this.copyButton = copyButton;
   }
 
   createElement() {
@@ -31,6 +34,11 @@ class ProfileInfoRow {
       labeled.appendChild(this.content)
     } else {
       labeled.innerHTML = this.content;
+    }
+
+    if (this.copyButton instanceof CopyButton) {
+      const copyButtonEl = this.copyButton.createElement();
+      labeled.appendChild(copyButtonEl)
     }
 
     row.appendChild(label)
