@@ -14,16 +14,17 @@ class PreviewProfile {
    *  @param {object} data - data for show preview (ex. data from profileDB)
    */
 
-  constructor(userid, username, data) {
+  constructor(userid, username, data, profileElId = null) {
     this.userid = userid;
     this.username = username;
     this.data = data;
+    this.profileElId = profileElId || 'LZTUpPreviewContainer';
     this.badges = new AvatarUserBadges(data.badgeIcons, true);
   }
 
   createElement() {
     const previewContainer = document.createElement('div');
-    previewContainer.id = 'LZTUpPreviewContainer';
+    previewContainer.id = this.profileElId;
     previewContainer.classList.add('previewContainer');
 
     const avatarUserBadges = this.badges.createElement();
@@ -64,7 +65,7 @@ class PreviewProfile {
   }
 
   async updateUsernameStyle(style) {
-    const usernameEl = this.clearStyle('#LZTUpUsernameStyle');
+    const usernameEl = this.clearStyle(`#${this.profileElId} #LZTUpUsernameStyle`);
     if (!usernameEl) {
       return;
     }
@@ -78,7 +79,7 @@ class PreviewProfile {
   }
 
   updateBannerStyle(style) {
-    const userBannerEl = this.clearStyle('#LZTUpUserBannerStyle');
+    const userBannerEl = this.clearStyle(`#${this.profileElId} #LZTUpUserBannerStyle`);
     if (!userBannerEl) {
       return;
     }
@@ -88,7 +89,7 @@ class PreviewProfile {
   }
 
   updateBannerText(text) {
-    const userBannerEl = document.querySelector('#LZTUpUserBannerStyle');
+    const userBannerEl = document.querySelector(`#${this.profileElId} #LZTUpUserBannerStyle`);
     if (!userBannerEl) {
       return;
     }
@@ -97,9 +98,9 @@ class PreviewProfile {
   }
 
   updateBanner(data) {
-    const userBannerEl = this.clearStyle('#LZTUpUserBannerStyle');
+    const userBannerEl = this.clearStyle(`#${this.profileElId} #LZTUpUserBannerStyle`);
     if (!userBannerEl) {
-      Logger.error('Failed to get element by #LZTUpUserBannerStyle in PreviewProfile!');
+      Logger.error('Failed to get element by userBanner in PreviewProfile!');
       return;
     }
 
@@ -113,9 +114,10 @@ class PreviewProfile {
   }
 
   updateBackground(imageUrl) {
-    const previewContainer = document.querySelector('#LZTUpPreviewContainer');
+    const previewContainer = document.querySelector(`#${this.profileElId}`);
+    console.log(`#${this.profileElId}`, previewContainer)
     if (!previewContainer) {
-      Logger.error('Failed to get element by #LZTUpPreviewContainer in PreviewProfile!');
+      Logger.error('Failed to get previewContainer in PreviewProfile!');
       return;
     }
 
@@ -127,12 +129,16 @@ class PreviewProfile {
     previewContainer.style.backgroundImage = imageUrl;
   }
 
+  updateBadges() {
+    return this.badges.updateBadges();
+  }
+
   async updateAll() {
     await this.updateUsernameStyle(this.data.usernameStyle);
     this.updateBanner(this.data);
     this.updateBackground(this.data.backgroundImage);
     this.badges.badges = this.data.badgeIcons;
-    this.badges.updateBadges();
+    this.updateBadges();
   }
 }
 
