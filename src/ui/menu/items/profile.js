@@ -19,6 +19,7 @@ import { AvatarUserBadges } from 'UI/avatarUserBadges';
 import { updateUserStyle, updateUserBanner, updateUserBadges } from 'Visuals/users';
 import { addBackgroundImage } from 'Visuals/universal';
 import { addBackgroundImageInProfile } from 'Visuals/profile';
+import { Logger } from "Utils/logger";
 import Cache from "Utils/cache";
 
 
@@ -32,6 +33,8 @@ async function sortableItemOnEditCallback(e, sortableItem, previewProfile) {
   const thisBadgeArray = profileData.badgeIcons.filter(icon => icon.position === badgeId);
   let badgeData = thisBadgeArray[0];
   console.log(badgeId, '==>', profileData.badgeIcons, '==>', thisBadgeArray, '==>', badgeData); // TODO: delete after tests
+
+  const tempPreviewProfile = createPreviewProfile(profileData, 'LZTUpTempPreviewContainer');
 
   async function updateBadgesData(badgeData) {
     // badgeData its current badge (which we are editing)
@@ -47,6 +50,8 @@ async function sortableItemOnEditCallback(e, sortableItem, previewProfile) {
 
   const el = addTemporaryMenuSection(
     [
+      tempPreviewProfile.createElement(),
+
       new Container(
         [
           new TextArea(badgeData.svg, '<svg>...</svg>', 0, 3000)
@@ -59,6 +64,8 @@ async function sortableItemOnEditCallback(e, sortableItem, previewProfile) {
               }
 
               badgeData.svg = val;
+              tempPreviewProfile.badges.badges = await updateBadgesData(badgeData);
+              tempPreviewProfile.updateBadges();
             }
           ),
         ],
@@ -83,6 +90,8 @@ async function sortableItemOnEditCallback(e, sortableItem, previewProfile) {
               }
 
               badgeData.style = val;
+              tempPreviewProfile.badges.badges = await updateBadgesData(badgeData);
+              tempPreviewProfile.updateBadges();
             }
           ),
         ],
@@ -102,6 +111,8 @@ async function sortableItemOnEditCallback(e, sortableItem, previewProfile) {
               }
 
               badgeData.text = val;
+              tempPreviewProfile.badges.badges = await updateBadgesData(badgeData);
+              tempPreviewProfile.updateBadges();
             }
           ),
         ],
@@ -117,14 +128,18 @@ async function sortableItemOnEditCallback(e, sortableItem, previewProfile) {
               let val = event.target.value;
 
               badgeData.fillColor = val;
+              tempPreviewProfile.badges.badges = await updateBadgesData(badgeData);
+              tempPreviewProfile.updateBadges();
             }
           ),
           new ColorPicker('LZTUpColorPickerStroke', badgeData.strokeColor, 'Цвет иконки (stroke):')
           .createElement(
-            (event) => {
+            async (event) => {
               let val = event.target.value;
 
               badgeData.strokeColor = val;
+              tempPreviewProfile.badges.badges = await updateBadgesData(badgeData);
+              tempPreviewProfile.updateBadges();
             }
           ),
         ],
@@ -137,6 +152,8 @@ async function sortableItemOnEditCallback(e, sortableItem, previewProfile) {
           const badges = await updateBadgesData(badgeData);
           await profileDB.update({ badgeIcons: badges });
           updateUserBadges(badges);
+          tempPreviewProfile.badges.badges = badges;
+          tempPreviewProfile.updateBadges();
         }),
       ]).createElement()
     ]
@@ -152,15 +169,16 @@ async function sortableItemOnEditCallback(e, sortableItem, previewProfile) {
       content.innerHTML = clearHTML(profileData.badgeIcons[i].text);
     }
 
-    previewProfile.data = profileData;
-    await previewProfile.updateAll();
+    previewProfile.badges.badges = profileData.badgeIcons;
+    previewProfile.updateBadges();
   });
+  await tempPreviewProfile.updateAll(profileData); // update temp preview profile menu after init
 }
 
-function createPreviewProfile(profileData) {
+function createPreviewProfile(profileData, profileElId = null) {
   const userid = getUserId('me');
   const username = getUsername('me');
-  return new PreviewProfile(userid, username, profileData);
+  return new PreviewProfile(userid, username, profileData, profileElId);
 }
 
 const getProfileItems = async () => {
@@ -177,8 +195,8 @@ const getProfileItems = async () => {
     return items;
   }
 
-  async function reloadUserBadges(updatedProfileData) {
-    const avatarUserBadgesParent = document.querySelector('#LZTUpPreviewContainer > .avatarBox > .avatarUserBadges');
+  async function reloadUserBadges(updatedProfileData, profileElId = 'LZTUpPreviewContainer') {
+    const avatarUserBadgesParent = document.querySelector(`#${profileElId} > .avatarBox > .avatarUserBadges`);
     if (avatarUserBadgesParent) {
       for (const userBadge of avatarUserBadgesParent.children) {
         userBadge.remove();
@@ -254,7 +272,7 @@ const getProfileItems = async () => {
         new TextArea(profileData.usernameStyle, 'color: #0daf77', 0, 1500)
         .createElement(
           (event) => {
-            let val = event.target.value;
+            let val = event.target.value.trim();
             if (val.length > 1500) {
               return registerAlert('Максимальная длина стиля ника 1500 символов. Уменьшите введенный текст для сохранения.')
             }
@@ -262,6 +280,8 @@ const getProfileItems = async () => {
             if (val.length > 1 && val.startsWith('.')) {
               event.target.value = val.replace(/\s/g, '');
               val = event.target.value;
+            } else {
+              val = clearCSS(val);
             }
 
             previewProfile.updateUsernameStyle(val);
@@ -278,7 +298,7 @@ const getProfileItems = async () => {
         new TextArea(profileData.bannerStyle, 'background: #fff', 0, 1500)
         .createElement(
           (event) => {
-            let val = event.target.value;
+            let val = event.target.value.trim();
             if (val.length > 1500) {
               return registerAlert('Максимальная длина стиля лычки 1500 символов. Уменьшите введенный текст для сохранения.')
             }
@@ -286,6 +306,8 @@ const getProfileItems = async () => {
             if (val.length > 1 && val.startsWith('.')) {
               event.target.value = val.replace(/\s/g, '');
               val = event.target.value;
+            } else {
+              val = clearCSS(val);
             }
 
             profileData.bannerStyle = val;
@@ -294,7 +316,7 @@ const getProfileItems = async () => {
         ),
       ],
       'Стиль лычки',
-      'Максимум 1500 символов. При отсутствии текста и стиля лычка отключается.',
+      'Максимум 1500 символов. При отсутствии текста или стиля лычка отключается.',
     ).createElement(),
 
     new Container(
@@ -313,7 +335,7 @@ const getProfileItems = async () => {
         ),
       ],
       'Текст в лычке',
-      'Максимум 24 символа. При отсутствии текста и стиля лычка отключается.',
+      'Максимум 24 символа. При отсутствии текста или стиля лычка отключается.',
     ).createElement(),
 
 
@@ -329,7 +351,7 @@ const getProfileItems = async () => {
           const newProfileData = await profileDB.read();
           newProfileData.badgeIcons.reverse();
           for (let i = 0; i < items.length; i++) {
-            console.log('moving items');
+            Logger.debug('moving items');
             items[i].dataset.id = i + 1;
             newProfileData.badgeIcons[i].position = i + 1;
           }
@@ -450,6 +472,8 @@ const getProfileItems = async () => {
             addBackgroundImageInProfile(profileData.backgroundImage);
           }
         }
+        previewProfile.data = profileData;
+        await previewProfile.updateAll()
       }),
     ]).createElement()
   ];
