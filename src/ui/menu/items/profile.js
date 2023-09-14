@@ -4,7 +4,7 @@ import { Comment } from 'UI/menu/comment';
 import { PreviewProfile } from 'UI/components/menu/previewProfile';
 import { TextArea } from 'UI/components/menu/textArea';
 import { Input } from 'UI/components/menu/input';
-import { Button } from 'UI/components/button';
+import Button from 'UI/components/button';
 import { ColorPicker } from 'UI/components/menu/colorPicker';
 import { Container } from 'UI/components/menu/container';
 import { Separator } from 'UI/components/menu/separator';
