@@ -31,7 +31,7 @@ import {
 } from 'Utils/contests';
 import { addUserIdToProfile, addUserIdToMemberCard, showFullRegDateInProfile } from 'Utils/users';
 import { bypassShareTyping } from "Xenforo/bypass";
-import { getUserId, getUsername } from 'Utils/users';
+import { getUserId, getUsername, getUserGroup } from 'Utils/users';
 import { updateUserStyle, updateUserBanner, updateUserBadges } from 'Visuals/users';
 import { addBackgroundImage } from 'Visuals/universal';
 import { addBackgroundImageInProfile } from 'Visuals/profile';
@@ -133,16 +133,19 @@ async function main() {
     await waitForCSRFToken(120000);
     const username = getUsername('me');
     const userid = getUserId('me');
+    const userGroup = getUserGroup('me');
     const userAvatar = $('img.navTab--visitorAvatar').attr('src');
 
     Logger.debug('┏━━━━━━━━ DEBUG INFO ━━━━━━━━━━┓');
     Logger.debug(`Script version: ${GM_info?.script?.version}`);
     Logger.debug(`Account username: ${username}`);
     Logger.debug(`Account userid: ${userid}`);
+    Logger.debug(`Account userGroup: ${userGroup}`);
     Logger.debug(`Account userAvatar: ${userAvatar}`);
     Logger.debug('┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┚');
 
     registerMenuButton(menuButton);
+    await new Cache('user-group').set(userGroup);
 
     const contestsDB = new LZTContestsDB();
     await contestsDB.init();
