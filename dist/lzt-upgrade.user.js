@@ -5,11 +5,11 @@
 // @version 2.0.0dev
 // @author Toil
 // @supportURL https://github.com/lzt-upgrade/lzt-upgrade/issues
-// @match *://*.lolz.guru/*
-// @match *://*.lolz.live/*
-// @match *://*.zelenka.guru/*
-// @match *://*.lzt.market/*
-// @match *://*.lolz.market/*
+// @match *://lolz.guru/*
+// @match *://lolz.live/*
+// @match *://zelenka.guru/*
+// @match *://lzt.market/*
+// @match *://lolz.market/*
 // @connect lztupgrade.toiloff.ru
 // @connect greasyfork.org
 // @downloadURL https://github.com/lzt-upgrade/lzt-upgrade/raw/master/dist/lzt-upgrade.user.js
@@ -1523,7 +1523,7 @@ function regOpenContestsBtn(amount = 10) {
 
     openContestsButton.on('click', async () => {
       updateButton.click();
-      const el = await waitForElement('div.forumImprovements--mask.hidden');
+      const el = await waitForElm('div.forumImprovements--mask.hidden');
       if (!el) return;
 
       const links = getThreadLinks();
@@ -1585,6 +1585,7 @@ function registerObserver(callback) {
 
 ;// CONCATENATED MODULE: ./src/ui/components/icons.js
 function createMenuIcon(className, id = 'LZTUpIcon') {
+  // TODO: чет с этим сделать, мне не нравится как оно выглядит
   const icon = document.createElement('i');
   icon.id = id;
   icon.className = className;
@@ -1912,7 +1913,7 @@ class Button {
   }
 }
 
-
+/* harmony default export */ const components_button = (Button);
 ;// CONCATENATED MODULE: ./src/utils/contests.js
 
 
@@ -1957,7 +1958,7 @@ function contestsHidePoll(isHidden = true) {
 function contestsUpdateCapctha() {
   if (isContestThread()) {
     const participateBtn = document.querySelector('.LztContest--Participate');
-    const updateButton = new Button('', 'button LZTUpRefreshButton', 'far fa-sync').createElement((e) => {
+    const updateButton = new components_button('', 'button LZTUpRefreshButton', 'far fa-sync').createElement((e) => {
       e.preventDefault();
       reRenderCaptcha();
     });
@@ -2119,7 +2120,35 @@ const getContestsItems = async () => {
 }
 
 /* harmony default export */ const contests = (getContestsItems);
+;// CONCATENATED MODULE: ./src/ui/components/buttons/copyButton.js
+
+
+
+class CopyButton {
+  constructor(content, tooltipMessage, messageOnCopy) {
+    this.content = content;
+    this.tooltipMessage = tooltipMessage || '';
+    this.messageOnCopy = messageOnCopy || 'Успешно скопировано в буфер обмена';
+  }
+
+  createElement() {
+    const button = document.createElement('span');
+    button.classList.add('copyButton', 'Tooltip');
+    button.dataset.phr = this.messageOnCopy;
+    button.title = this.tooltipMessage;
+    button.onclick = new Function('event', `Clipboard.copy(${this.content}, this)`); // superior fix of "Clipboard.copy is not a function". !!! htmlspecialchars not needed here !!!
+    button.tabIndex = 0;
+
+    const icon = createMenuIcon('far fa-clone', '');
+    button.appendChild(icon);
+    return button;
+  }
+}
+
+/* harmony default export */ const copyButton = (CopyButton);
 ;// CONCATENATED MODULE: ./src/ui/components/profileInfoRow.js
+
+
 
 
 
@@ -2132,10 +2161,11 @@ class ProfileInfoRow {
    *  @param {string} content - content of row
    */
 
-  constructor(elementId, label, content) {
+  constructor(elementId, label, content, copyButton) {
     this.elementId = elementId;
     this.label = label;
     this.content = clearHTML(content);
+    this.copyButton = copyButton;
   }
 
   createElement() {
@@ -2155,6 +2185,11 @@ class ProfileInfoRow {
       labeled.innerHTML = this.content;
     }
 
+    if (this.copyButton instanceof copyButton) {
+      const copyButtonEl = this.copyButton.createElement();
+      labeled.appendChild(copyButtonEl)
+    }
+
     row.appendChild(label)
     row.appendChild(labeled)
 
@@ -2164,6 +2199,7 @@ class ProfileInfoRow {
 
 
 ;// CONCATENATED MODULE: ./src/utils/users.js
+
 
 
 
@@ -2247,7 +2283,9 @@ function addUserIdToProfile() {
   if (isProfilePage() && document.querySelector(`#${userIdRowElementId}`) === null) {
     const userId = getUserId('profile') ?? 'Не найден';
     const profileInfo = document.querySelector('#profile_short > .pairsJustified');
-    const userIdRow = new ProfileInfoRow(userIdRowElementId, 'ID', userId).createElement();
+
+    const copyBtn = new copyButton(userId, 'Скопировать ID пользователя', 'ID пользователя успешно скопирован в буфер обмена');
+    const userIdRow = new ProfileInfoRow(userIdRowElementId, 'ID', userId, copyBtn).createElement();
     const firstRow = profileInfo.querySelector('.profile_info_row');
     if (!firstRow) {
       return profileInfo.insertAdjacentElement('afterbegin', userIdRow);
@@ -3129,7 +3167,7 @@ function setMenuTitle(title) {
 function createGoBackBtn(callback) {
   const modalOverlay = document.querySelector('.xenOverlay > .errorOverlay#LZTUpModalOverlay');
 
-  const backButton = new Button('', 'LZTUpModalBackButton', 'fas fa-long-arrow-left').createElement();
+  const backButton = new components_button('', 'LZTUpModalBackButton', 'fas fa-long-arrow-left').createElement();
 
   backButton.onclick = () => {
     document.querySelectorAll('div.LZTUpSubMenu').forEach(submenu => submenu.style.display = 'none');
@@ -3359,10 +3397,19 @@ function updateUserBadges(badgeIconsData) {
 
 
 ;// CONCATENATED MODULE: ./src/visuals/universal.js
+
+
+
 const customBackgroundID = 'LZTUpCustomBackground';
 
 
-function addBackgroundImage(imageUrl) {
+function addBackgroundImage(imageUrl, skipUserCheck = false) {
+  if (!skipUserCheck && (isProfilePage() && getUserId('profile') !== getUserId('me'))) {
+    // check that this is the profile of the current user
+    // don't show background in other users profiles
+    return false;
+  }
+
   const body = document.querySelector('body');
   if (!imageUrl) {
     body.id = '';
@@ -3380,9 +3427,8 @@ function addBackgroundImage(imageUrl) {
 
 
 
-
 function addBackgroundImageInProfile(imageUrl) {
-  if (isProfilePage() && getUserId('profile') === getUserId('me')) {
+  if (isProfilePage()) {
     return addBackgroundImage(imageUrl)
   }
 }
@@ -3538,7 +3584,7 @@ async function sortableItemOnEditCallback(e, sortableItem, previewProfile) {
       ).createElement(),
 
       new Container([
-        new Button('Сохранить', 'button primary LZTUpIconButton fit', 'far fa-save').createElement(async () => {
+        new components_button('Сохранить', 'button primary LZTUpIconButton fit', 'far fa-save').createElement(async () => {
           registerAlert('Иконка успешно сохранена.')
           const badges = await updateBadgesData(badgeData);
           await profileDB.update({ badgeIcons: badges });
@@ -3753,7 +3799,7 @@ const getProfileItems = async () => {
           updateUserBadges(newProfileData.badgeIcons);
         }),
 
-        new Button('Добавить иконку', 'button LZTUpIconButton', 'far fa-plus')
+        new components_button('Добавить иконку', 'button LZTUpIconButton', 'far fa-plus')
         .createElement(async (e) => {
           const sortableContainer = e.target.parentElement?.querySelector('.LZTUpSortableContainer');
 
@@ -3830,7 +3876,7 @@ const getProfileItems = async () => {
       }),
 
     new Container([
-      new Button('Сохранить', 'button primary LZTUpIconButton fit', 'far fa-save').createElement(async () => {
+      new components_button('Сохранить', 'button primary LZTUpIconButton fit', 'far fa-save').createElement(async () => {
         // save settings in IndexedDB
         const oldProfileData = await profileDB.read();
 
@@ -4565,8 +4611,8 @@ async function main() {
         registerObserver(async (mutation) => {
           Logger.debug(mutation)
           if (
-            mutation.target.classList.contains('ProfilePostList') ||
             mutation.target.classList.contains('messageList') ||
+            mutation.target.classList.contains('messageSimpleList') ||
             mutation.target.classList.contains('messageResponse') ||
             mutation.target.classList.contains('CommentPostList') ||
             mutation.target.classList.contains('discussionList') ||
