@@ -1,6 +1,7 @@
 import { ProfileInfoRow } from 'UI/components/profileInfoRow';
 import { isProfilePage, isOpenMemberCard } from 'Utils/checkers';
 import extData from "Configs/extData";
+import CopyButton from 'UI/components/buttons/copyButton';
 
 const userIdRowElementId = 'LZTUpUserIDRow';
 const userIdMemberCardElementId = 'LZTUpUserIDMemberCard';
@@ -81,7 +82,9 @@ function addUserIdToProfile() {
   if (isProfilePage() && document.querySelector(`#${userIdRowElementId}`) === null) {
     const userId = getUserId('profile') ?? 'Не найден';
     const profileInfo = document.querySelector('#profile_short > .pairsJustified');
-    const userIdRow = new ProfileInfoRow(userIdRowElementId, 'ID', userId).createElement();
+
+    const copyBtn = new CopyButton(userId, 'Скопировать ID пользователя', 'ID пользователя успешно скопирован в буфер обмена');
+    const userIdRow = new ProfileInfoRow(userIdRowElementId, 'ID', userId, copyBtn).createElement();
     const firstRow = profileInfo.querySelector('.profile_info_row');
     if (!firstRow) {
       return profileInfo.insertAdjacentElement('afterbegin', userIdRow);
