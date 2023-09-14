@@ -53,6 +53,18 @@ function getUsername(target) {
   }
 }
 
+function getUserGroup(target) {
+  switch (target) {
+    case "self":
+    case "me":
+      const userEl = document.querySelector('.accountUsername.username span');
+      return userEl.className;
+    default:
+      return null;
+  }
+}
+
+
 function getUserAvatar(userId) {
   if (userId === getUserId('me')) {
     return document.querySelector('img.navTab--visitorAvatar').src;
@@ -137,4 +149,14 @@ function showFullRegDateInProfile(full = false) {
   }
 }
 
-export { getUserId, getUsername, getUserAvatar, addUserIdToProfile, addUserIdToMemberCard, removeUserIdFromProfile, removeUserIdFromMemberCard, showFullRegDateInProfile }
+export {
+  getUserId,
+  getUsername,
+  getUserAvatar,
+  getUserGroup,
+  addUserIdToProfile,
+  addUserIdToMemberCard,
+  removeUserIdFromProfile,
+  removeUserIdFromMemberCard,
+  showFullRegDateInProfile
+}
