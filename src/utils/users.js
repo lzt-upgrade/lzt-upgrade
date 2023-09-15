@@ -103,6 +103,8 @@ function addUserIdToMemberCard() {
     userIdElement.classList.add('title');
     userIdElement.id = userIdMemberCardElementId;
     userIdElement.innerText = `ID: ${userId}`;
+    const copyBtn = new CopyButton(userId, 'Скопировать ID пользователя', 'ID пользователя успешно скопирован в буфер обмена').createElement();
+    userIdElement.appendChild(copyBtn);
     userContentLinks?.insertAdjacentElement('afterbegin', userIdElement);
   }
 }
