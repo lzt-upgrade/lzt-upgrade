@@ -3,7 +3,7 @@ import { createMenuIcon } from "UI/components/icons.js";
 
 class CopyButton {
   constructor(content, tooltipMessage, messageOnCopy) {
-    this.content = content;
+    this.content = XenForo.htmlspecialchars(content); // Clipboard.copy works strangely with numbers so we do this
     this.tooltipMessage = tooltipMessage || '';
     this.messageOnCopy = messageOnCopy || 'Успешно скопировано в буфер обмена';
   }
@@ -13,7 +13,7 @@ class CopyButton {
     button.classList.add('copyButton', 'Tooltip');
     button.dataset.phr = this.messageOnCopy;
     button.title = this.tooltipMessage;
-    button.onclick = new Function('event', `Clipboard.copy(${this.content}, this)`); // superior fix of "Clipboard.copy is not a function". !!! htmlspecialchars not needed here !!!
+    button.onclick = new Function('event', `Clipboard.copy('${this.content}', this)`); // superior fix of "Clipboard.copy is not a function"
     button.tabIndex = 0;
 
     const icon = createMenuIcon('far fa-clone', '');
