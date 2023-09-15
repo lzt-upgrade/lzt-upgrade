@@ -72,7 +72,6 @@ class LZTUpgradeDB {
     return new Promise((resolve, reject) => {
       const openRequest = this.open();
       openRequest.onerror = () => {
-        console.log(openRequest)
         alert(`LZT Upgrade: Произошла ошибка при инициализации Базы Данных ${this.name}`);
         Logger.error(`Ошибка инициализации Базы Данных ${this.name}: `, openRequest.errorCode);
         reject(false);
@@ -177,8 +176,7 @@ class LZTUpgradeDB {
         };
 
         request.onsuccess = () => {
-          Logger.log(`Получены данные из Базы Данных ${this.name}: `, request.result
-          );
+          Logger.debug(`Получены данные из Базы Данных ${this.name}: `, request.result);
           const data = request.result;
           resolve(data);
         };
@@ -237,7 +235,7 @@ class LZTUpgradeDB {
           };
 
           request.onsuccess = () => {
-            Logger.log(`Получены данные из Базы Данных ${this.name}: `, request.result);
+            Logger.debug(`Получены данные из Базы Данных ${this.name}: `, request.result);
             let data = request.result;
             data = this.callback(this.indexesWithTypes, data, args);
 
@@ -249,7 +247,7 @@ class LZTUpgradeDB {
             };
 
             requestUpdate.onsuccess = () => {
-              Logger.log("Данные в Базе Данных обновлены, вы великолепны!");
+              Logger.debug("Данные в Базе Данных обновлены, вы великолепны!");
               resolve(true);
             };
           };
