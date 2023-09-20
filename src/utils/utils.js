@@ -19,34 +19,6 @@ function waitForElm(selector) {
   });
 }
 
-async function waitForElement(selector, timeout = 15000) {
-  const start = Date.now();
-
-  while (Date.now() - start < timeout) {
-    const el = $(selector);
-    if ((el && el.length) || Date.now() - start > timeout) {
-      return el;
-    }
-    await new Promise(resolve => setTimeout(resolve, 1000));
-  }
-
-  return null;
-}
-
-async function waitForCSRFToken(timeout = 15000) {
-  const start = Date.now();
-
-  while (Date.now() - start < timeout) {
-    const _csrfToken = XenForo._csrfToken;
-    if ((_csrfToken && _csrfToken.length) || Date.now() - start > timeout) {
-      return _csrfToken;
-    }
-    await new Promise(resolve => setTimeout(resolve, 1000));
-  }
-
-  return null;
-}
-
 const sleep = m => new Promise(r => setTimeout(r, m))
 
 function hasOwn(element, property) {
@@ -99,12 +71,10 @@ function getTimestamp() {
 
 export {
   waitForElm,
-  waitForElement,
   sleep,
   hasOwn,
   getNodeLinks,
   getThreadLinks,
-  waitForCSRFToken,
   removeStyles,
   removeStylesByEl,
   applyStyle,
