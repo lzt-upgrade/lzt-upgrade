@@ -34,7 +34,7 @@ class Tab {
 
     document.querySelectorAll('.LZTUpModalContent > .LZTUpSection').forEach(section => section.style.display = 'none');
 
-    document.querySelector(`#${this.sectionClassName}`).style.display = '';
+    document.getElementById(this.sectionClassName).style.display = '';
   }
 }
 
