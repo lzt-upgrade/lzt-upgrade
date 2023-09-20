@@ -18,7 +18,6 @@ import ErrorPageButton from "UI/buttons/errorPageButton";
 
 import onClickCategory from "Events/categories";
 
-import { waitForElement, waitForCSRFToken } from "Utils/utils";
 import { Logger } from "Utils/logger";
 import { registerMenuButton, registerObserver } from "Utils/registers";
 import {
@@ -44,35 +43,35 @@ import 'Styles/errorPage.scss';
 import 'Styles/universal.scss';
 
 
-async function main() {
-  const settingsDB = new LZTSettingsDB();
+async function initTheme() {
+  console.time("init-theme");
 
-  if (GM_info?.script?.version) Logger.log(`${config.extName} version: ${GM_info?.script?.version}`);
-
+  console.timeLog("init-theme", "loading appearDB...")
   const appearDB = new LZTAppearDB();
-  await appearDB.init();
+  console.timeLog("init-theme", "getting dbAppearData...")
   const dbAppearData = await appearDB.read();
+  console.timeLog("init-theme", "loading name from cache...")
   let themeName = await new Cache('theme-name').get();
-  Logger.debug(`Founded cached theme ${themeName}`)
-
+  console.timeLog("init-theme", "Check themeName valid...")
   if (!themeName && dbAppearData?.theme > 0) {
     Logger.debug(`Requesting theme with id ${dbAppearData.theme}...`);
     themeName = await getThemeByID(dbAppearData.theme)
       .catch(err => console.error(err));
     await new Cache('theme-name').set(themeName);
   }
+  console.timeLog("Loading theme...");
+  loadTheme(themeName);
+  console.timeEnd("init-theme");
+}
 
-  Logger.debug('Loading theme... ' + new Date());
-  loadTheme(themeName)
-  Logger.debug('Loading finished... ' + new Date());
+async function main() {
+  console.time("lztup-start")
 
-  const SCRIPT_LOADED = await waitForElement('body', 120000);
-  if (!SCRIPT_LOADED) {
-    Logger.error('Не удалось запустить расширение.');
-    return;
-  }
+  if (GM_info?.script?.version) Logger.log(`${config.extName} version: ${GM_info?.script?.version}`);
 
-  if (SCRIPT_LOADED.length) {
+  console.timeLog("lztup-start", "Waiting body...")
+  document.addEventListener('DOMContentLoaded', async () => {
+    console.timeLog("lztup-start", "Body loaded successfully")
     if (/^(Error\s[0-9]{3}|Site\sMaintenance)$/.test(document.head.querySelector('title').innerText)) {
       if (!dbAppearData || dbAppearData?.newErrorPage === 0) {
         return;
@@ -130,7 +129,7 @@ async function main() {
       return;
     }
 
-    await waitForCSRFToken(120000);
+    console.timeLog("lztup-start", "GET DEBUG INFO")
     const username = getUsername('me');
     const userid = getUserId('me');
     const userGroup = getUserGroup('me');
@@ -144,31 +143,32 @@ async function main() {
     Logger.debug(`Account userAvatar: ${userAvatar}`);
     Logger.debug('┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┚');
 
+    console.timeLog("lztup-start", "Register menu button")
     registerMenuButton(menuButton);
+
+    console.timeLog("lztup-start", "Add user group to cache")
     await new Cache('user-group').set(userGroup);
 
-    const contestsDB = new LZTContestsDB();
-    await contestsDB.init();
-    const dbContestsData = await contestsDB.read();
-
-    const usersDB = new LZTUsersDB();
-    await usersDB.init();
-    const dbUsersData = await usersDB.read();
-
+    console.timeLog("lztup-start", "Loading Profile DB...")
     const profileDB = new LZTProfileDB();
-    await profileDB.init();
+    // await profileDB.init();
     const dbProfileData = await profileDB.read();
 
+    console.timeLog("lztup-start", "Checking Profile data...")
     if (dbProfileData) {
+      console.timeLog("lztup-start", "Check Profile User or Badge style")
       if (dbProfileData.usernameStyle || dbProfileData.badgeIcons.length) {
+        console.timeLog("lztup-start", "Check Profile User style")
         if (dbProfileData.usernameStyle) {
           updateUserStyle(dbProfileData.usernameStyle);
         }
 
+        console.timeLog("lztup-start", "Check Profile badge style")
         if (dbProfileData.badgeIcons.length) {
           updateUserBadges(dbProfileData.badgeIcons);
         }
 
+        console.timeLog("lztup-start", "Reg profile observer")
         registerObserver(async (mutation) => {
           Logger.debug(mutation)
           if (
@@ -199,10 +199,12 @@ async function main() {
         });
       }
 
+      console.timeLog("lztup-start", "Check Profile banner")
       if (dbProfileData.bannerStyle && dbProfileData.bannerText) {
         updateUserBanner(dbProfileData.bannerStyle, dbProfileData.bannerText);
       }
 
+      console.timeLog("lztup-start", "Check Profile bg")
       if (dbProfileData.backgroundImage) {
         // update background image of page
         if (dbProfileData.backgroundImageEverywhere) {
@@ -211,28 +213,52 @@ async function main() {
           addBackgroundImageInProfile(dbProfileData.backgroundImage);
         }
       }
+      console.timeLog("lztup-start", "Profile bg loaded")
     }
 
+    console.timeLog("lztup-start", "Loading Contests DB...")
+    const contestsDB = new LZTContestsDB();
+    // await contestsDB.init();
+    const dbContestsData = await contestsDB.read();
+
+    console.timeLog("lztup-start", "Checking Contests DB...")
     if (dbContestsData) {
+      console.timeLog("lztup-start", "Add reg 10 btn")
       dbContestsData.openTenContestsBtn === 1 ? regOpenContestsBtn(10) : null;
 
+      console.timeLog("lztup-start", "Add onclick contests category")
       onClickCategory(extData.nodes.contests, async () => {
         const contestsDB = new LZTContestsDB();
         const dbContestsData = await contestsDB.read();
         dbContestsData.openTenContestsBtn === 1 ? regOpenContestsBtn(10) : null;
       });
 
+      console.timeLog("lztup-start", "hideTagsInThread")
       dbContestsData.hideTagsInThread === 1 ? contestsTagsVisibility(true) : null;
+      console.timeLog("lztup-start", "autoCloseOnParticipate")
       dbContestsData.autoCloseOnParticipate === 1 ? contestsAutoCloseHandler(true) : null;
+      console.timeLog("lztup-start", "infoTopInThread")
       dbContestsData.infoTopInThread === 1 ? contestThreadBlockMove(true) : null;
+      console.timeLog("lztup-start", "removeContent")
       dbContestsData.removeContent === 1 ? contestsHideContent(true) : null;
+      console.timeLog("lztup-start", "removePoll")
       dbContestsData.removePoll === 1 ? contestsHidePoll(true) : null;
+      console.timeLog("lztup-start", "updateCaptchaButton")
       dbContestsData.updateCaptchaButton === 1 ? contestsUpdateCapctha() : null;
+      console.timeLog("lztup-start", "autoFixCaptcha")
       dbContestsData.autoFixCaptcha === 1 ? contestsAutoFixCaptcha() : null;
     }
 
+    console.timeLog("lztup-start", "Loading Users DB...")
+    const usersDB = new LZTUsersDB();
+    // await usersDB.init();
+    const dbUsersData = await usersDB.read();
+
+    console.timeLog("lztup-start", "Checking Users DB...")
     if (dbUsersData) {
+      console.timeLog("lztup-start", "showUserIdInProfile")
       dbUsersData.showUserIdInProfile === 1 ? addUserIdToProfile() : null;
+      console.timeLog("lztup-start", "showUserIdInMemberCard")
       if (dbUsersData.showUserIdInMemberCard === 1) {
         addUserIdToMemberCard();
         registerObserver((mutation) => {
@@ -243,12 +269,21 @@ async function main() {
           }
         });
       }
+      console.timeLog("lztup-start", "showFullRegInProfile")
       dbUsersData.showFullRegInProfile === 1 ? showFullRegDateInProfile(true) : null;
+      console.timeLog("lztup-start", "disableShareTyping")
       dbUsersData.disableShareTyping === 1 ? bypassShareTyping() : null;
     }
-  }
+
+    console.timeLog("lztup-start", "settingsDB...")
+    const settingsDB = new LZTSettingsDB();
+    // settingsDB.init()
+    console.timeEnd("lztup-start")
+  })
 }
 
-main().catch((e) => {
+try {
+  await Promise.allSettled([initTheme() , main()]);
+} catch {
   console.error(e);
-});
+}
