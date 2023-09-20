@@ -5,6 +5,8 @@ const customBackgroundID = 'LZTUpCustomBackground';
 
 
 function addBackgroundImage(imageUrl, skipUserCheck = false) {
+  // exec time: 0-1ms (1ms in profile)
+
   if (!skipUserCheck && (isProfilePage() && getUserId('profile') !== getUserId('me'))) {
     // check that this is the profile of the current user
     // don't show background in other users profiles
