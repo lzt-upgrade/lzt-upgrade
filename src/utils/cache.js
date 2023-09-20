@@ -5,8 +5,8 @@ class Cache {
    *  @param {string} name - cache name
    */
 
-  constructor(name) {
-    this.cachePrefix = 'lztup-';
+  constructor(name, cachePrefix) {
+    this.cachePrefix = cachePrefix ?? 'lztup-';
     this.name = name;
     this.fullName = `${this.cachePrefix}${this.name}`;
   }
