@@ -41,10 +41,15 @@ function contestsHidePoll(isHidden = true) {
 function contestsUpdateCapctha() {
   if (isContestThread()) {
     const participateBtn = document.querySelector('.LztContest--Participate');
+    if (!participateBtn) {
+      return;
+    }
+
     const updateButton = new Button('', 'button LZTUpRefreshButton', 'far fa-sync').createElement((e) => {
       e.preventDefault();
       reRenderCaptcha();
     });
+
     participateBtn.insertAdjacentElement('afterend', updateButton);
   }
 }
@@ -52,7 +57,7 @@ function contestsUpdateCapctha() {
 function contestsAutoFixCaptcha() {
   if (isContestThread()) {
     const captchaControl = document.querySelector('.captchaBlock > div');
-    if (captchaControl.childElementCount > 0) {
+    if (captchaControl?.childElementCount > 0) {
       return Logger.debug('Captcha exists');
     }
 
