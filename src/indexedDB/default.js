@@ -178,8 +178,8 @@ class LZTUpgradeDB {
         };
 
         request.onsuccess = () => {
-          Logger.log(`Получены данные из Базы Данных ${this.name}: `, request.result
-          );
+          // Logger.log(`Получены данные из Базы Данных ${this.name}: `, request.result
+          // );
           const data = request.result;
           resolve(data);
         };
@@ -238,7 +238,7 @@ class LZTUpgradeDB {
           };
 
           request.onsuccess = () => {
-            Logger.log(`Получены данные из Базы Данных ${this.name}: `, request.result);
+            // Logger.log(`Получены данные из Базы Данных ${this.name}: `, request.result);
             let data = request.result;
             data = this.callback(this.indexes, data, args);
 
