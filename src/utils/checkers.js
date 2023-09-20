@@ -14,8 +14,8 @@ function isContestThread() {
 }
 
 function isContestsNode() {
-  const currentPage = window.location.pathname;
-  return currentPage.includes('/forums/contests/');
+  const currentPath = window.location.pathname;
+  return currentPath.includes('/forums/contests/');
 }
 
 function isProfilePage() {
