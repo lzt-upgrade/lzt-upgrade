@@ -19,10 +19,12 @@ function isContestsNode() {
 }
 
 function isProfilePage() {
+  // exec time: 0ms (faster than check meta)
   return document.querySelector('ol#ProfilePostList') !== null;
 }
 
 function isThreadPage() {
+  // exec time: 0ms (faster than check meta)
   return document.querySelector('div#content.thread_view') !== null;
 }
 
