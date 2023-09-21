@@ -34,7 +34,6 @@ import { getUserId, getUsername, getUserGroup } from 'Utils/users';
 import { updateUserStyle, updateUserBanner, updateUserBadges } from 'Visuals/users';
 import { addBackgroundImage } from 'Visuals/universal';
 import { addBackgroundImageInProfile } from 'Visuals/profile';
-import Cache from "Utils/cache";
 
 
 // import 'Styles/main.css';
@@ -44,6 +43,7 @@ import 'Styles/universal.scss';
 
 
 async function initTheme() {
+  // exec time: 50-200ms
   console.time("init-theme");
 
   console.timeLog("init-theme", "loading appearDB...")
@@ -51,13 +51,15 @@ async function initTheme() {
   console.timeLog("init-theme", "getting dbAppearData...")
   const dbAppearData = await appearDB.read();
   console.timeLog("init-theme", "loading name from cache...")
-  let themeName = await new Cache('theme-name').get();
+  let themeName = await GM_getValue("cache", {}).themeName;
   console.timeLog("init-theme", "Check themeName valid...")
   if (!themeName && dbAppearData?.theme > 0) {
     Logger.debug(`Requesting theme with id ${dbAppearData.theme}...`);
     themeName = await getThemeByID(dbAppearData.theme)
       .catch(err => console.error(err));
-    await new Cache('theme-name').set(themeName);
+    let cacheData = await GM_getValue('cache', {});
+    cacheData['themeName'] = themeName;
+    await GM_setValue('cache', cacheData);
   }
   console.timeLog("Loading theme...");
   loadTheme(themeName);
@@ -147,7 +149,7 @@ async function main() {
     registerMenuButton(menuButton);
 
     console.timeLog("lztup-start", "Add user group to cache")
-    await new Cache('user-group').set(userGroup);
+    await GM_setValue('LZTUserGroup', userGroup);
 
     console.timeLog("lztup-start", "Loading Profile DB...")
     const profileDB = new LZTProfileDB();
