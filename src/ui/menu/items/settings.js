@@ -8,7 +8,6 @@ import { downloadJSONFile, uploadJSONFile } from 'Utils/files';
 import { registerAlert } from 'Utils/registers';
 import { Logger } from 'Utils/logger';
 import { sleep } from 'Utils/utils';
-import Cache from "Utils/cache";
 
 
 const appearDB = new LZTAppearDB()
@@ -63,7 +62,7 @@ async function uploadSettings() {
 }
 
 async function clearCache() {
-  await new Cache().clearAll();
+  await GM_setValue('cache', {});
   registerAlert('Кеш успешно очищен', 5000);
   await sleep(1000);
   window.location.reload();
