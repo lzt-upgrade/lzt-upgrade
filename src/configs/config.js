@@ -1,7 +1,8 @@
 const config = () => {
   return {
-    extName: DEV_MODE ? '[DEV] LZT Upgrade' : 'LZT Upgrade Development Build',
-    cacheTime: 604_800,
+    extName: DEV_MODE ? '[DEV] LZT Upgrade' : 'LZT Upgrade UNRELEASED',
+    cacheTime: 604_800, // 1 week
+    defaultUserGroup: 'style2'
   }
 }
 
