@@ -1,6 +1,5 @@
 import { getThemes } from "API/lztupgrade/getThemes";
 import { Logger } from "Utils/logger";
-import Cache from "Utils/cache";
 
 function getThemeByID(themeId) {
   // Loading theme by ID
@@ -12,12 +11,6 @@ function getThemeByID(themeId) {
       Logger.debug('onExtensionStart: Themes arrray getted: ', availabledThemes);
       const findedTheme = availabledThemes.find(theme => theme.uid === themeId && theme.active === 1);
       return resolve(findedTheme?.file)
-      // Logger.debug(findedTheme);
-      // if (findedTheme) {
-      //   Logger.debug(`onExtensionStart: Finded active theme with id ${findedTheme.uid}`);
-      //   loadTheme(findedTheme.file);
-      //   return resolve(true);
-      // }
     }
 
     Logger.debug(`onExtensionStart: Not finded active theme`);
