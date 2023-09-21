@@ -20,7 +20,7 @@ import { updateUserStyle, updateUserBanner, updateUserBadges } from 'Visuals/use
 import { addBackgroundImage } from 'Visuals/universal';
 import { addBackgroundImageInProfile } from 'Visuals/profile';
 import { Logger } from "Utils/logger";
-import Cache from "Utils/cache";
+import config from "Configs/config";
 
 
 const profileDB = new LZTProfileDB();
@@ -255,7 +255,7 @@ const getProfileItems = async () => {
   }
 
   const profileData = await profileDB.read();
-  const userGroup = await new Cache('user-group').get();
+  const userGroup = await GM_getValue('LZTUserGroup', config.defaultUserGroup);
   const currentDomain = window.location.hostname;
 
   const previewProfile = createPreviewProfile(profileData);

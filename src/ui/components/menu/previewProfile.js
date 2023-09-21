@@ -2,7 +2,7 @@ import { getUserAvatar } from 'Utils/users';
 import { applyStyle } from 'Utils/utils';
 import { AvatarUserBadges } from 'UI/avatarUserBadges';
 import { Logger } from "Utils/logger";
-import Cache from "Utils/cache";
+import config from "Configs/config";
 
 
 class PreviewProfile {
@@ -71,7 +71,7 @@ class PreviewProfile {
     }
 
     if (style === '') {
-      const userGroup = await new Cache('user-group').get();
+      const userGroup = await GM_getValue('LZTUserGroup', config.defaultUserGroup); // current user group (newbie, resident, expert and etc)
       style = `.${userGroup}`;
     }
     usernameEl.classList.add('UsernameStyle', 'bold');
