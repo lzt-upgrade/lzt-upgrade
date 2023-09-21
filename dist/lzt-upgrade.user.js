@@ -694,7 +694,6 @@ async function getThemes() {
 
 
 
-
 function getThemeByID(themeId) {
   // Loading theme by ID
   return new Promise(async (resolve, reject) => {
@@ -705,12 +704,6 @@ function getThemeByID(themeId) {
       logger/* Logger */.Y.debug('onExtensionStart: Themes arrray getted: ', availabledThemes);
       const findedTheme = availabledThemes.find(theme => theme.uid === themeId && theme.active === 1);
       return resolve(findedTheme?.file)
-      // Logger.debug(findedTheme);
-      // if (findedTheme) {
-      //   Logger.debug(`onExtensionStart: Finded active theme with id ${findedTheme.uid}`);
-      //   loadTheme(findedTheme.file);
-      //   return resolve(true);
-      // }
     }
 
     logger/* Logger */.Y.debug(`onExtensionStart: Not finded active theme`);
@@ -730,8 +723,9 @@ function getThemeByID(themeId) {
 /* harmony export */ });
 const config = () => {
   return {
-    extName:  false ? 0 : 'LZT Upgrade Development Build',
-    cacheTime: 604_800,
+    extName:  false ? 0 : 'LZT Upgrade UNRELEASED',
+    cacheTime: 604_800, // 1 week
+    defaultUserGroup: 'style2'
   }
 }
 
@@ -858,20 +852,18 @@ __webpack_require__.a(__webpack_module__, async (__webpack_handle_async_dependen
 /* harmony import */ var IndexedDB_settings__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__("./src/indexedDB/settings.js");
 /* harmony import */ var UI_buttons_contestsButton__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__("./src/ui/buttons/contestsButton.js");
 /* harmony import */ var UI_buttons_menuButton__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__("./src/ui/buttons/menuButton.js");
-/* harmony import */ var UI_buttons_errorPageButton__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__("./src/ui/buttons/errorPageButton.js");
-/* harmony import */ var Events_categories__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__("./src/events/categories.js");
+/* harmony import */ var UI_buttons_errorPageButton__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__("./src/ui/buttons/errorPageButton.js");
+/* harmony import */ var Events_categories__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__("./src/events/categories.js");
 /* harmony import */ var Utils_logger__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__("./src/utils/logger.js");
-/* harmony import */ var Utils_registers__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__("./src/utils/registers.js");
+/* harmony import */ var Utils_registers__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__("./src/utils/registers.js");
 /* harmony import */ var Utils_contests__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__("./src/utils/contests.js");
 /* harmony import */ var Utils_users__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__("./src/utils/users.js");
 /* harmony import */ var Xenforo_bypass__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__("./src/xenforo/bypass.js");
 /* harmony import */ var Visuals_users__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__("./src/visuals/users.js");
 /* harmony import */ var Visuals_universal__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__("./src/visuals/universal.js");
 /* harmony import */ var Visuals_profile__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__("./src/visuals/profile.js");
-/* harmony import */ var Utils_cache__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__("./src/utils/cache.js");
 /* harmony import */ var Styles_errorPage_scss__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__("./src/styles/errorPage.scss");
 /* harmony import */ var Styles_universal_scss__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__("./src/styles/universal.scss");
-
 
 
 
@@ -910,6 +902,7 @@ __webpack_require__.a(__webpack_module__, async (__webpack_handle_async_dependen
 
 
 async function initTheme() {
+  // exec time: 50-200ms
   console.time("init-theme");
 
   console.timeLog("init-theme", "loading appearDB...")
@@ -917,13 +910,15 @@ async function initTheme() {
   console.timeLog("init-theme", "getting dbAppearData...")
   const dbAppearData = await appearDB.read();
   console.timeLog("init-theme", "loading name from cache...")
-  let themeName = await new Utils_cache__WEBPACK_IMPORTED_MODULE_21__/* ["default"] */ .Z('theme-name').get();
+  let themeName = await GM_getValue("cache", {}).themeName;
   console.timeLog("init-theme", "Check themeName valid...")
   if (!themeName && dbAppearData?.theme > 0) {
     Utils_logger__WEBPACK_IMPORTED_MODULE_12__/* .Logger */ .Y.debug(`Requesting theme with id ${dbAppearData.theme}...`);
     themeName = await (0,Callbacks_extensionStart__WEBPACK_IMPORTED_MODULE_4__/* .getThemeByID */ .P)(dbAppearData.theme)
       .catch(err => console.error(err));
-    await new Utils_cache__WEBPACK_IMPORTED_MODULE_21__/* ["default"] */ .Z('theme-name').set(themeName);
+    let cacheData = await GM_getValue('cache', {});
+    cacheData['themeName'] = themeName;
+    await GM_setValue('cache', cacheData);
   }
   console.timeLog("Loading theme...");
   (0,API_lztupgrade_loadTheme__WEBPACK_IMPORTED_MODULE_0__/* .loadTheme */ .j)(themeName);
@@ -965,7 +960,7 @@ async function main() {
       const selfAdButtonBlock = document.createElement('div');
       selfAdButtonBlock.classList.add('buttons');
 
-      const selfAdTelegram = new UI_buttons_errorPageButton__WEBPACK_IMPORTED_MODULE_22__/* ["default"] */ .Z(
+      const selfAdTelegram = new UI_buttons_errorPageButton__WEBPACK_IMPORTED_MODULE_21__/* ["default"] */ .Z(
         `
           <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24">
             <path d="M9.78 18.65l.28-4.23l7.68-6.92c.34-.31-.07-.46-.52-.19L7.74 13.3L3.64 12c-.88-.25-.89-.86.2-1.3l15.97-6.16c.73-.33 1.43.18 1.15 1.3l-2.72 12.81c-.19.91-.74 1.13-1.5.71L12.6 16.3l-1.99 1.93c-.23.23-.42.42-.83.42z"/>
@@ -975,7 +970,7 @@ async function main() {
         Configs_extData__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .Z.links.telegramChannel
       ).createElement();
 
-      const selfAdGithub = new UI_buttons_errorPageButton__WEBPACK_IMPORTED_MODULE_22__/* ["default"] */ .Z(
+      const selfAdGithub = new UI_buttons_errorPageButton__WEBPACK_IMPORTED_MODULE_21__/* ["default"] */ .Z(
         `
           <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24">
             <path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5c.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34c-.46-1.16-1.11-1.47-1.11-1.47c-.91-.62.07-.6.07-.6c1 .07 1.53 1.03 1.53 1.03c.87 1.52 2.34 1.07 2.91.83c.09-.65.35-1.09.63-1.34c-2.22-.25-4.55-1.11-4.55-4.92c0-1.11.38-2 1.03-2.71c-.1-.25-.45-1.29.1-2.64c0 0 .84-.27 2.75 1.02c.79-.22 1.65-.33 2.5-.33c.85 0 1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02c.55 1.35.2 2.39.1 2.64c.65.71 1.03 1.6 1.03 2.71c0 3.82-2.34 4.66-4.57 4.91c.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2Z"/>
@@ -1010,10 +1005,10 @@ async function main() {
     Utils_logger__WEBPACK_IMPORTED_MODULE_12__/* .Logger */ .Y.debug('┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┚');
 
     console.timeLog("lztup-start", "Register menu button")
-    ;(0,Utils_registers__WEBPACK_IMPORTED_MODULE_23__/* .registerMenuButton */ .e7)(UI_buttons_menuButton__WEBPACK_IMPORTED_MODULE_11__/* ["default"] */ .Z);
+    ;(0,Utils_registers__WEBPACK_IMPORTED_MODULE_22__/* .registerMenuButton */ .e7)(UI_buttons_menuButton__WEBPACK_IMPORTED_MODULE_11__/* ["default"] */ .Z);
 
     console.timeLog("lztup-start", "Add user group to cache")
-    await new Utils_cache__WEBPACK_IMPORTED_MODULE_21__/* ["default"] */ .Z('user-group').set(userGroup);
+    await GM_setValue('LZTUserGroup', userGroup);
 
     console.timeLog("lztup-start", "Loading Profile DB...")
     const profileDB = new IndexedDB_profile__WEBPACK_IMPORTED_MODULE_8__/* .LZTProfileDB */ .M();
@@ -1035,7 +1030,7 @@ async function main() {
         }
 
         console.timeLog("lztup-start", "Reg profile observer")
-        ;(0,Utils_registers__WEBPACK_IMPORTED_MODULE_23__/* .registerObserver */ .O0)(async (mutation) => {
+        ;(0,Utils_registers__WEBPACK_IMPORTED_MODULE_22__/* .registerObserver */ .O0)(async (mutation) => {
           Utils_logger__WEBPACK_IMPORTED_MODULE_12__/* .Logger */ .Y.debug(mutation)
           if (
             mutation.target.classList.contains('messageList') ||
@@ -1093,7 +1088,7 @@ async function main() {
       dbContestsData.openTenContestsBtn === 1 ? (0,UI_buttons_contestsButton__WEBPACK_IMPORTED_MODULE_10__/* .regOpenContestsBtn */ .u)(10) : null;
 
       console.timeLog("lztup-start", "Add onclick contests category")
-      ;(0,Events_categories__WEBPACK_IMPORTED_MODULE_24__/* ["default"] */ .Z)(Configs_extData__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .Z.nodes.contests, async () => {
+      ;(0,Events_categories__WEBPACK_IMPORTED_MODULE_23__/* ["default"] */ .Z)(Configs_extData__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .Z.nodes.contests, async () => {
         const contestsDB = new IndexedDB_contests__WEBPACK_IMPORTED_MODULE_6__/* .LZTContestsDB */ .w();
         const dbContestsData = await contestsDB.read();
         dbContestsData.openTenContestsBtn === 1 ? (0,UI_buttons_contestsButton__WEBPACK_IMPORTED_MODULE_10__/* .regOpenContestsBtn */ .u)(10) : null;
@@ -1127,7 +1122,7 @@ async function main() {
       console.timeLog("lztup-start", "showUserIdInMemberCard")
       if (dbUsersData.showUserIdInMemberCard === 1) {
         (0,Utils_users__WEBPACK_IMPORTED_MODULE_14__/* .addUserIdToMemberCard */ .SL)();
-        (0,Utils_registers__WEBPACK_IMPORTED_MODULE_23__/* .registerObserver */ .O0)((mutation) => {
+        (0,Utils_registers__WEBPACK_IMPORTED_MODULE_22__/* .registerObserver */ .O0)((mutation) => {
           if (mutation.nextSibling) {
             if (mutation.nextSibling?.classList?.contains('modal')) {
               (0,Utils_users__WEBPACK_IMPORTED_MODULE_14__/* .addUserIdToMemberCard */ .SL)()
@@ -2561,8 +2556,8 @@ class Comment {
 
 // EXTERNAL MODULE: ./src/ui/avatarUserBadges.js + 1 modules
 var ui_avatarUserBadges = __webpack_require__("./src/ui/avatarUserBadges.js");
-// EXTERNAL MODULE: ./src/utils/cache.js
-var cache = __webpack_require__("./src/utils/cache.js");
+// EXTERNAL MODULE: ./src/configs/config.js
+var config = __webpack_require__("./src/configs/config.js");
 ;// CONCATENATED MODULE: ./src/ui/components/menu/previewProfile.js
 
 
@@ -2637,7 +2632,7 @@ class PreviewProfile {
     }
 
     if (style === '') {
-      const userGroup = await new cache/* default */.Z('user-group').get();
+      const userGroup = await GM_getValue('LZTUserGroup', config/* default */.Z.defaultUserGroup); // current user group (newbie, resident, expert and etc)
       style = `.${userGroup}`;
     }
     usernameEl.classList.add('UsernameStyle', 'bold');
@@ -3034,8 +3029,6 @@ class SortableItem {
 }
 
 
-// EXTERNAL MODULE: ./src/configs/config.js
-var config = __webpack_require__("./src/configs/config.js");
 // EXTERNAL MODULE: ./src/configs/extData.js
 var extData = __webpack_require__("./src/configs/extData.js");
 ;// CONCATENATED MODULE: ./src/ui/menu/utils.js
@@ -3443,7 +3436,7 @@ const getProfileItems = async () => {
   }
 
   const profileData = await profileDB.read();
-  const userGroup = await new cache/* default */.Z('user-group').get();
+  const userGroup = await GM_getValue('LZTUserGroup', config/* default */.Z.defaultUserGroup);
   const currentDomain = window.location.hostname;
 
   const previewProfile = createPreviewProfile(profileData);
@@ -3743,7 +3736,6 @@ async function uploadJSONFile() {
 
 
 
-
 const appearDB = new appear/* LZTAppearDB */.e()
 const contestsDB = new contests/* LZTContestsDB */.w()
 const settings_profileDB = new profile/* LZTProfileDB */.M()
@@ -3796,7 +3788,7 @@ async function uploadSettings() {
 }
 
 async function clearCache() {
-  await new cache/* default */.Z().clearAll();
+  await GM_setValue('cache', {});
   (0,registers/* registerAlert */.de)('Кеш успешно очищен', 5000);
   await (0,utils/* sleep */._v)(1000);
   window.location.reload();
@@ -4144,52 +4136,6 @@ function createMenuIcon(className, id = 'LZTUpIcon') {
 }
 
 
-
-/***/ }),
-
-/***/ "./src/utils/cache.js":
-/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
-
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   Z: () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-class Cache {
-  /**
-   *
-   *  @constructor
-   *  @param {string} name - cache name
-   */
-
-  constructor(name, cachePrefix) {
-    this.cachePrefix = cachePrefix ?? 'lztup-';
-    this.name = name;
-    this.fullName = `${this.cachePrefix}${this.name}`;
-  }
-
-  async get() {
-    return await GM_getValue(this.fullName);
-  }
-
-  async set(value) {
-    return await GM_setValue(this.fullName, value);
-  }
-
-  async remove() {
-    return await GM_deleteValue(this.fullName);
-  }
-
-  async list() {
-    return await GM_listValues(this.fullName);
-  }
-
-  async clearAll() {
-    for (const val of await this.list()) {
-      await new Cache(val).remove();
-    }
-  }
-}
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Cache);
 
 /***/ }),
 
