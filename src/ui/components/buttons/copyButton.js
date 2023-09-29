@@ -13,6 +13,7 @@ class CopyButton {
     button.classList.add('copyButton', 'Tooltip');
     button.dataset.phr = this.messageOnCopy;
     button.title = this.tooltipMessage;
+    // FIXME: REWORK THIS https://github.com/airbnb/javascript#functions--constructor
     button.onclick = new Function('event', `Clipboard.copy('${this.content}', this)`); // superior fix of "Clipboard.copy is not a function"
     button.tabIndex = 0;
 
