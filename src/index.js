@@ -186,6 +186,7 @@ async function main() {
             mutation.nextSibling?.classList?.contains('modal') ||
             mutation.previousSibling?.classList?.contains('Alert') ||
             mutation.previousSibling?.nextSibling?.classList?.contains('Alert') ||
+            mutation.removedNodes?.[0]?.id === 'AjaxProgress' ||
             mutation.target.id === 'AlertsDestinationWrapper' ||
             mutation.target.id === 'StackAlerts'
           ) {
