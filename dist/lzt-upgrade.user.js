@@ -1045,6 +1045,7 @@ async function main() {
             mutation.nextSibling?.classList?.contains('modal') ||
             mutation.previousSibling?.classList?.contains('Alert') ||
             mutation.previousSibling?.nextSibling?.classList?.contains('Alert') ||
+            mutation.removedNodes?.[0]?.id === 'AjaxProgress' ||
             mutation.target.id === 'AlertsDestinationWrapper' ||
             mutation.target.id === 'StackAlerts'
           ) {
@@ -2352,18 +2353,6 @@ const getContestsItems = async () => {
         (0,contestsButton/* removeOpenContestsBtn */.c)(10);
       }),
 
-    new Checkbox('hide_tags_in_contests', `Скрытие тегов в теме розыгрыша`)
-    .createElement(
-      contestsData.hideTagsInThread,
-      async () => {
-        await contestsDB.update({hideTagsInThread: 1});
-        (0,utils_contests/* contestsTagsVisibility */.s$)(true);
-      },
-      async () => {
-        await contestsDB.update({hideTagsInThread: 0});
-        (0,utils_contests/* contestsTagsVisibility */.s$)(false);
-      }),
-
     new Checkbox('auto_close_on_participate',
       `Автозакрытие страницы при нажатие на кнопку "Участвовать"
       <span class="fa fa-exclamation-triangle Tooltip" title="При отключение этой функции страница будет перезагружена"></span>
@@ -2389,6 +2378,18 @@ const getContestsItems = async () => {
       async () => {
         await contestsDB.update({infoTopInThread: 0});
         (0,utils_contests/* contestThreadBlockMove */.Q6)(false);
+      }),
+
+    new Checkbox('hide_tags_in_contests', `Скрытие тегов в теме розыгрыша`)
+    .createElement(
+      contestsData.hideTagsInThread,
+      async () => {
+        await contestsDB.update({hideTagsInThread: 1});
+        (0,utils_contests/* contestsTagsVisibility */.s$)(true);
+      },
+      async () => {
+        await contestsDB.update({hideTagsInThread: 0});
+        (0,utils_contests/* contestsTagsVisibility */.s$)(false);
       }),
 
     new Checkbox('remove_content_in_contests', `Скрытие содержимого темы розыгрыша`)
@@ -2428,8 +2429,7 @@ const getContestsItems = async () => {
       }),
 
     new Checkbox('auto_fix_captcha_in_contests',
-    `
-      Автофикс капчи
+    `Автофикс капчи
       <span class="fa fa-question Tooltip" title="Автоматически обновляет капчу, если она не появилась"></span>
       <span class="fa fa-exclamation-triangle Tooltip" title="При отключение этой функции страница будет перезагружена"></span>
     `)
@@ -4513,6 +4513,7 @@ class CopyButton {
     button.classList.add('copyButton', 'Tooltip');
     button.dataset.phr = this.messageOnCopy;
     button.title = this.tooltipMessage;
+    // FIXME: REWORK THIS https://github.com/airbnb/javascript#functions--constructor
     button.onclick = new Function('event', `Clipboard.copy('${this.content}', this)`); // superior fix of "Clipboard.copy is not a function"
     button.tabIndex = 0;
 
