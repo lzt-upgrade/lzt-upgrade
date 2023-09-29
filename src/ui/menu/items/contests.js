@@ -28,18 +28,6 @@ const getContestsItems = async () => {
         removeOpenContestsBtn(10);
       }),
 
-    new Checkbox('hide_tags_in_contests', `Скрытие тегов в теме розыгрыша`)
-    .createElement(
-      contestsData.hideTagsInThread,
-      async () => {
-        await contestsDB.update({hideTagsInThread: 1});
-        contestsTagsVisibility(true);
-      },
-      async () => {
-        await contestsDB.update({hideTagsInThread: 0});
-        contestsTagsVisibility(false);
-      }),
-
     new Checkbox('auto_close_on_participate',
       `Автозакрытие страницы при нажатие на кнопку "Участвовать"
       <span class="fa fa-exclamation-triangle Tooltip" title="При отключение этой функции страница будет перезагружена"></span>
@@ -65,6 +53,18 @@ const getContestsItems = async () => {
       async () => {
         await contestsDB.update({infoTopInThread: 0});
         contestThreadBlockMove(false);
+      }),
+
+    new Checkbox('hide_tags_in_contests', `Скрытие тегов в теме розыгрыша`)
+    .createElement(
+      contestsData.hideTagsInThread,
+      async () => {
+        await contestsDB.update({hideTagsInThread: 1});
+        contestsTagsVisibility(true);
+      },
+      async () => {
+        await contestsDB.update({hideTagsInThread: 0});
+        contestsTagsVisibility(false);
       }),
 
     new Checkbox('remove_content_in_contests', `Скрытие содержимого темы розыгрыша`)
@@ -104,8 +104,7 @@ const getContestsItems = async () => {
       }),
 
     new Checkbox('auto_fix_captcha_in_contests',
-    `
-      Автофикс капчи
+    `Автофикс капчи
       <span class="fa fa-question Tooltip" title="Автоматически обновляет капчу, если она не появилась"></span>
       <span class="fa fa-exclamation-triangle Tooltip" title="При отключение этой функции страница будет перезагружена"></span>
     `)
