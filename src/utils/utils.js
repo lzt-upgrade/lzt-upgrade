@@ -21,10 +21,6 @@ function waitForElm(selector) {
 
 const sleep = m => new Promise(r => setTimeout(r, m))
 
-function hasOwn(element, property) {
-  return Object.prototype.hasOwnProperty.call(element, property);
-}
-
 function getNodeLinks() {
   let latestsThreads = $('div.latestThreads');
   const stickyThreads = $('div.stickyThreads');
@@ -72,7 +68,6 @@ function getTimestamp() {
 export {
   waitForElm,
   sleep,
-  hasOwn,
   getNodeLinks,
   getThreadLinks,
   removeStyles,
