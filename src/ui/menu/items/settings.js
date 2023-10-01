@@ -3,7 +3,6 @@ import StorageName from 'Configs/StorageName';
 import { Section, SectionDirection } from 'UI/components/menu/section';
 import { LZTAppearDB } from 'IndexedDB/appear';
 import { LZTProfileDB } from 'IndexedDB/profile';
-import { LZTSettingsDB } from 'IndexedDB/settings';
 import { downloadJSONFile, uploadJSONFile } from 'Utils/files';
 import { registerAlert } from 'Utils/registers';
 import { Logger } from 'Utils/logger';
@@ -12,13 +11,12 @@ import { sleep } from 'Utils/utils';
 
 const appearDB = new LZTAppearDB()
 const profileDB = new LZTProfileDB()
-const settingsDB = new LZTSettingsDB()
 
 async function saveSettings() {
   const appearData = await appearDB.read();
   const contestsData = await GM_getValue(StorageName.Contests, {});
   const profileData = await profileDB.read();
-  const settingsData = await settingsDB.read();
+  const settingsData = await GM_getValue(Storage.Settings, {})
   const usersData = await GM_getValue(StorageName.Users, {});
 
   const config = JSON.stringify({
@@ -48,7 +46,7 @@ async function uploadSettings() {
     await appearDB.update(configObj?.appear);
     await GM_setValue(StorageName.Contests, configObj?.contests);
     await profileDB.update(configObj?.profile)
-    await settingsDB.update(configObj?.settings)
+    await GM_setValue(StorageName.Settings, configObj?.settings);
     await GM_setValue(StorageName.Users, configObj?.users);
     registerAlert('Настройки загружены. Выполняю перезагрузку страницы...', 5000);
     await sleep(500);
