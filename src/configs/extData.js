@@ -65,6 +65,13 @@ const extData = () => {
         href: 'https://github.com/lzt-upgrade/lzt-upgrade',
         sectionId: 'LZTUpInfoGreasyForkItem'
       },
+      {
+        icon: 'far fa-tasks',
+        title: 'Следить за разработкой',
+        desc: 'Доска задач нашего расширения',
+        href: 'https://app.weeek.net/ws/438227/shared/board/4prKcWJhKKxLuKNm0CiP7qJEZUH3quST',
+        sectionId: 'LZTUpInfoFollowDevItem'
+      },
     ]
   }
 }
