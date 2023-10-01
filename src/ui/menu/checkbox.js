@@ -14,7 +14,7 @@ class Checkbox {
     this.content = clearHTML(content);
   }
 
-  createElement(valueToCheck, callbackChecked = () => {}, callbackUnChecked = () => {}) {
+  createElement(valueToCheck, callbackChecked = () => {}, callbackUnChecked = () => {}, defaultCallback = () => {}) {
     const checkboxContainer = document.createElement('div');
     const checkbox = document.createElement('input');
     const checkboxLabel = document.createElement('label');
@@ -30,8 +30,9 @@ class Checkbox {
     checkboxContainer.appendChild(checkbox);
     checkboxContainer.appendChild(checkboxLabel);
 
-    checkboxContainer.addEventListener('click', async (event) => {
-      event.target.checked ? await callbackChecked() : await callbackUnChecked();
+    checkbox.addEventListener('click', async (event) => {
+      await defaultCallback(event)
+      event.target.checked ? await callbackChecked(event) : await callbackUnChecked(event);
     });
 
     return checkboxContainer;
