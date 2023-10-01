@@ -4,7 +4,6 @@ import { Logger } from "Utils/logger";
 function getThemeByID(themeId) {
   // Loading theme by ID
   return new Promise(async (resolve, reject) => {
-    console.log('Loading theme start... ' + new Date());
     Logger.debug(`onExtensionStart: Start loading theme with id ${themeId}`);
     const availabledThemes = await getThemes();
     if (availabledThemes?.length) {
