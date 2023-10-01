@@ -1,3 +1,6 @@
+import StorageName from 'Configs/StorageName';
+import config from "Configs/config";
+
 import { LZTProfileDB } from 'IndexedDB/profile';
 import { Checkbox } from 'UI/menu/checkbox';
 import { Comment } from 'UI/menu/comment';
@@ -20,7 +23,6 @@ import { updateUserStyle, updateUserBanner, updateUserBadges } from 'Visuals/use
 import { addBackgroundImage } from 'Visuals/universal';
 import { addBackgroundImageInProfile } from 'Visuals/profile';
 import { Logger } from "Utils/logger";
-import config from "Configs/config";
 
 
 const profileDB = new LZTProfileDB();
@@ -255,7 +257,7 @@ const getProfileItems = async () => {
   }
 
   const profileData = await profileDB.read();
-  const userGroup = await GM_getValue('LZTUserGroup', config.defaultUserGroup);
+  const userGroup = await GM_getValue(StorageName.UserGroup, config.defaultUserGroup);
   const currentDomain = window.location.hostname;
 
   const previewProfile = createPreviewProfile(profileData);

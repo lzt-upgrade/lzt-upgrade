@@ -2,15 +2,13 @@ import { loadTheme } from "API/lztupgrade/loadTheme";
 
 import config from "Configs/config";
 import extData from 'Configs/extData';
+import StorageName from 'Configs/StorageName';
 
 import { contestsAutoCloseHandler } from "Callbacks/contestsAutoClose";
 import { getThemeByID } from 'Callbacks/extensionStart';
 
 import { LZTAppearDB } from "IndexedDB/appear";
-import { LZTContestsDB } from "IndexedDB/contests";
-import { LZTUsersDB } from "IndexedDB/users";
 import { LZTProfileDB } from "IndexedDB/profile";
-import { LZTSettingsDB } from "IndexedDB/settings";
 
 import { regOpenContestsBtn } from "UI/buttons/contestsButton";
 import menuButton from "UI/buttons/menuButton";
@@ -34,12 +32,14 @@ import { getUserId, getUsername, getUserGroup } from 'Utils/users';
 import { updateUserStyle, updateUserBanner, updateUserBadges } from 'Visuals/users';
 import { addBackgroundImage } from 'Visuals/universal';
 import { addBackgroundImageInProfile } from 'Visuals/profile';
+import { isProfilePage } from 'Utils/checkers';
 
 
 // import 'Styles/main.css';
 
 import 'Styles/errorPage.scss';
 import 'Styles/universal.scss';
+import 'Styles/xenforo.scss';
 
 
 async function initTheme() {
@@ -51,15 +51,15 @@ async function initTheme() {
   console.timeLog("init-theme", "getting dbAppearData...")
   const dbAppearData = await appearDB.read();
   console.timeLog("init-theme", "loading name from cache...")
-  let themeName = await GM_getValue("cache", {}).themeName;
+  let themeName = await GM_getValue(StorageName.Cache, {}).themeName;
   console.timeLog("init-theme", "Check themeName valid...")
   if (!themeName && dbAppearData?.theme > 0) {
     Logger.debug(`Requesting theme with id ${dbAppearData.theme}...`);
     themeName = await getThemeByID(dbAppearData.theme)
       .catch(err => console.error(err));
-    let cacheData = await GM_getValue('cache', {});
-    cacheData['themeName'] = themeName;
-    await GM_setValue('cache', cacheData);
+    let cacheData = await GM_getValue(StorageName.Cache, {});
+    cacheData.themeName = themeName;
+    await GM_setValue(StorageName.Cache, cacheData);
   }
   console.timeLog("Loading theme...");
   loadTheme(themeName);
@@ -149,7 +149,7 @@ async function main() {
     registerMenuButton(menuButton);
 
     console.timeLog("lztup-start", "Add user group to cache")
-    await GM_setValue('LZTUserGroup', userGroup);
+    await GM_setValue(StorageName.UserGroup, userGroup);
 
     console.timeLog("lztup-start", "Loading Profile DB...")
     const profileDB = new LZTProfileDB();
@@ -220,67 +220,55 @@ async function main() {
     }
 
     console.timeLog("lztup-start", "Loading Contests DB...")
-    const contestsDB = new LZTContestsDB();
-    // await contestsDB.init();
-    const dbContestsData = await contestsDB.read();
+    const dbContestsData = await GM_getValue(StorageName.Contests, {});
 
-    console.timeLog("lztup-start", "Checking Contests DB...")
-    if (dbContestsData) {
-      console.timeLog("lztup-start", "Add reg 10 btn")
-      dbContestsData.openTenContestsBtn === 1 ? regOpenContestsBtn(10) : null;
+    console.timeLog("lztup-start", "Add reg 10 btn")
+    dbContestsData.openTenContestsBtn ? regOpenContestsBtn(10) : null;
 
-      console.timeLog("lztup-start", "Add onclick contests category")
-      onClickCategory(extData.nodes.contests, async () => {
-        const contestsDB = new LZTContestsDB();
-        const dbContestsData = await contestsDB.read();
-        dbContestsData.openTenContestsBtn === 1 ? regOpenContestsBtn(10) : null;
-      });
+    console.timeLog("lztup-start", "Add onclick contests category")
+    onClickCategory(extData.nodes.contests, async () => {
+      const newContestsData = await GM_getValue(StorageName.Contests, {});
+      newContestsData.openTenContestsBtn ? regOpenContestsBtn(10) : null;
+    });
 
-      console.timeLog("lztup-start", "hideTagsInThread")
-      dbContestsData.hideTagsInThread === 1 ? contestsTagsVisibility(true) : null;
-      console.timeLog("lztup-start", "autoCloseOnParticipate")
-      dbContestsData.autoCloseOnParticipate === 1 ? contestsAutoCloseHandler(true) : null;
-      console.timeLog("lztup-start", "infoTopInThread")
-      dbContestsData.infoTopInThread === 1 ? contestThreadBlockMove(true) : null;
-      console.timeLog("lztup-start", "removeContent")
-      dbContestsData.removeContent === 1 ? contestsHideContent(true) : null;
-      console.timeLog("lztup-start", "removePoll")
-      dbContestsData.removePoll === 1 ? contestsHidePoll(true) : null;
-      console.timeLog("lztup-start", "updateCaptchaButton")
-      dbContestsData.updateCaptchaButton === 1 ? contestsUpdateCapctha() : null;
-      console.timeLog("lztup-start", "autoFixCaptcha")
-      dbContestsData.autoFixCaptcha === 1 ? contestsAutoFixCaptcha() : null;
-    }
+    console.timeLog("lztup-start", "hideTagsInThread")
+    dbContestsData.hideTagsInThread ? contestsTagsVisibility(true) : null;
+    console.timeLog("lztup-start", "autoCloseOnParticipate")
+    dbContestsData.autoCloseOnParticipate ? contestsAutoCloseHandler(true) : null;
+    console.timeLog("lztup-start", "infoTopInThread")
+    dbContestsData.infoTopInThread ? contestThreadBlockMove(true) : null;
+    console.timeLog("lztup-start", "removeContent")
+    dbContestsData.removeContent ? contestsHideContent(true) : null;
+    console.timeLog("lztup-start", "removePoll")
+    dbContestsData.removePoll ? contestsHidePoll(true) : null;
+    console.timeLog("lztup-start", "updateCaptchaButton")
+    dbContestsData.updateCaptchaButton? contestsUpdateCapctha() : null;
+    console.timeLog("lztup-start", "autoFixCaptcha")
+    dbContestsData.autoFixCaptcha ? contestsAutoFixCaptcha() : null;
 
     console.timeLog("lztup-start", "Loading Users DB...")
-    const usersDB = new LZTUsersDB();
-    // await usersDB.init();
-    const dbUsersData = await usersDB.read();
+    const dbUsersData = await GM_getValue(StorageName.Users, {});
 
-    console.timeLog("lztup-start", "Checking Users DB...")
-    if (dbUsersData) {
-      console.timeLog("lztup-start", "showUserIdInProfile")
-      dbUsersData.showUserIdInProfile === 1 ? addUserIdToProfile() : null;
-      console.timeLog("lztup-start", "showUserIdInMemberCard")
-      if (dbUsersData.showUserIdInMemberCard === 1) {
-        addUserIdToMemberCard();
-        registerObserver((mutation) => {
-          if (mutation.nextSibling) {
-            if (mutation.nextSibling?.classList?.contains('modal')) {
-              addUserIdToMemberCard()
-            }
+    console.timeLog("lztup-start", "showUserIdInMemberCard")
+    if (dbUsersData.showUserIdInMemberCard) {
+      addUserIdToMemberCard();
+      registerObserver((mutation) => {
+        if (mutation.nextSibling) {
+          if (mutation.nextSibling?.classList?.contains('modal')) {
+            addUserIdToMemberCard()
           }
-        });
-      }
+        }
+      });
+    }
+    console.timeLog("lztup-start", "disableShareTyping")
+    dbUsersData.disableShareTyping ? bypassShareTyping() : null;
+    if (isProfilePage()) {
+      console.timeLog("lztup-start", "showUserIdInProfile")
+      dbUsersData.showUserIdInProfile ? addUserIdToProfile() : null;
       console.timeLog("lztup-start", "showFullRegInProfile")
-      dbUsersData.showFullRegInProfile === 1 ? showFullRegDateInProfile(true) : null;
-      console.timeLog("lztup-start", "disableShareTyping")
-      dbUsersData.disableShareTyping === 1 ? bypassShareTyping() : null;
+      dbUsersData.showFullRegInProfile? showFullRegDateInProfile(true) : null;
     }
 
-    console.timeLog("lztup-start", "settingsDB...")
-    const settingsDB = new LZTSettingsDB();
-    // settingsDB.init()
     console.timeEnd("lztup-start")
   })
 }

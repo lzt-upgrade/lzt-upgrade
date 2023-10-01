@@ -1,4 +1,4 @@
-import { LZTContestsDB } from "IndexedDB/contests";
+import StorageName from 'Configs/StorageName';
 import { contestsAutoCloseHandler } from "Callbacks/contestsAutoClose";
 import { regOpenContestsBtn, removeOpenContestsBtn } from 'UI/buttons/contestsButton';
 import { Checkbox } from 'UI/menu/checkbox';
@@ -10,22 +10,26 @@ import {
   contestsUpdateCapctha,
   contestsAutoFixCaptcha,
 } from 'Utils/contests';
+import { registerAlert } from "Utils/registers";
+import { sleep } from "Utils/utils";
+
 
 const getContestsItems = async () => {
-  const contestsDB = new LZTContestsDB();
-  const contestsData = await contestsDB.read();
+  const contestsData = await GM_getValue(StorageName.Contests, {});
 
   return [
     new Checkbox('open_ten_contests', 'Кнопка "Открыть 10"')
     .createElement(
       contestsData.openTenContestsBtn,
-      async () => {
-        await contestsDB.update({openTenContestsBtn: 1});
+      () => {
         regOpenContestsBtn(10);
       },
-      async () => {
-        await contestsDB.update({openTenContestsBtn: 0});
+      () => {
         removeOpenContestsBtn(10);
+      },
+      async (event) => {
+        contestsData.openTenContestsBtn = event.target.checked;
+        await GM_setValue(StorageName.Contests, contestsData);
       }),
 
     new Checkbox('auto_close_on_participate',
@@ -35,72 +39,75 @@ const getContestsItems = async () => {
     .createElement(
       contestsData.autoCloseOnParticipate,
       async () => {
-        await contestsDB.update({autoCloseOnParticipate: 1});
+        registerAlert('Включено Автозакрытие страницы при нажатие на кнопку "Участвовать"', 5000);
         contestsAutoCloseHandler(true);
       },
       async () => {
-        await contestsDB.update({autoCloseOnParticipate: 0});
+        registerAlert('Выключено Автозакрытие страницы при нажатие на кнопку "Участвовать"', 5000);
+        await sleep(500);
         window.location.reload();
+      },
+      async (event) => {
+        contestsData.autoCloseOnParticipate = event.target.checked;
+        await GM_setValue(StorageName.Contests, contestsData);
       }),
 
     new Checkbox('info_top_in_contests', `Отображение информации о розыгрыше вверху темы`)
     .createElement(
       contestsData.infoTopInThread,
-      async () => {
-        await contestsDB.update({infoTopInThread: 1});
-        contestThreadBlockMove(true);
-      },
-      async () => {
-        await contestsDB.update({infoTopInThread: 0});
-        contestThreadBlockMove(false);
+      () => {},
+      () => {},
+      async (event) => {
+        contestsData.infoTopInThread = event.target.checked;
+        await GM_setValue(StorageName.Contests, contestsData);
+        contestThreadBlockMove(event.target.checked)
       }),
 
     new Checkbox('hide_tags_in_contests', `Скрытие тегов в теме розыгрыша`)
     .createElement(
       contestsData.hideTagsInThread,
-      async () => {
-        await contestsDB.update({hideTagsInThread: 1});
-        contestsTagsVisibility(true);
-      },
-      async () => {
-        await contestsDB.update({hideTagsInThread: 0});
-        contestsTagsVisibility(false);
+      () => {},
+      () => {},
+      async (event) => {
+        contestsData.hideTagsInThread = event.target.checked;
+        await GM_setValue(StorageName.Contests, contestsData);
+        contestsTagsVisibility(event.target.checked);
       }),
 
     new Checkbox('remove_content_in_contests', `Скрытие содержимого темы розыгрыша`)
     .createElement(
       contestsData.removeContent,
-      async () => {
-        await contestsDB.update({removeContent: 1});
-        contestsHideContent(true);
-      },
-      async () => {
-        await contestsDB.update({removeContent: 0});
-        contestsHideContent(false);
+      () => {},
+      () => {},
+      async (event) => {
+        contestsData.removeContent = event.target.checked;
+        await GM_setValue(StorageName.Contests, contestsData);
+        contestsHideContent(event.target.checked)
       }),
 
     new Checkbox('remove_poll_in_contests', `Скрытие голосования в теме розыгрыша`)
     .createElement(
       contestsData.removePoll,
-      async () => {
-        await contestsDB.update({removePoll: 1});
-        contestsHidePoll(true);
-      },
-      async () => {
-        await contestsDB.update({removePoll: 0});
-        contestsHidePoll(false);
+      () => {},
+      () => {},
+      async (event) => {
+        contestsData.removePoll = event.target.checked;
+        await GM_setValue(StorageName.Contests, contestsData);
+        contestsHidePoll(event.target.checked)
       }),
 
     new Checkbox('update_captcha_button_in_contests', `Кнопка "Обновление капчи"`)
     .createElement(
       contestsData.updateCaptchaButton,
       async () => {
-        await contestsDB.update({updateCaptchaButton: 1});
         contestsUpdateCapctha();
       },
       async () => {
-        await contestsDB.update({updateCaptchaButton: 0});
         document.querySelector('.LZTUpRefreshButton')?.remove();
+      },
+      async (event) => {
+        contestsData.updateCaptchaButton = event.target.checked;
+        await GM_setValue(StorageName.Contests, contestsData);
       }),
 
     new Checkbox('auto_fix_captcha_in_contests',
@@ -111,12 +118,17 @@ const getContestsItems = async () => {
     .createElement(
       contestsData.autoFixCaptcha,
       async () => {
-        await contestsDB.update({autoFixCaptcha: 1});
+        registerAlert('Включен Автофикс капчи', 5000);
         contestsAutoFixCaptcha();
       },
       async () => {
-        await contestsDB.update({autoFixCaptcha: 0});
+        registerAlert('Выключен Автофикс капчи', 5000);
+        await sleep(500);
         window.location.reload();
+      },
+      async (event) => {
+        contestsData.autoFixCaptcha = event.target.checked;
+        await GM_setValue(StorageName.Contests, contestsData);
       }),
   ];
 }

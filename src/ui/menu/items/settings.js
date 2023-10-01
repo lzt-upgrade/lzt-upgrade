@@ -1,9 +1,9 @@
+import StorageName from 'Configs/StorageName';
+
 import { Section, SectionDirection } from 'UI/components/menu/section';
 import { LZTAppearDB } from 'IndexedDB/appear';
-import { LZTContestsDB } from 'IndexedDB/contests';
 import { LZTProfileDB } from 'IndexedDB/profile';
 import { LZTSettingsDB } from 'IndexedDB/settings';
-import { LZTUsersDB } from 'IndexedDB/users';
 import { downloadJSONFile, uploadJSONFile } from 'Utils/files';
 import { registerAlert } from 'Utils/registers';
 import { Logger } from 'Utils/logger';
@@ -11,17 +11,15 @@ import { sleep } from 'Utils/utils';
 
 
 const appearDB = new LZTAppearDB()
-const contestsDB = new LZTContestsDB()
 const profileDB = new LZTProfileDB()
 const settingsDB = new LZTSettingsDB()
-const usersDB = new LZTUsersDB()
 
 async function saveSettings() {
   const appearData = await appearDB.read();
-  const contestsData = await contestsDB.read();
+  const contestsData = await GM_getValue(StorageName.Contests, {});
   const profileData = await profileDB.read();
   const settingsData = await settingsDB.read();
-  const usersData = await usersDB.read();
+  const usersData = await GM_getValue(StorageName.Users, {});
 
   const config = JSON.stringify({
     appear: appearData,
@@ -48,10 +46,10 @@ async function uploadSettings() {
 
     // load data to dbs
     await appearDB.update(configObj?.appear);
-    await contestsDB.update(configObj?.contests)
+    await GM_setValue(StorageName.Contests, configObj?.contests);
     await profileDB.update(configObj?.profile)
     await settingsDB.update(configObj?.settings)
-    await usersDB.update(configObj?.users)
+    await GM_setValue(StorageName.Users, configObj?.users);
     registerAlert('Настройки загружены. Выполняю перезагрузку страницы...', 5000);
     await sleep(500);
     window.location.reload();
@@ -62,7 +60,7 @@ async function uploadSettings() {
 }
 
 async function clearCache() {
-  await GM_setValue('cache', {});
+  await GM_setValue(StorageName.Cache, {});
   registerAlert('Кеш успешно очищен', 5000);
   await sleep(1000);
   window.location.reload();
