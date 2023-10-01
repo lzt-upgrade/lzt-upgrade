@@ -1,8 +1,10 @@
+import StorageName from 'Configs/StorageName';
+import config from "Configs/config";
+
 import { getUserAvatar } from 'Utils/users';
 import { applyStyle } from 'Utils/utils';
 import { AvatarUserBadges } from 'UI/avatarUserBadges';
 import { Logger } from "Utils/logger";
-import config from "Configs/config";
 
 
 class PreviewProfile {
@@ -71,7 +73,7 @@ class PreviewProfile {
     }
 
     if (style === '') {
-      const userGroup = await GM_getValue('LZTUserGroup', config.defaultUserGroup); // current user group (newbie, resident, expert and etc)
+      const userGroup = await GM_getValue(StorageName.UserGroup, config.defaultUserGroup); // current user group (newbie, resident, expert and etc)
       style = `.${userGroup}`;
     }
     usernameEl.classList.add('UsernameStyle', 'bold');
