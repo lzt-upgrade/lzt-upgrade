@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "baseUrl": "./",
+    "paths": {
+      "API/*": ["api/*"],
+      "Callbacks/*": ["callbacks/*"],
+      "Configs/*": ["configs/*"],
+      "Events/*": ["events/*"],
+      "IndexedDB/*": ["indexedDB/*"],
+      "Styles/*": ["styles/*"],
+      "UI/*": ["ui/*"],
+      "Utils/*": ["utils/*"],
+      "Xenforo/*": ["xenforo/*"],
+      "Visuals/*": ["visuals/*"]
+    }
+  }
+}
