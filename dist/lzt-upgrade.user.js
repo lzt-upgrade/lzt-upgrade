@@ -125,6 +125,28 @@ ___CSS_LOADER_EXPORT___.push([module.id, `#LZTUpCustomBackground{background-size
 
 /***/ }),
 
+/***/ "./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/styles/xenforo.scss":
+/***/ ((module, __webpack_exports__, __webpack_require__) => {
+
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   Z: () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("./node_modules/css-loader/dist/runtime/noSourceMaps.js");
+/* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("./node_modules/css-loader/dist/runtime/api.js");
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__);
+// Imports
+
+
+var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
+// Module
+___CSS_LOADER_EXPORT___.push([module.id, `.copyButton{cursor:pointer;font-size:16px;font-weight:400;padding:1px 4px;margin:-5px 0 0 6px;display:inline-block;color:#505050}.copyButton:hover{color:#949494}`, ""]);
+// Exports
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
+
+
+/***/ }),
+
 /***/ "./node_modules/css-loader/dist/runtime/api.js":
 /***/ ((module) => {
 
@@ -317,6 +339,53 @@ var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js
 
 
        /* unused harmony default export */ var __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_css_loader_dist_cjs_js_node_modules_sass_loader_dist_cjs_js_universal_scss__WEBPACK_IMPORTED_MODULE_6__/* ["default"] */ .Z && _node_modules_css_loader_dist_cjs_js_node_modules_sass_loader_dist_cjs_js_universal_scss__WEBPACK_IMPORTED_MODULE_6__/* ["default"] */ .Z.locals ? _node_modules_css_loader_dist_cjs_js_node_modules_sass_loader_dist_cjs_js_universal_scss__WEBPACK_IMPORTED_MODULE_6__/* ["default"] */ .Z.locals : undefined);
+
+
+/***/ }),
+
+/***/ "./src/styles/xenforo.scss":
+/***/ ((__unused_webpack_module, __unused_webpack___webpack_exports__, __webpack_require__) => {
+
+/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _node_modules_style_loader_dist_runtime_styleDomAPI_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("./node_modules/style-loader/dist/runtime/styleDomAPI.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_styleDomAPI_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_styleDomAPI_js__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _node_modules_style_loader_dist_runtime_insertBySelector_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__("./node_modules/style-loader/dist/runtime/insertBySelector.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_insertBySelector_js__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_insertBySelector_js__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _node_modules_style_loader_dist_runtime_setAttributesWithoutAttributes_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__("./node_modules/style-loader/dist/runtime/setAttributesWithoutAttributes.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_setAttributesWithoutAttributes_js__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_setAttributesWithoutAttributes_js__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _node_modules_style_loader_dist_runtime_insertStyleElement_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__("./node_modules/style-loader/dist/runtime/insertStyleElement.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_insertStyleElement_js__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_insertStyleElement_js__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _node_modules_style_loader_dist_runtime_styleTagTransform_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__("./node_modules/style-loader/dist/runtime/styleTagTransform.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_styleTagTransform_js__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_styleTagTransform_js__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _node_modules_css_loader_dist_cjs_js_node_modules_sass_loader_dist_cjs_js_xenforo_scss__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__("./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/styles/xenforo.scss");
+
+      
+      
+      
+      
+      
+      
+      
+      
+      
+
+var options = {};
+
+options.styleTagTransform = (_node_modules_style_loader_dist_runtime_styleTagTransform_js__WEBPACK_IMPORTED_MODULE_5___default());
+options.setAttributes = (_node_modules_style_loader_dist_runtime_setAttributesWithoutAttributes_js__WEBPACK_IMPORTED_MODULE_3___default());
+
+      options.insert = _node_modules_style_loader_dist_runtime_insertBySelector_js__WEBPACK_IMPORTED_MODULE_2___default().bind(null, "html");
+    
+options.domAPI = (_node_modules_style_loader_dist_runtime_styleDomAPI_js__WEBPACK_IMPORTED_MODULE_1___default());
+options.insertStyleElement = (_node_modules_style_loader_dist_runtime_insertStyleElement_js__WEBPACK_IMPORTED_MODULE_4___default());
+
+var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_css_loader_dist_cjs_js_node_modules_sass_loader_dist_cjs_js_xenforo_scss__WEBPACK_IMPORTED_MODULE_6__/* ["default"] */ .Z, options);
+
+
+
+
+       /* unused harmony default export */ var __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_css_loader_dist_cjs_js_node_modules_sass_loader_dist_cjs_js_xenforo_scss__WEBPACK_IMPORTED_MODULE_6__/* ["default"] */ .Z && _node_modules_css_loader_dist_cjs_js_node_modules_sass_loader_dist_cjs_js_xenforo_scss__WEBPACK_IMPORTED_MODULE_6__/* ["default"] */ .Z.locals ? _node_modules_css_loader_dist_cjs_js_node_modules_sass_loader_dist_cjs_js_xenforo_scss__WEBPACK_IMPORTED_MODULE_6__/* ["default"] */ .Z.locals : undefined);
 
 
 /***/ }),
@@ -697,7 +766,6 @@ async function getThemes() {
 function getThemeByID(themeId) {
   // Loading theme by ID
   return new Promise(async (resolve, reject) => {
-    console.log('Loading theme start... ' + new Date());
     logger/* Logger */.Y.debug(`onExtensionStart: Start loading theme with id ${themeId}`);
     const availabledThemes = await getThemes();
     if (availabledThemes?.length) {
@@ -712,6 +780,26 @@ function getThemeByID(themeId) {
 }
 
 
+
+/***/ }),
+
+/***/ "./src/configs/StorageName.js":
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   Z: () => (/* binding */ StorageName)
+/* harmony export */ });
+class StorageName {
+  static UserGroup = new StorageName('LZTUserGroup').name;
+  static Cache = new StorageName('cache').name;
+  static Contests = new StorageName('contestsData').name;
+  static Users = new StorageName('usersData').name;
+  static Settings = new StorageName('settingsData').name;
+
+  constructor(name) {
+    this.name = name
+  }
+}
 
 /***/ }),
 
@@ -806,6 +894,13 @@ const extData = () => {
         href: 'https://github.com/lzt-upgrade/lzt-upgrade',
         sectionId: 'LZTUpInfoGreasyForkItem'
       },
+      {
+        icon: 'far fa-tasks',
+        title: 'Следить за разработкой',
+        desc: 'Доска задач нашего расширения',
+        href: 'https://app.weeek.net/ws/438227/shared/board/4prKcWJhKKxLuKNm0CiP7qJEZUH3quST',
+        sectionId: 'LZTUpInfoFollowDevItem'
+      },
     ]
   }
 }
@@ -843,28 +938,27 @@ __webpack_require__.a(__webpack_module__, async (__webpack_handle_async_dependen
 /* harmony import */ var API_lztupgrade_loadTheme__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("./src/api/lztupgrade/loadTheme.js");
 /* harmony import */ var Configs_config__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("./src/configs/config.js");
 /* harmony import */ var Configs_extData__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__("./src/configs/extData.js");
-/* harmony import */ var Callbacks_contestsAutoClose__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__("./src/callbacks/contestsAutoClose.js");
-/* harmony import */ var Callbacks_extensionStart__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__("./src/callbacks/extensionStart.js");
-/* harmony import */ var IndexedDB_appear__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__("./src/indexedDB/appear.js");
-/* harmony import */ var IndexedDB_contests__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__("./src/indexedDB/contests.js");
-/* harmony import */ var IndexedDB_users__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__("./src/indexedDB/users.js");
-/* harmony import */ var IndexedDB_profile__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__("./src/indexedDB/profile.js");
-/* harmony import */ var IndexedDB_settings__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__("./src/indexedDB/settings.js");
-/* harmony import */ var UI_buttons_contestsButton__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__("./src/ui/buttons/contestsButton.js");
-/* harmony import */ var UI_buttons_menuButton__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__("./src/ui/buttons/menuButton.js");
+/* harmony import */ var Configs_StorageName__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__("./src/configs/StorageName.js");
+/* harmony import */ var Callbacks_contestsAutoClose__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__("./src/callbacks/contestsAutoClose.js");
+/* harmony import */ var Callbacks_extensionStart__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__("./src/callbacks/extensionStart.js");
+/* harmony import */ var IndexedDB_appear__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__("./src/indexedDB/appear.js");
+/* harmony import */ var IndexedDB_profile__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__("./src/indexedDB/profile.js");
+/* harmony import */ var UI_buttons_contestsButton__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__("./src/ui/buttons/contestsButton.js");
+/* harmony import */ var UI_buttons_menuButton__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__("./src/ui/buttons/menuButton.js");
 /* harmony import */ var UI_buttons_errorPageButton__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__("./src/ui/buttons/errorPageButton.js");
 /* harmony import */ var Events_categories__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__("./src/events/categories.js");
-/* harmony import */ var Utils_logger__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__("./src/utils/logger.js");
+/* harmony import */ var Utils_logger__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__("./src/utils/logger.js");
 /* harmony import */ var Utils_registers__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__("./src/utils/registers.js");
-/* harmony import */ var Utils_contests__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__("./src/utils/contests.js");
-/* harmony import */ var Utils_users__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__("./src/utils/users.js");
-/* harmony import */ var Xenforo_bypass__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__("./src/xenforo/bypass.js");
-/* harmony import */ var Visuals_users__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__("./src/visuals/users.js");
-/* harmony import */ var Visuals_universal__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__("./src/visuals/universal.js");
-/* harmony import */ var Visuals_profile__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__("./src/visuals/profile.js");
-/* harmony import */ var Styles_errorPage_scss__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__("./src/styles/errorPage.scss");
-/* harmony import */ var Styles_universal_scss__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__("./src/styles/universal.scss");
-
+/* harmony import */ var Utils_contests__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__("./src/utils/contests.js");
+/* harmony import */ var Utils_users__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__("./src/utils/users.js");
+/* harmony import */ var Xenforo_bypass__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__("./src/xenforo/bypass.js");
+/* harmony import */ var Visuals_users__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__("./src/visuals/users.js");
+/* harmony import */ var Visuals_universal__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__("./src/visuals/universal.js");
+/* harmony import */ var Visuals_profile__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__("./src/visuals/profile.js");
+/* harmony import */ var Utils_checkers__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__("./src/utils/checkers.js");
+/* harmony import */ var Styles_errorPage_scss__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__("./src/styles/errorPage.scss");
+/* harmony import */ var Styles_universal_scss__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__("./src/styles/universal.scss");
+/* harmony import */ var Styles_xenforo_scss__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__("./src/styles/xenforo.scss");
 
 
 
@@ -901,24 +995,25 @@ __webpack_require__.a(__webpack_module__, async (__webpack_handle_async_dependen
 
 
 
+
 async function initTheme() {
   // exec time: 50-200ms
   console.time("init-theme");
 
   console.timeLog("init-theme", "loading appearDB...")
-  const appearDB = new IndexedDB_appear__WEBPACK_IMPORTED_MODULE_5__/* .LZTAppearDB */ .e();
+  const appearDB = new IndexedDB_appear__WEBPACK_IMPORTED_MODULE_6__/* .LZTAppearDB */ .e();
   console.timeLog("init-theme", "getting dbAppearData...")
   const dbAppearData = await appearDB.read();
   console.timeLog("init-theme", "loading name from cache...")
-  let themeName = await GM_getValue("cache", {}).themeName;
+  let themeName = await GM_getValue(Configs_StorageName__WEBPACK_IMPORTED_MODULE_3__/* ["default"] */ .Z.Cache, {}).themeName;
   console.timeLog("init-theme", "Check themeName valid...")
   if (!themeName && dbAppearData?.theme > 0) {
-    Utils_logger__WEBPACK_IMPORTED_MODULE_12__/* .Logger */ .Y.debug(`Requesting theme with id ${dbAppearData.theme}...`);
-    themeName = await (0,Callbacks_extensionStart__WEBPACK_IMPORTED_MODULE_4__/* .getThemeByID */ .P)(dbAppearData.theme)
+    Utils_logger__WEBPACK_IMPORTED_MODULE_10__/* .Logger */ .Y.debug(`Requesting theme with id ${dbAppearData.theme}...`);
+    themeName = await (0,Callbacks_extensionStart__WEBPACK_IMPORTED_MODULE_5__/* .getThemeByID */ .P)(dbAppearData.theme)
       .catch(err => console.error(err));
-    let cacheData = await GM_getValue('cache', {});
-    cacheData['themeName'] = themeName;
-    await GM_setValue('cache', cacheData);
+    let cacheData = await GM_getValue(Configs_StorageName__WEBPACK_IMPORTED_MODULE_3__/* ["default"] */ .Z.Cache, {});
+    cacheData.themeName = themeName;
+    await GM_setValue(Configs_StorageName__WEBPACK_IMPORTED_MODULE_3__/* ["default"] */ .Z.Cache, cacheData);
   }
   console.timeLog("Loading theme...");
   (0,API_lztupgrade_loadTheme__WEBPACK_IMPORTED_MODULE_0__/* .loadTheme */ .j)(themeName);
@@ -928,7 +1023,7 @@ async function initTheme() {
 async function main() {
   console.time("lztup-start")
 
-  if (GM_info?.script?.version) Utils_logger__WEBPACK_IMPORTED_MODULE_12__/* .Logger */ .Y.log(`${Configs_config__WEBPACK_IMPORTED_MODULE_1__/* ["default"] */ .Z.extName} version: ${GM_info?.script?.version}`);
+  if (GM_info?.script?.version) Utils_logger__WEBPACK_IMPORTED_MODULE_10__/* .Logger */ .Y.log(`${Configs_config__WEBPACK_IMPORTED_MODULE_1__/* ["default"] */ .Z.extName} version: ${GM_info?.script?.version}`);
 
   console.timeLog("lztup-start", "Waiting body...")
   document.addEventListener('DOMContentLoaded', async () => {
@@ -991,27 +1086,27 @@ async function main() {
     }
 
     console.timeLog("lztup-start", "GET DEBUG INFO")
-    const username = (0,Utils_users__WEBPACK_IMPORTED_MODULE_14__/* .getUsername */ .Ms)('me');
-    const userid = (0,Utils_users__WEBPACK_IMPORTED_MODULE_14__/* .getUserId */ .n5)('me');
-    const userGroup = (0,Utils_users__WEBPACK_IMPORTED_MODULE_14__/* .getUserGroup */ .xc)('me');
+    const username = (0,Utils_users__WEBPACK_IMPORTED_MODULE_12__/* .getUsername */ .Ms)('me');
+    const userid = (0,Utils_users__WEBPACK_IMPORTED_MODULE_12__/* .getUserId */ .n5)('me');
+    const userGroup = (0,Utils_users__WEBPACK_IMPORTED_MODULE_12__/* .getUserGroup */ .xc)('me');
     const userAvatar = $('img.navTab--visitorAvatar').attr('src');
 
-    Utils_logger__WEBPACK_IMPORTED_MODULE_12__/* .Logger */ .Y.debug('┏━━━━━━━━ DEBUG INFO ━━━━━━━━━━┓');
-    Utils_logger__WEBPACK_IMPORTED_MODULE_12__/* .Logger */ .Y.debug(`Script version: ${GM_info?.script?.version}`);
-    Utils_logger__WEBPACK_IMPORTED_MODULE_12__/* .Logger */ .Y.debug(`Account username: ${username}`);
-    Utils_logger__WEBPACK_IMPORTED_MODULE_12__/* .Logger */ .Y.debug(`Account userid: ${userid}`);
-    Utils_logger__WEBPACK_IMPORTED_MODULE_12__/* .Logger */ .Y.debug(`Account userGroup: ${userGroup}`);
-    Utils_logger__WEBPACK_IMPORTED_MODULE_12__/* .Logger */ .Y.debug(`Account userAvatar: ${userAvatar}`);
-    Utils_logger__WEBPACK_IMPORTED_MODULE_12__/* .Logger */ .Y.debug('┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┚');
+    Utils_logger__WEBPACK_IMPORTED_MODULE_10__/* .Logger */ .Y.debug('┏━━━━━━━━ DEBUG INFO ━━━━━━━━━━┓');
+    Utils_logger__WEBPACK_IMPORTED_MODULE_10__/* .Logger */ .Y.debug(`Script version: ${GM_info?.script?.version}`);
+    Utils_logger__WEBPACK_IMPORTED_MODULE_10__/* .Logger */ .Y.debug(`Account username: ${username}`);
+    Utils_logger__WEBPACK_IMPORTED_MODULE_10__/* .Logger */ .Y.debug(`Account userid: ${userid}`);
+    Utils_logger__WEBPACK_IMPORTED_MODULE_10__/* .Logger */ .Y.debug(`Account userGroup: ${userGroup}`);
+    Utils_logger__WEBPACK_IMPORTED_MODULE_10__/* .Logger */ .Y.debug(`Account userAvatar: ${userAvatar}`);
+    Utils_logger__WEBPACK_IMPORTED_MODULE_10__/* .Logger */ .Y.debug('┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┚');
 
     console.timeLog("lztup-start", "Register menu button")
-    ;(0,Utils_registers__WEBPACK_IMPORTED_MODULE_22__/* .registerMenuButton */ .e7)(UI_buttons_menuButton__WEBPACK_IMPORTED_MODULE_11__/* ["default"] */ .Z);
+    ;(0,Utils_registers__WEBPACK_IMPORTED_MODULE_22__/* .registerMenuButton */ .e7)(UI_buttons_menuButton__WEBPACK_IMPORTED_MODULE_9__/* ["default"] */ .Z);
 
     console.timeLog("lztup-start", "Add user group to cache")
-    await GM_setValue('LZTUserGroup', userGroup);
+    await GM_setValue(Configs_StorageName__WEBPACK_IMPORTED_MODULE_3__/* ["default"] */ .Z.UserGroup, userGroup);
 
     console.timeLog("lztup-start", "Loading Profile DB...")
-    const profileDB = new IndexedDB_profile__WEBPACK_IMPORTED_MODULE_8__/* .LZTProfileDB */ .M();
+    const profileDB = new IndexedDB_profile__WEBPACK_IMPORTED_MODULE_7__/* .LZTProfileDB */ .M();
     // await profileDB.init();
     const dbProfileData = await profileDB.read();
 
@@ -1021,17 +1116,17 @@ async function main() {
       if (dbProfileData.usernameStyle || dbProfileData.badgeIcons.length) {
         console.timeLog("lztup-start", "Check Profile User style")
         if (dbProfileData.usernameStyle) {
-          (0,Visuals_users__WEBPACK_IMPORTED_MODULE_16__/* .updateUserStyle */ .bR)(dbProfileData.usernameStyle);
+          (0,Visuals_users__WEBPACK_IMPORTED_MODULE_14__/* .updateUserStyle */ .bR)(dbProfileData.usernameStyle);
         }
 
         console.timeLog("lztup-start", "Check Profile badge style")
         if (dbProfileData.badgeIcons.length) {
-          (0,Visuals_users__WEBPACK_IMPORTED_MODULE_16__/* .updateUserBadges */ .Az)(dbProfileData.badgeIcons);
+          (0,Visuals_users__WEBPACK_IMPORTED_MODULE_14__/* .updateUserBadges */ .Az)(dbProfileData.badgeIcons);
         }
 
         console.timeLog("lztup-start", "Reg profile observer")
         ;(0,Utils_registers__WEBPACK_IMPORTED_MODULE_22__/* .registerObserver */ .O0)(async (mutation) => {
-          Utils_logger__WEBPACK_IMPORTED_MODULE_12__/* .Logger */ .Y.debug(mutation)
+          Utils_logger__WEBPACK_IMPORTED_MODULE_10__/* .Logger */ .Y.debug(mutation)
           if (
             mutation.target.classList.contains('messageList') ||
             mutation.target.classList.contains('messageSimpleList') ||
@@ -1051,11 +1146,11 @@ async function main() {
           ) {
             const updatedProfileData = await profileDB.read();
             if (updatedProfileData.usernameStyle) {
-              (0,Visuals_users__WEBPACK_IMPORTED_MODULE_16__/* .updateUserStyle */ .bR)(updatedProfileData.usernameStyle)
+              (0,Visuals_users__WEBPACK_IMPORTED_MODULE_14__/* .updateUserStyle */ .bR)(updatedProfileData.usernameStyle)
             }
 
             if (updatedProfileData.badgeIcons.length) {
-              (0,Visuals_users__WEBPACK_IMPORTED_MODULE_16__/* .updateUserBadges */ .Az)(updatedProfileData.badgeIcons);
+              (0,Visuals_users__WEBPACK_IMPORTED_MODULE_14__/* .updateUserBadges */ .Az)(updatedProfileData.badgeIcons);
             }
           }
         });
@@ -1063,83 +1158,71 @@ async function main() {
 
       console.timeLog("lztup-start", "Check Profile banner")
       if (dbProfileData.bannerStyle && dbProfileData.bannerText) {
-        (0,Visuals_users__WEBPACK_IMPORTED_MODULE_16__/* .updateUserBanner */ .$)(dbProfileData.bannerStyle, dbProfileData.bannerText);
+        (0,Visuals_users__WEBPACK_IMPORTED_MODULE_14__/* .updateUserBanner */ .$)(dbProfileData.bannerStyle, dbProfileData.bannerText);
       }
 
       console.timeLog("lztup-start", "Check Profile bg")
       if (dbProfileData.backgroundImage) {
         // update background image of page
         if (dbProfileData.backgroundImageEverywhere) {
-          (0,Visuals_universal__WEBPACK_IMPORTED_MODULE_17__/* .addBackgroundImage */ .j)(dbProfileData.backgroundImage);
+          (0,Visuals_universal__WEBPACK_IMPORTED_MODULE_15__/* .addBackgroundImage */ .j)(dbProfileData.backgroundImage);
         } else {
-          (0,Visuals_profile__WEBPACK_IMPORTED_MODULE_18__/* .addBackgroundImageInProfile */ .m)(dbProfileData.backgroundImage);
+          (0,Visuals_profile__WEBPACK_IMPORTED_MODULE_16__/* .addBackgroundImageInProfile */ .m)(dbProfileData.backgroundImage);
         }
       }
       console.timeLog("lztup-start", "Profile bg loaded")
     }
 
     console.timeLog("lztup-start", "Loading Contests DB...")
-    const contestsDB = new IndexedDB_contests__WEBPACK_IMPORTED_MODULE_6__/* .LZTContestsDB */ .w();
-    // await contestsDB.init();
-    const dbContestsData = await contestsDB.read();
+    const dbContestsData = await GM_getValue(Configs_StorageName__WEBPACK_IMPORTED_MODULE_3__/* ["default"] */ .Z.Contests, {});
 
-    console.timeLog("lztup-start", "Checking Contests DB...")
-    if (dbContestsData) {
-      console.timeLog("lztup-start", "Add reg 10 btn")
-      dbContestsData.openTenContestsBtn === 1 ? (0,UI_buttons_contestsButton__WEBPACK_IMPORTED_MODULE_10__/* .regOpenContestsBtn */ .u)(10) : null;
+    console.timeLog("lztup-start", "Add reg 10 btn")
+    dbContestsData.openTenContestsBtn ? (0,UI_buttons_contestsButton__WEBPACK_IMPORTED_MODULE_8__/* .regOpenContestsBtn */ .u)(10) : null;
 
-      console.timeLog("lztup-start", "Add onclick contests category")
-      ;(0,Events_categories__WEBPACK_IMPORTED_MODULE_23__/* ["default"] */ .Z)(Configs_extData__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .Z.nodes.contests, async () => {
-        const contestsDB = new IndexedDB_contests__WEBPACK_IMPORTED_MODULE_6__/* .LZTContestsDB */ .w();
-        const dbContestsData = await contestsDB.read();
-        dbContestsData.openTenContestsBtn === 1 ? (0,UI_buttons_contestsButton__WEBPACK_IMPORTED_MODULE_10__/* .regOpenContestsBtn */ .u)(10) : null;
-      });
+    console.timeLog("lztup-start", "Add onclick contests category")
+    ;(0,Events_categories__WEBPACK_IMPORTED_MODULE_23__/* ["default"] */ .Z)(Configs_extData__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .Z.nodes.contests, async () => {
+      const newContestsData = await GM_getValue(Configs_StorageName__WEBPACK_IMPORTED_MODULE_3__/* ["default"] */ .Z.Contests, {});
+      newContestsData.openTenContestsBtn ? (0,UI_buttons_contestsButton__WEBPACK_IMPORTED_MODULE_8__/* .regOpenContestsBtn */ .u)(10) : null;
+    });
 
-      console.timeLog("lztup-start", "hideTagsInThread")
-      dbContestsData.hideTagsInThread === 1 ? (0,Utils_contests__WEBPACK_IMPORTED_MODULE_13__/* .contestsTagsVisibility */ .s$)(true) : null;
-      console.timeLog("lztup-start", "autoCloseOnParticipate")
-      dbContestsData.autoCloseOnParticipate === 1 ? (0,Callbacks_contestsAutoClose__WEBPACK_IMPORTED_MODULE_3__/* .contestsAutoCloseHandler */ .p)(true) : null;
-      console.timeLog("lztup-start", "infoTopInThread")
-      dbContestsData.infoTopInThread === 1 ? (0,Utils_contests__WEBPACK_IMPORTED_MODULE_13__/* .contestThreadBlockMove */ .Q6)(true) : null;
-      console.timeLog("lztup-start", "removeContent")
-      dbContestsData.removeContent === 1 ? (0,Utils_contests__WEBPACK_IMPORTED_MODULE_13__/* .contestsHideContent */ .Q9)(true) : null;
-      console.timeLog("lztup-start", "removePoll")
-      dbContestsData.removePoll === 1 ? (0,Utils_contests__WEBPACK_IMPORTED_MODULE_13__/* .contestsHidePoll */ .Rf)(true) : null;
-      console.timeLog("lztup-start", "updateCaptchaButton")
-      dbContestsData.updateCaptchaButton === 1 ? (0,Utils_contests__WEBPACK_IMPORTED_MODULE_13__/* .contestsUpdateCapctha */ .g4)() : null;
-      console.timeLog("lztup-start", "autoFixCaptcha")
-      dbContestsData.autoFixCaptcha === 1 ? (0,Utils_contests__WEBPACK_IMPORTED_MODULE_13__/* .contestsAutoFixCaptcha */ .gu)() : null;
-    }
+    console.timeLog("lztup-start", "hideTagsInThread")
+    dbContestsData.hideTagsInThread ? (0,Utils_contests__WEBPACK_IMPORTED_MODULE_11__/* .contestsTagsVisibility */ .s$)(true) : null;
+    console.timeLog("lztup-start", "autoCloseOnParticipate")
+    dbContestsData.autoCloseOnParticipate ? (0,Callbacks_contestsAutoClose__WEBPACK_IMPORTED_MODULE_4__/* .contestsAutoCloseHandler */ .p)(true) : null;
+    console.timeLog("lztup-start", "infoTopInThread")
+    dbContestsData.infoTopInThread ? (0,Utils_contests__WEBPACK_IMPORTED_MODULE_11__/* .contestThreadBlockMove */ .Q6)(true) : null;
+    console.timeLog("lztup-start", "removeContent")
+    dbContestsData.removeContent ? (0,Utils_contests__WEBPACK_IMPORTED_MODULE_11__/* .contestsHideContent */ .Q9)(true) : null;
+    console.timeLog("lztup-start", "removePoll")
+    dbContestsData.removePoll ? (0,Utils_contests__WEBPACK_IMPORTED_MODULE_11__/* .contestsHidePoll */ .Rf)(true) : null;
+    console.timeLog("lztup-start", "updateCaptchaButton")
+    dbContestsData.updateCaptchaButton? (0,Utils_contests__WEBPACK_IMPORTED_MODULE_11__/* .contestsUpdateCapctha */ .g4)() : null;
+    console.timeLog("lztup-start", "autoFixCaptcha")
+    dbContestsData.autoFixCaptcha ? (0,Utils_contests__WEBPACK_IMPORTED_MODULE_11__/* .contestsAutoFixCaptcha */ .gu)() : null;
 
     console.timeLog("lztup-start", "Loading Users DB...")
-    const usersDB = new IndexedDB_users__WEBPACK_IMPORTED_MODULE_7__/* .LZTUsersDB */ .P();
-    // await usersDB.init();
-    const dbUsersData = await usersDB.read();
+    const dbUsersData = await GM_getValue(Configs_StorageName__WEBPACK_IMPORTED_MODULE_3__/* ["default"] */ .Z.Users, {});
 
-    console.timeLog("lztup-start", "Checking Users DB...")
-    if (dbUsersData) {
-      console.timeLog("lztup-start", "showUserIdInProfile")
-      dbUsersData.showUserIdInProfile === 1 ? (0,Utils_users__WEBPACK_IMPORTED_MODULE_14__/* .addUserIdToProfile */ .Rj)() : null;
-      console.timeLog("lztup-start", "showUserIdInMemberCard")
-      if (dbUsersData.showUserIdInMemberCard === 1) {
-        (0,Utils_users__WEBPACK_IMPORTED_MODULE_14__/* .addUserIdToMemberCard */ .SL)();
-        (0,Utils_registers__WEBPACK_IMPORTED_MODULE_22__/* .registerObserver */ .O0)((mutation) => {
-          if (mutation.nextSibling) {
-            if (mutation.nextSibling?.classList?.contains('modal')) {
-              (0,Utils_users__WEBPACK_IMPORTED_MODULE_14__/* .addUserIdToMemberCard */ .SL)()
-            }
+    console.timeLog("lztup-start", "showUserIdInMemberCard")
+    if (dbUsersData.showUserIdInMemberCard) {
+      (0,Utils_users__WEBPACK_IMPORTED_MODULE_12__/* .addUserIdToMemberCard */ .SL)();
+      (0,Utils_registers__WEBPACK_IMPORTED_MODULE_22__/* .registerObserver */ .O0)((mutation) => {
+        if (mutation.nextSibling) {
+          if (mutation.nextSibling?.classList?.contains('modal')) {
+            (0,Utils_users__WEBPACK_IMPORTED_MODULE_12__/* .addUserIdToMemberCard */ .SL)()
           }
-        });
-      }
+        }
+      });
+    }
+    console.timeLog("lztup-start", "disableShareTyping")
+    dbUsersData.disableShareTyping ? (0,Xenforo_bypass__WEBPACK_IMPORTED_MODULE_13__/* .bypassShareTyping */ .$)() : null;
+    if ((0,Utils_checkers__WEBPACK_IMPORTED_MODULE_17__/* .isProfilePage */ .cD)()) {
+      console.timeLog("lztup-start", "showUserIdInProfile")
+      dbUsersData.showUserIdInProfile ? (0,Utils_users__WEBPACK_IMPORTED_MODULE_12__/* .addUserIdToProfile */ .Rj)() : null;
       console.timeLog("lztup-start", "showFullRegInProfile")
-      dbUsersData.showFullRegInProfile === 1 ? (0,Utils_users__WEBPACK_IMPORTED_MODULE_14__/* .showFullRegDateInProfile */ .M1)(true) : null;
-      console.timeLog("lztup-start", "disableShareTyping")
-      dbUsersData.disableShareTyping === 1 ? (0,Xenforo_bypass__WEBPACK_IMPORTED_MODULE_15__/* .bypassShareTyping */ .$)() : null;
+      dbUsersData.showFullRegInProfile? (0,Utils_users__WEBPACK_IMPORTED_MODULE_12__/* .showFullRegDateInProfile */ .M1)(true) : null;
     }
 
-    console.timeLog("lztup-start", "settingsDB...")
-    const settingsDB = new IndexedDB_settings__WEBPACK_IMPORTED_MODULE_9__/* .LZTSettingsDB */ .a();
-    // settingsDB.init()
     console.timeEnd("lztup-start")
   })
 }
@@ -1240,83 +1323,6 @@ class LZTAppearDB extends IndexedDB_default__WEBPACK_IMPORTED_MODULE_0__/* .LZTU
     showPollResults,
     newErrorPage,
     selfAdOnNewErrorPage,
-  }) {
-    super.update(...arguments);
-  }
-}
-
-
-
-/***/ }),
-
-/***/ "./src/indexedDB/contests.js":
-/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
-
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   w: () => (/* binding */ LZTContestsDB)
-/* harmony export */ });
-/* harmony import */ var IndexedDB_default__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("./src/indexedDB/default.js");
-
-
-
-/**
- *
- * @author Toil
- * @license MIT
- * @copyright Toil
- * @created 2023-02-17
- *
- * @description LZTContestsDB class implementation
- *
- */
-
-class LZTContestsDB extends IndexedDB_default__WEBPACK_IMPORTED_MODULE_0__/* .LZTUpgradeDB */ .c {
-  /**
-   *
-   *  @constructor
-   *  @param {string} name - name of the database
-   *  @param {string} objectKey - name of the future indexedDB object
-   *  @param {number} version - version of the database
-   */
-
-  constructor(name = 'LZTUpContests', objectKey = 'contests', version = 1) {
-    super(
-      name,
-      objectKey,
-      version,
-      { // indexes
-        'openTenContestsBtn': 'number',
-        'infoTopInThread': 'number',
-        'hideTagsInThread': 'number',
-        'autoCloseOnParticipate': 'number',
-        'removeContent': 'number',
-        'removePoll': 'number',
-        'updateCaptchaButton': 'number',
-        'autoFixCaptcha': 'number',
-      },
-      { // defaultData
-        key: objectKey,
-        openTenContestsBtn: 0,
-        infoTopInThread: 0,
-        hideTagsInThread: 0,
-        autoCloseOnParticipate: 0,
-        removeContent: 0,
-        removePoll: 0,
-        updateCaptchaButton: 0,
-        autoFixCaptcha: 0,
-      }
-    );
-  };
-
-  async update({
-    openTenContestsBtn,
-    infoTopInThread,
-    hideTagsInThread,
-    autoCloseOnParticipate,
-    removeContent,
-    removePoll,
-    updateCaptchaButton,
-    autoFixCaptcha,
   }) {
     super.update(...arguments);
   }
@@ -1686,127 +1692,6 @@ class LZTProfileDB extends IndexedDB_default__WEBPACK_IMPORTED_MODULE_0__/* .LZT
     backgroundImage,
     backgroundImageEverywhere,
     badgeIcons
-  }) {
-    super.update(...arguments);
-  }
-}
-
-
-
-/***/ }),
-
-/***/ "./src/indexedDB/settings.js":
-/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
-
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   a: () => (/* binding */ LZTSettingsDB)
-/* harmony export */ });
-/* harmony import */ var IndexedDB_default__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("./src/indexedDB/default.js");
-
-
-
-/**
- *
- * @author Toil
- * @license MIT
- * @copyright Toil
- * @created 2023-02-17
- *
- * @description LZTSettingsDB class implementation
- *
- */
-
-class LZTSettingsDB extends IndexedDB_default__WEBPACK_IMPORTED_MODULE_0__/* .LZTUpgradeDB */ .c {
-  /**
-   *
-   *  @constructor
-   *  @param {string} name - name of the database
-   *  @param {string} objectKey - name of the future indexedDB object
-   *  @param {number} version - version of the database
-   */
-
-  constructor(name = 'LZTUpSettings', objectKey = 'settings', version = 1) {
-    super(
-      name,
-      objectKey,
-      version,
-      { // indexes
-        'checkUpdatesOnLoad': 'number',
-      },
-      { // defaultData
-        key: objectKey,
-        checkUpdatesOnLoad: 1,
-      }
-    );
-  };
-
-  async update({
-    checkUpdatesOnLoad,
-  }) {
-    super.update(...arguments);
-  }
-}
-
-
-
-/***/ }),
-
-/***/ "./src/indexedDB/users.js":
-/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
-
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   P: () => (/* binding */ LZTUsersDB)
-/* harmony export */ });
-/* harmony import */ var IndexedDB_default__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("./src/indexedDB/default.js");
-
-
-
-/**
- *
- * @author Toil
- * @license MIT
- * @copyright Toil
- * @created 2023-02-17
- *
- * @description LZTUsersDB class implementation
- *
- */
-
-class LZTUsersDB extends IndexedDB_default__WEBPACK_IMPORTED_MODULE_0__/* .LZTUpgradeDB */ .c {
-  /**
-   *
-   *  @constructor
-   *  @param {string} name - name of the database
-   *  @param {string} objectKey - name of the future indexedDB object
-   *  @param {number} version - version of the database
-   */
-
-  constructor(name = 'LZTUpUsers', objectKey = 'users', version = 1) {
-    super(
-      name,
-      objectKey,
-      version,
-      { // indexes
-        'showUserIdInProfile': 'number',
-        'showUserIdInMemberCard': 'number',
-        'showFullRegInProfile': 'number',
-        'disableShareTyping': 'number',
-      },
-      { // defaultData
-        key: objectKey,
-        showUserIdInProfile: 0,
-        showUserIdInMemberCard: 0,
-        showFullRegInProfile: 0,
-        disableShareTyping: 0,
-      }
-    );
-  };
-
-  async update({
-    showUserIdInProfile,
-    showUserIdInMemberCard,
-    showFullRegInProfile,
-    disableShareTyping,
   }) {
     super.update(...arguments);
   }
@@ -2279,8 +2164,8 @@ class Section {
 
 // EXTERNAL MODULE: ./src/utils/logger.js
 var logger = __webpack_require__("./src/utils/logger.js");
-// EXTERNAL MODULE: ./src/indexedDB/contests.js
-var contests = __webpack_require__("./src/indexedDB/contests.js");
+// EXTERNAL MODULE: ./src/configs/StorageName.js
+var StorageName = __webpack_require__("./src/configs/StorageName.js");
 // EXTERNAL MODULE: ./src/callbacks/contestsAutoClose.js + 1 modules
 var contestsAutoClose = __webpack_require__("./src/callbacks/contestsAutoClose.js");
 // EXTERNAL MODULE: ./src/ui/buttons/contestsButton.js
@@ -2302,7 +2187,7 @@ class Checkbox {
     this.content = (0,purify/* clearHTML */.G6)(content);
   }
 
-  createElement(valueToCheck, callbackChecked = () => {}, callbackUnChecked = () => {}) {
+  createElement(valueToCheck, callbackChecked = () => {}, callbackUnChecked = () => {}, defaultCallback = () => {}) {
     const checkboxContainer = document.createElement('div');
     const checkbox = document.createElement('input');
     const checkboxLabel = document.createElement('label');
@@ -2318,8 +2203,9 @@ class Checkbox {
     checkboxContainer.appendChild(checkbox);
     checkboxContainer.appendChild(checkboxLabel);
 
-    checkboxContainer.addEventListener('click', async (event) => {
-      event.target.checked ? await callbackChecked() : await callbackUnChecked();
+    checkbox.addEventListener('click', async (event) => {
+      await defaultCallback(event)
+      event.target.checked ? await callbackChecked(event) : await callbackUnChecked(event);
     });
 
     return checkboxContainer;
@@ -2328,7 +2214,9 @@ class Checkbox {
 
 
 // EXTERNAL MODULE: ./src/utils/contests.js + 2 modules
-var utils_contests = __webpack_require__("./src/utils/contests.js");
+var contests = __webpack_require__("./src/utils/contests.js");
+// EXTERNAL MODULE: ./src/utils/utils.js
+var utils = __webpack_require__("./src/utils/utils.js");
 ;// CONCATENATED MODULE: ./src/ui/menu/items/contests.js
 
 
@@ -2336,21 +2224,25 @@ var utils_contests = __webpack_require__("./src/utils/contests.js");
 
 
 
+
+
+
 const getContestsItems = async () => {
-  const contestsDB = new contests/* LZTContestsDB */.w();
-  const contestsData = await contestsDB.read();
+  const contestsData = await GM_getValue(StorageName/* default */.Z.Contests, {});
 
   return [
     new Checkbox('open_ten_contests', 'Кнопка "Открыть 10"')
     .createElement(
       contestsData.openTenContestsBtn,
-      async () => {
-        await contestsDB.update({openTenContestsBtn: 1});
+      () => {
         (0,contestsButton/* regOpenContestsBtn */.u)(10);
       },
-      async () => {
-        await contestsDB.update({openTenContestsBtn: 0});
+      () => {
         (0,contestsButton/* removeOpenContestsBtn */.c)(10);
+      },
+      async (event) => {
+        contestsData.openTenContestsBtn = event.target.checked;
+        await GM_setValue(StorageName/* default */.Z.Contests, contestsData);
       }),
 
     new Checkbox('auto_close_on_participate',
@@ -2360,72 +2252,75 @@ const getContestsItems = async () => {
     .createElement(
       contestsData.autoCloseOnParticipate,
       async () => {
-        await contestsDB.update({autoCloseOnParticipate: 1});
+        (0,registers/* registerAlert */.de)('Включено Автозакрытие страницы при нажатие на кнопку "Участвовать"', 5000);
         (0,contestsAutoClose/* contestsAutoCloseHandler */.p)(true);
       },
       async () => {
-        await contestsDB.update({autoCloseOnParticipate: 0});
+        (0,registers/* registerAlert */.de)('Выключено Автозакрытие страницы при нажатие на кнопку "Участвовать"', 5000);
+        await (0,utils/* sleep */._v)(500);
         window.location.reload();
+      },
+      async (event) => {
+        contestsData.autoCloseOnParticipate = event.target.checked;
+        await GM_setValue(StorageName/* default */.Z.Contests, contestsData);
       }),
 
     new Checkbox('info_top_in_contests', `Отображение информации о розыгрыше вверху темы`)
     .createElement(
       contestsData.infoTopInThread,
-      async () => {
-        await contestsDB.update({infoTopInThread: 1});
-        (0,utils_contests/* contestThreadBlockMove */.Q6)(true);
-      },
-      async () => {
-        await contestsDB.update({infoTopInThread: 0});
-        (0,utils_contests/* contestThreadBlockMove */.Q6)(false);
+      () => {},
+      () => {},
+      async (event) => {
+        contestsData.infoTopInThread = event.target.checked;
+        await GM_setValue(StorageName/* default */.Z.Contests, contestsData);
+        (0,contests/* contestThreadBlockMove */.Q6)(event.target.checked)
       }),
 
     new Checkbox('hide_tags_in_contests', `Скрытие тегов в теме розыгрыша`)
     .createElement(
       contestsData.hideTagsInThread,
-      async () => {
-        await contestsDB.update({hideTagsInThread: 1});
-        (0,utils_contests/* contestsTagsVisibility */.s$)(true);
-      },
-      async () => {
-        await contestsDB.update({hideTagsInThread: 0});
-        (0,utils_contests/* contestsTagsVisibility */.s$)(false);
+      () => {},
+      () => {},
+      async (event) => {
+        contestsData.hideTagsInThread = event.target.checked;
+        await GM_setValue(StorageName/* default */.Z.Contests, contestsData);
+        (0,contests/* contestsTagsVisibility */.s$)(event.target.checked);
       }),
 
     new Checkbox('remove_content_in_contests', `Скрытие содержимого темы розыгрыша`)
     .createElement(
       contestsData.removeContent,
-      async () => {
-        await contestsDB.update({removeContent: 1});
-        (0,utils_contests/* contestsHideContent */.Q9)(true);
-      },
-      async () => {
-        await contestsDB.update({removeContent: 0});
-        (0,utils_contests/* contestsHideContent */.Q9)(false);
+      () => {},
+      () => {},
+      async (event) => {
+        contestsData.removeContent = event.target.checked;
+        await GM_setValue(StorageName/* default */.Z.Contests, contestsData);
+        (0,contests/* contestsHideContent */.Q9)(event.target.checked)
       }),
 
     new Checkbox('remove_poll_in_contests', `Скрытие голосования в теме розыгрыша`)
     .createElement(
       contestsData.removePoll,
-      async () => {
-        await contestsDB.update({removePoll: 1});
-        (0,utils_contests/* contestsHidePoll */.Rf)(true);
-      },
-      async () => {
-        await contestsDB.update({removePoll: 0});
-        (0,utils_contests/* contestsHidePoll */.Rf)(false);
+      () => {},
+      () => {},
+      async (event) => {
+        contestsData.removePoll = event.target.checked;
+        await GM_setValue(StorageName/* default */.Z.Contests, contestsData);
+        (0,contests/* contestsHidePoll */.Rf)(event.target.checked)
       }),
 
     new Checkbox('update_captcha_button_in_contests', `Кнопка "Обновление капчи"`)
     .createElement(
       contestsData.updateCaptchaButton,
       async () => {
-        await contestsDB.update({updateCaptchaButton: 1});
-        (0,utils_contests/* contestsUpdateCapctha */.g4)();
+        (0,contests/* contestsUpdateCapctha */.g4)();
       },
       async () => {
-        await contestsDB.update({updateCaptchaButton: 0});
         document.querySelector('.LZTUpRefreshButton')?.remove();
+      },
+      async (event) => {
+        contestsData.updateCaptchaButton = event.target.checked;
+        await GM_setValue(StorageName/* default */.Z.Contests, contestsData);
       }),
 
     new Checkbox('auto_fix_captcha_in_contests',
@@ -2436,23 +2331,24 @@ const getContestsItems = async () => {
     .createElement(
       contestsData.autoFixCaptcha,
       async () => {
-        await contestsDB.update({autoFixCaptcha: 1});
-        (0,utils_contests/* contestsAutoFixCaptcha */.gu)();
+        (0,registers/* registerAlert */.de)('Включен Автофикс капчи', 5000);
+        (0,contests/* contestsAutoFixCaptcha */.gu)();
       },
       async () => {
-        await contestsDB.update({autoFixCaptcha: 0});
+        (0,registers/* registerAlert */.de)('Выключен Автофикс капчи', 5000);
+        await (0,utils/* sleep */._v)(500);
         window.location.reload();
+      },
+      async (event) => {
+        contestsData.autoFixCaptcha = event.target.checked;
+        await GM_setValue(StorageName/* default */.Z.Contests, contestsData);
       }),
   ];
 }
 
 /* harmony default export */ const items_contests = (getContestsItems);
-// EXTERNAL MODULE: ./src/indexedDB/users.js
-var users = __webpack_require__("./src/indexedDB/users.js");
 // EXTERNAL MODULE: ./src/utils/users.js + 2 modules
-var utils_users = __webpack_require__("./src/utils/users.js");
-// EXTERNAL MODULE: ./src/utils/utils.js
-var utils = __webpack_require__("./src/utils/utils.js");
+var users = __webpack_require__("./src/utils/users.js");
 ;// CONCATENATED MODULE: ./src/ui/menu/items/users.js
 
 
@@ -2461,20 +2357,22 @@ var utils = __webpack_require__("./src/utils/utils.js");
 
 
 const getUsersItems = async () => {
-  const usersDB = new users/* LZTUsersDB */.P();
-  const usersData = await usersDB.read();
+  const usersData = await GM_getValue(StorageName/* default */.Z.Users, {});
+  console.log("USERS DATA", StorageName/* default */.Z.Users, usersData)
 
   return [
     new Checkbox('show_userid_in_profile', 'Показывать ID в профиле пользователя')
     .createElement(
       usersData.showUserIdInProfile,
-      async () => {
-        await usersDB.update({ showUserIdInProfile: 1 });
-        (0,utils_users/* addUserIdToProfile */.Rj)();
+      () => {
+        ;(0,users/* addUserIdToProfile */.Rj)();
       },
-      async () => {
-        await usersDB.update({ showUserIdInProfile: 0 });
-        (0,utils_users/* removeUserIdFromProfile */.UD)();
+      () => {
+        (0,users/* removeUserIdFromProfile */.UD)();
+      },
+      async (event) => {
+        usersData.showUserIdInProfile = event.target.checked;
+        await GM_setValue(StorageName/* default */.Z.Users, usersData);
       }),
     new Checkbox('show_userid_in_member_card',
       `Показывать ID в карточке пользователя
@@ -2482,28 +2380,24 @@ const getUsersItems = async () => {
       `)
     .createElement(
       usersData.showUserIdInMemberCard,
-      async () => {
-        await usersDB.update({ showUserIdInMemberCard: 1 });
-        (0,registers/* registerAlert */.de)('Показывать ID в карточке пользователя включено', 5000);
-        await (0,utils/* sleep */._v)(500);
-        window.location.reload();
-      },
-      async () => {
-        await usersDB.update({ showUserIdInMemberCard: 0 });
-        (0,registers/* registerAlert */.de)('Показывать ID в карточке пользователя выключено', 5000);
+      () => {},
+      () => {},
+      async (event) => {
+        usersData.showUserIdInMemberCard = event.target.checked;
+        await GM_setValue(StorageName/* default */.Z.Users, usersData);
+        (0,registers/* registerAlert */.de)(`Показывать ID в карточке пользователя ${event.target.checked ? 'включено' : 'выключено'}` , 5000);
         await (0,utils/* sleep */._v)(500);
         window.location.reload();
       }),
     new Checkbox('show_fullreg_in_profile', 'Показывать полную дату регистрации в профиле пользователя')
     .createElement(
       usersData.showFullRegInProfile,
-      async () => {
-        await usersDB.update({ showFullRegInProfile: 1 });
-        (0,utils_users/* showFullRegDateInProfile */.M1)(true);
-      },
-      async () => {
-        await usersDB.update({ showFullRegInProfile: 0 });
-        (0,utils_users/* showFullRegDateInProfile */.M1)(false);
+      () => {},
+      () => {},
+      async (event) => {
+        usersData.showFullRegInProfile = event.target.checked;
+        await GM_setValue(StorageName/* default */.Z.Users, usersData);
+        (0,users/* showFullRegDateInProfile */.M1)(event.target.checked);
       }),
     new Checkbox('disable_share_typing',
       `Неписалка в темах
@@ -2511,15 +2405,12 @@ const getUsersItems = async () => {
       `)
     .createElement(
       usersData.disableShareTyping,
-      async () => {
-        await usersDB.update({ disableShareTyping: 1 });
-        (0,registers/* registerAlert */.de)('Неписалка в темах включена', 5000);
-        await (0,utils/* sleep */._v)(500);
-        window.location.reload();
-      },
-      async () => {
-        await usersDB.update({ disableShareTyping: 0 });
-        (0,registers/* registerAlert */.de)('Неписалка в темах выключена', 5000);
+      () => {},
+      () => {},
+      async (event) => {
+        usersData.disableShareTyping = event.target.checked;
+        await GM_setValue(StorageName/* default */.Z.Users, usersData);
+        (0,registers/* registerAlert */.de)(`Неписалка в темах ${event.target.checked ? 'включена' : 'выключена'}` , 5000);
         await (0,utils/* sleep */._v)(500);
         window.location.reload();
       }),
@@ -2527,6 +2418,8 @@ const getUsersItems = async () => {
 }
 
 /* harmony default export */ const items_users = (getUsersItems);
+// EXTERNAL MODULE: ./src/configs/config.js
+var config = __webpack_require__("./src/configs/config.js");
 // EXTERNAL MODULE: ./src/indexedDB/profile.js
 var profile = __webpack_require__("./src/indexedDB/profile.js");
 ;// CONCATENATED MODULE: ./src/ui/menu/comment.js
@@ -2556,9 +2449,9 @@ class Comment {
 
 // EXTERNAL MODULE: ./src/ui/avatarUserBadges.js + 1 modules
 var ui_avatarUserBadges = __webpack_require__("./src/ui/avatarUserBadges.js");
-// EXTERNAL MODULE: ./src/configs/config.js
-var config = __webpack_require__("./src/configs/config.js");
 ;// CONCATENATED MODULE: ./src/ui/components/menu/previewProfile.js
+
+
 
 
 
@@ -2595,7 +2488,7 @@ class PreviewProfile {
     avatarBox.appendChild(avatarUserBadges);
     avatarBox.innerHTML += `
       <a href="members/${encodeURIComponent(this.userid)}/" class="avatar Av${XenForo.htmlspecialchars(this.userid)}m" data-avatarhtml="true">
-        <span class="img m" style="background-image: url(${(0,utils_users/* getUserAvatar */.Dm)(this.userid)})"></span>
+        <span class="img m" style="background-image: url(${(0,users/* getUserAvatar */.Dm)(this.userid)})"></span>
       </a>
     `;
 
@@ -2632,7 +2525,7 @@ class PreviewProfile {
     }
 
     if (style === '') {
-      const userGroup = await GM_getValue('LZTUserGroup', config/* default */.Z.defaultUserGroup); // current user group (newbie, resident, expert and etc)
+      const userGroup = await GM_getValue(StorageName/* default */.Z.UserGroup, config/* default */.Z.defaultUserGroup); // current user group (newbie, resident, expert and etc)
       style = `.${userGroup}`;
     }
     usernameEl.classList.add('UsernameStyle', 'bold');
@@ -3204,6 +3097,8 @@ var visuals_profile = __webpack_require__("./src/visuals/profile.js");
 
 
 
+
+
 const profileDB = new profile/* LZTProfileDB */.M();
 
 async function sortableItemOnEditCallback(e, sortableItem, previewProfile) {
@@ -3357,8 +3252,8 @@ async function sortableItemOnEditCallback(e, sortableItem, previewProfile) {
 }
 
 function createPreviewProfile(profileData, profileElId = null) {
-  const userid = (0,utils_users/* getUserId */.n5)('me');
-  const username = (0,utils_users/* getUsername */.Ms)('me');
+  const userid = (0,users/* getUserId */.n5)('me');
+  const username = (0,users/* getUsername */.Ms)('me');
   return new PreviewProfile(userid, username, profileData, profileElId);
 }
 
@@ -3436,7 +3331,7 @@ const getProfileItems = async () => {
   }
 
   const profileData = await profileDB.read();
-  const userGroup = await GM_getValue('LZTUserGroup', config/* default */.Z.defaultUserGroup);
+  const userGroup = await GM_getValue(StorageName/* default */.Z.UserGroup, config/* default */.Z.defaultUserGroup);
   const currentDomain = window.location.hostname;
 
   const previewProfile = createPreviewProfile(profileData);
@@ -3680,8 +3575,6 @@ const getInfoItems = async () => {
 /* harmony default export */ const info = (getInfoItems);
 // EXTERNAL MODULE: ./src/indexedDB/appear.js
 var appear = __webpack_require__("./src/indexedDB/appear.js");
-// EXTERNAL MODULE: ./src/indexedDB/settings.js
-var settings = __webpack_require__("./src/indexedDB/settings.js");
 ;// CONCATENATED MODULE: ./src/utils/files.js
 
 
@@ -3735,19 +3628,15 @@ async function uploadJSONFile() {
 
 
 
-
 const appearDB = new appear/* LZTAppearDB */.e()
-const contestsDB = new contests/* LZTContestsDB */.w()
 const settings_profileDB = new profile/* LZTProfileDB */.M()
-const settingsDB = new settings/* LZTSettingsDB */.a()
-const usersDB = new users/* LZTUsersDB */.P()
 
 async function saveSettings() {
   const appearData = await appearDB.read();
-  const contestsData = await contestsDB.read();
+  const contestsData = await GM_getValue(StorageName/* default */.Z.Contests, {});
   const profileData = await settings_profileDB.read();
-  const settingsData = await settingsDB.read();
-  const usersData = await usersDB.read();
+  const settingsData = await GM_getValue(Storage.Settings, {})
+  const usersData = await GM_getValue(StorageName/* default */.Z.Users, {});
 
   const config = JSON.stringify({
     appear: appearData,
@@ -3774,11 +3663,11 @@ async function uploadSettings() {
 
     // load data to dbs
     await appearDB.update(configObj?.appear);
-    await contestsDB.update(configObj?.contests)
+    await GM_setValue(StorageName/* default */.Z.Contests, configObj?.contests);
     await settings_profileDB.update(configObj?.profile)
-    await settingsDB.update(configObj?.settings)
-    await usersDB.update(configObj?.users)
-    ;(0,registers/* registerAlert */.de)('Настройки загружены. Выполняю перезагрузку страницы...', 5000);
+    await GM_setValue(StorageName/* default */.Z.Settings, configObj?.settings);
+    await GM_setValue(StorageName/* default */.Z.Users, configObj?.users);
+    (0,registers/* registerAlert */.de)('Настройки загружены. Выполняю перезагрузку страницы...', 5000);
     await (0,utils/* sleep */._v)(500);
     window.location.reload();
   } catch (err) {
@@ -3788,7 +3677,7 @@ async function uploadSettings() {
 }
 
 async function clearCache() {
-  await GM_setValue('cache', {});
+  await GM_setValue(StorageName/* default */.Z.Cache, {});
   (0,registers/* registerAlert */.de)('Кеш успешно очищен', 5000);
   await (0,utils/* sleep */._v)(1000);
   window.location.reload();
@@ -3805,7 +3694,7 @@ const getSettingsItems = async () => {
   ];
 }
 
-/* harmony default export */ const items_settings = (getSettingsItems);
+/* harmony default export */ const settings = (getSettingsItems);
 // EXTERNAL MODULE: ./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js
 var injectStylesIntoStyleTag = __webpack_require__("./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
 var injectStylesIntoStyleTag_default = /*#__PURE__*/__webpack_require__.n(injectStylesIntoStyleTag);
@@ -3896,7 +3785,7 @@ async function generateMenu(tabs) {
     .addSectionItem('Настройки', 'Настройки расширения', 'far fa-cog', 'LZTUpSettingsItem', (_, title) => openSubMenu('LZTUpSettingsContainer', title))
     .addSectionItem('Обновления', 'Установка и проверка обновлений расширения', 'far fa-cloud-download', 'LZTUpUpdateItem', (_, title) => openSubMenu('LZTUpUpdateContainer', title))
     .addSectionItem('Информация', `Версия: ${GM_info?.script?.version}`, 'far fa-info-circle', 'LZTUpInformationItem', (_, title) => openSubMenu('LZTUpInformationContainer', title))
-    .addSectionContainer('LZTUpSettingsContainer', await items_settings())
+    .addSectionContainer('LZTUpSettingsContainer', await settings())
     .addSectionContainer('LZTUpUpdateContainer', updateItems)
     .addSectionContainer('LZTUpInformationContainer', await info())
 
@@ -4020,8 +3909,8 @@ async function menuButtonCallback() {
   // Update Profile Preview
   const profileDB = new profile/* LZTProfileDB */.M();
   const profileData = await profileDB.read();
-  const userid = (0,utils_users/* getUserId */.n5)('me');
-  const username = (0,utils_users/* getUsername */.Ms)('me');
+  const userid = (0,users/* getUserId */.n5)('me');
+  const username = (0,users/* getUsername */.Ms)('me');
   const previewProfile = new PreviewProfile(userid, username, profileData);
   await previewProfile.updateAll();
 }
@@ -4746,7 +4635,6 @@ function showFullRegDateInProfile(full = false) {
 /* harmony export */   Bw: () => (/* binding */ removeStylesByEl),
 /* harmony export */   Eq: () => (/* binding */ getThreadLinks),
 /* harmony export */   Nc: () => (/* binding */ waitForElm),
-/* harmony export */   RI: () => (/* binding */ hasOwn),
 /* harmony export */   _v: () => (/* binding */ sleep),
 /* harmony export */   bg: () => (/* binding */ applyStyle)
 /* harmony export */ });
@@ -4773,10 +4661,6 @@ function waitForElm(selector) {
 }
 
 const sleep = m => new Promise(r => setTimeout(r, m))
-
-function hasOwn(element, property) {
-  return Object.prototype.hasOwnProperty.call(element, property);
-}
 
 function getNodeLinks() {
   let latestsThreads = $('div.latestThreads');
@@ -5018,18 +4902,16 @@ function updateUserBadges(badgeIconsData) {
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   $: () => (/* binding */ bypassShareTyping)
 /* harmony export */ });
-/* harmony import */ var Utils_utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("./src/utils/utils.js");
 /* harmony import */ var Utils_logger__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("./src/utils/logger.js");
 
 
-
 function bypassShareTyping() {
-  if ((0,Utils_utils__WEBPACK_IMPORTED_MODULE_1__/* .hasOwn */ .RI)(XenForo, 'threadNotify') && (0,Utils_utils__WEBPACK_IMPORTED_MODULE_1__/* .hasOwn */ .RI)(XenForo.threadNotify, 'shareTypingActivity')) {
+  if (Object.hasOwn(XenForo, 'threadNotify') && Object.hasOwn(XenForo.threadNotify, 'shareTypingActivity')) {
     Utils_logger__WEBPACK_IMPORTED_MODULE_0__/* .Logger */ .Y.debug('bypassShareTyping thread: true');
     XenForo.threadNotify.shareTypingActivity = 0;
   }
 
-  // if (hasOwn(XenForo, 'ChatboxRTC') && hasOwn(XenForo.chatboxRTC, 'Start')) {
+  // if (Object.hasOwn(XenForo, 'ChatboxRTC') && Object.hasOwn(XenForo.chatboxRTC, 'Start')) {
   //   console.log('bypassShareTyping chat: true');
   //   XenForo.ChatboxRTC.Start.prototype.sendTypingMessage = () => {return};
   // }
