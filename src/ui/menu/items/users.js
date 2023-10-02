@@ -6,7 +6,6 @@ import { sleep } from "Utils/utils";
 
 const getUsersItems = async () => {
   const usersData = await GM_getValue(StorageName.Users, {});
-  console.log("USERS DATA", StorageName.Users, usersData)
 
   return [
     new Checkbox('show_userid_in_profile', 'Показывать ID в профиле пользователя')

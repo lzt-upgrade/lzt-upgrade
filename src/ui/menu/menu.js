@@ -7,23 +7,11 @@ import getInfoItems from 'UI/menu/items/info';
 import getSettingsItems from 'UI/menu/items/settings';
 import { openSubMenu } from 'UI/menu/utils.js'
 import 'Styles/menu.scss';
+import getAppearItems from 'UI/menu/items/appear';
+import getUpdateItems from 'UI/menu/items/update';
 
 
 async function generateMenu(tabs) {
-  const appearText = document.createElement('div')
-  appearText.innerText = 'Страница Внешнего вида';
-
-  const appearItems = [
-    appearText,
-  ];
-
-  const updateText = document.createElement('div')
-  updateText.innerText = 'Страница обновлений';
-
-  const updateItems = [
-    updateText,
-  ];
-
   const menuSection = new Section('LZTUpMainSection')
     .addSectionItem('Локальный Уник', 'Максимальная кастомизация', 'far fa-palette', 'LZTUpUniqItem', (_, title) => openSubMenu('LZTUpUniqContainer', title))
     .addSectionItem('Розыгрыши', 'Комфорт для розыгрышей', 'far fa-gift', 'LZTUpContestsItem', (_, title) => openSubMenu('LZTUpContestsContainer', title))
@@ -32,14 +20,14 @@ async function generateMenu(tabs) {
     .addSectionContainer('LZTUpUniqContainer', await getProfileItems())
     .addSectionContainer('LZTUpContestsContainer', await getContestsItems())
     .addSectionContainer('LZTUpUsersContainer', await getUsersItems())
-    .addSectionContainer('LZTUpAppearContainer', appearItems)
+    .addSectionContainer('LZTUpAppearContainer', await getAppearItems())
 
   const settingsSection = new Section('LZTUpSettingsSection')
     .addSectionItem('Настройки', 'Настройки расширения', 'far fa-cog', 'LZTUpSettingsItem', (_, title) => openSubMenu('LZTUpSettingsContainer', title))
     .addSectionItem('Обновления', 'Установка и проверка обновлений расширения', 'far fa-cloud-download', 'LZTUpUpdateItem', (_, title) => openSubMenu('LZTUpUpdateContainer', title))
     .addSectionItem('Информация', `Версия: ${GM_info?.script?.version}`, 'far fa-info-circle', 'LZTUpInformationItem', (_, title) => openSubMenu('LZTUpInformationContainer', title))
     .addSectionContainer('LZTUpSettingsContainer', await getSettingsItems())
-    .addSectionContainer('LZTUpUpdateContainer', updateItems)
+    .addSectionContainer('LZTUpUpdateContainer', await getUpdateItems())
     .addSectionContainer('LZTUpInformationContainer', await getInfoItems())
 
   const sections = [
