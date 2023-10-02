@@ -1,3 +1,4 @@
+import { participateByBtnCallback } from 'Callbacks/contestsParticipate';
 import { isContestThread } from 'Utils/checkers';
 import { hideThreadContent, hideThreadPoll } from 'Visuals/threads';
 import { tagsVisibility } from 'Utils/tags';
@@ -88,6 +89,19 @@ function reRenderCaptcha() {
   });
 }
 
+function contestsParticipateByBtn(status) {
+  const contestBlock = document.querySelector('div.contestThreadBlock');
+  if (!contestBlock) {
+    return;
+  }
+
+  if (status) {
+    document.addEventListener('keydown', participateByBtnCallback);
+  } else {
+    document.removeEventListener('keydown', participateByBtnCallback);
+  }
+}
+
 export {
   contestThreadBlockMove,
   contestsHideContent,
@@ -95,4 +109,5 @@ export {
   contestsHidePoll,
   contestsUpdateCapctha,
   contestsAutoFixCaptcha,
+  contestsParticipateByBtn
 };

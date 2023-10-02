@@ -1,5 +1,5 @@
 import StorageName from 'Configs/StorageName';
-import { contestsAutoCloseHandler } from "Callbacks/contestsAutoClose";
+import { contestsAutoCloseHandler } from "Callbacks/contestsParticipate";
 import { regOpenContestsBtn, removeOpenContestsBtn } from 'UI/buttons/contestsButton';
 import { Checkbox } from 'UI/menu/checkbox';
 import {
@@ -9,6 +9,7 @@ import {
   contestsHidePoll,
   contestsUpdateCapctha,
   contestsAutoFixCaptcha,
+  contestsParticipateByBtn
 } from 'Utils/contests';
 import { registerAlert } from "Utils/registers";
 import { sleep } from "Utils/utils";
@@ -129,6 +130,18 @@ const getContestsItems = async () => {
       async (event) => {
         contestsData.autoFixCaptcha = event.target.checked;
         await GM_setValue(StorageName.Contests, contestsData);
+      }),
+
+    new Checkbox('participate_by_key', `Участие по кнопке Tab`)
+    .createElement(
+      contestsData.participateByKey,
+      () => {},
+      () => {},
+      async (event) => {
+        registerAlert(`Участие по кнопке ${event.target.checked ? 'включено' : 'выключено'}` , 5000);
+        contestsData.participateByKey = event.target.checked;
+        await GM_setValue(StorageName.Contests, contestsData);
+        contestsParticipateByBtn(event.target.checked);
       }),
   ];
 }

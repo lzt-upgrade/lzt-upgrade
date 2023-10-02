@@ -4,10 +4,9 @@ import config from "Configs/config";
 import extData from 'Configs/extData';
 import StorageName from 'Configs/StorageName';
 
-import { contestsAutoCloseHandler } from "Callbacks/contestsAutoClose";
+import { contestsAutoCloseHandler } from "Callbacks/contestsParticipate";
 import { getThemeByID } from 'Callbacks/extensionStart';
 
-import { LZTAppearDB } from "IndexedDB/appear";
 import { LZTProfileDB } from "IndexedDB/profile";
 
 import { regOpenContestsBtn } from "UI/buttons/contestsButton";
@@ -24,12 +23,23 @@ import {
   contestsHideContent,
   contestsHidePoll,
   contestsUpdateCapctha,
-  contestsAutoFixCaptcha
+  contestsAutoFixCaptcha,
+  contestsParticipateByBtn
 } from 'Utils/contests';
-import { addUserIdToProfile, addUserIdToMemberCard, showFullRegDateInProfile } from 'Utils/users';
+import {
+  addUserIdToProfile,
+  addUserIdToMemberCard,
+  getUserId,
+  getUsername,
+  getUserGroup,
+  showFullRegDateInProfile
+} from 'Utils/users';
 import { bypassShareTyping } from "Xenforo/bypass";
-import { getUserId, getUsername, getUserGroup } from 'Utils/users';
-import { updateUserStyle, updateUserBanner, updateUserBadges } from 'Visuals/users';
+import {
+  updateUserStyle,
+  updateUserBanner,
+  updateUserBadges
+} from 'Visuals/users';
 import { addBackgroundImage } from 'Visuals/universal';
 import { addBackgroundImageInProfile } from 'Visuals/profile';
 import { isProfilePage } from 'Utils/checkers';
@@ -46,16 +56,14 @@ async function initTheme() {
   // exec time: 50-200ms
   console.time("init-theme");
 
-  console.timeLog("init-theme", "loading appearDB...")
-  const appearDB = new LZTAppearDB();
-  console.timeLog("init-theme", "getting dbAppearData...")
-  const dbAppearData = await appearDB.read();
+  console.timeLog("init-theme", "getting appearData...")
+  const appearData = await GM_getValue(StorageName.Appear, {});
   console.timeLog("init-theme", "loading name from cache...")
   let themeName = await GM_getValue(StorageName.Cache, {}).themeName;
   console.timeLog("init-theme", "Check themeName valid...")
-  if (!themeName && dbAppearData?.theme > 0) {
-    Logger.debug(`Requesting theme with id ${dbAppearData.theme}...`);
-    themeName = await getThemeByID(dbAppearData.theme)
+  if (!themeName && appearData.theme > 0) {
+    Logger.debug(`Requesting theme with id ${appearData.theme}...`);
+    themeName = await getThemeByID(appearData.theme)
       .catch(err => console.error(err));
     let cacheData = await GM_getValue(StorageName.Cache, {});
     cacheData.themeName = themeName;
@@ -71,11 +79,12 @@ async function main() {
 
   if (GM_info?.script?.version) Logger.log(`${config.extName} version: ${GM_info?.script?.version}`);
 
+  const appearData = await GM_getValue(StorageName.Appear, {});
   console.timeLog("lztup-start", "Waiting body...")
   document.addEventListener('DOMContentLoaded', async () => {
     console.timeLog("lztup-start", "Body loaded successfully")
-    if (/^(Error\s[0-9]{3}|Site\sMaintenance)$/.test(document.head.querySelector('title').innerText)) {
-      if (!dbAppearData || dbAppearData?.newErrorPage === 0) {
+    if (/^(Error\s[0-9]{3}|Site\sMaintenance|429\sToo\sMany\sRequests)$/.test(document.head.querySelector('title').innerText)) {
+      if (!appearData.newErrorPage) {
         return;
       }
 
@@ -87,7 +96,7 @@ async function main() {
       duckRain.alt = "Duck rain";
       container.appendChild(duckRain);
 
-      if (dbAppearData?.selfAdOnNewErrorPage === 0) {
+      if (!appearData.selfAdOnNewErrorPage) {
         return;
       }
 
@@ -245,6 +254,8 @@ async function main() {
     dbContestsData.updateCaptchaButton? contestsUpdateCapctha() : null;
     console.timeLog("lztup-start", "autoFixCaptcha")
     dbContestsData.autoFixCaptcha ? contestsAutoFixCaptcha() : null;
+    console.timeLog("lztup-start", "participateByKey")
+    dbContestsData.participateByKey ? contestsParticipateByBtn(true) : null;
 
     console.timeLog("lztup-start", "Loading Users DB...")
     const dbUsersData = await GM_getValue(StorageName.Users, {});
