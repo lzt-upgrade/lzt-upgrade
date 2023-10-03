@@ -1,7 +1,7 @@
 import StorageName from 'Configs/StorageName';
 import { contestsAutoCloseHandler } from "Callbacks/contestsParticipate";
 import { regOpenContestsBtn, removeOpenContestsBtn } from 'UI/buttons/contestsButton';
-import { Checkbox } from 'UI/menu/checkbox';
+import { Checkbox } from 'UI/components/menu/checkbox';
 import {
   contestsTagsVisibility,
   contestThreadBlockMove,

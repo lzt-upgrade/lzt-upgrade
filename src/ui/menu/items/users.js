@@ -1,5 +1,5 @@
 import StorageName from "Configs/StorageName";
-import { Checkbox } from 'UI/menu/checkbox';
+import { Checkbox } from 'UI/components/menu/checkbox';
 import { addUserIdToProfile, removeUserIdFromProfile, showFullRegDateInProfile } from 'Utils/users';
 import { registerAlert } from "Utils/registers";
 import { sleep } from "Utils/utils";

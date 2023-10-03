@@ -1,4 +1,4 @@
-import { createMenuIcon } from 'UI/components/icons.js'
+import Icon from 'UI/components/icon.js'
 import { clearHTML } from 'Utils/purify';
 
 
@@ -115,7 +115,7 @@ class Section {
     sectionItem.id = sectionId;
     sectionItem.classList.add('LZTUpSectionItem');
 
-    const sectionIcon = createMenuIcon(iconClasses);
+    const sectionIcon = new Icon(iconClasses).createElement();
     const textContainer = document.createElement('div');
     textContainer.classList.add('LZTUpSectionTextContainer')
     const textEl = new SectionText(title).createElement();
@@ -124,7 +124,7 @@ class Section {
     textContainer.append(textEl, subTextEl);
     sectionItem.append(sectionIcon, textContainer);
     if (this.direction === SectionDirection.Column && rightArrow) {
-      const sectionArrowIcon = createMenuIcon('far fa-angle-right gray right');
+      const sectionArrowIcon = new Icon('far fa-angle-right gray right').createElement();
       sectionItem.append(sectionArrowIcon)
     }
 

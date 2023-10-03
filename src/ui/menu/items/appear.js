@@ -1,6 +1,6 @@
 import StorageName from "Configs/StorageName";
-import { Checkbox } from 'UI/menu/checkbox';
-import { Comment } from 'UI/menu/comment';
+import { Checkbox } from 'UI/components/menu/checkbox';
+import { Comment } from 'UI/components/menu/comment';
 import { registerAlert } from "Utils/registers";
 
 const getAppearItems = async () => {

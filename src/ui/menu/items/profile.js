@@ -2,8 +2,8 @@ import StorageName from 'Configs/StorageName';
 import config from "Configs/config";
 
 import { LZTProfileDB } from 'IndexedDB/profile';
-import { Checkbox } from 'UI/menu/checkbox';
-import { Comment } from 'UI/menu/comment';
+import { Checkbox } from 'UI/components/menu/checkbox';
+import { Comment } from 'UI/components/menu/comment';
 import { PreviewProfile } from 'UI/components/menu/previewProfile';
 import { TextArea } from 'UI/components/menu/textArea';
 import { Input } from 'UI/components/menu/input';

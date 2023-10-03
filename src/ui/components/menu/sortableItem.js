@@ -1,4 +1,4 @@
-import { createMenuIcon } from 'UI/components/icons'
+import Icon from 'UI/components/icon'
 
 class SortableItem {
   /**
@@ -25,7 +25,7 @@ class SortableItem {
 
     const draggableZone = document.createElement('div');
     draggableZone.classList.add('LZTUpSortableDraggable');
-    const icon = createMenuIcon('far fa-grip-vertical', '');
+    const icon = new Icon('far fa-grip-vertical', '').createElement();
     draggableZone.appendChild(icon);
 
     const contentContaner = document.createElement('div');
@@ -40,7 +40,7 @@ class SortableItem {
 
     const editButton = document.createElement('div');
     editButton.classList.add('LZTUpSortableEditButton');
-    const editIcon = createMenuIcon('far fa-edit', '');
+    const editIcon = new Icon('far fa-edit', '').createElement();
     editButton.appendChild(editIcon);
     editButton.onclick = async (e) => {
       console.log('Edit button clicked');
@@ -49,7 +49,7 @@ class SortableItem {
 
     const removeButton = document.createElement('div');
     removeButton.classList.add('LZTUpSortableRemoveButton');
-    const removeIcon = createMenuIcon('far fa-trash', '');
+    const removeIcon = new Icon('far fa-trash', '').createElement();
     removeButton.appendChild(removeIcon);
     removeButton.onclick = async (e) => {
       const result = confirm('Вы точно хотите удалить иконку?')

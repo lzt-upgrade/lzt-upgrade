@@ -1,4 +1,4 @@
-import { createMenuIcon } from "UI/components/icons.js";
+import Icon from "UI/components/icon.js";
 
 class Button {
   /**
@@ -21,7 +21,7 @@ class Button {
     button.innerText = this.buttonText;
 
     if (this.iconClassName) {
-      const icon = createMenuIcon(this.iconClassName);
+      const icon = new Icon(this.iconClassName).createElement();
       icon.id = '';
       button.appendChild(icon);
     }

@@ -1,4 +1,4 @@
-import { Comment } from 'UI/menu/comment';
+import { Comment } from 'UI/components/menu/comment';
 
 
 const getUpdateItems = async () => {

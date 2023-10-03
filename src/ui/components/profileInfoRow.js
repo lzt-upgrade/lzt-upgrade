@@ -48,4 +48,4 @@ class ProfileInfoRow {
   }
 }
 
-export { ProfileInfoRow };
+export default ProfileInfoRow;

@@ -1,7 +1,7 @@
 import { registerModal } from "Utils/registers";
 import { generateMenu } from 'UI/menu/menu';
 import { setMenuTitle } from 'UI/menu/utils';
-import { Tab } from 'UI/menu/tab';
+import { Tab } from 'UI/components/menu/tab';
 import { updateTooltips } from "Xenforo/tooltips";
 import config from "Configs/config";
 import { PreviewProfile } from "UI/components/menu/previewProfile";
