@@ -1,4 +1,4 @@
-import { createMenuIcon } from "UI/components/icons.js";
+import Icon from "UI/components/icon.js";
 
 
 class CopyButton {
@@ -11,13 +11,24 @@ class CopyButton {
   createElement() {
     const button = document.createElement('span');
     button.classList.add('copyButton', 'Tooltip');
-    button.dataset.phr = this.messageOnCopy;
     button.title = this.tooltipMessage;
-    // FIXME: REWORK THIS https://github.com/airbnb/javascript#functions--constructor
-    button.onclick = new Function('event', `Clipboard.copy('${this.content}', this)`); // superior fix of "Clipboard.copy is not a function"
+
+    button.onclick = async (e) => {
+      // We use Clipboard.copy instead to avoid errors when the function is not found and to prevent XSS
+      // navigator.clipboard.writeText XSS-safe unlike ClipBoard.copy
+      await navigator.clipboard.writeText(this.content);
+
+      // from Clipboard.copy function
+      e.target.classList.add('animated');
+      animateCSS(e.target, [
+        'heartBeat',
+        'mainc'
+      ]);
+      XenForo.alert(this.messageOnCopy, '', 5000);
+    }
     button.tabIndex = 0;
 
-    const icon = createMenuIcon('far fa-clone', '');
+    const icon = new Icon('far fa-clone', '').createElement();
     button.appendChild(icon);
     return button;
   }
