@@ -7,20 +7,21 @@ function onParticipateHandler(callback, sleepTime = 1000) {
       Logger.debug('onParticipateHandler: Participate button finded');
       el.addEventListener('click', async () => {
         Logger.debug('onParticipateHandler: click contest button');
-        if (!el.classList.contains('disabled')) {
-          Logger.debug('onParticipateHandler: waiting for alreadyParticipate button');
-          const elem = await waitForElm('span.alreadyParticipate');
-          if (!elem) {
-            Logger.debug('onParticipateHandler: no alreadyParticipate button');
-            return;
-          }
-
-          Logger.debug('onParticipateHandler: alreadyParticipate button finded');
-          await sleep(sleepTime);
-          callback();
-        } else {
+        if (el.classList.contains('disabled')) {
           Logger.debug('onParticipateHandler: clicked on disabled contest button');
+          return;
         }
+
+        Logger.debug('onParticipateHandler: waiting for alreadyParticipate button');
+        const elem = await waitForElm('span.alreadyParticipate');
+        if (!elem) {
+          Logger.debug('onParticipateHandler: no alreadyParticipate button');
+          return;
+        }
+
+        Logger.debug('onParticipateHandler: alreadyParticipate button finded');
+        await sleep(sleepTime);
+        callback();
       })
     })
     .catch(el => {
