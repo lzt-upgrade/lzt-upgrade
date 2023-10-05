@@ -639,35 +639,67 @@ module.exports = styleTagTransform;
 
 /***/ }),
 
-/***/ "./src/api/lztupgrade/loadTheme.js":
-/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
-
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   j: () => (/* binding */ loadTheme)
-/* harmony export */ });
-/* harmony import */ var Configs_endpoints_json__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("./src/configs/endpoints.json");
-
-
-function loadTheme(themeName) {
-  // load theme by theme name
-  const link = document.createElement('link');
-  link.href = `${Configs_endpoints_json__WEBPACK_IMPORTED_MODULE_0__/* .staticThemes */ .I1}/${themeName}.css`;
-  link.type = 'text/css';
-  link.rel = 'stylesheet';
-  document.head.appendChild(link);
-}
-
-
-
-/***/ }),
-
-/***/ "./src/callbacks/contestsAutoClose.js":
+/***/ "./src/api/lztupgrade/themeAPI.js":
 /***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
 
 
 // EXPORTS
 __webpack_require__.d(__webpack_exports__, {
-  p: () => (/* binding */ contestsAutoCloseHandler)
+  Z: () => (/* binding */ themeAPI)
+});
+
+;// CONCATENATED MODULE: ./src/configs/endpoints.json
+const endpoints_namespaceObject = JSON.parse('{"RC":"https://lztupgrade.toiloff.ru/api/themes","I1":"https://lztupgrade.toiloff.ru/static/themes"}');
+// EXTERNAL MODULE: ./src/utils/logger.js
+var logger = __webpack_require__("./src/utils/logger.js");
+;// CONCATENATED MODULE: ./src/api/requestJSON.js
+
+
+async function requestJSON(endpoint, errText) {
+  try {
+    return await $.ajax({
+      url: endpoint,
+      dataType: 'json'
+    });
+  } catch (err) {
+    logger/* default */.Z.log(errText);
+    return false;
+  }
+}
+
+
+;// CONCATENATED MODULE: ./src/api/lztupgrade/themeAPI.js
+
+
+
+async function getThemes() {
+  return await requestJSON(endpoints_namespaceObject.RC, `Не удалось получить список тем (${endpoints_namespaceObject.RC})`);
+}
+
+function loadTheme(themeName) {
+  // load theme by theme name
+  const link = document.createElement('link');
+  link.href = `${endpoints_namespaceObject.I1}/${themeName}.css`;
+  link.type = 'text/css';
+  link.rel = 'stylesheet';
+  document.head.appendChild(link);
+}
+
+/* harmony default export */ const themeAPI = ({
+  getThemes,
+  loadTheme
+});
+
+/***/ }),
+
+/***/ "./src/callbacks/contestsParticipate.js":
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+
+// EXPORTS
+__webpack_require__.d(__webpack_exports__, {
+  p: () => (/* binding */ contestsAutoCloseHandler),
+  m: () => (/* binding */ participateByBtnCallback)
 });
 
 // EXTERNAL MODULE: ./src/utils/utils.js
@@ -681,32 +713,32 @@ var logger = __webpack_require__("./src/utils/logger.js");
 function onParticipateHandler(callback, sleepTime = 1000) {
   return (0,utils/* waitForElm */.Nc)('.LztContest--Participate')
     .then(el => {
-      logger/* Logger */.Y.debug('onParticipateHandler: Participate button finded');
+      logger/* default */.Z.debug('onParticipateHandler: Participate button finded');
       el.addEventListener('click', async () => {
-        logger/* Logger */.Y.debug('onParticipateHandler: click contest button');
+        logger/* default */.Z.debug('onParticipateHandler: click contest button');
         if (!el.classList.contains('disabled')) {
-          logger/* Logger */.Y.debug('onParticipateHandler: waiting for alreadyParticipate button');
+          logger/* default */.Z.debug('onParticipateHandler: waiting for alreadyParticipate button');
           const elem = await (0,utils/* waitForElm */.Nc)('span.alreadyParticipate');
           if (!elem) {
-            logger/* Logger */.Y.debug('onParticipateHandler: no alreadyParticipate button');
+            logger/* default */.Z.debug('onParticipateHandler: no alreadyParticipate button');
             return;
           }
 
-          logger/* Logger */.Y.debug('onParticipateHandler: alreadyParticipate button finded');
+          logger/* default */.Z.debug('onParticipateHandler: alreadyParticipate button finded');
           await (0,utils/* sleep */._v)(sleepTime);
           callback();
         } else {
-          logger/* Logger */.Y.debug('onParticipateHandler: clicked on disabled contest button');
+          logger/* default */.Z.debug('onParticipateHandler: clicked on disabled contest button');
         }
       })
     })
     .catch(el => {
-      logger/* Logger */.Y.debug('onParticipateHandler: no contest button');
+      logger/* default */.Z.debug('onParticipateHandler: no contest button');
     });
 }
 
 
-;// CONCATENATED MODULE: ./src/callbacks/contestsAutoClose.js
+;// CONCATENATED MODULE: ./src/callbacks/contestsParticipate.js
 
 
 function contestsAutoCloseHandler(toggle) {
@@ -717,6 +749,16 @@ function contestsAutoCloseHandler(toggle) {
   };
 }
 
+function participateByBtnCallback(event) {
+  console.log("participateOnBtn", event);
+  if (event.key === 'Tab') {
+    event.preventDefault();
+    if (document.querySelector('.alreadyParticipate.hidden')) {
+      document.querySelector('.LztContest--Participate:not(.disabled)')?.click();
+    }
+  }
+}
+
 
 
 /***/ }),
@@ -724,57 +766,26 @@ function contestsAutoCloseHandler(toggle) {
 /***/ "./src/callbacks/extensionStart.js":
 /***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
 
-
-// EXPORTS
-__webpack_require__.d(__webpack_exports__, {
-  P: () => (/* binding */ getThemeByID)
-});
-
-// EXTERNAL MODULE: ./src/configs/endpoints.json
-var endpoints = __webpack_require__("./src/configs/endpoints.json");
-// EXTERNAL MODULE: ./src/utils/logger.js
-var logger = __webpack_require__("./src/utils/logger.js");
-;// CONCATENATED MODULE: ./src/api/requestJSON.js
-
-
-async function requestJSON(endpoint, errText) {
-  try {
-    return await $.ajax({
-      url: endpoint,
-      dataType: 'json'
-    });
-  } catch (err) {
-    logger/* Logger */.Y.log(errText);
-    return false;
-  }
-}
-
-
-;// CONCATENATED MODULE: ./src/api/lztupgrade/getThemes.js
-
-
-
-async function getThemes() {
-  return await requestJSON(endpoints/* getThemes */.RC, `Не удалось получить список тем (${endpoints/* getThemes */.RC})`);
-}
-
-
-;// CONCATENATED MODULE: ./src/callbacks/extensionStart.js
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   P: () => (/* binding */ getThemeByID)
+/* harmony export */ });
+/* harmony import */ var API_lztupgrade_themeAPI__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("./src/api/lztupgrade/themeAPI.js");
+/* harmony import */ var Utils_logger__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("./src/utils/logger.js");
 
 
 
 function getThemeByID(themeId) {
   // Loading theme by ID
   return new Promise(async (resolve, reject) => {
-    logger/* Logger */.Y.debug(`onExtensionStart: Start loading theme with id ${themeId}`);
-    const availabledThemes = await getThemes();
+    Utils_logger__WEBPACK_IMPORTED_MODULE_1__/* ["default"] */ .Z.debug(`onExtensionStart: Start loading theme with id ${themeId}`);
+    const availabledThemes = await API_lztupgrade_themeAPI__WEBPACK_IMPORTED_MODULE_0__/* ["default"] */ .Z.getThemes();
     if (availabledThemes?.length) {
-      logger/* Logger */.Y.debug('onExtensionStart: Themes arrray getted: ', availabledThemes);
+      Utils_logger__WEBPACK_IMPORTED_MODULE_1__/* ["default"] */ .Z.debug('onExtensionStart: Themes arrray getted: ', availabledThemes);
       const findedTheme = availabledThemes.find(theme => theme.uid === themeId && theme.active === 1);
       return resolve(findedTheme?.file)
     }
 
-    logger/* Logger */.Y.debug(`onExtensionStart: Not finded active theme`);
+    Utils_logger__WEBPACK_IMPORTED_MODULE_1__/* ["default"] */ .Z.debug(`onExtensionStart: Not finded active theme`);
     reject(false)
   });
 }
@@ -792,6 +803,7 @@ function getThemeByID(themeId) {
 class StorageName {
   static UserGroup = new StorageName('LZTUserGroup').name;
   static Cache = new StorageName('cache').name;
+  static Appear = new StorageName('appearData').name;
   static Contests = new StorageName('contestsData').name;
   static Users = new StorageName('usersData').name;
   static Settings = new StorageName('settingsData').name;
@@ -935,32 +947,29 @@ function onClickCategory(nodeSelector, callback) {
 /***/ ((__webpack_module__, __unused_webpack___webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.a(__webpack_module__, async (__webpack_handle_async_dependencies__, __webpack_async_result__) => { try {
-/* harmony import */ var API_lztupgrade_loadTheme__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("./src/api/lztupgrade/loadTheme.js");
+/* harmony import */ var API_lztupgrade_themeAPI__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("./src/api/lztupgrade/themeAPI.js");
 /* harmony import */ var Configs_config__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("./src/configs/config.js");
 /* harmony import */ var Configs_extData__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__("./src/configs/extData.js");
 /* harmony import */ var Configs_StorageName__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__("./src/configs/StorageName.js");
-/* harmony import */ var Callbacks_contestsAutoClose__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__("./src/callbacks/contestsAutoClose.js");
+/* harmony import */ var Callbacks_contestsParticipate__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__("./src/callbacks/contestsParticipate.js");
 /* harmony import */ var Callbacks_extensionStart__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__("./src/callbacks/extensionStart.js");
-/* harmony import */ var IndexedDB_appear__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__("./src/indexedDB/appear.js");
-/* harmony import */ var IndexedDB_profile__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__("./src/indexedDB/profile.js");
-/* harmony import */ var UI_buttons_contestsButton__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__("./src/ui/buttons/contestsButton.js");
-/* harmony import */ var UI_buttons_menuButton__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__("./src/ui/buttons/menuButton.js");
-/* harmony import */ var UI_buttons_errorPageButton__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__("./src/ui/buttons/errorPageButton.js");
-/* harmony import */ var Events_categories__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__("./src/events/categories.js");
-/* harmony import */ var Utils_logger__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__("./src/utils/logger.js");
-/* harmony import */ var Utils_registers__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__("./src/utils/registers.js");
-/* harmony import */ var Utils_contests__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__("./src/utils/contests.js");
-/* harmony import */ var Utils_users__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__("./src/utils/users.js");
-/* harmony import */ var Xenforo_bypass__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__("./src/xenforo/bypass.js");
-/* harmony import */ var Visuals_users__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__("./src/visuals/users.js");
-/* harmony import */ var Visuals_universal__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__("./src/visuals/universal.js");
-/* harmony import */ var Visuals_profile__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__("./src/visuals/profile.js");
-/* harmony import */ var Utils_checkers__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__("./src/utils/checkers.js");
-/* harmony import */ var Styles_errorPage_scss__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__("./src/styles/errorPage.scss");
-/* harmony import */ var Styles_universal_scss__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__("./src/styles/universal.scss");
-/* harmony import */ var Styles_xenforo_scss__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__("./src/styles/xenforo.scss");
-
-
+/* harmony import */ var IndexedDB_profile__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__("./src/indexedDB/profile.js");
+/* harmony import */ var UI_components_buttons_contestsButton__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__("./src/ui/components/buttons/contestsButton.js");
+/* harmony import */ var UI_components_buttons_menuButton__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__("./src/ui/components/buttons/menuButton.js");
+/* harmony import */ var UI_components_buttons_errorPageButton__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__("./src/ui/components/buttons/errorPageButton.js");
+/* harmony import */ var Events_categories__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__("./src/events/categories.js");
+/* harmony import */ var Utils_logger__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__("./src/utils/logger.js");
+/* harmony import */ var Utils_registers__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__("./src/utils/registers.js");
+/* harmony import */ var Utils_contests__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__("./src/utils/contests.js");
+/* harmony import */ var Utils_users__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__("./src/utils/users.js");
+/* harmony import */ var Xenforo_bypass__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__("./src/xenforo/bypass.js");
+/* harmony import */ var Visuals_users__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__("./src/visuals/users.js");
+/* harmony import */ var Visuals_universal__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__("./src/visuals/universal.js");
+/* harmony import */ var Visuals_profile__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__("./src/visuals/profile.js");
+/* harmony import */ var Utils_checkers__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__("./src/utils/checkers.js");
+/* harmony import */ var Styles_errorPage_scss__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__("./src/styles/errorPage.scss");
+/* harmony import */ var Styles_universal_scss__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__("./src/styles/universal.scss");
+/* harmony import */ var Styles_xenforo_scss__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__("./src/styles/xenforo.scss");
 
 
 
@@ -1000,36 +1009,35 @@ async function initTheme() {
   // exec time: 50-200ms
   console.time("init-theme");
 
-  console.timeLog("init-theme", "loading appearDB...")
-  const appearDB = new IndexedDB_appear__WEBPACK_IMPORTED_MODULE_6__/* .LZTAppearDB */ .e();
-  console.timeLog("init-theme", "getting dbAppearData...")
-  const dbAppearData = await appearDB.read();
+  console.timeLog("init-theme", "getting appearData...")
+  const appearData = await GM_getValue(Configs_StorageName__WEBPACK_IMPORTED_MODULE_3__/* ["default"] */ .Z.Appear, {});
   console.timeLog("init-theme", "loading name from cache...")
   let themeName = await GM_getValue(Configs_StorageName__WEBPACK_IMPORTED_MODULE_3__/* ["default"] */ .Z.Cache, {}).themeName;
   console.timeLog("init-theme", "Check themeName valid...")
-  if (!themeName && dbAppearData?.theme > 0) {
-    Utils_logger__WEBPACK_IMPORTED_MODULE_10__/* .Logger */ .Y.debug(`Requesting theme with id ${dbAppearData.theme}...`);
-    themeName = await (0,Callbacks_extensionStart__WEBPACK_IMPORTED_MODULE_5__/* .getThemeByID */ .P)(dbAppearData.theme)
+  if (!themeName && appearData.theme > 0) {
+    Utils_logger__WEBPACK_IMPORTED_MODULE_9__/* ["default"] */ .Z.debug(`Requesting theme with id ${appearData.theme}...`);
+    themeName = await (0,Callbacks_extensionStart__WEBPACK_IMPORTED_MODULE_5__/* .getThemeByID */ .P)(appearData.theme)
       .catch(err => console.error(err));
     let cacheData = await GM_getValue(Configs_StorageName__WEBPACK_IMPORTED_MODULE_3__/* ["default"] */ .Z.Cache, {});
     cacheData.themeName = themeName;
     await GM_setValue(Configs_StorageName__WEBPACK_IMPORTED_MODULE_3__/* ["default"] */ .Z.Cache, cacheData);
   }
   console.timeLog("Loading theme...");
-  (0,API_lztupgrade_loadTheme__WEBPACK_IMPORTED_MODULE_0__/* .loadTheme */ .j)(themeName);
+  API_lztupgrade_themeAPI__WEBPACK_IMPORTED_MODULE_0__/* ["default"] */ .Z.loadTheme(themeName);
   console.timeEnd("init-theme");
 }
 
 async function main() {
   console.time("lztup-start")
 
-  if (GM_info?.script?.version) Utils_logger__WEBPACK_IMPORTED_MODULE_10__/* .Logger */ .Y.log(`${Configs_config__WEBPACK_IMPORTED_MODULE_1__/* ["default"] */ .Z.extName} version: ${GM_info?.script?.version}`);
+  if (GM_info?.script?.version) Utils_logger__WEBPACK_IMPORTED_MODULE_9__/* ["default"] */ .Z.log(`${Configs_config__WEBPACK_IMPORTED_MODULE_1__/* ["default"] */ .Z.extName} version: ${GM_info?.script?.version}`);
 
+  const appearData = await GM_getValue(Configs_StorageName__WEBPACK_IMPORTED_MODULE_3__/* ["default"] */ .Z.Appear, {});
   console.timeLog("lztup-start", "Waiting body...")
   document.addEventListener('DOMContentLoaded', async () => {
     console.timeLog("lztup-start", "Body loaded successfully")
-    if (/^(Error\s[0-9]{3}|Site\sMaintenance)$/.test(document.head.querySelector('title').innerText)) {
-      if (!dbAppearData || dbAppearData?.newErrorPage === 0) {
+    if (/^(Error\s[0-9]{3}|Site\sMaintenance|429\sToo\sMany\sRequests)$/.test(document.head.querySelector('title').innerText)) {
+      if (!appearData.newErrorPage) {
         return;
       }
 
@@ -1041,7 +1049,7 @@ async function main() {
       duckRain.alt = "Duck rain";
       container.appendChild(duckRain);
 
-      if (dbAppearData?.selfAdOnNewErrorPage === 0) {
+      if (!appearData.selfAdOnNewErrorPage) {
         return;
       }
 
@@ -1055,7 +1063,7 @@ async function main() {
       const selfAdButtonBlock = document.createElement('div');
       selfAdButtonBlock.classList.add('buttons');
 
-      const selfAdTelegram = new UI_buttons_errorPageButton__WEBPACK_IMPORTED_MODULE_21__/* ["default"] */ .Z(
+      const selfAdTelegram = new UI_components_buttons_errorPageButton__WEBPACK_IMPORTED_MODULE_20__/* ["default"] */ .Z(
         `
           <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24">
             <path d="M9.78 18.65l.28-4.23l7.68-6.92c.34-.31-.07-.46-.52-.19L7.74 13.3L3.64 12c-.88-.25-.89-.86.2-1.3l15.97-6.16c.73-.33 1.43.18 1.15 1.3l-2.72 12.81c-.19.91-.74 1.13-1.5.71L12.6 16.3l-1.99 1.93c-.23.23-.42.42-.83.42z"/>
@@ -1065,7 +1073,7 @@ async function main() {
         Configs_extData__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .Z.links.telegramChannel
       ).createElement();
 
-      const selfAdGithub = new UI_buttons_errorPageButton__WEBPACK_IMPORTED_MODULE_21__/* ["default"] */ .Z(
+      const selfAdGithub = new UI_components_buttons_errorPageButton__WEBPACK_IMPORTED_MODULE_20__/* ["default"] */ .Z(
         `
           <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24">
             <path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5c.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34c-.46-1.16-1.11-1.47-1.11-1.47c-.91-.62.07-.6.07-.6c1 .07 1.53 1.03 1.53 1.03c.87 1.52 2.34 1.07 2.91.83c.09-.65.35-1.09.63-1.34c-2.22-.25-4.55-1.11-4.55-4.92c0-1.11.38-2 1.03-2.71c-.1-.25-.45-1.29.1-2.64c0 0 .84-.27 2.75 1.02c.79-.22 1.65-.33 2.5-.33c.85 0 1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02c.55 1.35.2 2.39.1 2.64c.65.71 1.03 1.6 1.03 2.71c0 3.82-2.34 4.66-4.57 4.91c.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2Z"/>
@@ -1086,27 +1094,27 @@ async function main() {
     }
 
     console.timeLog("lztup-start", "GET DEBUG INFO")
-    const username = (0,Utils_users__WEBPACK_IMPORTED_MODULE_12__/* .getUsername */ .Ms)('me');
-    const userid = (0,Utils_users__WEBPACK_IMPORTED_MODULE_12__/* .getUserId */ .n5)('me');
-    const userGroup = (0,Utils_users__WEBPACK_IMPORTED_MODULE_12__/* .getUserGroup */ .xc)('me');
+    const username = (0,Utils_users__WEBPACK_IMPORTED_MODULE_11__/* .getUsername */ .Ms)('me');
+    const userid = (0,Utils_users__WEBPACK_IMPORTED_MODULE_11__/* .getUserId */ .n5)('me');
+    const userGroup = (0,Utils_users__WEBPACK_IMPORTED_MODULE_11__/* .getUserGroup */ .xc)('me');
     const userAvatar = $('img.navTab--visitorAvatar').attr('src');
 
-    Utils_logger__WEBPACK_IMPORTED_MODULE_10__/* .Logger */ .Y.debug('┏━━━━━━━━ DEBUG INFO ━━━━━━━━━━┓');
-    Utils_logger__WEBPACK_IMPORTED_MODULE_10__/* .Logger */ .Y.debug(`Script version: ${GM_info?.script?.version}`);
-    Utils_logger__WEBPACK_IMPORTED_MODULE_10__/* .Logger */ .Y.debug(`Account username: ${username}`);
-    Utils_logger__WEBPACK_IMPORTED_MODULE_10__/* .Logger */ .Y.debug(`Account userid: ${userid}`);
-    Utils_logger__WEBPACK_IMPORTED_MODULE_10__/* .Logger */ .Y.debug(`Account userGroup: ${userGroup}`);
-    Utils_logger__WEBPACK_IMPORTED_MODULE_10__/* .Logger */ .Y.debug(`Account userAvatar: ${userAvatar}`);
-    Utils_logger__WEBPACK_IMPORTED_MODULE_10__/* .Logger */ .Y.debug('┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┚');
+    Utils_logger__WEBPACK_IMPORTED_MODULE_9__/* ["default"] */ .Z.debug('┏━━━━━━━━ DEBUG INFO ━━━━━━━━━━┓');
+    Utils_logger__WEBPACK_IMPORTED_MODULE_9__/* ["default"] */ .Z.debug(`Script version: ${GM_info?.script?.version}`);
+    Utils_logger__WEBPACK_IMPORTED_MODULE_9__/* ["default"] */ .Z.debug(`Account username: ${username}`);
+    Utils_logger__WEBPACK_IMPORTED_MODULE_9__/* ["default"] */ .Z.debug(`Account userid: ${userid}`);
+    Utils_logger__WEBPACK_IMPORTED_MODULE_9__/* ["default"] */ .Z.debug(`Account userGroup: ${userGroup}`);
+    Utils_logger__WEBPACK_IMPORTED_MODULE_9__/* ["default"] */ .Z.debug(`Account userAvatar: ${userAvatar}`);
+    Utils_logger__WEBPACK_IMPORTED_MODULE_9__/* ["default"] */ .Z.debug('┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┚');
 
     console.timeLog("lztup-start", "Register menu button")
-    ;(0,Utils_registers__WEBPACK_IMPORTED_MODULE_22__/* .registerMenuButton */ .e7)(UI_buttons_menuButton__WEBPACK_IMPORTED_MODULE_9__/* ["default"] */ .Z);
+    ;(0,Utils_registers__WEBPACK_IMPORTED_MODULE_21__/* .registerMenuButton */ .e7)(UI_components_buttons_menuButton__WEBPACK_IMPORTED_MODULE_8__/* ["default"] */ .Z);
 
     console.timeLog("lztup-start", "Add user group to cache")
     await GM_setValue(Configs_StorageName__WEBPACK_IMPORTED_MODULE_3__/* ["default"] */ .Z.UserGroup, userGroup);
 
     console.timeLog("lztup-start", "Loading Profile DB...")
-    const profileDB = new IndexedDB_profile__WEBPACK_IMPORTED_MODULE_7__/* .LZTProfileDB */ .M();
+    const profileDB = new IndexedDB_profile__WEBPACK_IMPORTED_MODULE_6__/* .LZTProfileDB */ .M();
     // await profileDB.init();
     const dbProfileData = await profileDB.read();
 
@@ -1116,17 +1124,17 @@ async function main() {
       if (dbProfileData.usernameStyle || dbProfileData.badgeIcons.length) {
         console.timeLog("lztup-start", "Check Profile User style")
         if (dbProfileData.usernameStyle) {
-          (0,Visuals_users__WEBPACK_IMPORTED_MODULE_14__/* .updateUserStyle */ .bR)(dbProfileData.usernameStyle);
+          (0,Visuals_users__WEBPACK_IMPORTED_MODULE_13__/* .updateUserStyle */ .bR)(dbProfileData.usernameStyle);
         }
 
         console.timeLog("lztup-start", "Check Profile badge style")
         if (dbProfileData.badgeIcons.length) {
-          (0,Visuals_users__WEBPACK_IMPORTED_MODULE_14__/* .updateUserBadges */ .Az)(dbProfileData.badgeIcons);
+          (0,Visuals_users__WEBPACK_IMPORTED_MODULE_13__/* .updateUserBadges */ .Az)(dbProfileData.badgeIcons);
         }
 
         console.timeLog("lztup-start", "Reg profile observer")
-        ;(0,Utils_registers__WEBPACK_IMPORTED_MODULE_22__/* .registerObserver */ .O0)(async (mutation) => {
-          Utils_logger__WEBPACK_IMPORTED_MODULE_10__/* .Logger */ .Y.debug(mutation)
+        ;(0,Utils_registers__WEBPACK_IMPORTED_MODULE_21__/* .registerObserver */ .O0)(async (mutation) => {
+          Utils_logger__WEBPACK_IMPORTED_MODULE_9__/* ["default"] */ .Z.debug(mutation)
           if (
             mutation.target.classList.contains('messageList') ||
             mutation.target.classList.contains('messageSimpleList') ||
@@ -1146,11 +1154,11 @@ async function main() {
           ) {
             const updatedProfileData = await profileDB.read();
             if (updatedProfileData.usernameStyle) {
-              (0,Visuals_users__WEBPACK_IMPORTED_MODULE_14__/* .updateUserStyle */ .bR)(updatedProfileData.usernameStyle)
+              (0,Visuals_users__WEBPACK_IMPORTED_MODULE_13__/* .updateUserStyle */ .bR)(updatedProfileData.usernameStyle)
             }
 
             if (updatedProfileData.badgeIcons.length) {
-              (0,Visuals_users__WEBPACK_IMPORTED_MODULE_14__/* .updateUserBadges */ .Az)(updatedProfileData.badgeIcons);
+              (0,Visuals_users__WEBPACK_IMPORTED_MODULE_13__/* .updateUserBadges */ .Az)(updatedProfileData.badgeIcons);
             }
           }
         });
@@ -1158,16 +1166,16 @@ async function main() {
 
       console.timeLog("lztup-start", "Check Profile banner")
       if (dbProfileData.bannerStyle && dbProfileData.bannerText) {
-        (0,Visuals_users__WEBPACK_IMPORTED_MODULE_14__/* .updateUserBanner */ .$)(dbProfileData.bannerStyle, dbProfileData.bannerText);
+        (0,Visuals_users__WEBPACK_IMPORTED_MODULE_13__/* .updateUserBanner */ .$)(dbProfileData.bannerStyle, dbProfileData.bannerText);
       }
 
       console.timeLog("lztup-start", "Check Profile bg")
       if (dbProfileData.backgroundImage) {
         // update background image of page
         if (dbProfileData.backgroundImageEverywhere) {
-          (0,Visuals_universal__WEBPACK_IMPORTED_MODULE_15__/* .addBackgroundImage */ .j)(dbProfileData.backgroundImage);
+          (0,Visuals_universal__WEBPACK_IMPORTED_MODULE_14__/* .addBackgroundImage */ .j)(dbProfileData.backgroundImage);
         } else {
-          (0,Visuals_profile__WEBPACK_IMPORTED_MODULE_16__/* .addBackgroundImageInProfile */ .m)(dbProfileData.backgroundImage);
+          (0,Visuals_profile__WEBPACK_IMPORTED_MODULE_15__/* .addBackgroundImageInProfile */ .m)(dbProfileData.backgroundImage);
         }
       }
       console.timeLog("lztup-start", "Profile bg loaded")
@@ -1177,50 +1185,52 @@ async function main() {
     const dbContestsData = await GM_getValue(Configs_StorageName__WEBPACK_IMPORTED_MODULE_3__/* ["default"] */ .Z.Contests, {});
 
     console.timeLog("lztup-start", "Add reg 10 btn")
-    dbContestsData.openTenContestsBtn ? (0,UI_buttons_contestsButton__WEBPACK_IMPORTED_MODULE_8__/* .regOpenContestsBtn */ .u)(10) : null;
+    dbContestsData.openTenContestsBtn ? (0,UI_components_buttons_contestsButton__WEBPACK_IMPORTED_MODULE_7__/* .regOpenContestsBtn */ .u)(10) : null;
 
     console.timeLog("lztup-start", "Add onclick contests category")
-    ;(0,Events_categories__WEBPACK_IMPORTED_MODULE_23__/* ["default"] */ .Z)(Configs_extData__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .Z.nodes.contests, async () => {
+    ;(0,Events_categories__WEBPACK_IMPORTED_MODULE_22__/* ["default"] */ .Z)(Configs_extData__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .Z.nodes.contests, async () => {
       const newContestsData = await GM_getValue(Configs_StorageName__WEBPACK_IMPORTED_MODULE_3__/* ["default"] */ .Z.Contests, {});
-      newContestsData.openTenContestsBtn ? (0,UI_buttons_contestsButton__WEBPACK_IMPORTED_MODULE_8__/* .regOpenContestsBtn */ .u)(10) : null;
+      newContestsData.openTenContestsBtn ? (0,UI_components_buttons_contestsButton__WEBPACK_IMPORTED_MODULE_7__/* .regOpenContestsBtn */ .u)(10) : null;
     });
 
     console.timeLog("lztup-start", "hideTagsInThread")
-    dbContestsData.hideTagsInThread ? (0,Utils_contests__WEBPACK_IMPORTED_MODULE_11__/* .contestsTagsVisibility */ .s$)(true) : null;
+    dbContestsData.hideTagsInThread ? (0,Utils_contests__WEBPACK_IMPORTED_MODULE_10__/* .contestsTagsVisibility */ .s$)(true) : null;
     console.timeLog("lztup-start", "autoCloseOnParticipate")
-    dbContestsData.autoCloseOnParticipate ? (0,Callbacks_contestsAutoClose__WEBPACK_IMPORTED_MODULE_4__/* .contestsAutoCloseHandler */ .p)(true) : null;
+    dbContestsData.autoCloseOnParticipate ? (0,Callbacks_contestsParticipate__WEBPACK_IMPORTED_MODULE_4__/* .contestsAutoCloseHandler */ .p)(true) : null;
     console.timeLog("lztup-start", "infoTopInThread")
-    dbContestsData.infoTopInThread ? (0,Utils_contests__WEBPACK_IMPORTED_MODULE_11__/* .contestThreadBlockMove */ .Q6)(true) : null;
+    dbContestsData.infoTopInThread ? (0,Utils_contests__WEBPACK_IMPORTED_MODULE_10__/* .contestThreadBlockMove */ .Q6)(true) : null;
     console.timeLog("lztup-start", "removeContent")
-    dbContestsData.removeContent ? (0,Utils_contests__WEBPACK_IMPORTED_MODULE_11__/* .contestsHideContent */ .Q9)(true) : null;
+    dbContestsData.removeContent ? (0,Utils_contests__WEBPACK_IMPORTED_MODULE_10__/* .contestsHideContent */ .Q9)(true) : null;
     console.timeLog("lztup-start", "removePoll")
-    dbContestsData.removePoll ? (0,Utils_contests__WEBPACK_IMPORTED_MODULE_11__/* .contestsHidePoll */ .Rf)(true) : null;
+    dbContestsData.removePoll ? (0,Utils_contests__WEBPACK_IMPORTED_MODULE_10__/* .contestsHidePoll */ .Rf)(true) : null;
     console.timeLog("lztup-start", "updateCaptchaButton")
-    dbContestsData.updateCaptchaButton? (0,Utils_contests__WEBPACK_IMPORTED_MODULE_11__/* .contestsUpdateCapctha */ .g4)() : null;
+    dbContestsData.updateCaptchaButton? (0,Utils_contests__WEBPACK_IMPORTED_MODULE_10__/* .contestsUpdateCapctha */ .g4)() : null;
     console.timeLog("lztup-start", "autoFixCaptcha")
-    dbContestsData.autoFixCaptcha ? (0,Utils_contests__WEBPACK_IMPORTED_MODULE_11__/* .contestsAutoFixCaptcha */ .gu)() : null;
+    dbContestsData.autoFixCaptcha ? (0,Utils_contests__WEBPACK_IMPORTED_MODULE_10__/* .contestsAutoFixCaptcha */ .gu)() : null;
+    console.timeLog("lztup-start", "participateByKey")
+    dbContestsData.participateByKey ? (0,Utils_contests__WEBPACK_IMPORTED_MODULE_10__/* .contestsParticipateByBtn */ .sO)(true) : null;
 
     console.timeLog("lztup-start", "Loading Users DB...")
     const dbUsersData = await GM_getValue(Configs_StorageName__WEBPACK_IMPORTED_MODULE_3__/* ["default"] */ .Z.Users, {});
 
     console.timeLog("lztup-start", "showUserIdInMemberCard")
     if (dbUsersData.showUserIdInMemberCard) {
-      (0,Utils_users__WEBPACK_IMPORTED_MODULE_12__/* .addUserIdToMemberCard */ .SL)();
-      (0,Utils_registers__WEBPACK_IMPORTED_MODULE_22__/* .registerObserver */ .O0)((mutation) => {
+      (0,Utils_users__WEBPACK_IMPORTED_MODULE_11__/* .addUserIdToMemberCard */ .SL)();
+      (0,Utils_registers__WEBPACK_IMPORTED_MODULE_21__/* .registerObserver */ .O0)((mutation) => {
         if (mutation.nextSibling) {
           if (mutation.nextSibling?.classList?.contains('modal')) {
-            (0,Utils_users__WEBPACK_IMPORTED_MODULE_12__/* .addUserIdToMemberCard */ .SL)()
+            (0,Utils_users__WEBPACK_IMPORTED_MODULE_11__/* .addUserIdToMemberCard */ .SL)()
           }
         }
       });
     }
     console.timeLog("lztup-start", "disableShareTyping")
-    dbUsersData.disableShareTyping ? (0,Xenforo_bypass__WEBPACK_IMPORTED_MODULE_13__/* .bypassShareTyping */ .$)() : null;
-    if ((0,Utils_checkers__WEBPACK_IMPORTED_MODULE_17__/* .isProfilePage */ .cD)()) {
+    dbUsersData.disableShareTyping ? (0,Xenforo_bypass__WEBPACK_IMPORTED_MODULE_12__/* .bypassShareTyping */ .$)() : null;
+    if ((0,Utils_checkers__WEBPACK_IMPORTED_MODULE_16__/* .isProfilePage */ .cD)()) {
       console.timeLog("lztup-start", "showUserIdInProfile")
-      dbUsersData.showUserIdInProfile ? (0,Utils_users__WEBPACK_IMPORTED_MODULE_12__/* .addUserIdToProfile */ .Rj)() : null;
+      dbUsersData.showUserIdInProfile ? (0,Utils_users__WEBPACK_IMPORTED_MODULE_11__/* .addUserIdToProfile */ .Rj)() : null;
       console.timeLog("lztup-start", "showFullRegInProfile")
-      dbUsersData.showFullRegInProfile? (0,Utils_users__WEBPACK_IMPORTED_MODULE_12__/* .showFullRegDateInProfile */ .M1)(true) : null;
+      dbUsersData.showFullRegInProfile? (0,Utils_users__WEBPACK_IMPORTED_MODULE_11__/* .showFullRegDateInProfile */ .M1)(true) : null;
     }
 
     console.timeEnd("lztup-start")
@@ -1234,101 +1244,6 @@ try {
 }
 __webpack_async_result__();
 } catch(e) { __webpack_async_result__(e); } }, 1);
-
-/***/ }),
-
-/***/ "./src/indexedDB/appear.js":
-/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
-
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   e: () => (/* binding */ LZTAppearDB)
-/* harmony export */ });
-/* harmony import */ var IndexedDB_default__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("./src/indexedDB/default.js");
-
-
-
-/**
- *
- * @author Toil
- * @license MIT
- * @copyright Toil
- * @created 2023-02-17
- *
- * @description LZTAppearDB class implementation
- *
- */
-
-class LZTAppearDB extends IndexedDB_default__WEBPACK_IMPORTED_MODULE_0__/* .LZTUpgradeDB */ .c {
-  /**
-   *
-   *  @constructor
-   *  @param {string} name - name of the database
-   *  @param {string} objectKey - name of the future indexedDB object
-   *  @param {number} version - version of the database
-   */
-
-  constructor(name = 'LZTUpAppear', objectKey = 'appear', version = 1) {
-    super(
-      name,
-      objectKey,
-      version,
-      { // indexes
-        'hideUnreadArticleCircle': 'number',
-        'hideTagsInThreads': 'number',
-        'forumLogo': 'number',
-        'hideCounterAlerts': 'number',
-        'hideCounterConversations': 'number',
-        'marketLogo': 'number',
-        'reportButtonsInPost': 'string',
-        'selectedTheme': 'number',
-        'themeAutoReload': 'number',
-        'backgroundEffect': 'number',
-        'hideOnlyfans': 'number',
-        'showPollResults': 'number',
-        'newErrorPage': 'number',
-        'selfAdOnNewErrorPage': 'number',
-      },
-      { // defaultData
-        key: objectKey,
-        hideUnreadArticleCircle: 0,
-        hideTagsInThreads: 0,
-        forumLogo: 0,
-        hideCounterAlerts: 0,
-        hideCounterConversations: 0,
-        marketLogo: 0,
-        reportButtonsInPost: '',
-        selectedTheme: 0,
-        themeAutoReload: 0,
-        backgroundEffect: 0,
-        hideOnlyfans: 0,
-        showPollResults: 0,
-        newErrorPage: 1,
-        selfAdOnNewErrorPage: 1
-      }
-    );
-  };
-
-  async update({
-    hideUnreadArticleCircle,
-    hideTagsInThreads,
-    forumLogo,
-    hideCounterAlerts,
-    hideCounterConversations,
-    marketLogo,
-    reportButtonsInPost,
-    selectedTheme,
-    themeAutoReload,
-    backgroundEffect,
-    hideOnlyfans,
-    showPollResults,
-    newErrorPage,
-    selfAdOnNewErrorPage,
-  }) {
-    super.update(...arguments);
-  }
-}
-
-
 
 /***/ }),
 
@@ -1415,7 +1330,7 @@ class LZTUpgradeDB {
       openRequest.onerror = () => {
         console.log(openRequest)
         alert(`LZT Upgrade: Произошла ошибка при инициализации Базы Данных ${this.name}`);
-        Utils_logger__WEBPACK_IMPORTED_MODULE_0__/* .Logger */ .Y.error(`Ошибка инициализации Базы Данных ${this.name}: `, openRequest.errorCode);
+        Utils_logger__WEBPACK_IMPORTED_MODULE_0__/* ["default"] */ .Z.error(`Ошибка инициализации Базы Данных ${this.name}: `, openRequest.errorCode);
         reject(false);
       };
 
@@ -1424,7 +1339,7 @@ class LZTUpgradeDB {
 
         db.onerror = () => {
           alert(`LZT Upgrade: Не удалось загрузить базу данных ${this.name}`);
-          Utils_logger__WEBPACK_IMPORTED_MODULE_0__/* .Logger */ .Y.error(`Не удалось загрузить базу данных ${this.name}: `, openRequest.error);
+          Utils_logger__WEBPACK_IMPORTED_MODULE_0__/* ["default"] */ .Z.error(`Не удалось загрузить базу данных ${this.name}: `, openRequest.error);
           reject(false);
         };
 
@@ -1437,7 +1352,7 @@ class LZTUpgradeDB {
           objectStore.createIndex(key, key, { unique: false });
         }
 
-        Utils_logger__WEBPACK_IMPORTED_MODULE_0__/* .Logger */ .Y.log(`База Данных ${this.name} создана`);
+        Utils_logger__WEBPACK_IMPORTED_MODULE_0__/* ["default"] */ .Z.log(`База Данных ${this.name} создана`);
 
         objectStore.transaction.oncomplete = () => {
           const objectStore = db
@@ -1447,23 +1362,23 @@ class LZTUpgradeDB {
           const request = objectStore.add(this.defaultData);
 
           request.onsuccess = () => {
-            Utils_logger__WEBPACK_IMPORTED_MODULE_0__/* .Logger */ .Y.log(`Стандартные настройки "${this.name}" добавлены в Базу Данных: `, request.result);
+            Utils_logger__WEBPACK_IMPORTED_MODULE_0__/* ["default"] */ .Z.log(`Стандартные настройки "${this.name}" добавлены в Базу Данных: `, request.result);
             resolve(true);
           };
           request.onerror = () => {
-            Utils_logger__WEBPACK_IMPORTED_MODULE_0__/* .Logger */ .Y.error(`Ошибка при добавление стандартных настроек "${this.name}" в Базу Данных: `, request.error);
+            Utils_logger__WEBPACK_IMPORTED_MODULE_0__/* ["default"] */ .Z.error(`Ошибка при добавление стандартных настроек "${this.name}" в Базу Данных: `, request.error);
             reject(false);
           };
         };
       };
 
       openRequest.onsuccess = () => {
-        Utils_logger__WEBPACK_IMPORTED_MODULE_0__/* .Logger */ .Y.log(`База данных ${this.name} инициализована`);
+        Utils_logger__WEBPACK_IMPORTED_MODULE_0__/* ["default"] */ .Z.log(`База данных ${this.name} инициализована`);
         const db = openRequest.result;
         db.onversionchange = () => {
           db.close();
           alert(`LZT Upgrade: Базе данных ${this.name} необходимо обновление, пожалуйста, перезагрузите страницу.`);
-          Utils_logger__WEBPACK_IMPORTED_MODULE_0__/* .Logger */ .Y.log(`Базе данных ${this.name} необходимо обновление, пожалуйста, перезагрузите страницу`);
+          Utils_logger__WEBPACK_IMPORTED_MODULE_0__/* ["default"] */ .Z.log(`Базе данных ${this.name} необходимо обновление, пожалуйста, перезагрузите страницу`);
           reject(false);
         };
         resolve(true);
@@ -1471,7 +1386,7 @@ class LZTUpgradeDB {
 
       openRequest.onblocked = () => {
         const db = openRequest.result;
-        Utils_logger__WEBPACK_IMPORTED_MODULE_0__/* .Logger */ .Y.error(`База Данных ${this.name} временно заблокирована из-за ошибки: `, db);
+        Utils_logger__WEBPACK_IMPORTED_MODULE_0__/* ["default"] */ .Z.error(`База Данных ${this.name} временно заблокирована из-за ошибки: `, db);
         alert(`LZT Upgrade отключен из-за ошибки при обновление Базы Данных ${this.name}. Закройте все открытые вкладки с Lolzteam и попробуйте снова.`);
         reject(false);
       };
@@ -1487,7 +1402,7 @@ class LZTUpgradeDB {
 
       openRequest.onerror = () => {
         alert(`LZT Upgrade: Произошла ошибка при чтение Базы Данных ${this.name}`);
-        Utils_logger__WEBPACK_IMPORTED_MODULE_0__/* .Logger */ .Y.error(`Ошибка чтения Базы Данных ${this.name}: `, openRequest.errorCode);
+        Utils_logger__WEBPACK_IMPORTED_MODULE_0__/* ["default"] */ .Z.error(`Ошибка чтения Базы Данных ${this.name}: `, openRequest.errorCode);
         reject(false);
       };
 
@@ -1503,7 +1418,7 @@ class LZTUpgradeDB {
         db.onversionchange = () => {
           db.close();
           alert(`LZT Upgrade: Базе данных ${this.name} необходимо обновление, пожалуйста, перезагрузите страницу.`);
-          Utils_logger__WEBPACK_IMPORTED_MODULE_0__/* .Logger */ .Y.log(`Базе данных ${this.name} необходимо обновление, пожалуйста, перезагрузите страницу`);
+          Utils_logger__WEBPACK_IMPORTED_MODULE_0__/* ["default"] */ .Z.log(`Базе данных ${this.name} необходимо обновление, пожалуйста, перезагрузите страницу`);
           reject(false);
         };
 
@@ -1514,7 +1429,7 @@ class LZTUpgradeDB {
         const request = objectStore.get(this.objectKey);
 
         request.onerror = (event) => {
-          Utils_logger__WEBPACK_IMPORTED_MODULE_0__/* .Logger */ .Y.error(`Не удалось получить данные из Базы Данных ${this.name}: `, event.error);
+          Utils_logger__WEBPACK_IMPORTED_MODULE_0__/* ["default"] */ .Z.error(`Не удалось получить данные из Базы Данных ${this.name}: `, event.error);
           reject(false);
         };
 
@@ -1528,7 +1443,7 @@ class LZTUpgradeDB {
 
       openRequest.onblocked = () => {
         const db = openRequest.result;
-        Utils_logger__WEBPACK_IMPORTED_MODULE_0__/* .Logger */ .Y.error(`База Данных ${this.name} временно заблокирована из-за ошибки: `, db);
+        Utils_logger__WEBPACK_IMPORTED_MODULE_0__/* ["default"] */ .Z.error(`База Данных ${this.name} временно заблокирована из-за ошибки: `, db);
         alert(`LZT Upgrade отключен из-за ошибки при обновление Базы Данных ${this.name}. Закройте все открытые вкладки с Lolzteam и попробуйте снова.`);
         reject(false);
       };
@@ -1548,7 +1463,7 @@ class LZTUpgradeDB {
 
         openRequest.onerror = () => {
           alert(`LZT Upgrade: Произошла ошибка при обновление Базы Данных ${this.name}`);
-          Utils_logger__WEBPACK_IMPORTED_MODULE_0__/* .Logger */ .Y.error(`Ошибка при обновление Базы Данных ${this.name}: `, openRequest.errorCode)
+          Utils_logger__WEBPACK_IMPORTED_MODULE_0__/* ["default"] */ .Z.error(`Ошибка при обновление Базы Данных ${this.name}: `, openRequest.errorCode)
           reject(false);
         };
 
@@ -1564,7 +1479,7 @@ class LZTUpgradeDB {
           db.onversionchange = () => {
             db.close();
             alert(`LZT Upgrade: Базе данных ${this.name} необходимо обновление, пожалуйста, перезагрузите страницу.`);
-            Utils_logger__WEBPACK_IMPORTED_MODULE_0__/* .Logger */ .Y.log(`Базе данных ${this.name} необходимо обновление, пожалуйста, перезагрузите страницу`);
+            Utils_logger__WEBPACK_IMPORTED_MODULE_0__/* ["default"] */ .Z.log(`Базе данных ${this.name} необходимо обновление, пожалуйста, перезагрузите страницу`);
             reject(false);
           };
 
@@ -1574,7 +1489,7 @@ class LZTUpgradeDB {
           var request = objectStore.get(this.objectKey);
 
           request.onerror = (event) => {
-            Utils_logger__WEBPACK_IMPORTED_MODULE_0__/* .Logger */ .Y.error(`Не удалось получить данные из Базы Данных ${this.name}: `, event.error);
+            Utils_logger__WEBPACK_IMPORTED_MODULE_0__/* ["default"] */ .Z.error(`Не удалось получить данные из Базы Данных ${this.name}: `, event.error);
             reject(false);
           };
 
@@ -1586,12 +1501,12 @@ class LZTUpgradeDB {
             const requestUpdate = objectStore.put(data);
 
             requestUpdate.onerror = (event) => {
-              Utils_logger__WEBPACK_IMPORTED_MODULE_0__/* .Logger */ .Y.error(`Не удалось обновить данные в Базе Данных ${this.name}: `, event.error);
+              Utils_logger__WEBPACK_IMPORTED_MODULE_0__/* ["default"] */ .Z.error(`Не удалось обновить данные в Базе Данных ${this.name}: `, event.error);
               reject(false);
             };
 
             requestUpdate.onsuccess = () => {
-              Utils_logger__WEBPACK_IMPORTED_MODULE_0__/* .Logger */ .Y.log("Данные в Базе Данных обновлены, вы великолепны!");
+              Utils_logger__WEBPACK_IMPORTED_MODULE_0__/* ["default"] */ .Z.log("Данные в Базе Данных обновлены, вы великолепны!");
               resolve(true);
             };
           };
@@ -1599,12 +1514,12 @@ class LZTUpgradeDB {
 
         openRequest.onblocked = () => {
           const db = openRequest.result;
-          Utils_logger__WEBPACK_IMPORTED_MODULE_0__/* .Logger */ .Y.error(`База Данных ${this.name} временно заблокирована из-за ошибки: `, db);
+          Utils_logger__WEBPACK_IMPORTED_MODULE_0__/* ["default"] */ .Z.error(`База Данных ${this.name} временно заблокирована из-за ошибки: `, db);
           alert(`LZT Upgrade отключен из-за ошибки при обновление Базы Данных ${this.name}. Закройте все открытые вкладки с Lolzteam и попробуйте снова.`);
           reject(false);
         };
       } else {
-        Utils_logger__WEBPACK_IMPORTED_MODULE_0__/* .Logger */ .Y.error("В чём смысл делать функцию добавления, которая ничего не добавляет?! wut");
+        Utils_logger__WEBPACK_IMPORTED_MODULE_0__/* ["default"] */ .Z.error("В чём смысл делать функцию добавления, которая ничего не добавляет?! wut");
         reject(false);
       }
     });
@@ -1707,7 +1622,7 @@ class LZTProfileDB extends IndexedDB_default__WEBPACK_IMPORTED_MODULE_0__/* .LZT
 
 // EXPORTS
 __webpack_require__.d(__webpack_exports__, {
-  f: () => (/* binding */ AvatarUserBadges)
+  Z: () => (/* binding */ avatarUserBadges)
 });
 
 // EXTERNAL MODULE: ./src/utils/purify.js
@@ -1881,24 +1796,69 @@ class AvatarUserBadges {
   }
 
   updateBadges() {
-    logger/* Logger */.Y.debug('updateBadges');
+    logger/* default */.Z.debug('updateBadges');
     for (const badge of this.badges) {
       if (typeof badge !== 'object') {
-        logger/* Logger */.Y.error('Invalid badge in array');
+        logger/* default */.Z.error('Invalid badge in array');
         continue
       }
 
-      logger/* Logger */.Y.debug(badge);
+      logger/* default */.Z.debug(badge);
       this.updateBadge(badge);
     }
   }
 }
 
-
+/* harmony default export */ const avatarUserBadges = (AvatarUserBadges);
 
 /***/ }),
 
-/***/ "./src/ui/buttons/contestsButton.js":
+/***/ "./src/ui/components/button.js":
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   Z: () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var UI_components_icon_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("./src/ui/components/icon.js");
+
+
+class Button {
+  /**
+   *
+   *  @constructor
+   *  @param {string} buttonText - text of the button
+   *  @param {string} className - class name of the button
+   *  @param {string} iconClassName - class name of the icon (if undefined icon is not added)
+   */
+
+  constructor(buttonText, className = 'button', iconClassName = undefined) {
+    this.buttonText = buttonText;
+    this.className = className;
+    this.iconClassName = iconClassName;
+  }
+
+  createElement(callback = () => {}) {
+    const button = document.createElement('button');
+    button.className = this.className;
+    button.innerText = this.buttonText;
+
+    if (this.iconClassName) {
+      const icon = new UI_components_icon_js__WEBPACK_IMPORTED_MODULE_0__/* ["default"] */ .Z(this.iconClassName).createElement();
+      icon.id = '';
+      button.appendChild(icon);
+    }
+
+    button.onclick = callback;
+
+    return button;
+  }
+}
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Button);
+
+/***/ }),
+
+/***/ "./src/ui/components/buttons/contestsButton.js":
 /***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
 
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
@@ -1911,6 +1871,8 @@ class AvatarUserBadges {
 
 
 
+// TODO: Rework with clear js
+// TODO: move to utils/contests.js
 function regOpenContestsBtn(amount = 10) {
   if ((0,Utils_checkers__WEBPACK_IMPORTED_MODULE_0__/* .isContestsNode */ .IM)() && !$(`#openContestsButton${XenForo.htmlspecialchars(amount)}`).length) {
     const updateButton = $('span.UpdateFeedButton.UpdateFeedButtonIcon');
@@ -1953,7 +1915,7 @@ function removeOpenContestsBtn(amount = 10) {
 
 /***/ }),
 
-/***/ "./src/ui/buttons/errorPageButton.js":
+/***/ "./src/ui/components/buttons/errorPageButton.js":
 /***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
 
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
@@ -1988,7 +1950,7 @@ class ErrorPageButton {
 
 /***/ }),
 
-/***/ "./src/ui/buttons/menuButton.js":
+/***/ "./src/ui/components/buttons/menuButton.js":
 /***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
 
 
@@ -1999,8 +1961,8 @@ __webpack_require__.d(__webpack_exports__, {
 
 // EXTERNAL MODULE: ./src/utils/registers.js
 var registers = __webpack_require__("./src/utils/registers.js");
-// EXTERNAL MODULE: ./src/ui/components/icons.js
-var icons = __webpack_require__("./src/ui/components/icons.js");
+// EXTERNAL MODULE: ./src/ui/components/icon.js
+var components_icon = __webpack_require__("./src/ui/components/icon.js");
 // EXTERNAL MODULE: ./src/utils/purify.js
 var purify = __webpack_require__("./src/utils/purify.js");
 ;// CONCATENATED MODULE: ./src/ui/components/menu/section.js
@@ -2121,7 +2083,7 @@ class Section {
     sectionItem.id = sectionId;
     sectionItem.classList.add('LZTUpSectionItem');
 
-    const sectionIcon = (0,icons/* createMenuIcon */.E)(iconClasses);
+    const sectionIcon = new components_icon/* default */.Z(iconClasses).createElement();
     const textContainer = document.createElement('div');
     textContainer.classList.add('LZTUpSectionTextContainer')
     const textEl = new SectionText(title).createElement();
@@ -2130,7 +2092,7 @@ class Section {
     textContainer.append(textEl, subTextEl);
     sectionItem.append(sectionIcon, textContainer);
     if (this.direction === SectionDirection.Column && rightArrow) {
-      const sectionArrowIcon = (0,icons/* createMenuIcon */.E)('far fa-angle-right gray right');
+      const sectionArrowIcon = new components_icon/* default */.Z('far fa-angle-right gray right').createElement();
       sectionItem.append(sectionArrowIcon)
     }
 
@@ -2166,11 +2128,11 @@ class Section {
 var logger = __webpack_require__("./src/utils/logger.js");
 // EXTERNAL MODULE: ./src/configs/StorageName.js
 var StorageName = __webpack_require__("./src/configs/StorageName.js");
-// EXTERNAL MODULE: ./src/callbacks/contestsAutoClose.js + 1 modules
-var contestsAutoClose = __webpack_require__("./src/callbacks/contestsAutoClose.js");
-// EXTERNAL MODULE: ./src/ui/buttons/contestsButton.js
-var contestsButton = __webpack_require__("./src/ui/buttons/contestsButton.js");
-;// CONCATENATED MODULE: ./src/ui/menu/checkbox.js
+// EXTERNAL MODULE: ./src/callbacks/contestsParticipate.js + 1 modules
+var contestsParticipate = __webpack_require__("./src/callbacks/contestsParticipate.js");
+// EXTERNAL MODULE: ./src/ui/components/buttons/contestsButton.js
+var contestsButton = __webpack_require__("./src/ui/components/buttons/contestsButton.js");
+;// CONCATENATED MODULE: ./src/ui/components/menu/checkbox.js
 
 
 
@@ -2212,7 +2174,7 @@ class Checkbox {
   }
 }
 
-
+/* harmony default export */ const menu_checkbox = (Checkbox);
 // EXTERNAL MODULE: ./src/utils/contests.js + 2 modules
 var contests = __webpack_require__("./src/utils/contests.js");
 // EXTERNAL MODULE: ./src/utils/utils.js
@@ -2231,7 +2193,7 @@ const getContestsItems = async () => {
   const contestsData = await GM_getValue(StorageName/* default */.Z.Contests, {});
 
   return [
-    new Checkbox('open_ten_contests', 'Кнопка "Открыть 10"')
+    new menu_checkbox('open_ten_contests', 'Кнопка "Открыть 10"')
     .createElement(
       contestsData.openTenContestsBtn,
       () => {
@@ -2245,7 +2207,7 @@ const getContestsItems = async () => {
         await GM_setValue(StorageName/* default */.Z.Contests, contestsData);
       }),
 
-    new Checkbox('auto_close_on_participate',
+    new menu_checkbox('auto_close_on_participate',
       `Автозакрытие страницы при нажатие на кнопку "Участвовать"
       <span class="fa fa-exclamation-triangle Tooltip" title="При отключение этой функции страница будет перезагружена"></span>
       `)
@@ -2253,7 +2215,7 @@ const getContestsItems = async () => {
       contestsData.autoCloseOnParticipate,
       async () => {
         (0,registers/* registerAlert */.de)('Включено Автозакрытие страницы при нажатие на кнопку "Участвовать"', 5000);
-        (0,contestsAutoClose/* contestsAutoCloseHandler */.p)(true);
+        (0,contestsParticipate/* contestsAutoCloseHandler */.p)(true);
       },
       async () => {
         (0,registers/* registerAlert */.de)('Выключено Автозакрытие страницы при нажатие на кнопку "Участвовать"', 5000);
@@ -2265,7 +2227,7 @@ const getContestsItems = async () => {
         await GM_setValue(StorageName/* default */.Z.Contests, contestsData);
       }),
 
-    new Checkbox('info_top_in_contests', `Отображение информации о розыгрыше вверху темы`)
+    new menu_checkbox('info_top_in_contests', `Отображение информации о розыгрыше вверху темы`)
     .createElement(
       contestsData.infoTopInThread,
       () => {},
@@ -2276,7 +2238,7 @@ const getContestsItems = async () => {
         (0,contests/* contestThreadBlockMove */.Q6)(event.target.checked)
       }),
 
-    new Checkbox('hide_tags_in_contests', `Скрытие тегов в теме розыгрыша`)
+    new menu_checkbox('hide_tags_in_contests', `Скрытие тегов в теме розыгрыша`)
     .createElement(
       contestsData.hideTagsInThread,
       () => {},
@@ -2287,7 +2249,7 @@ const getContestsItems = async () => {
         (0,contests/* contestsTagsVisibility */.s$)(event.target.checked);
       }),
 
-    new Checkbox('remove_content_in_contests', `Скрытие содержимого темы розыгрыша`)
+    new menu_checkbox('remove_content_in_contests', `Скрытие содержимого темы розыгрыша`)
     .createElement(
       contestsData.removeContent,
       () => {},
@@ -2298,7 +2260,7 @@ const getContestsItems = async () => {
         (0,contests/* contestsHideContent */.Q9)(event.target.checked)
       }),
 
-    new Checkbox('remove_poll_in_contests', `Скрытие голосования в теме розыгрыша`)
+    new menu_checkbox('remove_poll_in_contests', `Скрытие голосования в теме розыгрыша`)
     .createElement(
       contestsData.removePoll,
       () => {},
@@ -2309,7 +2271,7 @@ const getContestsItems = async () => {
         (0,contests/* contestsHidePoll */.Rf)(event.target.checked)
       }),
 
-    new Checkbox('update_captcha_button_in_contests', `Кнопка "Обновление капчи"`)
+    new menu_checkbox('update_captcha_button_in_contests', `Кнопка "Обновление капчи"`)
     .createElement(
       contestsData.updateCaptchaButton,
       async () => {
@@ -2323,7 +2285,7 @@ const getContestsItems = async () => {
         await GM_setValue(StorageName/* default */.Z.Contests, contestsData);
       }),
 
-    new Checkbox('auto_fix_captcha_in_contests',
+    new menu_checkbox('auto_fix_captcha_in_contests',
     `Автофикс капчи
       <span class="fa fa-question Tooltip" title="Автоматически обновляет капчу, если она не появилась"></span>
       <span class="fa fa-exclamation-triangle Tooltip" title="При отключение этой функции страница будет перезагружена"></span>
@@ -2343,6 +2305,18 @@ const getContestsItems = async () => {
         contestsData.autoFixCaptcha = event.target.checked;
         await GM_setValue(StorageName/* default */.Z.Contests, contestsData);
       }),
+
+    new menu_checkbox('participate_by_key', `Участие по кнопке Tab`)
+    .createElement(
+      contestsData.participateByKey,
+      () => {},
+      () => {},
+      async (event) => {
+        (0,registers/* registerAlert */.de)(`Участие по кнопке ${event.target.checked ? 'включено' : 'выключено'}` , 5000);
+        contestsData.participateByKey = event.target.checked;
+        await GM_setValue(StorageName/* default */.Z.Contests, contestsData);
+        (0,contests/* contestsParticipateByBtn */.sO)(event.target.checked);
+      }),
   ];
 }
 
@@ -2356,16 +2330,16 @@ var users = __webpack_require__("./src/utils/users.js");
 
 
 
+
 const getUsersItems = async () => {
   const usersData = await GM_getValue(StorageName/* default */.Z.Users, {});
-  console.log("USERS DATA", StorageName/* default */.Z.Users, usersData)
 
   return [
-    new Checkbox('show_userid_in_profile', 'Показывать ID в профиле пользователя')
+    new menu_checkbox('show_userid_in_profile', 'Показывать ID в профиле пользователя')
     .createElement(
       usersData.showUserIdInProfile,
       () => {
-        ;(0,users/* addUserIdToProfile */.Rj)();
+        (0,users/* addUserIdToProfile */.Rj)();
       },
       () => {
         (0,users/* removeUserIdFromProfile */.UD)();
@@ -2374,7 +2348,7 @@ const getUsersItems = async () => {
         usersData.showUserIdInProfile = event.target.checked;
         await GM_setValue(StorageName/* default */.Z.Users, usersData);
       }),
-    new Checkbox('show_userid_in_member_card',
+    new menu_checkbox('show_userid_in_member_card',
       `Показывать ID в карточке пользователя
       <span class="fa fa-exclamation-triangle Tooltip" title="При включение/отключение этой функции страница будет перезагружена"></span>
       `)
@@ -2389,7 +2363,7 @@ const getUsersItems = async () => {
         await (0,utils/* sleep */._v)(500);
         window.location.reload();
       }),
-    new Checkbox('show_fullreg_in_profile', 'Показывать полную дату регистрации в профиле пользователя')
+    new menu_checkbox('show_fullreg_in_profile', 'Показывать полную дату регистрации в профиле пользователя')
     .createElement(
       usersData.showFullRegInProfile,
       () => {},
@@ -2399,7 +2373,7 @@ const getUsersItems = async () => {
         await GM_setValue(StorageName/* default */.Z.Users, usersData);
         (0,users/* showFullRegDateInProfile */.M1)(event.target.checked);
       }),
-    new Checkbox('disable_share_typing',
+    new menu_checkbox('disable_share_typing',
       `Неписалка в темах
       <span class="fa fa-exclamation-triangle Tooltip" title="При включение/отключение этой функции страница будет перезагружена"></span>
       `)
@@ -2422,7 +2396,7 @@ const getUsersItems = async () => {
 var config = __webpack_require__("./src/configs/config.js");
 // EXTERNAL MODULE: ./src/indexedDB/profile.js
 var profile = __webpack_require__("./src/indexedDB/profile.js");
-;// CONCATENATED MODULE: ./src/ui/menu/comment.js
+;// CONCATENATED MODULE: ./src/ui/components/menu/comment.js
 
 
 
@@ -2446,7 +2420,7 @@ class Comment {
   }
 }
 
-
+/* harmony default export */ const comment = (Comment);
 // EXTERNAL MODULE: ./src/ui/avatarUserBadges.js + 1 modules
 var ui_avatarUserBadges = __webpack_require__("./src/ui/avatarUserBadges.js");
 ;// CONCATENATED MODULE: ./src/ui/components/menu/previewProfile.js
@@ -2473,7 +2447,7 @@ class PreviewProfile {
     this.username = username;
     this.data = data;
     this.profileElId = profileElId || 'LZTUpPreviewContainer';
-    this.badges = new ui_avatarUserBadges/* AvatarUserBadges */.f(data.badgeIcons, true);
+    this.badges = new ui_avatarUserBadges/* default */.Z(data.badgeIcons, true);
   }
 
   createElement() {
@@ -2554,7 +2528,7 @@ class PreviewProfile {
   updateBanner(data) {
     const userBannerEl = this.clearStyle(`#${this.profileElId} #LZTUpUserBannerStyle`);
     if (!userBannerEl) {
-      logger/* Logger */.Y.error('Failed to get element by userBanner in PreviewProfile!');
+      logger/* default */.Z.error('Failed to get element by userBanner in PreviewProfile!');
       return;
     }
 
@@ -2571,7 +2545,7 @@ class PreviewProfile {
     const previewContainer = document.querySelector(`#${this.profileElId}`);
     console.log(`#${this.profileElId}`, previewContainer)
     if (!previewContainer) {
-      logger/* Logger */.Y.error('Failed to get previewContainer in PreviewProfile!');
+      logger/* default */.Z.error('Failed to get previewContainer in PreviewProfile!');
       return;
     }
 
@@ -2596,10 +2570,8 @@ class PreviewProfile {
   }
 }
 
-
+/* harmony default export */ const menu_previewProfile = (PreviewProfile);
 ;// CONCATENATED MODULE: ./src/ui/components/menu/textArea.js
-
-
 class TextArea {
   /**
    *
@@ -2632,7 +2604,7 @@ class TextArea {
   }
 }
 
-
+/* harmony default export */ const textArea = (TextArea);
 ;// CONCATENATED MODULE: ./src/ui/components/menu/input.js
 class Input {
   /**
@@ -2666,7 +2638,7 @@ class Input {
   }
 }
 
-
+/* harmony default export */ const input = (Input);
 // EXTERNAL MODULE: ./src/ui/components/button.js
 var components_button = __webpack_require__("./src/ui/components/button.js");
 ;// CONCATENATED MODULE: ./src/ui/components/menu/description.js
@@ -2690,8 +2662,9 @@ class Description {
   }
 }
 
-
+/* harmony default export */ const menu_description = (Description);
 ;// CONCATENATED MODULE: ./src/ui/components/menu/colorPicker.js
+
 
 
 class ColorPicker {
@@ -2721,7 +2694,7 @@ class ColorPicker {
     input.oninput = callback;
 
     if (this.description !== '') {
-      const description = new Description(this.description).createElement();
+      const description = new menu_description(this.description).createElement();
       wrap.appendChild(description);
     }
 
@@ -2730,7 +2703,7 @@ class ColorPicker {
   }
 }
 
-
+/* harmony default export */ const colorPicker = (ColorPicker);
 ;// CONCATENATED MODULE: ./src/ui/components/menu/heading.js
 class Heading {
   /**
@@ -2752,7 +2725,7 @@ class Heading {
   }
 }
 
-
+/* harmony default export */ const menu_heading = (Heading);
 ;// CONCATENATED MODULE: ./src/ui/components/menu/container.js
 
 
@@ -2777,12 +2750,12 @@ class Container {
     container.classList.add('LZTUpContainer');
 
     if (this.heading) {
-      const heading = new Heading(this.heading).createElement();
+      const heading = new menu_heading(this.heading).createElement();
       container.appendChild(heading);
     }
 
     if (this.description) {
-      const description = new Description(this.description).createElement();
+      const description = new menu_description(this.description).createElement();
       container.appendChild(description);
     }
 
@@ -2794,7 +2767,7 @@ class Container {
   }
 }
 
-
+/* harmony default export */ const container = (Container);
 ;// CONCATENATED MODULE: ./src/ui/components/menu/separator.js
 class Separator {
   /**
@@ -2817,7 +2790,7 @@ class Separator {
   }
 }
 
-
+/* harmony default export */ const separator = (Separator);
 ;// CONCATENATED MODULE: ./src/ui/components/menu/sortableContainer.js
 class SortableContainer {
   /**
@@ -2848,8 +2821,9 @@ class SortableContainer {
   }
 }
 
-
+/* harmony default export */ const sortableContainer = (SortableContainer);
 ;// CONCATENATED MODULE: ./src/ui/components/menu/sortableItem.js
+
 
 
 class SortableItem {
@@ -2877,22 +2851,22 @@ class SortableItem {
 
     const draggableZone = document.createElement('div');
     draggableZone.classList.add('LZTUpSortableDraggable');
-    const icon = (0,icons/* createMenuIcon */.E)('far fa-grip-vertical', '');
+    const icon = new components_icon/* default */.Z('far fa-grip-vertical', '').createElement();
     draggableZone.appendChild(icon);
 
-    const contentContaner = document.createElement('div');
-    contentContaner.classList.add('LZTUpSortableContent');
-    // contentContaner.appendChild(this.content);
-    contentContaner.innerHTML = `
-      <p>${this.content}</p>
-    `;
+    const contentContainer = document.createElement('div');
+    contentContainer.classList.add('LZTUpSortableContent');
+
+    const containerDesc = document.createElement('p');
+    containerDesc.innerText = this.content;
+    contentContainer.append(containerDesc);
 
     const utilityContainer = document.createElement('div');
     utilityContainer.classList.add('LZTUpSortableUtility');
 
     const editButton = document.createElement('div');
     editButton.classList.add('LZTUpSortableEditButton');
-    const editIcon = (0,icons/* createMenuIcon */.E)('far fa-edit', '');
+    const editIcon = new components_icon/* default */.Z('far fa-edit', '').createElement();
     editButton.appendChild(editIcon);
     editButton.onclick = async (e) => {
       console.log('Edit button clicked');
@@ -2901,7 +2875,7 @@ class SortableItem {
 
     const removeButton = document.createElement('div');
     removeButton.classList.add('LZTUpSortableRemoveButton');
-    const removeIcon = (0,icons/* createMenuIcon */.E)('far fa-trash', '');
+    const removeIcon = new components_icon/* default */.Z('far fa-trash', '').createElement();
     removeButton.appendChild(removeIcon);
     removeButton.onclick = async (e) => {
       const result = confirm('Вы точно хотите удалить иконку?')
@@ -2915,13 +2889,13 @@ class SortableItem {
     utilityContainer.appendChild(removeButton);
 
     sortableItem.appendChild(draggableZone);
-    sortableItem.appendChild(contentContaner);
+    sortableItem.appendChild(contentContainer);
     sortableItem.appendChild(utilityContainer);
     return sortableItem;
   }
 }
 
-
+/* harmony default export */ const sortableItem = (SortableItem);
 // EXTERNAL MODULE: ./src/configs/extData.js
 var extData = __webpack_require__("./src/configs/extData.js");
 ;// CONCATENATED MODULE: ./src/ui/menu/utils.js
@@ -3128,9 +3102,9 @@ async function sortableItemOnEditCallback(e, sortableItem, previewProfile) {
     [
       tempPreviewProfile.createElement(),
 
-      new Container(
+      new container(
         [
-          new TextArea(badgeData.svg, '<svg>...</svg>', 0, 3000)
+          new textArea(badgeData.svg, '<svg>...</svg>', 0, 3000)
           .createElement(
             async (event) => {
               let val = (0,purify/* clearSVG */.bw)(event.target.value.trim());
@@ -3149,9 +3123,9 @@ async function sortableItemOnEditCallback(e, sortableItem, previewProfile) {
         'Максимум 3000 символов.',
       ).createElement(),
 
-      new Container(
+      new container(
         [
-          new TextArea(badgeData.style, 'background: #fff', 0, 1500)
+          new textArea(badgeData.style, 'background: #fff', 0, 1500)
           .createElement(
             async (event) => {
               let val = (0,purify/* clearCSS */.zB)(event.target.value.trim());
@@ -3175,9 +3149,9 @@ async function sortableItemOnEditCallback(e, sortableItem, previewProfile) {
         'Максимум 1500 символов.',
       ).createElement(),
 
-      new Container(
+      new container(
         [
-          new Input(badgeData.text, 'Идут два сталкера', 0, 24)
+          new input(badgeData.text, 'Идут два сталкера', 0, 24)
           .createElement(
             async (event) => {
               let val = event.target.value;
@@ -3196,9 +3170,9 @@ async function sortableItemOnEditCallback(e, sortableItem, previewProfile) {
         'Максимум 24 символа.',
       ).createElement(),
 
-      new Container(
+      new container(
         [
-          new ColorPicker('LZTUpColorPickerFill', badgeData.fillColor, 'Цвет иконки (fill):')
+          new colorPicker('LZTUpColorPickerFill', badgeData.fillColor, 'Цвет иконки (fill):')
           .createElement(
             async (event) => {
               let val = event.target.value;
@@ -3208,7 +3182,7 @@ async function sortableItemOnEditCallback(e, sortableItem, previewProfile) {
               tempPreviewProfile.updateBadges();
             }
           ),
-          new ColorPicker('LZTUpColorPickerStroke', badgeData.strokeColor, 'Цвет иконки (stroke):')
+          new colorPicker('LZTUpColorPickerStroke', badgeData.strokeColor, 'Цвет иконки (stroke):')
           .createElement(
             async (event) => {
               let val = event.target.value;
@@ -3222,7 +3196,7 @@ async function sortableItemOnEditCallback(e, sortableItem, previewProfile) {
         'Изменение цвета иконки'
       ).createElement(),
 
-      new Container([
+      new container([
         new components_button/* default */.Z('Сохранить', 'button primary LZTUpIconButton fit', 'far fa-save').createElement(async () => {
           (0,registers/* registerAlert */.de)('Иконка успешно сохранена.')
           const badges = await updateBadgesData(badgeData);
@@ -3254,7 +3228,7 @@ async function sortableItemOnEditCallback(e, sortableItem, previewProfile) {
 function createPreviewProfile(profileData, profileElId = null) {
   const userid = (0,users/* getUserId */.n5)('me');
   const username = (0,users/* getUsername */.Ms)('me');
-  return new PreviewProfile(userid, username, profileData, profileElId);
+  return new menu_previewProfile(userid, username, profileData, profileElId);
 }
 
 const getProfileItems = async () => {
@@ -3263,7 +3237,7 @@ const getProfileItems = async () => {
     const items = [];
     for (const badge of profileData.badgeIcons.sort((a, b) => a.position - b.position)) {
       console.log(badge.text, badge.position)
-      items.push(new SortableItem(badge.text, badge.position).createElement((e, sortableItem) => sortableItemOnEditCallback(e, sortableItem, previewProfile), sortableItemOnRemoveCallback));
+      items.push(new sortableItem(badge.text, badge.position).createElement((e, sortableItem) => sortableItemOnEditCallback(e, sortableItem, previewProfile), sortableItemOnRemoveCallback));
     }
 
     console.log(items);
@@ -3278,7 +3252,7 @@ const getProfileItems = async () => {
         userBadge.remove();
       }
 
-      const avatarUserBadges = new ui_avatarUserBadges/* AvatarUserBadges */.f(updatedProfileData.badgeIcons, true).createElement();
+      const avatarUserBadges = new ui_avatarUserBadges/* default */.Z(updatedProfileData.badgeIcons, true).createElement();
       avatarUserBadgesParent.innerHTML = avatarUserBadges.innerHTML;
 
       previewProfile.data = updatedProfileData;
@@ -3337,15 +3311,15 @@ const getProfileItems = async () => {
   const previewProfile = createPreviewProfile(profileData);
 
   return [
-    new Comment(`На этой вкладке вы можете выбрать стиль вашего ника и лычки. Этот стиль виден только вам.
+    new comment(`На этой вкладке вы можете выбрать стиль вашего ника и лычки. Этот стиль виден только вам.
       Чтобы уник был виден всем, рекомендуем <a href="https://${currentDomain}/account/upgrades?upgrade_id=14" target="_blank">купить</a> настоящий уник.`)
       .createElement(),
 
     previewProfile.createElement(),
 
-    new Container(
+    new container(
       [
-        new TextArea(profileData.usernameStyle, 'color: #0daf77', 0, 1500)
+        new textArea(profileData.usernameStyle, 'color: #0daf77', 0, 1500)
         .createElement(
           (event) => {
             let val = event.target.value.trim();
@@ -3369,9 +3343,9 @@ const getProfileItems = async () => {
       'Максимум 1500 символов. При отсутствии кода используется цвет вашей группы с форума.',
     ).createElement(),
 
-    new Container(
+    new container(
       [
-        new TextArea(profileData.bannerStyle, 'background: #fff', 0, 1500)
+        new textArea(profileData.bannerStyle, 'background: #fff', 0, 1500)
         .createElement(
           (event) => {
             let val = event.target.value.trim();
@@ -3395,9 +3369,9 @@ const getProfileItems = async () => {
       'Максимум 1500 символов. При отсутствии текста или стиля лычка отключается.',
     ).createElement(),
 
-    new Container(
+    new container(
       [
-        new Input(profileData.bannerText, 'Внимание анекдот', 0, 24)
+        new input(profileData.bannerText, 'Внимание анекдот', 0, 24)
         .createElement(
           (event) => {
             let val = event.target.value;
@@ -3415,11 +3389,11 @@ const getProfileItems = async () => {
     ).createElement(),
 
 
-    new Separator().createElement(), // * ADD SEPARATOR
+    new separator().createElement(), // * ADD SEPARATOR
 
-    new Container(
+    new container(
       [
-        new SortableContainer(
+        new sortableContainer(
           generateBadgeItems(previewProfile, profileData)
         ).createElement(async (e) => {
           // move items
@@ -3427,7 +3401,7 @@ const getProfileItems = async () => {
           const newProfileData = await profileDB.read();
           newProfileData.badgeIcons.reverse();
           for (let i = 0; i < items.length; i++) {
-            logger/* Logger */.Y.debug('moving items');
+            logger/* default */.Z.debug('moving items');
             items[i].dataset.id = i + 1;
             newProfileData.badgeIcons[i].position = i + 1;
           }
@@ -3464,7 +3438,7 @@ const getProfileItems = async () => {
 
           badgeIcons.push(defaultIcon)
 
-          const newItem = new SortableItem(defaultIcon.text, defaultIcon.position).createElement((e, sortableItem) => sortableItemOnEditCallback(e, sortableItem, previewProfile), sortableItemOnRemoveCallback);
+          const newItem = new sortableItem(defaultIcon.text, defaultIcon.position).createElement((e, sortableItem) => sortableItemOnEditCallback(e, sortableItem, previewProfile), sortableItemOnRemoveCallback);
 
           sortableContainer.appendChild(newItem);
           await profileDB.update({ badgeIcons: badgeIcons });
@@ -3479,11 +3453,11 @@ const getProfileItems = async () => {
       'Ниже вы можете легко настроить иконки уника и их порядок (изменения автоматически применяются)'
     ).createElement(),
 
-    new Separator().createElement(), // * ADD SEPARATOR
+    new separator().createElement(), // * ADD SEPARATOR
 
-    new Container(
+    new container(
       [
-        new Input(profileData.backgroundImage, 'Ссылка на изображение', 0, 2048)
+        new input(profileData.backgroundImage, 'Ссылка на изображение', 0, 2048)
         .createElement(
           (event) => {
             let val = XenForo.htmlspecialchars(event.target.value);
@@ -3501,7 +3475,7 @@ const getProfileItems = async () => {
       'Поддерживаются только прямые ссылки на изображения.',
     ).createElement(),
 
-    new Checkbox('profile_background_everywhere', `Заменить фон на всех страницах форума`)
+    new menu_checkbox('profile_background_everywhere', `Заменить фон на всех страницах форума`)
     .createElement(
       profileData.backgroundImageEverywhere,
       async () => {
@@ -3514,7 +3488,7 @@ const getProfileItems = async () => {
         (0,visuals_profile/* addBackgroundImageInProfile */.m)(profileData.backgroundImage);
       }),
 
-    new Container([
+    new container([
       new components_button/* default */.Z('Сохранить', 'button primary LZTUpIconButton fit', 'far fa-save').createElement(async () => {
         // save settings in IndexedDB
         const oldProfileData = await profileDB.read();
@@ -3573,8 +3547,94 @@ const getInfoItems = async () => {
 }
 
 /* harmony default export */ const info = (getInfoItems);
-// EXTERNAL MODULE: ./src/indexedDB/appear.js
-var appear = __webpack_require__("./src/indexedDB/appear.js");
+// EXTERNAL MODULE: ./src/indexedDB/default.js
+var indexedDB_default = __webpack_require__("./src/indexedDB/default.js");
+;// CONCATENATED MODULE: ./src/indexedDB/appear.js
+
+
+
+/**
+ *
+ * @author Toil
+ * @license MIT
+ * @copyright Toil
+ * @created 2023-02-17
+ *
+ * @description LZTAppearDB class implementation
+ *
+ */
+
+class LZTAppearDB extends indexedDB_default/* LZTUpgradeDB */.c {
+  /**
+   *
+   *  @constructor
+   *  @param {string} name - name of the database
+   *  @param {string} objectKey - name of the future indexedDB object
+   *  @param {number} version - version of the database
+   */
+
+  constructor(name = 'LZTUpAppear', objectKey = 'appear', version = 1) {
+    super(
+      name,
+      objectKey,
+      version,
+      { // indexes
+        'hideUnreadArticleCircle': 'number',
+        'hideTagsInThreads': 'number',
+        'forumLogo': 'number',
+        'hideCounterAlerts': 'number',
+        'hideCounterConversations': 'number',
+        'marketLogo': 'number',
+        'reportButtonsInPost': 'string',
+        'selectedTheme': 'number',
+        'themeAutoReload': 'number',
+        'backgroundEffect': 'number',
+        'hideOnlyfans': 'number',
+        'showPollResults': 'number',
+        'newErrorPage': 'number',
+        'selfAdOnNewErrorPage': 'number',
+      },
+      { // defaultData
+        key: objectKey,
+        hideUnreadArticleCircle: 0,
+        hideTagsInThreads: 0,
+        forumLogo: 0,
+        hideCounterAlerts: 0,
+        hideCounterConversations: 0,
+        marketLogo: 0,
+        reportButtonsInPost: '',
+        selectedTheme: 0,
+        themeAutoReload: 0,
+        backgroundEffect: 0,
+        hideOnlyfans: 0,
+        showPollResults: 0,
+        newErrorPage: 1,
+        selfAdOnNewErrorPage: 1
+      }
+    );
+  };
+
+  async update({
+    hideUnreadArticleCircle,
+    hideTagsInThreads,
+    forumLogo,
+    hideCounterAlerts,
+    hideCounterConversations,
+    marketLogo,
+    reportButtonsInPost,
+    selectedTheme,
+    themeAutoReload,
+    backgroundEffect,
+    hideOnlyfans,
+    showPollResults,
+    newErrorPage,
+    selfAdOnNewErrorPage,
+  }) {
+    super.update(...arguments);
+  }
+}
+
+
 ;// CONCATENATED MODULE: ./src/utils/files.js
 
 
@@ -3609,7 +3669,7 @@ async function uploadJSONFile() {
       resolve(reader.result);
     };
     reader.onerror = (e) => {
-      logger/* Logger */.Y.error('Ошибка загрузки файла настроек', e);
+      logger/* default */.Z.error('Ошибка загрузки файла настроек', e);
       resolve(false);
     };
   });
@@ -3628,7 +3688,7 @@ async function uploadJSONFile() {
 
 
 
-const appearDB = new appear/* LZTAppearDB */.e()
+const appearDB = new LZTAppearDB()
 const settings_profileDB = new profile/* LZTProfileDB */.M()
 
 async function saveSettings() {
@@ -3671,7 +3731,7 @@ async function uploadSettings() {
     await (0,utils/* sleep */._v)(500);
     window.location.reload();
   } catch (err) {
-    logger/* Logger */.Y.error('Ошибка загрузки файла настроек', err)
+    logger/* default */.Z.error('Ошибка загрузки файла настроек', err)
     ;(0,registers/* registerAlert */.de)('Ошибка загрузки файла настроек', 5000);
   }
 }
@@ -3744,6 +3804,32 @@ var update = injectStylesIntoStyleTag_default()(menu/* default */.Z, options);
 
        /* harmony default export */ const styles_menu = (menu/* default */.Z && menu/* default */.Z.locals ? menu/* default */.Z.locals : undefined);
 
+;// CONCATENATED MODULE: ./src/ui/menu/items/appear.js
+
+
+
+
+
+const getAppearItems = async () => {
+  const appearData = await GM_getValue(StorageName/* default */.Z.Appear, {});
+
+  return [
+    new comment("Раздел настроек внешнего вида").createElement()
+  ];
+}
+
+/* harmony default export */ const appear = (getAppearItems);
+;// CONCATENATED MODULE: ./src/ui/menu/items/update.js
+
+
+
+const getUpdateItems = async () => {
+  return [
+    new comment("Раздел обновления расширения").createElement()
+  ];
+}
+
+/* harmony default export */ const items_update = (getUpdateItems);
 ;// CONCATENATED MODULE: ./src/ui/menu/menu.js
 
 
@@ -3756,21 +3842,9 @@ var update = injectStylesIntoStyleTag_default()(menu/* default */.Z, options);
 
 
 
+
+
 async function generateMenu(tabs) {
-  const appearText = document.createElement('div')
-  appearText.innerText = 'Страница Внешнего вида';
-
-  const appearItems = [
-    appearText,
-  ];
-
-  const updateText = document.createElement('div')
-  updateText.innerText = 'Страница обновлений';
-
-  const updateItems = [
-    updateText,
-  ];
-
   const menuSection = new Section('LZTUpMainSection')
     .addSectionItem('Локальный Уник', 'Максимальная кастомизация', 'far fa-palette', 'LZTUpUniqItem', (_, title) => openSubMenu('LZTUpUniqContainer', title))
     .addSectionItem('Розыгрыши', 'Комфорт для розыгрышей', 'far fa-gift', 'LZTUpContestsItem', (_, title) => openSubMenu('LZTUpContestsContainer', title))
@@ -3779,14 +3853,14 @@ async function generateMenu(tabs) {
     .addSectionContainer('LZTUpUniqContainer', await items_profile())
     .addSectionContainer('LZTUpContestsContainer', await items_contests())
     .addSectionContainer('LZTUpUsersContainer', await items_users())
-    .addSectionContainer('LZTUpAppearContainer', appearItems)
+    .addSectionContainer('LZTUpAppearContainer', await appear())
 
   const settingsSection = new Section('LZTUpSettingsSection')
     .addSectionItem('Настройки', 'Настройки расширения', 'far fa-cog', 'LZTUpSettingsItem', (_, title) => openSubMenu('LZTUpSettingsContainer', title))
     .addSectionItem('Обновления', 'Установка и проверка обновлений расширения', 'far fa-cloud-download', 'LZTUpUpdateItem', (_, title) => openSubMenu('LZTUpUpdateContainer', title))
     .addSectionItem('Информация', `Версия: ${GM_info?.script?.version}`, 'far fa-info-circle', 'LZTUpInformationItem', (_, title) => openSubMenu('LZTUpInformationContainer', title))
     .addSectionContainer('LZTUpSettingsContainer', await settings())
-    .addSectionContainer('LZTUpUpdateContainer', updateItems)
+    .addSectionContainer('LZTUpUpdateContainer', await items_update())
     .addSectionContainer('LZTUpInformationContainer', await info())
 
   const sections = [
@@ -3810,7 +3884,7 @@ async function generateMenu(tabs) {
     }
   }
 
-  logger/* Logger */.Y.debug('Generated menu tabs: ', tabs);
+  logger/* default */.Z.debug('Generated menu tabs: ', tabs);
 
   for (const tab of tabs) {
     menuContent.querySelector('.LZTUpTabs')
@@ -3821,7 +3895,7 @@ async function generateMenu(tabs) {
 }
 
 
-;// CONCATENATED MODULE: ./src/ui/menu/tab.js
+;// CONCATENATED MODULE: ./src/ui/components/menu/tab.js
 class Tab {
   /**
    *
@@ -3911,7 +3985,7 @@ async function menuButtonCallback() {
   const profileData = await profileDB.read();
   const userid = (0,users/* getUserId */.n5)('me');
   const username = (0,users/* getUsername */.Ms)('me');
-  const previewProfile = new PreviewProfile(userid, username, profileData);
+  const previewProfile = new menu_previewProfile(userid, username, profileData);
   await previewProfile.updateAll();
 }
 
@@ -3947,7 +4021,7 @@ var buttons_update = injectStylesIntoStyleTag_default()(buttons/* default */.Z, 
 
        /* harmony default export */ const styles_buttons = (buttons/* default */.Z && buttons/* default */.Z.locals ? buttons/* default */.Z.locals : undefined);
 
-;// CONCATENATED MODULE: ./src/ui/buttons/menuButton.js
+;// CONCATENATED MODULE: ./src/ui/components/buttons/menuButton.js
 
 
 
@@ -3965,66 +4039,35 @@ menuButton.onclick = menuButtonCallback;
 
 /***/ }),
 
-/***/ "./src/ui/components/button.js":
+/***/ "./src/ui/components/icon.js":
 /***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
 
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   Z: () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var UI_components_icons_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("./src/ui/components/icons.js");
-
-
-class Button {
+class Icon {
   /**
    *
    *  @constructor
-   *  @param {string} buttonText - text of the button
-   *  @param {string} className - class name of the button
-   *  @param {string} iconClassName - class name of the icon (if undefined icon is not added)
+   *  @param {string} className - class name of icon
+   *  @param {string} iconClassName - id of icon
    */
 
-  constructor(buttonText, className = 'button', iconClassName = undefined) {
-    this.buttonText = buttonText;
+  constructor(className, id = 'LZTUpIcon') {
     this.className = className;
-    this.iconClassName = iconClassName;
+    this.id = id;
   }
 
-  createElement(callback = () => {}) {
-    const button = document.createElement('button');
-    button.className = this.className;
-    button.innerText = this.buttonText;
-
-    if (this.iconClassName) {
-      const icon = (0,UI_components_icons_js__WEBPACK_IMPORTED_MODULE_0__/* .createMenuIcon */ .E)(this.iconClassName);
-      icon.id = '';
-      button.appendChild(icon);
-    }
-
-    button.onclick = callback;
-
-    return button;
+  createElement() {
+    const icon = document.createElement('i');
+    icon.id = this.id;
+    icon.className = this.className;
+    return icon;
   }
 }
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Button);
 
-/***/ }),
-
-/***/ "./src/ui/components/icons.js":
-/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
-
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   E: () => (/* binding */ createMenuIcon)
-/* harmony export */ });
-function createMenuIcon(className, id = 'LZTUpIcon') {
-  // TODO: чет с этим сделать, мне не нравится как оно выглядит
-  const icon = document.createElement('i');
-  icon.id = id;
-  icon.className = className;
-  return icon;
-}
-
-
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Icon);
 
 /***/ }),
 
@@ -4088,10 +4131,13 @@ __webpack_require__.d(__webpack_exports__, {
   gu: () => (/* binding */ contestsAutoFixCaptcha),
   Q9: () => (/* binding */ contestsHideContent),
   Rf: () => (/* binding */ contestsHidePoll),
+  sO: () => (/* binding */ contestsParticipateByBtn),
   s$: () => (/* binding */ contestsTagsVisibility),
   g4: () => (/* binding */ contestsUpdateCapctha)
 });
 
+// EXTERNAL MODULE: ./src/callbacks/contestsParticipate.js + 1 modules
+var contestsParticipate = __webpack_require__("./src/callbacks/contestsParticipate.js");
 // EXTERNAL MODULE: ./src/utils/checkers.js
 var checkers = __webpack_require__("./src/utils/checkers.js");
 ;// CONCATENATED MODULE: ./src/visuals/threads.js
@@ -4125,6 +4171,7 @@ var components_button = __webpack_require__("./src/ui/components/button.js");
 // EXTERNAL MODULE: ./src/utils/logger.js
 var logger = __webpack_require__("./src/utils/logger.js");
 ;// CONCATENATED MODULE: ./src/utils/contests.js
+
 
 
 
@@ -4185,7 +4232,7 @@ function contestsAutoFixCaptcha() {
   if ((0,checkers/* isContestThread */.HI)()) {
     const captchaControl = document.querySelector('.captchaBlock > div');
     if (captchaControl?.childElementCount > 0) {
-      return logger/* Logger */.Y.debug('Captcha exists');
+      return logger/* default */.Z.debug('Captcha exists');
     }
 
     return reRenderCaptcha();
@@ -4195,7 +4242,7 @@ function contestsAutoFixCaptcha() {
 function reRenderCaptcha() {
   const captchaControl = document.querySelector('.captchaBlock > div');
   if (!captchaControl) {
-    return logger/* Logger */.Y.error("CAPTCHA BLOCK MISSING");
+    return logger/* default */.Z.error("CAPTCHA BLOCK MISSING");
   }
 
   // Rerender captcha
@@ -4215,6 +4262,19 @@ function reRenderCaptcha() {
   });
 }
 
+function contestsParticipateByBtn(status) {
+  const contestBlock = document.querySelector('div.contestThreadBlock');
+  if (!contestBlock) {
+    return;
+  }
+
+  if (status) {
+    document.addEventListener('keydown', contestsParticipate/* participateByBtnCallback */.m);
+  } else {
+    document.removeEventListener('keydown', contestsParticipate/* participateByBtnCallback */.m);
+  }
+}
+
 
 
 /***/ }),
@@ -4223,7 +4283,7 @@ function reRenderCaptcha() {
 /***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
 
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   Y: () => (/* binding */ Logger)
+/* harmony export */   Z: () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 const Logger = {};
 Logger.log = (...text) => {
@@ -4246,7 +4306,7 @@ Logger.debug = (...text) => {
   if (false) {}
 }
 
-
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Logger);
 
 /***/ }),
 
@@ -4299,19 +4359,19 @@ function clearSVG(element) {
 function clearCSS(css, availabledStyles = defaultAvailabledStyles) {
   let pairs = css.split(';');
   const goodCSS = [];
-  Utils_logger__WEBPACK_IMPORTED_MODULE_0__/* .Logger */ .Y.debug(pairs);
+  Utils_logger__WEBPACK_IMPORTED_MODULE_0__/* ["default"] */ .Z.debug(pairs);
   for (const pair of pairs) {
     const values = pair.split(':');
     const key = values[0].replace(/\s/, '');
-    Utils_logger__WEBPACK_IMPORTED_MODULE_0__/* .Logger */ .Y.debug(pair, values, key)
+    Utils_logger__WEBPACK_IMPORTED_MODULE_0__/* ["default"] */ .Z.debug(pair, values, key)
     if (availabledStyles.includes(key)) {;
-      Utils_logger__WEBPACK_IMPORTED_MODULE_0__/* .Logger */ .Y.debug('DETECTED AVAILABLED STYLES');
+      Utils_logger__WEBPACK_IMPORTED_MODULE_0__/* ["default"] */ .Z.debug('DETECTED AVAILABLED STYLES');
       goodCSS.push(pair);
     }
   }
 
   const cssString = goodCSS.length ? goodCSS.join(';') : '';
-  Utils_logger__WEBPACK_IMPORTED_MODULE_0__/* .Logger */ .Y.debug(`CLEARED FINAL STRING: ${cssString}`);
+  Utils_logger__WEBPACK_IMPORTED_MODULE_0__/* ["default"] */ .Z.debug(`CLEARED FINAL STRING: ${cssString}`);
   return cssString;
 }
 
@@ -4384,8 +4444,8 @@ __webpack_require__.d(__webpack_exports__, {
 var checkers = __webpack_require__("./src/utils/checkers.js");
 // EXTERNAL MODULE: ./src/utils/purify.js
 var purify = __webpack_require__("./src/utils/purify.js");
-// EXTERNAL MODULE: ./src/ui/components/icons.js
-var icons = __webpack_require__("./src/ui/components/icons.js");
+// EXTERNAL MODULE: ./src/ui/components/icon.js
+var components_icon = __webpack_require__("./src/ui/components/icon.js");
 ;// CONCATENATED MODULE: ./src/ui/components/buttons/copyButton.js
 
 
@@ -4400,13 +4460,24 @@ class CopyButton {
   createElement() {
     const button = document.createElement('span');
     button.classList.add('copyButton', 'Tooltip');
-    button.dataset.phr = this.messageOnCopy;
     button.title = this.tooltipMessage;
-    // FIXME: REWORK THIS https://github.com/airbnb/javascript#functions--constructor
-    button.onclick = new Function('event', `Clipboard.copy('${this.content}', this)`); // superior fix of "Clipboard.copy is not a function"
+
+    button.onclick = async (e) => {
+      // We use Clipboard.copy instead to avoid errors when the function is not found and to prevent XSS
+      // navigator.clipboard.writeText XSS-safe unlike ClipBoard.copy
+      await navigator.clipboard.writeText(this.content);
+
+      // from Clipboard.copy function
+      e.target.classList.add('animated');
+      animateCSS(e.target, [
+        'heartBeat',
+        'mainc'
+      ]);
+      XenForo.alert(this.messageOnCopy, '', 5000);
+    }
     button.tabIndex = 0;
 
-    const icon = (0,icons/* createMenuIcon */.E)('far fa-clone', '');
+    const icon = new components_icon/* default */.Z('far fa-clone', '').createElement();
     button.appendChild(icon);
     return button;
   }
@@ -4464,7 +4535,7 @@ class ProfileInfoRow {
   }
 }
 
-
+/* harmony default export */ const profileInfoRow = (ProfileInfoRow);
 // EXTERNAL MODULE: ./src/configs/extData.js
 var extData = __webpack_require__("./src/configs/extData.js");
 ;// CONCATENATED MODULE: ./src/utils/users.js
@@ -4554,7 +4625,7 @@ function addUserIdToProfile() {
     const profileInfo = document.querySelector('#profile_short > .pairsJustified');
 
     const copyBtn = new copyButton(userId, 'Скопировать ID пользователя', 'ID пользователя успешно скопирован в буфер обмена');
-    const userIdRow = new ProfileInfoRow(userIdRowElementId, 'ID', userId, copyBtn).createElement();
+    const userIdRow = new profileInfoRow(userIdRowElementId, 'ID', userId, copyBtn).createElement();
     const firstRow = profileInfo.querySelector('.profile_info_row');
     if (!firstRow) {
       return profileInfo.insertAdjacentElement('afterbegin', userIdRow);
@@ -4871,7 +4942,7 @@ function updateUserBanner(style, text) {
 
 function updateUserBadges(badgeIconsData) {
   const userid = (0,users/* getUserId */.n5)('me');
-  const badges = new avatarUserBadges/* AvatarUserBadges */.f(badgeIconsData, false);
+  const badges = new avatarUserBadges/* default */.Z(badgeIconsData, false);
   const avatarsMedium = document.querySelectorAll(`.avatar.Av${userid}m`);
   const avatarsSmall = document.querySelectorAll(`.avatar.Av${userid}s`);
   const avatars = [...avatarsMedium, ...avatarsSmall]
@@ -4907,14 +4978,9 @@ function updateUserBadges(badgeIconsData) {
 
 function bypassShareTyping() {
   if (Object.hasOwn(XenForo, 'threadNotify') && Object.hasOwn(XenForo.threadNotify, 'shareTypingActivity')) {
-    Utils_logger__WEBPACK_IMPORTED_MODULE_0__/* .Logger */ .Y.debug('bypassShareTyping thread: true');
+    Utils_logger__WEBPACK_IMPORTED_MODULE_0__/* ["default"] */ .Z.debug('bypassShareTyping thread: true');
     XenForo.threadNotify.shareTypingActivity = 0;
   }
-
-  // if (Object.hasOwn(XenForo, 'ChatboxRTC') && Object.hasOwn(XenForo.chatboxRTC, 'Start')) {
-  //   console.log('bypassShareTyping chat: true');
-  //   XenForo.ChatboxRTC.Start.prototype.sendTypingMessage = () => {return};
-  // }
 }
 
 
@@ -4941,13 +5007,6 @@ function setTooltip(el, text) {
 }
 
 
-
-/***/ }),
-
-/***/ "./src/configs/endpoints.json":
-/***/ ((module) => {
-
-module.exports = JSON.parse('{"RC":"https://lztupgrade.toiloff.ru/api/themes","I1":"https://lztupgrade.toiloff.ru/static/themes"}');
 
 /***/ })
 
