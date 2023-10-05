@@ -2,6 +2,8 @@ import { isContestsNode } from 'Utils/checkers';
 import { waitForElm, getThreadLinks } from 'Utils/utils';
 
 
+// TODO: Rework with clear js
+// TODO: move to utils/contests.js
 function regOpenContestsBtn(amount = 10) {
   if (isContestsNode() && !$(`#openContestsButton${XenForo.htmlspecialchars(amount)}`).length) {
     const updateButton = $('span.UpdateFeedButton.UpdateFeedButtonIcon');
