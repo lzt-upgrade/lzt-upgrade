@@ -716,20 +716,21 @@ function onParticipateHandler(callback, sleepTime = 1000) {
       logger/* default */.Z.debug('onParticipateHandler: Participate button finded');
       el.addEventListener('click', async () => {
         logger/* default */.Z.debug('onParticipateHandler: click contest button');
-        if (!el.classList.contains('disabled')) {
-          logger/* default */.Z.debug('onParticipateHandler: waiting for alreadyParticipate button');
-          const elem = await (0,utils/* waitForElm */.Nc)('span.alreadyParticipate');
-          if (!elem) {
-            logger/* default */.Z.debug('onParticipateHandler: no alreadyParticipate button');
-            return;
-          }
-
-          logger/* default */.Z.debug('onParticipateHandler: alreadyParticipate button finded');
-          await (0,utils/* sleep */._v)(sleepTime);
-          callback();
-        } else {
+        if (el.classList.contains('disabled')) {
           logger/* default */.Z.debug('onParticipateHandler: clicked on disabled contest button');
+          return;
         }
+
+        logger/* default */.Z.debug('onParticipateHandler: waiting for alreadyParticipate button');
+        const elem = await (0,utils/* waitForElm */.Nc)('span.alreadyParticipate');
+        if (!elem) {
+          logger/* default */.Z.debug('onParticipateHandler: no alreadyParticipate button');
+          return;
+        }
+
+        logger/* default */.Z.debug('onParticipateHandler: alreadyParticipate button finded');
+        await (0,utils/* sleep */._v)(sleepTime);
+        callback();
       })
     })
     .catch(el => {
@@ -930,6 +931,7 @@ const extData = () => {
 /* harmony import */ var Utils_utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("./src/utils/utils.js");
 
 
+// TODO: rework with clear JS
 function onClickCategory(nodeSelector, callback) {
   const node = $(`li.node${nodeSelector}.forum.level-n`);
   $(node).on('click', async () => {
@@ -2963,7 +2965,7 @@ function openSubMenu(containerId, sectionName) {
   const sections = document.querySelectorAll('.LZTUpModalContent > .LZTUpSection');
   sections.forEach(section => section.style.display = 'none');
 
-  document.querySelector(`#${containerId}`).style.display = '';
+  document.getElementById(containerId).style.display = '';
   setMenuTitle(sectionName);
   return addGoBackBtn();
 }
@@ -4451,7 +4453,7 @@ var components_icon = __webpack_require__("./src/ui/components/icon.js");
 
 
 class CopyButton {
-  constructor(content, tooltipMessage, messageOnCopy) {
+  constructor(content, tooltipMessage = null, messageOnCopy = null) {
     this.content = XenForo.htmlspecialchars(content); // Clipboard.copy works strangely with numbers so we do this
     this.tooltipMessage = tooltipMessage || '';
     this.messageOnCopy = messageOnCopy || 'Успешно скопировано в буфер обмена';
@@ -4627,11 +4629,9 @@ function addUserIdToProfile() {
     const copyBtn = new copyButton(userId, 'Скопировать ID пользователя', 'ID пользователя успешно скопирован в буфер обмена');
     const userIdRow = new profileInfoRow(userIdRowElementId, 'ID', userId, copyBtn).createElement();
     const firstRow = profileInfo.querySelector('.profile_info_row');
-    if (!firstRow) {
-      return profileInfo.insertAdjacentElement('afterbegin', userIdRow);
-    }
+    const insertPlace = firstRow ? 'afterend' : 'afterbegin';
 
-    return firstRow.insertAdjacentElement('afterend', userIdRow);
+    firstRow.insertAdjacentElement(insertPlace, userIdRow);
   }
 }
 
