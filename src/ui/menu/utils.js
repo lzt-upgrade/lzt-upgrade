@@ -62,7 +62,7 @@ function openSubMenu(containerId, sectionName) {
   const sections = document.querySelectorAll('.LZTUpModalContent > .LZTUpSection');
   sections.forEach(section => section.style.display = 'none');
 
-  document.querySelector(`#${containerId}`).style.display = '';
+  document.getElementById(containerId).style.display = '';
   setMenuTitle(sectionName);
   return addGoBackBtn();
 }
