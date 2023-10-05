@@ -1,4 +1,4 @@
-import { loadTheme } from "API/lztupgrade/loadTheme";
+import themeAPI from "API/lztupgrade/themeAPI";
 
 import config from "Configs/config";
 import extData from 'Configs/extData';
@@ -9,9 +9,9 @@ import { getThemeByID } from 'Callbacks/extensionStart';
 
 import { LZTProfileDB } from "IndexedDB/profile";
 
-import { regOpenContestsBtn } from "UI/buttons/contestsButton";
-import menuButton from "UI/buttons/menuButton";
-import ErrorPageButton from "UI/buttons/errorPageButton";
+import { regOpenContestsBtn } from "UI/components/buttons/contestsButton";
+import menuButton from "UI/components/buttons/menuButton";
+import ErrorPageButton from "UI/components/buttons/errorPageButton";
 
 import onClickCategory from "Events/categories";
 
@@ -70,7 +70,7 @@ async function initTheme() {
     await GM_setValue(StorageName.Cache, cacheData);
   }
   console.timeLog("Loading theme...");
-  loadTheme(themeName);
+  themeAPI.loadTheme(themeName);
   console.timeEnd("init-theme");
 }
 
