@@ -86,11 +86,9 @@ function addUserIdToProfile() {
     const copyBtn = new CopyButton(userId, 'Скопировать ID пользователя', 'ID пользователя успешно скопирован в буфер обмена');
     const userIdRow = new ProfileInfoRow(userIdRowElementId, 'ID', userId, copyBtn).createElement();
     const firstRow = profileInfo.querySelector('.profile_info_row');
-    if (!firstRow) {
-      return profileInfo.insertAdjacentElement('afterbegin', userIdRow);
-    }
+    const insertPlace = firstRow ? 'afterend' : 'afterbegin';
 
-    return firstRow.insertAdjacentElement('afterend', userIdRow);
+    firstRow.insertAdjacentElement(insertPlace, userIdRow);
   }
 }
 
