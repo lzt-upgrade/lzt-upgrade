@@ -2,7 +2,7 @@ import Icon from "UI/components/icon.js";
 
 
 class CopyButton {
-  constructor(content, tooltipMessage, messageOnCopy) {
+  constructor(content, tooltipMessage = null, messageOnCopy = null) {
     this.content = XenForo.htmlspecialchars(content); // Clipboard.copy works strangely with numbers so we do this
     this.tooltipMessage = tooltipMessage || '';
     this.messageOnCopy = messageOnCopy || 'Успешно скопировано в буфер обмена';
