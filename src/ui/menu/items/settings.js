@@ -5,7 +5,7 @@ import { LZTAppearDB } from 'IndexedDB/appear';
 import { LZTProfileDB } from 'IndexedDB/profile';
 import { downloadJSONFile, uploadJSONFile } from 'Utils/files';
 import { registerAlert } from 'Utils/registers';
-import { Logger } from 'Utils/logger';
+import Logger from 'Utils/logger';
 import { sleep } from 'Utils/utils';
 
 

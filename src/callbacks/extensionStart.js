@@ -1,5 +1,5 @@
 import { getThemes } from "API/lztupgrade/getThemes";
-import { Logger } from "Utils/logger";
+import Logger from "Utils/logger";
 
 function getThemeByID(themeId) {
   // Loading theme by ID

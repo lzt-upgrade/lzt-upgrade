@@ -21,4 +21,4 @@ class Comment {
   }
 }
 
-export { Comment };
+export default Comment;

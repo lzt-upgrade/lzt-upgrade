@@ -27,4 +27,4 @@ class SortableContainer {
   }
 }
 
-export { SortableContainer };
+export default SortableContainer;

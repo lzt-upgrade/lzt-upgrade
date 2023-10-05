@@ -1,4 +1,4 @@
-import { Logger } from 'Utils/logger';
+import Logger from 'Utils/logger';
 
 function downloadJSONFile(data, name) {
   const blob = new Blob([data], {

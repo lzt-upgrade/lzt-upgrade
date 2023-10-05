@@ -18,4 +18,4 @@ class Heading {
   }
 }
 
-export { Heading };
+export default Heading;

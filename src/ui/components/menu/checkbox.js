@@ -39,4 +39,4 @@ class Checkbox {
   }
 }
 
-export { Checkbox };
+export default Checkbox;

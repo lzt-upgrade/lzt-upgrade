@@ -3,8 +3,8 @@ import config from "Configs/config";
 
 import { getUserAvatar } from 'Utils/users';
 import { applyStyle } from 'Utils/utils';
-import { AvatarUserBadges } from 'UI/avatarUserBadges';
-import { Logger } from "Utils/logger";
+import AvatarUserBadges from 'UI/avatarUserBadges';
+import Logger from "Utils/logger";
 
 
 class PreviewProfile {
@@ -144,4 +144,4 @@ class PreviewProfile {
   }
 }
 
-export { PreviewProfile };
+export default PreviewProfile;

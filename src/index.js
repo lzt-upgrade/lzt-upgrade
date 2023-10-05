@@ -15,7 +15,7 @@ import ErrorPageButton from "UI/buttons/errorPageButton";
 
 import onClickCategory from "Events/categories";
 
-import { Logger } from "Utils/logger";
+import Logger from "Utils/logger";
 import { registerMenuButton, registerObserver } from "Utils/registers";
 import {
   contestsTagsVisibility,

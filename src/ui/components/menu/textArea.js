@@ -1,5 +1,3 @@
-
-
 class TextArea {
   /**
    *
@@ -32,4 +30,4 @@ class TextArea {
   }
 }
 
-export { TextArea };
+export default TextArea;

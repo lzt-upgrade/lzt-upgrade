@@ -1,4 +1,5 @@
-import { Description } from 'UI/components/menu/description';
+import Description from 'UI/components/menu/description';
+
 
 class ColorPicker {
   /**
@@ -36,4 +37,4 @@ class ColorPicker {
   }
 }
 
-export { ColorPicker };
+export default ColorPicker;

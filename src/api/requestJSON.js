@@ -1,4 +1,4 @@
-import { Logger } from 'Utils/logger'
+import Logger from 'Utils/logger'
 
 async function requestJSON(endpoint, errText) {
   try {

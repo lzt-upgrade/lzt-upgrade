@@ -1,5 +1,5 @@
 import { waitForElm, sleep } from 'Utils/utils';
-import { Logger } from 'Utils/logger';
+import Logger from 'Utils/logger';
 
 function onParticipateHandler(callback, sleepTime = 1000) {
   return waitForElm('.LztContest--Participate')

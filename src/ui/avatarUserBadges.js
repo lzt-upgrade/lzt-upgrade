@@ -1,7 +1,7 @@
 import { clearSVG } from 'Utils/purify';
 import { setTooltip } from "Xenforo/tooltips";
 import { changeSVGColor } from 'Utils/svg';
-import { Logger } from 'Utils/logger'
+import Logger from 'Utils/logger'
 import { removeStylesByEl } from 'Utils/utils'
 
 
@@ -151,4 +151,4 @@ class AvatarUserBadges {
   }
 }
 
-export { AvatarUserBadges }
+export default AvatarUserBadges;

@@ -19,4 +19,4 @@ class Separator {
   }
 }
 
-export { Separator };
+export default Separator;

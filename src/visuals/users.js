@@ -2,7 +2,7 @@ import { applyStyle } from "Utils/utils";
 import { getUsername, getUserId } from 'Utils/users';
 import { isProfilePage } from 'Utils/checkers';
 import { UserBanner } from 'UI/components/userBanner';
-import { AvatarUserBadges } from 'UI/avatarUserBadges';
+import AvatarUserBadges from 'UI/avatarUserBadges';
 
 
 function updateUserStyle(style) {
