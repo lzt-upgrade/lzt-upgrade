@@ -1,5 +1,6 @@
 import Icon from 'UI/components/icon'
 
+
 class SortableItem {
   /**
    *
@@ -28,12 +29,12 @@ class SortableItem {
     const icon = new Icon('far fa-grip-vertical', '').createElement();
     draggableZone.appendChild(icon);
 
-    const contentContaner = document.createElement('div');
-    contentContaner.classList.add('LZTUpSortableContent');
-    // contentContaner.appendChild(this.content);
-    contentContaner.innerHTML = `
-      <p>${this.content}</p>
-    `;
+    const contentContainer = document.createElement('div');
+    contentContainer.classList.add('LZTUpSortableContent');
+
+    const containerDesc = document.createElement('p');
+    containerDesc.innerText = this.content;
+    contentContainer.append(containerDesc);
 
     const utilityContainer = document.createElement('div');
     utilityContainer.classList.add('LZTUpSortableUtility');
@@ -63,10 +64,10 @@ class SortableItem {
     utilityContainer.appendChild(removeButton);
 
     sortableItem.appendChild(draggableZone);
-    sortableItem.appendChild(contentContaner);
+    sortableItem.appendChild(contentContainer);
     sortableItem.appendChild(utilityContainer);
     return sortableItem;
   }
 }
 
-export { SortableItem };
+export default SortableItem;
