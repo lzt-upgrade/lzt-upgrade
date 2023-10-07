@@ -43,6 +43,7 @@ import {
 import { addBackgroundImage } from 'Visuals/universal';
 import { addBackgroundImageInProfile } from 'Visuals/profile';
 import { isProfilePage } from 'Utils/checkers';
+import { waitForElm } from "Utils/utils";
 
 
 // import 'Styles/main.css';
@@ -53,7 +54,7 @@ import 'Styles/xenforo.scss';
 
 
 async function initTheme() {
-  // exec time: 50-200ms
+  // exec time: 35ms
   console.time("init-theme");
 
   console.timeLog("init-theme", "getting appearData...")
@@ -61,16 +62,17 @@ async function initTheme() {
   console.timeLog("init-theme", "loading name from cache...")
   let themeName = await GM_getValue(StorageName.Cache, {}).themeName;
   console.timeLog("init-theme", "Check themeName valid...")
-  if (!themeName && appearData.theme > 0) {
-    Logger.debug(`Requesting theme with id ${appearData.theme}...`);
-    themeName = await getThemeByID(appearData.theme)
+  console.log(themeName, appearData.themeId)
+  if (!themeName && appearData.themeId > 0) {
+    Logger.debug(`Requesting theme with id ${appearData.themeId}...`);
+    themeName = await getThemeByID(appearData.themeId)
       .catch(err => console.error(err));
     let cacheData = await GM_getValue(StorageName.Cache, {});
     cacheData.themeName = themeName;
     await GM_setValue(StorageName.Cache, cacheData);
   }
-  console.timeLog("Loading theme...");
-  themeAPI.loadTheme(themeName);
+  console.timeLog("init-theme", "Loading theme...");
+  await themeAPI.smartLoadTheme(themeName);
   console.timeEnd("init-theme");
 }
 
@@ -285,7 +287,7 @@ async function main() {
 }
 
 try {
-  await Promise.allSettled([initTheme() , main()]);
+  await Promise.allSettled([initTheme(), main()]);
 } catch {
   console.error(e);
 }
