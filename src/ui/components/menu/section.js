@@ -110,7 +110,10 @@ class Section {
    *  @param {string} containerId - id of the container element (open on click)
    *  @param {boolean} rightArrow - add a icon of the right arrow in the right side (only for column direction)
    */
-  addSectionItem(title, desc, iconClasses, sectionId, callback = () => {}, rightArrow = false) {
+  addSectionItem(title, desc, iconClasses, sectionId, options = {}) {
+    const onClickCallback = options.onClick || function() {};
+    const rightArrow = options.rightArrow || false;
+
     const sectionItem = document.createElement('div');
     sectionItem.id = sectionId;
     sectionItem.classList.add('LZTUpSectionItem');
@@ -128,7 +131,7 @@ class Section {
       sectionItem.append(sectionArrowIcon)
     }
 
-    sectionItem.onclick = async (e) => await callback(e, title);
+    sectionItem.onclick = async (e) => await onClickCallback(e, title);
 
     this.sectionItems.push(sectionItem);
     return this;

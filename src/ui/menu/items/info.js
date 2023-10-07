@@ -5,7 +5,7 @@ import extData from 'Configs/extData';
 const getInfoItems = async () => {
   const infoSection = new Section('LZTUpInfoSection', { direction: SectionDirection.Column , hidden: false})
   for (const infoLink of extData.infoLinks) {
-    infoSection.addSectionItem(infoLink.title, infoLink.desc, infoLink.icon, infoLink.sectionId, () => window.open(infoLink.href))
+    infoSection.addSectionItem(infoLink.title, infoLink.desc, infoLink.icon, infoLink.sectionId, { onClick: () => window.open(infoLink.href) });
   }
 
   return [

@@ -65,10 +65,10 @@ async function clearCache() {
 }
 
 const getSettingsItems = async () => {
-  const settingsSection = new Section('LZTUpInfoSection', { direction: SectionDirection.Column , hidden: false})
-    .addSectionItem('Сохранить настройки в файл', '', 'far fa-file-download', 'LZTUpSaveSettingsItem', saveSettings)
-    .addSectionItem('Загрузить настройки из файла', '', 'far fa-upload', 'LZTUpUploadSettingsItem', uploadSettings)
-    .addSectionItem('Очистить кеш', '', 'far fa-database', 'LZTUpClearCacheItem', clearCache)
+  const settingsSection = new Section('LZTUpInfoSection', { direction: SectionDirection.Column, hidden: false })
+    .addSectionItem('Сохранить настройки в файл', '', 'far fa-file-download', 'LZTUpSaveSettingsItem', { onClick: saveSettings })
+    .addSectionItem('Загрузить настройки из файла', '', 'far fa-upload', 'LZTUpUploadSettingsItem', { onClick: uploadSettings })
+    .addSectionItem('Очистить кеш', '', 'far fa-database', 'LZTUpClearCacheItem', { onClick: clearCache })
 
   return [
     settingsSection.createElement()
