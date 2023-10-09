@@ -38,7 +38,7 @@ class SectionSubText extends SectionText {
   /**
    *
    *  @constructor
-   *  @param {string} text - text of the heading (html allowed!!!)
+   *  @param {string} text - text of the desc (html allowed!!!)
    */
 
   constructor(text) {
@@ -68,12 +68,6 @@ class Section {
    *  @param {SectionDirection} [direction] - direction of elements in the section
    *  @param {boolean} [hidden] - state of visibility section. If true, the section is hidden by default.
    */
-
-  // constructor(options) {
-  //   this.doors = options.doors || 4;
-  //   this.state = options.state || 'brand new';
-  //   this.color = options.color || 'white';
-  // }
 
   constructor(id, options = {}) {
     this.id = id;
@@ -107,7 +101,10 @@ class Section {
    *  @param {string} desc - description of the item
    *  @param {string} iconClasses - font awesome icon classes
    *  @param {string} sectionId - id of the section item
-   *  @param {string} containerId - id of the container element (open on click)
+   *  @param {object} options - additional options (read description below)
+   *
+   *  Options:
+   *  @param {function} onClick - callback on click event
    *  @param {boolean} rightArrow - add a icon of the right arrow in the right side (only for column direction)
    */
   addSectionItem(title, desc, iconClasses, sectionId, options = {}) {
