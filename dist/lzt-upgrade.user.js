@@ -96,7 +96,7 @@ ___CSS_LOADER_EXPORT___.push([module.id, `.LZTUpErrorPage{background-color:#2727
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 ___CSS_LOADER_EXPORT___.push([module.id, "@import url(https://cdn.jsdelivr.net/gh/lzt-upgrade/coloris-lzt-theme@latest/dist/coloris.min.css);"]);
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, `.clr-picker{display:none}.LZTUpColorPickerWrap{display:flex;align-items:center}.LZTUpColorPickerWrap:not(:first-of-type){margin-top:10px}.LZTUpColorPickerWrap .LZTUpModalDescription{margin-right:10px !important}.LZTUpColorPickerWrap .clr-field input{width:24px;height:24px}.LZTUpColorPickerWrap .clr-field button{width:28px;height:28px}.LZTUpColorPickerWrap .clr-field input,.LZTUpColorPickerWrap .clr-field button{border-radius:4px}.LZTUpSelect option{background:#272727;padding:10px 15px;font-weight:600;border-radius:6px}.LZTUpSelect option:hover{background:#2d2d2d}.LZTUpIconButton{display:flex;flex-direction:row-reverse;align-items:center;justify-content:center}.LZTUpIconButton.fit{max-width:fit-content}.LZTUpIconButton i{margin:0 8px;margin-top:3.5px}.LZTUpRefreshButton{min-width:32px !important;margin-left:32px !important}.LZTUpSortableItem{display:flex;align-items:center;padding:16px;margin:8px 0;border-radius:8px;background:rgba(54,54,54,.75)}.LZTUpSortableItem .LZTUpSortableDraggable{color:#8c8c8c;margin-right:10px;cursor:move}.LZTUpSortableItem .LZTUpSortableContent p{margin:0 !important}.LZTUpSortableItem .LZTUpSortableUtility{display:flex;margin-left:auto}.LZTUpSortableItem .LZTUpSortableUtility div{margin-left:10px;cursor:pointer;transition:.5s color ease}.LZTUpSortableItem .LZTUpSortableUtility .LZTUpSortableEditButton{color:#6a6a6a}.LZTUpSortableItem .LZTUpSortableUtility .LZTUpSortableEditButton:hover{color:#0daf77}.LZTUpSortableItem .LZTUpSortableUtility .LZTUpSortableRemoveButton{color:#964448}.LZTUpSortableItem .LZTUpSortableUtility .LZTUpSortableRemoveButton:hover{color:#f13838}#LZTUpModalMainTitle{text-align:center;padding:16px;font-size:20px;font-weight:bold}.LZTUpModalBackButton{position:absolute;top:18px;left:25px;padding:0px 5px;margin:-4px -5px;cursor:pointer;line-height:25px;height:26px;width:26px;border:0 !important;background:rgba(0,0,0,0);color:#d6d6d6;font-size:18px}.LZTUpModalBackButton:hover{background:rgba(18,76,50,.4);border-radius:8px}.LZTUpTabs{width:100%;box-sizing:border-box;padding:0 10px;border:none !important;margin:15px auto !important;display:flex;align-items:center;justify-content:center}.LZTUpTabs #LZTUpTab{position:relative;padding:10px;margin:0 4px;float:left;font-weight:600;list-style:none;font-size:14px}.LZTUpTabs #LZTUpTab:hover{cursor:pointer}.LZTUpTabs #LZTUpTab.active{box-shadow:inset 0px -2px 0px 0px #0daf77;transform:translateY(-1px);transition:.2s}.LZTUpTabs #LZTUpTab:not(.active):hover{box-shadow:inset 0px -2px 0px 0px #363636}.LZTUpSection{display:flex;flex-wrap:wrap;margin:20px 15px}.LZTUpSection.row{flex-direction:row}.LZTUpSection.row .LZTUpSectionItem{max-width:284px}.LZTUpSection.row .LZTUpSectionTitle,.LZTUpSection.row .LZTUpSectionDesc{max-width:200px}.LZTUpSection.column{flex-direction:column}.LZTUpSection.column .LZTUpSectionTitle,.LZTUpSection.column .LZTUpSectionDesc{max-width:440px}.LZTUpSection.column .LZTUpSectionDesc{white-space:break-spaces}.LZTUpSection.column .LZTUpSectionItem{max-width:580px}.LZTUpSection .LZTUpSectionItem{flex-basis:50%;flex-grow:1;height:64px;display:flex;align-items:center;transition:all .5s ease}.LZTUpSection .LZTUpSectionItem:hover{background:rgba(54,54,54,.75);border-radius:8px;cursor:pointer}.LZTUpSectionTextContainer{display:flex;flex-direction:column;justify-content:center;flex:1 1 auto;max-width:100%}#LZTUpIcon{width:28px;height:28px;margin:20px;font-size:28px;color:#0daf77}#LZTUpIcon.gray{color:#949494}#LZTUpIcon.right{text-align:right}#LZTUpModalContainer{margin:15px;max-width:400px}#LZTUpModalChecksContainer,#LZTUpModalReportButtonsContainer,#LZTUpModalCell,.LZTUpModalMesh,.LZTUpModalSeparator{margin:15px;max-width:95%}.LZTUpContainer{display:flex;flex-direction:column;margin:15px;max-width:95%}.LZTUpModalHeading{margin:10px 0 5px 0 !important}.LZTUpModalDescription{margin:0 !important;margin-bottom:5px !important}.LZTUpTextArea{min-height:40px}.LZTUpModalSeparator{border-bottom:1px solid #363636}#LZTUpModalChecksText{margin:0px 25px 5px}.LZTUpSectionTitle,.LZTUpSectionDesc{display:block;margin-right:20px;font-size:15px;font-weight:bold;text-overflow:ellipsis;white-space:nowrap;overflow:hidden}.LZTUpSectionDesc{font-size:13px;font-weight:normal;color:#949494}.LZTUpSectionDesc .mceSmilie{max-height:18px !important}.LZTUpModalSectionTexts{display:flex;flex-direction:column;justify-content:center;flex:1 1 auto}.LZTUpModalSectionTexts .LZTUpSubText{max-width:450px}#LZTUpModalComment{background:#363636;margin:5px 15px;padding:10px 15px;border-radius:10px}#LZTUpModalComment a{color:#00ba78}.LZTUpModalBlock{display:flex}.LZTUpModalBlockButtons{display:flex;flex-wrap:wrap;justify-content:center;margin-top:25px}.LZTUpModalBlockButtons .button{margin:5px;width:250px}.LZTUpSubMenu .previewContainer{display:flex;float:right;margin:25px 15px;padding:10px 10px 15px 10px;background-size:cover;background-position:center;background-attachment:fixed;background-repeat:no-repeat;border-radius:10px;width:92%;max-width:92%}.LZTUpSubMenu .previewContainer .avatar img{width:66px;height:66px}.LZTUpSubMenu .previewContainer .info{padding:0 0 0 20px}.LZTUpSubMenu .previewContainer .info .username{font-weight:600}.LZTUpSubMenu .previewContainer .bannerOrStatus{min-width:150px;margin:10px 0 0;color:#949494}.LZTUpSubMenu .previewContainer .bannerOrStatus em{font-style:inherit}.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge .customUniqIcon{padding:2px 0;text-align:center}.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge .customUniqIcon svg{width:16px !important;height:16px !important}.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge::before{font-family:"Font Awesome 5 Pro";font-weight:600;display:inline-block;font-size:12.32px}.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.admin{background:#964448}.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.admin::before,.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.bot::before{content:""}.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.Designer::before{content:""}.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.headDesigner::before{content:""}.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.editor::before{content:""}.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.sponsor::before{content:""}.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.coder::before{content:""}.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.uniq_default::before,.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.Legend::before,.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.Ikarus::before{content:""}.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.moder{background:#3d6b39}.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.curator{background:rgba(8,156,122,.8509803922)}.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.moder::before,.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.main_moder::before,.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.curator::before{content:""}.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.arbitr::before,.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.main_arbitr::before{content:""}.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.telegramBot::before{content:""}.LZTUpSubMenu .previewContainer .UsernameStyle.style18,.LZTUpSubMenu .previewContainer .UsernameStyle.style360{text-decoration:line-through;color:#aaa}.LZTUpSubMenu .previewContainer .UsernameStyle.style3{color:#f13838}.LZTUpSubMenu .previewContainer .UsernameStyle.style30{color:#ff9afc}.LZTUpSubMenu .previewContainer .UsernameStyle.style353{background:linear-gradient(98.26deg, #FF42F7 2.08%, #FF24CF 100%);-webkit-background-clip:text;-webkit-text-fill-color:rgba(0,0,0,0)}.LZTUpSubMenu .previewContainer .UsernameStyle.style350{background:linear-gradient(90deg, #5c45ff, #feb5f2 100%);-webkit-background-clip:text;-webkit-text-fill-color:rgba(0,0,0,0)}.LZTUpSubMenu .previewContainer .UsernameStyle.style12{color:#01f73c}.LZTUpSubMenu .previewContainer .UsernameStyle.style1,.LZTUpSubMenu .previewContainer .UsernameStyle.style41,.LZTUpSubMenu .previewContainer .UsernameStyle.style142,.LZTUpSubMenu .previewContainer .UsernameStyle.style144{color:#aaa}.LZTUpSubMenu .previewContainer .UsernameStyle.style32,.LZTUpSubMenu .previewContainer .UsernameStyle.style93,.LZTUpSubMenu .previewContainer .UsernameStyle.style21,.LZTUpSubMenu .previewContainer .UsernameStyle.style2{color:#949494}.LZTUpSubMenu .previewContainer .UsernameStyle.style60{color:#ffa8af}.LZTUpSubMenu .previewContainer .UsernameStyle.style9{color:#0075ad}.LZTUpSubMenu .previewContainer .UsernameStyle.style65{color:#a5e3ff}.LZTUpSubMenu .previewContainer .UsernameStyle.style351{color:#ff0076}.LZTUpSubMenu .previewContainer .UsernameStyle.style29{color:#0acc9e}.LZTUpSubMenu .previewContainer .UsernameStyle.style26{background:linear-gradient(90deg, #0095dd 0%, #f1094b 100%, #0095dd);-webkit-background-clip:text;-webkit-text-fill-color:rgba(0,0,0,0)}.LZTUpSubMenu .previewContainer .UsernameStyle.style4{color:#0e9100}.LZTUpSubMenu .previewContainer .UsernameStyle.style22{color:#eee}.LZTUpSubMenu .previewContainer .UsernameStyle.style11{color:#56b5e0}.LZTUpSubMenu .previewContainer .UsernameStyle.style7{color:#ff9304}.LZTUpSubMenu .previewContainer .UsernameStyle.style349,.LZTUpSubMenu .previewContainer .UsernameStyle.style365{color:#0087ff}.LZTUpSubMenu .previewContainer .UsernameStyle.style354{color:aqua}.LZTUpSubMenu .previewContainer .UsernameStyle.style218{color:#f13838}.LZTUpSubMenu .previewContainer .UsernameStyle.style359{color:#e5d9a3}.LZTUpSubMenu .previewContainer .UsernameStyle.style8{color:gold}.LZTUpSubMenu .previewContainer .UsernameStyle.style265{background:linear-gradient(35deg, #006eff, #00ff81 52%, #fff 50%, #93cbff);-webkit-background-clip:text;-webkit-text-fill-color:rgba(0,0,0,0);text-shadow:0 0 7px rgba(0,255,207,.5019607843)}.LZTUpSubMenu .previewContainer .UsernameStyle.style23{color:#b35ede}.LZTUpSubMenu .previewContainer .UsernameStyle.banned,.LZTUpSubMenu .previewContainer .UsernameStyle.is_banned{text-decoration:line-through;background:inherit;-webkit-text-fill-color:inherit;text-shadow:inherit !important;color:#aaa !important}.LZTUpSubMenu .previewContainer .avatarBox{position:relative}.LZTUpSubMenu .previewContainer .avatarBox .avatarUserBadges .badgeDefaultBackground{background:#363636}.LZTUpSubMenu .previewContainer .avatarBox .avatarUserBadges .avatarUserBadge{position:absolute;bottom:-12px;left:20px;border:2px solid #272727;font-size:0;width:22px;height:22px;margin:0;line-height:22px;border-radius:50%;text-align:center;text-shadow:none !important;box-shadow:none !important;border-radius:50% !important;-webkit-background-clip:unset !important;-webkit-text-fill-color:unset !important;overflow:hidden}.LZTUpSubMenu .previewContainer .avatarBox .avatarUserBadges .avatarUserBadge:only-child{left:35px}.LZTUpSubMenu .previewContainer .avatarBox .avatarUserBadges .avatarUserBadge.avatarUserBadge--1{left:20px}.LZTUpSubMenu .previewContainer .avatarBox .avatarUserBadges .avatarUserBadge.avatarUserBadge--2{left:40px}.LZTUpSubMenu .previewContainer .avatarBox,.LZTUpSubMenu .previewContainer .info{display:table-cell;vertical-align:top}`, ""]);
+___CSS_LOADER_EXPORT___.push([module.id, `.clr-picker{display:none}.LZTUpColorPickerWrap{display:flex;align-items:center}.LZTUpColorPickerWrap:not(:first-of-type){margin-top:10px}.LZTUpColorPickerWrap .LZTUpModalDescription{margin-right:10px !important}.LZTUpColorPickerWrap .clr-field input{width:24px;height:24px}.LZTUpColorPickerWrap .clr-field button{width:28px;height:28px}.LZTUpColorPickerWrap .clr-field input,.LZTUpColorPickerWrap .clr-field button{border-radius:4px}.LZTUpSelect option{background:#272727;padding:10px 15px;font-weight:600;border-radius:6px}.LZTUpSelect option:hover{background:#2d2d2d}.LZTUpIconButton{display:flex;flex-direction:row-reverse;align-items:center;justify-content:center}.LZTUpIconButton.fit{max-width:fit-content}.LZTUpIconButton i{margin:0 8px;margin-top:3.5px}.LZTUpRefreshButton{min-width:32px !important;margin-left:32px !important}.LZTUpSortableItem{display:flex;align-items:center;padding:16px;margin:8px 0;border-radius:8px;background:rgba(54,54,54,.75)}.LZTUpSortableItem .LZTUpSortableDraggable{color:#8c8c8c;margin-right:10px;cursor:move}.LZTUpSortableItem .LZTUpSortableContent p{margin:0 !important}.LZTUpSortableItem .LZTUpSortableUtility{display:flex;margin-left:auto}.LZTUpSortableItem .LZTUpSortableUtility div{margin-left:10px;cursor:pointer;transition:.5s color ease}.LZTUpSortableItem .LZTUpSortableUtility .LZTUpSortableEditButton{color:#6a6a6a}.LZTUpSortableItem .LZTUpSortableUtility .LZTUpSortableEditButton:hover{color:#0daf77}.LZTUpSortableItem .LZTUpSortableUtility .LZTUpSortableRemoveButton{color:#964448}.LZTUpSortableItem .LZTUpSortableUtility .LZTUpSortableRemoveButton:hover{color:#f13838}#LZTUpModalMainTitle{text-align:center;padding:16px;font-size:20px;font-weight:bold}.LZTUpModalBackButton{position:absolute;top:18px;left:25px;padding:0px 5px;margin:-4px -5px;cursor:pointer;line-height:25px;height:26px;width:26px;border:0 !important;background:rgba(0,0,0,0);color:#d6d6d6;font-size:18px}.LZTUpModalBackButton:hover{background:rgba(18,76,50,.4);border-radius:8px}.LZTUpTabs{width:100%;box-sizing:border-box;padding:0 10px;border:none !important;margin:15px auto !important;display:flex;align-items:center;justify-content:center}.LZTUpTabs #LZTUpTab{position:relative;padding:10px;margin:0 4px;float:left;font-weight:600;list-style:none;font-size:14px}.LZTUpTabs #LZTUpTab:hover{cursor:pointer}.LZTUpTabs #LZTUpTab.active{box-shadow:inset 0px -2px 0px 0px #0daf77;transform:translateY(-1px);transition:.2s}.LZTUpTabs #LZTUpTab:not(.active):hover{box-shadow:inset 0px -2px 0px 0px #363636}.LZTUpSection{display:flex;flex-wrap:wrap;margin:20px 15px}.LZTUpSection.row{flex-direction:row}.LZTUpSection.row .LZTUpSectionItem{max-width:284px}.LZTUpSection.row .LZTUpSectionTitle,.LZTUpSection.row .LZTUpSectionDesc{max-width:200px}.LZTUpSection.column{flex-direction:column}.LZTUpSection.column .LZTUpSectionTitle,.LZTUpSection.column .LZTUpSectionDesc{max-width:440px}.LZTUpSection.column .LZTUpSectionDesc{white-space:break-spaces}.LZTUpSection.column .LZTUpSectionItem{max-width:580px}.LZTUpSection .LZTUpSectionItem{flex-basis:50%;flex-grow:1;height:64px;display:flex;align-items:center;transition:all .5s ease}.LZTUpSection .LZTUpSectionItem:hover{background:rgba(54,54,54,.75);border-radius:8px;cursor:pointer}.LZTUpSection .LZTUpSectionItem .LZTUpSectionTextContainer{display:flex;flex-direction:column;justify-content:center;flex:1 1 auto;max-width:100%}.LZTUpGrid{margin:20px 0;display:grid;grid-template-columns:repeat(3, 30%);justify-content:center;gap:20px}.LZTUpGrid .LZTUpGridItem{background:#343434;display:flex;flex-direction:column;align-items:center;justify-content:space-between;border-radius:8px;cursor:pointer}.LZTUpGrid .LZTUpGridItem:hover{background:#3a3a3a}.LZTUpGrid .LZTUpGridItem.active{outline:3px solid #228e5d}.LZTUpGrid .LZTUpGridItem.theme:hover{opacity:.9}.LZTUpGrid .LZTUpGridItem.theme .LZTUpGridTextContainer{padding-top:30px}.LZTUpGrid .LZTUpGridItem .LZTUpGridTextContainer{display:flex;flex-direction:column;align-self:start;margin-left:10px;margin-bottom:10px}.LZTUpGrid .LZTUpGridItem .LZTUpGridImage{max-width:96px;max-height:48px;margin:20px 0}.LZTUpGrid .LZTUpGridItem .LZTUpGridTitle{font-weight:bold;word-wrap:break-word}.LZTUpGrid .LZTUpGridItem .LZTUpGridDesc{word-wrap:break-word}.LZTUpGrid .LZTUpGridItem .LZTUpGridDesc .LZTUpGridAuthor{color:#949494}@media screen and (max-width: 720px){.LZTUpGrid{grid-template-columns:repeat(2, 47%)}}#LZTUpIcon{width:28px;height:28px;margin:20px;font-size:28px;color:#0daf77}#LZTUpIcon.gray{color:#949494}#LZTUpIcon.right{text-align:right}#LZTUpModalContainer{margin:15px;max-width:400px}#LZTUpModalChecksContainer,#LZTUpModalReportButtonsContainer,#LZTUpModalCell,.LZTUpModalMesh,.LZTUpModalSeparator{margin:15px;max-width:95%}.LZTUpContainer{display:flex;flex-direction:column;margin:15px;max-width:95%}.LZTUpModalHeading{margin:10px 0 5px 0 !important}.LZTUpModalDescription{margin:0 !important;margin-bottom:5px !important}.LZTUpTextArea{min-height:40px}.LZTUpModalSeparator{border-bottom:1px solid #363636}#LZTUpModalChecksText{margin:0px 25px 5px}.LZTUpSectionTitle,.LZTUpSectionDesc{display:block;margin-right:20px;font-size:15px;font-weight:bold;text-overflow:ellipsis;white-space:nowrap;overflow:hidden}.LZTUpSectionDesc{font-size:13px;font-weight:normal;color:#949494}.LZTUpSectionDesc .mceSmilie{max-height:18px !important}.LZTUpModalSectionTexts{display:flex;flex-direction:column;justify-content:center;flex:1 1 auto}.LZTUpModalSectionTexts .LZTUpSubText{max-width:450px}#LZTUpModalComment{background:#363636;margin:5px 15px;padding:10px 15px;border-radius:10px}#LZTUpModalComment a{color:#00ba78}.LZTUpModalBlock{display:flex}.LZTUpModalBlockButtons{display:flex;flex-wrap:wrap;justify-content:center;margin-top:25px}.LZTUpModalBlockButtons .button{margin:5px;width:250px}.LZTUpSubMenu .previewContainer{display:flex;float:right;margin:25px 15px;padding:10px 10px 15px 10px;background-size:cover;background-position:center;background-attachment:fixed;background-repeat:no-repeat;border-radius:10px;width:92%;max-width:92%}.LZTUpSubMenu .previewContainer .avatar img{width:66px;height:66px}.LZTUpSubMenu .previewContainer .info{padding:0 0 0 20px}.LZTUpSubMenu .previewContainer .info .username{font-weight:600}.LZTUpSubMenu .previewContainer .bannerOrStatus{min-width:150px;margin:10px 0 0;color:#949494}.LZTUpSubMenu .previewContainer .bannerOrStatus em{font-style:inherit}.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge .customUniqIcon{padding:2px 0;text-align:center}.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge .customUniqIcon svg{width:16px !important;height:16px !important}.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge::before{font-family:"Font Awesome 5 Pro";font-weight:600;display:inline-block;font-size:12.32px}.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.admin{background:#964448}.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.admin::before,.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.bot::before{content:""}.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.Designer::before{content:""}.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.headDesigner::before{content:""}.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.editor::before{content:""}.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.sponsor::before{content:""}.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.coder::before{content:""}.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.uniq_default::before,.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.Legend::before,.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.Ikarus::before{content:""}.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.moder{background:#3d6b39}.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.curator{background:rgba(8,156,122,.8509803922)}.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.moder::before,.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.main_moder::before,.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.curator::before{content:""}.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.arbitr::before,.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.main_arbitr::before{content:""}.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.telegramBot::before{content:""}.LZTUpSubMenu .previewContainer .UsernameStyle.style18,.LZTUpSubMenu .previewContainer .UsernameStyle.style360{text-decoration:line-through;color:#aaa}.LZTUpSubMenu .previewContainer .UsernameStyle.style3{color:#f13838}.LZTUpSubMenu .previewContainer .UsernameStyle.style30{color:#ff9afc}.LZTUpSubMenu .previewContainer .UsernameStyle.style353{background:linear-gradient(98.26deg, #FF42F7 2.08%, #FF24CF 100%);-webkit-background-clip:text;-webkit-text-fill-color:rgba(0,0,0,0)}.LZTUpSubMenu .previewContainer .UsernameStyle.style350{background:linear-gradient(90deg, #5c45ff, #feb5f2 100%);-webkit-background-clip:text;-webkit-text-fill-color:rgba(0,0,0,0)}.LZTUpSubMenu .previewContainer .UsernameStyle.style12{color:#01f73c}.LZTUpSubMenu .previewContainer .UsernameStyle.style1,.LZTUpSubMenu .previewContainer .UsernameStyle.style41,.LZTUpSubMenu .previewContainer .UsernameStyle.style142,.LZTUpSubMenu .previewContainer .UsernameStyle.style144{color:#aaa}.LZTUpSubMenu .previewContainer .UsernameStyle.style32,.LZTUpSubMenu .previewContainer .UsernameStyle.style93,.LZTUpSubMenu .previewContainer .UsernameStyle.style21,.LZTUpSubMenu .previewContainer .UsernameStyle.style2{color:#949494}.LZTUpSubMenu .previewContainer .UsernameStyle.style60{color:#ffa8af}.LZTUpSubMenu .previewContainer .UsernameStyle.style9{color:#0075ad}.LZTUpSubMenu .previewContainer .UsernameStyle.style65{color:#a5e3ff}.LZTUpSubMenu .previewContainer .UsernameStyle.style351{color:#ff0076}.LZTUpSubMenu .previewContainer .UsernameStyle.style29{color:#0acc9e}.LZTUpSubMenu .previewContainer .UsernameStyle.style26{background:linear-gradient(90deg, #0095dd 0%, #f1094b 100%, #0095dd);-webkit-background-clip:text;-webkit-text-fill-color:rgba(0,0,0,0)}.LZTUpSubMenu .previewContainer .UsernameStyle.style4{color:#0e9100}.LZTUpSubMenu .previewContainer .UsernameStyle.style22{color:#eee}.LZTUpSubMenu .previewContainer .UsernameStyle.style11{color:#56b5e0}.LZTUpSubMenu .previewContainer .UsernameStyle.style7{color:#ff9304}.LZTUpSubMenu .previewContainer .UsernameStyle.style349,.LZTUpSubMenu .previewContainer .UsernameStyle.style365{color:#0087ff}.LZTUpSubMenu .previewContainer .UsernameStyle.style354{color:aqua}.LZTUpSubMenu .previewContainer .UsernameStyle.style218{color:#f13838}.LZTUpSubMenu .previewContainer .UsernameStyle.style359{color:#e5d9a3}.LZTUpSubMenu .previewContainer .UsernameStyle.style8{color:gold}.LZTUpSubMenu .previewContainer .UsernameStyle.style265{background:linear-gradient(35deg, #006eff, #00ff81 52%, #fff 50%, #93cbff);-webkit-background-clip:text;-webkit-text-fill-color:rgba(0,0,0,0);text-shadow:0 0 7px rgba(0,255,207,.5019607843)}.LZTUpSubMenu .previewContainer .UsernameStyle.style23{color:#b35ede}.LZTUpSubMenu .previewContainer .UsernameStyle.banned,.LZTUpSubMenu .previewContainer .UsernameStyle.is_banned{text-decoration:line-through;background:inherit;-webkit-text-fill-color:inherit;text-shadow:inherit !important;color:#aaa !important}.LZTUpSubMenu .previewContainer .avatarBox{position:relative}.LZTUpSubMenu .previewContainer .avatarBox .avatarUserBadges .badgeDefaultBackground{background:#363636}.LZTUpSubMenu .previewContainer .avatarBox .avatarUserBadges .avatarUserBadge{position:absolute;bottom:-12px;left:20px;border:2px solid #272727;font-size:0;width:22px;height:22px;margin:0;line-height:22px;border-radius:50%;text-align:center;text-shadow:none !important;box-shadow:none !important;border-radius:50% !important;-webkit-background-clip:unset !important;-webkit-text-fill-color:unset !important;overflow:hidden}.LZTUpSubMenu .previewContainer .avatarBox .avatarUserBadges .avatarUserBadge:only-child{left:35px}.LZTUpSubMenu .previewContainer .avatarBox .avatarUserBadges .avatarUserBadge.avatarUserBadge--1{left:20px}.LZTUpSubMenu .previewContainer .avatarBox .avatarUserBadges .avatarUserBadge.avatarUserBadge--2{left:40px}.LZTUpSubMenu .previewContainer .avatarBox,.LZTUpSubMenu .previewContainer .info{display:table-cell;vertical-align:top}`, ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -639,56 +639,157 @@ module.exports = styleTagTransform;
 
 /***/ }),
 
-/***/ "./src/api/lztupgrade/themeAPI.js":
+/***/ "./src/api/lztupgrade/logoAPI.js":
 /***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
 
-
-// EXPORTS
-__webpack_require__.d(__webpack_exports__, {
-  Z: () => (/* binding */ themeAPI)
-});
-
-;// CONCATENATED MODULE: ./src/configs/endpoints.json
-const endpoints_namespaceObject = JSON.parse('{"RC":"https://lztupgrade.toiloff.ru/api/themes","I1":"https://lztupgrade.toiloff.ru/static/themes"}');
-// EXTERNAL MODULE: ./src/utils/logger.js
-var logger = __webpack_require__("./src/utils/logger.js");
-;// CONCATENATED MODULE: ./src/api/requestJSON.js
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   Z: () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var Configs_endpoints_json__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("./src/configs/endpoints.json");
+/* harmony import */ var API_requestJSON__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("./src/api/requestJSON.js");
 
 
-async function requestJSON(endpoint, errText) {
-  try {
-    return await $.ajax({
-      url: endpoint,
-      dataType: 'json'
-    });
-  } catch (err) {
-    logger/* default */.Z.log(errText);
-    return false;
-  }
+
+async function getLogos(intTarget = null) {
+  // 1 - forum, 2 - market
+  const target = intTarget ?? '';
+  return await (0,API_requestJSON__WEBPACK_IMPORTED_MODULE_1__/* ["default"] */ .Z)(`${Configs_endpoints_json__WEBPACK_IMPORTED_MODULE_0__/* .getLogos */ .eb}?target=${target}`, `Не удалось получить список логотипов (${Configs_endpoints_json__WEBPACK_IMPORTED_MODULE_0__/* .getLogos */ .eb})`);
+}
+
+async function getLogoByUID(logoUID) {
+  return await (0,API_requestJSON__WEBPACK_IMPORTED_MODULE_1__/* ["default"] */ .Z)(`${Configs_endpoints_json__WEBPACK_IMPORTED_MODULE_0__/* .getLogoByUID */ .NI}?uid=${logoUID}`, `Не удалось получить логотип по айди (${Configs_endpoints_json__WEBPACK_IMPORTED_MODULE_0__/* .getLogoByUID */ .NI})`);
 }
 
 
-;// CONCATENATED MODULE: ./src/api/lztupgrade/themeAPI.js
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  getLogos,
+  getLogoByUID,
+});
+
+/***/ }),
+
+/***/ "./src/api/lztupgrade/themeAPI.js":
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   Z: () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var Configs_endpoints_json__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("./src/configs/endpoints.json");
+/* harmony import */ var API_requestJSON__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("./src/api/requestJSON.js");
+/* harmony import */ var Utils_utils__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__("./src/utils/utils.js");
+
 
 
 
 async function getThemes() {
-  return await requestJSON(endpoints_namespaceObject.RC, `Не удалось получить список тем (${endpoints_namespaceObject.RC})`);
+  return await (0,API_requestJSON__WEBPACK_IMPORTED_MODULE_1__/* ["default"] */ .Z)(Configs_endpoints_json__WEBPACK_IMPORTED_MODULE_0__/* .getThemes */ .RC, `Не удалось получить список тем (${Configs_endpoints_json__WEBPACK_IMPORTED_MODULE_0__/* .getThemes */ .RC})`);
 }
 
 function loadTheme(themeName) {
   // load theme by theme name
-  const link = document.createElement('link');
-  link.href = `${endpoints_namespaceObject.I1}/${themeName}.css`;
-  link.type = 'text/css';
-  link.rel = 'stylesheet';
-  document.head.appendChild(link);
+
+  return GM_addStyle(`
+    @import url(${Configs_endpoints_json__WEBPACK_IMPORTED_MODULE_0__/* .staticThemes */ .I1}/${themeName}.css);
+  `);
 }
 
-/* harmony default export */ const themeAPI = ({
+async function smartLoadTheme(themeName) {
+  // Waiting for the body to load to overwrite lolz styles
+  return (0,Utils_utils__WEBPACK_IMPORTED_MODULE_2__/* .waitForBody */ .VR)().then(() => {
+    console.log("wait for elm")
+    return loadTheme(themeName)
+  });
+}
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   getThemes,
-  loadTheme
+  loadTheme,
+  smartLoadTheme
 });
+
+/***/ }),
+
+/***/ "./src/api/requestJSON.js":
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   Z: () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var Utils_logger__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("./src/utils/logger.js");
+
+
+async function requestJSON(endpoint, errText) {
+  try {
+    const res = await fetch(endpoint);
+
+    return await res.json()
+  } catch (err) {
+    Utils_logger__WEBPACK_IMPORTED_MODULE_0__/* ["default"] */ .Z.log(errText);
+    return false;
+  }
+}
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (requestJSON);
+
+/***/ }),
+
+/***/ "./src/cache/logo.js":
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   U: () => (/* binding */ setLogoFromCache)
+/* harmony export */ });
+/* harmony import */ var Configs_SiteType__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("./src/configs/SiteType.js");
+/* harmony import */ var Configs_StorageName__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("./src/configs/StorageName.js");
+/* harmony import */ var Configs_config__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__("./src/configs/config.js");
+/* harmony import */ var API_lztupgrade_logoAPI__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__("./src/api/lztupgrade/logoAPI.js");
+/* harmony import */ var Utils_logger__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__("./src/utils/logger.js");
+/* harmony import */ var Utils_utils__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__("./src/utils/utils.js");
+/* harmony import */ var Visuals_universal__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__("./src/visuals/universal.js");
+
+
+
+
+
+
+
+
+
+
+async function setLogoFromCache(logoType, logoUID) {
+  const timestampOnStart = (0,Utils_utils__WEBPACK_IMPORTED_MODULE_6__/* .getTimestamp */ .u3)();
+  const cacheName = logoType === Configs_SiteType__WEBPACK_IMPORTED_MODULE_0__/* ["default"] */ .Z.Forum ? 'forumLogo' : 'marketLogo';
+  let logo = await GM_getValue(Configs_StorageName__WEBPACK_IMPORTED_MODULE_1__/* ["default"] */ .Z.Cache, {})?.[cacheName];
+  let logoCSS = logo?.css ?? '';
+  let logoCacheTime = logo?.cacheTime ?? 0;
+  if (
+    logo?.uid !== logoUID ||
+    !logoCSS ||
+    logoCacheTime < timestampOnStart
+  ) {
+    Utils_logger__WEBPACK_IMPORTED_MODULE_4__/* ["default"] */ .Z.debug(`Requesting logo with id ${logoUID}...`);
+    const newForumLogo = await API_lztupgrade_logoAPI__WEBPACK_IMPORTED_MODULE_3__/* ["default"] */ .Z.getLogoByUID(logoUID)
+      .catch(err => console.error(err));
+
+    console.log(newForumLogo)
+    if (newForumLogo?.css) {
+      const newCacheLogo = {
+        uid: newForumLogo.uid,
+        css: newForumLogo.css,
+        cacheTime: (0,Utils_utils__WEBPACK_IMPORTED_MODULE_6__/* .getTimestamp */ .u3)() + Configs_config__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .Z.cacheTime
+      }
+
+      logoCSS = newCacheLogo.css;
+      let cacheData = await GM_getValue(Configs_StorageName__WEBPACK_IMPORTED_MODULE_1__/* ["default"] */ .Z.Cache, {});
+      cacheData[cacheName] = newCacheLogo;
+      await GM_setValue(Configs_StorageName__WEBPACK_IMPORTED_MODULE_1__/* ["default"] */ .Z.Cache, cacheData);
+    }
+  }
+
+  (0,Visuals_universal__WEBPACK_IMPORTED_MODULE_5__/* .setLogo */ .E)(logoCSS, logoType);
+}
+
+
 
 /***/ }),
 
@@ -795,6 +896,23 @@ function getThemeByID(themeId) {
 
 /***/ }),
 
+/***/ "./src/configs/SiteType.js":
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   Z: () => (/* binding */ SiteType)
+/* harmony export */ });
+class SiteType {
+  static Forum = new SiteType('Forum').name;
+  static Market = new SiteType('Market').name;
+
+  constructor(name) {
+    this.name = name
+  }
+}
+
+/***/ }),
+
 /***/ "./src/configs/StorageName.js":
 /***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
 
@@ -825,7 +943,7 @@ class StorageName {
 const config = () => {
   return {
     extName:  false ? 0 : 'LZT Upgrade UNRELEASED',
-    cacheTime: 604_800, // 1 week
+    cacheTime: 86_400 * 3, // 3 day
     defaultUserGroup: 'style2'
   }
 }
@@ -958,10 +1076,10 @@ __webpack_require__.a(__webpack_module__, async (__webpack_handle_async_dependen
 /* harmony import */ var IndexedDB_profile__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__("./src/indexedDB/profile.js");
 /* harmony import */ var UI_components_buttons_contestsButton__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__("./src/ui/components/buttons/contestsButton.js");
 /* harmony import */ var UI_components_buttons_menuButton__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__("./src/ui/components/buttons/menuButton.js");
-/* harmony import */ var UI_components_buttons_errorPageButton__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__("./src/ui/components/buttons/errorPageButton.js");
-/* harmony import */ var Events_categories__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__("./src/events/categories.js");
+/* harmony import */ var UI_components_buttons_errorPageButton__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__("./src/ui/components/buttons/errorPageButton.js");
+/* harmony import */ var Events_categories__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__("./src/events/categories.js");
 /* harmony import */ var Utils_logger__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__("./src/utils/logger.js");
-/* harmony import */ var Utils_registers__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__("./src/utils/registers.js");
+/* harmony import */ var Utils_registers__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__("./src/utils/registers.js");
 /* harmony import */ var Utils_contests__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__("./src/utils/contests.js");
 /* harmony import */ var Utils_users__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__("./src/utils/users.js");
 /* harmony import */ var Xenforo_bypass__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__("./src/xenforo/bypass.js");
@@ -969,9 +1087,12 @@ __webpack_require__.a(__webpack_module__, async (__webpack_handle_async_dependen
 /* harmony import */ var Visuals_universal__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__("./src/visuals/universal.js");
 /* harmony import */ var Visuals_profile__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__("./src/visuals/profile.js");
 /* harmony import */ var Utils_checkers__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__("./src/utils/checkers.js");
-/* harmony import */ var Styles_errorPage_scss__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__("./src/styles/errorPage.scss");
-/* harmony import */ var Styles_universal_scss__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__("./src/styles/universal.scss");
-/* harmony import */ var Styles_xenforo_scss__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__("./src/styles/xenforo.scss");
+/* harmony import */ var Configs_SiteType__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__("./src/configs/SiteType.js");
+/* harmony import */ var Cache_logo__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__("./src/cache/logo.js");
+/* harmony import */ var Styles_errorPage_scss__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__("./src/styles/errorPage.scss");
+/* harmony import */ var Styles_universal_scss__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__("./src/styles/universal.scss");
+/* harmony import */ var Styles_xenforo_scss__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__("./src/styles/xenforo.scss");
+
 
 
 
@@ -1008,7 +1129,7 @@ __webpack_require__.a(__webpack_module__, async (__webpack_handle_async_dependen
 
 
 async function initTheme() {
-  // exec time: 50-200ms
+  // exec time: 35ms
   console.time("init-theme");
 
   console.timeLog("init-theme", "getting appearData...")
@@ -1016,27 +1137,34 @@ async function initTheme() {
   console.timeLog("init-theme", "loading name from cache...")
   let themeName = await GM_getValue(Configs_StorageName__WEBPACK_IMPORTED_MODULE_3__/* ["default"] */ .Z.Cache, {}).themeName;
   console.timeLog("init-theme", "Check themeName valid...")
-  if (!themeName && appearData.theme > 0) {
-    Utils_logger__WEBPACK_IMPORTED_MODULE_9__/* ["default"] */ .Z.debug(`Requesting theme with id ${appearData.theme}...`);
-    themeName = await (0,Callbacks_extensionStart__WEBPACK_IMPORTED_MODULE_5__/* .getThemeByID */ .P)(appearData.theme)
+  console.log(themeName, appearData.themeId)
+  if (!themeName && appearData.themeId > 0) {
+    Utils_logger__WEBPACK_IMPORTED_MODULE_9__/* ["default"] */ .Z.debug(`Requesting theme with id ${appearData.themeId}...`);
+    themeName = await (0,Callbacks_extensionStart__WEBPACK_IMPORTED_MODULE_5__/* .getThemeByID */ .P)(appearData.themeId)
       .catch(err => console.error(err));
     let cacheData = await GM_getValue(Configs_StorageName__WEBPACK_IMPORTED_MODULE_3__/* ["default"] */ .Z.Cache, {});
     cacheData.themeName = themeName;
     await GM_setValue(Configs_StorageName__WEBPACK_IMPORTED_MODULE_3__/* ["default"] */ .Z.Cache, cacheData);
   }
-  console.timeLog("Loading theme...");
-  API_lztupgrade_themeAPI__WEBPACK_IMPORTED_MODULE_0__/* ["default"] */ .Z.loadTheme(themeName);
+  console.timeLog("init-theme", "Loading theme...");
+  await API_lztupgrade_themeAPI__WEBPACK_IMPORTED_MODULE_0__/* ["default"] */ .Z.smartLoadTheme(themeName);
   console.timeEnd("init-theme");
 }
 
 async function main() {
   console.time("lztup-start")
+  console.timeLog("lztup-start", "Waiting body...");
+  let LOAD_STATUS = false;
 
   if (GM_info?.script?.version) Utils_logger__WEBPACK_IMPORTED_MODULE_9__/* ["default"] */ .Z.log(`${Configs_config__WEBPACK_IMPORTED_MODULE_1__/* ["default"] */ .Z.extName} version: ${GM_info?.script?.version}`);
 
   const appearData = await GM_getValue(Configs_StorageName__WEBPACK_IMPORTED_MODULE_3__/* ["default"] */ .Z.Appear, {});
-  console.timeLog("lztup-start", "Waiting body...")
-  document.addEventListener('DOMContentLoaded', async () => {
+  async function startExt() {
+    if (LOAD_STATUS) {
+      return;
+    }
+
+    LOAD_STATUS = true;
     console.timeLog("lztup-start", "Body loaded successfully")
     if (/^(Error\s[0-9]{3}|Site\sMaintenance|429\sToo\sMany\sRequests)$/.test(document.head.querySelector('title').innerText)) {
       if (!appearData.newErrorPage) {
@@ -1065,7 +1193,7 @@ async function main() {
       const selfAdButtonBlock = document.createElement('div');
       selfAdButtonBlock.classList.add('buttons');
 
-      const selfAdTelegram = new UI_components_buttons_errorPageButton__WEBPACK_IMPORTED_MODULE_20__/* ["default"] */ .Z(
+      const selfAdTelegram = new UI_components_buttons_errorPageButton__WEBPACK_IMPORTED_MODULE_22__/* ["default"] */ .Z(
         `
           <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24">
             <path d="M9.78 18.65l.28-4.23l7.68-6.92c.34-.31-.07-.46-.52-.19L7.74 13.3L3.64 12c-.88-.25-.89-.86.2-1.3l15.97-6.16c.73-.33 1.43.18 1.15 1.3l-2.72 12.81c-.19.91-.74 1.13-1.5.71L12.6 16.3l-1.99 1.93c-.23.23-.42.42-.83.42z"/>
@@ -1075,7 +1203,7 @@ async function main() {
         Configs_extData__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .Z.links.telegramChannel
       ).createElement();
 
-      const selfAdGithub = new UI_components_buttons_errorPageButton__WEBPACK_IMPORTED_MODULE_20__/* ["default"] */ .Z(
+      const selfAdGithub = new UI_components_buttons_errorPageButton__WEBPACK_IMPORTED_MODULE_22__/* ["default"] */ .Z(
         `
           <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24">
             <path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5c.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34c-.46-1.16-1.11-1.47-1.11-1.47c-.91-.62.07-.6.07-.6c1 .07 1.53 1.03 1.53 1.03c.87 1.52 2.34 1.07 2.91.83c.09-.65.35-1.09.63-1.34c-2.22-.25-4.55-1.11-4.55-4.92c0-1.11.38-2 1.03-2.71c-.1-.25-.45-1.29.1-2.64c0 0 .84-.27 2.75 1.02c.79-.22 1.65-.33 2.5-.33c.85 0 1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02c.55 1.35.2 2.39.1 2.64c.65.71 1.03 1.6 1.03 2.71c0 3.82-2.34 4.66-4.57 4.91c.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2Z"/>
@@ -1110,10 +1238,18 @@ async function main() {
     Utils_logger__WEBPACK_IMPORTED_MODULE_9__/* ["default"] */ .Z.debug('┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┚');
 
     console.timeLog("lztup-start", "Register menu button")
-    ;(0,Utils_registers__WEBPACK_IMPORTED_MODULE_21__/* .registerMenuButton */ .e7)(UI_components_buttons_menuButton__WEBPACK_IMPORTED_MODULE_8__/* ["default"] */ .Z);
+    ;(0,Utils_registers__WEBPACK_IMPORTED_MODULE_23__/* .registerMenuButton */ .e7)(UI_components_buttons_menuButton__WEBPACK_IMPORTED_MODULE_8__/* ["default"] */ .Z);
 
     console.timeLog("lztup-start", "Add user group to cache")
     await GM_setValue(Configs_StorageName__WEBPACK_IMPORTED_MODULE_3__/* ["default"] */ .Z.UserGroup, userGroup);
+
+    if (appearData.forumLogo > 0) {
+      await (0,Cache_logo__WEBPACK_IMPORTED_MODULE_18__/* .setLogoFromCache */ .U)(Configs_SiteType__WEBPACK_IMPORTED_MODULE_17__/* ["default"] */ .Z.Forum, appearData.forumLogo);
+    }
+
+    if (appearData.marketLogo > 0) {
+      await (0,Cache_logo__WEBPACK_IMPORTED_MODULE_18__/* .setLogoFromCache */ .U)(Configs_SiteType__WEBPACK_IMPORTED_MODULE_17__/* ["default"] */ .Z.Market, appearData.marketLogo);
+    }
 
     console.timeLog("lztup-start", "Loading Profile DB...")
     const profileDB = new IndexedDB_profile__WEBPACK_IMPORTED_MODULE_6__/* .LZTProfileDB */ .M();
@@ -1135,7 +1271,7 @@ async function main() {
         }
 
         console.timeLog("lztup-start", "Reg profile observer")
-        ;(0,Utils_registers__WEBPACK_IMPORTED_MODULE_21__/* .registerObserver */ .O0)(async (mutation) => {
+        ;(0,Utils_registers__WEBPACK_IMPORTED_MODULE_23__/* .registerObserver */ .O0)(async (mutation) => {
           Utils_logger__WEBPACK_IMPORTED_MODULE_9__/* ["default"] */ .Z.debug(mutation)
           if (
             mutation.target.classList.contains('messageList') ||
@@ -1190,7 +1326,7 @@ async function main() {
     dbContestsData.openTenContestsBtn ? (0,UI_components_buttons_contestsButton__WEBPACK_IMPORTED_MODULE_7__/* .regOpenContestsBtn */ .u)(10) : null;
 
     console.timeLog("lztup-start", "Add onclick contests category")
-    ;(0,Events_categories__WEBPACK_IMPORTED_MODULE_22__/* ["default"] */ .Z)(Configs_extData__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .Z.nodes.contests, async () => {
+    ;(0,Events_categories__WEBPACK_IMPORTED_MODULE_24__/* ["default"] */ .Z)(Configs_extData__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .Z.nodes.contests, async () => {
       const newContestsData = await GM_getValue(Configs_StorageName__WEBPACK_IMPORTED_MODULE_3__/* ["default"] */ .Z.Contests, {});
       newContestsData.openTenContestsBtn ? (0,UI_components_buttons_contestsButton__WEBPACK_IMPORTED_MODULE_7__/* .regOpenContestsBtn */ .u)(10) : null;
     });
@@ -1218,7 +1354,7 @@ async function main() {
     console.timeLog("lztup-start", "showUserIdInMemberCard")
     if (dbUsersData.showUserIdInMemberCard) {
       (0,Utils_users__WEBPACK_IMPORTED_MODULE_11__/* .addUserIdToMemberCard */ .SL)();
-      (0,Utils_registers__WEBPACK_IMPORTED_MODULE_21__/* .registerObserver */ .O0)((mutation) => {
+      (0,Utils_registers__WEBPACK_IMPORTED_MODULE_23__/* .registerObserver */ .O0)((mutation) => {
         if (mutation.nextSibling) {
           if (mutation.nextSibling?.classList?.contains('modal')) {
             (0,Utils_users__WEBPACK_IMPORTED_MODULE_11__/* .addUserIdToMemberCard */ .SL)()
@@ -1236,11 +1372,17 @@ async function main() {
     }
 
     console.timeEnd("lztup-start")
-  })
+  };
+
+  document.addEventListener('DOMContentLoaded', startExt);
+
+  if (document.readyState === 'complete') {
+    await startExt();
+  }
 }
 
 try {
-  await Promise.allSettled([initTheme() , main()]);
+  await Promise.allSettled([initTheme(), main()]);
 } catch {
   console.error(e);
 }
@@ -2008,7 +2150,7 @@ class SectionSubText extends SectionText {
   /**
    *
    *  @constructor
-   *  @param {string} text - text of the heading (html allowed!!!)
+   *  @param {string} text - text of the desc (html allowed!!!)
    */
 
   constructor(text) {
@@ -2038,12 +2180,6 @@ class Section {
    *  @param {SectionDirection} [direction] - direction of elements in the section
    *  @param {boolean} [hidden] - state of visibility section. If true, the section is hidden by default.
    */
-
-  // constructor(options) {
-  //   this.doors = options.doors || 4;
-  //   this.state = options.state || 'brand new';
-  //   this.color = options.color || 'white';
-  // }
 
   constructor(id, options = {}) {
     this.id = id;
@@ -2077,10 +2213,16 @@ class Section {
    *  @param {string} desc - description of the item
    *  @param {string} iconClasses - font awesome icon classes
    *  @param {string} sectionId - id of the section item
-   *  @param {string} containerId - id of the container element (open on click)
+   *  @param {object} options - additional options (read description below)
+   *
+   *  Options:
+   *  @param {function} onClick - callback on click event
    *  @param {boolean} rightArrow - add a icon of the right arrow in the right side (only for column direction)
    */
-  addSectionItem(title, desc, iconClasses, sectionId, callback = () => {}, rightArrow = false) {
+  addSectionItem(title, desc, iconClasses, sectionId, options = {}) {
+    const onClickCallback = options.onClick || function() {};
+    const rightArrow = options.rightArrow || false;
+
     const sectionItem = document.createElement('div');
     sectionItem.id = sectionId;
     sectionItem.classList.add('LZTUpSectionItem');
@@ -2098,7 +2240,7 @@ class Section {
       sectionItem.append(sectionArrowIcon)
     }
 
-    sectionItem.onclick = async (e) => await callback(e, title);
+    sectionItem.onclick = async (e) => await onClickCallback(e, title);
 
     this.sectionItems.push(sectionItem);
     return this;
@@ -3540,7 +3682,7 @@ const getProfileItems = async () => {
 const getInfoItems = async () => {
   const infoSection = new Section('LZTUpInfoSection', { direction: SectionDirection.Column , hidden: false})
   for (const infoLink of extData/* default */.Z.infoLinks) {
-    infoSection.addSectionItem(infoLink.title, infoLink.desc, infoLink.icon, infoLink.sectionId, () => window.open(infoLink.href))
+    infoSection.addSectionItem(infoLink.title, infoLink.desc, infoLink.icon, infoLink.sectionId, { onClick: () => window.open(infoLink.href) });
   }
 
   return [
@@ -3746,10 +3888,10 @@ async function clearCache() {
 }
 
 const getSettingsItems = async () => {
-  const settingsSection = new Section('LZTUpInfoSection', { direction: SectionDirection.Column , hidden: false})
-    .addSectionItem('Сохранить настройки в файл', '', 'far fa-file-download', 'LZTUpSaveSettingsItem', saveSettings)
-    .addSectionItem('Загрузить настройки из файла', '', 'far fa-upload', 'LZTUpUploadSettingsItem', uploadSettings)
-    .addSectionItem('Очистить кеш', '', 'far fa-database', 'LZTUpClearCacheItem', clearCache)
+  const settingsSection = new Section('LZTUpInfoSection', { direction: SectionDirection.Column, hidden: false })
+    .addSectionItem('Сохранить настройки в файл', '', 'far fa-file-download', 'LZTUpSaveSettingsItem', { onClick: saveSettings })
+    .addSectionItem('Загрузить настройки из файла', '', 'far fa-upload', 'LZTUpUploadSettingsItem', { onClick: uploadSettings })
+    .addSectionItem('Очистить кеш', '', 'far fa-database', 'LZTUpClearCacheItem', { onClick: clearCache })
 
   return [
     settingsSection.createElement()
@@ -3806,17 +3948,376 @@ var update = injectStylesIntoStyleTag_default()(menu/* default */.Z, options);
 
        /* harmony default export */ const styles_menu = (menu/* default */.Z && menu/* default */.Z.locals ? menu/* default */.Z.locals : undefined);
 
+// EXTERNAL MODULE: ./src/api/lztupgrade/logoAPI.js
+var logoAPI = __webpack_require__("./src/api/lztupgrade/logoAPI.js");
+;// CONCATENATED MODULE: ./src/ui/components/menu/grid.js
+
+
+
+class GridText {
+  /**
+   *
+   *  @constructor
+   *  @param {string} text - text of the heading
+   */
+
+  constructor(text) {
+    this.text = text;
+    this.className = 'LZTUpGridTitle';
+  }
+
+  createElement() {
+    const el = document.createElement('span');
+    el.classList.add(this.className);
+    el.innerText = this.text;
+
+    return el;
+  }
+}
+
+class GridSubText extends GridText {
+  /**
+   *
+   *  @constructor
+   *  @param {string} text - text of the desc (html allowed!!!)
+   */
+
+  constructor(text, className = null) {
+    super(text)
+    this.className = className ?? 'LZTUpGridDesc';
+  }
+
+  createElement() {
+    const el = document.createElement('span');
+    el.classList.add(this.className);
+    el.innerHTML = (0,purify/* clearHTML */.G6)(this.text);
+
+    return el;
+  }
+}
+
+
+class GridAuthorLink {
+  /**
+   *
+   *  @constructor
+   *  @param {string} text - link text (html allowed!!!)
+   *  @param {string} userId - userId of user to link
+   */
+
+  constructor(text, userId) {
+    this.text = text;
+    this.userId = Number(userId) > 0 ? Number(userId) : '';
+    this.className = 'LZTUpGridAuthor';
+  }
+
+  createElement() {
+    const currentDomain = window.location.hostname;
+
+    const el = document.createElement('a');
+    el.classList.add(this.className);
+    el.href = `https://${currentDomain}/members/${this.userId}`;
+    el.innerHTML = (0,purify/* clearHTML */.G6)(this.text);
+
+    return el;
+  }
+}
+
+
+class GridImage {
+  /**
+   *
+   *  @constructor
+   *  @param {string} imageLink - raw link to image
+   *  @param {string} altText - alt text if image isn't loaded
+   */
+
+  constructor(imageLink, altText = null) {
+    this.imageLink = imageLink;
+    this.altText = altText ?? '[IMG]';
+    this.className = 'LZTUpGridImage';
+  }
+
+  createElement() {
+    const el = document.createElement('img');
+    el.classList.add(this.className);
+    el.alt = this.altText;
+    el.src = this.imageLink;
+
+    return el;
+  }
+}
+
+
+class Grid {
+  /**
+   *
+   *  @constructor
+   *  @param {string} id - id of the grid
+   *  @param {object} options - additional options (read description below)
+   *
+   *  options params:
+   *  @param {object} [gridItems] - array of grid items
+   */
+
+  constructor(id, options = {}) {
+    this.id = id;
+    this.gridItems = options.gridItems || [];
+  }
+
+  createElement() {
+    const grid = document.createElement('div');
+    grid.id = this.id;
+    grid.classList.add('LZTUpGrid');
+
+    for (const gridItem of this.gridItems) {
+      grid.appendChild(gridItem);
+    }
+
+    return grid;
+  }
+
+  /**
+   *
+   *  @param {string} name - title of the item
+   *  @param {string} imageLink - image of the item
+   *  @param {string} gridId - id of the grid item
+   *  @param {object} options - additional options (read description below)
+   *
+   *  Options:
+   *  @param {function} onClick - callback on click event
+   *  @param {string} imageLink - image of the item
+   *  @param {string} altText - alt text if image isn't loaded
+   *  @param {boolean} activeState - status of item
+   *  @param {object} authors - author info ([{}, {}...])
+   *  @param {string} backgroundColor - color of background
+   *  @param {string} textColor - color of text
+   *  @param {string} additionalClass - additional class of grid item
+   *
+   *  Authors:
+   *  @param {string} name - username of the author
+   *  @param {string} userId - link to the author
+   */
+  addGridItem(title, gridId, options = {}) {
+    const onClickCallback = options.onClick || function() {};
+    const imageLink = options.imageLink ?? '';
+    const imageAlt = options.altText;
+    const activeState = options.active ?? false;
+    const authors = options.authors ?? [];
+    const backgroundColor = options.backgroundColor ?? '';
+    const textColor = options.textColor ?? '';
+    const additionalClass = options.additionalClass ?? '';
+
+    const gridItem = document.createElement('div');
+    gridItem.id = gridId;
+    gridItem.classList.add('LZTUpGridItem');
+    if (activeState) {
+      gridItem.classList.add('active');
+    }
+    if (additionalClass) {
+      gridItem.classList.add(additionalClass);
+    }
+
+    gridItem.style.background = backgroundColor;
+    gridItem.style.color = textColor;
+
+    if (imageLink) {
+      const gridImage = new GridImage(imageLink, imageAlt).createElement();
+      gridItem.append(gridImage);
+    }
+
+    const textContainer = document.createElement('div');
+    textContainer.classList.add('LZTUpGridTextContainer');
+    const textEl = new GridText(title).createElement();
+
+    const authorsEl = authors.map(author => {
+      return new GridAuthorLink(author.name, author.userId).createElement().outerHTML;
+    })
+
+    const authorsInfoEl = new GridSubText(authorsEl.join(', ')).createElement();
+
+    textContainer.append(textEl, authorsInfoEl);
+    gridItem.append(textContainer);
+    gridItem.onclick = async (e) => {
+      this.setActive(gridItem);
+      await onClickCallback(e, gridItem);
+    };
+
+    this.gridItems.push(gridItem);
+    return this;
+  }
+
+  setActive(item) {
+    for (const gridItem of this.gridItems) {
+      gridItem.classList.remove('active');
+    }
+
+    item.classList.add('active');
+    return this;
+  }
+}
+
+
+// EXTERNAL MODULE: ./src/configs/SiteType.js
+var SiteType = __webpack_require__("./src/configs/SiteType.js");
+// EXTERNAL MODULE: ./src/api/lztupgrade/themeAPI.js
+var themeAPI = __webpack_require__("./src/api/lztupgrade/themeAPI.js");
 ;// CONCATENATED MODULE: ./src/ui/menu/items/appear.js
 
 
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+async function createLogoManagerTempMenu(logoType) {
+  const storageItemName = `${logoType.toLowerCase()}Logo`;
+  const appearData = await GM_getValue(StorageName/* default */.Z.Appear, {});
+  const activeLogo = appearData?.[storageItemName] ?? 0;
+  const logoTargetInt = logoType === SiteType/* default */.Z.Forum ? 1 : 2;
+  const logos = await logoAPI/* default */.Z.getLogos(logoTargetInt) || [];
+  const defaultLogoPreview = logoType === SiteType/* default */.Z.Forum ?
+    "https://raw.githubusercontent.com/ilyhalight/lzt-upgrade/master/public/static/img/logos/forum/default.svg" :
+    "https://raw.githubusercontent.com/ilyhalight/lzt-upgrade/master/public/static/img/logos/market/default.svg"
+  logos.unshift({
+    "uid": 0,
+    "name": "По умолчанию",
+    "preview": defaultLogoPreview,
+    "target": 1,
+    "css": "",
+    "author": "Lolzteam",
+    "author_userid": "",
+    "active": 1,
+    "created_at": 1696777530
+  });
+
+  const modalContent = document.querySelector('.LZTUpModalContent');
+  const mainMenu = document.getElementById('LZTUpAppearContainer');
+
+  const logoGrid = new Grid('LZTUpLogoGrid');
+  // TODO: add logo filters for the market and forum in the API (TO BACKEND) (?target=market or ?target=forum)
+  // TODO: ADD cache, add update cache logo button
+  for (const logo of logos) {
+    const authors = (0,utils/* getAuthors */.P6)(logo.author, logo.author_userid);
+    logoGrid.addGridItem(logo.name, `LZTUpLogo${logo.uid}`, {
+      onClick: async (e, item) => {
+        (0,universal/* setLogo */.E)(logo.css, logoType);
+        appearData[storageItemName] = logo.uid;
+        await GM_setValue(StorageName/* default */.Z.Appear, appearData);
+        logger/* default */.Z.debug(`Change logo to ${logo.name} (by ${logo.author})`);
+        const cacheData = await GM_getValue(StorageName/* default */.Z.Cache, {});
+        cacheData[storageItemName] = {
+          uid: logo.uid,
+          css: logo.css,
+          cacheTime: (0,utils/* getTimestamp */.u3)() + config/* default */.Z.cacheTime
+        };
+        await GM_setValue(StorageName/* default */.Z.Cache, cacheData);
+      },
+      imageLink: logo.preview,
+      altText: logo.name,
+      active: logo.uid === activeLogo,
+      authors
+    });
+  }
+
+  const el = addTemporaryMenuSection(
+    [
+      new container(
+        [
+          logoGrid.createElement()
+        ],
+        'Выберите логотип',
+        `Выберите логотип, который у вас будет отображаться как логотип ${logoType === SiteType/* default */.Z.Forum ? 'форума' : 'маркета'}.`
+      ).createElement()
+    ]
+  )
+
+  modalContent.appendChild(el);
+  openTempMenu('Выбор логотипа', 'Внешний вид', mainMenu, () => {});
+}
+
+async function createThemeManagerTempMenu() {
+  const appearData = await GM_getValue(StorageName/* default */.Z.Appear, {});
+  const selectedTheme = appearData?.selectedTheme ?? 0;
+  const themes = await themeAPI/* default */.Z.getThemes() || [];
+  themes.unshift({
+    "uid": 0,
+    "name": "Обычная",
+    "file": "",
+    "author": "Lolzteam",
+    "author_userid": null,
+    "accent_color": "",
+    "text_color": "",
+    "active": 1,
+  });
+
+  const modalContent = document.querySelector('.LZTUpModalContent');
+  const mainMenu = document.getElementById('LZTUpAppearContainer');
+
+  const themeGrid = new Grid('LZTUpThemeGrid');
+  // TODO: ADD cache, add update cache logo button
+  for (const theme of themes) {
+    const authors = (0,utils/* getAuthors */.P6)(theme.author, theme.author_userid);
+    themeGrid.addGridItem(theme.name, `LZTUpTheme${theme.uid}`, {
+      onClick: async (e, item) => {
+        appearData.selectedTheme = theme.uid;
+        await GM_setValue(StorageName/* default */.Z.Appear, appearData);
+        logger/* default */.Z.debug(`Change theme to ${theme.name} (by ${theme.author})`);
+        (0,registers/* registerAlert */.de)(`Тема изменена на ${theme.name}`, 5000);
+        const cacheData = await GM_getValue(StorageName/* default */.Z.Cache, {});
+        cacheData.themeName = theme.file;
+        await GM_setValue(StorageName/* default */.Z.Cache, cacheData);
+        await (0,utils/* sleep */._v)(500);
+        window.location.reload();
+      },
+      active: theme.uid === selectedTheme,
+      authors,
+      backgroundColor: theme.accent_color,
+      textColor: theme.text_color,
+      additionalClass: 'theme'
+    });
+  }
+
+  const el = addTemporaryMenuSection(
+    [
+      new container(
+        [
+          themeGrid.createElement()
+        ],
+        'Выберите тему',
+        `Выберите тему, которая у вас будет отображаться как тема сайта.`
+      ).createElement()
+    ]
+  )
+
+  modalContent.appendChild(el);
+  openTempMenu('Выбор темы', 'Внешний вид', mainMenu, () => {});
+}
+
+
 const getAppearItems = async () => {
   const appearData = await GM_getValue(StorageName/* default */.Z.Appear, {});
 
+  const appearSection = new Section('LZTUpInfoSection', { direction: SectionDirection.Column, hidden: false })
+    .addSectionItem('Логотип', 'Выберите логотип для форума из списка', 'far fa-comments', 'LZTUpLogoManager', { onClick: async () => await createLogoManagerTempMenu(SiteType/* default */.Z.Forum), rightArrow: true })
+    .addSectionItem('Логотип маркета', 'Выберите логотип для маркета из списка', 'far fa-shopping-cart', 'LZTUpMarketLogoManager', { onClick: async () => await createLogoManagerTempMenu(SiteType/* default */.Z.Market), rightArrow: true })
+    .addSectionItem('Менеджер тем', 'Выберите тему для форума из списка', 'far fa-paint-brush', 'LZTUpThemeManager', { onClick: createThemeManagerTempMenu, rightArrow: true })
+
   return [
-    new comment("Раздел настроек внешнего вида").createElement()
+    appearSection.createElement()
   ];
 }
 
@@ -3848,19 +4349,19 @@ const getUpdateItems = async () => {
 
 async function generateMenu(tabs) {
   const menuSection = new Section('LZTUpMainSection')
-    .addSectionItem('Локальный Уник', 'Максимальная кастомизация', 'far fa-palette', 'LZTUpUniqItem', (_, title) => openSubMenu('LZTUpUniqContainer', title))
-    .addSectionItem('Розыгрыши', 'Комфорт для розыгрышей', 'far fa-gift', 'LZTUpContestsItem', (_, title) => openSubMenu('LZTUpContestsContainer', title))
-    .addSectionItem('Пользователи', 'Штучки для пользователей', 'far fa-user', 'LZTUpUsersItem', (_, title) => openSubMenu('LZTUpUsersContainer', title))
-    .addSectionItem('Внешний вид', 'Темы, логотипы и другое', 'far fa-drafting-compass', 'LZTUpAppearItem', (_, title) => openSubMenu('LZTUpAppearContainer', title))
+    .addSectionItem('Локальный Уник', 'Максимальная кастомизация', 'far fa-palette', 'LZTUpUniqItem', { onClick: (_, title) => openSubMenu('LZTUpUniqContainer', title) })
+    .addSectionItem('Розыгрыши', 'Комфорт для розыгрышей', 'far fa-gift', 'LZTUpContestsItem', { onClick: (_, title) => openSubMenu('LZTUpContestsContainer', title) })
+    .addSectionItem('Пользователи', 'Штучки для пользователей', 'far fa-user', 'LZTUpUsersItem', { onClick: (_, title) => openSubMenu('LZTUpUsersContainer', title) })
+    .addSectionItem('Внешний вид', 'Темы, логотипы и другое', 'far fa-drafting-compass', 'LZTUpAppearItem', { onClick: (_, title) => openSubMenu('LZTUpAppearContainer', title) })
     .addSectionContainer('LZTUpUniqContainer', await items_profile())
     .addSectionContainer('LZTUpContestsContainer', await items_contests())
     .addSectionContainer('LZTUpUsersContainer', await items_users())
     .addSectionContainer('LZTUpAppearContainer', await appear())
 
   const settingsSection = new Section('LZTUpSettingsSection')
-    .addSectionItem('Настройки', 'Настройки расширения', 'far fa-cog', 'LZTUpSettingsItem', (_, title) => openSubMenu('LZTUpSettingsContainer', title))
-    .addSectionItem('Обновления', 'Установка и проверка обновлений расширения', 'far fa-cloud-download', 'LZTUpUpdateItem', (_, title) => openSubMenu('LZTUpUpdateContainer', title))
-    .addSectionItem('Информация', `Версия: ${GM_info?.script?.version}`, 'far fa-info-circle', 'LZTUpInformationItem', (_, title) => openSubMenu('LZTUpInformationContainer', title))
+    .addSectionItem('Настройки', 'Настройки расширения', 'far fa-cog', 'LZTUpSettingsItem', { onClick: (_, title) => openSubMenu('LZTUpSettingsContainer', title) })
+    .addSectionItem('Обновления', 'Установка и проверка обновлений расширения', 'far fa-cloud-download', 'LZTUpUpdateItem', { onClick: (_, title) => openSubMenu('LZTUpUpdateContainer', title) })
+    .addSectionItem('Информация', `Версия: ${GM_info?.script?.version}`, 'far fa-info-circle', 'LZTUpInformationItem', { onClick: (_, title) => openSubMenu('LZTUpInformationContainer', title) })
     .addSectionContainer('LZTUpSettingsContainer', await settings())
     .addSectionContainer('LZTUpUpdateContainer', await items_update())
     .addSectionContainer('LZTUpInformationContainer', await info())
@@ -4097,7 +4598,7 @@ function isElement(o){
 }
 
 function isContestThread() {
-  return document.querySelector('div.contestThreadBlock') !== null;
+  return !!document.querySelector('div.contestThreadBlock');
 }
 
 function isContestsNode() {
@@ -4106,17 +4607,17 @@ function isContestsNode() {
 }
 
 function isProfilePage() {
-  // exec time: 0ms (faster than check meta)
-  return document.querySelector('ol#ProfilePostList') !== null;
+  // exec time: <1ms (faster than check meta)
+  return !!document.querySelector('#content.member_view');
 }
 
 function isThreadPage() {
-  // exec time: 0ms (faster than check meta)
-  return document.querySelector('div#content.thread_view') !== null;
+  // exec time: <1ms (faster than check meta)
+  return !!document.querySelector('#content.thread_view');
 }
 
 function isOpenMemberCard() {
-  return document.querySelector(Configs_extData__WEBPACK_IMPORTED_MODULE_0__/* ["default"] */ .Z.selectors.memberCard) !== null;
+  return !!document.querySelector(Configs_extData__WEBPACK_IMPORTED_MODULE_0__/* ["default"] */ .Z.selectors.memberCard);
 }
 
 
@@ -4706,10 +5207,13 @@ function showFullRegDateInProfile(full = false) {
 /* harmony export */   Bw: () => (/* binding */ removeStylesByEl),
 /* harmony export */   Eq: () => (/* binding */ getThreadLinks),
 /* harmony export */   Nc: () => (/* binding */ waitForElm),
+/* harmony export */   P6: () => (/* binding */ getAuthors),
+/* harmony export */   VR: () => (/* binding */ waitForBody),
 /* harmony export */   _v: () => (/* binding */ sleep),
-/* harmony export */   bg: () => (/* binding */ applyStyle)
+/* harmony export */   bg: () => (/* binding */ applyStyle),
+/* harmony export */   u3: () => (/* binding */ getTimestamp)
 /* harmony export */ });
-/* unused harmony exports getNodeLinks, removeStyles, getTimestamp */
+/* unused harmony exports getNodeLinks, removeStyles */
 function waitForElm(selector) {
   // https://stackoverflow.com/questions/5525071/how-to-wait-until-an-element-exists
   return new Promise(resolve => {
@@ -4729,6 +5233,26 @@ function waitForElm(selector) {
       subtree: true
     });
   });
+}
+
+function waitForBody() {
+  return new Promise(resolve => {
+    if (document.body) {
+      return resolve(document.body);
+    }
+
+    const observer = new MutationObserver(() => {
+      if (document.body) {
+        resolve(document.body);
+        observer.disconnect();
+      }
+    });
+
+    observer.observe(document, {
+      childList: true,
+      subtree: true
+    });
+  })
 }
 
 const sleep = m => new Promise(r => setTimeout(r, m))
@@ -4777,6 +5301,41 @@ function getTimestamp() {
   return Math.floor(Date.now() / 1000);
 }
 
+function getAuthors(authorNames, authorUserIds) {
+  if (authorUserIds === '') {
+    authorUserIds = null;
+  }
+
+  switch (typeof authorUserIds) {
+    case "string":
+      const authorsUserIDs = authorUserIds.split(',');
+      const authorsNames = authorNames.split(',');
+      const authors = []
+      authorsUserIDs.map((val, idx) => {
+        authors.push({
+          name: XenForo.htmlspecialchars(authorsNames?.[idx]),
+          userId: Number(val)
+        })
+      });
+      return authors;
+    case "number":
+      return [
+        {
+          name: XenForo.htmlspecialchars(authorNames),
+          userId: XenForo.htmlspecialchars(authorUserIds)
+        }
+      ];
+    default:
+      return [
+        {
+          name: XenForo.htmlspecialchars(authorNames),
+          userId: null
+        }
+      ];
+  }
+}
+
+
 
 
 /***/ }),
@@ -4807,15 +5366,18 @@ function addBackgroundImageInProfile(imageUrl) {
 /***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
 
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   E: () => (/* binding */ setLogo),
 /* harmony export */   j: () => (/* binding */ addBackgroundImage)
 /* harmony export */ });
 /* harmony import */ var Utils_users__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("./src/utils/users.js");
 /* harmony import */ var Utils_checkers__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("./src/utils/checkers.js");
+/* harmony import */ var Configs_SiteType__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__("./src/configs/SiteType.js");
+
+
 
 
 
 const customBackgroundID = 'LZTUpCustomBackground';
-
 
 function addBackgroundImage(imageUrl, skipUserCheck = false) {
   // exec time: 0-1ms (1ms in profile)
@@ -4836,6 +5398,28 @@ function addBackgroundImage(imageUrl, skipUserCheck = false) {
   body.id = customBackgroundID;
   body.style.backgroundImage = `linear-gradient(rgba(54, 54, 54, 0.85), rgba(54, 54, 54, 0.85)), url(${imageUrl})`;
 }
+
+function setLogo(newStyles, site = Configs_SiteType__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .Z.Forum) {
+  let logo;
+  switch (site) {
+    case Configs_SiteType__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .Z.Forum:
+      logo = document.getElementById('lzt-logo');
+      break;
+    case Configs_SiteType__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .Z.Market:
+      logo = document.getElementById('lzt-market-logo');
+      break;
+    default:
+      return false;
+  }
+
+  if (!logo) {
+    return false;
+  }
+
+  logo.style = newStyles;
+  return true;
+}
+
 
 
 
@@ -5007,6 +5591,13 @@ function setTooltip(el, text) {
 }
 
 
+
+/***/ }),
+
+/***/ "./src/configs/endpoints.json":
+/***/ ((module) => {
+
+module.exports = JSON.parse('{"RC":"https://lztupgrade.toiloff.ru/api/themes","I1":"https://lztupgrade.toiloff.ru/static/themes","eb":"https://lztupgrade.toiloff.ru/api/logos","NI":"https://lztupgrade.toiloff.ru/api/logo"}');
 
 /***/ })
 
