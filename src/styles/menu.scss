@@ -214,15 +214,83 @@
       border-radius: 8px;
       cursor: pointer;
     }
+
+    .LZTUpSectionTextContainer {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      flex: 1 1 auto;
+      max-width: 100%;
+    }
   }
 }
 
-.LZTUpSectionTextContainer {
-  display: flex;
-  flex-direction: column;
+.LZTUpGrid {
+  margin: 20px 0;
+  display: grid;
+  grid-template-columns: repeat(3, 30%);
   justify-content: center;
-  flex: 1 1 auto;
-  max-width: 100%;
+  gap: 20px;
+
+  .LZTUpGridItem {
+    background: rgb(52, 52, 52);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 8px;
+    cursor: pointer;
+    &:hover {
+      background: rgb(58, 58, 58);
+    }
+
+    &.active {
+      outline: 3px solid rgb(34, 142, 93);
+    }
+
+    &.theme {
+      &:hover {
+        opacity: 0.9;
+      }
+
+      .LZTUpGridTextContainer {
+        padding-top: 30px;
+      }
+    }
+
+
+    .LZTUpGridTextContainer {
+      display: flex;
+      flex-direction: column;
+      align-self: start;
+      margin-left: 10px;
+      margin-bottom: 10px;
+    }
+
+    .LZTUpGridImage {
+      max-width: 96px;
+      max-height: 48px;
+      margin: 20px 0;
+    }
+
+    .LZTUpGridTitle {
+      font-weight: bold;
+      word-wrap: break-word;
+    }
+
+    .LZTUpGridDesc {
+      word-wrap: break-word;
+      .LZTUpGridAuthor {
+        color: rgb(148, 148, 148);
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 720px) {
+  .LZTUpGrid {
+    grid-template-columns: repeat(2, 47%);
+  }
 }
 
 #LZTUpIcon {
