@@ -3,6 +3,7 @@
     "baseUrl": "./",
     "paths": {
       "API/*": ["api/*"],
+      "Cache/*": ["cache/*"],
       "Callbacks/*": ["callbacks/*"],
       "Configs/*": ["configs/*"],
       "Events/*": ["events/*"],

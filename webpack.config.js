@@ -38,6 +38,7 @@ export default (env) => {
       extensions: [".js"],
       alias: {
         API: path.resolve(__dirname, 'src/api/'),
+        Cache: path.resolve(__dirname, 'src/cache/'),
         Callbacks: path.resolve(__dirname, 'src/callbacks/'),
         Configs: path.resolve(__dirname, 'src/configs/'),
         Events: path.resolve(__dirname, 'src/events/'),
