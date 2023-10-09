@@ -43,8 +43,8 @@ import {
 import { addBackgroundImage } from 'Visuals/universal';
 import { addBackgroundImageInProfile } from 'Visuals/profile';
 import { isProfilePage } from 'Utils/checkers';
-import { waitForElm } from "Utils/utils";
-
+import SiteType from "Configs/SiteType";
+import { setLogoFromCache } from "Cache/logo";
 
 // import 'Styles/main.css';
 
@@ -78,12 +78,18 @@ async function initTheme() {
 
 async function main() {
   console.time("lztup-start")
+  console.timeLog("lztup-start", "Waiting body...");
+  let LOAD_STATUS = false;
 
   if (GM_info?.script?.version) Logger.log(`${config.extName} version: ${GM_info?.script?.version}`);
 
   const appearData = await GM_getValue(StorageName.Appear, {});
-  console.timeLog("lztup-start", "Waiting body...")
-  document.addEventListener('DOMContentLoaded', async () => {
+  async function startExt() {
+    if (LOAD_STATUS) {
+      return;
+    }
+
+    LOAD_STATUS = true;
     console.timeLog("lztup-start", "Body loaded successfully")
     if (/^(Error\s[0-9]{3}|Site\sMaintenance|429\sToo\sMany\sRequests)$/.test(document.head.querySelector('title').innerText)) {
       if (!appearData.newErrorPage) {
@@ -161,6 +167,14 @@ async function main() {
 
     console.timeLog("lztup-start", "Add user group to cache")
     await GM_setValue(StorageName.UserGroup, userGroup);
+
+    if (appearData.forumLogo > 0) {
+      await setLogoFromCache(SiteType.Forum, appearData.forumLogo);
+    }
+
+    if (appearData.marketLogo > 0) {
+      await setLogoFromCache(SiteType.Market, appearData.marketLogo);
+    }
 
     console.timeLog("lztup-start", "Loading Profile DB...")
     const profileDB = new LZTProfileDB();
@@ -283,7 +297,13 @@ async function main() {
     }
 
     console.timeEnd("lztup-start")
-  })
+  };
+
+  document.addEventListener('DOMContentLoaded', startExt);
+
+  if (document.readyState === 'complete') {
+    await startExt();
+  }
 }
 
 try {
