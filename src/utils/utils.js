@@ -19,6 +19,26 @@ function waitForElm(selector) {
   });
 }
 
+function waitForBody() {
+  return new Promise(resolve => {
+    if (document.body) {
+      return resolve(document.body);
+    }
+
+    const observer = new MutationObserver(() => {
+      if (document.body) {
+        resolve(document.body);
+        observer.disconnect();
+      }
+    });
+
+    observer.observe(document, {
+      childList: true,
+      subtree: true
+    });
+  })
+}
+
 const sleep = m => new Promise(r => setTimeout(r, m))
 
 function getNodeLinks() {
@@ -65,13 +85,50 @@ function getTimestamp() {
   return Math.floor(Date.now() / 1000);
 }
 
+function getAuthors(authorNames, authorUserIds) {
+  if (authorUserIds === '') {
+    authorUserIds = null;
+  }
+
+  switch (typeof authorUserIds) {
+    case "string":
+      const authorsUserIDs = authorUserIds.split(',');
+      const authorsNames = authorNames.split(',');
+      const authors = []
+      authorsUserIDs.map((val, idx) => {
+        authors.push({
+          name: XenForo.htmlspecialchars(authorsNames?.[idx]),
+          userId: Number(val)
+        })
+      });
+      return authors;
+    case "number":
+      return [
+        {
+          name: XenForo.htmlspecialchars(authorNames),
+          userId: XenForo.htmlspecialchars(authorUserIds)
+        }
+      ];
+    default:
+      return [
+        {
+          name: XenForo.htmlspecialchars(authorNames),
+          userId: null
+        }
+      ];
+  }
+}
+
+
 export {
   waitForElm,
+  waitForBody,
   sleep,
   getNodeLinks,
   getThreadLinks,
   removeStyles,
   removeStylesByEl,
   applyStyle,
-  getTimestamp
+  getTimestamp,
+  getAuthors
 };
