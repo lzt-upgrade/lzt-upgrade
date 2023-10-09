@@ -10,7 +10,7 @@ function isElement(o){
 }
 
 function isContestThread() {
-  return document.querySelector('div.contestThreadBlock') !== null;
+  return !!document.querySelector('div.contestThreadBlock');
 }
 
 function isContestsNode() {
@@ -19,17 +19,24 @@ function isContestsNode() {
 }
 
 function isProfilePage() {
-  // exec time: 0ms (faster than check meta)
-  return document.querySelector('ol#ProfilePostList') !== null;
+  // exec time: <1ms (faster than check meta)
+  return !!document.querySelector('#content.member_view');
 }
 
 function isThreadPage() {
-  // exec time: 0ms (faster than check meta)
-  return document.querySelector('div#content.thread_view') !== null;
+  // exec time: <1ms (faster than check meta)
+  return !!document.querySelector('#content.thread_view');
 }
 
 function isOpenMemberCard() {
-  return document.querySelector(extData.selectors.memberCard) !== null;
+  return !!document.querySelector(extData.selectors.memberCard);
 }
 
-export { isElement, isContestThread, isContestsNode, isProfilePage, isThreadPage, isOpenMemberCard }
+export {
+  isElement,
+  isContestThread,
+  isContestsNode,
+  isProfilePage,
+  isThreadPage,
+  isOpenMemberCard
+}
