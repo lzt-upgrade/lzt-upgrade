@@ -73,7 +73,7 @@ ___CSS_LOADER_EXPORT___.push([module.id, `#LZTUpButton{color:#0daf77;font-weight
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, `.LZTUpErrorPage{background-color:#272727}.LZTUpErrorPage article{color:#d6d6d6}.LZTUpErrorPage article div{display:flex;flex-direction:column;justify-content:center;align-items:center}.LZTUpErrorPage article div .LZTUpErrorPageSelfAd{border-top:1px solid #363636}.LZTUpErrorPage article div .LZTUpErrorPageSelfAd .selfAd{font-size:18px;color:#949494;max-width:75%;text-align:center}.LZTUpErrorPage article div .LZTUpErrorPageSelfAd .buttons{display:flex;flex-direction:row}.LZTUpErrorPage article div .LZTUpErrorPageSelfAd .buttons .button{display:flex;align-items:center;background:#0daf77;border-radius:6px;color:#fff;padding:0px 15px;margin:10px;line-height:34px;font-size:18px;transition:.5s background ease}.LZTUpErrorPage article div .LZTUpErrorPageSelfAd .buttons .button:hover{background:rgba(13,175,119,.8) !important}.LZTUpErrorPage article div .LZTUpErrorPageSelfAd .buttons .button svg{width:24px;height:24px;margin-right:5px;fill:#fff}`, ""]);
+___CSS_LOADER_EXPORT___.push([module.id, `.LZTUpErrorPage{background-color:#272727}.LZTUpErrorPage article{color:#d6d6d6}.LZTUpErrorPage article div{display:flex;flex-direction:column;justify-content:center;align-items:center}.LZTUpErrorPage center{display:flex;flex-direction:column;justify-content:center;align-items:center}.LZTUpErrorPage .LZTUpErrorPageSelfAd{border-top:1px solid #363636}.LZTUpErrorPage .LZTUpErrorPageSelfAd .selfAd{font-size:18px;color:#949494;max-width:75%;text-align:center}.LZTUpErrorPage .LZTUpErrorPageSelfAd .buttons{display:flex;flex-direction:row;justify-content:center}.LZTUpErrorPage .LZTUpErrorPageSelfAd .buttons .button{display:flex;align-items:center;background:#0daf77;border-radius:6px;color:#fff;padding:0px 15px;margin:10px;text-decoration:none;line-height:34px;font-size:18px;transition:.5s background ease}.LZTUpErrorPage .LZTUpErrorPageSelfAd .buttons .button:hover{background:rgba(13,175,119,.8) !important}.LZTUpErrorPage .LZTUpErrorPageSelfAd .buttons .button svg{width:24px;height:24px;margin-right:5px;fill:#fff}`, ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -968,6 +968,10 @@ const extData = () => {
       // elements of the forum
       memberCard: '.xenOverlay.memberCard',
     },
+    balloonId: {
+      alertCounter: 'AlertsMenu_Counter',
+      messageCounter: 'ConversationsMenu_Counter'
+    },
     uiElementsId: {
       // id of the element for extension UI
       lztupTempSubMenu: 'LZTUpTempSubMenu'
@@ -1077,7 +1081,7 @@ __webpack_require__.a(__webpack_module__, async (__webpack_handle_async_dependen
 /* harmony import */ var UI_components_buttons_contestsButton__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__("./src/ui/components/buttons/contestsButton.js");
 /* harmony import */ var UI_components_buttons_menuButton__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__("./src/ui/components/buttons/menuButton.js");
 /* harmony import */ var UI_components_buttons_errorPageButton__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__("./src/ui/components/buttons/errorPageButton.js");
-/* harmony import */ var Events_categories__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__("./src/events/categories.js");
+/* harmony import */ var Events_categories__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__("./src/events/categories.js");
 /* harmony import */ var Utils_logger__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__("./src/utils/logger.js");
 /* harmony import */ var Utils_registers__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__("./src/utils/registers.js");
 /* harmony import */ var Utils_contests__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__("./src/utils/contests.js");
@@ -1092,6 +1096,7 @@ __webpack_require__.a(__webpack_module__, async (__webpack_handle_async_dependen
 /* harmony import */ var Styles_errorPage_scss__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__("./src/styles/errorPage.scss");
 /* harmony import */ var Styles_universal_scss__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__("./src/styles/universal.scss");
 /* harmony import */ var Styles_xenforo_scss__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__("./src/styles/xenforo.scss");
+/* harmony import */ var Visuals_navbar__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__("./src/visuals/navbar.js");
 
 
 
@@ -1122,6 +1127,7 @@ __webpack_require__.a(__webpack_module__, async (__webpack_handle_async_dependen
 
 
 // import 'Styles/main.css';
+
 
 
 
@@ -1166,20 +1172,26 @@ async function main() {
 
     LOAD_STATUS = true;
     console.timeLog("lztup-start", "Body loaded successfully")
-    if (/^(Error\s[0-9]{3}|Site\sMaintenance|429\sToo\sMany\sRequests)$/.test(document.head.querySelector('title').innerText)) {
+    if (/^(Site\sMaintenance|429\sToo\sMany\sRequests)$/.test(document.head.querySelector('title').innerText)) {
       if (!appearData.newErrorPage) {
+        console.log(appearData.newErrorPage)
         return;
       }
 
       // custom error page
       document.body.classList.add('LZTUpErrorPage');
-      const container = document.body.querySelector('article > div');
+      let container = document.querySelector('article > div');
+      Utils_logger__WEBPACK_IMPORTED_MODULE_9__/* ["default"] */ .Z.debug(container)
+      if (!container) {
+        container = document.querySelector('center');
+        Utils_logger__WEBPACK_IMPORTED_MODULE_9__/* ["default"] */ .Z.debug("updated container", container)
+      }
       const duckRain = document.createElement('img');
       duckRain.src = "https://i.imgur.com/iVmKDr7.gif";
       duckRain.alt = "Duck rain";
       container.appendChild(duckRain);
 
-      if (!appearData.selfAdOnNewErrorPage) {
+      if (appearData.disableSelfAdOnNewErrorPage) {
         return;
       }
 
@@ -1243,13 +1255,14 @@ async function main() {
     console.timeLog("lztup-start", "Add user group to cache")
     await GM_setValue(Configs_StorageName__WEBPACK_IMPORTED_MODULE_3__/* ["default"] */ .Z.UserGroup, userGroup);
 
-    if (appearData.forumLogo > 0) {
-      await (0,Cache_logo__WEBPACK_IMPORTED_MODULE_18__/* .setLogoFromCache */ .U)(Configs_SiteType__WEBPACK_IMPORTED_MODULE_17__/* ["default"] */ .Z.Forum, appearData.forumLogo);
-    }
-
-    if (appearData.marketLogo > 0) {
-      await (0,Cache_logo__WEBPACK_IMPORTED_MODULE_18__/* .setLogoFromCache */ .U)(Configs_SiteType__WEBPACK_IMPORTED_MODULE_17__/* ["default"] */ .Z.Market, appearData.marketLogo);
-    }
+    console.timeLog("lztup-start", "forumLogo")
+    appearData.forumLogo > 0 ? await (0,Cache_logo__WEBPACK_IMPORTED_MODULE_18__/* .setLogoFromCache */ .U)(Configs_SiteType__WEBPACK_IMPORTED_MODULE_17__/* ["default"] */ .Z.Forum, appearData.forumLogo) : null;
+    console.timeLog("lztup-start", "marketLogo")
+    appearData.marketLogo > 0 ? await (0,Cache_logo__WEBPACK_IMPORTED_MODULE_18__/* .setLogoFromCache */ .U)(Configs_SiteType__WEBPACK_IMPORTED_MODULE_17__/* ["default"] */ .Z.Market, appearData.marketLogo) : null;
+    console.timeLog("lztup-start", "hideAlertCounter")
+    appearData.hideAlertCounter ? (0,Visuals_navbar__WEBPACK_IMPORTED_MODULE_24__/* .hideBalloonById */ .R)(Configs_extData__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .Z.balloonId.alertCounter, true) : null;
+    console.timeLog("lztup-start", "hideMessageCounter")
+    appearData.hideMessageCounter ? (0,Visuals_navbar__WEBPACK_IMPORTED_MODULE_24__/* .hideBalloonById */ .R)(Configs_extData__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .Z.balloonId.messageCounter, true) : null;
 
     console.timeLog("lztup-start", "Loading Profile DB...")
     const profileDB = new IndexedDB_profile__WEBPACK_IMPORTED_MODULE_6__/* .LZTProfileDB */ .M();
@@ -1326,7 +1339,7 @@ async function main() {
     dbContestsData.openTenContestsBtn ? (0,UI_components_buttons_contestsButton__WEBPACK_IMPORTED_MODULE_7__/* .regOpenContestsBtn */ .u)(10) : null;
 
     console.timeLog("lztup-start", "Add onclick contests category")
-    ;(0,Events_categories__WEBPACK_IMPORTED_MODULE_24__/* ["default"] */ .Z)(Configs_extData__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .Z.nodes.contests, async () => {
+    ;(0,Events_categories__WEBPACK_IMPORTED_MODULE_25__/* ["default"] */ .Z)(Configs_extData__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .Z.nodes.contests, async () => {
       const newContestsData = await GM_getValue(Configs_StorageName__WEBPACK_IMPORTED_MODULE_3__/* ["default"] */ .Z.Contests, {});
       newContestsData.openTenContestsBtn ? (0,UI_components_buttons_contestsButton__WEBPACK_IMPORTED_MODULE_7__/* .regOpenContestsBtn */ .u)(10) : null;
     });
@@ -1371,8 +1384,27 @@ async function main() {
       dbUsersData.showFullRegInProfile? (0,Utils_users__WEBPACK_IMPORTED_MODULE_11__/* .showFullRegDateInProfile */ .M1)(true) : null;
     }
 
+
+    // global observer
+    // const ALERT_COUNTER_ID = extData.selectors.alertCounter.replace('#', '');
+    // registerObserver(async (mutation) => {
+    //   if (
+    //     mutation.target.classList.contains('Total') &&
+    //     mutation.target?.parentElement?.id === ALERT_COUNTER_ID
+    //   ) {
+    //     const appearData = GM_getValue(StorageName.Appear, {});
+    //     if (appearData.hideAlertCounter) {
+    //       mutation.target.parentElement.style.display = 'none';
+    //       // hideBalloon(extData.selectors.alertCounter, true);
+    //     }
+    //   }
+    // });
+
     console.timeEnd("lztup-start")
   };
+
+
+
 
   document.addEventListener('DOMContentLoaded', startExt);
 
@@ -4162,7 +4194,11 @@ class Grid {
 var SiteType = __webpack_require__("./src/configs/SiteType.js");
 // EXTERNAL MODULE: ./src/api/lztupgrade/themeAPI.js
 var themeAPI = __webpack_require__("./src/api/lztupgrade/themeAPI.js");
+// EXTERNAL MODULE: ./src/visuals/navbar.js
+var navbar = __webpack_require__("./src/visuals/navbar.js");
 ;// CONCATENATED MODULE: ./src/ui/menu/items/appear.js
+
+
 
 
 
@@ -4317,7 +4353,49 @@ const getAppearItems = async () => {
     .addSectionItem('Менеджер тем', 'Выберите тему для форума из списка', 'far fa-paint-brush', 'LZTUpThemeManager', { onClick: createThemeManagerTempMenu, rightArrow: true })
 
   return [
-    appearSection.createElement()
+    appearSection.createElement(),
+    new menu_checkbox('hide_alert_counter', `Скрыть счётчик уведомлений в навбаре`)
+    .createElement(
+      appearData.hideAlertCounter,
+      () => {},
+      () => {},
+      async (event) => {
+        appearData.hideAlertCounter = event.target.checked;
+        await GM_setValue(StorageName/* default */.Z.Appear, appearData);
+        (0,navbar/* hideBalloonById */.R)(extData/* default */.Z.balloonId.alertCounter, event.target.checked);
+        (0,registers/* registerAlert */.de)(`${event.target.checked ? 'Включено' : 'Выключено'} скрытие счетчика уведомлений в навбаре`, 5000);
+      }),
+    new menu_checkbox('hide_message_counter', `Скрыть счётчик сообщений в навбаре`)
+    .createElement(
+      appearData.hideMessageCounter,
+      () => {},
+      () => {},
+      async (event) => {
+        appearData.hideMessageCounter = event.target.checked;
+        await GM_setValue(StorageName/* default */.Z.Appear, appearData);
+        (0,navbar/* hideBalloonById */.R)(extData/* default */.Z.balloonId.messageCounter, event.target.checked);
+        (0,registers/* registerAlert */.de)(`${event.target.checked ? 'Включено' : 'Выключено'} скрытие счетчика сообщений в навбаре`, 5000);
+      }),
+    new menu_checkbox('new_error_page', `Небольшое изменение страницы "тех. работ" и "ошибок"`)
+    .createElement(
+      appearData.newErrorPage,
+      () => {},
+      () => {},
+      async (event) => {
+        appearData.newErrorPage = event.target.checked;
+        await GM_setValue(StorageName/* default */.Z.Appear, appearData);
+        (0,registers/* registerAlert */.de)(`${event.target.checked ? 'Включено' : 'Выключено'} Небольшое изменение страницы "тех. работ" и "ошибок"`, 5000);
+      }),
+    new menu_checkbox('disable_self_ad_error', `Убрать саморекламу на измененной странице "тех. работ" и "ошибок"`)
+    .createElement(
+      appearData.disableSelfAdOnNewErrorPage,
+      () => {},
+      () => {},
+      async (event) => {
+        appearData.disableSelfAdOnNewErrorPage = event.target.checked;
+        await GM_setValue(StorageName/* default */.Z.Appear, appearData);
+        (0,registers/* registerAlert */.de)(`${event.target.checked ? 'Включена' : 'Выключена'} самореклама на изменнной странице "тех. работ" и "ошибок"`, 5000);
+      }),
   ];
 }
 
@@ -5334,6 +5412,32 @@ function getAuthors(authorNames, authorUserIds) {
       ];
   }
 }
+
+
+
+
+/***/ }),
+
+/***/ "./src/visuals/navbar.js":
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   R: () => (/* binding */ hideBalloonById)
+/* harmony export */ });
+/**
+ *
+ * @param {str} balloonId - id of balloon element. Ex: #AlertsMenu_Counter
+ * @param {boolean} isHidden - status of balloon (true - hidden, false - visible)
+ */
+function hideBalloonById(balloonId, isHidden) {
+  const balloon = document.getElementById(balloonId);
+  if (balloon) {
+    balloon.style.opacity = Number(!isHidden);
+  }
+}
+
+
+
 
 
 
