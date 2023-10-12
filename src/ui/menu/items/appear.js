@@ -16,6 +16,8 @@ import { getAuthors, getTimestamp } from "Utils/utils";
 import themeAPI from "API/lztupgrade/themeAPI";
 import { sleep } from "Utils/utils";
 import config from "Configs/config";
+import { hideBalloonById } from "Visuals/navbar";
+import extData from "Configs/extData";
 
 
 async function createLogoManagerTempMenu(logoType) {
@@ -152,7 +154,49 @@ const getAppearItems = async () => {
     .addSectionItem('Менеджер тем', 'Выберите тему для форума из списка', 'far fa-paint-brush', 'LZTUpThemeManager', { onClick: createThemeManagerTempMenu, rightArrow: true })
 
   return [
-    appearSection.createElement()
+    appearSection.createElement(),
+    new Checkbox('hide_alert_counter', `Скрыть счётчик уведомлений в навбаре`)
+    .createElement(
+      appearData.hideAlertCounter,
+      () => {},
+      () => {},
+      async (event) => {
+        appearData.hideAlertCounter = event.target.checked;
+        await GM_setValue(StorageName.Appear, appearData);
+        hideBalloonById(extData.balloonId.alertCounter, event.target.checked);
+        registerAlert(`${event.target.checked ? 'Включено' : 'Выключено'} скрытие счетчика уведомлений в навбаре`, 5000);
+      }),
+    new Checkbox('hide_message_counter', `Скрыть счётчик сообщений в навбаре`)
+    .createElement(
+      appearData.hideMessageCounter,
+      () => {},
+      () => {},
+      async (event) => {
+        appearData.hideMessageCounter = event.target.checked;
+        await GM_setValue(StorageName.Appear, appearData);
+        hideBalloonById(extData.balloonId.messageCounter, event.target.checked);
+        registerAlert(`${event.target.checked ? 'Включено' : 'Выключено'} скрытие счетчика сообщений в навбаре`, 5000);
+      }),
+    new Checkbox('new_error_page', `Небольшое изменение страницы "тех. работ" и "ошибок"`)
+    .createElement(
+      appearData.newErrorPage,
+      () => {},
+      () => {},
+      async (event) => {
+        appearData.newErrorPage = event.target.checked;
+        await GM_setValue(StorageName.Appear, appearData);
+        registerAlert(`${event.target.checked ? 'Включено' : 'Выключено'} Небольшое изменение страницы "тех. работ" и "ошибок"`, 5000);
+      }),
+    new Checkbox('disable_self_ad_error', `Убрать саморекламу на измененной странице "тех. работ" и "ошибок"`)
+    .createElement(
+      appearData.disableSelfAdOnNewErrorPage,
+      () => {},
+      () => {},
+      async (event) => {
+        appearData.disableSelfAdOnNewErrorPage = event.target.checked;
+        await GM_setValue(StorageName.Appear, appearData);
+        registerAlert(`${event.target.checked ? 'Включена' : 'Выключена'} самореклама на изменнной странице "тех. работ" и "ошибок"`, 5000);
+      }),
   ];
 }
 
