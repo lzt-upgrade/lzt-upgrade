@@ -8,6 +8,10 @@ const extData = () => {
       // elements of the forum
       memberCard: '.xenOverlay.memberCard',
     },
+    balloonId: {
+      alertCounter: 'AlertsMenu_Counter',
+      messageCounter: 'ConversationsMenu_Counter'
+    },
     uiElementsId: {
       // id of the element for extension UI
       lztupTempSubMenu: 'LZTUpTempSubMenu'
