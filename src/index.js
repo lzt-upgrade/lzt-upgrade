@@ -51,6 +51,7 @@ import { setLogoFromCache } from "Cache/logo";
 import 'Styles/errorPage.scss';
 import 'Styles/universal.scss';
 import 'Styles/xenforo.scss';
+import { hideBalloonById } from "Visuals/navbar";
 
 
 async function initTheme() {
@@ -91,20 +92,26 @@ async function main() {
 
     LOAD_STATUS = true;
     console.timeLog("lztup-start", "Body loaded successfully")
-    if (/^(Error\s[0-9]{3}|Site\sMaintenance|429\sToo\sMany\sRequests)$/.test(document.head.querySelector('title').innerText)) {
+    if (/^(Site\sMaintenance|429\sToo\sMany\sRequests)$/.test(document.head.querySelector('title').innerText)) {
       if (!appearData.newErrorPage) {
+        console.log(appearData.newErrorPage)
         return;
       }
 
       // custom error page
       document.body.classList.add('LZTUpErrorPage');
-      const container = document.body.querySelector('article > div');
+      let container = document.querySelector('article > div');
+      Logger.debug(container)
+      if (!container) {
+        container = document.querySelector('center');
+        Logger.debug("updated container", container)
+      }
       const duckRain = document.createElement('img');
       duckRain.src = "https://i.imgur.com/iVmKDr7.gif";
       duckRain.alt = "Duck rain";
       container.appendChild(duckRain);
 
-      if (!appearData.selfAdOnNewErrorPage) {
+      if (appearData.disableSelfAdOnNewErrorPage) {
         return;
       }
 
@@ -168,13 +175,14 @@ async function main() {
     console.timeLog("lztup-start", "Add user group to cache")
     await GM_setValue(StorageName.UserGroup, userGroup);
 
-    if (appearData.forumLogo > 0) {
-      await setLogoFromCache(SiteType.Forum, appearData.forumLogo);
-    }
-
-    if (appearData.marketLogo > 0) {
-      await setLogoFromCache(SiteType.Market, appearData.marketLogo);
-    }
+    console.timeLog("lztup-start", "forumLogo")
+    appearData.forumLogo > 0 ? await setLogoFromCache(SiteType.Forum, appearData.forumLogo) : null;
+    console.timeLog("lztup-start", "marketLogo")
+    appearData.marketLogo > 0 ? await setLogoFromCache(SiteType.Market, appearData.marketLogo) : null;
+    console.timeLog("lztup-start", "hideAlertCounter")
+    appearData.hideAlertCounter ? hideBalloonById(extData.balloonId.alertCounter, true) : null;
+    console.timeLog("lztup-start", "hideMessageCounter")
+    appearData.hideMessageCounter ? hideBalloonById(extData.balloonId.messageCounter, true) : null;
 
     console.timeLog("lztup-start", "Loading Profile DB...")
     const profileDB = new LZTProfileDB();
@@ -296,8 +304,27 @@ async function main() {
       dbUsersData.showFullRegInProfile? showFullRegDateInProfile(true) : null;
     }
 
+
+    // global observer
+    // const ALERT_COUNTER_ID = extData.selectors.alertCounter.replace('#', '');
+    // registerObserver(async (mutation) => {
+    //   if (
+    //     mutation.target.classList.contains('Total') &&
+    //     mutation.target?.parentElement?.id === ALERT_COUNTER_ID
+    //   ) {
+    //     const appearData = GM_getValue(StorageName.Appear, {});
+    //     if (appearData.hideAlertCounter) {
+    //       mutation.target.parentElement.style.display = 'none';
+    //       // hideBalloon(extData.selectors.alertCounter, true);
+    //     }
+    //   }
+    // });
+
     console.timeEnd("lztup-start")
   };
+
+
+
 
   document.addEventListener('DOMContentLoaded', startExt);
 
