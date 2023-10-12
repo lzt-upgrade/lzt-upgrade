@@ -7,41 +7,51 @@
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      .LZTUpErrorPageSelfAd {
-        border-top: 1px solid rgb(54, 54, 54);
-        .selfAd {
-          font-size: 18px;
-          color: rgb(148, 148, 148);
-          max-width: 75%;
-          text-align: center;
+    }
+  }
+
+  center {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .LZTUpErrorPageSelfAd {
+    border-top: 1px solid rgb(54, 54, 54);
+    .selfAd {
+      font-size: 18px;
+      color: rgb(148, 148, 148);
+      max-width: 75%;
+      text-align: center;
+    }
+
+    .buttons {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      .button {
+        display: flex;
+        align-items: center;
+        background: #0daf77;
+        border-radius: 6px;
+        color: #fff;
+        padding: 0px 15px;
+        margin: 10px;
+        text-decoration: none;
+        line-height: 34px;
+        font-size: 18px;
+
+        transition: 0.5s background ease;
+        &:hover {
+          background: rgba(13,175,119,.8) !important;
         }
 
-        .buttons {
-          display: flex;
-          flex-direction: row;
-          .button {
-            display: flex;
-            align-items: center;
-            background: #0daf77;
-            border-radius: 6px;
-            color: #fff;
-            padding: 0px 15px;
-            margin: 10px;
-            line-height: 34px;
-            font-size: 18px;
-
-            transition: 0.5s background ease;
-            &:hover {
-              background: rgba(13,175,119,.8) !important;
-            }
-
-            svg {
-              width: 24px;
-              height: 24px;
-              margin-right: 5px;
-              fill: #fff;
-            }
-          }
+        svg {
+          width: 24px;
+          height: 24px;
+          margin-right: 5px;
+          fill: #fff;
         }
       }
     }
