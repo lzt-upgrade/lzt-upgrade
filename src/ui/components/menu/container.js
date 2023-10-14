@@ -16,9 +16,10 @@ class Container {
     this.description = description;
   }
 
-  createElement() {
+  createElement(style = '') {
     const container = document.createElement('div');
     container.classList.add('LZTUpContainer');
+    container.style = style
 
     if (this.heading) {
       const heading = new Heading(this.heading).createElement();

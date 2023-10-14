@@ -155,59 +155,71 @@ const getAppearItems = async () => {
 
   return [
     appearSection.createElement(),
-    new Checkbox('hide_alert_counter', `Скрыть счётчик уведомлений в навбаре`)
-    .createElement(
-      appearData.hideAlertCounter,
-      () => {},
-      () => {},
-      async (event) => {
-        appearData.hideAlertCounter = event.target.checked;
-        await GM_setValue(StorageName.Appear, appearData);
-        hideBalloonById(extData.balloonId.alertCounter, event.target.checked);
-        registerAlert(`${event.target.checked ? 'Включено' : 'Выключено'} скрытие счетчика уведомлений в навбаре`, 5000);
-    }),
-    new Checkbox('hide_message_counter', `Скрыть счётчик сообщений в навбаре`)
-    .createElement(
-      appearData.hideMessageCounter,
-      () => {},
-      () => {},
-      async (event) => {
-        appearData.hideMessageCounter = event.target.checked;
-        await GM_setValue(StorageName.Appear, appearData);
-        hideBalloonById(extData.balloonId.messageCounter, event.target.checked);
-        registerAlert(`${event.target.checked ? 'Включено' : 'Выключено'} скрытие счетчика сообщений в навбаре`, 5000);
-    }),
-    new Checkbox('hide_unread_articles_status', `Скрыть статус непрочитанных статей`)
-    .createElement(
-      appearData.hideUnreadArticlesStatus,
-      () => {},
-      () => {},
-      async (event) => {
-        appearData.hideUnreadArticlesStatus = event.target.checked;
-        await GM_setValue(StorageName.Appear, appearData);
-        hideUnreadArticlesStatus(event.target.checked);
-        registerAlert(`${event.target.checked ? 'Включено' : 'Выключено'} скрытие статуса непрочитанных статей`, 5000);
-    }),
-    new Checkbox('new_error_page', `Небольшое изменение страницы "тех. работ" и "ошибок"`)
-    .createElement(
-      appearData.newErrorPage,
-      () => {},
-      () => {},
-      async (event) => {
-        appearData.newErrorPage = event.target.checked;
-        await GM_setValue(StorageName.Appear, appearData);
-        registerAlert(`${event.target.checked ? 'Включено' : 'Выключено'} Небольшое изменение страницы "тех. работ" и "ошибок"`, 5000);
-    }),
-    new Checkbox('disable_self_ad_error', `Убрать саморекламу на измененной странице "тех. работ" и "ошибок"`)
-    .createElement(
-      appearData.disableSelfAdOnNewErrorPage,
-      () => {},
-      () => {},
-      async (event) => {
-        appearData.disableSelfAdOnNewErrorPage = event.target.checked;
-        await GM_setValue(StorageName.Appear, appearData);
-        registerAlert(`${event.target.checked ? 'Включена' : 'Выключена'} самореклама на изменнной странице "тех. работ" и "ошибок"`, 5000);
-    }),
+    new Container(
+      [
+        new Checkbox('hide_alert_counter', `Скрыть счётчик уведомлений в навбаре`)
+        .createElement(
+          appearData.hideAlertCounter,
+          () => {},
+          () => {},
+          async (event) => {
+            appearData.hideAlertCounter = event.target.checked;
+            await GM_setValue(StorageName.Appear, appearData);
+            hideBalloonById(extData.balloonId.alertCounter, event.target.checked);
+            registerAlert(`${event.target.checked ? 'Включено' : 'Выключено'} скрытие счетчика уведомлений в навбаре`, 5000);
+        }),
+        new Checkbox('hide_message_counter', `Скрыть счётчик сообщений в навбаре`)
+        .createElement(
+          appearData.hideMessageCounter,
+          () => {},
+          () => {},
+          async (event) => {
+            appearData.hideMessageCounter = event.target.checked;
+            await GM_setValue(StorageName.Appear, appearData);
+            hideBalloonById(extData.balloonId.messageCounter, event.target.checked);
+            registerAlert(`${event.target.checked ? 'Включено' : 'Выключено'} скрытие счетчика сообщений в навбаре`, 5000);
+        }),
+        new Checkbox('hide_unread_articles_status', `Скрыть статус непрочитанных статей`)
+        .createElement(
+          appearData.hideUnreadArticlesStatus,
+          () => {},
+          () => {},
+          async (event) => {
+            appearData.hideUnreadArticlesStatus = event.target.checked;
+            await GM_setValue(StorageName.Appear, appearData);
+            hideUnreadArticlesStatus(event.target.checked);
+            registerAlert(`${event.target.checked ? 'Включено' : 'Выключено'} скрытие статуса непрочитанных статей`, 5000);
+        }),
+      ],
+      'Скрытие элементов',
+      'Скройте лишние элементы сайта'
+    ).createElement('display: block;'),
+    new Container(
+      [
+        new Checkbox('new_error_page', `Небольшое изменение страницы "тех. работ" и "ошибок"`)
+        .createElement(
+          appearData.newErrorPage,
+          () => {},
+          () => {},
+          async (event) => {
+            appearData.newErrorPage = event.target.checked;
+            await GM_setValue(StorageName.Appear, appearData);
+            registerAlert(`${event.target.checked ? 'Включено' : 'Выключено'} Небольшое изменение страницы "тех. работ" и "ошибок"`, 5000);
+        }),
+        new Checkbox('disable_self_ad_error', `Убрать саморекламу на измененной странице "тех. работ" и "ошибок"`)
+        .createElement(
+          appearData.disableSelfAdOnNewErrorPage,
+          () => {},
+          () => {},
+          async (event) => {
+            appearData.disableSelfAdOnNewErrorPage = event.target.checked;
+            await GM_setValue(StorageName.Appear, appearData);
+            registerAlert(`${event.target.checked ? 'Включена' : 'Выключена'} самореклама на изменнной странице "тех. работ" и "ошибок"`, 5000);
+        }),
+      ],
+      'Изменение страницы тех. работ и ошибок',
+      'Измените оформление страницы тех. работ и ошибки'
+    ).createElement('display: block;'),
   ];
 }
 
