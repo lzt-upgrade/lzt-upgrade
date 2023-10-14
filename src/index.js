@@ -45,13 +45,13 @@ import { addBackgroundImageInProfile } from 'Visuals/profile';
 import { isProfilePage } from 'Utils/checkers';
 import SiteType from "Configs/SiteType";
 import { setLogoFromCache } from "Cache/logo";
+import { hideBalloonById, hideUnreadArticlesStatus } from "Visuals/navbar";
 
 // import 'Styles/main.css';
 
 import 'Styles/errorPage.scss';
 import 'Styles/universal.scss';
 import 'Styles/xenforo.scss';
-import { hideBalloonById } from "Visuals/navbar";
 
 
 async function initTheme() {
@@ -183,6 +183,8 @@ async function main() {
     appearData.hideAlertCounter ? hideBalloonById(extData.balloonId.alertCounter, true) : null;
     console.timeLog("lztup-start", "hideMessageCounter")
     appearData.hideMessageCounter ? hideBalloonById(extData.balloonId.messageCounter, true) : null;
+    console.timeLog("lztup-start", "hideUnreadArticlesStatus")
+    appearData.hideUnreadArticlesStatus ? hideUnreadArticlesStatus(true) : null;
 
     console.timeLog("lztup-start", "Loading Profile DB...")
     const profileDB = new LZTProfileDB();

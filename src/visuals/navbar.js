@@ -1,7 +1,7 @@
 /**
  *
  * @param {str} balloonId - id of balloon element. Ex: #AlertsMenu_Counter
- * @param {boolean} isHidden - status of balloon (true - hidden, false - visible)
+ * @param {boolean} isHidden - status of visibility (true - hidden, false - visible)
  */
 function hideBalloonById(balloonId, isHidden) {
   const balloon = document.getElementById(balloonId);
@@ -10,9 +10,21 @@ function hideBalloonById(balloonId, isHidden) {
   }
 }
 
+/**
+ *
+ * @param {boolean} isHidden - status of visibility (true - hidden, false - visible)
+ */
+function hideUnreadArticlesStatus(isHidden) {
+  const statusEl = document.querySelector('.hasUnreadArticles');
+  if (statusEl) {
+    statusEl.style.display = isHidden ? 'none' : '';
+  }
+}
+
 
 export {
-  hideBalloonById
+  hideBalloonById,
+  hideUnreadArticlesStatus,
 }
 
 
