@@ -687,9 +687,10 @@ async function getThemes() {
 
 function loadTheme(themeName) {
   // load theme by theme name
+  const timestamp = (0,Utils_utils__WEBPACK_IMPORTED_MODULE_2__/* .getTimestamp */ .u3)()
 
   return GM_addStyle(`
-    @import url(${Configs_endpoints_json__WEBPACK_IMPORTED_MODULE_0__/* .staticThemes */ .I1}/${themeName}.css);
+    @import url(${Configs_endpoints_json__WEBPACK_IMPORTED_MODULE_0__/* .staticThemes */ .I1}/${themeName}.css?id=${timestamp});
   `);
 }
 
@@ -1093,10 +1094,11 @@ __webpack_require__.a(__webpack_module__, async (__webpack_handle_async_dependen
 /* harmony import */ var Utils_checkers__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__("./src/utils/checkers.js");
 /* harmony import */ var Configs_SiteType__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__("./src/configs/SiteType.js");
 /* harmony import */ var Cache_logo__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__("./src/cache/logo.js");
+/* harmony import */ var Visuals_navbar__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__("./src/visuals/navbar.js");
 /* harmony import */ var Styles_errorPage_scss__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__("./src/styles/errorPage.scss");
 /* harmony import */ var Styles_universal_scss__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__("./src/styles/universal.scss");
 /* harmony import */ var Styles_xenforo_scss__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__("./src/styles/xenforo.scss");
-/* harmony import */ var Visuals_navbar__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__("./src/visuals/navbar.js");
+
 
 
 
@@ -1133,7 +1135,6 @@ __webpack_require__.a(__webpack_module__, async (__webpack_handle_async_dependen
 
 
 
-
 async function initTheme() {
   // exec time: 35ms
   console.time("init-theme");
@@ -1143,10 +1144,16 @@ async function initTheme() {
   console.timeLog("init-theme", "loading name from cache...")
   let themeName = await GM_getValue(Configs_StorageName__WEBPACK_IMPORTED_MODULE_3__/* ["default"] */ .Z.Cache, {}).themeName;
   console.timeLog("init-theme", "Check themeName valid...")
-  console.log(themeName, appearData.themeId)
-  if (!themeName && appearData.themeId > 0) {
-    Utils_logger__WEBPACK_IMPORTED_MODULE_9__/* ["default"] */ .Z.debug(`Requesting theme with id ${appearData.themeId}...`);
-    themeName = await (0,Callbacks_extensionStart__WEBPACK_IMPORTED_MODULE_5__/* .getThemeByID */ .P)(appearData.themeId)
+  console.log(themeName, appearData.selectedTheme);
+  if (appearData.selectedTheme === 0) {
+    console.timeLog("init-theme", "Skip theme")
+    console.timeEnd("init-theme");
+    return;
+  }
+
+  if (!themeName && appearData.selectedTheme > 0) {
+    Utils_logger__WEBPACK_IMPORTED_MODULE_9__/* ["default"] */ .Z.debug(`Requesting theme with id ${appearData.selectedTheme}...`);
+    themeName = await (0,Callbacks_extensionStart__WEBPACK_IMPORTED_MODULE_5__/* .getThemeByID */ .P)(appearData.selectedTheme)
       .catch(err => console.error(err));
     let cacheData = await GM_getValue(Configs_StorageName__WEBPACK_IMPORTED_MODULE_3__/* ["default"] */ .Z.Cache, {});
     cacheData.themeName = themeName;
@@ -1263,6 +1270,8 @@ async function main() {
     appearData.hideAlertCounter ? (0,Visuals_navbar__WEBPACK_IMPORTED_MODULE_24__/* .hideBalloonById */ .R)(Configs_extData__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .Z.balloonId.alertCounter, true) : null;
     console.timeLog("lztup-start", "hideMessageCounter")
     appearData.hideMessageCounter ? (0,Visuals_navbar__WEBPACK_IMPORTED_MODULE_24__/* .hideBalloonById */ .R)(Configs_extData__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .Z.balloonId.messageCounter, true) : null;
+    console.timeLog("lztup-start", "hideUnreadArticlesStatus")
+    appearData.hideUnreadArticlesStatus ? (0,Visuals_navbar__WEBPACK_IMPORTED_MODULE_24__/* .hideUnreadArticlesStatus */ .p)(true) : null;
 
     console.timeLog("lztup-start", "Loading Profile DB...")
     const profileDB = new IndexedDB_profile__WEBPACK_IMPORTED_MODULE_6__/* .LZTProfileDB */ .M();
@@ -1384,29 +1393,14 @@ async function main() {
       dbUsersData.showFullRegInProfile? (0,Utils_users__WEBPACK_IMPORTED_MODULE_11__/* .showFullRegDateInProfile */ .M1)(true) : null;
     }
 
-
-    // global observer
-    // const ALERT_COUNTER_ID = extData.selectors.alertCounter.replace('#', '');
-    // registerObserver(async (mutation) => {
-    //   if (
-    //     mutation.target.classList.contains('Total') &&
-    //     mutation.target?.parentElement?.id === ALERT_COUNTER_ID
-    //   ) {
-    //     const appearData = GM_getValue(StorageName.Appear, {});
-    //     if (appearData.hideAlertCounter) {
-    //       mutation.target.parentElement.style.display = 'none';
-    //       // hideBalloon(extData.selectors.alertCounter, true);
-    //     }
-    //   }
-    // });
-
     console.timeEnd("lztup-start")
   };
 
 
-
-
   document.addEventListener('DOMContentLoaded', startExt);
+
+  // for fix rare loading bugs
+  document.addEventListener('load', startExt);
 
   if (document.readyState === 'complete') {
     await startExt();
@@ -2355,7 +2349,95 @@ class Checkbox {
 var contests = __webpack_require__("./src/utils/contests.js");
 // EXTERNAL MODULE: ./src/utils/utils.js
 var utils = __webpack_require__("./src/utils/utils.js");
+;// CONCATENATED MODULE: ./src/ui/components/menu/heading.js
+class Heading {
+  /**
+   *
+   *  @constructor
+   *  @param {string} text - text of the heading
+   */
+
+  constructor(text) {
+    this.text = text;
+  }
+
+  createElement() {
+    const heading = document.createElement('h2');
+    heading.classList.add('LZTUpModalHeading');
+    heading.innerText = this.text;
+
+    return heading;
+  }
+}
+
+/* harmony default export */ const menu_heading = (Heading);
+;// CONCATENATED MODULE: ./src/ui/components/menu/description.js
+class Description {
+  /**
+   *
+   *  @constructor
+   *  @param {string} text - text of the description
+   */
+
+  constructor(text) {
+    this.text = text;
+  }
+
+  createElement() {
+    const desc = document.createElement('p');
+    desc.classList.add('LZTUpModalDescription', 'muted');
+    desc.innerText = this.text;
+
+    return desc;
+  }
+}
+
+/* harmony default export */ const menu_description = (Description);
+;// CONCATENATED MODULE: ./src/ui/components/menu/container.js
+
+
+
+class Container {
+  /**
+   *
+   *  @constructor
+   *  @param {string} heading - heading of the container
+   *  @param {string} description - description of the container
+   *  @param {object} elements - elements to add to container
+   */
+
+  constructor(elements, heading = '', description = '') {
+    this.elements = elements;
+    this.heading = heading;
+    this.description = description;
+  }
+
+  createElement(style = '') {
+    const container = document.createElement('div');
+    container.classList.add('LZTUpContainer');
+    container.style = style
+
+    if (this.heading) {
+      const heading = new menu_heading(this.heading).createElement();
+      container.appendChild(heading);
+    }
+
+    if (this.description) {
+      const description = new menu_description(this.description).createElement();
+      container.appendChild(description);
+    }
+
+    for (const element of this.elements) {
+      container.appendChild(element);
+    }
+
+    return container;
+  }
+}
+
+/* harmony default export */ const container = (Container);
 ;// CONCATENATED MODULE: ./src/ui/menu/items/contests.js
+
 
 
 
@@ -2369,130 +2451,141 @@ const getContestsItems = async () => {
   const contestsData = await GM_getValue(StorageName/* default */.Z.Contests, {});
 
   return [
-    new menu_checkbox('open_ten_contests', 'Кнопка "Открыть 10"')
-    .createElement(
-      contestsData.openTenContestsBtn,
-      () => {
-        (0,contestsButton/* regOpenContestsBtn */.u)(10);
-      },
-      () => {
-        (0,contestsButton/* removeOpenContestsBtn */.c)(10);
-      },
-      async (event) => {
-        contestsData.openTenContestsBtn = event.target.checked;
-        await GM_setValue(StorageName/* default */.Z.Contests, contestsData);
-      }),
+    new container(
+      [
+        new menu_checkbox('hide_tags_in_contests', `Скрыть теги в теме розыгрыша`)
+        .createElement(
+          contestsData.hideTagsInThread,
+          () => {},
+          () => {},
+          async (event) => {
+            contestsData.hideTagsInThread = event.target.checked;
+            await GM_setValue(StorageName/* default */.Z.Contests, contestsData);
+            (0,contests/* contestsTagsVisibility */.s$)(event.target.checked);
+          }),
 
-    new menu_checkbox('auto_close_on_participate',
-      `Автозакрытие страницы при нажатие на кнопку "Участвовать"
-      <span class="fa fa-exclamation-triangle Tooltip" title="При отключение этой функции страница будет перезагружена"></span>
-      `)
-    .createElement(
-      contestsData.autoCloseOnParticipate,
-      async () => {
-        (0,registers/* registerAlert */.de)('Включено Автозакрытие страницы при нажатие на кнопку "Участвовать"', 5000);
-        (0,contestsParticipate/* contestsAutoCloseHandler */.p)(true);
-      },
-      async () => {
-        (0,registers/* registerAlert */.de)('Выключено Автозакрытие страницы при нажатие на кнопку "Участвовать"', 5000);
-        await (0,utils/* sleep */._v)(500);
-        window.location.reload();
-      },
-      async (event) => {
-        contestsData.autoCloseOnParticipate = event.target.checked;
-        await GM_setValue(StorageName/* default */.Z.Contests, contestsData);
-      }),
+        new menu_checkbox('remove_content_in_contests', `Скрыть содержимое темы розыгрыша`)
+        .createElement(
+          contestsData.removeContent,
+          () => {},
+          () => {},
+          async (event) => {
+            contestsData.removeContent = event.target.checked;
+            await GM_setValue(StorageName/* default */.Z.Contests, contestsData);
+            (0,contests/* contestsHideContent */.Q9)(event.target.checked)
+          }),
 
-    new menu_checkbox('info_top_in_contests', `Отображение информации о розыгрыше вверху темы`)
-    .createElement(
-      contestsData.infoTopInThread,
-      () => {},
-      () => {},
-      async (event) => {
-        contestsData.infoTopInThread = event.target.checked;
-        await GM_setValue(StorageName/* default */.Z.Contests, contestsData);
-        (0,contests/* contestThreadBlockMove */.Q6)(event.target.checked)
-      }),
+        new menu_checkbox('remove_poll_in_contests', `Скрыть голосование в теме розыгрыша`)
+        .createElement(
+          contestsData.removePoll,
+          () => {},
+          () => {},
+          async (event) => {
+            contestsData.removePoll = event.target.checked;
+            await GM_setValue(StorageName/* default */.Z.Contests, contestsData);
+            (0,contests/* contestsHidePoll */.Rf)(event.target.checked)
+          }),
+      ],
+      'Скрытие элементов',
+      'Скройте лишние элементы в теме'
+    ).createElement('display: block;'),
+    new container(
+      [
+        new menu_checkbox('open_ten_contests', 'Кнопка "Открыть 10"')
+        .createElement(
+          contestsData.openTenContestsBtn,
+          () => {
+            (0,contestsButton/* regOpenContestsBtn */.u)(10);
+          },
+          () => {
+            (0,contestsButton/* removeOpenContestsBtn */.c)(10);
+          },
+          async (event) => {
+            contestsData.openTenContestsBtn = event.target.checked;
+            await GM_setValue(StorageName/* default */.Z.Contests, contestsData);
+          }),
 
-    new menu_checkbox('hide_tags_in_contests', `Скрытие тегов в теме розыгрыша`)
-    .createElement(
-      contestsData.hideTagsInThread,
-      () => {},
-      () => {},
-      async (event) => {
-        contestsData.hideTagsInThread = event.target.checked;
-        await GM_setValue(StorageName/* default */.Z.Contests, contestsData);
-        (0,contests/* contestsTagsVisibility */.s$)(event.target.checked);
-      }),
+        new menu_checkbox('auto_close_on_participate',
+          `Автозакрытие страницы при нажатие на кнопку "Участвовать"
+          <span class="fa fa-exclamation-triangle Tooltip" title="При отключение этой функции страница будет перезагружена"></span>
+          `)
+        .createElement(
+          contestsData.autoCloseOnParticipate,
+          async () => {
+            (0,registers/* registerAlert */.de)('Включено Автозакрытие страницы при нажатие на кнопку "Участвовать"', 5000);
+            (0,contestsParticipate/* contestsAutoCloseHandler */.p)(true);
+          },
+          async () => {
+            (0,registers/* registerAlert */.de)('Выключено Автозакрытие страницы при нажатие на кнопку "Участвовать"', 5000);
+            await (0,utils/* sleep */._v)(500);
+            window.location.reload();
+          },
+          async (event) => {
+            contestsData.autoCloseOnParticipate = event.target.checked;
+            await GM_setValue(StorageName/* default */.Z.Contests, contestsData);
+        }),
 
-    new menu_checkbox('remove_content_in_contests', `Скрытие содержимого темы розыгрыша`)
-    .createElement(
-      contestsData.removeContent,
-      () => {},
-      () => {},
-      async (event) => {
-        contestsData.removeContent = event.target.checked;
-        await GM_setValue(StorageName/* default */.Z.Contests, contestsData);
-        (0,contests/* contestsHideContent */.Q9)(event.target.checked)
-      }),
+        new menu_checkbox('info_top_in_contests', `Отображение информации о розыгрыше вверху темы`)
+        .createElement(
+          contestsData.infoTopInThread,
+          () => {},
+          () => {},
+          async (event) => {
+            contestsData.infoTopInThread = event.target.checked;
+            await GM_setValue(StorageName/* default */.Z.Contests, contestsData);
+            (0,contests/* contestThreadBlockMove */.Q6)(event.target.checked)
+        }),
 
-    new menu_checkbox('remove_poll_in_contests', `Скрытие голосования в теме розыгрыша`)
-    .createElement(
-      contestsData.removePoll,
-      () => {},
-      () => {},
-      async (event) => {
-        contestsData.removePoll = event.target.checked;
-        await GM_setValue(StorageName/* default */.Z.Contests, contestsData);
-        (0,contests/* contestsHidePoll */.Rf)(event.target.checked)
-      }),
+        new menu_checkbox('update_captcha_button_in_contests', `Кнопка "Обновление капчи"`)
+        .createElement(
+          contestsData.updateCaptchaButton,
+          async () => {
+            (0,contests/* contestsUpdateCapctha */.g4)();
+          },
+          async () => {
+            document.querySelector('.LZTUpRefreshButton')?.remove();
+          },
+          async (event) => {
+            contestsData.updateCaptchaButton = event.target.checked;
+            await GM_setValue(StorageName/* default */.Z.Contests, contestsData);
+        }),
 
-    new menu_checkbox('update_captcha_button_in_contests', `Кнопка "Обновление капчи"`)
-    .createElement(
-      contestsData.updateCaptchaButton,
-      async () => {
-        (0,contests/* contestsUpdateCapctha */.g4)();
-      },
-      async () => {
-        document.querySelector('.LZTUpRefreshButton')?.remove();
-      },
-      async (event) => {
-        contestsData.updateCaptchaButton = event.target.checked;
-        await GM_setValue(StorageName/* default */.Z.Contests, contestsData);
-      }),
+        new menu_checkbox('auto_fix_captcha_in_contests',
+        `Автофикс капчи
+          <span class="fa fa-question Tooltip" title="Автоматически обновляет капчу, если она не появилась"></span>
+          <span class="fa fa-exclamation-triangle Tooltip" title="При отключение этой функции страница будет перезагружена"></span>
+        `)
+        .createElement(
+          contestsData.autoFixCaptcha,
+          async () => {
+            (0,registers/* registerAlert */.de)('Включен Автофикс капчи', 5000);
+            (0,contests/* contestsAutoFixCaptcha */.gu)();
+          },
+          async () => {
+            (0,registers/* registerAlert */.de)('Выключен Автофикс капчи', 5000);
+            await (0,utils/* sleep */._v)(500);
+            window.location.reload();
+          },
+          async (event) => {
+            contestsData.autoFixCaptcha = event.target.checked;
+            await GM_setValue(StorageName/* default */.Z.Contests, contestsData);
+        }),
 
-    new menu_checkbox('auto_fix_captcha_in_contests',
-    `Автофикс капчи
-      <span class="fa fa-question Tooltip" title="Автоматически обновляет капчу, если она не появилась"></span>
-      <span class="fa fa-exclamation-triangle Tooltip" title="При отключение этой функции страница будет перезагружена"></span>
-    `)
-    .createElement(
-      contestsData.autoFixCaptcha,
-      async () => {
-        (0,registers/* registerAlert */.de)('Включен Автофикс капчи', 5000);
-        (0,contests/* contestsAutoFixCaptcha */.gu)();
-      },
-      async () => {
-        (0,registers/* registerAlert */.de)('Выключен Автофикс капчи', 5000);
-        await (0,utils/* sleep */._v)(500);
-        window.location.reload();
-      },
-      async (event) => {
-        contestsData.autoFixCaptcha = event.target.checked;
-        await GM_setValue(StorageName/* default */.Z.Contests, contestsData);
-      }),
-
-    new menu_checkbox('participate_by_key', `Участие по кнопке Tab`)
-    .createElement(
-      contestsData.participateByKey,
-      () => {},
-      () => {},
-      async (event) => {
-        (0,registers/* registerAlert */.de)(`Участие по кнопке ${event.target.checked ? 'включено' : 'выключено'}` , 5000);
-        contestsData.participateByKey = event.target.checked;
-        await GM_setValue(StorageName/* default */.Z.Contests, contestsData);
-        (0,contests/* contestsParticipateByBtn */.sO)(event.target.checked);
-      }),
+        new menu_checkbox('participate_by_key', `Участие по кнопке Tab`)
+        .createElement(
+          contestsData.participateByKey,
+          () => {},
+          () => {},
+          async (event) => {
+            (0,registers/* registerAlert */.de)(`Участие по кнопке ${event.target.checked ? 'включено' : 'выключено'}` , 5000);
+            contestsData.participateByKey = event.target.checked;
+            await GM_setValue(StorageName/* default */.Z.Contests, contestsData);
+            (0,contests/* contestsParticipateByBtn */.sO)(event.target.checked);
+        }),
+      ],
+      'Полезные фишечки',
+      'Просто полезные фишечки для быстрого участия в розыгрышах'
+    ).createElement('display: block;'),
   ];
 }
 
@@ -2507,63 +2600,77 @@ var users = __webpack_require__("./src/utils/users.js");
 
 
 
+
 const getUsersItems = async () => {
   const usersData = await GM_getValue(StorageName/* default */.Z.Users, {});
 
   return [
-    new menu_checkbox('show_userid_in_profile', 'Показывать ID в профиле пользователя')
-    .createElement(
-      usersData.showUserIdInProfile,
-      () => {
-        (0,users/* addUserIdToProfile */.Rj)();
-      },
-      () => {
-        (0,users/* removeUserIdFromProfile */.UD)();
-      },
-      async (event) => {
-        usersData.showUserIdInProfile = event.target.checked;
-        await GM_setValue(StorageName/* default */.Z.Users, usersData);
-      }),
-    new menu_checkbox('show_userid_in_member_card',
-      `Показывать ID в карточке пользователя
-      <span class="fa fa-exclamation-triangle Tooltip" title="При включение/отключение этой функции страница будет перезагружена"></span>
-      `)
-    .createElement(
-      usersData.showUserIdInMemberCard,
-      () => {},
-      () => {},
-      async (event) => {
-        usersData.showUserIdInMemberCard = event.target.checked;
-        await GM_setValue(StorageName/* default */.Z.Users, usersData);
-        (0,registers/* registerAlert */.de)(`Показывать ID в карточке пользователя ${event.target.checked ? 'включено' : 'выключено'}` , 5000);
-        await (0,utils/* sleep */._v)(500);
-        window.location.reload();
-      }),
-    new menu_checkbox('show_fullreg_in_profile', 'Показывать полную дату регистрации в профиле пользователя')
-    .createElement(
-      usersData.showFullRegInProfile,
-      () => {},
-      () => {},
-      async (event) => {
-        usersData.showFullRegInProfile = event.target.checked;
-        await GM_setValue(StorageName/* default */.Z.Users, usersData);
-        (0,users/* showFullRegDateInProfile */.M1)(event.target.checked);
-      }),
-    new menu_checkbox('disable_share_typing',
-      `Неписалка в темах
-      <span class="fa fa-exclamation-triangle Tooltip" title="При включение/отключение этой функции страница будет перезагружена"></span>
-      `)
-    .createElement(
-      usersData.disableShareTyping,
-      () => {},
-      () => {},
-      async (event) => {
-        usersData.disableShareTyping = event.target.checked;
-        await GM_setValue(StorageName/* default */.Z.Users, usersData);
-        (0,registers/* registerAlert */.de)(`Неписалка в темах ${event.target.checked ? 'включена' : 'выключена'}` , 5000);
-        await (0,utils/* sleep */._v)(500);
-        window.location.reload();
-      }),
+    new container(
+      [
+        new menu_checkbox('show_userid_in_profile', 'Показывать ID в профиле пользователя')
+        .createElement(
+          usersData.showUserIdInProfile,
+          () => {
+            (0,users/* addUserIdToProfile */.Rj)();
+          },
+          () => {
+            (0,users/* removeUserIdFromProfile */.UD)();
+          },
+          async (event) => {
+            usersData.showUserIdInProfile = event.target.checked;
+            await GM_setValue(StorageName/* default */.Z.Users, usersData);
+        }),
+        new menu_checkbox('show_userid_in_member_card',
+          `Показывать ID в карточке пользователя
+          <span class="fa fa-exclamation-triangle Tooltip" title="При включение/отключение этой функции страница будет перезагружена"></span>
+          `)
+        .createElement(
+          usersData.showUserIdInMemberCard,
+          () => {},
+          () => {},
+          async (event) => {
+            usersData.showUserIdInMemberCard = event.target.checked;
+            await GM_setValue(StorageName/* default */.Z.Users, usersData);
+            (0,registers/* registerAlert */.de)(`Показывать ID в карточке пользователя ${event.target.checked ? 'включено' : 'выключено'}` , 5000);
+            await (0,utils/* sleep */._v)(500);
+            window.location.reload();
+        }),
+        new menu_checkbox('show_fullreg_in_profile', 'Показывать полную дату регистрации в профиле пользователя')
+        .createElement(
+          usersData.showFullRegInProfile,
+          () => {},
+          () => {},
+          async (event) => {
+            usersData.showFullRegInProfile = event.target.checked;
+            await GM_setValue(StorageName/* default */.Z.Users, usersData);
+            (0,users/* showFullRegDateInProfile */.M1)(event.target.checked);
+        }),
+      ],
+      'Доп. информация о пользователе',
+      'Включите отображение дополнительной информации о пользователе'
+    ).createElement('display:block;'),
+    new container(
+      [
+        new menu_checkbox('disable_share_typing',
+          `Неписалка в темах
+          <span class="fa fa-exclamation-triangle Tooltip" title="При включение/отключение этой функции страница будет перезагружена"></span>
+          `)
+        .createElement(
+          usersData.disableShareTyping,
+          () => {},
+          () => {},
+          async (event) => {
+            usersData.disableShareTyping = event.target.checked;
+            await GM_setValue(StorageName/* default */.Z.Users, usersData);
+            (0,registers/* registerAlert */.de)(`Неписалка в темах ${event.target.checked ? 'включена' : 'выключена'}` , 5000);
+            await (0,utils/* sleep */._v)(500);
+            window.location.reload();
+        }),
+      ],
+      'Другое',
+      'Другие функции связанные с пользователями'
+    ).createElement('display:block;'),
+
   ];
 }
 
@@ -2817,28 +2924,6 @@ class Input {
 /* harmony default export */ const input = (Input);
 // EXTERNAL MODULE: ./src/ui/components/button.js
 var components_button = __webpack_require__("./src/ui/components/button.js");
-;// CONCATENATED MODULE: ./src/ui/components/menu/description.js
-class Description {
-  /**
-   *
-   *  @constructor
-   *  @param {string} text - text of the description
-   */
-
-  constructor(text) {
-    this.text = text;
-  }
-
-  createElement() {
-    const desc = document.createElement('p');
-    desc.classList.add('LZTUpModalDescription', 'muted');
-    desc.innerText = this.text;
-
-    return desc;
-  }
-}
-
-/* harmony default export */ const menu_description = (Description);
 ;// CONCATENATED MODULE: ./src/ui/components/menu/colorPicker.js
 
 
@@ -2880,70 +2965,6 @@ class ColorPicker {
 }
 
 /* harmony default export */ const colorPicker = (ColorPicker);
-;// CONCATENATED MODULE: ./src/ui/components/menu/heading.js
-class Heading {
-  /**
-   *
-   *  @constructor
-   *  @param {string} text - text of the heading
-   */
-
-  constructor(text) {
-    this.text = text;
-  }
-
-  createElement() {
-    const heading = document.createElement('h2');
-    heading.classList.add('LZTUpModalHeading');
-    heading.innerText = this.text;
-
-    return heading;
-  }
-}
-
-/* harmony default export */ const menu_heading = (Heading);
-;// CONCATENATED MODULE: ./src/ui/components/menu/container.js
-
-
-
-class Container {
-  /**
-   *
-   *  @constructor
-   *  @param {string} heading - heading of the container
-   *  @param {string} description - description of the container
-   *  @param {object} elements - elements to add to container
-   */
-
-  constructor(elements, heading = '', description = '') {
-    this.elements = elements;
-    this.heading = heading;
-    this.description = description;
-  }
-
-  createElement() {
-    const container = document.createElement('div');
-    container.classList.add('LZTUpContainer');
-
-    if (this.heading) {
-      const heading = new menu_heading(this.heading).createElement();
-      container.appendChild(heading);
-    }
-
-    if (this.description) {
-      const description = new menu_description(this.description).createElement();
-      container.appendChild(description);
-    }
-
-    for (const element of this.elements) {
-      container.appendChild(element);
-    }
-
-    return container;
-  }
-}
-
-/* harmony default export */ const container = (Container);
 ;// CONCATENATED MODULE: ./src/ui/components/menu/separator.js
 class Separator {
   /**
@@ -4354,48 +4375,71 @@ const getAppearItems = async () => {
 
   return [
     appearSection.createElement(),
-    new menu_checkbox('hide_alert_counter', `Скрыть счётчик уведомлений в навбаре`)
-    .createElement(
-      appearData.hideAlertCounter,
-      () => {},
-      () => {},
-      async (event) => {
-        appearData.hideAlertCounter = event.target.checked;
-        await GM_setValue(StorageName/* default */.Z.Appear, appearData);
-        (0,navbar/* hideBalloonById */.R)(extData/* default */.Z.balloonId.alertCounter, event.target.checked);
-        (0,registers/* registerAlert */.de)(`${event.target.checked ? 'Включено' : 'Выключено'} скрытие счетчика уведомлений в навбаре`, 5000);
-      }),
-    new menu_checkbox('hide_message_counter', `Скрыть счётчик сообщений в навбаре`)
-    .createElement(
-      appearData.hideMessageCounter,
-      () => {},
-      () => {},
-      async (event) => {
-        appearData.hideMessageCounter = event.target.checked;
-        await GM_setValue(StorageName/* default */.Z.Appear, appearData);
-        (0,navbar/* hideBalloonById */.R)(extData/* default */.Z.balloonId.messageCounter, event.target.checked);
-        (0,registers/* registerAlert */.de)(`${event.target.checked ? 'Включено' : 'Выключено'} скрытие счетчика сообщений в навбаре`, 5000);
-      }),
-    new menu_checkbox('new_error_page', `Небольшое изменение страницы "тех. работ" и "ошибок"`)
-    .createElement(
-      appearData.newErrorPage,
-      () => {},
-      () => {},
-      async (event) => {
-        appearData.newErrorPage = event.target.checked;
-        await GM_setValue(StorageName/* default */.Z.Appear, appearData);
-        (0,registers/* registerAlert */.de)(`${event.target.checked ? 'Включено' : 'Выключено'} Небольшое изменение страницы "тех. работ" и "ошибок"`, 5000);
-      }),
-    new menu_checkbox('disable_self_ad_error', `Убрать саморекламу на измененной странице "тех. работ" и "ошибок"`)
-    .createElement(
-      appearData.disableSelfAdOnNewErrorPage,
-      () => {},
-      () => {},
-      async (event) => {
-        appearData.disableSelfAdOnNewErrorPage = event.target.checked;
-        await GM_setValue(StorageName/* default */.Z.Appear, appearData);
-        (0,registers/* registerAlert */.de)(`${event.target.checked ? 'Включена' : 'Выключена'} самореклама на изменнной странице "тех. работ" и "ошибок"`, 5000);
-      }),
+    new container(
+      [
+        new menu_checkbox('hide_alert_counter', `Скрыть счётчик уведомлений в навбаре`)
+        .createElement(
+          appearData.hideAlertCounter,
+          () => {},
+          () => {},
+          async (event) => {
+            appearData.hideAlertCounter = event.target.checked;
+            await GM_setValue(StorageName/* default */.Z.Appear, appearData);
+            (0,navbar/* hideBalloonById */.R)(extData/* default */.Z.balloonId.alertCounter, event.target.checked);
+            (0,registers/* registerAlert */.de)(`${event.target.checked ? 'Включено' : 'Выключено'} скрытие счетчика уведомлений в навбаре`, 5000);
+        }),
+        new menu_checkbox('hide_message_counter', `Скрыть счётчик сообщений в навбаре`)
+        .createElement(
+          appearData.hideMessageCounter,
+          () => {},
+          () => {},
+          async (event) => {
+            appearData.hideMessageCounter = event.target.checked;
+            await GM_setValue(StorageName/* default */.Z.Appear, appearData);
+            (0,navbar/* hideBalloonById */.R)(extData/* default */.Z.balloonId.messageCounter, event.target.checked);
+            (0,registers/* registerAlert */.de)(`${event.target.checked ? 'Включено' : 'Выключено'} скрытие счетчика сообщений в навбаре`, 5000);
+        }),
+        new menu_checkbox('hide_unread_articles_status', `Скрыть статус непрочитанных статей`)
+        .createElement(
+          appearData.hideUnreadArticlesStatus,
+          () => {},
+          () => {},
+          async (event) => {
+            appearData.hideUnreadArticlesStatus = event.target.checked;
+            await GM_setValue(StorageName/* default */.Z.Appear, appearData);
+            (0,navbar/* hideUnreadArticlesStatus */.p)(event.target.checked);
+            (0,registers/* registerAlert */.de)(`${event.target.checked ? 'Включено' : 'Выключено'} скрытие статуса непрочитанных статей`, 5000);
+        }),
+      ],
+      'Скрытие элементов',
+      'Скройте лишние элементы сайта'
+    ).createElement('display: block;'),
+    new container(
+      [
+        new menu_checkbox('new_error_page', `Небольшое изменение страницы "тех. работ" и "ошибок"`)
+        .createElement(
+          appearData.newErrorPage,
+          () => {},
+          () => {},
+          async (event) => {
+            appearData.newErrorPage = event.target.checked;
+            await GM_setValue(StorageName/* default */.Z.Appear, appearData);
+            (0,registers/* registerAlert */.de)(`${event.target.checked ? 'Включено' : 'Выключено'} Небольшое изменение страницы "тех. работ" и "ошибок"`, 5000);
+        }),
+        new menu_checkbox('disable_self_ad_error', `Убрать саморекламу на измененной странице "тех. работ" и "ошибок"`)
+        .createElement(
+          appearData.disableSelfAdOnNewErrorPage,
+          () => {},
+          () => {},
+          async (event) => {
+            appearData.disableSelfAdOnNewErrorPage = event.target.checked;
+            await GM_setValue(StorageName/* default */.Z.Appear, appearData);
+            (0,registers/* registerAlert */.de)(`${event.target.checked ? 'Включена' : 'Выключена'} самореклама на изменнной странице "тех. работ" и "ошибок"`, 5000);
+        }),
+      ],
+      'Страницы тех. работ и ошибок',
+      'Измените оформление страницы тех. работ и ошибки'
+    ).createElement('display: block;'),
   ];
 }
 
@@ -5422,17 +5466,29 @@ function getAuthors(authorNames, authorUserIds) {
 /***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
 
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   R: () => (/* binding */ hideBalloonById)
+/* harmony export */   R: () => (/* binding */ hideBalloonById),
+/* harmony export */   p: () => (/* binding */ hideUnreadArticlesStatus)
 /* harmony export */ });
 /**
  *
  * @param {str} balloonId - id of balloon element. Ex: #AlertsMenu_Counter
- * @param {boolean} isHidden - status of balloon (true - hidden, false - visible)
+ * @param {boolean} isHidden - status of visibility (true - hidden, false - visible)
  */
 function hideBalloonById(balloonId, isHidden) {
   const balloon = document.getElementById(balloonId);
   if (balloon) {
     balloon.style.opacity = Number(!isHidden);
+  }
+}
+
+/**
+ *
+ * @param {boolean} isHidden - status of visibility (true - hidden, false - visible)
+ */
+function hideUnreadArticlesStatus(isHidden) {
+  const statusEl = document.querySelector('.hasUnreadArticles');
+  if (statusEl) {
+    statusEl.style.display = isHidden ? 'none' : '';
   }
 }
 
