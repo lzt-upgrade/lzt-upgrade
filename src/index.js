@@ -63,10 +63,16 @@ async function initTheme() {
   console.timeLog("init-theme", "loading name from cache...")
   let themeName = await GM_getValue(StorageName.Cache, {}).themeName;
   console.timeLog("init-theme", "Check themeName valid...")
-  console.log(themeName, appearData.themeId)
-  if (!themeName && appearData.themeId > 0) {
-    Logger.debug(`Requesting theme with id ${appearData.themeId}...`);
-    themeName = await getThemeByID(appearData.themeId)
+  console.log(themeName, appearData.selectedTheme);
+  if (appearData.selectedTheme === 0) {
+    console.timeLog("init-theme", "Skip theme")
+    console.timeEnd("init-theme");
+    return;
+  }
+
+  if (!themeName && appearData.selectedTheme > 0) {
+    Logger.debug(`Requesting theme with id ${appearData.selectedTheme}...`);
+    themeName = await getThemeByID(appearData.selectedTheme)
       .catch(err => console.error(err));
     let cacheData = await GM_getValue(StorageName.Cache, {});
     cacheData.themeName = themeName;
