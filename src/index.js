@@ -312,29 +312,16 @@ async function main() {
       dbUsersData.showFullRegInProfile? showFullRegDateInProfile(true) : null;
     }
 
-
-    // global observer
-    // const ALERT_COUNTER_ID = extData.selectors.alertCounter.replace('#', '');
-    // registerObserver(async (mutation) => {
-    //   if (
-    //     mutation.target.classList.contains('Total') &&
-    //     mutation.target?.parentElement?.id === ALERT_COUNTER_ID
-    //   ) {
-    //     const appearData = GM_getValue(StorageName.Appear, {});
-    //     if (appearData.hideAlertCounter) {
-    //       mutation.target.parentElement.style.display = 'none';
-    //       // hideBalloon(extData.selectors.alertCounter, true);
-    //     }
-    //   }
-    // });
-
     console.timeEnd("lztup-start")
   };
 
 
-
+  // XF_ACTIVATE = XenForo.activate;
 
   document.addEventListener('DOMContentLoaded', startExt);
+
+  // for fix rare loading bugs
+  document.addEventListener('load', startExt);
 
   if (document.readyState === 'complete') {
     await startExt();
