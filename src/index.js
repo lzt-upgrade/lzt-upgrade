@@ -316,8 +316,6 @@ async function main() {
   };
 
 
-  // XF_ACTIVATE = XenForo.activate;
-
   document.addEventListener('DOMContentLoaded', startExt);
 
   // for fix rare loading bugs
