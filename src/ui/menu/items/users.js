@@ -54,21 +54,28 @@ const getUsersItems = async () => {
       'Доп. информация о пользователе',
       'Включите отображение дополнительной информации о пользователе'
     ).createElement('display:block;'),
-    new Checkbox('disable_share_typing',
-      `Неписалка в темах
-      <span class="fa fa-exclamation-triangle Tooltip" title="При включение/отключение этой функции страница будет перезагружена"></span>
-      `)
-    .createElement(
-      usersData.disableShareTyping,
-      () => {},
-      () => {},
-      async (event) => {
-        usersData.disableShareTyping = event.target.checked;
-        await GM_setValue(StorageName.Users, usersData);
-        registerAlert(`Неписалка в темах ${event.target.checked ? 'включена' : 'выключена'}` , 5000);
-        await sleep(500);
-        window.location.reload();
-    }),
+    new Container(
+      [
+        new Checkbox('disable_share_typing',
+          `Неписалка в темах
+          <span class="fa fa-exclamation-triangle Tooltip" title="При включение/отключение этой функции страница будет перезагружена"></span>
+          `)
+        .createElement(
+          usersData.disableShareTyping,
+          () => {},
+          () => {},
+          async (event) => {
+            usersData.disableShareTyping = event.target.checked;
+            await GM_setValue(StorageName.Users, usersData);
+            registerAlert(`Неписалка в темах ${event.target.checked ? 'включена' : 'выключена'}` , 5000);
+            await sleep(500);
+            window.location.reload();
+        }),
+      ],
+      'Другое',
+      'Другие функции связанные с пользователями'
+    ).createElement('display:block;'),
+
   ];
 }
 
