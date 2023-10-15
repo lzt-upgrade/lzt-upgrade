@@ -3,6 +3,7 @@ export default class NavbarBalloon {
   static MessageCounter = new NavbarBalloon('ConversationsMenu_Counter').name;
 
   constructor(name) {
-    this.name = name
+    // id of ballon without #
+    this.name = name;
   }
 }
