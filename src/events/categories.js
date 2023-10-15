@@ -1,13 +1,17 @@
 import { waitForElm, sleep } from 'Utils/utils';
 
-// TODO: rework with clear JS
+
 function onClickCategory(nodeSelector, callback) {
-  const node = $(`li.node${nodeSelector}.forum.level-n`);
-  $(node).on('click', async () => {
-    await sleep(750);
-    const el = await waitForElm('div.pageNavLinkGroup');
-    if (el) callback();
-  });
+  const nodeEls = document.querySelectorAll(`li.node${nodeSelector}.forum.level-n`);
+  if (nodeEls.length) {
+    for (const nodeEl of nodeEls) {
+      nodeEl.addEventListener('click', async () => {
+        await sleep(750);
+        const el = await waitForElm('div.pageNavLinkGroup');
+        if (el) callback();
+      })
+    }
+  }
 }
 
 export default onClickCategory;
