@@ -29,7 +29,7 @@ function isThreadPage() {
 }
 
 function isOpenMemberCard() {
-  return !!document.querySelector(extData.selectors.memberCard);
+  return !!document.querySelector('.xenOverlay.memberCard');
 }
 
 export {
