@@ -46,12 +46,14 @@ import { isProfilePage } from 'Utils/checkers';
 import SiteType from "Configs/SiteType";
 import { setLogoFromCache } from "Cache/logo";
 import { hideBalloonById, hideUnreadArticlesStatus } from "Visuals/navbar";
+import ForumNode from "Configs/ForumNode";
 
 // import 'Styles/main.css';
 
 import 'Styles/errorPage.scss';
 import 'Styles/universal.scss';
 import 'Styles/xenforo.scss';
+import NavbarBalloon from "Configs/NavbarBalloon";
 
 
 async function initTheme() {
@@ -186,9 +188,9 @@ async function main() {
     console.timeLog("lztup-start", "marketLogo")
     appearData.marketLogo > 0 ? await setLogoFromCache(SiteType.Market, appearData.marketLogo) : null;
     console.timeLog("lztup-start", "hideAlertCounter")
-    appearData.hideAlertCounter ? hideBalloonById(extData.balloonId.alertCounter, true) : null;
+    appearData.hideAlertCounter ? hideBalloonById(NavbarBalloon.AlertCounter, true) : null;
     console.timeLog("lztup-start", "hideMessageCounter")
-    appearData.hideMessageCounter ? hideBalloonById(extData.balloonId.messageCounter, true) : null;
+    appearData.hideMessageCounter ? hideBalloonById(NavbarBalloon.AlertCounter, true) : null;
     console.timeLog("lztup-start", "hideUnreadArticlesStatus")
     appearData.hideUnreadArticlesStatus ? hideUnreadArticlesStatus(true) : null;
 
@@ -267,7 +269,7 @@ async function main() {
     dbContestsData.openTenContestsBtn ? regOpenContestsBtn(10) : null;
 
     console.timeLog("lztup-start", "Add onclick contests category")
-    onClickCategory(extData.nodes.contests, async () => {
+    onClickCategory(ForumNode.Contests, async () => {
       const newContestsData = await GM_getValue(StorageName.Contests, {});
       newContestsData.openTenContestsBtn ? regOpenContestsBtn(10) : null;
     });

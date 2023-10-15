@@ -18,6 +18,7 @@ import { sleep } from "Utils/utils";
 import config from "Configs/config";
 import { hideBalloonById, hideUnreadArticlesStatus } from "Visuals/navbar";
 import extData from "Configs/extData";
+import NavbarBalloon from "Configs/NavbarBalloon";
 
 
 async function createLogoManagerTempMenu(logoType) {
@@ -165,7 +166,7 @@ const getAppearItems = async () => {
           async (event) => {
             appearData.hideAlertCounter = event.target.checked;
             await GM_setValue(StorageName.Appear, appearData);
-            hideBalloonById(extData.balloonId.alertCounter, event.target.checked);
+            hideBalloonById(NavbarBalloon.AlertCounter, event.target.checked);
             registerAlert(`${event.target.checked ? 'Включено' : 'Выключено'} скрытие счетчика уведомлений в навбаре`, 5000);
         }),
         new Checkbox('hide_message_counter', `Скрыть счётчик сообщений в навбаре`)
@@ -176,7 +177,7 @@ const getAppearItems = async () => {
           async (event) => {
             appearData.hideMessageCounter = event.target.checked;
             await GM_setValue(StorageName.Appear, appearData);
-            hideBalloonById(extData.balloonId.messageCounter, event.target.checked);
+            hideBalloonById(NavbarBalloon.MessageCounter, event.target.checked);
             registerAlert(`${event.target.checked ? 'Включено' : 'Выключено'} скрытие счетчика сообщений в навбаре`, 5000);
         }),
         new Checkbox('hide_unread_articles_status', `Скрыть статус непрочитанных статей`)
