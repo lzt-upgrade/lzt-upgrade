@@ -1,7 +1,6 @@
 import themeAPI from "API/lztupgrade/themeAPI";
 
 import config from "Configs/config";
-import extData from 'Configs/extData';
 import StorageName from 'Configs/StorageName';
 
 import { contestsAutoCloseHandler } from "Callbacks/contestsParticipate";
@@ -54,6 +53,7 @@ import 'Styles/errorPage.scss';
 import 'Styles/universal.scss';
 import 'Styles/xenforo.scss';
 import NavbarBalloon from "Configs/NavbarBalloon";
+import ErrorLink from "Configs/ErrorLink";
 
 
 async function initTheme() {
@@ -140,7 +140,7 @@ async function main() {
           </svg>
           Telegram
         `,
-        extData.links.telegramChannel
+        ErrorLink.TelegramChannel
       ).createElement();
 
       const selfAdGithub = new ErrorPageButton(
@@ -150,7 +150,7 @@ async function main() {
           </svg>
           Github
         `,
-        extData.links.githubPage
+        ErrorLink.Github
       ).createElement();
 
       selfAdButtonBlock.appendChild(selfAdTelegram);
@@ -188,9 +188,9 @@ async function main() {
     console.timeLog("lztup-start", "marketLogo")
     appearData.marketLogo > 0 ? await setLogoFromCache(SiteType.Market, appearData.marketLogo) : null;
     console.timeLog("lztup-start", "hideAlertCounter")
-    appearData.hideAlertCounter ? hideBalloonById(NavbarBalloon.AlertCounter, true) : null;
+    appearData.hideAlertCounter ? hideBalloonById(NavbarBalloon.AlertCounter.getName(), true) : null;
     console.timeLog("lztup-start", "hideMessageCounter")
-    appearData.hideMessageCounter ? hideBalloonById(NavbarBalloon.AlertCounter, true) : null;
+    appearData.hideMessageCounter ? hideBalloonById(NavbarBalloon.MessageCounter.getName(), true) : null;
     console.timeLog("lztup-start", "hideUnreadArticlesStatus")
     appearData.hideUnreadArticlesStatus ? hideUnreadArticlesStatus(true) : null;
 
@@ -269,7 +269,7 @@ async function main() {
     dbContestsData.openTenContestsBtn ? regOpenContestsBtn(10) : null;
 
     console.timeLog("lztup-start", "Add onclick contests category")
-    onClickCategory(ForumNode.Contests, async () => {
+    onClickCategory(ForumNode.Contests.selector, async () => {
       const newContestsData = await GM_getValue(StorageName.Contests, {});
       newContestsData.openTenContestsBtn ? regOpenContestsBtn(10) : null;
     });

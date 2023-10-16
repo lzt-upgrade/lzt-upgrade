@@ -1,14 +1,11 @@
 import StorageName from "Configs/StorageName";
 import Checkbox from 'UI/components/menu/checkbox';
-import Comment from 'UI/components/menu/comment';
 import { registerAlert } from "Utils/registers";
 import Container from "UI/components/menu/container";
 import { Section, SectionDirection } from 'UI/components/menu/section';
 import { openTempMenu, addTemporaryMenuSection } from "UI/menu/temporarySection";
-import Heading from "UI/components/menu/heading";
 import logoAPI from "API/lztupgrade/logoAPI";
 import { Grid } from "UI/components/menu/grid";
-import Description from "UI/components/menu/description";
 import { setLogo } from "Visuals/universal";
 import Logger from "Utils/logger";
 import SiteType from "Configs/SiteType";
@@ -17,7 +14,6 @@ import themeAPI from "API/lztupgrade/themeAPI";
 import { sleep } from "Utils/utils";
 import config from "Configs/config";
 import { hideBalloonById, hideUnreadArticlesStatus } from "Visuals/navbar";
-import extData from "Configs/extData";
 import NavbarBalloon from "Configs/NavbarBalloon";
 
 
@@ -166,7 +162,7 @@ const getAppearItems = async () => {
           async (event) => {
             appearData.hideAlertCounter = event.target.checked;
             await GM_setValue(StorageName.Appear, appearData);
-            hideBalloonById(NavbarBalloon.AlertCounter, event.target.checked);
+            hideBalloonById(NavbarBalloon.AlertCounter.getName(), event.target.checked);
             registerAlert(`${event.target.checked ? 'Включено' : 'Выключено'} скрытие счетчика уведомлений в навбаре`, 5000);
         }),
         new Checkbox('hide_message_counter', `Скрыть счётчик сообщений в навбаре`)
@@ -177,7 +173,7 @@ const getAppearItems = async () => {
           async (event) => {
             appearData.hideMessageCounter = event.target.checked;
             await GM_setValue(StorageName.Appear, appearData);
-            hideBalloonById(NavbarBalloon.MessageCounter, event.target.checked);
+            hideBalloonById(NavbarBalloon.MessageCounter.getName(), event.target.checked);
             registerAlert(`${event.target.checked ? 'Включено' : 'Выключено'} скрытие счетчика сообщений в навбаре`, 5000);
         }),
         new Checkbox('hide_unread_articles_status', `Скрыть статус непрочитанных статей`)

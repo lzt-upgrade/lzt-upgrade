@@ -1,9 +1,7 @@
-export default class NavbarBalloon {
-  static AlertCounter = new NavbarBalloon('AlertsMenu_Counter').name;
-  static MessageCounter = new NavbarBalloon('ConversationsMenu_Counter').name;
+import { BaseSelectorEnum } from "Configs/base";
 
-  constructor(name) {
-    // id of ballon without #
-    this.name = name;
-  }
+
+export default class NavbarBalloon extends BaseSelectorEnum {
+  static AlertCounter = new NavbarBalloon('#AlertsMenu_Counter');
+  static MessageCounter = new NavbarBalloon('#ConversationsMenu_Counter');
 }

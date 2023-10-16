@@ -16,7 +16,7 @@ class SectionText {
   /**
    *
    *  @constructor
-   *  @param {string} text - text of the heading
+   *  @param {string} text - text of the heading (html allowed!!!)
    */
 
   constructor(text) {
@@ -27,7 +27,7 @@ class SectionText {
   createElement() {
     const el = document.createElement('span');
     el.classList.add(this.className);
-    el.innerText = this.text;
+    el.innerHTML = clearHTML(this.text);
 
     return el;
   }
@@ -100,19 +100,19 @@ class Section {
    *  @param {string} name - title of the item
    *  @param {string} desc - description of the item
    *  @param {string} iconClasses - font awesome icon classes
-   *  @param {string} sectionId - id of the section item
+   *  @param {string} sectionItemId - id of the section item
    *  @param {object} options - additional options (read description below)
    *
    *  Options:
    *  @param {function} onClick - callback on click event
    *  @param {boolean} rightArrow - add a icon of the right arrow in the right side (only for column direction)
    */
-  addSectionItem(title, desc, iconClasses, sectionId, options = {}) {
+  addSectionItem(title, desc, iconClasses, sectionItemId, options = {}) {
     const onClickCallback = options.onClick || function() {};
     const rightArrow = options.rightArrow || false;
 
     const sectionItem = document.createElement('div');
-    sectionItem.id = sectionId;
+    sectionItem.id = sectionItemId;
     sectionItem.classList.add('LZTUpSectionItem');
 
     const sectionIcon = new Icon(iconClasses).createElement();

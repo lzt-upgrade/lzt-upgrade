@@ -1,7 +1,6 @@
-export default class ForumNode {
-  static Contests = new ForumNode('.node766').name;
+import { BaseSelectorEnum } from "Configs/base";
 
-  constructor(name) {
-    this.name = name
-  }
+
+export default class ForumNode extends BaseSelectorEnum {
+  static Contests = new ForumNode('.node766');
 }

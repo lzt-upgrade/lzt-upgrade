@@ -1,26 +1,23 @@
 import { setMenuTitle, addGoBackBtn } from 'UI/menu/utils';
-import extData from 'Configs/extData';
-
-const tempSubMenuId = extData.uiElementsId.lztupTempSubMenu;
-const tempSubMenuSelector = extData.uiElementsSelectors.lztupTempSubMenu;
+import MenuElement from 'Configs/MenuElement';
 
 
 function openTempMenu(sectionName, fromSectionName, subMenuToShow, onCloseCallback) {
   const subMenus = document.querySelectorAll('.LZTUpSubMenu');
   subMenus.forEach(subMenu => subMenu.style.display = 'none');
-  document.querySelector(tempSubMenuSelector).style.display = '';
+  document.querySelector(MenuElement.TempSubMenu.selector).style.display = '';
   setMenuTitle(sectionName);
   addGoBackBtn('tempmenu', fromSectionName, subMenuToShow, onCloseCallback);
 }
 
 function addTemporaryMenuSection(items) {
-  const oldTempMenu = document.querySelector(tempSubMenuSelector);
+  const oldTempMenu = document.querySelector(MenuElement.TempSubMenu.selector);
   if (oldTempMenu) {
     oldTempMenu.remove();
   }
 
   const container = document.createElement('div');
-  container.id = tempSubMenuId;
+  container.id = MenuElement.TempSubMenu.getName();
   container.classList.add('LZTUpSubMenu');
 
   for (const item of items) {
