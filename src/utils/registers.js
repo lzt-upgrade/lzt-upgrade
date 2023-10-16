@@ -14,6 +14,13 @@ function registerMenuButton(el) {
   return true;
 }
 
+function registerNavButton(el) {
+  const nav = document.querySelector('.pageNavLinkGroup > .linkGroup');
+  el.style.marginRight = '10px';
+  nav.prepend(el)
+  return true;
+}
+
 function registerObserver(callback) {
   const observer = new MutationObserver((mutationsList, observer) => {
     for (const mutation of mutationsList) {
@@ -28,4 +35,10 @@ function registerObserver(callback) {
   return observer;
 }
 
-export { registerMenuButton, registerModal, registerAlert, registerObserver };
+export {
+  registerMenuButton,
+  registerNavButton,
+  registerModal,
+  registerAlert,
+  registerObserver,
+};

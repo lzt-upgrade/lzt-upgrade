@@ -42,18 +42,12 @@ function waitForBody() {
 const sleep = m => new Promise(r => setTimeout(r, m))
 
 function getNodeLinks() {
-  let latestsThreads = $('div.latestThreads');
-  const stickyThreads = $('div.stickyThreads');
-  latestsThreads = stickyThreads.is(':visible') ? $.merge(latestsThreads, stickyThreads) : latestsThreads;
-  return latestsThreads.find('div.discussionListItem--Wrapper');
+  return document.querySelectorAll('.discussionListItem--Wrapper');
 }
 
 function getThreadLinks() {
-  let links = getNodeLinks()
-  .find('a.listBlock.main')
-  .toArray()
-  .map(element => $(element).attr('href'));
-  return links;
+  return Array.from(getNodeLinks())
+    .map(el => el.querySelector('.listBlock.main')?.href)
 }
 
 function removeStyles(selector) {
@@ -119,6 +113,10 @@ function getAuthors(authorNames, authorUserIds) {
   }
 }
 
+function updateFeed() {
+  document.querySelector('.UpdateFeedButton')?.click();
+}
+
 
 export {
   waitForElm,
@@ -130,5 +128,6 @@ export {
   removeStylesByEl,
   applyStyle,
   getTimestamp,
-  getAuthors
+  getAuthors,
+  updateFeed,
 };

@@ -1,5 +1,6 @@
 import Icon from "UI/components/icon.js";
 
+
 class Button {
   /**
    *

@@ -1,9 +1,54 @@
 import { participateByBtnCallback } from 'Callbacks/contestsParticipate';
-import { isContestThread } from 'Utils/checkers';
-import { hideThreadContent, hideThreadPoll } from 'Visuals/threads';
-import { tagsVisibility } from 'Utils/tags';
+import {
+  hideThreadContent,
+  hideThreadPoll
+} from 'Visuals/threads';
 import Button from 'UI/components/button';
 import Logger from 'Utils/logger';
+import { registerNavButton } from 'Utils/registers';
+import {
+  waitForElm,
+  getThreadLinks,
+  updateFeed
+} from 'Utils/utils';
+import { tagsVisibility } from 'Utils/tags';
+import {
+  isContestsNode,
+  isContestThread
+} from 'Utils/checkers';
+
+
+const pagesToOpen = 10;
+const openContestsBtnId = `LZTUpOpenContestsButton`
+
+function regOpenContestsBtn() {
+  if (isContestsNode() && !document.getElementById(openContestsBtnId)) {
+    const openContestsBtn = new Button(`Открыть ${XenForo.htmlspecialchars(pagesToOpen)}`).createElement(async () => {
+      updateFeed();
+      const el = await waitForElm('.forumImprovements--mask.hidden');
+      if (!el) {
+        return;
+      };
+
+      const links = getThreadLinks();
+      if (!links.length) {
+        return;
+      };
+
+      for (let i = 0; i < Math.min(pagesToOpen, links.length); i++) {
+        window.open(links[i]);
+      }
+    });
+    openContestsBtn.id = openContestsBtnId;
+    registerNavButton(openContestsBtn);
+  }
+}
+
+function removeOpenContestsBtn() {
+  if (isContestsNode()) {
+    document.getElementById(openContestsBtnId)?.remove();
+  }
+}
 
 function contestThreadBlockMove(toTop = true) {
   if (isContestThread()) {
@@ -103,6 +148,8 @@ function contestsParticipateByBtn(status) {
 }
 
 export {
+  regOpenContestsBtn,
+  removeOpenContestsBtn,
   contestThreadBlockMove,
   contestsHideContent,
   contestsTagsVisibility,

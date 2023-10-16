@@ -8,7 +8,6 @@ import { getThemeByID } from 'Callbacks/extensionStart';
 
 import { LZTProfileDB } from "IndexedDB/profile";
 
-import { regOpenContestsBtn } from "UI/components/buttons/contestsButton";
 import menuButton from "UI/components/buttons/menuButton";
 import ErrorPageButton from "UI/components/buttons/errorPageButton";
 
@@ -17,6 +16,7 @@ import onClickCategory from "Events/categories";
 import Logger from "Utils/logger";
 import { registerMenuButton, registerObserver } from "Utils/registers";
 import {
+  regOpenContestsBtn,
   contestsTagsVisibility,
   contestThreadBlockMove,
   contestsHideContent,
@@ -266,12 +266,12 @@ async function main() {
     const dbContestsData = await GM_getValue(StorageName.Contests, {});
 
     console.timeLog("lztup-start", "Add reg 10 btn")
-    dbContestsData.openTenContestsBtn ? regOpenContestsBtn(10) : null;
+    dbContestsData.openTenContestsBtn ? regOpenContestsBtn() : null;
 
     console.timeLog("lztup-start", "Add onclick contests category")
     onClickCategory(ForumNode.Contests.selector, async () => {
       const newContestsData = await GM_getValue(StorageName.Contests, {});
-      newContestsData.openTenContestsBtn ? regOpenContestsBtn(10) : null;
+      newContestsData.openTenContestsBtn ? regOpenContestsBtn() : null;
     });
 
     console.timeLog("lztup-start", "hideTagsInThread")

@@ -1,8 +1,9 @@
 import StorageName from 'Configs/StorageName';
 import { contestsAutoCloseHandler } from "Callbacks/contestsParticipate";
-import { regOpenContestsBtn, removeOpenContestsBtn } from 'UI/components/buttons/contestsButton';
 import Checkbox from 'UI/components/menu/checkbox';
 import {
+  regOpenContestsBtn,
+  removeOpenContestsBtn,
   contestsTagsVisibility,
   contestThreadBlockMove,
   contestsHideContent,
@@ -64,10 +65,10 @@ const getContestsItems = async () => {
         .createElement(
           contestsData.openTenContestsBtn,
           () => {
-            regOpenContestsBtn(10);
+            regOpenContestsBtn();
           },
           () => {
-            removeOpenContestsBtn(10);
+            removeOpenContestsBtn();
           },
           async (event) => {
             contestsData.openTenContestsBtn = event.target.checked;
