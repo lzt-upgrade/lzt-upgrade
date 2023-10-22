@@ -95,7 +95,7 @@ function addUserIdToMemberCard() {
   if (isOpenMemberCard()) {
     const memberCards = document.querySelectorAll('.xenOverlay.memberCard');
     const userId = getUserId('membercard') ?? 'Не найден';
-    const userContentLinks = memberCards[memberCards.length - 1].querySelector(`#memberCard${userId}.memberCardInner > .bottom > .userContentLinks`);
+    const userContentLinks = memberCards[memberCards.length - 1].querySelector(`#memberCard${userId}.memberCardInner > .bottom`);
     const userIdElement = document.createElement('div');
     userIdElement.classList.add('title');
     userIdElement.id = userIdMemberCardElementId;
