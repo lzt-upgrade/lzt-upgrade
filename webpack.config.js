@@ -6,7 +6,7 @@ import webpack from "webpack";
 import { UserscriptPlugin } from "webpack-userscript";
 import ESLintPlugin from "eslint-webpack-plugin";
 
-const dev = process.env.NODE_ENV === 'development';
+const dev = process.env.NODE_ENV === "development";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
