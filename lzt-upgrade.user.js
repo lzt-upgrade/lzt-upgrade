@@ -44,7 +44,7 @@
 (async function () {
   let SCRIPT_STATUS = false;
   const api_endpoints = {
-    getThemes: "https://lztupgrade.toiloff.ru/api/themes",
+    getThemes: 'https://lztupgrade.toiloff.ru/api/themes',
     getLogos: "https://lztupgrade.toiloff.ru/api/logos",
     getLogoByUID: "https://lztupgrade.toiloff.ru/api/logo",
     getUserSigns: "http://localhost:5000/api/users/signs",
