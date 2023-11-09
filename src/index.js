@@ -1,12 +1,10 @@
 import themeAPI from "API/lztupgrade/themeAPI";
 
 import config from "Configs/config";
-import StorageName from 'Configs/StorageName';
+import StorageName from "Configs/StorageName";
 
 import { contestsAutoCloseHandler } from "Callbacks/contestsParticipate";
-import { getThemeByID } from 'Callbacks/extensionStart';
-
-import { LZTProfileDB } from "IndexedDB/profile";
+import { getThemeByID } from "Callbacks/extensionStart";
 
 import menuButton from "UI/components/buttons/menuButton";
 import ErrorPageButton from "UI/components/buttons/errorPageButton";
@@ -23,25 +21,25 @@ import {
   contestsHidePoll,
   contestsUpdateCapctha,
   contestsAutoFixCaptcha,
-  contestsParticipateByBtn
-} from 'Utils/contests';
+  contestsParticipateByBtn,
+} from "Utils/contests";
 import {
   addUserIdToProfile,
   addUserIdToMemberCard,
   getUserId,
   getUsername,
   getUserGroup,
-  showFullRegDateInProfile
-} from 'Utils/users';
+  showFullRegDateInProfile,
+} from "Utils/users";
 import { bypassShareTyping } from "Xenforo/bypass";
 import {
   updateUserStyle,
   updateUserBanner,
-  updateUserBadges
-} from 'Visuals/users';
-import { addBackgroundImage } from 'Visuals/universal';
-import { addBackgroundImageInProfile } from 'Visuals/profile';
-import { isProfilePage } from 'Utils/checkers';
+  updateUserBadges,
+} from "Visuals/users";
+import { addBackgroundImage } from "Visuals/universal";
+import { addBackgroundImageInProfile } from "Visuals/profile";
+import { isProfilePage } from "Utils/checkers";
 import SiteType from "Configs/SiteType";
 import { setLogoFromCache } from "Cache/logo";
 import { hideBalloonById, hideUnreadArticlesStatus } from "Visuals/navbar";
@@ -49,33 +47,37 @@ import ForumNode from "Configs/ForumNode";
 
 // import 'Styles/main.css';
 
-import 'Styles/errorPage.scss';
-import 'Styles/universal.scss';
-import 'Styles/xenforo.scss';
+import "Styles/errorPage.scss";
+import "Styles/universal.scss";
+import "Styles/xenforo.scss";
 import NavbarBalloon from "Configs/NavbarBalloon";
 import ErrorLink from "Configs/ErrorLink";
-
+import LZTUp from "Utils/gmWrapper";
+import NewStorageName from "Configs/NewStorageName";
+import { summarizeThreadBlock } from "Utils/threads";
+import { getTimestamp } from "Utils/utils";
 
 async function initTheme() {
   // exec time: 35ms
   console.time("init-theme");
 
-  console.timeLog("init-theme", "getting appearData...")
+  console.timeLog("init-theme", "getting appearData...");
   const appearData = await GM_getValue(StorageName.Appear, {});
-  console.timeLog("init-theme", "loading name from cache...")
+  console.timeLog("init-theme", "loading name from cache...");
   let themeName = await GM_getValue(StorageName.Cache, {}).themeName;
-  console.timeLog("init-theme", "Check themeName valid...")
+  console.timeLog("init-theme", "Check themeName valid...");
   console.log(themeName, appearData.selectedTheme);
   if (appearData.selectedTheme === 0) {
-    console.timeLog("init-theme", "Skip theme")
+    console.timeLog("init-theme", "Skip theme");
     console.timeEnd("init-theme");
     return;
   }
 
   if (!themeName && appearData.selectedTheme > 0) {
     Logger.debug(`Requesting theme with id ${appearData.selectedTheme}...`);
-    themeName = await getThemeByID(appearData.selectedTheme)
-      .catch(err => console.error(err));
+    themeName = await getThemeByID(appearData.selectedTheme).catch(err =>
+      console.error(err),
+    );
     let cacheData = await GM_getValue(StorageName.Cache, {});
     cacheData.themeName = themeName;
     await GM_setValue(StorageName.Cache, cacheData);
@@ -86,11 +88,14 @@ async function initTheme() {
 }
 
 async function main() {
-  console.time("lztup-start")
+  let startTiming = getTimestamp();
+  let loadingInterval;
+  console.time("lztup-start");
   console.timeLog("lztup-start", "Waiting body...");
   let LOAD_STATUS = false;
 
-  if (GM_info?.script?.version) Logger.log(`${config.extName} version: ${GM_info?.script?.version}`);
+  if (GM_info?.script?.version)
+    Logger.log(`${config.extName} version: ${GM_info?.script?.version}`);
 
   const appearData = await GM_getValue(StorageName.Appear, {});
   async function startExt() {
@@ -99,22 +104,26 @@ async function main() {
     }
 
     LOAD_STATUS = true;
-    console.timeLog("lztup-start", "Body loaded successfully")
-    if (/^(Site\sMaintenance|429\sToo\sMany\sRequests)$/.test(document.head.querySelector('title').innerText)) {
+    console.timeLog("lztup-start", "Body loaded successfully");
+    if (
+      /^(Site\sMaintenance|429\sToo\sMany\sRequests|504\sGateway\sTime-out|Error\s502)$/.test(
+        document.head.querySelector("title").innerText,
+      )
+    ) {
       if (!appearData.newErrorPage) {
-        console.log(appearData.newErrorPage)
+        console.log(appearData.newErrorPage);
         return;
       }
 
       // custom error page
-      document.body.classList.add('LZTUpErrorPage');
-      let container = document.querySelector('article > div');
-      Logger.debug(container)
+      document.body.classList.add("LZTUpErrorPage");
+      let container = document.querySelector("article > div");
+      Logger.debug(container);
       if (!container) {
-        container = document.querySelector('center');
-        Logger.debug("updated container", container)
+        container = document.querySelector("center");
+        Logger.debug("updated container", container);
       }
-      const duckRain = document.createElement('img');
+      const duckRain = document.createElement("img");
       duckRain.src = "https://i.imgur.com/iVmKDr7.gif";
       duckRain.alt = "Duck rain";
       container.appendChild(duckRain);
@@ -124,14 +133,15 @@ async function main() {
       }
 
       // self ad don't delete me please :(
-      const selfAdBlock = document.createElement('div');
-      selfAdBlock.classList.add('LZTUpErrorPageSelfAd')
-      const selfAdText = document.createElement('p');
-      selfAdText.innerText = 'Пока форум недоступен, рекомендуем ознакомиться с нашими соц. сетями'
-      selfAdText.classList.add('selfAd');
+      const selfAdBlock = document.createElement("div");
+      selfAdBlock.classList.add("LZTUpErrorPageSelfAd");
+      const selfAdText = document.createElement("p");
+      selfAdText.innerText =
+        "Пока форум недоступен, рекомендуем ознакомиться с нашими соц. сетями";
+      selfAdText.classList.add("selfAd");
 
-      const selfAdButtonBlock = document.createElement('div');
-      selfAdButtonBlock.classList.add('buttons');
+      const selfAdButtonBlock = document.createElement("div");
+      selfAdButtonBlock.classList.add("buttons");
 
       const selfAdTelegram = new ErrorPageButton(
         `
@@ -140,7 +150,7 @@ async function main() {
           </svg>
           Telegram
         `,
-        ErrorLink.TelegramChannel
+        ErrorLink.TelegramChannel,
       ).createElement();
 
       const selfAdGithub = new ErrorPageButton(
@@ -150,7 +160,7 @@ async function main() {
           </svg>
           Github
         `,
-        ErrorLink.Github
+        ErrorLink.Github,
       ).createElement();
 
       selfAdButtonBlock.appendChild(selfAdTelegram);
@@ -163,173 +173,194 @@ async function main() {
       return;
     }
 
-    console.timeLog("lztup-start", "GET DEBUG INFO")
-    const username = getUsername('me');
-    const userid = getUserId('me');
-    const userGroup = getUserGroup('me');
-    const userAvatar = $('img.navTab--visitorAvatar').attr('src');
+    console.timeLog("lztup-start", "GET DEBUG INFO");
+    const username = getUsername("me");
+    const userid = getUserId("me");
+    const userGroup = getUserGroup("me");
+    const userAvatar = $("img.navTab--visitorAvatar").attr("src");
 
-    Logger.debug('┏━━━━━━━━ DEBUG INFO ━━━━━━━━━━┓');
+    Logger.debug("┏━━━━━━━━ DEBUG INFO ━━━━━━━━━━┓");
     Logger.debug(`Script version: ${GM_info?.script?.version}`);
     Logger.debug(`Account username: ${username}`);
     Logger.debug(`Account userid: ${userid}`);
     Logger.debug(`Account userGroup: ${userGroup}`);
     Logger.debug(`Account userAvatar: ${userAvatar}`);
-    Logger.debug('┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┚');
+    Logger.debug("┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┚");
 
-    console.timeLog("lztup-start", "Register menu button")
+    console.timeLog("lztup-start", "Register menu button");
     registerMenuButton(menuButton);
 
-    console.timeLog("lztup-start", "Add user group to cache")
+    console.timeLog("lztup-start", "Add user group to cache");
     await GM_setValue(StorageName.UserGroup, userGroup);
 
-    console.timeLog("lztup-start", "forumLogo")
-    appearData.forumLogo > 0 ? await setLogoFromCache(SiteType.Forum, appearData.forumLogo) : null;
-    console.timeLog("lztup-start", "marketLogo")
-    appearData.marketLogo > 0 ? await setLogoFromCache(SiteType.Market, appearData.marketLogo) : null;
-    console.timeLog("lztup-start", "hideAlertCounter")
-    appearData.hideAlertCounter ? hideBalloonById(NavbarBalloon.AlertCounter.getName(), true) : null;
-    console.timeLog("lztup-start", "hideMessageCounter")
-    appearData.hideMessageCounter ? hideBalloonById(NavbarBalloon.MessageCounter.getName(), true) : null;
-    console.timeLog("lztup-start", "hideUnreadArticlesStatus")
+    console.timeLog("lztup-start", "forumLogo");
+    appearData.forumLogo > 0
+      ? await setLogoFromCache(SiteType.Forum, appearData.forumLogo)
+      : null;
+    console.timeLog("lztup-start", "marketLogo");
+    appearData.marketLogo > 0
+      ? await setLogoFromCache(SiteType.Market, appearData.marketLogo)
+      : null;
+    console.timeLog("lztup-start", "hideAlertCounter");
+    appearData.hideAlertCounter
+      ? hideBalloonById(NavbarBalloon.AlertCounter.getName(), true)
+      : null;
+    console.timeLog("lztup-start", "hideMessageCounter");
+    appearData.hideMessageCounter
+      ? hideBalloonById(NavbarBalloon.MessageCounter.getName(), true)
+      : null;
+    console.timeLog("lztup-start", "hideUnreadArticlesStatus");
     appearData.hideUnreadArticlesStatus ? hideUnreadArticlesStatus(true) : null;
+    appearData.summarizeThreads ? await summarizeThreadBlock(true) : null;
 
-    console.timeLog("lztup-start", "Loading Profile DB...")
-    const profileDB = new LZTProfileDB();
-    // await profileDB.init();
-    const dbProfileData = await profileDB.read();
+    console.timeLog("lztup-start", "Loading Profile DB...");
+    const dbProfileData = await GM_getValue(StorageName.Profile, {});
+    const dbBadgeData = await GM_getValue(StorageName.ProfileBadges, []);
+    console.timeLog("lztup-start", "Check Profile User or Badge style");
+    if (dbProfileData.usernameStyle || dbBadgeData.length) {
+      console.timeLog("lztup-start", "Check Profile User style");
+      if (dbProfileData.usernameStyle) {
+        updateUserStyle(dbProfileData.usernameStyle);
+      }
 
-    console.timeLog("lztup-start", "Checking Profile data...")
-    if (dbProfileData) {
-      console.timeLog("lztup-start", "Check Profile User or Badge style")
-      if (dbProfileData.usernameStyle || dbProfileData.badgeIcons.length) {
-        console.timeLog("lztup-start", "Check Profile User style")
-        if (dbProfileData.usernameStyle) {
-          updateUserStyle(dbProfileData.usernameStyle);
-        }
+      console.timeLog("lztup-start", "Check Profile badge style");
+      if (dbBadgeData.length) {
+        updateUserBadges(dbBadgeData);
+      }
 
-        console.timeLog("lztup-start", "Check Profile badge style")
-        if (dbProfileData.badgeIcons.length) {
-          updateUserBadges(dbProfileData.badgeIcons);
-        }
-
-        console.timeLog("lztup-start", "Reg profile observer")
-        registerObserver(async (mutation) => {
-          Logger.debug(mutation)
-          if (
-            mutation.target.classList.contains('messageList') ||
-            mutation.target.classList.contains('messageSimpleList') ||
-            mutation.target.classList.contains('messageResponse') ||
-            mutation.target.classList.contains('CommentPostList') ||
-            mutation.target.classList.contains('discussionList') ||
-            mutation.target.classList.contains('chat2-messages') ||
-            mutation.target.classList.contains('fe-ac-user') ||
-            mutation.target.classList.contains('latestThreads') ||
-            mutation.target.parentElement?.classList.contains('conversationMessages') ||
-            mutation.nextSibling?.classList?.contains('modal') ||
-            mutation.previousSibling?.classList?.contains('Alert') ||
-            mutation.previousSibling?.nextSibling?.classList?.contains('Alert') ||
-            mutation.removedNodes?.[0]?.id === 'AjaxProgress' ||
-            mutation.target.id === 'AlertsDestinationWrapper' ||
-            mutation.target.id === 'StackAlerts'
-          ) {
-            const updatedProfileData = await profileDB.read();
-            if (updatedProfileData.usernameStyle) {
-              updateUserStyle(updatedProfileData.usernameStyle)
-            }
-
-            if (updatedProfileData.badgeIcons.length) {
-              updateUserBadges(updatedProfileData.badgeIcons);
-            }
+      console.timeLog("lztup-start", "Reg profile observer");
+      registerObserver(async mutation => {
+        Logger.debug(mutation);
+        if (
+          mutation.target.classList.contains("messageList") ||
+          mutation.target.classList.contains("messageSimpleList") ||
+          mutation.target.classList.contains("messageResponse") ||
+          mutation.target.classList.contains("CommentPostList") ||
+          mutation.target.classList.contains("discussionList") ||
+          mutation.target.classList.contains("chat2-messages") ||
+          mutation.target.classList.contains("fe-ac-user") ||
+          mutation.target.classList.contains("latestThreads") ||
+          mutation.target.parentElement?.classList.contains(
+            "conversationMessages",
+          ) ||
+          mutation.nextSibling?.classList?.contains("modal") ||
+          mutation.previousSibling?.classList?.contains("Alert") ||
+          mutation.previousSibling?.nextSibling?.classList?.contains("Alert") ||
+          mutation.removedNodes?.[0]?.id === "AjaxProgress" ||
+          mutation.target.id === "AlertsDestinationWrapper" ||
+          mutation.target.id === "StackAlerts"
+        ) {
+          const updatedProfileData = await LZTUp.getValue(
+            NewStorageName.Profile,
+          );
+          const updatedBadgeData = await LZTUp.getValue(
+            NewStorageName.ProfileBadges,
+          );
+          if (updatedProfileData.usernameStyle) {
+            updateUserStyle(updatedProfileData.usernameStyle);
           }
-        });
-      }
 
-      console.timeLog("lztup-start", "Check Profile banner")
-      if (dbProfileData.bannerStyle && dbProfileData.bannerText) {
-        updateUserBanner(dbProfileData.bannerStyle, dbProfileData.bannerText);
-      }
-
-      console.timeLog("lztup-start", "Check Profile bg")
-      if (dbProfileData.backgroundImage) {
-        // update background image of page
-        if (dbProfileData.backgroundImageEverywhere) {
-          addBackgroundImage(dbProfileData.backgroundImage);
-        } else {
-          addBackgroundImageInProfile(dbProfileData.backgroundImage);
+          if (updatedBadgeData) {
+            updateUserBadges(dbBadgeData);
+          }
         }
-      }
-      console.timeLog("lztup-start", "Profile bg loaded")
+      });
     }
 
-    console.timeLog("lztup-start", "Loading Contests DB...")
+    console.timeLog("lztup-start", "Check Profile banner");
+    if (dbProfileData.bannerStyle && dbProfileData.bannerText) {
+      updateUserBanner(dbProfileData.bannerStyle, dbProfileData.bannerText);
+    }
+
+    console.timeLog("lztup-start", "Check Profile bg");
+    if (dbProfileData.backgroundImage) {
+      // update background image of page
+      if (dbProfileData.backgroundImageEverywhere) {
+        addBackgroundImage(dbProfileData.backgroundImage);
+      } else {
+        addBackgroundImageInProfile(dbProfileData.backgroundImage);
+      }
+    }
+    console.timeLog("lztup-start", "Profile bg loaded");
+
+    console.timeLog("lztup-start", "Loading Contests DB...");
     const dbContestsData = await GM_getValue(StorageName.Contests, {});
 
-    console.timeLog("lztup-start", "Add reg 10 btn")
+    console.timeLog("lztup-start", "Add reg 10 btn");
     dbContestsData.openTenContestsBtn ? regOpenContestsBtn() : null;
 
-    console.timeLog("lztup-start", "Add onclick contests category")
+    console.timeLog("lztup-start", "Add onclick contests category");
     onClickCategory(ForumNode.Contests.selector, async () => {
       const newContestsData = await GM_getValue(StorageName.Contests, {});
       newContestsData.openTenContestsBtn ? regOpenContestsBtn() : null;
     });
 
-    console.timeLog("lztup-start", "hideTagsInThread")
+    console.timeLog("lztup-start", "hideTagsInThread");
     dbContestsData.hideTagsInThread ? contestsTagsVisibility(true) : null;
-    console.timeLog("lztup-start", "autoCloseOnParticipate")
-    dbContestsData.autoCloseOnParticipate ? contestsAutoCloseHandler(true) : null;
-    console.timeLog("lztup-start", "infoTopInThread")
+    console.timeLog("lztup-start", "autoCloseOnParticipate");
+    dbContestsData.autoCloseOnParticipate
+      ? contestsAutoCloseHandler(true)
+      : null;
+    console.timeLog("lztup-start", "infoTopInThread");
     dbContestsData.infoTopInThread ? contestThreadBlockMove(true) : null;
-    console.timeLog("lztup-start", "removeContent")
+    console.timeLog("lztup-start", "removeContent");
     dbContestsData.removeContent ? contestsHideContent(true) : null;
-    console.timeLog("lztup-start", "removePoll")
+    console.timeLog("lztup-start", "removePoll");
     dbContestsData.removePoll ? contestsHidePoll(true) : null;
-    console.timeLog("lztup-start", "updateCaptchaButton")
-    dbContestsData.updateCaptchaButton? contestsUpdateCapctha() : null;
-    console.timeLog("lztup-start", "autoFixCaptcha")
+    console.timeLog("lztup-start", "updateCaptchaButton");
+    dbContestsData.updateCaptchaButton ? contestsUpdateCapctha() : null;
+    console.timeLog("lztup-start", "autoFixCaptcha");
     dbContestsData.autoFixCaptcha ? contestsAutoFixCaptcha() : null;
-    console.timeLog("lztup-start", "participateByKey")
+    console.timeLog("lztup-start", "participateByKey");
     dbContestsData.participateByKey ? contestsParticipateByBtn(true) : null;
 
-    console.timeLog("lztup-start", "Loading Users DB...")
+    console.timeLog("lztup-start", "Loading Users DB...");
     const dbUsersData = await GM_getValue(StorageName.Users, {});
 
-    console.timeLog("lztup-start", "showUserIdInMemberCard")
+    console.timeLog("lztup-start", "showUserIdInMemberCard");
     if (dbUsersData.showUserIdInMemberCard) {
       addUserIdToMemberCard();
-      registerObserver((mutation) => {
+      registerObserver(mutation => {
         if (mutation.nextSibling) {
-          if (mutation.nextSibling?.classList?.contains('modal')) {
-            addUserIdToMemberCard()
+          if (mutation.nextSibling?.classList?.contains("modal")) {
+            addUserIdToMemberCard();
           }
         }
       });
     }
-    console.timeLog("lztup-start", "disableShareTyping")
+    console.timeLog("lztup-start", "disableShareTyping");
     dbUsersData.disableShareTyping ? bypassShareTyping() : null;
     if (isProfilePage()) {
-      console.timeLog("lztup-start", "showUserIdInProfile")
+      console.timeLog("lztup-start", "showUserIdInProfile");
       dbUsersData.showUserIdInProfile ? addUserIdToProfile() : null;
-      console.timeLog("lztup-start", "showFullRegInProfile")
-      dbUsersData.showFullRegInProfile? showFullRegDateInProfile(true) : null;
+      console.timeLog("lztup-start", "showFullRegInProfile");
+      dbUsersData.showFullRegInProfile ? showFullRegDateInProfile(true) : null;
     }
 
-    console.timeEnd("lztup-start")
-  };
+    console.timeEnd("lztup-start");
+  }
 
+  document.addEventListener("DOMContentLoaded", startExt);
 
-  document.addEventListener('DOMContentLoaded', startExt);
+  // all this for fix rare loading bugs
+  document.addEventListener("load", startExt);
 
-  // for fix rare loading bugs
-  document.addEventListener('load', startExt);
-
-  if (document.readyState === 'complete') {
+  if (document.readyState === "complete") {
     await startExt();
   }
+
+  loadingInterval = setInterval(async () => {
+    if (XenForo && XenForo._pageLoadTime) {
+      await startExt();
+      clearInterval(loadingInterval);
+    } else if (startTiming + 20 < getTimestamp()) {
+      clearInterval(loadingInterval);
+    }
+  }, 1000);
 }
 
 try {
   await Promise.allSettled([initTheme(), main()]);
-} catch {
+} catch (e) {
   console.error(e);
 }
