@@ -10,8 +10,8 @@ class Heading {
   }
 
   createElement() {
-    const heading = document.createElement('h2');
-    heading.classList.add('LZTUpModalHeading');
+    const heading = document.createElement("h2");
+    heading.classList.add("LZTUpModalHeading");
     heading.innerText = this.text;
 
     return heading;

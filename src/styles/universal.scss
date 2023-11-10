@@ -4,3 +4,31 @@
   background-attachment: fixed;
   background-repeat: no-repeat;
 }
+
+.LZTUpThreadBar {
+  background: rgb(39, 39, 39);
+  padding: 15px 20px;
+  margin-top: 15px;
+  border-radius: 10px;
+  height: auto;
+  .LZTUpThreadBarTitle {
+    font-weight: bold;
+    font-size: 18px;
+    padding: 0;
+    margin: 0 0 2px;
+    line-height: 33px;
+    overflow: hidden;
+  }
+
+  .LZTUpThreadBarContent {
+    font-size: 14px;
+    .LZTUpSummarizeThesises {
+      margin-left: 16px;
+      li {
+        list-style: decimal;
+        margin: 2px 0;
+        line-height: 20px;
+      }
+    }
+  }
+}

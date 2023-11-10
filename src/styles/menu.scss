@@ -1,5 +1,4 @@
-@import url('https://cdn.jsdelivr.net/gh/lzt-upgrade/coloris-lzt-theme@latest/dist/coloris.min.css');
-
+@import url("https://cdn.jsdelivr.net/gh/lzt-upgrade/coloris-lzt-theme@latest/dist/coloris.min.css");
 
 // hide color picker on loading page
 .clr-picker {
@@ -43,7 +42,7 @@
     font-weight: 600;
     border-radius: 6px;
     &:hover {
-      background: rgb(45,45,45);
+      background: rgb(45, 45, 45);
     }
   }
 }
@@ -96,7 +95,7 @@
     }
 
     .LZTUpSortableEditButton {
-      color: #6A6A6A;
+      color: #6a6a6a;
 
       &:hover {
         color: #0daf77;
@@ -165,7 +164,7 @@
     &.active {
       box-shadow: inset 0px -2px 0px 0px #0daf77;
       transform: translateY(-1px);
-      transition: .2s;
+      transition: 0.2s;
     }
     &:not(.active):hover {
       box-shadow: inset 0px -2px 0px 0px rgb(54, 54, 54);
@@ -183,7 +182,8 @@
     .LZTUpSectionItem {
       max-width: 284px;
     }
-    .LZTUpSectionTitle, .LZTUpSectionDesc {
+    .LZTUpSectionTitle,
+    .LZTUpSectionDesc {
       max-width: 200px;
     }
   }
@@ -257,7 +257,6 @@
         padding-top: 30px;
       }
     }
-
 
     .LZTUpGridTextContainer {
       display: flex;
@@ -433,7 +432,7 @@
     padding: 0 0 0 20px;
 
     .username {
-      font-weight: 600
+      font-weight: 600;
     }
   }
 
@@ -448,55 +447,55 @@
 
   #LZTUpPreviewBadge {
     .customUniqIcon {
-      padding:2px 0;
-      text-align:center;
+      padding: 2px 0;
+      text-align: center;
 
       svg {
-        width:16px !important;
-        height:16px !important
+        width: 16px !important;
+        height: 16px !important;
       }
     }
 
     &::before {
-      font-family: 'Font Awesome 5 Pro';
+      font-family: "Font Awesome 5 Pro";
       font-weight: 600;
       display: inline-block;
       font-size: 12.32px;
     }
 
     &.admin {
-      background:rgb(150, 68, 72);
+      background: rgb(150, 68, 72);
     }
 
     &.admin::before,
     &.bot::before {
-      content: '\f0ad';
+      content: "\f0ad";
     }
 
     &.Designer::before {
-      content: '\f568';
+      content: "\f568";
     }
 
     &.headDesigner::before {
-      content: '\f568';
+      content: "\f568";
     }
 
     &.editor::before {
-      content: '\f303';
+      content: "\f303";
     }
 
-    &.sponsor::before{
-      content: '\f155';
+    &.sponsor::before {
+      content: "\f155";
     }
 
     &.coder::before {
-      content: '\f7ea';
+      content: "\f7ea";
     }
 
     &.uniq_default::before,
     &.Legend::before,
     &.Ikarus::before {
-      content: '\f004';
+      content: "\f004";
     }
 
     &.moder {
@@ -510,16 +509,16 @@
     &.moder::before,
     &.main_moder::before,
     &.curator::before {
-      content: '\f0e7';
+      content: "\f0e7";
     }
 
     &.arbitr::before,
     &.main_arbitr::before {
-      content: '\f0e3';
+      content: "\f0e3";
     }
 
-    &.telegramBot::before{
-      content: '\f544';
+    &.telegramBot::before {
+      content: "\f544";
     }
   }
 
@@ -527,7 +526,7 @@
     &.style18,
     &.style360 {
       text-decoration: line-through;
-      color: #aaa
+      color: #aaa;
     }
 
     &.style3 {
@@ -539,7 +538,7 @@
     }
 
     &.style353 {
-      background: linear-gradient(98.26deg, #FF42F7 2.08%, #FF24CF 100%);
+      background: linear-gradient(98.26deg, #ff42f7 2.08%, #ff24cf 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
@@ -595,11 +594,11 @@
     }
 
     &.style4 {
-      color: #0E9100
+      color: #0e9100;
     }
 
     &.style22 {
-      color: #eee
+      color: #eee;
     }
 
     &.style11 {
@@ -607,7 +606,7 @@
     }
 
     &.style7 {
-      color: #FF9304;
+      color: #ff9304;
     }
 
     &.style349,
@@ -616,26 +615,32 @@
     }
 
     &.style354 {
-      color: #0FF
+      color: #0ff;
     }
 
     &.style218 {
-      color: #f13838
+      color: #f13838;
     }
 
     &.style359 {
-      color: #E5D9A3;
+      color: #e5d9a3;
     }
 
     &.style8 {
-      color: #FFD700;
+      color: #ffd700;
     }
 
     &.style265 {
-      background: linear-gradient(35deg, #006eff, #00ff81 52%, #fff 50%, #93cbff);
+      background: linear-gradient(
+        35deg,
+        #006eff,
+        #00ff81 52%,
+        #fff 50%,
+        #93cbff
+      );
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      text-shadow: 0 0 7px #00ffcf80
+      text-shadow: 0 0 7px #00ffcf80;
     }
 
     &.style23 {
@@ -648,7 +653,7 @@
       background: inherit;
       -webkit-text-fill-color: inherit;
       text-shadow: inherit !important;
-      color: #aaa !important
+      color: #aaa !important;
     }
   }
 
@@ -683,11 +688,11 @@
         }
 
         &.avatarUserBadge--1 {
-          left: 20px
+          left: 20px;
         }
 
         &.avatarUserBadge--2 {
-          left: 40px
+          left: 40px;
         }
       }
     }
@@ -696,6 +701,6 @@
   .avatarBox,
   .info {
     display: table-cell;
-    vertical-align: top
+    vertical-align: top;
   }
 }

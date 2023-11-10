@@ -8,7 +8,7 @@ class TextArea {
    *  @param {number} maxLength - max length for the text area
    */
 
-  constructor(text = '', placeholder = '', minLength = 0, maxLength = 0) {
+  constructor(text = "", placeholder = "", minLength = 0, maxLength = 0) {
     this.text = text;
     this.placeholder = placeholder;
     this.minLength = minLength;
@@ -16,13 +16,12 @@ class TextArea {
   }
 
   createElement(callback) {
-    const textarea = document.createElement('textarea');
-    textarea.classList.add('LZTUpTextArea', 'textCtrl');
+    const textarea = document.createElement("textarea");
+    textarea.classList.add("LZTUpTextArea", "textCtrl");
     textarea.innerText = this.text;
     textarea.placeholder = this.placeholder;
     textarea.minLength = this.minLength;
-    if (this.maxLength > 0)
-      textarea.maxLength = this.maxLength;
+    if (this.maxLength > 0) textarea.maxLength = this.maxLength;
 
     textarea.onkeyup = callback;
     textarea.onchange = callback;

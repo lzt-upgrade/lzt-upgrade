@@ -1,13 +1,10 @@
-import { isProfilePage } from 'Utils/checkers';
-import { addBackgroundImage } from 'Visuals/universal';
-
+import { isProfilePage } from "Utils/checkers";
+import { addBackgroundImage } from "Visuals/universal";
 
 function addBackgroundImageInProfile(imageUrl) {
   if (isProfilePage()) {
-    return addBackgroundImage(imageUrl)
+    return addBackgroundImage(imageUrl);
   }
 }
 
-export {
-  addBackgroundImageInProfile
-}
+export { addBackgroundImageInProfile };

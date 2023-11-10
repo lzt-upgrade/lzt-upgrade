@@ -3,7 +3,7 @@ function setSvgAttr(el, type, color) {
 }
 
 function changeSVGColor(el, type, color, replaceAll = false) {
-  if (!['stroke', 'fill'].includes(type)) {
+  if (!["stroke", "fill"].includes(type)) {
     return;
   }
 
@@ -12,7 +12,7 @@ function changeSVGColor(el, type, color, replaceAll = false) {
   }
 
   setSvgAttr(el, type, color);
-  const elements = el.querySelectorAll('*');
+  const elements = el.querySelectorAll("*");
   for (const element of elements) {
     setSvgAttr(element, type, color);
   }

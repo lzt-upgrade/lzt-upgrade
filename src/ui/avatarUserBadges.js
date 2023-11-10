@@ -1,9 +1,8 @@
-import { clearSVG } from 'Utils/purify';
+import { clearSVG } from "Utils/purify";
 import { setTooltip } from "Xenforo/tooltips";
-import { changeSVGColor } from 'Utils/svg';
-import Logger from 'Utils/logger'
-import { removeStylesByEl } from 'Utils/utils'
-
+import { changeSVGColor } from "Utils/svg";
+import Logger from "Utils/logger";
+import { removeStylesByEl } from "Utils/utils";
 
 class AvatarUserBadges {
   /**
@@ -14,20 +13,22 @@ class AvatarUserBadges {
    */
 
   constructor(badges, isPreview = false) {
-    this.previewId = 'LZTUpPreviewBadge';
-    this.customBadgeId = 'LZTUpUserBadge';
-    this.badgeQuery = isPreview ? `#${this.previewId}` : `#${this.customBadgeId}`;
+    this.previewId = "LZTUpPreviewBadge";
+    this.customBadgeId = "LZTUpUserBadge";
+    this.badgeQuery = isPreview
+      ? `#${this.previewId}`
+      : `#${this.customBadgeId}`;
     this.badges = badges;
     this.isPreview = isPreview;
   }
 
   createElement() {
-    const avatarUserBadges = document.createElement('div');
-    avatarUserBadges.classList.add('avatarUserBadges');
+    const avatarUserBadges = document.createElement("div");
+    avatarUserBadges.classList.add("avatarUserBadges");
 
     for (let i = 0; i < this.badges.length; i++) {
-      const avatarUserBadge = document.createElement('span');
-      avatarUserBadge.classList.add('avatarUserBadge', 'Tooltip');
+      const avatarUserBadge = document.createElement("span");
+      avatarUserBadge.classList.add("avatarUserBadge", "Tooltip");
       avatarUserBadge.tabIndex = 0;
       avatarUserBadge.title = XenForo.htmlspecialchars(this.badges[i].text);
 
@@ -38,7 +39,7 @@ class AvatarUserBadges {
       }
 
       if (this.badges.length > 1) {
-        avatarUserBadge.classList.add(`avatarUserBadge--${i + 1}`)
+        avatarUserBadge.classList.add(`avatarUserBadge--${i + 1}`);
       }
 
       avatarUserBadge.dataset.position = i + 1;
@@ -57,18 +58,20 @@ class AvatarUserBadges {
   }
 
   findAllBadgeElement(selector, position) {
-    return document.querySelectorAll(selector + `[data-position="${position}"]`);
+    return document.querySelectorAll(
+      selector + `[data-position="${position}"]`,
+    );
   }
 
   applyBadge(el, icon) {
-    if (icon?.length > 1 && icon?.startsWith('.')) {
-      icon = icon.replace('.', '');
-      return el.classList.add('userBanner', icon);
-    } else if (icon.startsWith('<svg') && icon.endsWith('svg>')) {
+    if (icon?.length > 1 && icon?.startsWith(".")) {
+      icon = icon.replace(".", "");
+      return el.classList.add("userBanner", icon);
+    } else if (icon.startsWith("<svg") && icon.endsWith("svg>")) {
       el.innerHTML = clearSVG(icon);
-      return el.classList.add('badgeDefaultBackground');
+      return el.classList.add("badgeDefaultBackground");
     } else {
-      return el.classList.add('uniq_default', 'badgeDefaultBackground');
+      return el.classList.add("uniq_default", "badgeDefaultBackground");
     }
   }
 
@@ -79,7 +82,7 @@ class AvatarUserBadges {
 
     removeStylesByEl(badgeEl);
 
-    badgeEl.classList.add('avatarUserBadge', 'Tooltip');
+    badgeEl.classList.add("avatarUserBadge", "Tooltip");
 
     // set position of badge
     if (badgeEl.dataset.multiple === "true") {
@@ -106,25 +109,28 @@ class AvatarUserBadges {
       return;
     }
 
-    const svg = badgeEl.querySelector('svg');
+    const svg = badgeEl.querySelector("svg");
     if (!svg) {
       return;
     }
 
-    changeSVGColor(svg, 'stroke', badge.strokeColor, true);
-    changeSVGColor(svg, 'fill', badge.fillColor, true);
+    changeSVGColor(svg, "stroke", badge.strokeColor, true);
+    changeSVGColor(svg, "fill", badge.fillColor, true);
   }
 
   updateStyle(badgeEl, badge) {
-    if (!badgeEl || !badge.style || badge.style?.startsWith('.')) {
+    if (!badgeEl || !badge.style || badge.style?.startsWith(".")) {
       return;
     }
 
-    return badgeEl.style = badge.style;
+    return (badgeEl.style = badge.style);
   }
 
   updateBadge(badge) {
-    const badgeElements = this.findAllBadgeElement(this.badgeQuery, badge.position);
+    const badgeElements = this.findAllBadgeElement(
+      this.badgeQuery,
+      badge.position,
+    );
     if (!badgeElements.length) {
       return;
     }
@@ -138,11 +144,11 @@ class AvatarUserBadges {
   }
 
   updateBadges() {
-    Logger.debug('updateBadges');
+    Logger.debug("updateBadges");
     for (const badge of this.badges) {
-      if (typeof badge !== 'object') {
-        Logger.error('Invalid badge in array');
-        continue
+      if (typeof badge !== "object") {
+        Logger.error("Invalid badge in array");
+        continue;
       }
 
       Logger.debug(badge);

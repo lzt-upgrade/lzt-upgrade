@@ -8,7 +8,7 @@ class Input {
    *  @param {number} maxLength - max length for the input
    */
 
-  constructor(text = '', placeholder = '', minLength = 0, maxLength = 0) {
+  constructor(text = "", placeholder = "", minLength = 0, maxLength = 0) {
     this.text = text;
     this.placeholder = placeholder;
     this.minLength = minLength;
@@ -16,13 +16,12 @@ class Input {
   }
 
   createElement(callback) {
-    const input = document.createElement('input');
-    input.classList.add('textCtrl');
+    const input = document.createElement("input");
+    input.classList.add("textCtrl");
     input.value = this.text;
     input.placeholder = this.placeholder;
     input.minLength = this.minLength;
-    if (this.maxLength > 0)
-      input.maxLength = this.maxLength;
+    if (this.maxLength > 0) input.maxLength = this.maxLength;
 
     input.onkeyup = callback;
     input.onchange = callback;

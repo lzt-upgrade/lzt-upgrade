@@ -22,13 +22,12 @@ class Select {
   }
 
   createElement() {
-    const select = document.createElement('select');
-    select.classList.add('LZTUpSelect', 'button');
+    const select = document.createElement("select");
+    select.classList.add("LZTUpSelect", "button");
 
-    for (const selectOption of selectOptions) {
+    for (const selectOption of this.selectOptions) {
       // TODO: ДОДЕЛАТЬ
-      select.appendChild(selectOption)
-
+      select.appendChild(selectOption);
     }
 
     return select;

@@ -18,13 +18,13 @@
 
 #LZTUpOverlay {
   top: 10%;
-  margin-bottom: 5%
+  margin-bottom: 5%;
 }
 
 #LZTUpBtnIcon {
   width: 14px;
   height: auto;
-  padding-right: 4px
+  padding-right: 4px;
 }
 
 #LZTUpModalHeading {
@@ -52,12 +52,12 @@
 
 .reset_button {
   min-width: 150px;
-  margin: 15px
+  margin: 15px;
 }
 
 .save_button {
   min-width: 250px;
-  margin: 15px
+  margin: 15px;
 }
 
 #LZTUpModalExitButtonCenter {
@@ -81,12 +81,13 @@
   padding: 10px;
 }
 
-#LZTUpBadgeFillContainer, #LZTUpBadgeStrokeContainer {
+#LZTUpBadgeFillContainer,
+#LZTUpBadgeStrokeContainer {
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
   justify-content: flex-start;
-  width: 100px
+  width: 100px;
 }
 
 #LZTUpListLinks {
@@ -94,7 +95,7 @@
   flex-direction: column;
 }
 
-#LZTUpListLinks > #LZTUpListItem, 
+#LZTUpListLinks > #LZTUpListItem,
 #LZTUpListLinks > #LZTUpListItem #LZTUpText,
 #LZTUpListLinks > #LZTUpListItem #LZTUpSubText {
   max-width: 100%;
@@ -196,7 +197,8 @@
   color: rgb(148, 148, 148);
 }
 
-.LZTUpModalMeshItemAuthor a:visited, .LZTUpModalMeshItemAuthor a:click {
+.LZTUpModalMeshItemAuthor a:visited,
+.LZTUpModalMeshItemAuthor a:click {
   outline: none;
   text-decoration: none;
   color: inherit;
@@ -220,12 +222,18 @@
   justify-content: space-evenly;
 }
 
-@keyframes backgroundEffectAnimate { 
+@keyframes backgroundEffectAnimate {
   0% {
-    background-position: 0 0, 0 0, 0 0;
+    background-position:
+      0 0,
+      0 0,
+      0 0;
   }
   100% {
-    background-position: 500px 1000px, 400px 400px, 300px 300px;
+    background-position:
+      500px 1000px,
+      400px 400px,
+      300px 300px;
   }
 }
 
@@ -235,7 +243,8 @@
   width: 100%;
   position: absolute;
   margin-top: -100px;
-  background-image: url(https://i.imgur.com/ivexJPJ.png), url(https://i.imgur.com/TSvcQA4.png), url(https://i.imgur.com/BEkiDsa.png);
+  background-image: url(https://i.imgur.com/ivexJPJ.png),
+    url(https://i.imgur.com/TSvcQA4.png), url(https://i.imgur.com/BEkiDsa.png);
   animation: backgroundEffectAnimate 20s linear infinite;
   filter: brightness(75%) blur(2px) opacity(50%);
 }
@@ -323,5 +332,5 @@
 }
 
 #LZTUpSelectGroupsUniq > option:hover {
-  background: rgb(45,45,45);
+  background: rgb(45, 45, 45);
 }

@@ -12,21 +12,21 @@ class UserBanner {
   }
 
   createElement() {
-    const userBanner = document.createElement('em');
+    const userBanner = document.createElement("em");
     userBanner.id = this.elementId;
-    userBanner.classList.add('userBanner', 'wrapped');
-    userBanner.itemprop = 'title';
+    userBanner.classList.add("userBanner", "wrapped");
+    userBanner.itemprop = "title";
 
-    const beforeAfterEl = document.createElement('div');
-    beforeAfterEl.className = 'before';
+    const beforeAfterEl = document.createElement("div");
+    beforeAfterEl.className = "before";
     userBanner.appendChild(beforeAfterEl);
 
-    const bannerContent = document.createElement('strong');
+    const bannerContent = document.createElement("strong");
     bannerContent.innerText = XenForo.htmlspecialchars(this.label);
-    userBanner.appendChild(bannerContent)
+    userBanner.appendChild(bannerContent);
 
-    beforeAfterEl.className = 'after';
-    userBanner.appendChild(beforeAfterEl)
+    beforeAfterEl.className = "after";
+    userBanner.appendChild(beforeAfterEl);
     return userBanner;
   }
 }

@@ -15,16 +15,10 @@ function hideBalloonById(balloonId, isHidden) {
  * @param {boolean} isHidden - status of visibility (true - hidden, false - visible)
  */
 function hideUnreadArticlesStatus(isHidden) {
-  const statusEl = document.querySelector('.hasUnreadArticles');
+  const statusEl = document.querySelector(".hasUnreadArticles");
   if (statusEl) {
-    statusEl.style.display = isHidden ? 'none' : '';
+    statusEl.style.display = isHidden ? "none" : "";
   }
 }
 
-
-export {
-  hideBalloonById,
-  hideUnreadArticlesStatus,
-}
-
-
+export { hideBalloonById, hideUnreadArticlesStatus };

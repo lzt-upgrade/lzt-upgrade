@@ -1,40 +1,37 @@
 {
-    "name": "[Development Build] LZT Upgrade",
-    "description": "A free extension for Lolzteam with many useful features",
-    "version": "2.0.0dev",
-    "author": "Toil",
-    "namespace": "lztupgrade",
-    "license": "MIT",
-    "icon": "https://cdn.jsdelivr.net/gh/lzt-upgrade/lzt-upgrade@latest/src/images/logo-mini.png",
-    "updateURL": "https://github.com/lzt-upgrade/lzt-upgrade/raw/master/dist/lzt-upgrade.user.js",
-    "downloadURL": "https://github.com/lzt-upgrade/lzt-upgrade/raw/master/dist/lzt-upgrade.user.js",
-    "supportURL": "https://github.com/lzt-upgrade/lzt-upgrade/issues",
-    "homepageURL": "https://github.com/lzt-upgrade/lzt-upgrade",
-    "run-at": "document-start",
-    "match": [
-        "*://lolz.guru/*",
-        "*://lolz.live/*",
-        "*://zelenka.guru/*",
-        "*://lzt.market/*",
-        "*://lolz.market/*"
-    ],
-    "require": [
-        "https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js",
-        "https://raw.githubusercontent.com/lzt-upgrade/coloris-lzt-theme/main/dist/coloris.js",
-        "https://raw.githubusercontent.com/lzt-upgrade/lzt-upgrade/2.0.0/libs/purify3.0.3.min.js",
-        "https://raw.githubusercontent.com/lzt-upgrade/lzt-upgrade/2.0.0/libs/Sortable1.15.0.min.js"
-    ],
-    "grant": [
-        "GM_xmlhttpRequest",
-        "GM_info",
-        "GM_addStyle",
-        "GM_setValue",
-        "GM_getValue",
-        "GM_deleteValue",
-        "GM_listValues"
-    ],
-    "connect": [
-        "lztupgrade.toiloff.ru",
-        "greasyfork.org"
-    ]
+  "name": "[Development Build] LZT Upgrade",
+  "description": "A free extension for Lolzteam with many useful features",
+  "version": "2.0.0dev",
+  "author": "Toil",
+  "namespace": "lztupgrade",
+  "license": "MIT",
+  "icon": "https://cdn.jsdelivr.net/gh/lzt-upgrade/lzt-upgrade@latest/src/images/logo-mini.png",
+  "updateURL": "https://github.com/lzt-upgrade/lzt-upgrade/raw/master/dist/lzt-upgrade.user.js",
+  "downloadURL": "https://github.com/lzt-upgrade/lzt-upgrade/raw/master/dist/lzt-upgrade.user.js",
+  "supportURL": "https://github.com/lzt-upgrade/lzt-upgrade/issues",
+  "homepageURL": "https://github.com/lzt-upgrade/lzt-upgrade",
+  "run-at": "document-start",
+  "match": [
+    "*://lolz.guru/*",
+    "*://lolz.live/*",
+    "*://zelenka.guru/*",
+    "*://lzt.market/*",
+    "*://lolz.market/*"
+  ],
+  "require": [
+    "https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js",
+    "https://raw.githubusercontent.com/lzt-upgrade/coloris-lzt-theme/main/dist/coloris.js",
+    "https://raw.githubusercontent.com/lzt-upgrade/lzt-upgrade/2.0.0/libs/purify3.0.3.min.js",
+    "https://raw.githubusercontent.com/lzt-upgrade/lzt-upgrade/2.0.0/libs/Sortable1.15.0.min.js"
+  ],
+  "grant": [
+    "GM_xmlhttpRequest",
+    "GM_info",
+    "GM_addStyle",
+    "GM_setValue",
+    "GM_getValue",
+    "GM_deleteValue",
+    "GM_listValues"
+  ],
+  "connect": ["lztupgrade.toiloff.ru", "greasyfork.org"]
 }

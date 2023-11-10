@@ -10,8 +10,8 @@ class Description {
   }
 
   createElement() {
-    const desc = document.createElement('p');
-    desc.classList.add('LZTUpModalDescription', 'muted');
+    const desc = document.createElement("p");
+    desc.classList.add("LZTUpModalDescription", "muted");
     desc.innerText = this.text;
 
     return desc;

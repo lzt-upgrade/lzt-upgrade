@@ -1,11 +1,11 @@
-import { menuButtonCallback } from 'Callbacks/menuButton';
-import config from 'Configs/config';
+import { menuButtonCallback } from "Callbacks/menuButton";
+import config from "Configs/config";
 
-import 'Styles/buttons.scss';
+import "Styles/buttons.scss";
 
-const menuButton = document.createElement('li');
-const link = document.createElement('a');
-link.id = 'LZTUpButton';
+const menuButton = document.createElement("li");
+const link = document.createElement("a");
+link.id = "LZTUpButton";
 link.innerText = config.extName;
 
 menuButton.appendChild(link);

@@ -1,5 +1,5 @@
-import Heading from 'UI/components/menu/heading';
-import Description from 'UI/components/menu/description';
+import Heading from "UI/components/menu/heading";
+import Description from "UI/components/menu/description";
 
 class Container {
   /**
@@ -10,16 +10,16 @@ class Container {
    *  @param {object} elements - elements to add to container
    */
 
-  constructor(elements, heading = '', description = '') {
+  constructor(elements, heading = "", description = "") {
     this.elements = elements;
     this.heading = heading;
     this.description = description;
   }
 
-  createElement(style = '') {
-    const container = document.createElement('div');
-    container.classList.add('LZTUpContainer');
-    container.style = style
+  createElement(style = "") {
+    const container = document.createElement("div");
+    container.classList.add("LZTUpContainer");
+    container.style = style;
 
     if (this.heading) {
       const heading = new Heading(this.heading).createElement();

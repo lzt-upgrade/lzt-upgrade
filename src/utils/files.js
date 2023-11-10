@@ -1,10 +1,10 @@
-import Logger from 'Utils/logger';
+import Logger from "Utils/logger";
 
 function downloadJSONFile(data, name) {
   const blob = new Blob([data], {
-    type: 'application/json'
+    type: "application/json",
   });
-  const link = document.createElement('a');
+  const link = document.createElement("a");
   link.href = window.URL.createObjectURL(blob);
   link.download = `${name}.json`;
   link.click();
@@ -12,9 +12,9 @@ function downloadJSONFile(data, name) {
 }
 
 async function uploadJSONFile() {
-  const input = document.createElement('input');
-  input.type = 'file';
-  input.accept = 'application/json';
+  const input = document.createElement("input");
+  input.type = "file";
+  input.accept = "application/json";
   input.click();
 
   const file = await new Promise(resolve => {
@@ -30,14 +30,11 @@ async function uploadJSONFile() {
     reader.onload = () => {
       resolve(reader.result);
     };
-    reader.onerror = (e) => {
-      Logger.error('Ошибка загрузки файла настроек', e);
+    reader.onerror = e => {
+      Logger.error("Ошибка загрузки файла настроек", e);
       resolve(false);
     };
   });
 }
 
-export {
-  downloadJSONFile,
-  uploadJSONFile
-}
+export { downloadJSONFile, uploadJSONFile };

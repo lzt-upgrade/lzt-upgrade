@@ -7,7 +7,6 @@
       "Callbacks/*": ["callbacks/*"],
       "Configs/*": ["configs/*"],
       "Events/*": ["events/*"],
-      "IndexedDB/*": ["indexedDB/*"],
       "Styles/*": ["styles/*"],
       "UI/*": ["ui/*"],
       "Utils/*": ["utils/*"],

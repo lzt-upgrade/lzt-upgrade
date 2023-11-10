@@ -1,5 +1,4 @@
-import { clearHTML } from 'Utils/purify';
-
+import { clearHTML } from "Utils/purify";
 
 class Comment {
   /**
@@ -13,8 +12,8 @@ class Comment {
   }
 
   createElement() {
-    const container = document.createElement('div');
-    container.id = 'LZTUpModalComment';
+    const container = document.createElement("div");
+    container.id = "LZTUpModalComment";
     container.innerHTML = this.content;
 
     return container;
