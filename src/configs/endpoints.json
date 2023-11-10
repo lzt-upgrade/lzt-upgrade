@@ -1,8 +1,9 @@
 {
-    "getThemes": "https://lztupgrade.toiloff.ru/api/themes",
-    "staticThemes": "https://lztupgrade.toiloff.ru/static/themes",
-    "getLogos": "https://lztupgrade.toiloff.ru/api/logos",
-    "getLogoByUID": "https://lztupgrade.toiloff.ru/api/logo",
-    "getUserSigns": "http://localhost:5000/api/users/signs",
-    "getSigns": "http://localhost:5000/api/signs"
+  "getThemes": "https://lztupgrade.toiloff.ru/api/themes",
+  "staticThemes": "https://lztupgrade.toiloff.ru/static/themes",
+  "getLogos": "https://lztupgrade.toiloff.ru/api/logos",
+  "getLogoByUID": "https://lztupgrade.toiloff.ru/api/logo",
+  "getUserSigns": "http://localhost:5000/api/users/signs",
+  "getSigns": "http://localhost:5000/api/signs",
+  "genSummarize": "https://foswly-sa.toil.cc/generation"
 }

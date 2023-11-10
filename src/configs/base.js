@@ -5,10 +5,9 @@ class BaseSelectorEnum {
 
   getName() {
     // remove selector designation
-    return this.selector.replace('.', '').replace('#', '');
+    return this.selector.replace(".", "").replace("#", "");
   }
 }
-
 
 class BaseEnum {
   constructor(name) {
@@ -16,8 +15,4 @@ class BaseEnum {
   }
 }
 
-
-export {
-  BaseSelectorEnum,
-  BaseEnum
-}
+export { BaseSelectorEnum, BaseEnum };
