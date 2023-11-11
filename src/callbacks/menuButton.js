@@ -9,6 +9,8 @@ import { initColorPickers } from "Utils/colorPicker";
 import { getUserId, getUsername } from "Utils/users";
 import LZTUp from "Utils/gmWrapper";
 import NewStorageName from "Configs/NewStorageName";
+import { updateCachedLogos, updateCachedThemes } from "Utils/cache";
+import SiteType from "Configs/SiteType";
 
 async function menuButtonCallback() {
   const tabs = [
@@ -47,6 +49,12 @@ async function menuButtonCallback() {
     badgesData,
   );
   await previewProfile.updateAll();
+
+  await Promise.allSettled([
+    updateCachedLogos(SiteType.Forum),
+    updateCachedLogos(SiteType.Market),
+    updateCachedThemes(),
+  ]);
 }
 
 export { menuButtonCallback };

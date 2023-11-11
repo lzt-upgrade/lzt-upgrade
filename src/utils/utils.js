@@ -41,6 +41,14 @@ function waitForBody() {
 
 const sleep = m => new Promise(r => setTimeout(r, m));
 
+function ucFirst(str) {
+  if (!str) {
+    return str;
+  }
+
+  return str[0].toUpperCase() + str.slice(1);
+}
+
 function getNodeLinks() {
   return document.querySelectorAll(".discussionListItem--Wrapper");
 }
@@ -128,6 +136,7 @@ export {
   waitForElm,
   waitForBody,
   sleep,
+  ucFirst,
   getNodeLinks,
   getThreadLinks,
   removeStyles,
