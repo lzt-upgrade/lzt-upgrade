@@ -87,6 +87,8 @@ class GridImage {
     el.classList.add(this.className);
     el.alt = this.altText;
     el.src = this.imageLink;
+    // for higher priority image loading
+    el.importance = true;
 
     return el;
   }
