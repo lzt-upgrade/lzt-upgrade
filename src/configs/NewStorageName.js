@@ -18,4 +18,27 @@ export default class NewStorageName extends BaseEnum {
     super(name);
     this.value = value;
   }
+
+  static generateConfigStruct() {
+    const configKeys = [
+      this.Appear,
+      this.Contests,
+      this.Profile,
+      this.ProfileBadges,
+      this.Users,
+      this.Settings,
+    ];
+
+    const data = [];
+
+    for (const configKey of configKeys) {
+      data.push({
+        original: configKey,
+        name: configKey.name.split("Data")[0],
+        default: configKey.value,
+      });
+    }
+
+    return data;
+  }
 }

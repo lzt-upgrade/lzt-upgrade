@@ -5,23 +5,22 @@ import { downloadJSONFile, uploadJSONFile } from "Utils/files";
 import { registerAlert } from "Utils/registers";
 import Logger from "Utils/logger";
 import { sleep } from "Utils/utils";
+import LZTUp from "Utils/gmWrapper";
+import NewStorageName from "Configs/NewStorageName";
 
 async function saveSettings() {
-  const appearData = await GM_getValue(StorageName.Appear, {});
-  const contestsData = await GM_getValue(StorageName.Contests, {});
-  const profileData = await GM_getValue(StorageName.Profile, {});
-  const settingsData = await GM_getValue(Storage.Settings, {});
-  const usersData = await GM_getValue(StorageName.Users, {});
+  let configStruct = NewStorageName.generateConfigStruct();
 
-  const config = JSON.stringify({
-    appear: appearData,
-    contests: contestsData,
-    profile: profileData,
-    settings: settingsData,
-    users: usersData,
-  });
+  const config = {};
 
-  downloadJSONFile(config, "LZTUpgradeConfig");
+  // it's necessary that the data have time to turn out
+  await Promise.all(
+    configStruct.map(async item => {
+      config[item.name] = (await LZTUp.getValue(item.original)) || item.default;
+    }),
+  );
+
+  downloadJSONFile(JSON.stringify(config), "LZTUpgradeConfig");
   registerAlert("Файл настроек выгружен", 5000);
 }
 
@@ -34,14 +33,19 @@ async function uploadSettings() {
   }
 
   try {
+    let configStruct = NewStorageName.generateConfigStruct();
     const configObj = JSON.parse(config); // read text as json
 
-    // load data to dbs
-    await GM_setValue(StorageName.Appear, configObj?.appear);
-    await GM_setValue(StorageName.Contests, configObj?.contests);
-    await GM_setValue(StorageName.Profile, configObj?.profile);
-    await GM_setValue(StorageName.Settings, configObj?.settings);
-    await GM_setValue(StorageName.Users, configObj?.users);
+    // it is necessary that the data has time to load
+    await Promise.all(
+      configStruct.map(async item => {
+        await LZTUp.setValue(
+          item.original,
+          configObj[item.name] || item.default,
+        );
+      }),
+    );
+
     registerAlert(
       "Настройки загружены. Выполняю перезагрузку страницы...",
       5000,
@@ -55,7 +59,7 @@ async function uploadSettings() {
 }
 
 async function clearCache() {
-  await GM_setValue(StorageName.Cache, {});
+  await LZTUp.setValue(StorageName.Cache, StorageName.Cache.value);
   registerAlert("Кеш успешно очищен", 5000);
   await sleep(1000);
   window.location.reload();
