@@ -20,6 +20,16 @@ import { summarizeThreadBlock } from "Utils/threads";
 import LZTUp from "Utils/gmWrapper";
 import NewStorageName from "Configs/NewStorageName";
 import CacheKeys from "Configs/CacheKeys";
+import Separator from "UI/components/menu/separator";
+import SortableContainer from "UI/components/menu/sortableContainer";
+import Button from "UI/components/button";
+import SortableItem from "UI/components/menu/sortableItem";
+import Input from "UI/components/menu/input";
+import { clearHTML } from "Utils/purify";
+import { updateReportButtons } from "Visuals/threads";
+import { v4 as uuidv4 } from "uuid";
+
+const MAX_BUTTONS_COUNT = 4;
 
 async function createLogoManagerTempMenu(logoType) {
   const cacheItemName = `availabled${ucFirst(logoType)}Logos`;
@@ -135,6 +145,165 @@ async function createThemeManagerTempMenu() {
   openTempMenu("Выбор темы", "Внешний вид", mainMenu, () => {});
 }
 
+async function generateReportButtonsItems() {
+  console.log("Generating buttons items");
+  const items = [];
+
+  const reportButtonsData = await LZTUp.getValue(NewStorageName.ReportButtons);
+
+  console.log(reportButtonsData.sort((a, b) => a.position - b.position));
+
+  for (const button of reportButtonsData.sort(
+    (a, b) => a.position - b.position,
+  )) {
+    console.log(button.text, button.position);
+    const item = new SortableItem(button.text, button.position).createElement(
+      sortableItemOnEditCallback,
+      sortableItemOnRemoveCallback,
+    );
+    item.dataset.uuid = button.uuid;
+    items.push(item);
+  }
+
+  console.log(items);
+
+  return items;
+}
+
+async function sortableItemOnEditCallback(e, sortableItem) {
+  const buttonUUID = sortableItem.dataset.uuid;
+  const modalContent = document.querySelector(".LZTUpModalContent");
+  const appearSubMenu = document.querySelector("#LZTUpAppearContainer");
+  const reportButtonsData = await LZTUp.getValue(NewStorageName.ReportButtons);
+  let buttonData =
+    reportButtonsData.find(button => button.uuid === buttonUUID) || [];
+
+  async function updateButtonData(buttonData) {
+    // buttonData its current button (which we are editing)
+    const actualReportButtonsData = await LZTUp.getValue(
+      NewStorageName.ReportButtons,
+    );
+    const currentReportButton = actualReportButtonsData.find(
+      button => button.uuid === buttonUUID,
+    );
+    const currentBadgeId = actualReportButtonsData.indexOf(currentReportButton);
+    actualReportButtonsData[currentBadgeId] = buttonData;
+    return actualReportButtonsData;
+  }
+
+  const el = addTemporaryMenuSection([
+    new Container(
+      [
+        new Input(buttonData.text, "Неправильный отзыв", 1, 12).createElement(
+          async event => {
+            let val = XenForo.htmlspecialchars(event.target.value.trim());
+
+            if (val.length < 1) {
+              return registerAlert(
+                "Минимальная длина текста 1 символ. Увеличьте введенный текст для сохранения.",
+              );
+            } else if (val.length > 12) {
+              return registerAlert(
+                "Максимальная длина текста 12 символов. Уменьшите введенный текст для сохранения.",
+              );
+            }
+
+            buttonData.text = val;
+          },
+        ),
+      ],
+      "Текст кнопки",
+      "Этот текст видите только вы. Минимальная длина - 1 символ, максимальная - 12 символов.",
+    ).createElement(),
+
+    new Container(
+      [
+        new Input(buttonData.reason, "Нарушение 3.15", 1, 120).createElement(
+          async event => {
+            let val = XenForo.htmlspecialchars(event.target.value.trim());
+
+            if (val.length < 1) {
+              return registerAlert(
+                "Минимальная длина причины репорта 1 символ. Увеличьте введенный текст для сохранения.",
+              );
+            } else if (val.length > 120) {
+              return registerAlert(
+                "Максимальная длина причины репорта 120 символов. Уменьшите введенный текст для сохранения.",
+              );
+            }
+
+            buttonData.reason = val;
+          },
+        ),
+      ],
+      "Причина репорта",
+      "Внимание! Причина репорта видна ВСЕМ. Не используйте в ней какие-либо оскорбления. Минимальная длина - 1 символ, максимальная - 120 символов.",
+    ).createElement(),
+
+    new Container([
+      new Button(
+        "Сохранить",
+        "button primary LZTUpIconButton fit",
+        "far fa-save",
+      ).createElement(async () => {
+        const buttons = await updateButtonData(buttonData);
+        await LZTUp.setValue(NewStorageName.ReportButtons, buttons);
+        updateReportButtons(buttons);
+        registerAlert("Кнопка быстрого репорта успешно сохранена.");
+      }),
+    ]).createElement(),
+  ]);
+
+  modalContent.appendChild(el);
+  openTempMenu(
+    "Управление быстрыми репортами",
+    "Внешний вид",
+    appearSubMenu,
+    async () => {
+      const sortable = appearSubMenu.querySelectorAll(
+        ".LZTUpSortableContainer > .LZTUpSortableItem",
+      );
+
+      const actualReportButtonsData = await LZTUp.getValue(
+        NewStorageName.ReportButtons,
+      );
+
+      for (let i = 0; i < actualReportButtonsData.length; i++) {
+        const content = sortable[i].querySelector(".LZTUpSortableContent");
+        content.innerHTML = clearHTML(actualReportButtonsData[i].text);
+      }
+    },
+  );
+}
+
+async function sortableItemOnRemoveCallback(e, sortableItemEl) {
+  const appearSubMenu = document.querySelector("#LZTUpAppearContainer");
+  let reportButtonsData = await LZTUp.getValue(NewStorageName.ReportButtons);
+  let newReportButtons = [];
+  let counter = 1;
+
+  for (let i = 0; i < reportButtonsData.length; i++) {
+    const button = reportButtonsData[i];
+    if (button.uuid === sortableItemEl.dataset.uuid) {
+      continue;
+    }
+
+    const item = appearSubMenu.querySelector(
+      ".LZTUpSortableContainer > .LZTUpSortableItem",
+    );
+    if (item) {
+      item.dataset.id = counter;
+    }
+
+    button.position = counter;
+    newReportButtons.push(button);
+    counter++;
+  }
+
+  await LZTUp.setValue(NewStorageName.ReportButtons, newReportButtons);
+  updateReportButtons(newReportButtons);
+}
+
 const getAppearItems = async () => {
   const appearData = await GM_getValue(StorageName.Appear, {});
 
@@ -172,6 +341,100 @@ const getAppearItems = async () => {
 
   return [
     appearSection.createElement(),
+
+    new Separator().createElement(),
+
+    new Container(
+      [
+        new SortableContainer(await generateReportButtonsItems()).createElement(
+          async e => {
+            console.log("target", e, e.target);
+            const items = e.target.children;
+            console.log("items", items);
+            const actualReportButtonsData = await LZTUp.getValue(
+              NewStorageName.ReportButtons,
+            );
+            const newReportButtonsData = [];
+
+            console.log(actualReportButtonsData);
+            // actualReportButtonsData.reverse();
+
+            for (let i = 0; i < items.length; i++) {
+              const item = items[i];
+              const button = actualReportButtonsData.find(
+                b => b.uuid === item.dataset.uuid,
+              );
+              console.log("moving items", item, button);
+
+              item.dataset.id = i + 1;
+              button.position = i + 1;
+              newReportButtonsData.push(button);
+            }
+
+            console.log("Finish", newReportButtonsData);
+
+            await LZTUp.setValue(
+              NewStorageName.ReportButtons,
+              newReportButtonsData,
+            );
+            updateReportButtons(newReportButtonsData);
+          },
+        ),
+        new Button(
+          "Добавить кнопку",
+          "button LZTUpIconButton",
+          "far fa-plus",
+        ).createElement(async e => {
+          const sortableContainer = e.target.parentElement?.querySelector(
+            ".LZTUpSortableContainer",
+          );
+
+          if (!sortableContainer) {
+            return registerAlert("Не найден контейнер для добавления!");
+          }
+
+          if (sortableContainer.children.length === MAX_BUTTONS_COUNT) {
+            return registerAlert("Вы не можете добавить больше 2 иконок!");
+          }
+
+          const actualReportButtons = await LZTUp.getValue(
+            NewStorageName.ReportButtons,
+          );
+
+          const defaultReportButton = {
+            position: sortableContainer.children.length + 1,
+            text: "Новая кнопка",
+            reason: "Флуд / Оффтоп / Спам / Бесполезная тема",
+            uuid: uuidv4(), // uniq value
+          };
+
+          actualReportButtons.push(defaultReportButton);
+
+          const newItem = new SortableItem(
+            defaultReportButton.text,
+            defaultReportButton.position,
+          ).createElement(
+            sortableItemOnEditCallback,
+            sortableItemOnRemoveCallback,
+          );
+          newItem.dataset.uuid = defaultReportButton.uuid;
+
+          sortableContainer.appendChild(newItem);
+
+          await LZTUp.setValue(
+            NewStorageName.ReportButtons,
+            actualReportButtons,
+          );
+
+          updateReportButtons(actualReportButtons);
+        }),
+      ],
+      "Управление быстрыми репортами",
+      "Ниже вы можете легко настроить порядок, причины и названия для кнопок быстрого репорта.",
+    ).createElement(),
+
+    new Separator().createElement(),
+
     new Container(
       [
         new Checkbox(

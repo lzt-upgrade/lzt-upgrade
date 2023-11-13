@@ -8,6 +8,7 @@ export default class NewStorageName extends BaseEnum {
   );
   static Cache = new NewStorageName("cache", {});
   static Appear = new NewStorageName("appearData", {});
+  static ReportButtons = new NewStorageName("reportButtons", []);
   static Contests = new NewStorageName("contestsData", {});
   static Profile = new NewStorageName("profileData", {});
   static ProfileBadges = new NewStorageName("profileBadges", []);
@@ -22,6 +23,7 @@ export default class NewStorageName extends BaseEnum {
   static generateConfigStruct() {
     const configKeys = [
       this.Appear,
+      this.ReportButtons,
       this.Contests,
       this.Profile,
       this.ProfileBadges,

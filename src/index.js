@@ -56,6 +56,7 @@ import LZTUp from "Utils/gmWrapper";
 import NewStorageName from "Configs/NewStorageName";
 import { summarizeThreadBlock } from "Utils/threads";
 import { getTimestamp } from "Utils/utils";
+import { updateReportButtons } from "Visuals/threads";
 
 async function initTheme() {
   // exec time: 35ms
@@ -193,6 +194,10 @@ async function main() {
     console.timeLog("lztup-start", "Add user group to cache");
     await GM_setValue(StorageName.UserGroup, userGroup);
 
+    // * APPEAR SECTION
+    const dbReportButtonsData = await LZTUp.getValue(
+      NewStorageName.ReportButtons,
+    );
     console.timeLog("lztup-start", "forumLogo");
     appearData.forumLogo > 0
       ? await setLogoFromCache(SiteType.Forum, appearData.forumLogo)
@@ -201,6 +206,12 @@ async function main() {
     appearData.marketLogo > 0
       ? await setLogoFromCache(SiteType.Market, appearData.marketLogo)
       : null;
+
+    console.timeLog("lztup-start", "Check Profile badge style");
+    if (dbReportButtonsData.length) {
+      updateReportButtons(dbReportButtonsData);
+    }
+
     console.timeLog("lztup-start", "hideAlertCounter");
     appearData.hideAlertCounter
       ? hideBalloonById(NavbarBalloon.AlertCounter.getName(), true)
@@ -213,59 +224,63 @@ async function main() {
     appearData.hideUnreadArticlesStatus ? hideUnreadArticlesStatus(true) : null;
     appearData.summarizeThreads ? await summarizeThreadBlock(true) : null;
 
+    // * PROFILE SECTION
     console.timeLog("lztup-start", "Loading Profile DB...");
     const dbProfileData = await GM_getValue(StorageName.Profile, {});
     const dbBadgeData = await GM_getValue(StorageName.ProfileBadges, []);
-    console.timeLog("lztup-start", "Check Profile User or Badge style");
-    if (dbProfileData.usernameStyle || dbBadgeData.length) {
-      console.timeLog("lztup-start", "Check Profile User style");
-      if (dbProfileData.usernameStyle) {
-        updateUserStyle(dbProfileData.usernameStyle);
-      }
-
-      console.timeLog("lztup-start", "Check Profile badge style");
-      if (dbBadgeData.length) {
-        updateUserBadges(dbBadgeData);
-      }
-
-      console.timeLog("lztup-start", "Reg profile observer");
-      registerObserver(async mutation => {
-        Logger.debug(mutation);
-        if (
-          mutation.target.classList.contains("messageList") ||
-          mutation.target.classList.contains("messageSimpleList") ||
-          mutation.target.classList.contains("messageResponse") ||
-          mutation.target.classList.contains("CommentPostList") ||
-          mutation.target.classList.contains("discussionList") ||
-          mutation.target.classList.contains("chat2-messages") ||
-          mutation.target.classList.contains("fe-ac-user") ||
-          mutation.target.classList.contains("latestThreads") ||
-          mutation.target.parentElement?.classList.contains(
-            "conversationMessages",
-          ) ||
-          mutation.nextSibling?.classList?.contains("modal") ||
-          mutation.previousSibling?.classList?.contains("Alert") ||
-          mutation.previousSibling?.nextSibling?.classList?.contains("Alert") ||
-          mutation.removedNodes?.[0]?.id === "AjaxProgress" ||
-          mutation.target.id === "AlertsDestinationWrapper" ||
-          mutation.target.id === "StackAlerts"
-        ) {
-          const updatedProfileData = await LZTUp.getValue(
-            NewStorageName.Profile,
-          );
-          const updatedBadgeData = await LZTUp.getValue(
-            NewStorageName.ProfileBadges,
-          );
-          if (updatedProfileData.usernameStyle) {
-            updateUserStyle(updatedProfileData.usernameStyle);
-          }
-
-          if (updatedBadgeData) {
-            updateUserBadges(dbBadgeData);
-          }
-        }
-      });
+    console.timeLog("lztup-start", "Check Profile User style");
+    if (dbProfileData.usernameStyle) {
+      updateUserStyle(dbProfileData.usernameStyle);
     }
+
+    console.timeLog("lztup-start", "Check Profile badge style");
+    if (dbBadgeData.length) {
+      updateUserBadges(dbBadgeData);
+    }
+
+    console.timeLog("lztup-start", "Reg big observer");
+    // TODO: Попробовать переписать на XenForo.activate hook
+    registerObserver(async mutation => {
+      Logger.debug(mutation);
+      if (
+        mutation.target.classList.contains("messageList") ||
+        mutation.target.classList.contains("messageSimpleList") ||
+        mutation.target.classList.contains("messageResponse") ||
+        mutation.target.classList.contains("CommentPostList") ||
+        mutation.target.classList.contains("discussionList") ||
+        mutation.target.classList.contains("chat2-messages") ||
+        mutation.target.classList.contains("fe-ac-user") ||
+        mutation.target.classList.contains("latestThreads") ||
+        mutation.target.parentElement?.classList.contains(
+          "conversationMessages",
+        ) ||
+        mutation.nextSibling?.classList?.contains("modal") ||
+        mutation.previousSibling?.classList?.contains("Alert") ||
+        mutation.previousSibling?.nextSibling?.classList?.contains("Alert") ||
+        mutation.removedNodes?.[0]?.id === "AjaxProgress" ||
+        mutation.target.id === "AlertsDestinationWrapper" ||
+        mutation.target.id === "StackAlerts"
+      ) {
+        const updatedProfileData = await LZTUp.getValue(NewStorageName.Profile);
+        const updatedBadgeData = await LZTUp.getValue(
+          NewStorageName.ProfileBadges,
+        );
+        const updatedReportButtonsData = await LZTUp.getValue(
+          NewStorageName.ReportButtons,
+        );
+        if (updatedProfileData.usernameStyle) {
+          updateUserStyle(updatedProfileData.usernameStyle);
+        }
+
+        if (updatedBadgeData) {
+          updateUserBadges(updatedBadgeData);
+        }
+
+        if (updatedReportButtonsData) {
+          updateReportButtons(updatedReportButtonsData);
+        }
+      }
+    });
 
     console.timeLog("lztup-start", "Check Profile banner");
     if (dbProfileData.bannerStyle && dbProfileData.bannerText) {

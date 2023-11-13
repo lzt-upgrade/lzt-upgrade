@@ -84,8 +84,12 @@ function applyStyle(el, style) {
   }
 }
 
+function getMsTimestamp() {
+  return Date.now();
+}
+
 function getTimestamp() {
-  return Math.floor(Date.now() / 1000);
+  return Math.floor(getMsTimestamp() / 1000);
 }
 
 function getAuthors(authorNames, authorUserIds) {
@@ -142,6 +146,7 @@ export {
   removeStyles,
   removeStylesByEl,
   applyStyle,
+  getMsTimestamp,
   getTimestamp,
   getAuthors,
   getHTMLFromString,

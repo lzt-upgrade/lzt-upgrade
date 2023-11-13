@@ -32,3 +32,20 @@
     }
   }
 }
+
+.LZTUpReportButtons {
+  display: flex;
+
+  .LZTUpReportButton {
+    padding: 3px 10px;
+    margin-right: 5px;
+    font-weight: bold;
+    background: #343434;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: 1s background ease;
+    &:hover {
+      background: #218e5d;
+    }
+  }
+}

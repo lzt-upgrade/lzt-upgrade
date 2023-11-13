@@ -30,6 +30,8 @@ import { addBackgroundImageInProfile } from "Visuals/profile";
 import Logger from "Utils/logger";
 import LZTUp from "Utils/gmWrapper";
 
+const MAX_ICONS_COUNT = 2;
+
 async function sortableItemOnEditCallback(e, sortableItem, previewProfile) {
   const badgeId = Number(sortableItem.dataset.id);
   const modalContent = document.querySelector(".LZTUpModalContent");
@@ -169,12 +171,12 @@ async function sortableItemOnEditCallback(e, sortableItem, previewProfile) {
         "button primary LZTUpIconButton fit",
         "far fa-save",
       ).createElement(async () => {
-        registerAlert("Иконка успешно сохранена.");
         const badges = await updateBadgesData(badgeData);
         await LZTUp.setValue(NewStorageName.ProfileBadges, badges);
         updateUserBadges(badges);
         tempPreviewProfile.badges.badges = badges;
         tempPreviewProfile.updateBadges();
+        registerAlert("Иконка успешно сохранена.");
       }),
     ]).createElement(),
   ]);
@@ -186,7 +188,7 @@ async function sortableItemOnEditCallback(e, sortableItem, previewProfile) {
     "Локальный Уник",
     uniqSubMenu,
     async () => {
-      const sortable = document.querySelectorAll(
+      const sortable = uniqSubMenu.querySelectorAll(
         ".LZTUpSortableContainer > .LZTUpSortableItem",
       );
 
@@ -268,6 +270,7 @@ const getProfileItems = async () => {
   }
 
   async function sortableItemOnRemoveCallback(e, sortableItemEl) {
+    const uniqSubMenu = document.querySelector("#LZTUpUniqContainer");
     let badgeIcons = await LZTUp.getValue(NewStorageName.ProfileBadges);
     let newBadgeIcons = [];
 
@@ -297,7 +300,7 @@ const getProfileItems = async () => {
       }
 
       // if removed 1st badge set 2nd badge to 1st position
-      const item = document.querySelector(
+      const item = uniqSubMenu.querySelector(
         ".LZTUpSortableContainer > .LZTUpSortableItem",
       );
       if (item) {
@@ -449,7 +452,7 @@ const getProfileItems = async () => {
             return registerAlert("Не найден контейнер для добавления!");
           }
 
-          if (sortableContainer.children.length === 2) {
+          if (sortableContainer.children.length === MAX_ICONS_COUNT) {
             return registerAlert("Вы не можете добавить больше 2 иконок!");
           }
 
@@ -486,7 +489,7 @@ const getProfileItems = async () => {
         }),
       ],
       "Управление иконками",
-      "Ниже вы можете легко настроить иконки уника и их порядок (изменения автоматически применяются)",
+      "Ниже вы можете легко настроить иконки уника и их порядок (изменения автоматически применяются).",
     ).createElement(),
 
     new Separator().createElement(), // * ADD SEPARATOR
