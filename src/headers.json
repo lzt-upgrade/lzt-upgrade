@@ -5,7 +5,7 @@
   "author": "Toil",
   "namespace": "lztupgrade",
   "license": "MIT",
-  "icon": "https://cdn.jsdelivr.net/gh/lzt-upgrade/lzt-upgrade@latest/src/images/logo-mini.png",
+  "icon": "https://cdn.toil.cc/lztup/brand/logo-mini.png",
   "updateURL": "https://github.com/lzt-upgrade/lzt-upgrade/raw/master/dist/lzt-upgrade.user.js",
   "downloadURL": "https://github.com/lzt-upgrade/lzt-upgrade/raw/master/dist/lzt-upgrade.user.js",
   "supportURL": "https://github.com/lzt-upgrade/lzt-upgrade/issues",
