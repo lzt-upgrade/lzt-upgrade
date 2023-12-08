@@ -30,6 +30,8 @@ import { updateReportButtons } from "Visuals/threads";
 import { v4 as uuidv4 } from "uuid";
 
 const MAX_BUTTONS_COUNT = 4;
+const APPEAR_MENU_ID = "LZTUpAppearContainer";
+const MODAL_SELECTOR = ".LZTUpModalContent";
 
 async function createLogoManagerTempMenu(logoType) {
   const cacheItemName = `availabled${ucFirst(logoType)}Logos`;
@@ -54,8 +56,8 @@ async function createLogoManagerTempMenu(logoType) {
     created_at: 1696777530,
   });
 
-  const modalContent = document.querySelector(".LZTUpModalContent");
-  const mainMenu = document.getElementById("LZTUpAppearContainer");
+  const modalContent = document.querySelector(MODAL_SELECTOR);
+  const mainMenu = document.getElementById(APPEAR_MENU_ID);
 
   const logoGrid = new Grid("LZTUpLogoGrid");
   // TODO: add logo filters for the market and forum in the API (TO BACKEND) (?target=market or ?target=forum)
@@ -109,8 +111,8 @@ async function createThemeManagerTempMenu() {
     active: 1,
   });
 
-  const modalContent = document.querySelector(".LZTUpModalContent");
-  const mainMenu = document.getElementById("LZTUpAppearContainer");
+  const modalContent = document.querySelector(MODAL_SELECTOR);
+  const mainMenu = document.getElementById(APPEAR_MENU_ID);
 
   const themeGrid = new Grid("LZTUpThemeGrid");
   for (const theme of themes) {
@@ -145,6 +147,59 @@ async function createThemeManagerTempMenu() {
   openTempMenu("Выбор темы", "Внешний вид", mainMenu, () => {});
 }
 
+async function createAdblockManagerTempMenu() {
+  const adblockData = await LZTUp.getValue(NewStorageName.Adblock);
+
+  const modalContent = document.querySelector(MODAL_SELECTOR);
+  const mainMenu = document.getElementById(APPEAR_MENU_ID);
+
+  const el = addTemporaryMenuSection([
+    new Container(
+      [
+        new Container([
+          new Checkbox(
+            "hide_alert_ads",
+            "Отключить рекламу в уведомлениях",
+          ).createElement(
+            adblockData.hideAlertAds,
+            () => {},
+            () => {},
+            async event => {
+              adblockData.hideAlertAds = event.target.checked;
+            },
+          ),
+          new Checkbox(
+            "hide_thread_list_ads",
+            "Отключить рекламу в списке тем",
+          ).createElement(
+            adblockData.hideThreadListAds,
+            () => {},
+            () => {},
+            async event => {
+              adblockData.hideThreadListAds = event.target.checked;
+            },
+          ),
+        ]).createElement("display: block;"),
+        new Button(
+          "Сохранить",
+          "button primary LZTUpIconButton fit",
+          "far fa-save",
+        ).createElement(async () => {
+          await LZTUp.setValue(NewStorageName.Adblock, adblockData);
+
+          registerAlert("Настройки продвинутого Adblock успешно сохранены.");
+          window.location.reload();
+        }),
+      ],
+      "Выберите типы рекламы",
+      `Выберите все типы рекламы, которые хотите отключить. Для применения настроек нажмите на кнопку сохранить. При сохранение настроек страница автоматически перезагрузится.`,
+    ).createElement(),
+  ]);
+
+  modalContent.appendChild(el);
+  openTempMenu("Выбор темы", "Внешний вид", mainMenu, () => {});
+}
+
 async function generateReportButtonsItems() {
   console.log("Generating buttons items");
   const items = [];
@@ -172,8 +227,8 @@ async function generateReportButtonsItems() {
 
 async function sortableItemOnEditCallback(e, sortableItem) {
   const buttonUUID = sortableItem.dataset.uuid;
-  const modalContent = document.querySelector(".LZTUpModalContent");
-  const appearSubMenu = document.querySelector("#LZTUpAppearContainer");
+  const modalContent = document.querySelector(MODAL_SELECTOR);
+  const appearSubMenu = document.getElementById(APPEAR_MENU_ID);
   const reportButtonsData = await LZTUp.getValue(NewStorageName.ReportButtons);
   let buttonData =
     reportButtonsData.find(button => button.uuid === buttonUUID) || [];
@@ -277,7 +332,7 @@ async function sortableItemOnEditCallback(e, sortableItem) {
 }
 
 async function sortableItemOnRemoveCallback(e, sortableItemEl) {
-  const appearSubMenu = document.querySelector("#LZTUpAppearContainer");
+  const appearSubMenu = document.getElementById("LZTUpAppearContainer");
   let reportButtonsData = await LZTUp.getValue(NewStorageName.ReportButtons);
   let newReportButtons = [];
   let counter = 1;
@@ -337,6 +392,13 @@ const getAppearItems = async () => {
       "far fa-paint-brush",
       "LZTUpThemeManager",
       { onClick: createThemeManagerTempMenu, rightArrow: true },
+    )
+    .addSectionItem(
+      "Продвинутый Adblock",
+      "Избавьтесь от назойливой рекламы в пару нажатий",
+      "far fa-shield",
+      "LZTUpAdblockManager",
+      { onClick: createAdblockManagerTempMenu, rightArrow: true },
     );
 
   return [
@@ -394,7 +456,9 @@ const getAppearItems = async () => {
           }
 
           if (sortableContainer.children.length === MAX_BUTTONS_COUNT) {
-            return registerAlert("Вы не можете добавить больше 2 иконок!");
+            return registerAlert(
+              `Вы не можете добавить больше ${MAX_BUTTONS_COUNT} иконок!`,
+            );
           }
 
           const actualReportButtons = await LZTUp.getValue(
@@ -504,6 +568,7 @@ const getAppearItems = async () => {
       "Скрытие элементов",
       "Скройте лишние элементы сайта",
     ).createElement("display: block;"),
+
     new Container(
       [
         new Checkbox(

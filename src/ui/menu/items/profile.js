@@ -551,7 +551,6 @@ const getProfileItems = async () => {
         "button primary LZTUpIconButton fit",
         "far fa-save",
       ).createElement(async () => {
-        // save settings in IndexedDB
         const oldProfileData = await LZTUp.getValue(NewStorageName.Profile);
         await LZTUp.setValue(NewStorageName.Profile, profileData);
 
