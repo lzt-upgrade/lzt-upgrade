@@ -53,4 +53,17 @@ function updateReportButtons(buttonsData) {
   }
 }
 
-export { hideThreadContent, hideThreadPoll, updateReportButtons };
+function hideThreadListAds() {
+  return GM_addStyle(`
+    .text_Ads {
+      display: none;
+    }
+  `);
+}
+
+export {
+  hideThreadContent,
+  hideThreadPoll,
+  updateReportButtons,
+  hideThreadListAds,
+};
