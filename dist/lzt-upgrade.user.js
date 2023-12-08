@@ -21,7 +21,7 @@
 // @grant GM_deleteValue
 // @grant GM_listValues
 // @homepageURL https://github.com/lzt-upgrade/lzt-upgrade
-// @icon https://cdn.jsdelivr.net/gh/lzt-upgrade/lzt-upgrade@latest/src/images/logo-mini.png
+// @icon https://cdn.toil.cc/lztup/brand/logo-mini.png
 // @license MIT
 // @namespace lztupgrade
 // @require https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js
@@ -96,7 +96,7 @@ ___CSS_LOADER_EXPORT___.push([module.id, `.LZTUpErrorPage{background-color:#2727
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 ___CSS_LOADER_EXPORT___.push([module.id, "@import url(https://cdn.jsdelivr.net/gh/lzt-upgrade/coloris-lzt-theme@latest/dist/coloris.min.css);"]);
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, `.clr-picker{display:none}.LZTUpColorPickerWrap{display:flex;align-items:center}.LZTUpColorPickerWrap:not(:first-of-type){margin-top:10px}.LZTUpColorPickerWrap .LZTUpModalDescription{margin-right:10px !important}.LZTUpColorPickerWrap .clr-field input{width:24px;height:24px}.LZTUpColorPickerWrap .clr-field button{width:28px;height:28px}.LZTUpColorPickerWrap .clr-field input,.LZTUpColorPickerWrap .clr-field button{border-radius:4px}.LZTUpSelect option{background:#272727;padding:10px 15px;font-weight:600;border-radius:6px}.LZTUpSelect option:hover{background:#2d2d2d}.LZTUpIconButton{display:flex;flex-direction:row-reverse;align-items:center;justify-content:center}.LZTUpIconButton.fit{max-width:fit-content}.LZTUpIconButton i{margin:0 8px;margin-top:3.5px}.LZTUpRefreshButton{min-width:32px !important;margin-left:32px !important}.LZTUpSortableItem{display:flex;align-items:center;padding:16px;margin:8px 0;border-radius:8px;background:rgba(54,54,54,.75)}.LZTUpSortableItem .LZTUpSortableDraggable{color:#8c8c8c;margin-right:10px;cursor:move}.LZTUpSortableItem .LZTUpSortableContent p{margin:0 !important}.LZTUpSortableItem .LZTUpSortableUtility{display:flex;margin-left:auto}.LZTUpSortableItem .LZTUpSortableUtility div{margin-left:10px;cursor:pointer;transition:.5s color ease}.LZTUpSortableItem .LZTUpSortableUtility .LZTUpSortableEditButton{color:#6a6a6a}.LZTUpSortableItem .LZTUpSortableUtility .LZTUpSortableEditButton:hover{color:#0daf77}.LZTUpSortableItem .LZTUpSortableUtility .LZTUpSortableRemoveButton{color:#964448}.LZTUpSortableItem .LZTUpSortableUtility .LZTUpSortableRemoveButton:hover{color:#f13838}#LZTUpModalMainTitle{text-align:center;padding:16px;font-size:20px;font-weight:bold}.LZTUpModalBackButton{position:absolute;top:18px;left:25px;padding:0px 5px;margin:-4px -5px;cursor:pointer;line-height:25px;height:26px;width:26px;border:0 !important;background:rgba(0,0,0,0);color:#d6d6d6;font-size:18px}.LZTUpModalBackButton:hover{background:rgba(18,76,50,.4);border-radius:8px}.LZTUpTabs{width:100%;box-sizing:border-box;padding:0 10px;border:none !important;margin:15px auto !important;display:flex;align-items:center;justify-content:center}.LZTUpTabs #LZTUpTab{position:relative;padding:10px;margin:0 4px;float:left;font-weight:600;list-style:none;font-size:14px}.LZTUpTabs #LZTUpTab:hover{cursor:pointer}.LZTUpTabs #LZTUpTab.active{box-shadow:inset 0px -2px 0px 0px #0daf77;transform:translateY(-1px);transition:.2s}.LZTUpTabs #LZTUpTab:not(.active):hover{box-shadow:inset 0px -2px 0px 0px #363636}.LZTUpSection{display:flex;flex-wrap:wrap;margin:20px 15px}.LZTUpSection.row{flex-direction:row}.LZTUpSection.row .LZTUpSectionItem{max-width:284px}.LZTUpSection.row .LZTUpSectionTitle,.LZTUpSection.row .LZTUpSectionDesc{max-width:200px}.LZTUpSection.column{flex-direction:column}.LZTUpSection.column .LZTUpSectionTitle,.LZTUpSection.column .LZTUpSectionDesc{max-width:440px}.LZTUpSection.column .LZTUpSectionDesc{white-space:break-spaces}.LZTUpSection.column .LZTUpSectionItem{max-width:580px}.LZTUpSection .LZTUpSectionItem{flex-basis:50%;flex-grow:1;height:64px;display:flex;align-items:center;transition:all .5s ease}.LZTUpSection .LZTUpSectionItem:hover{background:rgba(54,54,54,.75);border-radius:8px;cursor:pointer}.LZTUpSection .LZTUpSectionItem .LZTUpSectionTextContainer{display:flex;flex-direction:column;justify-content:center;flex:1 1 auto;max-width:100%}.LZTUpGrid{margin:20px 0;display:grid;grid-template-columns:repeat(3, 30%);justify-content:center;gap:20px}.LZTUpGrid .LZTUpGridItem{background:#343434;display:flex;flex-direction:column;align-items:center;justify-content:space-between;border-radius:8px;cursor:pointer}.LZTUpGrid .LZTUpGridItem:hover{background:#3a3a3a}.LZTUpGrid .LZTUpGridItem.active{outline:3px solid #228e5d}.LZTUpGrid .LZTUpGridItem.theme:hover{opacity:.9}.LZTUpGrid .LZTUpGridItem.theme .LZTUpGridTextContainer{padding-top:30px}.LZTUpGrid .LZTUpGridItem .LZTUpGridTextContainer{display:flex;flex-direction:column;align-self:start;margin-left:10px;margin-bottom:10px}.LZTUpGrid .LZTUpGridItem .LZTUpGridImage{max-width:96px;max-height:48px;margin:20px 0}.LZTUpGrid .LZTUpGridItem .LZTUpGridTitle{font-weight:bold;word-wrap:break-word}.LZTUpGrid .LZTUpGridItem .LZTUpGridDesc{word-wrap:break-word}.LZTUpGrid .LZTUpGridItem .LZTUpGridDesc .LZTUpGridAuthor{color:#949494}@media screen and (max-width: 720px){.LZTUpGrid{grid-template-columns:repeat(2, 47%)}}#LZTUpIcon{width:28px;height:28px;margin:20px;font-size:28px;color:#0daf77}#LZTUpIcon.gray{color:#949494}#LZTUpIcon.right{text-align:right}#LZTUpModalContainer{margin:15px;max-width:400px}#LZTUpModalChecksContainer,#LZTUpModalReportButtonsContainer,#LZTUpModalCell,.LZTUpModalMesh,.LZTUpModalSeparator{margin:15px;max-width:95%}.LZTUpContainer{display:flex;flex-direction:column;margin:15px;max-width:95%}.LZTUpModalHeading{margin:10px 0 5px 0 !important}.LZTUpModalDescription{margin:0 !important;margin-bottom:5px !important}.LZTUpTextArea{min-height:40px}.LZTUpModalSeparator{border-bottom:1px solid #363636}#LZTUpModalChecksText{margin:0px 25px 5px}.LZTUpSectionTitle,.LZTUpSectionDesc{display:block;margin-right:20px;font-size:15px;font-weight:bold;text-overflow:ellipsis;white-space:nowrap;overflow:hidden}.LZTUpSectionDesc{font-size:13px;font-weight:normal;color:#949494}.LZTUpSectionDesc .mceSmilie{max-height:18px !important}.LZTUpModalSectionTexts{display:flex;flex-direction:column;justify-content:center;flex:1 1 auto}.LZTUpModalSectionTexts .LZTUpSubText{max-width:450px}#LZTUpModalComment{background:#363636;margin:5px 15px;padding:10px 15px;border-radius:10px}#LZTUpModalComment a{color:#00ba78}.LZTUpModalBlock{display:flex}.LZTUpModalBlockButtons{display:flex;flex-wrap:wrap;justify-content:center;margin-top:25px}.LZTUpModalBlockButtons .button{margin:5px;width:250px}.LZTUpSubMenu .previewContainer{display:flex;float:right;margin:25px 15px;padding:10px 10px 15px 10px;background-size:cover;background-position:center;background-attachment:fixed;background-repeat:no-repeat;border-radius:10px;width:92%;max-width:92%}.LZTUpSubMenu .previewContainer .avatar img{width:66px;height:66px}.LZTUpSubMenu .previewContainer .info{padding:0 0 0 20px}.LZTUpSubMenu .previewContainer .info .username{font-weight:600}.LZTUpSubMenu .previewContainer .bannerOrStatus{min-width:150px;margin:10px 0 0;color:#949494}.LZTUpSubMenu .previewContainer .bannerOrStatus em{font-style:inherit}.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge .customUniqIcon{padding:2px 0;text-align:center}.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge .customUniqIcon svg{width:16px !important;height:16px !important}.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge::before{font-family:"Font Awesome 5 Pro";font-weight:600;display:inline-block;font-size:12.32px}.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.admin{background:#964448}.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.admin::before,.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.bot::before{content:""}.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.Designer::before{content:""}.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.headDesigner::before{content:""}.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.editor::before{content:""}.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.sponsor::before{content:""}.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.coder::before{content:""}.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.uniq_default::before,.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.Legend::before,.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.Ikarus::before{content:""}.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.moder{background:#3d6b39}.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.curator{background:rgba(8,156,122,.8509803922)}.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.moder::before,.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.main_moder::before,.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.curator::before{content:""}.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.arbitr::before,.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.main_arbitr::before{content:""}.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.telegramBot::before{content:""}.LZTUpSubMenu .previewContainer .UsernameStyle.style18,.LZTUpSubMenu .previewContainer .UsernameStyle.style360{text-decoration:line-through;color:#aaa}.LZTUpSubMenu .previewContainer .UsernameStyle.style3{color:#f13838}.LZTUpSubMenu .previewContainer .UsernameStyle.style30{color:#ff9afc}.LZTUpSubMenu .previewContainer .UsernameStyle.style353{background:linear-gradient(98.26deg, #FF42F7 2.08%, #FF24CF 100%);-webkit-background-clip:text;-webkit-text-fill-color:rgba(0,0,0,0)}.LZTUpSubMenu .previewContainer .UsernameStyle.style350{background:linear-gradient(90deg, #5c45ff, #feb5f2 100%);-webkit-background-clip:text;-webkit-text-fill-color:rgba(0,0,0,0)}.LZTUpSubMenu .previewContainer .UsernameStyle.style12{color:#01f73c}.LZTUpSubMenu .previewContainer .UsernameStyle.style1,.LZTUpSubMenu .previewContainer .UsernameStyle.style41,.LZTUpSubMenu .previewContainer .UsernameStyle.style142,.LZTUpSubMenu .previewContainer .UsernameStyle.style144{color:#aaa}.LZTUpSubMenu .previewContainer .UsernameStyle.style32,.LZTUpSubMenu .previewContainer .UsernameStyle.style93,.LZTUpSubMenu .previewContainer .UsernameStyle.style21,.LZTUpSubMenu .previewContainer .UsernameStyle.style2{color:#949494}.LZTUpSubMenu .previewContainer .UsernameStyle.style60{color:#ffa8af}.LZTUpSubMenu .previewContainer .UsernameStyle.style9{color:#0075ad}.LZTUpSubMenu .previewContainer .UsernameStyle.style65{color:#a5e3ff}.LZTUpSubMenu .previewContainer .UsernameStyle.style351{color:#ff0076}.LZTUpSubMenu .previewContainer .UsernameStyle.style29{color:#0acc9e}.LZTUpSubMenu .previewContainer .UsernameStyle.style26{background:linear-gradient(90deg, #0095dd 0%, #f1094b 100%, #0095dd);-webkit-background-clip:text;-webkit-text-fill-color:rgba(0,0,0,0)}.LZTUpSubMenu .previewContainer .UsernameStyle.style4{color:#0e9100}.LZTUpSubMenu .previewContainer .UsernameStyle.style22{color:#eee}.LZTUpSubMenu .previewContainer .UsernameStyle.style11{color:#56b5e0}.LZTUpSubMenu .previewContainer .UsernameStyle.style7{color:#ff9304}.LZTUpSubMenu .previewContainer .UsernameStyle.style349,.LZTUpSubMenu .previewContainer .UsernameStyle.style365{color:#0087ff}.LZTUpSubMenu .previewContainer .UsernameStyle.style354{color:aqua}.LZTUpSubMenu .previewContainer .UsernameStyle.style218{color:#f13838}.LZTUpSubMenu .previewContainer .UsernameStyle.style359{color:#e5d9a3}.LZTUpSubMenu .previewContainer .UsernameStyle.style8{color:gold}.LZTUpSubMenu .previewContainer .UsernameStyle.style265{background:linear-gradient(35deg, #006eff, #00ff81 52%, #fff 50%, #93cbff);-webkit-background-clip:text;-webkit-text-fill-color:rgba(0,0,0,0);text-shadow:0 0 7px rgba(0,255,207,.5019607843)}.LZTUpSubMenu .previewContainer .UsernameStyle.style23{color:#b35ede}.LZTUpSubMenu .previewContainer .UsernameStyle.banned,.LZTUpSubMenu .previewContainer .UsernameStyle.is_banned{text-decoration:line-through;background:inherit;-webkit-text-fill-color:inherit;text-shadow:inherit !important;color:#aaa !important}.LZTUpSubMenu .previewContainer .avatarBox{position:relative}.LZTUpSubMenu .previewContainer .avatarBox .avatarUserBadges .badgeDefaultBackground{background:#363636}.LZTUpSubMenu .previewContainer .avatarBox .avatarUserBadges .avatarUserBadge{position:absolute;bottom:-12px;left:20px;border:2px solid #272727;font-size:0;width:22px;height:22px;margin:0;line-height:22px;border-radius:50%;text-align:center;text-shadow:none !important;box-shadow:none !important;border-radius:50% !important;-webkit-background-clip:unset !important;-webkit-text-fill-color:unset !important;overflow:hidden}.LZTUpSubMenu .previewContainer .avatarBox .avatarUserBadges .avatarUserBadge:only-child{left:35px}.LZTUpSubMenu .previewContainer .avatarBox .avatarUserBadges .avatarUserBadge.avatarUserBadge--1{left:20px}.LZTUpSubMenu .previewContainer .avatarBox .avatarUserBadges .avatarUserBadge.avatarUserBadge--2{left:40px}.LZTUpSubMenu .previewContainer .avatarBox,.LZTUpSubMenu .previewContainer .info{display:table-cell;vertical-align:top}`, ""]);
+___CSS_LOADER_EXPORT___.push([module.id, `.clr-picker{display:none}.LZTUpColorPickerWrap{display:flex;align-items:center}.LZTUpColorPickerWrap:not(:first-of-type){margin-top:10px}.LZTUpColorPickerWrap .LZTUpModalDescription{margin-right:10px !important}.LZTUpColorPickerWrap .clr-field input{width:24px;height:24px}.LZTUpColorPickerWrap .clr-field button{width:28px;height:28px}.LZTUpColorPickerWrap .clr-field input,.LZTUpColorPickerWrap .clr-field button{border-radius:4px}.LZTUpSelect option{background:#272727;padding:10px 15px;font-weight:600;border-radius:6px}.LZTUpSelect option:hover{background:#2d2d2d}.LZTUpIconButton{display:flex;flex-direction:row-reverse;align-items:center;justify-content:center}.LZTUpIconButton.fit{max-width:fit-content}.LZTUpIconButton i{margin:0 8px;margin-top:3.5px}.LZTUpRefreshButton{min-width:32px !important;margin-left:32px !important}.LZTUpSortableItem{display:flex;align-items:center;padding:16px;margin:8px 0;border-radius:8px;background:rgba(54,54,54,.75)}.LZTUpSortableItem .LZTUpSortableDraggable{color:#8c8c8c;margin-right:10px;cursor:move}.LZTUpSortableItem .LZTUpSortableContent p{margin:0 !important}.LZTUpSortableItem .LZTUpSortableUtility{display:flex;margin-left:auto}.LZTUpSortableItem .LZTUpSortableUtility div{margin-left:10px;cursor:pointer;transition:.5s color ease}.LZTUpSortableItem .LZTUpSortableUtility .LZTUpSortableEditButton{color:#6a6a6a}.LZTUpSortableItem .LZTUpSortableUtility .LZTUpSortableEditButton:hover{color:#0daf77}.LZTUpSortableItem .LZTUpSortableUtility .LZTUpSortableRemoveButton{color:#964448}.LZTUpSortableItem .LZTUpSortableUtility .LZTUpSortableRemoveButton:hover{color:#f13838}#LZTUpModalMainTitle{text-align:center;padding:16px;font-size:20px;font-weight:bold}.LZTUpModalBackButton{position:absolute;top:18px;left:25px;padding:0px 5px;margin:-4px -5px;cursor:pointer;line-height:25px;height:26px;width:26px;border:0 !important;background:rgba(0,0,0,0);color:#d6d6d6;font-size:18px}.LZTUpModalBackButton:hover{background:rgba(18,76,50,.4);border-radius:8px}.LZTUpTabs{width:100%;box-sizing:border-box;padding:0 10px;border:none !important;margin:15px auto !important;display:flex;align-items:center;justify-content:center}.LZTUpTabs #LZTUpTab{position:relative;padding:10px;margin:0 4px;float:left;font-weight:600;list-style:none;font-size:14px}.LZTUpTabs #LZTUpTab:hover{cursor:pointer}.LZTUpTabs #LZTUpTab.active{box-shadow:inset 0px -2px 0px 0px #0daf77;transform:translateY(-1px);transition:.2s}.LZTUpTabs #LZTUpTab:not(.active):hover{box-shadow:inset 0px -2px 0px 0px #363636}.LZTUpSection{display:flex;flex-wrap:wrap;margin:20px 15px}.LZTUpSection.row{flex-direction:row}.LZTUpSection.row .LZTUpSectionItem{max-width:284px}.LZTUpSection.row .LZTUpSectionTitle,.LZTUpSection.row .LZTUpSectionDesc{max-width:200px}.LZTUpSection.column{flex-direction:column}.LZTUpSection.column .LZTUpSectionTitle,.LZTUpSection.column .LZTUpSectionDesc{max-width:440px}.LZTUpSection.column .LZTUpSectionDesc{white-space:break-spaces}.LZTUpSection.column .LZTUpSectionItem{max-width:580px}.LZTUpSection .LZTUpSectionItem{flex-basis:50%;flex-grow:1;height:64px;display:flex;align-items:center;transition:all .5s ease}.LZTUpSection .LZTUpSectionItem:hover{background:rgba(54,54,54,.75);border-radius:8px;cursor:pointer}.LZTUpSection .LZTUpSectionItem .LZTUpSectionTextContainer{display:flex;flex-direction:column;justify-content:center;flex:1 1 auto;max-width:100%}.LZTUpGrid{margin:20px 0;display:grid;grid-template-columns:repeat(3, 30%);justify-content:center;gap:20px}.LZTUpGrid .LZTUpGridItem{background:#343434;display:flex;flex-direction:column;align-items:center;justify-content:space-between;border-radius:8px;cursor:pointer}.LZTUpGrid .LZTUpGridItem:hover{background:#3a3a3a}.LZTUpGrid .LZTUpGridItem.active{outline:3px solid #228e5d}.LZTUpGrid .LZTUpGridItem.theme:hover{opacity:.9}.LZTUpGrid .LZTUpGridItem.theme .LZTUpGridTextContainer{padding-top:30px}.LZTUpGrid .LZTUpGridItem .LZTUpGridTextContainer{display:flex;flex-direction:column;align-self:start;margin-left:10px;margin-bottom:10px}.LZTUpGrid .LZTUpGridItem .LZTUpGridImage{max-width:96px;max-height:48px;margin:20px 0}.LZTUpGrid .LZTUpGridItem .LZTUpGridTitle{font-weight:bold;word-wrap:break-word}.LZTUpGrid .LZTUpGridItem .LZTUpGridDesc{word-wrap:break-word}.LZTUpGrid .LZTUpGridItem .LZTUpGridDesc .LZTUpGridAuthor{color:#949494}@media screen and (max-width: 720px){.LZTUpGrid{grid-template-columns:repeat(2, 47%)}}#LZTUpIcon{width:28px;height:28px;margin:20px;font-size:28px;color:#0daf77}#LZTUpIcon.gray{color:#949494}#LZTUpIcon.right{text-align:right}#LZTUpModalContainer{margin:15px;max-width:400px}#LZTUpModalChecksContainer,#LZTUpModalReportButtonsContainer,#LZTUpModalCell,.LZTUpModalMesh,.LZTUpModalSeparator{margin:15px;max-width:95%}.LZTUpContainer{display:flex;flex-direction:column;margin:15px;max-width:95%}.LZTUpModalHeading{margin:10px 0 5px 0 !important}.LZTUpModalDescription{margin:0 !important;margin-bottom:5px !important}.LZTUpTextArea{min-height:40px}.LZTUpModalSeparator{border-bottom:1px solid #363636}#LZTUpModalChecksText{margin:0px 25px 5px}.LZTUpSectionTitle,.LZTUpSectionDesc{display:block;margin-right:20px;font-size:15px;font-weight:bold;text-overflow:ellipsis;white-space:nowrap;overflow:hidden}.LZTUpSectionDesc{font-size:13px;font-weight:normal;color:#949494}.LZTUpSectionDesc .mceSmilie{max-height:18px !important}.LZTUpModalSectionTexts{display:flex;flex-direction:column;justify-content:center;flex:1 1 auto}.LZTUpModalSectionTexts .LZTUpSubText{max-width:450px}#LZTUpModalComment{background:#363636;margin:5px 15px;padding:10px 15px;border-radius:10px}#LZTUpModalComment a{color:#00ba78}.LZTUpModalBlock{display:flex}.LZTUpModalBlockButtons{display:flex;flex-wrap:wrap;justify-content:center;margin-top:25px}.LZTUpModalBlockButtons .button{margin:5px;width:250px}.LZTUpSubMenu .previewContainer{display:flex;float:right;margin:25px 15px;padding:10px 10px 15px 10px;background-size:cover;background-position:center;background-attachment:fixed;background-repeat:no-repeat;border-radius:10px;width:92%;max-width:92%}.LZTUpSubMenu .previewContainer .avatar img{width:66px;height:66px}.LZTUpSubMenu .previewContainer .info{padding:0 0 0 20px}.LZTUpSubMenu .previewContainer .info .username{font-weight:600}.LZTUpSubMenu .previewContainer .bannerOrStatus{min-width:150px;margin:10px 0 0;color:#949494}.LZTUpSubMenu .previewContainer .bannerOrStatus em{font-style:inherit}.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge .customUniqIcon{padding:2px 0;text-align:center}.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge .customUniqIcon svg{width:16px !important;height:16px !important}.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge::before{font-family:"Font Awesome 5 Pro";font-weight:600;display:inline-block;font-size:12.32px}.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.admin{background:#964448}.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.admin::before,.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.bot::before{content:""}.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.Designer::before{content:""}.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.headDesigner::before{content:""}.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.editor::before{content:""}.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.sponsor::before{content:""}.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.coder::before{content:""}.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.uniq_default::before,.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.Legend::before,.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.Ikarus::before{content:""}.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.moder{background:#3d6b39}.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.curator{background:rgba(8,156,122,.8509803922)}.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.moder::before,.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.main_moder::before,.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.curator::before{content:""}.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.arbitr::before,.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.main_arbitr::before{content:""}.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.telegramBot::before{content:""}.LZTUpSubMenu .previewContainer .UsernameStyle.style18,.LZTUpSubMenu .previewContainer .UsernameStyle.style360{text-decoration:line-through;color:#aaa}.LZTUpSubMenu .previewContainer .UsernameStyle.style3{color:#f13838}.LZTUpSubMenu .previewContainer .UsernameStyle.style30{color:#ff9afc}.LZTUpSubMenu .previewContainer .UsernameStyle.style353{background:linear-gradient(98.26deg, #ff42f7 2.08%, #ff24cf 100%);-webkit-background-clip:text;-webkit-text-fill-color:rgba(0,0,0,0)}.LZTUpSubMenu .previewContainer .UsernameStyle.style350{background:linear-gradient(90deg, #5c45ff, #feb5f2 100%);-webkit-background-clip:text;-webkit-text-fill-color:rgba(0,0,0,0)}.LZTUpSubMenu .previewContainer .UsernameStyle.style12{color:#01f73c}.LZTUpSubMenu .previewContainer .UsernameStyle.style1,.LZTUpSubMenu .previewContainer .UsernameStyle.style41,.LZTUpSubMenu .previewContainer .UsernameStyle.style142,.LZTUpSubMenu .previewContainer .UsernameStyle.style144{color:#aaa}.LZTUpSubMenu .previewContainer .UsernameStyle.style32,.LZTUpSubMenu .previewContainer .UsernameStyle.style93,.LZTUpSubMenu .previewContainer .UsernameStyle.style21,.LZTUpSubMenu .previewContainer .UsernameStyle.style2{color:#949494}.LZTUpSubMenu .previewContainer .UsernameStyle.style60{color:#ffa8af}.LZTUpSubMenu .previewContainer .UsernameStyle.style9{color:#0075ad}.LZTUpSubMenu .previewContainer .UsernameStyle.style65{color:#a5e3ff}.LZTUpSubMenu .previewContainer .UsernameStyle.style351{color:#ff0076}.LZTUpSubMenu .previewContainer .UsernameStyle.style29{color:#0acc9e}.LZTUpSubMenu .previewContainer .UsernameStyle.style26{background:linear-gradient(90deg, #0095dd 0%, #f1094b 100%, #0095dd);-webkit-background-clip:text;-webkit-text-fill-color:rgba(0,0,0,0)}.LZTUpSubMenu .previewContainer .UsernameStyle.style4{color:#0e9100}.LZTUpSubMenu .previewContainer .UsernameStyle.style22{color:#eee}.LZTUpSubMenu .previewContainer .UsernameStyle.style11{color:#56b5e0}.LZTUpSubMenu .previewContainer .UsernameStyle.style7{color:#ff9304}.LZTUpSubMenu .previewContainer .UsernameStyle.style349,.LZTUpSubMenu .previewContainer .UsernameStyle.style365{color:#0087ff}.LZTUpSubMenu .previewContainer .UsernameStyle.style354{color:aqua}.LZTUpSubMenu .previewContainer .UsernameStyle.style218{color:#f13838}.LZTUpSubMenu .previewContainer .UsernameStyle.style359{color:#e5d9a3}.LZTUpSubMenu .previewContainer .UsernameStyle.style8{color:gold}.LZTUpSubMenu .previewContainer .UsernameStyle.style265{background:linear-gradient(35deg, #006eff, #00ff81 52%, #fff 50%, #93cbff);-webkit-background-clip:text;-webkit-text-fill-color:rgba(0,0,0,0);text-shadow:0 0 7px rgba(0,255,207,.5019607843)}.LZTUpSubMenu .previewContainer .UsernameStyle.style23{color:#b35ede}.LZTUpSubMenu .previewContainer .UsernameStyle.banned,.LZTUpSubMenu .previewContainer .UsernameStyle.is_banned{text-decoration:line-through;background:inherit;-webkit-text-fill-color:inherit;text-shadow:inherit !important;color:#aaa !important}.LZTUpSubMenu .previewContainer .avatarBox{position:relative}.LZTUpSubMenu .previewContainer .avatarBox .avatarUserBadges .badgeDefaultBackground{background:#363636}.LZTUpSubMenu .previewContainer .avatarBox .avatarUserBadges .avatarUserBadge{position:absolute;bottom:-12px;left:20px;border:2px solid #272727;font-size:0;width:22px;height:22px;margin:0;line-height:22px;border-radius:50%;text-align:center;text-shadow:none !important;box-shadow:none !important;border-radius:50% !important;-webkit-background-clip:unset !important;-webkit-text-fill-color:unset !important;overflow:hidden}.LZTUpSubMenu .previewContainer .avatarBox .avatarUserBadges .avatarUserBadge:only-child{left:35px}.LZTUpSubMenu .previewContainer .avatarBox .avatarUserBadges .avatarUserBadge.avatarUserBadge--1{left:20px}.LZTUpSubMenu .previewContainer .avatarBox .avatarUserBadges .avatarUserBadge.avatarUserBadge--2{left:40px}.LZTUpSubMenu .previewContainer .avatarBox,.LZTUpSubMenu .previewContainer .info{display:table-cell;vertical-align:top}`, ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -118,7 +118,7 @@ ___CSS_LOADER_EXPORT___.push([module.id, `.clr-picker{display:none}.LZTUpColorPi
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, `#LZTUpCustomBackground{background-size:cover;background-position:center;background-attachment:fixed;background-repeat:no-repeat}`, ""]);
+___CSS_LOADER_EXPORT___.push([module.id, `#LZTUpCustomBackground{background-size:cover;background-position:center;background-attachment:fixed;background-repeat:no-repeat}.LZTUpThreadBar{background:#272727;padding:15px 20px;margin-top:15px;border-radius:10px;height:auto}.LZTUpThreadBar .LZTUpThreadBarTitle{font-weight:bold;font-size:18px;padding:0;margin:0 0 2px;line-height:33px;overflow:hidden}.LZTUpThreadBar .LZTUpThreadBarContent{font-size:14px}.LZTUpThreadBar .LZTUpThreadBarContent .LZTUpSummarizeThesises{margin-left:16px}.LZTUpThreadBar .LZTUpThreadBarContent .LZTUpSummarizeThesises li{list-style:decimal;margin:2px 0;line-height:20px}.LZTUpReportButtons{display:flex}.LZTUpReportButtons .LZTUpReportButton{padding:3px 10px;margin-right:5px;font-weight:bold;background:#343434;border-radius:4px;cursor:pointer;transition:1s background ease}.LZTUpReportButtons .LZTUpReportButton:hover{background:#218e5d}`, ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -652,19 +652,25 @@ module.exports = styleTagTransform;
 
 async function getLogos(intTarget = null) {
   // 1 - forum, 2 - market
-  const target = intTarget ?? '';
-  return await (0,API_requestJSON__WEBPACK_IMPORTED_MODULE_1__/* ["default"] */ .Z)(`${Configs_endpoints_json__WEBPACK_IMPORTED_MODULE_0__/* .getLogos */ .eb}?target=${target}`, `Не удалось получить список логотипов (${Configs_endpoints_json__WEBPACK_IMPORTED_MODULE_0__/* .getLogos */ .eb})`);
+  const target = intTarget ?? "";
+  return await (0,API_requestJSON__WEBPACK_IMPORTED_MODULE_1__/* ["default"] */ .Z)(
+    `${Configs_endpoints_json__WEBPACK_IMPORTED_MODULE_0__/* .getLogos */ .eb}?target=${target}`,
+    `Не удалось получить список логотипов (${Configs_endpoints_json__WEBPACK_IMPORTED_MODULE_0__/* .getLogos */ .eb})`,
+  );
 }
 
 async function getLogoByUID(logoUID) {
-  return await (0,API_requestJSON__WEBPACK_IMPORTED_MODULE_1__/* ["default"] */ .Z)(`${Configs_endpoints_json__WEBPACK_IMPORTED_MODULE_0__/* .getLogoByUID */ .NI}?uid=${logoUID}`, `Не удалось получить логотип по айди (${Configs_endpoints_json__WEBPACK_IMPORTED_MODULE_0__/* .getLogoByUID */ .NI})`);
+  return await (0,API_requestJSON__WEBPACK_IMPORTED_MODULE_1__/* ["default"] */ .Z)(
+    `${Configs_endpoints_json__WEBPACK_IMPORTED_MODULE_0__/* .getLogoByUID */ .NI}?uid=${logoUID}`,
+    `Не удалось получить логотип по айди (${Configs_endpoints_json__WEBPACK_IMPORTED_MODULE_0__/* .getLogoByUID */ .NI})`,
+  );
 }
-
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   getLogos,
   getLogoByUID,
 });
+
 
 /***/ }),
 
@@ -682,12 +688,15 @@ async function getLogoByUID(logoUID) {
 
 
 async function getThemes() {
-  return await (0,API_requestJSON__WEBPACK_IMPORTED_MODULE_1__/* ["default"] */ .Z)(Configs_endpoints_json__WEBPACK_IMPORTED_MODULE_0__/* .getThemes */ .RC, `Не удалось получить список тем (${Configs_endpoints_json__WEBPACK_IMPORTED_MODULE_0__/* .getThemes */ .RC})`);
+  return await (0,API_requestJSON__WEBPACK_IMPORTED_MODULE_1__/* ["default"] */ .Z)(
+    Configs_endpoints_json__WEBPACK_IMPORTED_MODULE_0__/* .getThemes */ .RC,
+    `Не удалось получить список тем (${Configs_endpoints_json__WEBPACK_IMPORTED_MODULE_0__/* .getThemes */ .RC})`,
+  );
 }
 
 function loadTheme(themeName) {
   // load theme by theme name
-  const timestamp = (0,Utils_utils__WEBPACK_IMPORTED_MODULE_2__/* .getTimestamp */ .u3)()
+  const timestamp = (0,Utils_utils__WEBPACK_IMPORTED_MODULE_2__/* .getTimestamp */ .u3)();
 
   return GM_addStyle(`
     @import url(${Configs_endpoints_json__WEBPACK_IMPORTED_MODULE_0__/* .staticThemes */ .I1}/${themeName}.css?id=${timestamp});
@@ -697,16 +706,17 @@ function loadTheme(themeName) {
 async function smartLoadTheme(themeName) {
   // Waiting for the body to load to overwrite lolz styles
   return (0,Utils_utils__WEBPACK_IMPORTED_MODULE_2__/* .waitForBody */ .VR)().then(() => {
-    console.log("wait for elm")
-    return loadTheme(themeName)
+    console.log("wait for elm");
+    return loadTheme(themeName);
   });
 }
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   getThemes,
   loadTheme,
-  smartLoadTheme
+  smartLoadTheme,
 });
+
 
 /***/ }),
 
@@ -719,11 +729,17 @@ async function smartLoadTheme(themeName) {
 /* harmony import */ var Utils_logger__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("./src/utils/logger.js");
 
 
-async function requestJSON(endpoint, errText) {
+async function requestJSON(endpoint, errText, reqOptions = {}) {
   try {
-    const res = await fetch(endpoint);
+    const res = await fetch(endpoint, reqOptions).catch(err => {
+      console.error(err);
+      throw `Failed to fetch from ${endpoint}`;
+    });
 
-    return await res.json()
+    return await res.json().catch(err => {
+      console.log(err);
+      throw `Failed to parse response JSON`;
+    });
   } catch (err) {
     Utils_logger__WEBPACK_IMPORTED_MODULE_0__/* ["default"] */ .Z.log(errText);
     return false;
@@ -731,6 +747,7 @@ async function requestJSON(endpoint, errText) {
 }
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (requestJSON);
+
 
 /***/ }),
 
@@ -756,29 +773,25 @@ async function requestJSON(endpoint, errText) {
 
 
 
-
 async function setLogoFromCache(logoType, logoUID) {
   const timestampOnStart = (0,Utils_utils__WEBPACK_IMPORTED_MODULE_6__/* .getTimestamp */ .u3)();
-  const cacheName = logoType === Configs_SiteType__WEBPACK_IMPORTED_MODULE_0__/* ["default"] */ .Z.Forum ? 'forumLogo' : 'marketLogo';
+  const cacheName = logoType === Configs_SiteType__WEBPACK_IMPORTED_MODULE_0__/* ["default"] */ .Z.Forum ? "forumLogo" : "marketLogo";
   let logo = await GM_getValue(Configs_StorageName__WEBPACK_IMPORTED_MODULE_1__/* ["default"] */ .Z.Cache, {})?.[cacheName];
-  let logoCSS = logo?.css ?? '';
+  let logoCSS = logo?.css ?? "";
   let logoCacheTime = logo?.cacheTime ?? 0;
-  if (
-    logo?.uid !== logoUID ||
-    !logoCSS ||
-    logoCacheTime < timestampOnStart
-  ) {
+  if (logo?.uid !== logoUID || !logoCSS || logoCacheTime < timestampOnStart) {
     Utils_logger__WEBPACK_IMPORTED_MODULE_4__/* ["default"] */ .Z.debug(`Requesting logo with id ${logoUID}...`);
-    const newForumLogo = await API_lztupgrade_logoAPI__WEBPACK_IMPORTED_MODULE_3__/* ["default"] */ .Z.getLogoByUID(logoUID)
+    const newForumLogo = await API_lztupgrade_logoAPI__WEBPACK_IMPORTED_MODULE_3__/* ["default"] */ .Z
+      .getLogoByUID(logoUID)
       .catch(err => console.error(err));
 
-    console.log(newForumLogo)
+    console.log(newForumLogo);
     if (newForumLogo?.css) {
       const newCacheLogo = {
         uid: newForumLogo.uid,
         css: newForumLogo.css,
-        cacheTime: (0,Utils_utils__WEBPACK_IMPORTED_MODULE_6__/* .getTimestamp */ .u3)() + Configs_config__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .Z.cacheTime
-      }
+        cacheTime: (0,Utils_utils__WEBPACK_IMPORTED_MODULE_6__/* .getTimestamp */ .u3)() + Configs_config__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .Z.cacheTime,
+      };
 
       logoCSS = newCacheLogo.css;
       let cacheData = await GM_getValue(Configs_StorageName__WEBPACK_IMPORTED_MODULE_1__/* ["default"] */ .Z.Cache, {});
@@ -789,6 +802,7 @@ async function setLogoFromCache(logoType, logoUID) {
 
   (0,Visuals_universal__WEBPACK_IMPORTED_MODULE_5__/* .setLogo */ .E)(logoCSS, logoType);
 }
+
 
 
 
@@ -813,32 +827,37 @@ var logger = __webpack_require__("./src/utils/logger.js");
 
 
 function onParticipateHandler(callback, sleepTime = 1000) {
-  return (0,utils/* waitForElm */.Nc)('.LztContest--Participate')
+  return (0,utils/* waitForElm */.Nc)(".LztContest--Participate")
     .then(el => {
-      logger/* default */.Z.debug('onParticipateHandler: Participate button finded');
-      el.addEventListener('click', async () => {
-        logger/* default */.Z.debug('onParticipateHandler: click contest button');
-        if (el.classList.contains('disabled')) {
-          logger/* default */.Z.debug('onParticipateHandler: clicked on disabled contest button');
+      logger/* default */.Z.debug("onParticipateHandler: Participate button finded");
+      el.addEventListener("click", async () => {
+        logger/* default */.Z.debug("onParticipateHandler: click contest button");
+        if (el.classList.contains("disabled")) {
+          logger/* default */.Z.debug(
+            "onParticipateHandler: clicked on disabled contest button",
+          );
           return;
         }
 
-        logger/* default */.Z.debug('onParticipateHandler: waiting for alreadyParticipate button');
-        const elem = await (0,utils/* waitForElm */.Nc)('span.alreadyParticipate');
+        logger/* default */.Z.debug(
+          "onParticipateHandler: waiting for alreadyParticipate button",
+        );
+        const elem = await (0,utils/* waitForElm */.Nc)("span.alreadyParticipate");
         if (!elem) {
-          logger/* default */.Z.debug('onParticipateHandler: no alreadyParticipate button');
+          logger/* default */.Z.debug("onParticipateHandler: no alreadyParticipate button");
           return;
         }
 
-        logger/* default */.Z.debug('onParticipateHandler: alreadyParticipate button finded');
+        logger/* default */.Z.debug("onParticipateHandler: alreadyParticipate button finded");
         await (0,utils/* sleep */._v)(sleepTime);
         callback();
-      })
+      });
     })
-    .catch(el => {
-      logger/* default */.Z.debug('onParticipateHandler: no contest button');
+    .catch(() => {
+      logger/* default */.Z.debug("onParticipateHandler: no contest button");
     });
 }
+
 
 
 ;// CONCATENATED MODULE: ./src/callbacks/contestsParticipate.js
@@ -848,19 +867,22 @@ function contestsAutoCloseHandler(toggle) {
   if (toggle) {
     onParticipateHandler(() => {
       window.close();
-    })
-  };
+    });
+  }
 }
 
 function participateByBtnCallback(event) {
   console.log("participateOnBtn", event);
-  if (event.key === 'Tab') {
+  if (event.key === "Tab") {
     event.preventDefault();
-    if (document.querySelector('.alreadyParticipate.hidden')) {
-      document.querySelector('.LztContest--Participate:not(.disabled)')?.click();
+    if (document.querySelector(".alreadyParticipate.hidden")) {
+      document
+        .querySelector(".LztContest--Participate:not(.disabled)")
+        ?.click();
     }
   }
 }
+
 
 
 
@@ -877,22 +899,136 @@ function participateByBtnCallback(event) {
 
 
 
-function getThemeByID(themeId) {
+async function getThemeByID(themeId) {
   // Loading theme by ID
-  return new Promise(async (resolve, reject) => {
-    Utils_logger__WEBPACK_IMPORTED_MODULE_1__/* ["default"] */ .Z.debug(`onExtensionStart: Start loading theme with id ${themeId}`);
-    const availabledThemes = await API_lztupgrade_themeAPI__WEBPACK_IMPORTED_MODULE_0__/* ["default"] */ .Z.getThemes();
-    if (availabledThemes?.length) {
-      Utils_logger__WEBPACK_IMPORTED_MODULE_1__/* ["default"] */ .Z.debug('onExtensionStart: Themes arrray getted: ', availabledThemes);
-      const findedTheme = availabledThemes.find(theme => theme.uid === themeId && theme.active === 1);
-      return resolve(findedTheme?.file)
-    }
+  Utils_logger__WEBPACK_IMPORTED_MODULE_1__/* ["default"] */ .Z.debug(`onExtensionStart: Start loading theme with id ${themeId}`);
+  const availabledThemes = await API_lztupgrade_themeAPI__WEBPACK_IMPORTED_MODULE_0__/* ["default"] */ .Z.getThemes();
+  if (availabledThemes?.length) {
+    Utils_logger__WEBPACK_IMPORTED_MODULE_1__/* ["default"] */ .Z.debug("onExtensionStart: Themes arrray getted: ", availabledThemes);
+    const findedTheme = availabledThemes.find(
+      theme => theme.uid === themeId && theme.active === 1,
+    );
+    return findedTheme?.file;
+  }
 
-    Utils_logger__WEBPACK_IMPORTED_MODULE_1__/* ["default"] */ .Z.debug(`onExtensionStart: Not finded active theme`);
-    reject(false)
-  });
+  Utils_logger__WEBPACK_IMPORTED_MODULE_1__/* ["default"] */ .Z.debug(`onExtensionStart: Not finded active theme`);
+  return false;
 }
 
+
+
+
+/***/ }),
+
+/***/ "./src/configs/ErrorLink.js":
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   Z: () => (/* binding */ ErrorLink)
+/* harmony export */ });
+class ErrorLink {
+  // Displayed on the modified page with an error
+  static TelegramChannel = new ErrorLink("https://t.me/lzt_upgrade").src;
+  static Github = new ErrorLink("https://github.com/lzt-upgrade/lzt-upgrade")
+    .src;
+
+  constructor(src) {
+    this.src = src;
+  }
+}
+
+
+/***/ }),
+
+/***/ "./src/configs/ForumNode.js":
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   Z: () => (/* binding */ ForumNode)
+/* harmony export */ });
+/* harmony import */ var Configs_base__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("./src/configs/base.js");
+
+
+class ForumNode extends Configs_base__WEBPACK_IMPORTED_MODULE_0__/* .BaseSelectorEnum */ .n {
+  static Contests = new ForumNode(".node766");
+}
+
+
+/***/ }),
+
+/***/ "./src/configs/NavbarBalloon.js":
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   Z: () => (/* binding */ NavbarBalloon)
+/* harmony export */ });
+/* harmony import */ var Configs_base__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("./src/configs/base.js");
+
+
+class NavbarBalloon extends Configs_base__WEBPACK_IMPORTED_MODULE_0__/* .BaseSelectorEnum */ .n {
+  static AlertCounter = new NavbarBalloon("#AlertsMenu_Counter");
+  static MessageCounter = new NavbarBalloon("#ConversationsMenu_Counter");
+}
+
+
+/***/ }),
+
+/***/ "./src/configs/NewStorageName.js":
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   Z: () => (/* binding */ NewStorageName)
+/* harmony export */ });
+/* harmony import */ var Configs_base__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("./src/configs/base.js");
+/* harmony import */ var Configs_config__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("./src/configs/config.js");
+
+
+
+class NewStorageName extends Configs_base__WEBPACK_IMPORTED_MODULE_1__/* .BaseEnum */ .e {
+  static UserGroup = new NewStorageName(
+    "LZTUserGroup",
+    Configs_config__WEBPACK_IMPORTED_MODULE_0__/* ["default"] */ .Z.defaultUserGroup,
+  );
+  static Cache = new NewStorageName("cache", {});
+  static Appear = new NewStorageName("appearData", {});
+  static Adblock = new NewStorageName("adblockData", {});
+  static ReportButtons = new NewStorageName("reportButtons", []);
+  static Contests = new NewStorageName("contestsData", {});
+  static Profile = new NewStorageName("profileData", {});
+  static ProfileBadges = new NewStorageName("profileBadges", []);
+  static Users = new NewStorageName("usersData", {});
+  static Settings = new NewStorageName("settingsData", {});
+
+  constructor(name, value) {
+    super(name);
+    this.value = value;
+  }
+
+  static generateConfigStruct() {
+    const configKeys = [
+      this.Appear,
+      this.Adblock,
+      this.ReportButtons,
+      this.Contests,
+      this.Profile,
+      this.ProfileBadges,
+      this.Users,
+      this.Settings,
+    ];
+
+    const data = [];
+
+    for (const configKey of configKeys) {
+      data.push({
+        original: configKey,
+        name: configKey.name.split("Data")[0],
+        default: configKey.value,
+      });
+    }
+
+    return data;
+  }
+}
 
 
 /***/ }),
@@ -903,14 +1039,14 @@ function getThemeByID(themeId) {
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   Z: () => (/* binding */ SiteType)
 /* harmony export */ });
-class SiteType {
-  static Forum = new SiteType('Forum').name;
-  static Market = new SiteType('Market').name;
+/* harmony import */ var Configs_base__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("./src/configs/base.js");
 
-  constructor(name) {
-    this.name = name
-  }
+
+class SiteType extends Configs_base__WEBPACK_IMPORTED_MODULE_0__/* .BaseEnum */ .e {
+  static Forum = new SiteType("Forum").name;
+  static Market = new SiteType("Market").name;
 }
+
 
 /***/ }),
 
@@ -920,18 +1056,49 @@ class SiteType {
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   Z: () => (/* binding */ StorageName)
 /* harmony export */ });
-class StorageName {
-  static UserGroup = new StorageName('LZTUserGroup').name;
-  static Cache = new StorageName('cache').name;
-  static Appear = new StorageName('appearData').name;
-  static Contests = new StorageName('contestsData').name;
-  static Users = new StorageName('usersData').name;
-  static Settings = new StorageName('settingsData').name;
+/* harmony import */ var Configs_base__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("./src/configs/base.js");
 
-  constructor(name) {
-    this.name = name
+
+class StorageName extends Configs_base__WEBPACK_IMPORTED_MODULE_0__/* .BaseEnum */ .e {
+  static UserGroup = new StorageName("LZTUserGroup").name;
+  static Cache = new StorageName("cache").name;
+  static Appear = new StorageName("appearData").name;
+  static Contests = new StorageName("contestsData").name;
+  static Profile = new StorageName("profileData").name;
+  static ProfileBadges = new StorageName("profileBadges").name;
+  static Users = new StorageName("usersData").name;
+  static Settings = new StorageName("settingsData").name;
+}
+
+
+/***/ }),
+
+/***/ "./src/configs/base.js":
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   e: () => (/* binding */ BaseEnum),
+/* harmony export */   n: () => (/* binding */ BaseSelectorEnum)
+/* harmony export */ });
+class BaseSelectorEnum {
+  constructor(selector) {
+    this.selector = selector;
+  }
+
+  getName() {
+    // remove selector designation
+    return this.selector.replace(".", "").replace("#", "");
   }
 }
+
+class BaseEnum {
+  constructor(name) {
+    this.name = name;
+  }
+}
+
+
+
 
 /***/ }),
 
@@ -943,105 +1110,14 @@ class StorageName {
 /* harmony export */ });
 const config = () => {
   return {
-    extName:  false ? 0 : 'LZT Upgrade UNRELEASED',
+    extName:  false ? 0 : "LZT Upgrade UNRELEASED",
     cacheTime: 86_400 * 3, // 3 day
-    defaultUserGroup: 'style2'
-  }
-}
+    defaultUserGroup: "style2",
+  };
+};
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (config());
 
-/***/ }),
-
-/***/ "./src/configs/extData.js":
-/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
-
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   Z: () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-const extData = () => {
-  return {
-    nodes: {
-      // nodes of the forum
-      contests: '.node766',
-    },
-    selectors: {
-      // elements of the forum
-      memberCard: '.xenOverlay.memberCard',
-    },
-    balloonId: {
-      alertCounter: 'AlertsMenu_Counter',
-      messageCounter: 'ConversationsMenu_Counter'
-    },
-    uiElementsId: {
-      // id of the element for extension UI
-      lztupTempSubMenu: 'LZTUpTempSubMenu'
-    },
-    uiElementsSelectors: {
-      // selectors of the element for extension UI
-      lztupTempSubMenu: '#LZTUpTempSubMenu'
-    },
-    links: {
-      // for self-ad on site Maintenance page
-      telegramChannel: 'https://t.me/lzt_upgrade',
-      githubPage: 'https://github.com/lzt-upgrade/lzt-upgrade',
-    },
-    infoLinks: [
-      // for info section in menu
-      {
-        icon: 'far fa-donate',
-        title: 'Поддержать разработку',
-        desc: 'Можете немного закинуть, если хотите <img src="/styles/default/xenforo/smilies/ok_lol.png" class="mceSmilie" alt=":ok_lol:" title="Lol">',
-        href: 'https://lzt.market/balance/transfer?redirect=https%3A%2F%2Fzelenka.guru&username=Toil',
-        sectionId: 'LZTUpInfoDonateItem'
-      },
-      {
-        icon: 'far fa-comments',
-        title: 'Тема на форуме',
-        desc: 'Новости об обновлениях и отзывы других пользователей',
-        href: 'https://zelenka.guru/threads/1', // TODO: add link to forum theme after release
-        sectionId: 'LZTUpInfoThreadItem'
-      },
-      {
-        icon: 'fab fa-telegram-plane',
-        title: 'Telegram канал',
-        desc: 'Все новости расширения и анонсы новых функций',
-        href: 'https://t.me/lzt_upgrade',
-        sectionId: 'LZTUpInfoTGChannelItem'
-      },
-      {
-        icon: 'fab fa-telegram-plane',
-        title: 'Telegram чат',
-        desc: 'Чатик для общения с другими пользователями расширения',
-        href: 'https://t.me/lzt_upgrade_chat',
-        sectionId: 'LZTUpInfoTGChatItem'
-      },
-      {
-        icon: 'fab fa-github',
-        title: 'Github',
-        desc: 'Исходники расширения + все версии расширения',
-        href: 'https://github.com/lzt-upgrade/lzt-upgrade',
-        sectionId: 'LZTUpInfoGithubItem'
-      },
-      {
-        icon: 'far fa-code-branch',
-        title: 'Greasy Fork',
-        desc: 'Альтернативный источник для установки расширения',
-        href: 'https://github.com/lzt-upgrade/lzt-upgrade',
-        sectionId: 'LZTUpInfoGreasyForkItem'
-      },
-      {
-        icon: 'far fa-tasks',
-        title: 'Следить за разработкой',
-        desc: 'Доска задач нашего расширения',
-        href: 'https://app.weeek.net/ws/438227/shared/board/4prKcWJhKKxLuKNm0CiP7qJEZUH3quST',
-        sectionId: 'LZTUpInfoFollowDevItem'
-      },
-    ]
-  }
-}
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (extData());
 
 /***/ }),
 
@@ -1054,17 +1130,23 @@ const extData = () => {
 /* harmony import */ var Utils_utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("./src/utils/utils.js");
 
 
-// TODO: rework with clear JS
 function onClickCategory(nodeSelector, callback) {
-  const node = $(`li.node${nodeSelector}.forum.level-n`);
-  $(node).on('click', async () => {
-    await (0,Utils_utils__WEBPACK_IMPORTED_MODULE_0__/* .sleep */ ._v)(750);
-    const el = await (0,Utils_utils__WEBPACK_IMPORTED_MODULE_0__/* .waitForElm */ .Nc)('div.pageNavLinkGroup');
-    if (el) callback();
-  });
+  const nodeEls = document.querySelectorAll(
+    `li.node${nodeSelector}.forum.level-n`,
+  );
+  if (nodeEls.length) {
+    for (const nodeEl of nodeEls) {
+      nodeEl.addEventListener("click", async () => {
+        await (0,Utils_utils__WEBPACK_IMPORTED_MODULE_0__/* .sleep */ ._v)(750);
+        const el = await (0,Utils_utils__WEBPACK_IMPORTED_MODULE_0__/* .waitForElm */ .Nc)("div.pageNavLinkGroup");
+        if (el) callback();
+      });
+    }
+  }
 }
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (onClickCategory);
+
 
 /***/ }),
 
@@ -1074,33 +1156,36 @@ function onClickCategory(nodeSelector, callback) {
 __webpack_require__.a(__webpack_module__, async (__webpack_handle_async_dependencies__, __webpack_async_result__) => { try {
 /* harmony import */ var API_lztupgrade_themeAPI__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("./src/api/lztupgrade/themeAPI.js");
 /* harmony import */ var Configs_config__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("./src/configs/config.js");
-/* harmony import */ var Configs_extData__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__("./src/configs/extData.js");
-/* harmony import */ var Configs_StorageName__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__("./src/configs/StorageName.js");
-/* harmony import */ var Callbacks_contestsParticipate__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__("./src/callbacks/contestsParticipate.js");
-/* harmony import */ var Callbacks_extensionStart__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__("./src/callbacks/extensionStart.js");
-/* harmony import */ var IndexedDB_profile__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__("./src/indexedDB/profile.js");
-/* harmony import */ var UI_components_buttons_contestsButton__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__("./src/ui/components/buttons/contestsButton.js");
-/* harmony import */ var UI_components_buttons_menuButton__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__("./src/ui/components/buttons/menuButton.js");
-/* harmony import */ var UI_components_buttons_errorPageButton__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__("./src/ui/components/buttons/errorPageButton.js");
-/* harmony import */ var Events_categories__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__("./src/events/categories.js");
-/* harmony import */ var Utils_logger__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__("./src/utils/logger.js");
-/* harmony import */ var Utils_registers__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__("./src/utils/registers.js");
-/* harmony import */ var Utils_contests__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__("./src/utils/contests.js");
-/* harmony import */ var Utils_users__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__("./src/utils/users.js");
-/* harmony import */ var Xenforo_bypass__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__("./src/xenforo/bypass.js");
-/* harmony import */ var Visuals_users__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__("./src/visuals/users.js");
-/* harmony import */ var Visuals_universal__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__("./src/visuals/universal.js");
-/* harmony import */ var Visuals_profile__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__("./src/visuals/profile.js");
-/* harmony import */ var Utils_checkers__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__("./src/utils/checkers.js");
-/* harmony import */ var Configs_SiteType__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__("./src/configs/SiteType.js");
-/* harmony import */ var Cache_logo__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__("./src/cache/logo.js");
-/* harmony import */ var Visuals_navbar__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__("./src/visuals/navbar.js");
-/* harmony import */ var Styles_errorPage_scss__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__("./src/styles/errorPage.scss");
-/* harmony import */ var Styles_universal_scss__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__("./src/styles/universal.scss");
-/* harmony import */ var Styles_xenforo_scss__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__("./src/styles/xenforo.scss");
-
-
-
+/* harmony import */ var Configs_StorageName__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__("./src/configs/StorageName.js");
+/* harmony import */ var Callbacks_contestsParticipate__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__("./src/callbacks/contestsParticipate.js");
+/* harmony import */ var Callbacks_extensionStart__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__("./src/callbacks/extensionStart.js");
+/* harmony import */ var UI_components_buttons_menuButton__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__("./src/ui/components/buttons/menuButton.js");
+/* harmony import */ var UI_components_buttons_errorPageButton__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__("./src/ui/components/buttons/errorPageButton.js");
+/* harmony import */ var Events_categories__WEBPACK_IMPORTED_MODULE_30__ = __webpack_require__("./src/events/categories.js");
+/* harmony import */ var Utils_logger__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__("./src/utils/logger.js");
+/* harmony import */ var Utils_registers__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__("./src/utils/registers.js");
+/* harmony import */ var Utils_contests__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__("./src/utils/contests.js");
+/* harmony import */ var Utils_users__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__("./src/utils/users.js");
+/* harmony import */ var Xenforo_bypass__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__("./src/xenforo/bypass.js");
+/* harmony import */ var Visuals_users__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__("./src/visuals/users.js");
+/* harmony import */ var Visuals_universal__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__("./src/visuals/universal.js");
+/* harmony import */ var Visuals_profile__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__("./src/visuals/profile.js");
+/* harmony import */ var Utils_checkers__WEBPACK_IMPORTED_MODULE_31__ = __webpack_require__("./src/utils/checkers.js");
+/* harmony import */ var Configs_SiteType__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__("./src/configs/SiteType.js");
+/* harmony import */ var Cache_logo__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__("./src/cache/logo.js");
+/* harmony import */ var Visuals_navbar__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__("./src/visuals/navbar.js");
+/* harmony import */ var Configs_ForumNode__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__("./src/configs/ForumNode.js");
+/* harmony import */ var Styles_errorPage_scss__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__("./src/styles/errorPage.scss");
+/* harmony import */ var Styles_universal_scss__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__("./src/styles/universal.scss");
+/* harmony import */ var Styles_xenforo_scss__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__("./src/styles/xenforo.scss");
+/* harmony import */ var Configs_NavbarBalloon__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__("./src/configs/NavbarBalloon.js");
+/* harmony import */ var Configs_ErrorLink__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__("./src/configs/ErrorLink.js");
+/* harmony import */ var Utils_gmWrapper__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__("./src/utils/gmWrapper.js");
+/* harmony import */ var Configs_NewStorageName__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__("./src/configs/NewStorageName.js");
+/* harmony import */ var Utils_threads__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__("./src/utils/threads.js");
+/* harmony import */ var Utils_utils__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__("./src/utils/utils.js");
+/* harmony import */ var Visuals_threads__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__("./src/visuals/threads.js");
+/* harmony import */ var Visuals_notify__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__("./src/visuals/notify.js");
 
 
 
@@ -1135,29 +1220,37 @@ __webpack_require__.a(__webpack_module__, async (__webpack_handle_async_dependen
 
 
 
+
+
+
+
+
+
+
 async function initTheme() {
   // exec time: 35ms
   console.time("init-theme");
 
-  console.timeLog("init-theme", "getting appearData...")
-  const appearData = await GM_getValue(Configs_StorageName__WEBPACK_IMPORTED_MODULE_3__/* ["default"] */ .Z.Appear, {});
-  console.timeLog("init-theme", "loading name from cache...")
-  let themeName = await GM_getValue(Configs_StorageName__WEBPACK_IMPORTED_MODULE_3__/* ["default"] */ .Z.Cache, {}).themeName;
-  console.timeLog("init-theme", "Check themeName valid...")
+  console.timeLog("init-theme", "getting appearData...");
+  const appearData = await GM_getValue(Configs_StorageName__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .Z.Appear, {});
+  console.timeLog("init-theme", "loading name from cache...");
+  let themeName = await GM_getValue(Configs_StorageName__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .Z.Cache, {}).themeName;
+  console.timeLog("init-theme", "Check themeName valid...");
   console.log(themeName, appearData.selectedTheme);
   if (appearData.selectedTheme === 0) {
-    console.timeLog("init-theme", "Skip theme")
+    console.timeLog("init-theme", "Skip theme");
     console.timeEnd("init-theme");
     return;
   }
 
   if (!themeName && appearData.selectedTheme > 0) {
-    Utils_logger__WEBPACK_IMPORTED_MODULE_9__/* ["default"] */ .Z.debug(`Requesting theme with id ${appearData.selectedTheme}...`);
-    themeName = await (0,Callbacks_extensionStart__WEBPACK_IMPORTED_MODULE_5__/* .getThemeByID */ .P)(appearData.selectedTheme)
-      .catch(err => console.error(err));
-    let cacheData = await GM_getValue(Configs_StorageName__WEBPACK_IMPORTED_MODULE_3__/* ["default"] */ .Z.Cache, {});
+    Utils_logger__WEBPACK_IMPORTED_MODULE_6__/* ["default"] */ .Z.debug(`Requesting theme with id ${appearData.selectedTheme}...`);
+    themeName = await (0,Callbacks_extensionStart__WEBPACK_IMPORTED_MODULE_4__/* .getThemeByID */ .P)(appearData.selectedTheme).catch(err =>
+      console.error(err),
+    );
+    let cacheData = await GM_getValue(Configs_StorageName__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .Z.Cache, {});
     cacheData.themeName = themeName;
-    await GM_setValue(Configs_StorageName__WEBPACK_IMPORTED_MODULE_3__/* ["default"] */ .Z.Cache, cacheData);
+    await GM_setValue(Configs_StorageName__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .Z.Cache, cacheData);
   }
   console.timeLog("init-theme", "Loading theme...");
   await API_lztupgrade_themeAPI__WEBPACK_IMPORTED_MODULE_0__/* ["default"] */ .Z.smartLoadTheme(themeName);
@@ -1165,35 +1258,42 @@ async function initTheme() {
 }
 
 async function main() {
-  console.time("lztup-start")
+  let startTiming = (0,Utils_utils__WEBPACK_IMPORTED_MODULE_25__/* .getTimestamp */ .u3)();
+  let loadingInterval;
+  console.time("lztup-start");
   console.timeLog("lztup-start", "Waiting body...");
   let LOAD_STATUS = false;
 
-  if (GM_info?.script?.version) Utils_logger__WEBPACK_IMPORTED_MODULE_9__/* ["default"] */ .Z.log(`${Configs_config__WEBPACK_IMPORTED_MODULE_1__/* ["default"] */ .Z.extName} version: ${GM_info?.script?.version}`);
+  if (GM_info?.script?.version)
+    Utils_logger__WEBPACK_IMPORTED_MODULE_6__/* ["default"] */ .Z.log(`${Configs_config__WEBPACK_IMPORTED_MODULE_1__/* ["default"] */ .Z.extName} version: ${GM_info?.script?.version}`);
 
-  const appearData = await GM_getValue(Configs_StorageName__WEBPACK_IMPORTED_MODULE_3__/* ["default"] */ .Z.Appear, {});
+  const appearData = await GM_getValue(Configs_StorageName__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .Z.Appear, {});
   async function startExt() {
     if (LOAD_STATUS) {
       return;
     }
 
     LOAD_STATUS = true;
-    console.timeLog("lztup-start", "Body loaded successfully")
-    if (/^(Site\sMaintenance|429\sToo\sMany\sRequests)$/.test(document.head.querySelector('title').innerText)) {
+    console.timeLog("lztup-start", "Body loaded successfully");
+    if (
+      /^(Site\sMaintenance|429\sToo\sMany\sRequests|504\sGateway\sTime-out|Error\s502)$/.test(
+        document.head.querySelector("title").innerText,
+      )
+    ) {
       if (!appearData.newErrorPage) {
-        console.log(appearData.newErrorPage)
+        console.log(appearData.newErrorPage);
         return;
       }
 
       // custom error page
-      document.body.classList.add('LZTUpErrorPage');
-      let container = document.querySelector('article > div');
-      Utils_logger__WEBPACK_IMPORTED_MODULE_9__/* ["default"] */ .Z.debug(container)
+      document.body.classList.add("LZTUpErrorPage");
+      let container = document.querySelector("article > div");
+      Utils_logger__WEBPACK_IMPORTED_MODULE_6__/* ["default"] */ .Z.debug(container);
       if (!container) {
-        container = document.querySelector('center');
-        Utils_logger__WEBPACK_IMPORTED_MODULE_9__/* ["default"] */ .Z.debug("updated container", container)
+        container = document.querySelector("center");
+        Utils_logger__WEBPACK_IMPORTED_MODULE_6__/* ["default"] */ .Z.debug("updated container", container);
       }
-      const duckRain = document.createElement('img');
+      const duckRain = document.createElement("img");
       duckRain.src = "https://i.imgur.com/iVmKDr7.gif";
       duckRain.alt = "Duck rain";
       container.appendChild(duckRain);
@@ -1203,33 +1303,34 @@ async function main() {
       }
 
       // self ad don't delete me please :(
-      const selfAdBlock = document.createElement('div');
-      selfAdBlock.classList.add('LZTUpErrorPageSelfAd')
-      const selfAdText = document.createElement('p');
-      selfAdText.innerText = 'Пока форум недоступен, рекомендуем ознакомиться с нашими соц. сетями'
-      selfAdText.classList.add('selfAd');
+      const selfAdBlock = document.createElement("div");
+      selfAdBlock.classList.add("LZTUpErrorPageSelfAd");
+      const selfAdText = document.createElement("p");
+      selfAdText.innerText =
+        "Пока форум недоступен, рекомендуем ознакомиться с нашими соц. сетями";
+      selfAdText.classList.add("selfAd");
 
-      const selfAdButtonBlock = document.createElement('div');
-      selfAdButtonBlock.classList.add('buttons');
+      const selfAdButtonBlock = document.createElement("div");
+      selfAdButtonBlock.classList.add("buttons");
 
-      const selfAdTelegram = new UI_components_buttons_errorPageButton__WEBPACK_IMPORTED_MODULE_22__/* ["default"] */ .Z(
+      const selfAdTelegram = new UI_components_buttons_errorPageButton__WEBPACK_IMPORTED_MODULE_26__/* ["default"] */ .Z(
         `
           <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24">
             <path d="M9.78 18.65l.28-4.23l7.68-6.92c.34-.31-.07-.46-.52-.19L7.74 13.3L3.64 12c-.88-.25-.89-.86.2-1.3l15.97-6.16c.73-.33 1.43.18 1.15 1.3l-2.72 12.81c-.19.91-.74 1.13-1.5.71L12.6 16.3l-1.99 1.93c-.23.23-.42.42-.83.42z"/>
           </svg>
           Telegram
         `,
-        Configs_extData__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .Z.links.telegramChannel
+        Configs_ErrorLink__WEBPACK_IMPORTED_MODULE_20__/* ["default"] */ .Z.TelegramChannel,
       ).createElement();
 
-      const selfAdGithub = new UI_components_buttons_errorPageButton__WEBPACK_IMPORTED_MODULE_22__/* ["default"] */ .Z(
+      const selfAdGithub = new UI_components_buttons_errorPageButton__WEBPACK_IMPORTED_MODULE_26__/* ["default"] */ .Z(
         `
           <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24">
             <path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5c.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34c-.46-1.16-1.11-1.47-1.11-1.47c-.91-.62.07-.6.07-.6c1 .07 1.53 1.03 1.53 1.03c.87 1.52 2.34 1.07 2.91.83c.09-.65.35-1.09.63-1.34c-2.22-.25-4.55-1.11-4.55-4.92c0-1.11.38-2 1.03-2.71c-.1-.25-.45-1.29.1-2.64c0 0 .84-.27 2.75 1.02c.79-.22 1.65-.33 2.5-.33c.85 0 1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02c.55 1.35.2 2.39.1 2.64c.65.71 1.03 1.6 1.03 2.71c0 3.82-2.34 4.66-4.57 4.91c.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2Z"/>
           </svg>
           Github
         `,
-        Configs_extData__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .Z.links.githubPage
+        Configs_ErrorLink__WEBPACK_IMPORTED_MODULE_20__/* ["default"] */ .Z.Github,
       ).createElement();
 
       selfAdButtonBlock.appendChild(selfAdTelegram);
@@ -1242,547 +1343,219 @@ async function main() {
       return;
     }
 
-    console.timeLog("lztup-start", "GET DEBUG INFO")
-    const username = (0,Utils_users__WEBPACK_IMPORTED_MODULE_11__/* .getUsername */ .Ms)('me');
-    const userid = (0,Utils_users__WEBPACK_IMPORTED_MODULE_11__/* .getUserId */ .n5)('me');
-    const userGroup = (0,Utils_users__WEBPACK_IMPORTED_MODULE_11__/* .getUserGroup */ .xc)('me');
-    const userAvatar = $('img.navTab--visitorAvatar').attr('src');
+    console.timeLog("lztup-start", "GET DEBUG INFO");
+    const username = (0,Utils_users__WEBPACK_IMPORTED_MODULE_8__/* .getUsername */ .Ms)("me");
+    const userid = (0,Utils_users__WEBPACK_IMPORTED_MODULE_8__/* .getUserId */ .n5)("me");
+    const userGroup = (0,Utils_users__WEBPACK_IMPORTED_MODULE_8__/* .getUserGroup */ .xc)("me");
+    const userAvatar = $("img.navTab--visitorAvatar").attr("src");
 
-    Utils_logger__WEBPACK_IMPORTED_MODULE_9__/* ["default"] */ .Z.debug('┏━━━━━━━━ DEBUG INFO ━━━━━━━━━━┓');
-    Utils_logger__WEBPACK_IMPORTED_MODULE_9__/* ["default"] */ .Z.debug(`Script version: ${GM_info?.script?.version}`);
-    Utils_logger__WEBPACK_IMPORTED_MODULE_9__/* ["default"] */ .Z.debug(`Account username: ${username}`);
-    Utils_logger__WEBPACK_IMPORTED_MODULE_9__/* ["default"] */ .Z.debug(`Account userid: ${userid}`);
-    Utils_logger__WEBPACK_IMPORTED_MODULE_9__/* ["default"] */ .Z.debug(`Account userGroup: ${userGroup}`);
-    Utils_logger__WEBPACK_IMPORTED_MODULE_9__/* ["default"] */ .Z.debug(`Account userAvatar: ${userAvatar}`);
-    Utils_logger__WEBPACK_IMPORTED_MODULE_9__/* ["default"] */ .Z.debug('┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┚');
+    Utils_logger__WEBPACK_IMPORTED_MODULE_6__/* ["default"] */ .Z.debug("┏━━━━━━━━ DEBUG INFO ━━━━━━━━━━┓");
+    Utils_logger__WEBPACK_IMPORTED_MODULE_6__/* ["default"] */ .Z.debug(`Script version: ${GM_info?.script?.version}`);
+    Utils_logger__WEBPACK_IMPORTED_MODULE_6__/* ["default"] */ .Z.debug(`Account username: ${username}`);
+    Utils_logger__WEBPACK_IMPORTED_MODULE_6__/* ["default"] */ .Z.debug(`Account userid: ${userid}`);
+    Utils_logger__WEBPACK_IMPORTED_MODULE_6__/* ["default"] */ .Z.debug(`Account userGroup: ${userGroup}`);
+    Utils_logger__WEBPACK_IMPORTED_MODULE_6__/* ["default"] */ .Z.debug(`Account userAvatar: ${userAvatar}`);
+    Utils_logger__WEBPACK_IMPORTED_MODULE_6__/* ["default"] */ .Z.debug("┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┚");
 
-    console.timeLog("lztup-start", "Register menu button")
-    ;(0,Utils_registers__WEBPACK_IMPORTED_MODULE_23__/* .registerMenuButton */ .e7)(UI_components_buttons_menuButton__WEBPACK_IMPORTED_MODULE_8__/* ["default"] */ .Z);
+    console.timeLog("lztup-start", "Register menu button");
+    (0,Utils_registers__WEBPACK_IMPORTED_MODULE_27__/* .registerMenuButton */ .e7)(UI_components_buttons_menuButton__WEBPACK_IMPORTED_MODULE_5__/* ["default"] */ .Z);
 
-    console.timeLog("lztup-start", "Add user group to cache")
-    await GM_setValue(Configs_StorageName__WEBPACK_IMPORTED_MODULE_3__/* ["default"] */ .Z.UserGroup, userGroup);
+    console.timeLog("lztup-start", "Add user group to cache");
+    await GM_setValue(Configs_StorageName__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .Z.UserGroup, userGroup);
 
-    console.timeLog("lztup-start", "forumLogo")
-    appearData.forumLogo > 0 ? await (0,Cache_logo__WEBPACK_IMPORTED_MODULE_18__/* .setLogoFromCache */ .U)(Configs_SiteType__WEBPACK_IMPORTED_MODULE_17__/* ["default"] */ .Z.Forum, appearData.forumLogo) : null;
-    console.timeLog("lztup-start", "marketLogo")
-    appearData.marketLogo > 0 ? await (0,Cache_logo__WEBPACK_IMPORTED_MODULE_18__/* .setLogoFromCache */ .U)(Configs_SiteType__WEBPACK_IMPORTED_MODULE_17__/* ["default"] */ .Z.Market, appearData.marketLogo) : null;
-    console.timeLog("lztup-start", "hideAlertCounter")
-    appearData.hideAlertCounter ? (0,Visuals_navbar__WEBPACK_IMPORTED_MODULE_24__/* .hideBalloonById */ .R)(Configs_extData__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .Z.balloonId.alertCounter, true) : null;
-    console.timeLog("lztup-start", "hideMessageCounter")
-    appearData.hideMessageCounter ? (0,Visuals_navbar__WEBPACK_IMPORTED_MODULE_24__/* .hideBalloonById */ .R)(Configs_extData__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .Z.balloonId.messageCounter, true) : null;
-    console.timeLog("lztup-start", "hideUnreadArticlesStatus")
-    appearData.hideUnreadArticlesStatus ? (0,Visuals_navbar__WEBPACK_IMPORTED_MODULE_24__/* .hideUnreadArticlesStatus */ .p)(true) : null;
+    const adblockData = await Utils_gmWrapper__WEBPACK_IMPORTED_MODULE_21__/* ["default"] */ .Z.getValue(Configs_NewStorageName__WEBPACK_IMPORTED_MODULE_22__/* ["default"] */ .Z.Adblock);
+    adblockData.hideAlertAds ? (0,Visuals_notify__WEBPACK_IMPORTED_MODULE_28__/* .hideAdsFromNotify */ .i)() : null;
+    adblockData.hideThreadListAds ? (0,Visuals_threads__WEBPACK_IMPORTED_MODULE_24__/* .hideThreadListAds */ .cX)() : null;
 
-    console.timeLog("lztup-start", "Loading Profile DB...")
-    const profileDB = new IndexedDB_profile__WEBPACK_IMPORTED_MODULE_6__/* .LZTProfileDB */ .M();
-    // await profileDB.init();
-    const dbProfileData = await profileDB.read();
+    // * APPEAR SECTION
+    const dbReportButtonsData = await Utils_gmWrapper__WEBPACK_IMPORTED_MODULE_21__/* ["default"] */ .Z.getValue(
+      Configs_NewStorageName__WEBPACK_IMPORTED_MODULE_22__/* ["default"] */ .Z.ReportButtons,
+    );
+    console.timeLog("lztup-start", "forumLogo");
+    appearData.forumLogo > 0
+      ? await (0,Cache_logo__WEBPACK_IMPORTED_MODULE_14__/* .setLogoFromCache */ .U)(Configs_SiteType__WEBPACK_IMPORTED_MODULE_13__/* ["default"] */ .Z.Forum, appearData.forumLogo)
+      : null;
+    console.timeLog("lztup-start", "marketLogo");
+    appearData.marketLogo > 0
+      ? await (0,Cache_logo__WEBPACK_IMPORTED_MODULE_14__/* .setLogoFromCache */ .U)(Configs_SiteType__WEBPACK_IMPORTED_MODULE_13__/* ["default"] */ .Z.Market, appearData.marketLogo)
+      : null;
 
-    console.timeLog("lztup-start", "Checking Profile data...")
-    if (dbProfileData) {
-      console.timeLog("lztup-start", "Check Profile User or Badge style")
-      if (dbProfileData.usernameStyle || dbProfileData.badgeIcons.length) {
-        console.timeLog("lztup-start", "Check Profile User style")
-        if (dbProfileData.usernameStyle) {
-          (0,Visuals_users__WEBPACK_IMPORTED_MODULE_13__/* .updateUserStyle */ .bR)(dbProfileData.usernameStyle);
-        }
-
-        console.timeLog("lztup-start", "Check Profile badge style")
-        if (dbProfileData.badgeIcons.length) {
-          (0,Visuals_users__WEBPACK_IMPORTED_MODULE_13__/* .updateUserBadges */ .Az)(dbProfileData.badgeIcons);
-        }
-
-        console.timeLog("lztup-start", "Reg profile observer")
-        ;(0,Utils_registers__WEBPACK_IMPORTED_MODULE_23__/* .registerObserver */ .O0)(async (mutation) => {
-          Utils_logger__WEBPACK_IMPORTED_MODULE_9__/* ["default"] */ .Z.debug(mutation)
-          if (
-            mutation.target.classList.contains('messageList') ||
-            mutation.target.classList.contains('messageSimpleList') ||
-            mutation.target.classList.contains('messageResponse') ||
-            mutation.target.classList.contains('CommentPostList') ||
-            mutation.target.classList.contains('discussionList') ||
-            mutation.target.classList.contains('chat2-messages') ||
-            mutation.target.classList.contains('fe-ac-user') ||
-            mutation.target.classList.contains('latestThreads') ||
-            mutation.target.parentElement?.classList.contains('conversationMessages') ||
-            mutation.nextSibling?.classList?.contains('modal') ||
-            mutation.previousSibling?.classList?.contains('Alert') ||
-            mutation.previousSibling?.nextSibling?.classList?.contains('Alert') ||
-            mutation.removedNodes?.[0]?.id === 'AjaxProgress' ||
-            mutation.target.id === 'AlertsDestinationWrapper' ||
-            mutation.target.id === 'StackAlerts'
-          ) {
-            const updatedProfileData = await profileDB.read();
-            if (updatedProfileData.usernameStyle) {
-              (0,Visuals_users__WEBPACK_IMPORTED_MODULE_13__/* .updateUserStyle */ .bR)(updatedProfileData.usernameStyle)
-            }
-
-            if (updatedProfileData.badgeIcons.length) {
-              (0,Visuals_users__WEBPACK_IMPORTED_MODULE_13__/* .updateUserBadges */ .Az)(updatedProfileData.badgeIcons);
-            }
-          }
-        });
-      }
-
-      console.timeLog("lztup-start", "Check Profile banner")
-      if (dbProfileData.bannerStyle && dbProfileData.bannerText) {
-        (0,Visuals_users__WEBPACK_IMPORTED_MODULE_13__/* .updateUserBanner */ .$)(dbProfileData.bannerStyle, dbProfileData.bannerText);
-      }
-
-      console.timeLog("lztup-start", "Check Profile bg")
-      if (dbProfileData.backgroundImage) {
-        // update background image of page
-        if (dbProfileData.backgroundImageEverywhere) {
-          (0,Visuals_universal__WEBPACK_IMPORTED_MODULE_14__/* .addBackgroundImage */ .j)(dbProfileData.backgroundImage);
-        } else {
-          (0,Visuals_profile__WEBPACK_IMPORTED_MODULE_15__/* .addBackgroundImageInProfile */ .m)(dbProfileData.backgroundImage);
-        }
-      }
-      console.timeLog("lztup-start", "Profile bg loaded")
+    console.timeLog("lztup-start", "Check Profile badge style");
+    if (dbReportButtonsData.length) {
+      (0,Visuals_threads__WEBPACK_IMPORTED_MODULE_24__/* .updateReportButtons */ .Lp)(dbReportButtonsData);
     }
 
-    console.timeLog("lztup-start", "Loading Contests DB...")
-    const dbContestsData = await GM_getValue(Configs_StorageName__WEBPACK_IMPORTED_MODULE_3__/* ["default"] */ .Z.Contests, {});
+    console.timeLog("lztup-start", "hideAlertCounter");
+    appearData.hideAlertCounter
+      ? (0,Visuals_navbar__WEBPACK_IMPORTED_MODULE_29__/* .hideBalloonById */ .R)(Configs_NavbarBalloon__WEBPACK_IMPORTED_MODULE_19__/* ["default"] */ .Z.AlertCounter.getName(), true)
+      : null;
+    console.timeLog("lztup-start", "hideMessageCounter");
+    appearData.hideMessageCounter
+      ? (0,Visuals_navbar__WEBPACK_IMPORTED_MODULE_29__/* .hideBalloonById */ .R)(Configs_NavbarBalloon__WEBPACK_IMPORTED_MODULE_19__/* ["default"] */ .Z.MessageCounter.getName(), true)
+      : null;
+    console.timeLog("lztup-start", "hideUnreadArticlesStatus");
+    appearData.hideUnreadArticlesStatus ? (0,Visuals_navbar__WEBPACK_IMPORTED_MODULE_29__/* .hideUnreadArticlesStatus */ .p)(true) : null;
+    appearData.summarizeThreads ? await (0,Utils_threads__WEBPACK_IMPORTED_MODULE_23__/* .summarizeThreadBlock */ .iY)(true) : null;
 
-    console.timeLog("lztup-start", "Add reg 10 btn")
-    dbContestsData.openTenContestsBtn ? (0,UI_components_buttons_contestsButton__WEBPACK_IMPORTED_MODULE_7__/* .regOpenContestsBtn */ .u)(10) : null;
+    // * PROFILE SECTION
+    console.timeLog("lztup-start", "Loading Profile DB...");
+    const dbProfileData = await GM_getValue(Configs_StorageName__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .Z.Profile, {});
+    const dbBadgeData = await GM_getValue(Configs_StorageName__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .Z.ProfileBadges, []);
+    console.timeLog("lztup-start", "Check Profile User style");
+    if (dbProfileData.usernameStyle) {
+      (0,Visuals_users__WEBPACK_IMPORTED_MODULE_10__/* .updateUserStyle */ .bR)(dbProfileData.usernameStyle);
+    }
 
-    console.timeLog("lztup-start", "Add onclick contests category")
-    ;(0,Events_categories__WEBPACK_IMPORTED_MODULE_25__/* ["default"] */ .Z)(Configs_extData__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .Z.nodes.contests, async () => {
-      const newContestsData = await GM_getValue(Configs_StorageName__WEBPACK_IMPORTED_MODULE_3__/* ["default"] */ .Z.Contests, {});
-      newContestsData.openTenContestsBtn ? (0,UI_components_buttons_contestsButton__WEBPACK_IMPORTED_MODULE_7__/* .regOpenContestsBtn */ .u)(10) : null;
+    console.timeLog("lztup-start", "Check Profile badge style");
+    if (dbBadgeData.length) {
+      (0,Visuals_users__WEBPACK_IMPORTED_MODULE_10__/* .updateUserBadges */ .Az)(dbBadgeData);
+    }
+
+    console.timeLog("lztup-start", "Reg big observer");
+    // TODO: Попробовать переписать на XenForo.activate hook
+    (0,Utils_registers__WEBPACK_IMPORTED_MODULE_27__/* .registerObserver */ .O0)(async mutation => {
+      Utils_logger__WEBPACK_IMPORTED_MODULE_6__/* ["default"] */ .Z.debug(mutation);
+      if (
+        mutation.target.classList.contains("messageList") ||
+        mutation.target.classList.contains("messageSimpleList") ||
+        mutation.target.classList.contains("messageResponse") ||
+        mutation.target.classList.contains("CommentPostList") ||
+        mutation.target.classList.contains("discussionList") ||
+        mutation.target.classList.contains("chat2-messages") ||
+        mutation.target.classList.contains("fe-ac-user") ||
+        mutation.target.classList.contains("latestThreads") ||
+        mutation.target.classList.contains("liveAlerts") ||
+        mutation.target.parentElement?.classList.contains(
+          "conversationMessages",
+        ) ||
+        mutation.nextSibling?.classList?.contains("modal") ||
+        mutation.previousSibling?.classList?.contains("Alert") ||
+        mutation.previousSibling?.nextSibling?.classList?.contains("Alert") ||
+        mutation.removedNodes?.[0]?.id === "AjaxProgress" ||
+        mutation.target.id === "AlertsDestinationWrapper" ||
+        mutation.target.id === "StackAlerts"
+      ) {
+        const updatedProfileData = await Utils_gmWrapper__WEBPACK_IMPORTED_MODULE_21__/* ["default"] */ .Z.getValue(Configs_NewStorageName__WEBPACK_IMPORTED_MODULE_22__/* ["default"] */ .Z.Profile);
+        const updatedBadgeData = await Utils_gmWrapper__WEBPACK_IMPORTED_MODULE_21__/* ["default"] */ .Z.getValue(
+          Configs_NewStorageName__WEBPACK_IMPORTED_MODULE_22__/* ["default"] */ .Z.ProfileBadges,
+        );
+        const updatedReportButtonsData = await Utils_gmWrapper__WEBPACK_IMPORTED_MODULE_21__/* ["default"] */ .Z.getValue(
+          Configs_NewStorageName__WEBPACK_IMPORTED_MODULE_22__/* ["default"] */ .Z.ReportButtons,
+        );
+        if (updatedProfileData.usernameStyle) {
+          (0,Visuals_users__WEBPACK_IMPORTED_MODULE_10__/* .updateUserStyle */ .bR)(updatedProfileData.usernameStyle);
+        }
+
+        if (updatedBadgeData) {
+          (0,Visuals_users__WEBPACK_IMPORTED_MODULE_10__/* .updateUserBadges */ .Az)(updatedBadgeData);
+        }
+
+        if (updatedReportButtonsData) {
+          (0,Visuals_threads__WEBPACK_IMPORTED_MODULE_24__/* .updateReportButtons */ .Lp)(updatedReportButtonsData);
+        }
+      }
     });
 
-    console.timeLog("lztup-start", "hideTagsInThread")
-    dbContestsData.hideTagsInThread ? (0,Utils_contests__WEBPACK_IMPORTED_MODULE_10__/* .contestsTagsVisibility */ .s$)(true) : null;
-    console.timeLog("lztup-start", "autoCloseOnParticipate")
-    dbContestsData.autoCloseOnParticipate ? (0,Callbacks_contestsParticipate__WEBPACK_IMPORTED_MODULE_4__/* .contestsAutoCloseHandler */ .p)(true) : null;
-    console.timeLog("lztup-start", "infoTopInThread")
-    dbContestsData.infoTopInThread ? (0,Utils_contests__WEBPACK_IMPORTED_MODULE_10__/* .contestThreadBlockMove */ .Q6)(true) : null;
-    console.timeLog("lztup-start", "removeContent")
-    dbContestsData.removeContent ? (0,Utils_contests__WEBPACK_IMPORTED_MODULE_10__/* .contestsHideContent */ .Q9)(true) : null;
-    console.timeLog("lztup-start", "removePoll")
-    dbContestsData.removePoll ? (0,Utils_contests__WEBPACK_IMPORTED_MODULE_10__/* .contestsHidePoll */ .Rf)(true) : null;
-    console.timeLog("lztup-start", "updateCaptchaButton")
-    dbContestsData.updateCaptchaButton? (0,Utils_contests__WEBPACK_IMPORTED_MODULE_10__/* .contestsUpdateCapctha */ .g4)() : null;
-    console.timeLog("lztup-start", "autoFixCaptcha")
-    dbContestsData.autoFixCaptcha ? (0,Utils_contests__WEBPACK_IMPORTED_MODULE_10__/* .contestsAutoFixCaptcha */ .gu)() : null;
-    console.timeLog("lztup-start", "participateByKey")
-    dbContestsData.participateByKey ? (0,Utils_contests__WEBPACK_IMPORTED_MODULE_10__/* .contestsParticipateByBtn */ .sO)(true) : null;
+    console.timeLog("lztup-start", "Check Profile banner");
+    if (dbProfileData.bannerStyle && dbProfileData.bannerText) {
+      (0,Visuals_users__WEBPACK_IMPORTED_MODULE_10__/* .updateUserBanner */ .$)(dbProfileData.bannerStyle, dbProfileData.bannerText);
+    }
 
-    console.timeLog("lztup-start", "Loading Users DB...")
-    const dbUsersData = await GM_getValue(Configs_StorageName__WEBPACK_IMPORTED_MODULE_3__/* ["default"] */ .Z.Users, {});
+    console.timeLog("lztup-start", "Check Profile bg");
+    if (dbProfileData.backgroundImage) {
+      // update background image of page
+      if (dbProfileData.backgroundImageEverywhere) {
+        (0,Visuals_universal__WEBPACK_IMPORTED_MODULE_11__/* .addBackgroundImage */ .j)(dbProfileData.backgroundImage);
+      } else {
+        (0,Visuals_profile__WEBPACK_IMPORTED_MODULE_12__/* .addBackgroundImageInProfile */ .m)(dbProfileData.backgroundImage);
+      }
+    }
+    console.timeLog("lztup-start", "Profile bg loaded");
 
-    console.timeLog("lztup-start", "showUserIdInMemberCard")
+    console.timeLog("lztup-start", "Loading Contests DB...");
+    const dbContestsData = await GM_getValue(Configs_StorageName__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .Z.Contests, {});
+
+    console.timeLog("lztup-start", "Add reg 10 btn");
+    dbContestsData.openTenContestsBtn ? (0,Utils_contests__WEBPACK_IMPORTED_MODULE_7__/* .regOpenContestsBtn */ .uu)() : null;
+
+    console.timeLog("lztup-start", "Add onclick contests category");
+    (0,Events_categories__WEBPACK_IMPORTED_MODULE_30__/* ["default"] */ .Z)(Configs_ForumNode__WEBPACK_IMPORTED_MODULE_15__/* ["default"] */ .Z.Contests.selector, async () => {
+      const newContestsData = await GM_getValue(Configs_StorageName__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .Z.Contests, {});
+      newContestsData.openTenContestsBtn ? (0,Utils_contests__WEBPACK_IMPORTED_MODULE_7__/* .regOpenContestsBtn */ .uu)() : null;
+    });
+
+    console.timeLog("lztup-start", "hideTagsInThread");
+    dbContestsData.hideTagsInThread ? (0,Utils_contests__WEBPACK_IMPORTED_MODULE_7__/* .contestsTagsVisibility */ .s$)(true) : null;
+    console.timeLog("lztup-start", "autoCloseOnParticipate");
+    dbContestsData.autoCloseOnParticipate
+      ? (0,Callbacks_contestsParticipate__WEBPACK_IMPORTED_MODULE_3__/* .contestsAutoCloseHandler */ .p)(true)
+      : null;
+    console.timeLog("lztup-start", "infoTopInThread");
+    dbContestsData.infoTopInThread ? (0,Utils_contests__WEBPACK_IMPORTED_MODULE_7__/* .contestThreadBlockMove */ .Q6)(true) : null;
+    console.timeLog("lztup-start", "removeContent");
+    dbContestsData.removeContent ? (0,Utils_contests__WEBPACK_IMPORTED_MODULE_7__/* .contestsHideContent */ .Q9)(true) : null;
+    console.timeLog("lztup-start", "removePoll");
+    dbContestsData.removePoll ? (0,Utils_contests__WEBPACK_IMPORTED_MODULE_7__/* .contestsHidePoll */ .Rf)(true) : null;
+    console.timeLog("lztup-start", "updateCaptchaButton");
+    dbContestsData.updateCaptchaButton ? (0,Utils_contests__WEBPACK_IMPORTED_MODULE_7__/* .contestsUpdateCapctha */ .g4)() : null;
+    console.timeLog("lztup-start", "autoFixCaptcha");
+    dbContestsData.autoFixCaptcha ? (0,Utils_contests__WEBPACK_IMPORTED_MODULE_7__/* .contestsAutoFixCaptcha */ .gu)() : null;
+    console.timeLog("lztup-start", "participateByKey");
+    dbContestsData.participateByKey ? (0,Utils_contests__WEBPACK_IMPORTED_MODULE_7__/* .contestsParticipateByBtn */ .sO)(true) : null;
+
+    console.timeLog("lztup-start", "Loading Users DB...");
+    const dbUsersData = await GM_getValue(Configs_StorageName__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .Z.Users, {});
+
+    console.timeLog("lztup-start", "showUserIdInMemberCard");
     if (dbUsersData.showUserIdInMemberCard) {
-      (0,Utils_users__WEBPACK_IMPORTED_MODULE_11__/* .addUserIdToMemberCard */ .SL)();
-      (0,Utils_registers__WEBPACK_IMPORTED_MODULE_23__/* .registerObserver */ .O0)((mutation) => {
+      (0,Utils_users__WEBPACK_IMPORTED_MODULE_8__/* .addUserIdToMemberCard */ .SL)();
+      (0,Utils_registers__WEBPACK_IMPORTED_MODULE_27__/* .registerObserver */ .O0)(mutation => {
         if (mutation.nextSibling) {
-          if (mutation.nextSibling?.classList?.contains('modal')) {
-            (0,Utils_users__WEBPACK_IMPORTED_MODULE_11__/* .addUserIdToMemberCard */ .SL)()
+          if (mutation.nextSibling?.classList?.contains("modal")) {
+            (0,Utils_users__WEBPACK_IMPORTED_MODULE_8__/* .addUserIdToMemberCard */ .SL)();
           }
         }
       });
     }
-    console.timeLog("lztup-start", "disableShareTyping")
-    dbUsersData.disableShareTyping ? (0,Xenforo_bypass__WEBPACK_IMPORTED_MODULE_12__/* .bypassShareTyping */ .$)() : null;
-    if ((0,Utils_checkers__WEBPACK_IMPORTED_MODULE_16__/* .isProfilePage */ .cD)()) {
-      console.timeLog("lztup-start", "showUserIdInProfile")
-      dbUsersData.showUserIdInProfile ? (0,Utils_users__WEBPACK_IMPORTED_MODULE_11__/* .addUserIdToProfile */ .Rj)() : null;
-      console.timeLog("lztup-start", "showFullRegInProfile")
-      dbUsersData.showFullRegInProfile? (0,Utils_users__WEBPACK_IMPORTED_MODULE_11__/* .showFullRegDateInProfile */ .M1)(true) : null;
+    console.timeLog("lztup-start", "disableShareTyping");
+    dbUsersData.disableShareTyping ? (0,Xenforo_bypass__WEBPACK_IMPORTED_MODULE_9__/* .bypassShareTyping */ .$)() : null;
+    if ((0,Utils_checkers__WEBPACK_IMPORTED_MODULE_31__/* .isProfilePage */ .cD)()) {
+      console.timeLog("lztup-start", "showUserIdInProfile");
+      dbUsersData.showUserIdInProfile ? (0,Utils_users__WEBPACK_IMPORTED_MODULE_8__/* .addUserIdToProfile */ .Rj)() : null;
+      console.timeLog("lztup-start", "showFullRegInProfile");
+      dbUsersData.showFullRegInProfile ? (0,Utils_users__WEBPACK_IMPORTED_MODULE_8__/* .showFullRegDateInProfile */ .M1)(true) : null;
     }
 
-    console.timeEnd("lztup-start")
-  };
+    console.timeEnd("lztup-start");
+  }
 
+  document.addEventListener("DOMContentLoaded", startExt);
 
-  document.addEventListener('DOMContentLoaded', startExt);
+  // all this for fix rare loading bugs
+  document.addEventListener("load", startExt);
 
-  // for fix rare loading bugs
-  document.addEventListener('load', startExt);
-
-  if (document.readyState === 'complete') {
+  if (document.readyState === "complete") {
     await startExt();
   }
+
+  loadingInterval = setInterval(async () => {
+    if (XenForo && XenForo._pageLoadTime) {
+      await startExt();
+      clearInterval(loadingInterval);
+    } else if (startTiming + 20 < (0,Utils_utils__WEBPACK_IMPORTED_MODULE_25__/* .getTimestamp */ .u3)()) {
+      clearInterval(loadingInterval);
+    }
+  }, 1000);
 }
 
 try {
   await Promise.allSettled([initTheme(), main()]);
-} catch {
+} catch (e) {
   console.error(e);
 }
+
 __webpack_async_result__();
 } catch(e) { __webpack_async_result__(e); } }, 1);
-
-/***/ }),
-
-/***/ "./src/indexedDB/default.js":
-/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
-
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   c: () => (/* binding */ LZTUpgradeDB)
-/* harmony export */ });
-/* harmony import */ var Utils_logger__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("./src/utils/logger.js");
-
-
-/**
- *
- * @author Toil
- * @license MIT
- * @copyright Toil
- * @created 2023-02-17
- *
- * @description base LZTUpgradeDB class implementation (based on IndexedDB)
- *
- */
-
-class LZTUpgradeDB {
-  /**
-   *
-   *  @constructor
-   *  @param {string} name - name of the database
-   *  @param {string} objectKey - name of the future indexedDB object
-   *  @param {number} version - version of the database
-   *  @param {object} indexes - array of keys to indexes with types ({})
-   *  @param {object} defaultData - array of default values to store ({})
-   */
-
-  constructor(name, objectKey, version = 1, indexes = {}, defaultData = {}) {
-    this.name = name;
-    this.objectKey = objectKey;
-    this.version = version;
-    this.indexes = indexes;
-    this.defaultData = defaultData;
-  }
-
-  checker(indexes, ...args) {
-    let response = false;
-    if (typeof arguments[1] !== 'object') return response;
-
-    for (const arg of Object.entries(arguments[1])) {
-      if (!arg[0].toString() in indexes) continue;
-      if (typeof(arg[1]) === indexes[arg[0].toString()]) response = true;
-    }
-    return response;
-  }
-
-  callback(indexes, data, args) {
-    if (typeof args !== 'object') return response;
-
-    for (const arg of Object.entries(args)) {
-      if (!arg[0].toString() in indexes) continue;
-      if (typeof(arg[1]) === indexes[arg[0].toString()]) data[arg[0].toString()] = arg[1];
-    }
-    return data;
-  }
-
-  /**
-   * Open DB connection
-   */
-  open() {
-    return indexedDB.open(this.name, this.version);
-  }
-
-  /**
-   * Delete DB
-   */
-  async delete() {
-    return indexedDB.deleteDatabase(this.name);
-  }
-
-  /**
-   * Initialize the database
-   */
-  async init() {
-    return new Promise((resolve, reject) => {
-      const openRequest = this.open();
-      openRequest.onerror = () => {
-        console.log(openRequest)
-        alert(`LZT Upgrade: Произошла ошибка при инициализации Базы Данных ${this.name}`);
-        Utils_logger__WEBPACK_IMPORTED_MODULE_0__/* ["default"] */ .Z.error(`Ошибка инициализации Базы Данных ${this.name}: `, openRequest.errorCode);
-        reject(false);
-      };
-
-      openRequest.onupgradeneeded = () => {
-        const db = openRequest.result;
-
-        db.onerror = () => {
-          alert(`LZT Upgrade: Не удалось загрузить базу данных ${this.name}`);
-          Utils_logger__WEBPACK_IMPORTED_MODULE_0__/* ["default"] */ .Z.error(`Не удалось загрузить базу данных ${this.name}: `, openRequest.error);
-          reject(false);
-        };
-
-        const objectStore = db.createObjectStore(this.objectKey, {
-          keyPath: "key",
-        });
-
-        for (const key in this.indexes) {
-          if (key === undefined) continue;
-          objectStore.createIndex(key, key, { unique: false });
-        }
-
-        Utils_logger__WEBPACK_IMPORTED_MODULE_0__/* ["default"] */ .Z.log(`База Данных ${this.name} создана`);
-
-        objectStore.transaction.oncomplete = () => {
-          const objectStore = db
-            .transaction(this.objectKey, "readwrite")
-            .objectStore(this.objectKey);
-
-          const request = objectStore.add(this.defaultData);
-
-          request.onsuccess = () => {
-            Utils_logger__WEBPACK_IMPORTED_MODULE_0__/* ["default"] */ .Z.log(`Стандартные настройки "${this.name}" добавлены в Базу Данных: `, request.result);
-            resolve(true);
-          };
-          request.onerror = () => {
-            Utils_logger__WEBPACK_IMPORTED_MODULE_0__/* ["default"] */ .Z.error(`Ошибка при добавление стандартных настроек "${this.name}" в Базу Данных: `, request.error);
-            reject(false);
-          };
-        };
-      };
-
-      openRequest.onsuccess = () => {
-        Utils_logger__WEBPACK_IMPORTED_MODULE_0__/* ["default"] */ .Z.log(`База данных ${this.name} инициализована`);
-        const db = openRequest.result;
-        db.onversionchange = () => {
-          db.close();
-          alert(`LZT Upgrade: Базе данных ${this.name} необходимо обновление, пожалуйста, перезагрузите страницу.`);
-          Utils_logger__WEBPACK_IMPORTED_MODULE_0__/* ["default"] */ .Z.log(`Базе данных ${this.name} необходимо обновление, пожалуйста, перезагрузите страницу`);
-          reject(false);
-        };
-        resolve(true);
-      };
-
-      openRequest.onblocked = () => {
-        const db = openRequest.result;
-        Utils_logger__WEBPACK_IMPORTED_MODULE_0__/* ["default"] */ .Z.error(`База Данных ${this.name} временно заблокирована из-за ошибки: `, db);
-        alert(`LZT Upgrade отключен из-за ошибки при обновление Базы Данных ${this.name}. Закройте все открытые вкладки с Lolzteam и попробуйте снова.`);
-        reject(false);
-      };
-    });
-  }
-
-  /**
-   * Read data from database
-   */
-  async read() {
-    return new Promise((resolve, reject) => {
-      const openRequest = this.open(this.name, this.version);
-
-      openRequest.onerror = () => {
-        alert(`LZT Upgrade: Произошла ошибка при чтение Базы Данных ${this.name}`);
-        Utils_logger__WEBPACK_IMPORTED_MODULE_0__/* ["default"] */ .Z.error(`Ошибка чтения Базы Данных ${this.name}: `, openRequest.errorCode);
-        reject(false);
-      };
-
-      openRequest.onupgradeneeded = () => {
-        const db = openRequest.result;
-        db.close();
-        this.init();
-        resolve(true);
-      };
-
-      openRequest.onsuccess = () => {
-        const db = openRequest.result;
-        db.onversionchange = () => {
-          db.close();
-          alert(`LZT Upgrade: Базе данных ${this.name} необходимо обновление, пожалуйста, перезагрузите страницу.`);
-          Utils_logger__WEBPACK_IMPORTED_MODULE_0__/* ["default"] */ .Z.log(`Базе данных ${this.name} необходимо обновление, пожалуйста, перезагрузите страницу`);
-          reject(false);
-        };
-
-        const objectStore = db
-          .transaction(this.objectKey)
-          .objectStore(this.objectKey);
-
-        const request = objectStore.get(this.objectKey);
-
-        request.onerror = (event) => {
-          Utils_logger__WEBPACK_IMPORTED_MODULE_0__/* ["default"] */ .Z.error(`Не удалось получить данные из Базы Данных ${this.name}: `, event.error);
-          reject(false);
-        };
-
-        request.onsuccess = () => {
-          // Logger.log(`Получены данные из Базы Данных ${this.name}: `, request.result
-          // );
-          const data = request.result;
-          resolve(data);
-        };
-      };
-
-      openRequest.onblocked = () => {
-        const db = openRequest.result;
-        Utils_logger__WEBPACK_IMPORTED_MODULE_0__/* ["default"] */ .Z.error(`База Данных ${this.name} временно заблокирована из-за ошибки: `, db);
-        alert(`LZT Upgrade отключен из-за ошибки при обновление Базы Данных ${this.name}. Закройте все открытые вкладки с Lolzteam и попробуйте снова.`);
-        reject(false);
-      };
-    });
-  }
-
-  /**
-    * Update data in Database
-    @param {object} indexes - array of keys to indexes to storing data in an indexedDB object ([key])
-    @param {function} checker - function to check for typeof (required argument - argsIndexes object)
-    @param {function} callback - callback function (required argument - data object)
-    */
-  async update(args) {
-    return new Promise((resolve, reject) => {
-      if (this.checker(this.indexes, args)) {
-        const openRequest = this.open(this.name);
-
-        openRequest.onerror = () => {
-          alert(`LZT Upgrade: Произошла ошибка при обновление Базы Данных ${this.name}`);
-          Utils_logger__WEBPACK_IMPORTED_MODULE_0__/* ["default"] */ .Z.error(`Ошибка при обновление Базы Данных ${this.name}: `, openRequest.errorCode)
-          reject(false);
-        };
-
-        openRequest.onupgradeneeded = () => {
-          const db = openRequest.result;
-          db.close();
-          this.init();
-          resolve(true);
-        };
-
-        openRequest.onsuccess = () => {
-          const db = openRequest.result;
-          db.onversionchange = () => {
-            db.close();
-            alert(`LZT Upgrade: Базе данных ${this.name} необходимо обновление, пожалуйста, перезагрузите страницу.`);
-            Utils_logger__WEBPACK_IMPORTED_MODULE_0__/* ["default"] */ .Z.log(`Базе данных ${this.name} необходимо обновление, пожалуйста, перезагрузите страницу`);
-            reject(false);
-          };
-
-          var objectStore = db
-            .transaction(this.objectKey, "readwrite")
-            .objectStore(this.objectKey);
-          var request = objectStore.get(this.objectKey);
-
-          request.onerror = (event) => {
-            Utils_logger__WEBPACK_IMPORTED_MODULE_0__/* ["default"] */ .Z.error(`Не удалось получить данные из Базы Данных ${this.name}: `, event.error);
-            reject(false);
-          };
-
-          request.onsuccess = () => {
-            // Logger.log(`Получены данные из Базы Данных ${this.name}: `, request.result);
-            let data = request.result;
-            data = this.callback(this.indexes, data, args);
-
-            const requestUpdate = objectStore.put(data);
-
-            requestUpdate.onerror = (event) => {
-              Utils_logger__WEBPACK_IMPORTED_MODULE_0__/* ["default"] */ .Z.error(`Не удалось обновить данные в Базе Данных ${this.name}: `, event.error);
-              reject(false);
-            };
-
-            requestUpdate.onsuccess = () => {
-              Utils_logger__WEBPACK_IMPORTED_MODULE_0__/* ["default"] */ .Z.log("Данные в Базе Данных обновлены, вы великолепны!");
-              resolve(true);
-            };
-          };
-        };
-
-        openRequest.onblocked = () => {
-          const db = openRequest.result;
-          Utils_logger__WEBPACK_IMPORTED_MODULE_0__/* ["default"] */ .Z.error(`База Данных ${this.name} временно заблокирована из-за ошибки: `, db);
-          alert(`LZT Upgrade отключен из-за ошибки при обновление Базы Данных ${this.name}. Закройте все открытые вкладки с Lolzteam и попробуйте снова.`);
-          reject(false);
-        };
-      } else {
-        Utils_logger__WEBPACK_IMPORTED_MODULE_0__/* ["default"] */ .Z.error("В чём смысл делать функцию добавления, которая ничего не добавляет?! wut");
-        reject(false);
-      }
-    });
-  }
-}
-
-
-
-/***/ }),
-
-/***/ "./src/indexedDB/profile.js":
-/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
-
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   M: () => (/* binding */ LZTProfileDB)
-/* harmony export */ });
-/* harmony import */ var IndexedDB_default__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("./src/indexedDB/default.js");
-
-
-
-/**
- *
- * @author Toil
- * @license MIT
- * @copyright Toil
- * @created 2023-02-17
- *
- * @description LZTProfileDB class implementation
- *
- */
-
-class LZTProfileDB extends IndexedDB_default__WEBPACK_IMPORTED_MODULE_0__/* .LZTUpgradeDB */ .c {
-  /**
-   *
-   *  @constructor
-   *  @param {string} name - name of the database
-   *  @param {string} objectKey - name of the future indexedDB object
-   *  @param {number} version - version of the database
-   */
-
-  constructor(name = 'LZTUpProfile', objectKey = 'uniqueStyle', version = 1) {
-    super(
-      name,
-      objectKey,
-      version,
-      { // indexes
-        'usernameStyle': 'string',
-        'bannerStyle': 'string',
-        'bannerText': 'string',
-        'badgeIcon': 'string',
-        'badgeText': 'string',
-        'badgeFill': 'string',
-        'badgeStroke': 'string',
-        'noticesMarks': 'string',
-        'backgroundImage': 'string',
-        'backgroundImageEverywhere': 'number',
-        'badgeIcons': 'object'
-      },
-      { // defaultData
-        key: objectKey,
-        usernameStyle: '',
-        bannerStyle: '',
-        bannerText: '',
-        badgeIcon: '',
-        badgeText: '',
-        badgeFill: '',
-        badgeStroke: '',
-        noticesMarks: '',
-        backgroundImage: '',
-        backgroundImageEverywhere: 0,
-        badgeIcons: []
-      }
-    );
-  };
-
-  async update({
-    usernameStyle,
-    bannerStyle,
-    bannerText,
-    badgeIcon,
-    badgeText,
-    badgeFill,
-    badgeStroke,
-    noticesMarks,
-    backgroundImage,
-    backgroundImageEverywhere,
-    badgeIcons
-  }) {
-    super.update(...arguments);
-  }
-}
-
-
 
 /***/ }),
 
@@ -1805,7 +1578,7 @@ function setSvgAttr(el, type, color) {
 }
 
 function changeSVGColor(el, type, color, replaceAll = false) {
-  if (!['stroke', 'fill'].includes(type)) {
+  if (!["stroke", "fill"].includes(type)) {
     return;
   }
 
@@ -1814,11 +1587,12 @@ function changeSVGColor(el, type, color, replaceAll = false) {
   }
 
   setSvgAttr(el, type, color);
-  const elements = el.querySelectorAll('*');
+  const elements = el.querySelectorAll("*");
   for (const element of elements) {
     setSvgAttr(element, type, color);
   }
 }
+
 
 
 // EXTERNAL MODULE: ./src/utils/logger.js
@@ -1826,7 +1600,6 @@ var logger = __webpack_require__("./src/utils/logger.js");
 // EXTERNAL MODULE: ./src/utils/utils.js
 var utils = __webpack_require__("./src/utils/utils.js");
 ;// CONCATENATED MODULE: ./src/ui/avatarUserBadges.js
-
 
 
 
@@ -1842,20 +1615,22 @@ class AvatarUserBadges {
    */
 
   constructor(badges, isPreview = false) {
-    this.previewId = 'LZTUpPreviewBadge';
-    this.customBadgeId = 'LZTUpUserBadge';
-    this.badgeQuery = isPreview ? `#${this.previewId}` : `#${this.customBadgeId}`;
+    this.previewId = "LZTUpPreviewBadge";
+    this.customBadgeId = "LZTUpUserBadge";
+    this.badgeQuery = isPreview
+      ? `#${this.previewId}`
+      : `#${this.customBadgeId}`;
     this.badges = badges;
     this.isPreview = isPreview;
   }
 
   createElement() {
-    const avatarUserBadges = document.createElement('div');
-    avatarUserBadges.classList.add('avatarUserBadges');
+    const avatarUserBadges = document.createElement("div");
+    avatarUserBadges.classList.add("avatarUserBadges");
 
     for (let i = 0; i < this.badges.length; i++) {
-      const avatarUserBadge = document.createElement('span');
-      avatarUserBadge.classList.add('avatarUserBadge', 'Tooltip');
+      const avatarUserBadge = document.createElement("span");
+      avatarUserBadge.classList.add("avatarUserBadge", "Tooltip");
       avatarUserBadge.tabIndex = 0;
       avatarUserBadge.title = XenForo.htmlspecialchars(this.badges[i].text);
 
@@ -1866,7 +1641,7 @@ class AvatarUserBadges {
       }
 
       if (this.badges.length > 1) {
-        avatarUserBadge.classList.add(`avatarUserBadge--${i + 1}`)
+        avatarUserBadge.classList.add(`avatarUserBadge--${i + 1}`);
       }
 
       avatarUserBadge.dataset.position = i + 1;
@@ -1885,18 +1660,20 @@ class AvatarUserBadges {
   }
 
   findAllBadgeElement(selector, position) {
-    return document.querySelectorAll(selector + `[data-position="${position}"]`);
+    return document.querySelectorAll(
+      selector + `[data-position="${position}"]`,
+    );
   }
 
   applyBadge(el, icon) {
-    if (icon?.length > 1 && icon?.startsWith('.')) {
-      icon = icon.replace('.', '');
-      return el.classList.add('userBanner', icon);
-    } else if (icon.startsWith('<svg') && icon.endsWith('svg>')) {
+    if (icon?.length > 1 && icon?.startsWith(".")) {
+      icon = icon.replace(".", "");
+      return el.classList.add("userBanner", icon);
+    } else if (icon.startsWith("<svg") && icon.endsWith("svg>")) {
       el.innerHTML = (0,purify/* clearSVG */.bw)(icon);
-      return el.classList.add('badgeDefaultBackground');
+      return el.classList.add("badgeDefaultBackground");
     } else {
-      return el.classList.add('uniq_default', 'badgeDefaultBackground');
+      return el.classList.add("uniq_default", "badgeDefaultBackground");
     }
   }
 
@@ -1907,7 +1684,7 @@ class AvatarUserBadges {
 
     (0,utils/* removeStylesByEl */.Bw)(badgeEl);
 
-    badgeEl.classList.add('avatarUserBadge', 'Tooltip');
+    badgeEl.classList.add("avatarUserBadge", "Tooltip");
 
     // set position of badge
     if (badgeEl.dataset.multiple === "true") {
@@ -1934,25 +1711,28 @@ class AvatarUserBadges {
       return;
     }
 
-    const svg = badgeEl.querySelector('svg');
+    const svg = badgeEl.querySelector("svg");
     if (!svg) {
       return;
     }
 
-    changeSVGColor(svg, 'stroke', badge.strokeColor, true);
-    changeSVGColor(svg, 'fill', badge.fillColor, true);
+    changeSVGColor(svg, "stroke", badge.strokeColor, true);
+    changeSVGColor(svg, "fill", badge.fillColor, true);
   }
 
   updateStyle(badgeEl, badge) {
-    if (!badgeEl || !badge.style || badge.style?.startsWith('.')) {
+    if (!badgeEl || !badge.style || badge.style?.startsWith(".")) {
       return;
     }
 
-    return badgeEl.style = badge.style;
+    return (badgeEl.style = badge.style);
   }
 
   updateBadge(badge) {
-    const badgeElements = this.findAllBadgeElement(this.badgeQuery, badge.position);
+    const badgeElements = this.findAllBadgeElement(
+      this.badgeQuery,
+      badge.position,
+    );
     if (!badgeElements.length) {
       return;
     }
@@ -1966,11 +1746,11 @@ class AvatarUserBadges {
   }
 
   updateBadges() {
-    logger/* default */.Z.debug('updateBadges');
+    logger/* default */.Z.debug("updateBadges");
     for (const badge of this.badges) {
-      if (typeof badge !== 'object') {
-        logger/* default */.Z.error('Invalid badge in array');
-        continue
+      if (typeof badge !== "object") {
+        logger/* default */.Z.error("Invalid badge in array");
+        continue;
       }
 
       logger/* default */.Z.debug(badge);
@@ -1980,6 +1760,7 @@ class AvatarUserBadges {
 }
 
 /* harmony default export */ const avatarUserBadges = (AvatarUserBadges);
+
 
 /***/ }),
 
@@ -2001,20 +1782,20 @@ class Button {
    *  @param {string} iconClassName - class name of the icon (if undefined icon is not added)
    */
 
-  constructor(buttonText, className = 'button', iconClassName = undefined) {
+  constructor(buttonText, className = "button", iconClassName = undefined) {
     this.buttonText = buttonText;
     this.className = className;
     this.iconClassName = iconClassName;
   }
 
   createElement(callback = () => {}) {
-    const button = document.createElement('button');
+    const button = document.createElement("button");
     button.className = this.className;
     button.innerText = this.buttonText;
 
     if (this.iconClassName) {
       const icon = new UI_components_icon_js__WEBPACK_IMPORTED_MODULE_0__/* ["default"] */ .Z(this.iconClassName).createElement();
-      icon.id = '';
+      icon.id = "";
       button.appendChild(icon);
     }
 
@@ -2025,62 +1806,6 @@ class Button {
 }
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Button);
-
-/***/ }),
-
-/***/ "./src/ui/components/buttons/contestsButton.js":
-/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
-
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   c: () => (/* binding */ removeOpenContestsBtn),
-/* harmony export */   u: () => (/* binding */ regOpenContestsBtn)
-/* harmony export */ });
-/* harmony import */ var Utils_checkers__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("./src/utils/checkers.js");
-/* harmony import */ var Utils_utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("./src/utils/utils.js");
-
-
-
-
-// TODO: Rework with clear js
-// TODO: move to utils/contests.js
-function regOpenContestsBtn(amount = 10) {
-  if ((0,Utils_checkers__WEBPACK_IMPORTED_MODULE_0__/* .isContestsNode */ .IM)() && !$(`#openContestsButton${XenForo.htmlspecialchars(amount)}`).length) {
-    const updateButton = $('span.UpdateFeedButton.UpdateFeedButtonIcon');
-    const openContestsButton = $(`
-      <a class="button" id="openContestsButton${XenForo.htmlspecialchars(amount)}">
-        Открыть ${XenForo.htmlspecialchars(amount)}
-      </a>
-    `);
-
-    openContestsButton.on('click', async () => {
-      updateButton.click();
-      const el = await (0,Utils_utils__WEBPACK_IMPORTED_MODULE_1__/* .waitForElm */ .Nc)('div.forumImprovements--mask.hidden');
-      if (!el) return;
-
-      const links = (0,Utils_utils__WEBPACK_IMPORTED_MODULE_1__/* .getThreadLinks */ .Eq)();
-      if (links.length) {
-        $(links).map((element, value) => {
-          if (element <= amount) {
-            const win = window.open(`https://${window.location.hostname}/${value}`);
-            win ? win.focus() : alert('Разрешите доступ к всплывающим окнам для этого сайта');
-          } else {
-            return;
-          }
-        })
-      }
-    });
-
-    updateButton.length ? updateButton.parent().prepend(openContestsButton) : undefined;
-  }
-}
-
-function removeOpenContestsBtn(amount = 10) {
-  if ((0,Utils_checkers__WEBPACK_IMPORTED_MODULE_0__/* .isContestsNode */ .IM)()) {
-    const openContestsButton = $(`#openContestsButton${XenForo.htmlspecialchars(amount)}`);
-    openContestsButton.length ? openContestsButton.remove() : null;
-  }
-}
-
 
 
 /***/ }),
@@ -2100,14 +1825,14 @@ class ErrorPageButton {
    *  @param {string} className - class name of the button
    */
 
-  constructor(buttonContent, buttonHref = '#', className = 'button') {
+  constructor(buttonContent, buttonHref = "#", className = "button") {
     this.buttonContent = buttonContent;
     this.buttonHref = buttonHref;
     this.className = className;
   }
 
   createElement() {
-    const button = document.createElement('a');
+    const button = document.createElement("a");
     button.href = this.buttonHref;
     button.className = this.className;
     button.innerHTML = this.buttonContent;
@@ -2117,6 +1842,7 @@ class ErrorPageButton {
 }
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ErrorPageButton);
+
 
 /***/ }),
 
@@ -2139,38 +1865,35 @@ var purify = __webpack_require__("./src/utils/purify.js");
 
 
 
-
 class SectionDirection {
-  static Row = new SectionDirection('row');
-  static Column = new SectionDirection('column');
+  static Row = new SectionDirection("row");
+  static Column = new SectionDirection("column");
 
   constructor(name) {
-    this.name = name
+    this.name = name;
   }
 }
-
 
 class SectionText {
   /**
    *
    *  @constructor
-   *  @param {string} text - text of the heading
+   *  @param {string} text - text of the heading (html allowed!!!)
    */
 
   constructor(text) {
     this.text = text;
-    this.className = 'LZTUpSectionTitle';
+    this.className = "LZTUpSectionTitle";
   }
 
   createElement() {
-    const el = document.createElement('span');
+    const el = document.createElement("span");
     el.classList.add(this.className);
-    el.innerText = this.text;
+    el.innerHTML = (0,purify/* clearHTML */.G6)(this.text);
 
     return el;
   }
 }
-
 
 class SectionSubText extends SectionText {
   /**
@@ -2180,19 +1903,18 @@ class SectionSubText extends SectionText {
    */
 
   constructor(text) {
-    super(text)
-    this.className = 'LZTUpSectionDesc';
+    super(text);
+    this.className = "LZTUpSectionDesc";
   }
 
   createElement() {
-    const el = document.createElement('span');
+    const el = document.createElement("span");
     el.classList.add(this.className);
     el.innerHTML = (0,purify/* clearHTML */.G6)(this.text);
 
     return el;
   }
 }
-
 
 class Section {
   /**
@@ -2216,18 +1938,21 @@ class Section {
   }
 
   createElement() {
-    const section = document.createElement('div');
+    const section = document.createElement("div");
     section.id = this.id;
-    section.classList.add('LZTUpSection', this.direction === SectionDirection.Row ? 'row' : 'column');
+    section.classList.add(
+      "LZTUpSection",
+      this.direction === SectionDirection.Row ? "row" : "column",
+    );
 
     for (const sectionItem of this.sectionItems) {
       section.appendChild(sectionItem);
     }
 
-    console.log(this)
+    console.log(this);
     if (this.hidden) {
-      console.log(this.id, this.hidden)
-      section.style.display = 'none';
+      console.log(this.id, this.hidden);
+      section.style.display = "none";
     }
 
     return section;
@@ -2238,35 +1963,37 @@ class Section {
    *  @param {string} name - title of the item
    *  @param {string} desc - description of the item
    *  @param {string} iconClasses - font awesome icon classes
-   *  @param {string} sectionId - id of the section item
+   *  @param {string} sectionItemId - id of the section item
    *  @param {object} options - additional options (read description below)
    *
    *  Options:
    *  @param {function} onClick - callback on click event
    *  @param {boolean} rightArrow - add a icon of the right arrow in the right side (only for column direction)
    */
-  addSectionItem(title, desc, iconClasses, sectionId, options = {}) {
-    const onClickCallback = options.onClick || function() {};
+  addSectionItem(title, desc, iconClasses, sectionItemId, options = {}) {
+    const onClickCallback = options.onClick || function () {};
     const rightArrow = options.rightArrow || false;
 
-    const sectionItem = document.createElement('div');
-    sectionItem.id = sectionId;
-    sectionItem.classList.add('LZTUpSectionItem');
+    const sectionItem = document.createElement("div");
+    sectionItem.id = sectionItemId;
+    sectionItem.classList.add("LZTUpSectionItem");
 
     const sectionIcon = new components_icon/* default */.Z(iconClasses).createElement();
-    const textContainer = document.createElement('div');
-    textContainer.classList.add('LZTUpSectionTextContainer')
+    const textContainer = document.createElement("div");
+    textContainer.classList.add("LZTUpSectionTextContainer");
     const textEl = new SectionText(title).createElement();
     const subTextEl = new SectionSubText(desc).createElement();
 
     textContainer.append(textEl, subTextEl);
     sectionItem.append(sectionIcon, textContainer);
     if (this.direction === SectionDirection.Column && rightArrow) {
-      const sectionArrowIcon = new components_icon/* default */.Z('far fa-angle-right gray right').createElement();
-      sectionItem.append(sectionArrowIcon)
+      const sectionArrowIcon = new components_icon/* default */.Z(
+        "far fa-angle-right gray right",
+      ).createElement();
+      sectionItem.append(sectionArrowIcon);
     }
 
-    sectionItem.onclick = async (e) => await onClickCallback(e, title);
+    sectionItem.onclick = async e => await onClickCallback(e, title);
 
     this.sectionItems.push(sectionItem);
     return this;
@@ -2278,20 +2005,20 @@ class Section {
    *  @param {object} items - list of dom elements for add to container
    */
   addSectionContainer(containerId, items) {
-    const container = document.createElement('div');
+    const container = document.createElement("div");
     container.id = containerId;
-    container.classList.add('LZTUpSubMenu');
-    container.style.display = 'none';
+    container.classList.add("LZTUpSubMenu");
+    container.style.display = "none";
 
     for (const item of items) {
       container.appendChild(item);
     }
 
-
     this.sectionContainers.push(container);
     return this;
   }
 }
+
 
 
 // EXTERNAL MODULE: ./src/utils/logger.js
@@ -2300,10 +2027,7 @@ var logger = __webpack_require__("./src/utils/logger.js");
 var StorageName = __webpack_require__("./src/configs/StorageName.js");
 // EXTERNAL MODULE: ./src/callbacks/contestsParticipate.js + 1 modules
 var contestsParticipate = __webpack_require__("./src/callbacks/contestsParticipate.js");
-// EXTERNAL MODULE: ./src/ui/components/buttons/contestsButton.js
-var contestsButton = __webpack_require__("./src/ui/components/buttons/contestsButton.js");
 ;// CONCATENATED MODULE: ./src/ui/components/menu/checkbox.js
-
 
 
 class Checkbox {
@@ -2319,25 +2043,32 @@ class Checkbox {
     this.content = (0,purify/* clearHTML */.G6)(content);
   }
 
-  createElement(valueToCheck, callbackChecked = () => {}, callbackUnChecked = () => {}, defaultCallback = () => {}) {
-    const checkboxContainer = document.createElement('div');
-    const checkbox = document.createElement('input');
-    const checkboxLabel = document.createElement('label');
+  createElement(
+    valueToCheck,
+    callbackChecked = () => {},
+    callbackUnChecked = () => {},
+    defaultCallback = () => {},
+  ) {
+    const checkboxContainer = document.createElement("div");
+    const checkbox = document.createElement("input");
+    const checkboxLabel = document.createElement("label");
 
-    checkbox.type = 'checkbox';
+    checkbox.type = "checkbox";
     checkbox.id = this.elementId;
     checkbox.checked = Boolean(valueToCheck);
 
     checkboxLabel.htmlFor = this.elementId;
     checkboxLabel.innerHTML = this.content;
 
-    checkboxContainer.id = 'LZTUpModalChecksContainer';
+    checkboxContainer.id = "LZTUpModalChecksContainer";
     checkboxContainer.appendChild(checkbox);
     checkboxContainer.appendChild(checkboxLabel);
 
-    checkbox.addEventListener('click', async (event) => {
-      await defaultCallback(event)
-      event.target.checked ? await callbackChecked(event) : await callbackUnChecked(event);
+    checkbox.addEventListener("click", async event => {
+      await defaultCallback(event);
+      event.target.checked
+        ? await callbackChecked(event)
+        : await callbackUnChecked(event);
     });
 
     return checkboxContainer;
@@ -2345,7 +2076,8 @@ class Checkbox {
 }
 
 /* harmony default export */ const menu_checkbox = (Checkbox);
-// EXTERNAL MODULE: ./src/utils/contests.js + 2 modules
+
+// EXTERNAL MODULE: ./src/utils/contests.js + 1 modules
 var contests = __webpack_require__("./src/utils/contests.js");
 // EXTERNAL MODULE: ./src/utils/utils.js
 var utils = __webpack_require__("./src/utils/utils.js");
@@ -2362,8 +2094,8 @@ class Heading {
   }
 
   createElement() {
-    const heading = document.createElement('h2');
-    heading.classList.add('LZTUpModalHeading');
+    const heading = document.createElement("h2");
+    heading.classList.add("LZTUpModalHeading");
     heading.innerText = this.text;
 
     return heading;
@@ -2371,6 +2103,7 @@ class Heading {
 }
 
 /* harmony default export */ const menu_heading = (Heading);
+
 ;// CONCATENATED MODULE: ./src/ui/components/menu/description.js
 class Description {
   /**
@@ -2384,8 +2117,8 @@ class Description {
   }
 
   createElement() {
-    const desc = document.createElement('p');
-    desc.classList.add('LZTUpModalDescription', 'muted');
+    const desc = document.createElement("p");
+    desc.classList.add("LZTUpModalDescription", "muted");
     desc.innerText = this.text;
 
     return desc;
@@ -2393,6 +2126,7 @@ class Description {
 }
 
 /* harmony default export */ const menu_description = (Description);
+
 ;// CONCATENATED MODULE: ./src/ui/components/menu/container.js
 
 
@@ -2406,16 +2140,16 @@ class Container {
    *  @param {object} elements - elements to add to container
    */
 
-  constructor(elements, heading = '', description = '') {
+  constructor(elements, heading = "", description = "") {
     this.elements = elements;
     this.heading = heading;
     this.description = description;
   }
 
-  createElement(style = '') {
-    const container = document.createElement('div');
-    container.classList.add('LZTUpContainer');
-    container.style = style
+  createElement(style = "") {
+    const container = document.createElement("div");
+    container.classList.add("LZTUpContainer");
+    container.style = style;
 
     if (this.heading) {
       const heading = new menu_heading(this.heading).createElement();
@@ -2436,9 +2170,8 @@ class Container {
 }
 
 /* harmony default export */ const container = (Container);
+
 ;// CONCATENATED MODULE: ./src/ui/menu/items/contests.js
-
-
 
 
 
@@ -2453,147 +2186,180 @@ const getContestsItems = async () => {
   return [
     new container(
       [
-        new menu_checkbox('hide_tags_in_contests', `Скрыть теги в теме розыгрыша`)
-        .createElement(
+        new menu_checkbox(
+          "hide_tags_in_contests",
+          `Скрыть теги в теме розыгрыша`,
+        ).createElement(
           contestsData.hideTagsInThread,
           () => {},
           () => {},
-          async (event) => {
+          async event => {
             contestsData.hideTagsInThread = event.target.checked;
             await GM_setValue(StorageName/* default */.Z.Contests, contestsData);
             (0,contests/* contestsTagsVisibility */.s$)(event.target.checked);
-          }),
+          },
+        ),
 
-        new menu_checkbox('remove_content_in_contests', `Скрыть содержимое темы розыгрыша`)
-        .createElement(
+        new menu_checkbox(
+          "remove_content_in_contests",
+          `Скрыть содержимое темы розыгрыша`,
+        ).createElement(
           contestsData.removeContent,
           () => {},
           () => {},
-          async (event) => {
+          async event => {
             contestsData.removeContent = event.target.checked;
             await GM_setValue(StorageName/* default */.Z.Contests, contestsData);
-            (0,contests/* contestsHideContent */.Q9)(event.target.checked)
-          }),
+            (0,contests/* contestsHideContent */.Q9)(event.target.checked);
+          },
+        ),
 
-        new menu_checkbox('remove_poll_in_contests', `Скрыть голосование в теме розыгрыша`)
-        .createElement(
+        new menu_checkbox(
+          "remove_poll_in_contests",
+          `Скрыть голосование в теме розыгрыша`,
+        ).createElement(
           contestsData.removePoll,
           () => {},
           () => {},
-          async (event) => {
+          async event => {
             contestsData.removePoll = event.target.checked;
             await GM_setValue(StorageName/* default */.Z.Contests, contestsData);
-            (0,contests/* contestsHidePoll */.Rf)(event.target.checked)
-          }),
+            (0,contests/* contestsHidePoll */.Rf)(event.target.checked);
+          },
+        ),
       ],
-      'Скрытие элементов',
-      'Скройте лишние элементы в теме'
-    ).createElement('display: block;'),
+      "Скрытие элементов",
+      "Скройте лишние элементы в теме",
+    ).createElement("display: block;"),
     new container(
       [
-        new menu_checkbox('open_ten_contests', 'Кнопка "Открыть 10"')
-        .createElement(
+        new menu_checkbox("open_ten_contests", 'Кнопка "Открыть 10"').createElement(
           contestsData.openTenContestsBtn,
           () => {
-            (0,contestsButton/* regOpenContestsBtn */.u)(10);
+            (0,contests/* regOpenContestsBtn */.uu)();
           },
           () => {
-            (0,contestsButton/* removeOpenContestsBtn */.c)(10);
+            (0,contests/* removeOpenContestsBtn */.cy)();
           },
-          async (event) => {
+          async event => {
             contestsData.openTenContestsBtn = event.target.checked;
             await GM_setValue(StorageName/* default */.Z.Contests, contestsData);
-          }),
+          },
+        ),
 
-        new menu_checkbox('auto_close_on_participate',
+        new menu_checkbox(
+          "auto_close_on_participate",
           `Автозакрытие страницы при нажатие на кнопку "Участвовать"
           <span class="fa fa-exclamation-triangle Tooltip" title="При отключение этой функции страница будет перезагружена"></span>
-          `)
-        .createElement(
+          `,
+        ).createElement(
           contestsData.autoCloseOnParticipate,
           async () => {
-            (0,registers/* registerAlert */.de)('Включено Автозакрытие страницы при нажатие на кнопку "Участвовать"', 5000);
+            (0,registers/* registerAlert */.de)(
+              'Включено Автозакрытие страницы при нажатие на кнопку "Участвовать"',
+              5000,
+            );
             (0,contestsParticipate/* contestsAutoCloseHandler */.p)(true);
           },
           async () => {
-            (0,registers/* registerAlert */.de)('Выключено Автозакрытие страницы при нажатие на кнопку "Участвовать"', 5000);
+            (0,registers/* registerAlert */.de)(
+              'Выключено Автозакрытие страницы при нажатие на кнопку "Участвовать"',
+              5000,
+            );
             await (0,utils/* sleep */._v)(500);
             window.location.reload();
           },
-          async (event) => {
+          async event => {
             contestsData.autoCloseOnParticipate = event.target.checked;
             await GM_setValue(StorageName/* default */.Z.Contests, contestsData);
-        }),
+          },
+        ),
 
-        new menu_checkbox('info_top_in_contests', `Отображение информации о розыгрыше вверху темы`)
-        .createElement(
+        new menu_checkbox(
+          "info_top_in_contests",
+          `Отображение информации о розыгрыше вверху темы`,
+        ).createElement(
           contestsData.infoTopInThread,
           () => {},
           () => {},
-          async (event) => {
+          async event => {
             contestsData.infoTopInThread = event.target.checked;
             await GM_setValue(StorageName/* default */.Z.Contests, contestsData);
-            (0,contests/* contestThreadBlockMove */.Q6)(event.target.checked)
-        }),
+            (0,contests/* contestThreadBlockMove */.Q6)(event.target.checked);
+          },
+        ),
 
-        new menu_checkbox('update_captcha_button_in_contests', `Кнопка "Обновление капчи"`)
-        .createElement(
+        new menu_checkbox(
+          "update_captcha_button_in_contests",
+          `Кнопка "Обновление капчи"`,
+        ).createElement(
           contestsData.updateCaptchaButton,
           async () => {
             (0,contests/* contestsUpdateCapctha */.g4)();
           },
           async () => {
-            document.querySelector('.LZTUpRefreshButton')?.remove();
+            document.querySelector(".LZTUpRefreshButton")?.remove();
           },
-          async (event) => {
+          async event => {
             contestsData.updateCaptchaButton = event.target.checked;
             await GM_setValue(StorageName/* default */.Z.Contests, contestsData);
-        }),
+          },
+        ),
 
-        new menu_checkbox('auto_fix_captcha_in_contests',
-        `Автофикс капчи
-          <span class="fa fa-question Tooltip" title="Автоматически обновляет капчу, если она не появилась"></span>
+        new menu_checkbox(
+          "auto_fix_captcha_in_contests",
+          `Автофикс капчи
+          <span class="far fa-info-circle Tooltip" title="Автоматически обновляет капчу, если она не появилась"></span>
           <span class="fa fa-exclamation-triangle Tooltip" title="При отключение этой функции страница будет перезагружена"></span>
-        `)
-        .createElement(
+          `,
+        ).createElement(
           contestsData.autoFixCaptcha,
           async () => {
-            (0,registers/* registerAlert */.de)('Включен Автофикс капчи', 5000);
+            (0,registers/* registerAlert */.de)("Включен Автофикс капчи", 5000);
             (0,contests/* contestsAutoFixCaptcha */.gu)();
           },
           async () => {
-            (0,registers/* registerAlert */.de)('Выключен Автофикс капчи', 5000);
+            (0,registers/* registerAlert */.de)("Выключен Автофикс капчи", 5000);
             await (0,utils/* sleep */._v)(500);
             window.location.reload();
           },
-          async (event) => {
+          async event => {
             contestsData.autoFixCaptcha = event.target.checked;
             await GM_setValue(StorageName/* default */.Z.Contests, contestsData);
-        }),
+          },
+        ),
 
-        new menu_checkbox('participate_by_key', `Участие по кнопке Tab`)
-        .createElement(
+        new menu_checkbox(
+          "participate_by_key",
+          `Участие по кнопке Tab`,
+        ).createElement(
           contestsData.participateByKey,
           () => {},
           () => {},
-          async (event) => {
-            (0,registers/* registerAlert */.de)(`Участие по кнопке ${event.target.checked ? 'включено' : 'выключено'}` , 5000);
+          async event => {
+            (0,registers/* registerAlert */.de)(
+              `Участие по кнопке ${
+                event.target.checked ? "включено" : "выключено"
+              }`,
+              5000,
+            );
             contestsData.participateByKey = event.target.checked;
             await GM_setValue(StorageName/* default */.Z.Contests, contestsData);
             (0,contests/* contestsParticipateByBtn */.sO)(event.target.checked);
-        }),
+          },
+        ),
       ],
-      'Полезные фишечки',
-      'Просто полезные фишечки для быстрого участия в розыгрышах'
-    ).createElement('display: block;'),
+      "Полезные фишечки",
+      "Просто полезные фишечки для быстрого участия в розыгрышах",
+    ).createElement("display: block;"),
   ];
-}
+};
 
 /* harmony default export */ const items_contests = (getContestsItems);
+
 // EXTERNAL MODULE: ./src/utils/users.js + 2 modules
 var users = __webpack_require__("./src/utils/users.js");
 ;// CONCATENATED MODULE: ./src/ui/menu/items/users.js
-
 
 
 
@@ -2607,8 +2373,10 @@ const getUsersItems = async () => {
   return [
     new container(
       [
-        new menu_checkbox('show_userid_in_profile', 'Показывать ID в профиле пользователя')
-        .createElement(
+        new menu_checkbox(
+          "show_userid_in_profile",
+          "Показывать ID в профиле пользователя",
+        ).createElement(
           usersData.showUserIdInProfile,
           () => {
             (0,users/* addUserIdToProfile */.Rj)();
@@ -2616,71 +2384,86 @@ const getUsersItems = async () => {
           () => {
             (0,users/* removeUserIdFromProfile */.UD)();
           },
-          async (event) => {
+          async event => {
             usersData.showUserIdInProfile = event.target.checked;
             await GM_setValue(StorageName/* default */.Z.Users, usersData);
-        }),
-        new menu_checkbox('show_userid_in_member_card',
+          },
+        ),
+        new menu_checkbox(
+          "show_userid_in_member_card",
           `Показывать ID в карточке пользователя
           <span class="fa fa-exclamation-triangle Tooltip" title="При включение/отключение этой функции страница будет перезагружена"></span>
-          `)
-        .createElement(
+          `,
+        ).createElement(
           usersData.showUserIdInMemberCard,
           () => {},
           () => {},
-          async (event) => {
+          async event => {
             usersData.showUserIdInMemberCard = event.target.checked;
             await GM_setValue(StorageName/* default */.Z.Users, usersData);
-            (0,registers/* registerAlert */.de)(`Показывать ID в карточке пользователя ${event.target.checked ? 'включено' : 'выключено'}` , 5000);
+            (0,registers/* registerAlert */.de)(
+              `Показывать ID в карточке пользователя ${
+                event.target.checked ? "включено" : "выключено"
+              }`,
+              5000,
+            );
             await (0,utils/* sleep */._v)(500);
             window.location.reload();
-        }),
-        new menu_checkbox('show_fullreg_in_profile', 'Показывать полную дату регистрации в профиле пользователя')
-        .createElement(
+          },
+        ),
+        new menu_checkbox(
+          "show_fullreg_in_profile",
+          "Показывать полную дату регистрации в профиле пользователя",
+        ).createElement(
           usersData.showFullRegInProfile,
           () => {},
           () => {},
-          async (event) => {
+          async event => {
             usersData.showFullRegInProfile = event.target.checked;
             await GM_setValue(StorageName/* default */.Z.Users, usersData);
             (0,users/* showFullRegDateInProfile */.M1)(event.target.checked);
-        }),
+          },
+        ),
       ],
-      'Доп. информация о пользователе',
-      'Включите отображение дополнительной информации о пользователе'
-    ).createElement('display:block;'),
+      "Доп. информация о пользователе",
+      "Включите отображение дополнительной информации о пользователе",
+    ).createElement("display:block;"),
     new container(
       [
-        new menu_checkbox('disable_share_typing',
+        new menu_checkbox(
+          "disable_share_typing",
           `Неписалка в темах
           <span class="fa fa-exclamation-triangle Tooltip" title="При включение/отключение этой функции страница будет перезагружена"></span>
-          `)
-        .createElement(
+          `,
+        ).createElement(
           usersData.disableShareTyping,
           () => {},
           () => {},
-          async (event) => {
+          async event => {
             usersData.disableShareTyping = event.target.checked;
             await GM_setValue(StorageName/* default */.Z.Users, usersData);
-            (0,registers/* registerAlert */.de)(`Неписалка в темах ${event.target.checked ? 'включена' : 'выключена'}` , 5000);
+            (0,registers/* registerAlert */.de)(
+              `Неписалка в темах ${
+                event.target.checked ? "включена" : "выключена"
+              }`,
+              5000,
+            );
             await (0,utils/* sleep */._v)(500);
             window.location.reload();
-        }),
+          },
+        ),
       ],
-      'Другое',
-      'Другие функции связанные с пользователями'
-    ).createElement('display:block;'),
-
+      "Другое",
+      "Другие функции связанные с пользователями",
+    ).createElement("display:block;"),
   ];
-}
+};
 
 /* harmony default export */ const items_users = (getUsersItems);
-// EXTERNAL MODULE: ./src/configs/config.js
-var config = __webpack_require__("./src/configs/config.js");
-// EXTERNAL MODULE: ./src/indexedDB/profile.js
-var profile = __webpack_require__("./src/indexedDB/profile.js");
-;// CONCATENATED MODULE: ./src/ui/components/menu/comment.js
 
+// EXTERNAL MODULE: ./src/configs/NewStorageName.js
+var NewStorageName = __webpack_require__("./src/configs/NewStorageName.js");
+;// CONCATENATED MODULE: ./src/ui/components/menu/comment.js
 
 
 class Comment {
@@ -2695,8 +2478,8 @@ class Comment {
   }
 
   createElement() {
-    const container = document.createElement('div');
-    container.id = 'LZTUpModalComment';
+    const container = document.createElement("div");
+    container.id = "LZTUpModalComment";
     container.innerHTML = this.content;
 
     return container;
@@ -2704,11 +2487,12 @@ class Comment {
 }
 
 /* harmony default export */ const comment = (Comment);
+
 // EXTERNAL MODULE: ./src/ui/avatarUserBadges.js + 1 modules
 var ui_avatarUserBadges = __webpack_require__("./src/ui/avatarUserBadges.js");
+// EXTERNAL MODULE: ./src/utils/gmWrapper.js
+var gmWrapper = __webpack_require__("./src/utils/gmWrapper.js");
 ;// CONCATENATED MODULE: ./src/ui/components/menu/previewProfile.js
-
-
 
 
 
@@ -2725,34 +2509,43 @@ class PreviewProfile {
    *  @param {object} data - data for show preview (ex. data from profileDB)
    */
 
-  constructor(userid, username, data, profileElId = null) {
+  constructor(userid, username, profileData, badgesData, profileElId = null) {
     this.userid = userid;
     this.username = username;
-    this.data = data;
-    this.profileElId = profileElId || 'LZTUpPreviewContainer';
-    this.badges = new ui_avatarUserBadges/* default */.Z(data.badgeIcons, true);
+    this.profileData = profileData;
+    this.badgesData = badgesData;
+    this.profileElId = profileElId || "LZTUpPreviewContainer";
+    this.badges = new ui_avatarUserBadges/* default */.Z(badgesData, true);
   }
 
   createElement() {
-    const previewContainer = document.createElement('div');
+    const previewContainer = document.createElement("div");
     previewContainer.id = this.profileElId;
-    previewContainer.classList.add('previewContainer');
+    previewContainer.classList.add("previewContainer");
 
     const avatarUserBadges = this.badges.createElement();
 
-    const avatarBox = document.createElement('div');
-    avatarBox.classList.add('avatarBox');
+    const avatarBox = document.createElement("div");
+    avatarBox.classList.add("avatarBox");
     avatarBox.appendChild(avatarUserBadges);
     avatarBox.innerHTML += `
-      <a href="members/${encodeURIComponent(this.userid)}/" class="avatar Av${XenForo.htmlspecialchars(this.userid)}m" data-avatarhtml="true">
-        <span class="img m" style="background-image: url(${(0,users/* getUserAvatar */.Dm)(this.userid)})"></span>
+      <a href="members/${encodeURIComponent(
+        this.userid,
+      )}/" class="avatar Av${XenForo.htmlspecialchars(
+        this.userid,
+      )}m" data-avatarhtml="true">
+        <span class="img m" style="background-image: url(${(0,users/* getUserAvatar */.Dm)(
+          this.userid,
+        )})"></span>
       </a>
     `;
 
-    const info = document.createElement('div');
-    info.classList.add('info');
+    const info = document.createElement("div");
+    info.classList.add("info");
     info.innerHTML = `
-      <span id="LZTUpUsernameStyle" class="UsernameStyle bold">${XenForo.htmlspecialchars(this.username)}</span>
+      <span id="LZTUpUsernameStyle" class="UsernameStyle bold">${XenForo.htmlspecialchars(
+        this.username,
+      )}</span>
       <div class="bannerOrStatus">
         <em id="LZTUpUserBannerStyle" class="UserBannerStyle userBanner"></em>
       </div>
@@ -2769,38 +2562,45 @@ class PreviewProfile {
       return;
     }
 
-    el.className = ''
-    el.style = '';
+    el.className = "";
+    el.style = "";
 
     return el;
   }
 
   async updateUsernameStyle(style) {
-    const usernameEl = this.clearStyle(`#${this.profileElId} #LZTUpUsernameStyle`);
+    const usernameEl = this.clearStyle(
+      `#${this.profileElId} #LZTUpUsernameStyle`,
+    );
     if (!usernameEl) {
       return;
     }
 
-    if (style === '') {
-      const userGroup = await GM_getValue(StorageName/* default */.Z.UserGroup, config/* default */.Z.defaultUserGroup); // current user group (newbie, resident, expert and etc)
+    if (!style) {
+      // current user group (newbie, resident, expert and etc)
+      const userGroup = await gmWrapper/* default */.Z.getValue(NewStorageName/* default */.Z.UserGroup);
       style = `.${userGroup}`;
     }
-    usernameEl.classList.add('UsernameStyle', 'bold');
+    usernameEl.classList.add("UsernameStyle", "bold");
     (0,utils/* applyStyle */.bg)(usernameEl, style);
   }
 
   updateBannerStyle(style) {
-    const userBannerEl = this.clearStyle(`#${this.profileElId} #LZTUpUserBannerStyle`);
+    const userBannerEl = this.clearStyle(
+      `#${this.profileElId} #LZTUpUserBannerStyle`,
+    );
     if (!userBannerEl) {
       return;
     }
 
-    userBannerEl.classList.add('UserBannerStyle', 'userBanner');
+    userBannerEl.classList.add("UserBannerStyle", "userBanner");
     (0,utils/* applyStyle */.bg)(userBannerEl, style);
   }
 
   updateBannerText(text) {
-    const userBannerEl = document.querySelector(`#${this.profileElId} #LZTUpUserBannerStyle`);
+    const userBannerEl = document.querySelector(
+      `#${this.profileElId} #LZTUpUserBannerStyle`,
+    );
     if (!userBannerEl) {
       return;
     }
@@ -2809,31 +2609,31 @@ class PreviewProfile {
   }
 
   updateBanner(data) {
-    const userBannerEl = this.clearStyle(`#${this.profileElId} #LZTUpUserBannerStyle`);
+    const userBannerEl = this.clearStyle(
+      `#${this.profileElId} #LZTUpUserBannerStyle`,
+    );
     if (!userBannerEl) {
-      logger/* default */.Z.error('Failed to get element by userBanner in PreviewProfile!');
+      logger/* default */.Z.error("Failed to get element by userBanner in PreviewProfile!");
       return;
     }
 
     if (!(data.bannerStyle && data.bannerText)) {
-      return userBannerEl.style.display = 'none';
+      return (userBannerEl.style.display = "none");
     }
 
-    userBannerEl.style.display = '';
+    userBannerEl.style.display = "";
     this.updateBannerStyle(data.bannerStyle);
     this.updateBannerText(data.bannerText);
   }
 
   updateBackground(imageUrl) {
     const previewContainer = document.querySelector(`#${this.profileElId}`);
-    console.log(`#${this.profileElId}`, previewContainer)
     if (!previewContainer) {
-      logger/* default */.Z.error('Failed to get previewContainer in PreviewProfile!');
+      logger/* default */.Z.error("Failed to get previewContainer in PreviewProfile!");
       return;
     }
 
-    if (imageUrl.length) {
-      console.log("add imageURL")
+    if (imageUrl?.length) {
       imageUrl = `linear-gradient(rgba(54, 54, 54, 0.85), rgba(54, 54, 54, 0.85)), url(${imageUrl})`;
     }
 
@@ -2845,15 +2645,16 @@ class PreviewProfile {
   }
 
   async updateAll() {
-    await this.updateUsernameStyle(this.data.usernameStyle);
-    this.updateBanner(this.data);
-    this.updateBackground(this.data.backgroundImage);
-    this.badges.badges = this.data.badgeIcons;
+    await this.updateUsernameStyle(this.profileData.usernameStyle);
+    this.updateBanner(this.profileData);
+    this.updateBackground(this.profileData.backgroundImage);
+    this.badges.badges = this.badgesData;
     this.updateBadges();
   }
 }
 
 /* harmony default export */ const menu_previewProfile = (PreviewProfile);
+
 ;// CONCATENATED MODULE: ./src/ui/components/menu/textArea.js
 class TextArea {
   /**
@@ -2865,7 +2666,7 @@ class TextArea {
    *  @param {number} maxLength - max length for the text area
    */
 
-  constructor(text = '', placeholder = '', minLength = 0, maxLength = 0) {
+  constructor(text = "", placeholder = "", minLength = 0, maxLength = 0) {
     this.text = text;
     this.placeholder = placeholder;
     this.minLength = minLength;
@@ -2873,13 +2674,12 @@ class TextArea {
   }
 
   createElement(callback) {
-    const textarea = document.createElement('textarea');
-    textarea.classList.add('LZTUpTextArea', 'textCtrl');
+    const textarea = document.createElement("textarea");
+    textarea.classList.add("LZTUpTextArea", "textCtrl");
     textarea.innerText = this.text;
     textarea.placeholder = this.placeholder;
     textarea.minLength = this.minLength;
-    if (this.maxLength > 0)
-      textarea.maxLength = this.maxLength;
+    if (this.maxLength > 0) textarea.maxLength = this.maxLength;
 
     textarea.onkeyup = callback;
     textarea.onchange = callback;
@@ -2888,6 +2688,7 @@ class TextArea {
 }
 
 /* harmony default export */ const textArea = (TextArea);
+
 ;// CONCATENATED MODULE: ./src/ui/components/menu/input.js
 class Input {
   /**
@@ -2899,7 +2700,7 @@ class Input {
    *  @param {number} maxLength - max length for the input
    */
 
-  constructor(text = '', placeholder = '', minLength = 0, maxLength = 0) {
+  constructor(text = "", placeholder = "", minLength = 0, maxLength = 0) {
     this.text = text;
     this.placeholder = placeholder;
     this.minLength = minLength;
@@ -2907,13 +2708,12 @@ class Input {
   }
 
   createElement(callback) {
-    const input = document.createElement('input');
-    input.classList.add('textCtrl');
+    const input = document.createElement("input");
+    input.classList.add("textCtrl");
     input.value = this.text;
     input.placeholder = this.placeholder;
     input.minLength = this.minLength;
-    if (this.maxLength > 0)
-      input.maxLength = this.maxLength;
+    if (this.maxLength > 0) input.maxLength = this.maxLength;
 
     input.onkeyup = callback;
     input.onchange = callback;
@@ -2922,10 +2722,10 @@ class Input {
 }
 
 /* harmony default export */ const input = (Input);
+
 // EXTERNAL MODULE: ./src/ui/components/button.js
 var components_button = __webpack_require__("./src/ui/components/button.js");
 ;// CONCATENATED MODULE: ./src/ui/components/menu/colorPicker.js
-
 
 
 class ColorPicker {
@@ -2936,25 +2736,25 @@ class ColorPicker {
    *  @param {string} value - value of the color picker
    */
 
-  constructor(id, value, description = '') {
-    this.id = id
+  constructor(id, value, description = "") {
+    this.id = id;
     this.value = value;
     this.description = description;
   }
 
   createElement(callback) {
-    const wrap = document.createElement('div');
-    wrap.classList.add('LZTUpColorPickerWrap');
+    const wrap = document.createElement("div");
+    wrap.classList.add("LZTUpColorPickerWrap");
 
-    const input = document.createElement('input');
+    const input = document.createElement("input");
     input.id = this.id;
-    input.classList.add('LZTUpColorPicker');
+    input.classList.add("LZTUpColorPicker");
     input.value = this.value;
-    input.type = 'text';
-    input.dataset.coloris = '';
+    input.type = "text";
+    input.dataset.coloris = "";
     input.oninput = callback;
 
-    if (this.description !== '') {
+    if (this.description !== "") {
       const description = new menu_description(this.description).createElement();
       wrap.appendChild(description);
     }
@@ -2965,6 +2765,7 @@ class ColorPicker {
 }
 
 /* harmony default export */ const colorPicker = (ColorPicker);
+
 ;// CONCATENATED MODULE: ./src/ui/components/menu/separator.js
 class Separator {
   /**
@@ -2973,14 +2774,14 @@ class Separator {
    *  @param {string} customStyle - custom style for border-bottom
    */
 
-  constructor(customStyle = '') {
+  constructor(customStyle = "") {
     this.customStyle = customStyle;
   }
 
   createElement() {
-    const sepator = document.createElement('div');
-    sepator.classList.add('LZTUpModalSeparator')
-    if (this.customStyle !== '') {
+    const sepator = document.createElement("div");
+    sepator.classList.add("LZTUpModalSeparator");
+    if (this.customStyle !== "") {
       sepator.style.borderBottom = this.customStyle;
     }
     return sepator;
@@ -2988,6 +2789,7 @@ class Separator {
 }
 
 /* harmony default export */ const separator = (Separator);
+
 ;// CONCATENATED MODULE: ./src/ui/components/menu/sortableContainer.js
 class SortableContainer {
   /**
@@ -3000,27 +2802,27 @@ class SortableContainer {
     this.elements = elements;
   }
 
-  createElement(onMoveCallback = (e) => {}) {
-    const sortableContainer = document.createElement('div');
-    sortableContainer.classList.add('LZTUpSortableContainer');
+  createElement(onMoveCallback = () => {}) {
+    const sortableContainer = document.createElement("div");
+    sortableContainer.classList.add("LZTUpSortableContainer");
 
     for (const element of this.elements) {
       sortableContainer.appendChild(element);
     }
 
     Sortable.create(sortableContainer, {
-      handle: '.LZTUpSortableDraggable',
+      handle: ".LZTUpSortableDraggable",
       animation: 150,
-      onMove: onMoveCallback
-    })
+      onMove: onMoveCallback,
+    });
 
     return sortableContainer;
   }
 }
 
 /* harmony default export */ const sortableContainer = (SortableContainer);
-;// CONCATENATED MODULE: ./src/ui/components/menu/sortableItem.js
 
+;// CONCATENATED MODULE: ./src/ui/components/menu/sortableItem.js
 
 
 class SortableItem {
@@ -3036,51 +2838,48 @@ class SortableItem {
     this.dataId = dataId;
   }
 
-  createElement(
-    onClickEdit = () => {},
-    onClickRemove = () => {}
-  ) {
-    const sortableItem = document.createElement('div');
-    sortableItem.classList.add('LZTUpSortableItem');
+  createElement(onClickEdit = () => {}, onClickRemove = () => {}) {
+    const sortableItem = document.createElement("div");
+    sortableItem.classList.add("LZTUpSortableItem");
     if (this.dataId) {
       sortableItem.dataset.id = this.dataId;
     }
 
-    const draggableZone = document.createElement('div');
-    draggableZone.classList.add('LZTUpSortableDraggable');
-    const icon = new components_icon/* default */.Z('far fa-grip-vertical', '').createElement();
+    const draggableZone = document.createElement("div");
+    draggableZone.classList.add("LZTUpSortableDraggable");
+    const icon = new components_icon/* default */.Z("far fa-grip-vertical", "").createElement();
     draggableZone.appendChild(icon);
 
-    const contentContainer = document.createElement('div');
-    contentContainer.classList.add('LZTUpSortableContent');
+    const contentContainer = document.createElement("div");
+    contentContainer.classList.add("LZTUpSortableContent");
 
-    const containerDesc = document.createElement('p');
+    const containerDesc = document.createElement("p");
     containerDesc.innerText = this.content;
     contentContainer.append(containerDesc);
 
-    const utilityContainer = document.createElement('div');
-    utilityContainer.classList.add('LZTUpSortableUtility');
+    const utilityContainer = document.createElement("div");
+    utilityContainer.classList.add("LZTUpSortableUtility");
 
-    const editButton = document.createElement('div');
-    editButton.classList.add('LZTUpSortableEditButton');
-    const editIcon = new components_icon/* default */.Z('far fa-edit', '').createElement();
+    const editButton = document.createElement("div");
+    editButton.classList.add("LZTUpSortableEditButton");
+    const editIcon = new components_icon/* default */.Z("far fa-edit", "").createElement();
     editButton.appendChild(editIcon);
-    editButton.onclick = async (e) => {
-      console.log('Edit button clicked');
+    editButton.onclick = async e => {
+      console.log("Edit button clicked");
       await onClickEdit(e, sortableItem);
-    }
+    };
 
-    const removeButton = document.createElement('div');
-    removeButton.classList.add('LZTUpSortableRemoveButton');
-    const removeIcon = new components_icon/* default */.Z('far fa-trash', '').createElement();
+    const removeButton = document.createElement("div");
+    removeButton.classList.add("LZTUpSortableRemoveButton");
+    const removeIcon = new components_icon/* default */.Z("far fa-trash", "").createElement();
     removeButton.appendChild(removeIcon);
-    removeButton.onclick = async (e) => {
-      const result = confirm('Вы точно хотите удалить иконку?')
+    removeButton.onclick = async e => {
+      const result = confirm("Вы точно хотите удалить иконку?");
       if (result) {
         sortableItem.remove();
         await onClickRemove(e, sortableItem);
       }
-    }
+    };
 
     utilityContainer.appendChild(editButton);
     utilityContainer.appendChild(removeButton);
@@ -3093,36 +2892,60 @@ class SortableItem {
 }
 
 /* harmony default export */ const sortableItem = (SortableItem);
-// EXTERNAL MODULE: ./src/configs/extData.js
-var extData = __webpack_require__("./src/configs/extData.js");
+
+// EXTERNAL MODULE: ./src/configs/base.js
+var base = __webpack_require__("./src/configs/base.js");
+;// CONCATENATED MODULE: ./src/configs/MenuElement.js
+
+
+class MenuElement extends base/* BaseSelectorEnum */.n {
+  static TempSubMenu = new MenuElement("#LZTUpTempSubMenu");
+}
+
+// EXTERNAL MODULE: ./src/configs/config.js
+var config = __webpack_require__("./src/configs/config.js");
 ;// CONCATENATED MODULE: ./src/ui/menu/utils.js
 
 
 
 
-
 function setMenuTitle(title) {
-  const modalOverlay = document.querySelector('.xenOverlay > .errorOverlay#LZTUpModalOverlay')
-  const modalTitle = modalOverlay.querySelector('h2.heading');
-  modalTitle.id = 'LZTUpModalMainTitle';
+  const modalOverlay = document.querySelector(
+    ".xenOverlay > .errorOverlay#LZTUpModalOverlay",
+  );
+  const modalTitle = modalOverlay.querySelector("h2.heading");
+  modalTitle.id = "LZTUpModalMainTitle";
   modalTitle.innerText = title;
 }
 
 function createGoBackBtn(callback) {
-  const modalOverlay = document.querySelector('.xenOverlay > .errorOverlay#LZTUpModalOverlay');
+  const modalOverlay = document.querySelector(
+    ".xenOverlay > .errorOverlay#LZTUpModalOverlay",
+  );
 
-  const backButton = new components_button/* default */.Z('', 'LZTUpModalBackButton', 'fas fa-long-arrow-left').createElement();
+  const backButton = new components_button/* default */.Z(
+    "",
+    "LZTUpModalBackButton",
+    "fas fa-long-arrow-left",
+  ).createElement();
 
   backButton.onclick = () => {
-    document.querySelectorAll('div.LZTUpSubMenu').forEach(submenu => submenu.style.display = 'none');
+    document
+      .querySelectorAll("div.LZTUpSubMenu")
+      .forEach(submenu => (submenu.style.display = "none"));
     callback();
-  }
+  };
 
-  modalOverlay.insertAdjacentElement('afterbegin', backButton);
+  modalOverlay.insertAdjacentElement("afterbegin", backButton);
 }
 
-function addGoBackBtn(target = '', text = config/* default */.Z.extName, subMenuToShow = null, onCloseCallback = () => {}) {
-  const backButtonSelector = 'button.LZTUpModalBackButton';
+function addGoBackBtn(
+  target = "",
+  text = config/* default */.Z.extName,
+  subMenuToShow = null,
+  onCloseCallback = () => {},
+) {
+  const backButtonSelector = "button.LZTUpModalBackButton";
 
   if (document.querySelector(backButtonSelector) !== null) {
     document.querySelector(backButtonSelector).remove();
@@ -3132,94 +2955,103 @@ function addGoBackBtn(target = '', text = config/* default */.Z.extName, subMenu
     document.querySelector(backButtonSelector).remove();
     setMenuTitle(text);
     switch (target) {
-      case 'tempmenu':
-        document.querySelector(extData/* default */.Z.uiElementsSelectors.lztupTempSubMenu).style.display = 'none';
-        subMenuToShow.style.display = '';
+      case "tempmenu":
+        document.querySelector(MenuElement.TempSubMenu.selector).style.display =
+          "none";
+        subMenuToShow.style.display = "";
         addGoBackBtn();
         onCloseCallback();
         break;
-      default:
-        document.querySelector('.LZTUpModalContent > .LZTUpSection').style.display = '';
-        const tabs = document.querySelector('.LZTUpTabs');
-        tabs.style.display = '';
+      default: {
+        document.querySelector(
+          ".LZTUpModalContent > .LZTUpSection",
+        ).style.display = "";
+        const tabs = document.querySelector(".LZTUpTabs");
+        tabs.style.display = "";
 
-        const tab = tabs.querySelectorAll('#LZTUpTab');
-        tab.forEach(element => element.classList.remove('active'));
-        tab[0].classList.add('active');
-        onCloseCallback()
+        const tab = tabs.querySelectorAll("#LZTUpTab");
+        tab.forEach(element => element.classList.remove("active"));
+        tab[0].classList.add("active");
+        onCloseCallback();
+      }
     }
   });
 }
 
 function openSubMenu(containerId, sectionName) {
-  document.querySelector('.LZTUpTabs').style.display = 'none';
+  document.querySelector(".LZTUpTabs").style.display = "none";
 
-  const subMenus = document.querySelectorAll('.LZTUpSubMenu');
-  subMenus.forEach(subMenu => subMenu.style.display = 'none');
+  const subMenus = document.querySelectorAll(".LZTUpSubMenu");
+  subMenus.forEach(subMenu => (subMenu.style.display = "none"));
 
-  const sections = document.querySelectorAll('.LZTUpModalContent > .LZTUpSection');
-  sections.forEach(section => section.style.display = 'none');
+  const sections = document.querySelectorAll(
+    ".LZTUpModalContent > .LZTUpSection",
+  );
+  sections.forEach(section => (section.style.display = "none"));
 
-  document.getElementById(containerId).style.display = '';
+  document.getElementById(containerId).style.display = "";
   setMenuTitle(sectionName);
   return addGoBackBtn();
 }
+
 
 
 ;// CONCATENATED MODULE: ./src/ui/menu/temporarySection.js
 
 
 
-const tempSubMenuId = extData/* default */.Z.uiElementsId.lztupTempSubMenu;
-const tempSubMenuSelector = extData/* default */.Z.uiElementsSelectors.lztupTempSubMenu;
-
-
-function openTempMenu(sectionName, fromSectionName, subMenuToShow, onCloseCallback) {
-  const subMenus = document.querySelectorAll('.LZTUpSubMenu');
-  subMenus.forEach(subMenu => subMenu.style.display = 'none');
-  document.querySelector(tempSubMenuSelector).style.display = '';
+function openTempMenu(
+  sectionName,
+  fromSectionName,
+  subMenuToShow,
+  onCloseCallback,
+) {
+  const subMenus = document.querySelectorAll(".LZTUpSubMenu");
+  subMenus.forEach(subMenu => (subMenu.style.display = "none"));
+  document.querySelector(MenuElement.TempSubMenu.selector).style.display = "";
   setMenuTitle(sectionName);
-  addGoBackBtn('tempmenu', fromSectionName, subMenuToShow, onCloseCallback);
+  addGoBackBtn("tempmenu", fromSectionName, subMenuToShow, onCloseCallback);
 }
 
 function addTemporaryMenuSection(items) {
-  const oldTempMenu = document.querySelector(tempSubMenuSelector);
+  const oldTempMenu = document.querySelector(MenuElement.TempSubMenu.selector);
   if (oldTempMenu) {
     oldTempMenu.remove();
   }
 
-  const container = document.createElement('div');
-  container.id = tempSubMenuId;
-  container.classList.add('LZTUpSubMenu');
+  const container = document.createElement("div");
+  container.id = MenuElement.TempSubMenu.getName();
+  container.classList.add("LZTUpSubMenu");
 
   for (const item of items) {
     container.appendChild(item);
   }
 
-  container.style.display = 'none';
+  container.style.display = "none";
 
   return container;
 }
 
 
+
 ;// CONCATENATED MODULE: ./src/utils/colorPicker.js
 // https://github.com/lzt-upgrade/coloris-lzt-theme/blob/47e2a9ebabfc7172bf188cbc06eba73c88b46b09/src/coloris.js#L14
 const colorPickerOptions = {
-  theme: 'lzt', // theme
-  themeMode: 'dark', // theme mode
+  theme: "lzt", // theme
+  themeMode: "dark", // theme mode
   formatToggle: true, // change the format (RGB, HEX, HSV)
   closeButton: true, // button to close color picker
   clearButton: true, // button to clear color picker
   alpha: true, // alpha channel
-  swatches: [] // colors for select
-}
+  swatches: [], // colors for select
+};
 
 // use .xenOverlay for modals
-function initColorPickers(parent = '.xenOverlay') {
-  const colorPickers = document.querySelectorAll('.LZTUpColorPicker');
+function initColorPickers(parent = ".xenOverlay") {
+  const colorPickers = document.querySelectorAll(".LZTUpColorPicker");
   for (const colorPicker of colorPickers) {
     // fix for reopen modal
-    if (!document.querySelector('.clr-picker')) {
+    if (!document.querySelector(".clr-picker")) {
       try {
         // ! read coloris-lzt-theme init description
         Coloris.init(parent);
@@ -3228,7 +3060,12 @@ function initColorPickers(parent = '.xenOverlay') {
       }
     }
     try {
-      Coloris(Object.assign(colorPickerOptions, { el: `#${colorPicker.id}`, parent: parent }));
+      Coloris(
+        Object.assign(colorPickerOptions, {
+          el: `#${colorPicker.id}`,
+          parent: parent,
+        }),
+      );
     } catch (e) {
       console.error(e);
     }
@@ -3236,12 +3073,13 @@ function initColorPickers(parent = '.xenOverlay') {
 }
 
 
+
 // EXTERNAL MODULE: ./src/visuals/users.js + 1 modules
 var visuals_users = __webpack_require__("./src/visuals/users.js");
 // EXTERNAL MODULE: ./src/visuals/universal.js
 var universal = __webpack_require__("./src/visuals/universal.js");
 // EXTERNAL MODULE: ./src/visuals/profile.js
-var visuals_profile = __webpack_require__("./src/visuals/profile.js");
+var profile = __webpack_require__("./src/visuals/profile.js");
 ;// CONCATENATED MODULE: ./src/ui/menu/items/profile.js
 
 
@@ -3268,173 +3106,212 @@ var visuals_profile = __webpack_require__("./src/visuals/profile.js");
 
 
 
-
-
-const profileDB = new profile/* LZTProfileDB */.M();
+const MAX_ICONS_COUNT = 2;
 
 async function sortableItemOnEditCallback(e, sortableItem, previewProfile) {
   const badgeId = Number(sortableItem.dataset.id);
-  const modalContent = document.querySelector('.LZTUpModalContent');
-  const uniqSubMenu = document.querySelector('#LZTUpUniqContainer');
-  const profileData = await profileDB.read();
-  const thisBadgeArray = profileData.badgeIcons.filter(icon => icon.position === badgeId);
+  const modalContent = document.querySelector(".LZTUpModalContent");
+  const uniqSubMenu = document.querySelector("#LZTUpUniqContainer");
+  const profileData = await gmWrapper/* default */.Z.getValue(NewStorageName/* default */.Z.Profile);
+  const badgesData = await gmWrapper/* default */.Z.getValue(NewStorageName/* default */.Z.ProfileBadges);
+  const thisBadgeArray = badgesData.filter(icon => icon.position === badgeId);
   let badgeData = thisBadgeArray[0];
-  console.log(badgeId, '==>', profileData.badgeIcons, '==>', thisBadgeArray, '==>', badgeData); // TODO: delete after tests
 
-  const tempPreviewProfile = createPreviewProfile(profileData, 'LZTUpTempPreviewContainer');
+  const tempPreviewProfile = createPreviewProfile(
+    profileData,
+    badgesData,
+    "LZTUpTempPreviewContainer",
+  );
 
   async function updateBadgesData(badgeData) {
     // badgeData its current badge (which we are editing)
-    const profData = await profileDB.read();
-    // const badges = profData.badgeIcons.filter(icon => icon.position !== badgeId);
-    // badges.push(badgeData);
-    let badges = profData.badgeIcons;
-    const currentBadge = badges.find(badge => badge.position === badgeId);
-    const currentBadgeId = badges.indexOf(currentBadge)
-    badges[currentBadgeId] = badgeData;
-    return badges;
+    const actualBadgeData = await gmWrapper/* default */.Z.getValue(NewStorageName/* default */.Z.ProfileBadges);
+    const currentBadge = actualBadgeData.find(
+      badge => badge.position === badgeId,
+    );
+    const currentBadgeId = actualBadgeData.indexOf(currentBadge);
+    actualBadgeData[currentBadgeId] = badgeData;
+    return actualBadgeData;
   }
 
-  const el = addTemporaryMenuSection(
-    [
-      tempPreviewProfile.createElement(),
+  const el = addTemporaryMenuSection([
+    tempPreviewProfile.createElement(),
 
-      new container(
-        [
-          new textArea(badgeData.svg, '<svg>...</svg>', 0, 3000)
-          .createElement(
-            async (event) => {
-              let val = (0,purify/* clearSVG */.bw)(event.target.value.trim());
+    new container(
+      [
+        new textArea(badgeData.svg, "<svg>...</svg>", 0, 3000).createElement(
+          async event => {
+            let val = (0,purify/* clearSVG */.bw)(event.target.value.trim());
 
-              if (val.length > 3000) {
-                return (0,registers/* registerAlert */.de)('Максимальная длина иконки 3000 символов. Уменьшите введенный текст для сохранения.')
-              }
-
-              badgeData.svg = val;
-              tempPreviewProfile.badges.badges = await updateBadgesData(badgeData);
-              tempPreviewProfile.updateBadges();
+            if (val.length > 3000) {
+              return (0,registers/* registerAlert */.de)(
+                "Максимальная длина иконки 3000 символов. Уменьшите введенный текст для сохранения.",
+              );
             }
-          ),
-        ],
-        'Иконка на аватарке',
-        'Максимум 3000 символов.',
-      ).createElement(),
 
-      new container(
-        [
-          new textArea(badgeData.style, 'background: #fff', 0, 1500)
-          .createElement(
-            async (event) => {
-              let val = (0,purify/* clearCSS */.zB)(event.target.value.trim());
+            badgeData.svg = val;
+            tempPreviewProfile.badges.badges =
+              await updateBadgesData(badgeData);
+            tempPreviewProfile.updateBadges();
+          },
+        ),
+      ],
+      "Иконка на аватарке",
+      "Максимум 3000 символов.",
+    ).createElement(),
 
-              if (val.length > 1500) {
-                return (0,registers/* registerAlert */.de)('Максимальная длина стиля иконки 1500 символов. Уменьшите введенный текст для сохранения.')
-              }
+    new container(
+      [
+        new textArea(
+          badgeData.style,
+          "background: #fff",
+          0,
+          1500,
+        ).createElement(async event => {
+          let val = (0,purify/* clearCSS */.zB)(event.target.value.trim());
 
-              if (val.length > 1 && val.startsWith('.')) {
-                event.target.value = val.replace(/\s/g, '');
-                val = event.target.value;
-              }
+          if (val.length > 1500) {
+            return (0,registers/* registerAlert */.de)(
+              "Максимальная длина стиля иконки 1500 символов. Уменьшите введенный текст для сохранения.",
+            );
+          }
 
-              badgeData.style = val;
-              tempPreviewProfile.badges.badges = await updateBadgesData(badgeData);
-              tempPreviewProfile.updateBadges();
-            }
-          ),
-        ],
-        'Стиль иконки',
-        'Максимум 1500 символов.',
-      ).createElement(),
+          if (val.length > 1 && val.startsWith(".")) {
+            event.target.value = val.replace(/\s/g, "");
+            val = event.target.value;
+          }
 
-      new container(
-        [
-          new input(badgeData.text, 'Идут два сталкера', 0, 24)
-          .createElement(
-            async (event) => {
-              let val = event.target.value;
-
-              if (val.length > 24) {
-                return (0,registers/* registerAlert */.de)('Максимальная длина текста в лычке 24 символа. Уменьшите введенный текст для сохранения.')
-              }
-
-              badgeData.text = val;
-              tempPreviewProfile.badges.badges = await updateBadgesData(badgeData);
-              tempPreviewProfile.updateBadges();
-            }
-          ),
-        ],
-        'Текст при наведение на иконку',
-        'Максимум 24 символа.',
-      ).createElement(),
-
-      new container(
-        [
-          new colorPicker('LZTUpColorPickerFill', badgeData.fillColor, 'Цвет иконки (fill):')
-          .createElement(
-            async (event) => {
-              let val = event.target.value;
-
-              badgeData.fillColor = val;
-              tempPreviewProfile.badges.badges = await updateBadgesData(badgeData);
-              tempPreviewProfile.updateBadges();
-            }
-          ),
-          new colorPicker('LZTUpColorPickerStroke', badgeData.strokeColor, 'Цвет иконки (stroke):')
-          .createElement(
-            async (event) => {
-              let val = event.target.value;
-
-              badgeData.strokeColor = val;
-              tempPreviewProfile.badges.badges = await updateBadgesData(badgeData);
-              tempPreviewProfile.updateBadges();
-            }
-          ),
-        ],
-        'Изменение цвета иконки'
-      ).createElement(),
-
-      new container([
-        new components_button/* default */.Z('Сохранить', 'button primary LZTUpIconButton fit', 'far fa-save').createElement(async () => {
-          (0,registers/* registerAlert */.de)('Иконка успешно сохранена.')
-          const badges = await updateBadgesData(badgeData);
-          await profileDB.update({ badgeIcons: badges });
-          (0,visuals_users/* updateUserBadges */.Az)(badges);
-          tempPreviewProfile.badges.badges = badges;
+          badgeData.style = val;
+          tempPreviewProfile.badges.badges = await updateBadgesData(badgeData);
           tempPreviewProfile.updateBadges();
         }),
-      ]).createElement()
-    ]
-  )
+      ],
+      "Стиль иконки",
+      "Максимум 1500 символов.",
+    ).createElement(),
+
+    new container(
+      [
+        new input(badgeData.text, "Идут два сталкера", 0, 24).createElement(
+          async event => {
+            let val = event.target.value;
+
+            if (val.length > 24) {
+              return (0,registers/* registerAlert */.de)(
+                "Максимальная длина текста в лычке 24 символа. Уменьшите введенный текст для сохранения.",
+              );
+            }
+
+            badgeData.text = val;
+            tempPreviewProfile.badges.badges =
+              await updateBadgesData(badgeData);
+            tempPreviewProfile.updateBadges();
+          },
+        ),
+      ],
+      "Текст при наведение на иконку",
+      "Максимум 24 символа.",
+    ).createElement(),
+
+    new container(
+      [
+        new colorPicker(
+          "LZTUpColorPickerFill",
+          badgeData.fillColor,
+          "Цвет иконки (fill):",
+        ).createElement(async event => {
+          let val = event.target.value;
+
+          badgeData.fillColor = val;
+          tempPreviewProfile.badges.badges = await updateBadgesData(badgeData);
+          tempPreviewProfile.updateBadges();
+        }),
+        new colorPicker(
+          "LZTUpColorPickerStroke",
+          badgeData.strokeColor,
+          "Цвет иконки (stroke):",
+        ).createElement(async event => {
+          let val = event.target.value;
+
+          badgeData.strokeColor = val;
+          tempPreviewProfile.badges.badges = await updateBadgesData(badgeData);
+          tempPreviewProfile.updateBadges();
+        }),
+      ],
+      "Изменение цвета иконки",
+    ).createElement(),
+
+    new container([
+      new components_button/* default */.Z(
+        "Сохранить",
+        "button primary LZTUpIconButton fit",
+        "far fa-save",
+      ).createElement(async () => {
+        const badges = await updateBadgesData(badgeData);
+        await gmWrapper/* default */.Z.setValue(NewStorageName/* default */.Z.ProfileBadges, badges);
+        (0,visuals_users/* updateUserBadges */.Az)(badges);
+        tempPreviewProfile.badges.badges = badges;
+        tempPreviewProfile.updateBadges();
+        (0,registers/* registerAlert */.de)("Иконка успешно сохранена.");
+      }),
+    ]).createElement(),
+  ]);
 
   modalContent.appendChild(el);
   initColorPickers();
-  openTempMenu('Управление иконкой', 'Локальный Уник', uniqSubMenu, async () => {
-    const sortable = document.querySelectorAll('.LZTUpSortableContainer > .LZTUpSortableItem');
-    const profileData = await profileDB.read();
-    for (let i = 0; i < profileData.badgeIcons.length; i++) {
-      const content = sortable[i].querySelector('.LZTUpSortableContent');
-      content.innerHTML = (0,purify/* clearHTML */.G6)(profileData.badgeIcons[i].text);
-    }
+  openTempMenu(
+    "Управление иконкой",
+    "Локальный Уник",
+    uniqSubMenu,
+    async () => {
+      const sortable = uniqSubMenu.querySelectorAll(
+        ".LZTUpSortableContainer > .LZTUpSortableItem",
+      );
 
-    previewProfile.badges.badges = profileData.badgeIcons;
-    previewProfile.updateBadges();
-  });
+      const actualBadgesData = await gmWrapper/* default */.Z.getValue(
+        NewStorageName/* default */.Z.ProfileBadges,
+      );
+
+      for (let i = 0; i < actualBadgesData.length; i++) {
+        const content = sortable[i].querySelector(".LZTUpSortableContent");
+        content.innerHTML = (0,purify/* clearHTML */.G6)(actualBadgesData[i].text);
+      }
+
+      previewProfile.badges.badges = actualBadgesData;
+      previewProfile.updateBadges();
+    },
+  );
   await tempPreviewProfile.updateAll(profileData); // update temp preview profile menu after init
 }
 
-function createPreviewProfile(profileData, profileElId = null) {
-  const userid = (0,users/* getUserId */.n5)('me');
-  const username = (0,users/* getUsername */.Ms)('me');
-  return new menu_previewProfile(userid, username, profileData, profileElId);
+function createPreviewProfile(profileData, badgesData, profileElId = null) {
+  const userid = (0,users/* getUserId */.n5)("me");
+  const username = (0,users/* getUsername */.Ms)("me");
+  return new menu_previewProfile(
+    userid,
+    username,
+    profileData,
+    badgesData,
+    profileElId,
+  );
 }
 
 const getProfileItems = async () => {
-  function generateBadgeItems(previewProfile, profileData) {
-    console.log('Generating badge items')
+  function generateBadgeItems(previewProfile, profileBadgesData) {
+    console.log("Generating badge items");
     const items = [];
-    for (const badge of profileData.badgeIcons.sort((a, b) => a.position - b.position)) {
-      console.log(badge.text, badge.position)
-      items.push(new sortableItem(badge.text, badge.position).createElement((e, sortableItem) => sortableItemOnEditCallback(e, sortableItem, previewProfile), sortableItemOnRemoveCallback));
+
+    for (const badge of profileBadgesData.sort(
+      (a, b) => a.position - b.position,
+    )) {
+      console.log(badge.text, badge.position);
+      items.push(
+        new sortableItem(badge.text, badge.position).createElement(
+          (e, sortableItem) =>
+            sortableItemOnEditCallback(e, sortableItem, previewProfile),
+          sortableItemOnRemoveCallback,
+        ),
+      );
     }
 
     console.log(items);
@@ -3442,41 +3319,54 @@ const getProfileItems = async () => {
     return items;
   }
 
-  async function reloadUserBadges(updatedProfileData, profileElId = 'LZTUpPreviewContainer') {
-    const avatarUserBadgesParent = document.querySelector(`#${profileElId} > .avatarBox > .avatarUserBadges`);
+  async function reloadUserBadges(
+    updatedProfileData,
+    updatedBadgesData,
+    profileElId = "LZTUpPreviewContainer",
+  ) {
+    // TODO: replace with profileBadgesData
+    const avatarUserBadgesParent = document.querySelector(
+      `#${profileElId} > .avatarBox > .avatarUserBadges`,
+    );
     if (avatarUserBadgesParent) {
       for (const userBadge of avatarUserBadgesParent.children) {
         userBadge.remove();
       }
 
-      const avatarUserBadges = new ui_avatarUserBadges/* default */.Z(updatedProfileData.badgeIcons, true).createElement();
+      const avatarUserBadges = new ui_avatarUserBadges/* default */.Z(
+        updatedBadgesData,
+        true,
+      ).createElement();
       avatarUserBadgesParent.innerHTML = avatarUserBadges.innerHTML;
 
       previewProfile.data = updatedProfileData;
+      previewProfile.badgesData = updatedBadgesData;
       await previewProfile.updateAll();
     }
   }
 
   async function sortableItemOnRemoveCallback(e, sortableItemEl) {
-    const profileData = await profileDB.read();
-    let badgeIcons = profileData.badgeIcons;
+    const uniqSubMenu = document.querySelector("#LZTUpUniqContainer");
+    let badgeIcons = await gmWrapper/* default */.Z.getValue(NewStorageName/* default */.Z.ProfileBadges);
     let newBadgeIcons = [];
 
-    const badgeEl = document.querySelector(`#LZTUpPreviewBadge[data-position="${sortableItemEl.dataset.id}"]`)
+    const badgeEl = document.querySelector(
+      `#LZTUpPreviewBadge[data-position="${sortableItemEl.dataset.id}"]`,
+    );
     if (badgeEl) {
       badgeEl.remove();
     }
 
-    const remainBadgeEl = document.querySelector('#LZTUpPreviewBadge')
+    const remainBadgeEl = document.querySelector("#LZTUpPreviewBadge");
     if (remainBadgeEl) {
       remainBadgeEl.dataset.position = 1;
       remainBadgeEl.dataset.multiple = "false";
-      if (remainBadgeEl?.classList.contains('avatarUserBadge--1')) {
-        remainBadgeEl.classList.remove('avatarUserBadge--1');
+      if (remainBadgeEl?.classList.contains("avatarUserBadge--1")) {
+        remainBadgeEl.classList.remove("avatarUserBadge--1");
       }
 
-      if (remainBadgeEl?.classList.contains('avatarUserBadge--2')) {
-        remainBadgeEl.classList.remove('avatarUserBadge--2');
+      if (remainBadgeEl?.classList.contains("avatarUserBadge--2")) {
+        remainBadgeEl.classList.remove("avatarUserBadge--2");
       }
     }
 
@@ -3486,223 +3376,269 @@ const getProfileItems = async () => {
       }
 
       // if removed 1st badge set 2nd badge to 1st position
-      const item = document.querySelector('.LZTUpSortableContainer > .LZTUpSortableItem');
+      const item = uniqSubMenu.querySelector(
+        ".LZTUpSortableContainer > .LZTUpSortableItem",
+      );
       if (item) {
         item.dataset.id = 1;
       }
 
       badge.position = 1;
-      newBadgeIcons.push(badge)
+      newBadgeIcons.push(badge);
     }
 
-    await profileDB.update({ badgeIcons: newBadgeIcons });
-    previewProfile.data = profileData;
+    await gmWrapper/* default */.Z.setValue(NewStorageName/* default */.Z.ProfileBadges, newBadgeIcons);
+    previewProfile.badgesData = newBadgeIcons;
     await previewProfile.updateAll();
     (0,visuals_users/* updateUserBadges */.Az)(newBadgeIcons);
   }
 
-  const profileData = await profileDB.read();
-  const userGroup = await GM_getValue(StorageName/* default */.Z.UserGroup, config/* default */.Z.defaultUserGroup);
+  const profileData = await gmWrapper/* default */.Z.getValue(NewStorageName/* default */.Z.Profile);
+  console.log("TEST 123", profileData);
+  const badgesData = await gmWrapper/* default */.Z.getValue(NewStorageName/* default */.Z.ProfileBadges);
+  const userGroup = await gmWrapper/* default */.Z.getValue(NewStorageName/* default */.Z.UserGroup);
   const currentDomain = window.location.hostname;
 
-  const previewProfile = createPreviewProfile(profileData);
+  const previewProfile = createPreviewProfile(profileData, badgesData);
 
   return [
     new comment(`На этой вкладке вы можете выбрать стиль вашего ника и лычки. Этот стиль виден только вам.
-      Чтобы уник был виден всем, рекомендуем <a href="https://${currentDomain}/account/upgrades?upgrade_id=14" target="_blank">купить</a> настоящий уник.`)
-      .createElement(),
+      Чтобы уник был виден всем, рекомендуем <a href="https://${currentDomain}/account/upgrades?upgrade_id=14" target="_blank">купить</a> настоящий уник.`).createElement(),
 
     previewProfile.createElement(),
 
     new container(
       [
-        new textArea(profileData.usernameStyle, 'color: #0daf77', 0, 1500)
-        .createElement(
-          (event) => {
-            let val = event.target.value.trim();
-            if (val.length > 1500) {
-              return (0,registers/* registerAlert */.de)('Максимальная длина стиля ника 1500 символов. Уменьшите введенный текст для сохранения.')
-            }
-
-            if (val.length > 1 && val.startsWith('.')) {
-              event.target.value = val.replace(/\s/g, '');
-              val = event.target.value;
-            } else {
-              val = (0,purify/* clearCSS */.zB)(val);
-            }
-
-            previewProfile.updateUsernameStyle(val);
-            profileData.usernameStyle = val;
+        new textArea(
+          profileData.usernameStyle,
+          "color: #0daf77",
+          0,
+          1500,
+        ).createElement(event => {
+          let val = event.target.value.trim();
+          if (val.length > 1500) {
+            return (0,registers/* registerAlert */.de)(
+              "Максимальная длина стиля ника 1500 символов. Уменьшите введенный текст для сохранения.",
+            );
           }
-        ),
+
+          if (val.length > 1 && val.startsWith(".")) {
+            event.target.value = val.replace(/\s/g, "");
+            val = event.target.value;
+          } else {
+            val = (0,purify/* clearCSS */.zB)(val);
+          }
+
+          previewProfile.updateUsernameStyle(val);
+          profileData.usernameStyle = val;
+          console.log("TEST use", profileData);
+        }),
       ],
-      'Стиль ника',
-      'Максимум 1500 символов. При отсутствии кода используется цвет вашей группы с форума.',
+      "Стиль ника",
+      "Максимум 1500 символов. При отсутствии кода используется цвет вашей группы с форума.",
     ).createElement(),
 
     new container(
       [
-        new textArea(profileData.bannerStyle, 'background: #fff', 0, 1500)
-        .createElement(
-          (event) => {
-            let val = event.target.value.trim();
-            if (val.length > 1500) {
-              return (0,registers/* registerAlert */.de)('Максимальная длина стиля лычки 1500 символов. Уменьшите введенный текст для сохранения.')
-            }
-
-            if (val.length > 1 && val.startsWith('.')) {
-              event.target.value = val.replace(/\s/g, '');
-              val = event.target.value;
-            } else {
-              val = (0,purify/* clearCSS */.zB)(val);
-            }
-
-            profileData.bannerStyle = val;
-            previewProfile.updateBanner(profileData);
+        new textArea(
+          profileData.bannerStyle,
+          "background: #fff",
+          0,
+          1500,
+        ).createElement(event => {
+          let val = event.target.value.trim();
+          if (val.length > 1500) {
+            return (0,registers/* registerAlert */.de)(
+              "Максимальная длина стиля лычки 1500 символов. Уменьшите введенный текст для сохранения.",
+            );
           }
-        ),
+
+          if (val.length > 1 && val.startsWith(".")) {
+            event.target.value = val.replace(/\s/g, "");
+            val = event.target.value;
+          } else {
+            val = (0,purify/* clearCSS */.zB)(val);
+          }
+
+          profileData.bannerStyle = val;
+          previewProfile.updateBanner(profileData);
+        }),
       ],
-      'Стиль лычки',
-      'Максимум 1500 символов. При отсутствии текста или стиля лычка отключается.',
+      "Стиль лычки",
+      "Максимум 1500 символов. При отсутствии текста или стиля лычка отключается.",
     ).createElement(),
 
     new container(
       [
-        new input(profileData.bannerText, 'Внимание анекдот', 0, 24)
-        .createElement(
-          (event) => {
-            let val = event.target.value;
-            if (val.length > 24) {
-              return (0,registers/* registerAlert */.de)('Максимальная длина текста в лычке 24 символа. Уменьшите введенный текст для сохранения.')
-            }
-
-            profileData.bannerText = val;
-            previewProfile.updateBanner(profileData);
+        new input(
+          profileData.bannerText,
+          "Внимание анекдот",
+          0,
+          24,
+        ).createElement(event => {
+          let val = event.target.value;
+          if (val.length > 24) {
+            return (0,registers/* registerAlert */.de)(
+              "Максимальная длина текста в лычке 24 символа. Уменьшите введенный текст для сохранения.",
+            );
           }
-        ),
-      ],
-      'Текст в лычке',
-      'Максимум 24 символа. При отсутствии текста или стиля лычка отключается.',
-    ).createElement(),
 
+          profileData.bannerText = val;
+          previewProfile.updateBanner(profileData);
+        }),
+      ],
+      "Текст в лычке",
+      "Максимум 24 символа. При отсутствии текста или стиля лычка отключается.",
+    ).createElement(),
 
     new separator().createElement(), // * ADD SEPARATOR
 
     new container(
       [
         new sortableContainer(
-          generateBadgeItems(previewProfile, profileData)
-        ).createElement(async (e) => {
+          generateBadgeItems(previewProfile, badgesData),
+        ).createElement(async e => {
           // move items
           const items = e.target.children;
-          const newProfileData = await profileDB.read();
-          newProfileData.badgeIcons.reverse();
+          const actualBadgesData = await gmWrapper/* default */.Z.getValue(
+            NewStorageName/* default */.Z.ProfileBadges,
+          );
+          actualBadgesData.reverse();
           for (let i = 0; i < items.length; i++) {
-            logger/* default */.Z.debug('moving items');
+            logger/* default */.Z.debug("moving items");
             items[i].dataset.id = i + 1;
-            newProfileData.badgeIcons[i].position = i + 1;
+            actualBadgesData[i].position = i + 1;
           }
 
-          profileData.badgeIcons = newProfileData.badgeIcons;
-          await profileDB.update({ badgeIcons: newProfileData.badgeIcons });
-          await reloadUserBadges(profileData);
-          (0,visuals_users/* updateUserBadges */.Az)(newProfileData.badgeIcons);
+          await gmWrapper/* default */.Z.setValue(NewStorageName/* default */.Z.ProfileBadges, actualBadgesData);
+          await reloadUserBadges(profileData, actualBadgesData); // TODO: ВЫЗОВЕТ ОШИБКУ ИЛИ БУДЕТ НЕПРАВИЛЬНО РАБОТАТЬ!!! Переделать на actualBadgesData
+          (0,visuals_users/* updateUserBadges */.Az)(actualBadgesData);
         }),
 
-        new components_button/* default */.Z('Добавить иконку', 'button LZTUpIconButton', 'far fa-plus')
-        .createElement(async (e) => {
-          const sortableContainer = e.target.parentElement?.querySelector('.LZTUpSortableContainer');
+        new components_button/* default */.Z(
+          "Добавить иконку",
+          "button LZTUpIconButton",
+          "far fa-plus",
+        ).createElement(async e => {
+          const sortableContainer = e.target.parentElement?.querySelector(
+            ".LZTUpSortableContainer",
+          );
 
           if (!sortableContainer) {
-            return (0,registers/* registerAlert */.de)('Не найден контейнер для добавления!')
+            return (0,registers/* registerAlert */.de)("Не найден контейнер для добавления!");
           }
 
-          if (sortableContainer.children.length === 2) {
-            return (0,registers/* registerAlert */.de)('Вы не можете добавить больше 2 иконок!')
+          if (sortableContainer.children.length === MAX_ICONS_COUNT) {
+            return (0,registers/* registerAlert */.de)("Вы не можете добавить больше 2 иконок!");
           }
 
-          const newProfileData = await profileDB.read();
-          const badgeIcons = newProfileData.badgeIcons;
+          const actualBadgesData = await gmWrapper/* default */.Z.getValue(
+            NewStorageName/* default */.Z.ProfileBadges,
+          );
 
           const defaultIcon = {
-            'position': sortableContainer.children.length + 1,
-            'style': '',
-            'text': 'Новая иконка',
-            'svg': '',
-            'fillColor': '',
-            'StrokeColor': '',
-          }
+            position: sortableContainer.children.length + 1,
+            style: "",
+            text: "Новая иконка",
+            svg: "",
+            fillColor: "",
+            StrokeColor: "",
+          };
 
-          badgeIcons.push(defaultIcon)
+          actualBadgesData.push(defaultIcon);
 
-          const newItem = new sortableItem(defaultIcon.text, defaultIcon.position).createElement((e, sortableItem) => sortableItemOnEditCallback(e, sortableItem, previewProfile), sortableItemOnRemoveCallback);
+          const newItem = new sortableItem(
+            defaultIcon.text,
+            defaultIcon.position,
+          ).createElement(
+            (e, sortableItem) =>
+              sortableItemOnEditCallback(e, sortableItem, previewProfile),
+            sortableItemOnRemoveCallback,
+          );
 
           sortableContainer.appendChild(newItem);
-          await profileDB.update({ badgeIcons: badgeIcons });
 
-          profileData.badgeIcons = badgeIcons;
+          await gmWrapper/* default */.Z.setValue(NewStorageName/* default */.Z.ProfileBadges, actualBadgesData);
 
-          await reloadUserBadges(profileData);
-          (0,visuals_users/* updateUserBadges */.Az)(badgeIcons);
+          await reloadUserBadges(profileData, actualBadgesData);
+          (0,visuals_users/* updateUserBadges */.Az)(actualBadgesData);
         }),
       ],
-      'Управление иконками',
-      'Ниже вы можете легко настроить иконки уника и их порядок (изменения автоматически применяются)'
+      "Управление иконками",
+      "Ниже вы можете легко настроить иконки уника и их порядок (изменения автоматически применяются).",
     ).createElement(),
 
     new separator().createElement(), // * ADD SEPARATOR
 
     new container(
       [
-        new input(profileData.backgroundImage, 'Ссылка на изображение', 0, 2048)
-        .createElement(
-          (event) => {
-            let val = XenForo.htmlspecialchars(event.target.value);
-            if (val.length > 2048) {
-              return (0,registers/* registerAlert */.de)('Максимальная длина ссылки на фон 2048 символов. Введите другую ссылку для сохранения.')
-            }
-
-            console.log('execute background');
-            profileData.backgroundImage = val;
-            previewProfile.updateBackground(profileData.backgroundImage);
+        new input(
+          profileData.backgroundImage,
+          "Ссылка на изображение",
+          0,
+          2048,
+        ).createElement(event => {
+          let val = XenForo.htmlspecialchars(event.target.value);
+          if (val.length > 2048) {
+            return (0,registers/* registerAlert */.de)(
+              "Максимальная длина ссылки на фон 2048 символов. Введите другую ссылку для сохранения.",
+            );
           }
-        ),
+
+          console.log("execute background");
+          profileData.backgroundImage = val;
+          console.log("TEST bacl", profileData);
+          previewProfile.updateBackground(profileData.backgroundImage);
+        }),
       ],
-      'Фон профиля',
-      'Поддерживаются только прямые ссылки на изображения.',
+      "Фон профиля",
+      "Поддерживаются только прямые ссылки на изображения.",
     ).createElement(),
 
-    new menu_checkbox('profile_background_everywhere', `Заменить фон на всех страницах форума`)
-    .createElement(
+    new menu_checkbox(
+      "profile_background_everywhere",
+      `Заменить фон на всех страницах форума`,
+    ).createElement(
       profileData.backgroundImageEverywhere,
       async () => {
-        await profileDB.update({backgroundImageEverywhere: 1});
         (0,universal/* addBackgroundImage */.j)(profileData.backgroundImage);
       },
       async () => {
-        await profileDB.update({backgroundImageEverywhere: 0});
-        (0,universal/* addBackgroundImage */.j)('');
-        (0,visuals_profile/* addBackgroundImageInProfile */.m)(profileData.backgroundImage);
-      }),
+        (0,universal/* addBackgroundImage */.j)("");
+        (0,profile/* addBackgroundImageInProfile */.m)(profileData.backgroundImage);
+      },
+      async event => {
+        const actualProfileData = await gmWrapper/* default */.Z.getValue(NewStorageName/* default */.Z.Profile);
+        actualProfileData.backgroundImageEverywhere =
+          profileData.backgroundImageEverywhere = event.target.checked;
+        await gmWrapper/* default */.Z.setValue(NewStorageName/* default */.Z.Profile, actualProfileData);
+        (0,registers/* registerAlert */.de)(
+          `${
+            event.target.checked ? "Включен" : "Выключен"
+          } кастомный фон на всех страницах`,
+          5000,
+        );
+      },
+    ),
 
     new container([
-      new components_button/* default */.Z('Сохранить', 'button primary LZTUpIconButton fit', 'far fa-save').createElement(async () => {
-        // save settings in IndexedDB
-        const oldProfileData = await profileDB.read();
+      new components_button/* default */.Z(
+        "Сохранить",
+        "button primary LZTUpIconButton fit",
+        "far fa-save",
+      ).createElement(async () => {
+        const oldProfileData = await gmWrapper/* default */.Z.getValue(NewStorageName/* default */.Z.Profile);
+        await gmWrapper/* default */.Z.setValue(NewStorageName/* default */.Z.Profile, profileData);
 
-        await profileDB.update({
-          usernameStyle: profileData.usernameStyle,
-          bannerStyle: profileData.bannerStyle,
-          bannerText: profileData.bannerText,
-          backgroundImage: profileData.backgroundImage
-        });
-
-        (0,registers/* registerAlert */.de)('Настройки локального уника успешно сохранены.');
+        (0,registers/* registerAlert */.de)("Настройки локального уника успешно сохранены.");
 
         if (profileData.usernameStyle) {
           // update all user styles in page
           (0,visuals_users/* updateUserStyle */.bR)(profileData.usernameStyle);
-        } else if (oldProfileData.usernameStyle !== '' && profileData.usernameStyle == '') {
+        } else if (
+          oldProfileData.usernameStyle !== "" &&
+          profileData.usernameStyle == ""
+        ) {
           (0,visuals_users/* updateUserStyle */.bR)(`.${userGroup}`);
         }
 
@@ -3716,130 +3652,125 @@ const getProfileItems = async () => {
           if (profileData.backgroundImageEverywhere) {
             (0,universal/* addBackgroundImage */.j)(profileData.backgroundImage);
           } else {
-            (0,visuals_profile/* addBackgroundImageInProfile */.m)(profileData.backgroundImage);
+            (0,profile/* addBackgroundImageInProfile */.m)(profileData.backgroundImage);
           }
         }
         previewProfile.data = profileData;
-        await previewProfile.updateAll()
+        await previewProfile.updateAll();
       }),
-    ]).createElement()
+    ]).createElement(),
   ];
-}
+};
 
 /* harmony default export */ const items_profile = (getProfileItems);
+
+;// CONCATENATED MODULE: ./src/configs/InfoLink.js
+class InfoLink {
+  // Displayed on the modified page with an error
+  static Donate = new InfoLink(
+    "far fa-donate",
+    "Поддержать разработку",
+    'Можете немного закинуть, если хотите <img src="/styles/default/xenforo/smilies/ok_lol.png" class="mceSmilie" alt=":ok_lol:" title="Lol">',
+    "https://lzt.market/balance/transfer?user_id=667866",
+    "LZTUpInfoDonateItem",
+  );
+  static Thread = new InfoLink(
+    "far fa-comments",
+    '<span style="color: orange">[SOON]</span> Тема на форуме',
+    "Новости об обновлениях и отзывы других пользователей без всякого мусора",
+    "https://zelenka.guru/threads/1",
+    "LZTUpInfoThreadItem",
+  );
+  static TelegramChannel = new InfoLink(
+    "fab fa-telegram-plane",
+    "Telegram канал",
+    "Все новости расширения и анонсы новых функций",
+    "https://t.me/lzt_upgrade",
+    "LZTUpInfoTGChannelItem",
+  );
+  static TelegramChat = new InfoLink(
+    "fab fa-telegram-plane",
+    "Telegram чат",
+    "Чатик для общения с другими пользователями расширения",
+    "https://t.me/lzt_upgrade_chat",
+    "LZTUpInfoTGChatItem",
+  );
+  static Github = new InfoLink(
+    "fab fa-github",
+    "Github",
+    "Исходники расширения + все версии расширения",
+    "https://github.com/lzt-upgrade/lzt-upgrade",
+    "LZTUpInfoGithubItem",
+  );
+  static GreasyFork = new InfoLink(
+    "far fa-code-branch",
+    "Greasy Fork",
+    "Альтернативный источник для установки расширения",
+    "https://greasyfork.org/ru/scripts/460328-lzt-upgrade",
+    "LZTUpInfoGreasyForkItem",
+  );
+  static DevTasks = new InfoLink(
+    "far fa-tasks",
+    "Доска задач",
+    "Следите за разработкой расширения",
+    "https://app.weeek.net/ws/438227/shared/board/4prKcWJhKKxLuKNm0CiP7qJEZUH3quST",
+    "LZTUpInfoFollowDevItem",
+  );
+
+  constructor(icon, title, desc, href, sectionItemId) {
+    this.icon = icon;
+    this.title = title;
+    this.desc = desc;
+    this.href = href;
+    this.sectionItemId = sectionItemId;
+  }
+
+  static getLinks() {
+    return [
+      this.Donate,
+      this.Thread,
+      this.TelegramChannel,
+      this.TelegramChat,
+      this.Github,
+      this.GreasyFork,
+      this.DevTasks,
+    ];
+  }
+}
+
 ;// CONCATENATED MODULE: ./src/ui/menu/items/info.js
 
 
 
-
 const getInfoItems = async () => {
-  const infoSection = new Section('LZTUpInfoSection', { direction: SectionDirection.Column , hidden: false})
-  for (const infoLink of extData/* default */.Z.infoLinks) {
-    infoSection.addSectionItem(infoLink.title, infoLink.desc, infoLink.icon, infoLink.sectionId, { onClick: () => window.open(infoLink.href) });
+  const infoSection = new Section("LZTUpInfoSection", {
+    direction: SectionDirection.Column,
+    hidden: false,
+  });
+  console.log(InfoLink.getLinks());
+  for (const infoLink of InfoLink.getLinks()) {
+    infoSection.addSectionItem(
+      infoLink.title,
+      infoLink.desc,
+      infoLink.icon,
+      infoLink.sectionItemId,
+      { onClick: () => window.open(infoLink.href) },
+    );
   }
 
-  return [
-    infoSection.createElement()
-  ];
-}
+  return [infoSection.createElement()];
+};
 
 /* harmony default export */ const info = (getInfoItems);
-// EXTERNAL MODULE: ./src/indexedDB/default.js
-var indexedDB_default = __webpack_require__("./src/indexedDB/default.js");
-;// CONCATENATED MODULE: ./src/indexedDB/appear.js
-
-
-
-/**
- *
- * @author Toil
- * @license MIT
- * @copyright Toil
- * @created 2023-02-17
- *
- * @description LZTAppearDB class implementation
- *
- */
-
-class LZTAppearDB extends indexedDB_default/* LZTUpgradeDB */.c {
-  /**
-   *
-   *  @constructor
-   *  @param {string} name - name of the database
-   *  @param {string} objectKey - name of the future indexedDB object
-   *  @param {number} version - version of the database
-   */
-
-  constructor(name = 'LZTUpAppear', objectKey = 'appear', version = 1) {
-    super(
-      name,
-      objectKey,
-      version,
-      { // indexes
-        'hideUnreadArticleCircle': 'number',
-        'hideTagsInThreads': 'number',
-        'forumLogo': 'number',
-        'hideCounterAlerts': 'number',
-        'hideCounterConversations': 'number',
-        'marketLogo': 'number',
-        'reportButtonsInPost': 'string',
-        'selectedTheme': 'number',
-        'themeAutoReload': 'number',
-        'backgroundEffect': 'number',
-        'hideOnlyfans': 'number',
-        'showPollResults': 'number',
-        'newErrorPage': 'number',
-        'selfAdOnNewErrorPage': 'number',
-      },
-      { // defaultData
-        key: objectKey,
-        hideUnreadArticleCircle: 0,
-        hideTagsInThreads: 0,
-        forumLogo: 0,
-        hideCounterAlerts: 0,
-        hideCounterConversations: 0,
-        marketLogo: 0,
-        reportButtonsInPost: '',
-        selectedTheme: 0,
-        themeAutoReload: 0,
-        backgroundEffect: 0,
-        hideOnlyfans: 0,
-        showPollResults: 0,
-        newErrorPage: 1,
-        selfAdOnNewErrorPage: 1
-      }
-    );
-  };
-
-  async update({
-    hideUnreadArticleCircle,
-    hideTagsInThreads,
-    forumLogo,
-    hideCounterAlerts,
-    hideCounterConversations,
-    marketLogo,
-    reportButtonsInPost,
-    selectedTheme,
-    themeAutoReload,
-    backgroundEffect,
-    hideOnlyfans,
-    showPollResults,
-    newErrorPage,
-    selfAdOnNewErrorPage,
-  }) {
-    super.update(...arguments);
-  }
-}
-
 
 ;// CONCATENATED MODULE: ./src/utils/files.js
 
 
 function downloadJSONFile(data, name) {
   const blob = new Blob([data], {
-    type: 'application/json'
+    type: "application/json",
   });
-  const link = document.createElement('a');
+  const link = document.createElement("a");
   link.href = window.URL.createObjectURL(blob);
   link.download = `${name}.json`;
   link.click();
@@ -3847,9 +3778,9 @@ function downloadJSONFile(data, name) {
 }
 
 async function uploadJSONFile() {
-  const input = document.createElement('input');
-  input.type = 'file';
-  input.accept = 'application/json';
+  const input = document.createElement("input");
+  input.type = "file";
+  input.accept = "application/json";
   input.click();
 
   const file = await new Promise(resolve => {
@@ -3865,12 +3796,13 @@ async function uploadJSONFile() {
     reader.onload = () => {
       resolve(reader.result);
     };
-    reader.onerror = (e) => {
-      logger/* default */.Z.error('Ошибка загрузки файла настроек', e);
+    reader.onerror = e => {
+      logger/* default */.Z.error("Ошибка загрузки файла настроек", e);
       resolve(false);
     };
   });
 }
+
 
 
 ;// CONCATENATED MODULE: ./src/ui/menu/items/settings.js
@@ -3884,74 +3816,95 @@ async function uploadJSONFile() {
 
 
 
-
-const appearDB = new LZTAppearDB()
-const settings_profileDB = new profile/* LZTProfileDB */.M()
-
 async function saveSettings() {
-  const appearData = await appearDB.read();
-  const contestsData = await GM_getValue(StorageName/* default */.Z.Contests, {});
-  const profileData = await settings_profileDB.read();
-  const settingsData = await GM_getValue(Storage.Settings, {})
-  const usersData = await GM_getValue(StorageName/* default */.Z.Users, {});
+  let configStruct = NewStorageName/* default */.Z.generateConfigStruct();
 
-  const config = JSON.stringify({
-    appear: appearData,
-    contests: contestsData,
-    profile: profileData,
-    settings: settingsData,
-    users: usersData
-  });
+  const config = {};
 
-  downloadJSONFile(config, 'LZTUpgradeConfig');
-  (0,registers/* registerAlert */.de)('Файл настроек выгружен', 5000);
+  // it's necessary that the data have time to turn out
+  await Promise.all(
+    configStruct.map(async item => {
+      config[item.name] = (await gmWrapper/* default */.Z.getValue(item.original)) || item.default;
+    }),
+  );
+
+  downloadJSONFile(JSON.stringify(config), "LZTUpgradeConfig");
+  (0,registers/* registerAlert */.de)("Файл настроек выгружен", 5000);
 }
 
 async function uploadSettings() {
   const config = await uploadJSONFile(); // upload json config file from user pc
 
   if (!config) {
-    (0,registers/* registerAlert */.de)('Ошибка загрузки файла настроек', 5000);
+    (0,registers/* registerAlert */.de)("Ошибка загрузки файла настроек", 5000);
     return;
   }
 
   try {
+    let configStruct = NewStorageName/* default */.Z.generateConfigStruct();
     const configObj = JSON.parse(config); // read text as json
 
-    // load data to dbs
-    await appearDB.update(configObj?.appear);
-    await GM_setValue(StorageName/* default */.Z.Contests, configObj?.contests);
-    await settings_profileDB.update(configObj?.profile)
-    await GM_setValue(StorageName/* default */.Z.Settings, configObj?.settings);
-    await GM_setValue(StorageName/* default */.Z.Users, configObj?.users);
-    (0,registers/* registerAlert */.de)('Настройки загружены. Выполняю перезагрузку страницы...', 5000);
+    // it is necessary that the data has time to load
+    await Promise.all(
+      configStruct.map(async item => {
+        await gmWrapper/* default */.Z.setValue(
+          item.original,
+          configObj[item.name] || item.default,
+        );
+      }),
+    );
+
+    (0,registers/* registerAlert */.de)(
+      "Настройки загружены. Выполняю перезагрузку страницы...",
+      5000,
+    );
     await (0,utils/* sleep */._v)(500);
     window.location.reload();
   } catch (err) {
-    logger/* default */.Z.error('Ошибка загрузки файла настроек', err)
-    ;(0,registers/* registerAlert */.de)('Ошибка загрузки файла настроек', 5000);
+    logger/* default */.Z.error("Ошибка загрузки файла настроек", err);
+    (0,registers/* registerAlert */.de)("Ошибка загрузки файла настроек", 5000);
   }
 }
 
 async function clearCache() {
-  await GM_setValue(StorageName/* default */.Z.Cache, {});
-  (0,registers/* registerAlert */.de)('Кеш успешно очищен', 5000);
+  await gmWrapper/* default */.Z.setValue(StorageName/* default */.Z.Cache, StorageName/* default */.Z.Cache.value);
+  (0,registers/* registerAlert */.de)("Кеш успешно очищен", 5000);
   await (0,utils/* sleep */._v)(1000);
   window.location.reload();
 }
 
 const getSettingsItems = async () => {
-  const settingsSection = new Section('LZTUpInfoSection', { direction: SectionDirection.Column, hidden: false })
-    .addSectionItem('Сохранить настройки в файл', '', 'far fa-file-download', 'LZTUpSaveSettingsItem', { onClick: saveSettings })
-    .addSectionItem('Загрузить настройки из файла', '', 'far fa-upload', 'LZTUpUploadSettingsItem', { onClick: uploadSettings })
-    .addSectionItem('Очистить кеш', '', 'far fa-database', 'LZTUpClearCacheItem', { onClick: clearCache })
+  const settingsSection = new Section("LZTUpInfoSection", {
+    direction: SectionDirection.Column,
+    hidden: false,
+  })
+    .addSectionItem(
+      "Сохранить настройки в файл",
+      "",
+      "far fa-file-download",
+      "LZTUpSaveSettingsItem",
+      { onClick: saveSettings },
+    )
+    .addSectionItem(
+      "Загрузить настройки из файла",
+      "",
+      "far fa-upload",
+      "LZTUpUploadSettingsItem",
+      { onClick: uploadSettings },
+    )
+    .addSectionItem(
+      "Очистить кеш",
+      "",
+      "far fa-database",
+      "LZTUpClearCacheItem",
+      { onClick: clearCache },
+    );
 
-  return [
-    settingsSection.createElement()
-  ];
-}
+  return [settingsSection.createElement()];
+};
 
 /* harmony default export */ const settings = (getSettingsItems);
+
 // EXTERNAL MODULE: ./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js
 var injectStylesIntoStyleTag = __webpack_require__("./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
 var injectStylesIntoStyleTag_default = /*#__PURE__*/__webpack_require__.n(injectStylesIntoStyleTag);
@@ -4001,10 +3954,7 @@ var update = injectStylesIntoStyleTag_default()(menu/* default */.Z, options);
 
        /* harmony default export */ const styles_menu = (menu/* default */.Z && menu/* default */.Z.locals ? menu/* default */.Z.locals : undefined);
 
-// EXTERNAL MODULE: ./src/api/lztupgrade/logoAPI.js
-var logoAPI = __webpack_require__("./src/api/lztupgrade/logoAPI.js");
 ;// CONCATENATED MODULE: ./src/ui/components/menu/grid.js
-
 
 
 class GridText {
@@ -4016,11 +3966,11 @@ class GridText {
 
   constructor(text) {
     this.text = text;
-    this.className = 'LZTUpGridTitle';
+    this.className = "LZTUpGridTitle";
   }
 
   createElement() {
-    const el = document.createElement('span');
+    const el = document.createElement("span");
     el.classList.add(this.className);
     el.innerText = this.text;
 
@@ -4036,19 +3986,18 @@ class GridSubText extends GridText {
    */
 
   constructor(text, className = null) {
-    super(text)
-    this.className = className ?? 'LZTUpGridDesc';
+    super(text);
+    this.className = className ?? "LZTUpGridDesc";
   }
 
   createElement() {
-    const el = document.createElement('span');
+    const el = document.createElement("span");
     el.classList.add(this.className);
     el.innerHTML = (0,purify/* clearHTML */.G6)(this.text);
 
     return el;
   }
 }
-
 
 class GridAuthorLink {
   /**
@@ -4060,14 +4009,14 @@ class GridAuthorLink {
 
   constructor(text, userId) {
     this.text = text;
-    this.userId = Number(userId) > 0 ? Number(userId) : '';
-    this.className = 'LZTUpGridAuthor';
+    this.userId = Number(userId) > 0 ? Number(userId) : "";
+    this.className = "LZTUpGridAuthor";
   }
 
   createElement() {
     const currentDomain = window.location.hostname;
 
-    const el = document.createElement('a');
+    const el = document.createElement("a");
     el.classList.add(this.className);
     el.href = `https://${currentDomain}/members/${this.userId}`;
     el.innerHTML = (0,purify/* clearHTML */.G6)(this.text);
@@ -4075,7 +4024,6 @@ class GridAuthorLink {
     return el;
   }
 }
-
 
 class GridImage {
   /**
@@ -4087,20 +4035,21 @@ class GridImage {
 
   constructor(imageLink, altText = null) {
     this.imageLink = imageLink;
-    this.altText = altText ?? '[IMG]';
-    this.className = 'LZTUpGridImage';
+    this.altText = altText ?? "[IMG]";
+    this.className = "LZTUpGridImage";
   }
 
   createElement() {
-    const el = document.createElement('img');
+    const el = document.createElement("img");
     el.classList.add(this.className);
     el.alt = this.altText;
     el.src = this.imageLink;
+    // for higher priority image loading
+    el.importance = true;
 
     return el;
   }
 }
-
 
 class Grid {
   /**
@@ -4119,9 +4068,9 @@ class Grid {
   }
 
   createElement() {
-    const grid = document.createElement('div');
+    const grid = document.createElement("div");
     grid.id = this.id;
-    grid.classList.add('LZTUpGrid');
+    grid.classList.add("LZTUpGrid");
 
     for (const gridItem of this.gridItems) {
       grid.appendChild(gridItem);
@@ -4152,20 +4101,20 @@ class Grid {
    *  @param {string} userId - link to the author
    */
   addGridItem(title, gridId, options = {}) {
-    const onClickCallback = options.onClick || function() {};
-    const imageLink = options.imageLink ?? '';
+    const onClickCallback = options.onClick || function () {};
+    const imageLink = options.imageLink ?? "";
     const imageAlt = options.altText;
     const activeState = options.active ?? false;
     const authors = options.authors ?? [];
-    const backgroundColor = options.backgroundColor ?? '';
-    const textColor = options.textColor ?? '';
-    const additionalClass = options.additionalClass ?? '';
+    const backgroundColor = options.backgroundColor ?? "";
+    const textColor = options.textColor ?? "";
+    const additionalClass = options.additionalClass ?? "";
 
-    const gridItem = document.createElement('div');
+    const gridItem = document.createElement("div");
     gridItem.id = gridId;
-    gridItem.classList.add('LZTUpGridItem');
+    gridItem.classList.add("LZTUpGridItem");
     if (activeState) {
-      gridItem.classList.add('active');
+      gridItem.classList.add("active");
     }
     if (additionalClass) {
       gridItem.classList.add(additionalClass);
@@ -4179,19 +4128,20 @@ class Grid {
       gridItem.append(gridImage);
     }
 
-    const textContainer = document.createElement('div');
-    textContainer.classList.add('LZTUpGridTextContainer');
+    const textContainer = document.createElement("div");
+    textContainer.classList.add("LZTUpGridTextContainer");
     const textEl = new GridText(title).createElement();
 
     const authorsEl = authors.map(author => {
-      return new GridAuthorLink(author.name, author.userId).createElement().outerHTML;
-    })
+      return new GridAuthorLink(author.name, author.userId).createElement()
+        .outerHTML;
+    });
 
-    const authorsInfoEl = new GridSubText(authorsEl.join(', ')).createElement();
+    const authorsInfoEl = new GridSubText(authorsEl.join(", ")).createElement();
 
     textContainer.append(textEl, authorsInfoEl);
     gridItem.append(textContainer);
-    gridItem.onclick = async (e) => {
+    gridItem.onclick = async e => {
       this.setActive(gridItem);
       await onClickCallback(e, gridItem);
     };
@@ -4202,21 +4152,141 @@ class Grid {
 
   setActive(item) {
     for (const gridItem of this.gridItems) {
-      gridItem.classList.remove('active');
+      gridItem.classList.remove("active");
     }
 
-    item.classList.add('active');
+    item.classList.add("active");
     return this;
   }
 }
 
 
+
 // EXTERNAL MODULE: ./src/configs/SiteType.js
 var SiteType = __webpack_require__("./src/configs/SiteType.js");
-// EXTERNAL MODULE: ./src/api/lztupgrade/themeAPI.js
-var themeAPI = __webpack_require__("./src/api/lztupgrade/themeAPI.js");
 // EXTERNAL MODULE: ./src/visuals/navbar.js
 var navbar = __webpack_require__("./src/visuals/navbar.js");
+// EXTERNAL MODULE: ./src/configs/NavbarBalloon.js
+var NavbarBalloon = __webpack_require__("./src/configs/NavbarBalloon.js");
+// EXTERNAL MODULE: ./src/utils/threads.js + 3 modules
+var threads = __webpack_require__("./src/utils/threads.js");
+;// CONCATENATED MODULE: ./src/configs/CacheKeys.js
+
+
+class CacheKeys extends base/* BaseEnum */.e {
+  static availabledForumLogos = new CacheKeys("availabledForumLogos", []);
+  static availabledMarketLogos = new CacheKeys("availabledMarketLogos", []);
+  static availabledThemes = new CacheKeys("availabledThemes", []);
+  static themeName = new CacheKeys("themeName", "");
+
+  constructor(name, value) {
+    super(name);
+    this.value = value;
+  }
+
+  static getKeys() {
+    return [
+      this.availabledForumLogos,
+      this.availabledMarketLogos,
+      this.availabledThemes,
+    ];
+  }
+
+  static getKeyByName(name) {
+    return this.getKeys().find(k => k.name === name);
+  }
+}
+
+// EXTERNAL MODULE: ./src/visuals/threads.js + 1 modules
+var visuals_threads = __webpack_require__("./src/visuals/threads.js");
+;// CONCATENATED MODULE: ./node_modules/uuid/dist/esm-browser/native.js
+const randomUUID = typeof crypto !== 'undefined' && crypto.randomUUID && crypto.randomUUID.bind(crypto);
+/* harmony default export */ const esm_browser_native = ({
+  randomUUID
+});
+;// CONCATENATED MODULE: ./node_modules/uuid/dist/esm-browser/rng.js
+// Unique ID creation requires a high quality random # generator. In the browser we therefore
+// require the crypto API and do not support built-in fallback to lower quality random number
+// generators (like Math.random()).
+let getRandomValues;
+const rnds8 = new Uint8Array(16);
+function rng() {
+  // lazy load so that environments that need to polyfill have a chance to do so
+  if (!getRandomValues) {
+    // getRandomValues needs to be invoked in a context where "this" is a Crypto implementation.
+    getRandomValues = typeof crypto !== 'undefined' && crypto.getRandomValues && crypto.getRandomValues.bind(crypto);
+
+    if (!getRandomValues) {
+      throw new Error('crypto.getRandomValues() not supported. See https://github.com/uuidjs/uuid#getrandomvalues-not-supported');
+    }
+  }
+
+  return getRandomValues(rnds8);
+}
+;// CONCATENATED MODULE: ./node_modules/uuid/dist/esm-browser/stringify.js
+
+/**
+ * Convert array of 16 byte values to UUID string format of the form:
+ * XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
+ */
+
+const byteToHex = [];
+
+for (let i = 0; i < 256; ++i) {
+  byteToHex.push((i + 0x100).toString(16).slice(1));
+}
+
+function unsafeStringify(arr, offset = 0) {
+  // Note: Be careful editing this code!  It's been tuned for performance
+  // and works in ways you may not expect. See https://github.com/uuidjs/uuid/pull/434
+  return byteToHex[arr[offset + 0]] + byteToHex[arr[offset + 1]] + byteToHex[arr[offset + 2]] + byteToHex[arr[offset + 3]] + '-' + byteToHex[arr[offset + 4]] + byteToHex[arr[offset + 5]] + '-' + byteToHex[arr[offset + 6]] + byteToHex[arr[offset + 7]] + '-' + byteToHex[arr[offset + 8]] + byteToHex[arr[offset + 9]] + '-' + byteToHex[arr[offset + 10]] + byteToHex[arr[offset + 11]] + byteToHex[arr[offset + 12]] + byteToHex[arr[offset + 13]] + byteToHex[arr[offset + 14]] + byteToHex[arr[offset + 15]];
+}
+
+function stringify(arr, offset = 0) {
+  const uuid = unsafeStringify(arr, offset); // Consistency check for valid UUID.  If this throws, it's likely due to one
+  // of the following:
+  // - One or more input array values don't map to a hex octet (leading to
+  // "undefined" in the uuid)
+  // - Invalid input values for the RFC `version` or `variant` fields
+
+  if (!validate(uuid)) {
+    throw TypeError('Stringified UUID is invalid');
+  }
+
+  return uuid;
+}
+
+/* harmony default export */ const esm_browser_stringify = ((/* unused pure expression or super */ null && (stringify)));
+;// CONCATENATED MODULE: ./node_modules/uuid/dist/esm-browser/v4.js
+
+
+
+
+function v4(options, buf, offset) {
+  if (esm_browser_native.randomUUID && !buf && !options) {
+    return esm_browser_native.randomUUID();
+  }
+
+  options = options || {};
+  const rnds = options.random || (options.rng || rng)(); // Per 4.4, set bits for version and `clock_seq_hi_and_reserved`
+
+  rnds[6] = rnds[6] & 0x0f | 0x40;
+  rnds[8] = rnds[8] & 0x3f | 0x80; // Copy bytes to buffer, if provided
+
+  if (buf) {
+    offset = offset || 0;
+
+    for (let i = 0; i < 16; ++i) {
+      buf[offset + i] = rnds[i];
+    }
+
+    return buf;
+  }
+
+  return unsafeStringify(rnds);
+}
+
+/* harmony default export */ const esm_browser_v4 = (v4);
 ;// CONCATENATED MODULE: ./src/ui/menu/items/appear.js
 
 
@@ -4240,103 +4310,107 @@ var navbar = __webpack_require__("./src/visuals/navbar.js");
 
 
 
+
+
+
+
+
+
+const MAX_BUTTONS_COUNT = 4;
+const APPEAR_MENU_ID = "LZTUpAppearContainer";
+const MODAL_SELECTOR = ".LZTUpModalContent";
+
 async function createLogoManagerTempMenu(logoType) {
+  const cacheItemName = `availabled${(0,utils/* ucFirst */.zf)(logoType)}Logos`;
+  const cacheKey = CacheKeys.getKeyByName(cacheItemName);
   const storageItemName = `${logoType.toLowerCase()}Logo`;
-  const appearData = await GM_getValue(StorageName/* default */.Z.Appear, {});
+  const appearData = await gmWrapper/* default */.Z.getValue(NewStorageName/* default */.Z.Appear);
   const activeLogo = appearData?.[storageItemName] ?? 0;
-  const logoTargetInt = logoType === SiteType/* default */.Z.Forum ? 1 : 2;
-  const logos = await logoAPI/* default */.Z.getLogos(logoTargetInt) || [];
-  const defaultLogoPreview = logoType === SiteType/* default */.Z.Forum ?
-    "https://raw.githubusercontent.com/ilyhalight/lzt-upgrade/master/public/static/img/logos/forum/default.svg" :
-    "https://raw.githubusercontent.com/ilyhalight/lzt-upgrade/master/public/static/img/logos/market/default.svg"
+  const logos = await gmWrapper/* default */.Z.getCache(cacheKey);
+  const defaultLogoPreview =
+    logoType === SiteType/* default */.Z.Forum
+      ? "https://raw.githubusercontent.com/ilyhalight/lzt-upgrade/master/public/static/img/logos/forum/default.svg"
+      : "https://raw.githubusercontent.com/ilyhalight/lzt-upgrade/master/public/static/img/logos/market/default.svg";
   logos.unshift({
-    "uid": 0,
-    "name": "По умолчанию",
-    "preview": defaultLogoPreview,
-    "target": 1,
-    "css": "",
-    "author": "Lolzteam",
-    "author_userid": "",
-    "active": 1,
-    "created_at": 1696777530
+    uid: 0,
+    name: "По умолчанию",
+    preview: defaultLogoPreview,
+    target: 1,
+    css: "",
+    author: "Lolzteam",
+    author_userid: "",
+    active: 1,
+    created_at: 1696777530,
   });
 
-  const modalContent = document.querySelector('.LZTUpModalContent');
-  const mainMenu = document.getElementById('LZTUpAppearContainer');
+  const modalContent = document.querySelector(MODAL_SELECTOR);
+  const mainMenu = document.getElementById(APPEAR_MENU_ID);
 
-  const logoGrid = new Grid('LZTUpLogoGrid');
+  const logoGrid = new Grid("LZTUpLogoGrid");
   // TODO: add logo filters for the market and forum in the API (TO BACKEND) (?target=market or ?target=forum)
-  // TODO: ADD cache, add update cache logo button
   for (const logo of logos) {
     const authors = (0,utils/* getAuthors */.P6)(logo.author, logo.author_userid);
     logoGrid.addGridItem(logo.name, `LZTUpLogo${logo.uid}`, {
-      onClick: async (e, item) => {
+      onClick: async () => {
         (0,universal/* setLogo */.E)(logo.css, logoType);
         appearData[storageItemName] = logo.uid;
-        await GM_setValue(StorageName/* default */.Z.Appear, appearData);
+        await gmWrapper/* default */.Z.setValue(NewStorageName/* default */.Z.Appear, appearData);
         logger/* default */.Z.debug(`Change logo to ${logo.name} (by ${logo.author})`);
-        const cacheData = await GM_getValue(StorageName/* default */.Z.Cache, {});
-        cacheData[storageItemName] = {
+        await gmWrapper/* default */.Z.setCache(storageItemName, {
           uid: logo.uid,
           css: logo.css,
-          cacheTime: (0,utils/* getTimestamp */.u3)() + config/* default */.Z.cacheTime
-        };
-        await GM_setValue(StorageName/* default */.Z.Cache, cacheData);
+          cacheTime: (0,utils/* getTimestamp */.u3)() + config/* default */.Z.cacheTime,
+        });
       },
       imageLink: logo.preview,
       altText: logo.name,
       active: logo.uid === activeLogo,
-      authors
+      authors,
     });
   }
 
-  const el = addTemporaryMenuSection(
-    [
-      new container(
-        [
-          logoGrid.createElement()
-        ],
-        'Выберите логотип',
-        `Выберите логотип, который у вас будет отображаться как логотип ${logoType === SiteType/* default */.Z.Forum ? 'форума' : 'маркета'}.`
-      ).createElement()
-    ]
-  )
+  const el = addTemporaryMenuSection([
+    new container(
+      [logoGrid.createElement()],
+      "Выберите логотип",
+      `Выберите логотип, который у вас будет отображаться как логотип ${
+        logoType === SiteType/* default */.Z.Forum ? "форума" : "маркета"
+      }.`,
+    ).createElement(),
+  ]);
 
   modalContent.appendChild(el);
-  openTempMenu('Выбор логотипа', 'Внешний вид', mainMenu, () => {});
+  openTempMenu("Выбор логотипа", "Внешний вид", mainMenu, () => {});
 }
 
 async function createThemeManagerTempMenu() {
-  const appearData = await GM_getValue(StorageName/* default */.Z.Appear, {});
+  const appearData = await gmWrapper/* default */.Z.getValue(NewStorageName/* default */.Z.Appear);
   const selectedTheme = appearData?.selectedTheme ?? 0;
-  const themes = await themeAPI/* default */.Z.getThemes() || [];
+  const themes = await gmWrapper/* default */.Z.getCache(CacheKeys.availabledThemes);
   themes.unshift({
-    "uid": 0,
-    "name": "Обычная",
-    "file": "",
-    "author": "Lolzteam",
-    "author_userid": null,
-    "accent_color": "",
-    "text_color": "",
-    "active": 1,
+    uid: 0,
+    name: "Обычная",
+    file: "",
+    author: "Lolzteam",
+    author_userid: null,
+    accent_color: "",
+    text_color: "",
+    active: 1,
   });
 
-  const modalContent = document.querySelector('.LZTUpModalContent');
-  const mainMenu = document.getElementById('LZTUpAppearContainer');
+  const modalContent = document.querySelector(MODAL_SELECTOR);
+  const mainMenu = document.getElementById(APPEAR_MENU_ID);
 
-  const themeGrid = new Grid('LZTUpThemeGrid');
-  // TODO: ADD cache, add update cache logo button
+  const themeGrid = new Grid("LZTUpThemeGrid");
   for (const theme of themes) {
     const authors = (0,utils/* getAuthors */.P6)(theme.author, theme.author_userid);
     themeGrid.addGridItem(theme.name, `LZTUpTheme${theme.uid}`, {
-      onClick: async (e, item) => {
+      onClick: async () => {
         appearData.selectedTheme = theme.uid;
-        await GM_setValue(StorageName/* default */.Z.Appear, appearData);
+        await gmWrapper/* default */.Z.setValue(NewStorageName/* default */.Z.Appear, appearData);
         logger/* default */.Z.debug(`Change theme to ${theme.name} (by ${theme.author})`);
         (0,registers/* registerAlert */.de)(`Тема изменена на ${theme.name}`, 5000);
-        const cacheData = await GM_getValue(StorageName/* default */.Z.Cache, {});
-        cacheData.themeName = theme.file;
-        await GM_setValue(StorageName/* default */.Z.Cache, cacheData);
+        await gmWrapper/* default */.Z.setCache(CacheKeys.themeName.name, theme.file);
         await (0,utils/* sleep */._v)(500);
         window.location.reload();
       },
@@ -4344,117 +4418,528 @@ async function createThemeManagerTempMenu() {
       authors,
       backgroundColor: theme.accent_color,
       textColor: theme.text_color,
-      additionalClass: 'theme'
+      additionalClass: "theme",
     });
   }
 
-  const el = addTemporaryMenuSection(
-    [
-      new container(
-        [
-          themeGrid.createElement()
-        ],
-        'Выберите тему',
-        `Выберите тему, которая у вас будет отображаться как тема сайта.`
-      ).createElement()
-    ]
-  )
+  const el = addTemporaryMenuSection([
+    new container(
+      [themeGrid.createElement()],
+      "Выберите тему",
+      `Выберите тему, которая у вас будет отображаться как тема сайта.`,
+    ).createElement(),
+  ]);
 
   modalContent.appendChild(el);
-  openTempMenu('Выбор темы', 'Внешний вид', mainMenu, () => {});
+  openTempMenu("Выбор темы", "Внешний вид", mainMenu, () => {});
 }
 
+async function createAdblockManagerTempMenu() {
+  const adblockData = await gmWrapper/* default */.Z.getValue(NewStorageName/* default */.Z.Adblock);
+
+  const modalContent = document.querySelector(MODAL_SELECTOR);
+  const mainMenu = document.getElementById(APPEAR_MENU_ID);
+
+  const el = addTemporaryMenuSection([
+    new container(
+      [
+        new container([
+          new menu_checkbox(
+            "hide_alert_ads",
+            "Отключить рекламу в уведомлениях",
+          ).createElement(
+            adblockData.hideAlertAds,
+            () => {},
+            () => {},
+            async event => {
+              adblockData.hideAlertAds = event.target.checked;
+            },
+          ),
+          new menu_checkbox(
+            "hide_thread_list_ads",
+            "Отключить рекламу в списке тем",
+          ).createElement(
+            adblockData.hideThreadListAds,
+            () => {},
+            () => {},
+            async event => {
+              adblockData.hideThreadListAds = event.target.checked;
+            },
+          ),
+        ]).createElement("display: block;"),
+        new components_button/* default */.Z(
+          "Сохранить",
+          "button primary LZTUpIconButton fit",
+          "far fa-save",
+        ).createElement(async () => {
+          await gmWrapper/* default */.Z.setValue(NewStorageName/* default */.Z.Adblock, adblockData);
+
+          (0,registers/* registerAlert */.de)("Настройки продвинутого Adblock успешно сохранены.");
+          window.location.reload();
+        }),
+      ],
+      "Выберите типы рекламы",
+      `Выберите все типы рекламы, которые хотите отключить. Для применения настроек нажмите на кнопку сохранить. При сохранение настроек страница автоматически перезагрузится.`,
+    ).createElement(),
+  ]);
+
+  modalContent.appendChild(el);
+  openTempMenu("Выбор темы", "Внешний вид", mainMenu, () => {});
+}
+
+async function generateReportButtonsItems() {
+  console.log("Generating buttons items");
+  const items = [];
+
+  const reportButtonsData = await gmWrapper/* default */.Z.getValue(NewStorageName/* default */.Z.ReportButtons);
+
+  console.log(reportButtonsData.sort((a, b) => a.position - b.position));
+
+  for (const button of reportButtonsData.sort(
+    (a, b) => a.position - b.position,
+  )) {
+    console.log(button.text, button.position);
+    const item = new sortableItem(button.text, button.position).createElement(
+      appear_sortableItemOnEditCallback,
+      sortableItemOnRemoveCallback,
+    );
+    item.dataset.uuid = button.uuid;
+    items.push(item);
+  }
+
+  console.log(items);
+
+  return items;
+}
+
+async function appear_sortableItemOnEditCallback(e, sortableItem) {
+  const buttonUUID = sortableItem.dataset.uuid;
+  const modalContent = document.querySelector(MODAL_SELECTOR);
+  const appearSubMenu = document.getElementById(APPEAR_MENU_ID);
+  const reportButtonsData = await gmWrapper/* default */.Z.getValue(NewStorageName/* default */.Z.ReportButtons);
+  let buttonData =
+    reportButtonsData.find(button => button.uuid === buttonUUID) || [];
+
+  async function updateButtonData(buttonData) {
+    // buttonData its current button (which we are editing)
+    const actualReportButtonsData = await gmWrapper/* default */.Z.getValue(
+      NewStorageName/* default */.Z.ReportButtons,
+    );
+    const currentReportButton = actualReportButtonsData.find(
+      button => button.uuid === buttonUUID,
+    );
+    const currentBadgeId = actualReportButtonsData.indexOf(currentReportButton);
+    actualReportButtonsData[currentBadgeId] = buttonData;
+    return actualReportButtonsData;
+  }
+
+  const el = addTemporaryMenuSection([
+    new container(
+      [
+        new input(buttonData.text, "Неправильный отзыв", 1, 12).createElement(
+          async event => {
+            let val = XenForo.htmlspecialchars(event.target.value.trim());
+
+            if (val.length < 1) {
+              return (0,registers/* registerAlert */.de)(
+                "Минимальная длина текста 1 символ. Увеличьте введенный текст для сохранения.",
+              );
+            } else if (val.length > 12) {
+              return (0,registers/* registerAlert */.de)(
+                "Максимальная длина текста 12 символов. Уменьшите введенный текст для сохранения.",
+              );
+            }
+
+            buttonData.text = val;
+          },
+        ),
+      ],
+      "Текст кнопки",
+      "Этот текст видите только вы. Минимальная длина - 1 символ, максимальная - 12 символов.",
+    ).createElement(),
+
+    new container(
+      [
+        new input(buttonData.reason, "Нарушение 3.15", 1, 120).createElement(
+          async event => {
+            let val = XenForo.htmlspecialchars(event.target.value.trim());
+
+            if (val.length < 1) {
+              return (0,registers/* registerAlert */.de)(
+                "Минимальная длина причины репорта 1 символ. Увеличьте введенный текст для сохранения.",
+              );
+            } else if (val.length > 120) {
+              return (0,registers/* registerAlert */.de)(
+                "Максимальная длина причины репорта 120 символов. Уменьшите введенный текст для сохранения.",
+              );
+            }
+
+            buttonData.reason = val;
+          },
+        ),
+      ],
+      "Причина репорта",
+      "Внимание! Причина репорта видна ВСЕМ. Не используйте в ней какие-либо оскорбления. Минимальная длина - 1 символ, максимальная - 120 символов.",
+    ).createElement(),
+
+    new container([
+      new components_button/* default */.Z(
+        "Сохранить",
+        "button primary LZTUpIconButton fit",
+        "far fa-save",
+      ).createElement(async () => {
+        const buttons = await updateButtonData(buttonData);
+        await gmWrapper/* default */.Z.setValue(NewStorageName/* default */.Z.ReportButtons, buttons);
+        (0,visuals_threads/* updateReportButtons */.Lp)(buttons);
+        (0,registers/* registerAlert */.de)("Кнопка быстрого репорта успешно сохранена.");
+      }),
+    ]).createElement(),
+  ]);
+
+  modalContent.appendChild(el);
+  openTempMenu(
+    "Управление быстрыми репортами",
+    "Внешний вид",
+    appearSubMenu,
+    async () => {
+      const sortable = appearSubMenu.querySelectorAll(
+        ".LZTUpSortableContainer > .LZTUpSortableItem",
+      );
+
+      const actualReportButtonsData = await gmWrapper/* default */.Z.getValue(
+        NewStorageName/* default */.Z.ReportButtons,
+      );
+
+      for (let i = 0; i < actualReportButtonsData.length; i++) {
+        const content = sortable[i].querySelector(".LZTUpSortableContent");
+        content.innerHTML = (0,purify/* clearHTML */.G6)(actualReportButtonsData[i].text);
+      }
+    },
+  );
+}
+
+async function sortableItemOnRemoveCallback(e, sortableItemEl) {
+  const appearSubMenu = document.getElementById("LZTUpAppearContainer");
+  let reportButtonsData = await gmWrapper/* default */.Z.getValue(NewStorageName/* default */.Z.ReportButtons);
+  let newReportButtons = [];
+  let counter = 1;
+
+  for (let i = 0; i < reportButtonsData.length; i++) {
+    const button = reportButtonsData[i];
+    if (button.uuid === sortableItemEl.dataset.uuid) {
+      continue;
+    }
+
+    const item = appearSubMenu.querySelector(
+      ".LZTUpSortableContainer > .LZTUpSortableItem",
+    );
+    if (item) {
+      item.dataset.id = counter;
+    }
+
+    button.position = counter;
+    newReportButtons.push(button);
+    counter++;
+  }
+
+  await gmWrapper/* default */.Z.setValue(NewStorageName/* default */.Z.ReportButtons, newReportButtons);
+  (0,visuals_threads/* updateReportButtons */.Lp)(newReportButtons);
+}
 
 const getAppearItems = async () => {
   const appearData = await GM_getValue(StorageName/* default */.Z.Appear, {});
 
-  const appearSection = new Section('LZTUpInfoSection', { direction: SectionDirection.Column, hidden: false })
-    .addSectionItem('Логотип', 'Выберите логотип для форума из списка', 'far fa-comments', 'LZTUpLogoManager', { onClick: async () => await createLogoManagerTempMenu(SiteType/* default */.Z.Forum), rightArrow: true })
-    .addSectionItem('Логотип маркета', 'Выберите логотип для маркета из списка', 'far fa-shopping-cart', 'LZTUpMarketLogoManager', { onClick: async () => await createLogoManagerTempMenu(SiteType/* default */.Z.Market), rightArrow: true })
-    .addSectionItem('Менеджер тем', 'Выберите тему для форума из списка', 'far fa-paint-brush', 'LZTUpThemeManager', { onClick: createThemeManagerTempMenu, rightArrow: true })
+  const appearSection = new Section("LZTUpInfoSection", {
+    direction: SectionDirection.Column,
+    hidden: false,
+  })
+    .addSectionItem(
+      "Логотип",
+      "Выберите логотип для форума из списка",
+      "far fa-comments",
+      "LZTUpLogoManager",
+      {
+        onClick: async () => await createLogoManagerTempMenu(SiteType/* default */.Z.Forum),
+        rightArrow: true,
+      },
+    )
+    .addSectionItem(
+      "Логотип маркета",
+      "Выберите логотип для маркета из списка",
+      "far fa-shopping-cart",
+      "LZTUpMarketLogoManager",
+      {
+        onClick: async () => await createLogoManagerTempMenu(SiteType/* default */.Z.Market),
+        rightArrow: true,
+      },
+    )
+    .addSectionItem(
+      "Менеджер тем",
+      "Выберите тему для форума из списка",
+      "far fa-paint-brush",
+      "LZTUpThemeManager",
+      { onClick: createThemeManagerTempMenu, rightArrow: true },
+    )
+    .addSectionItem(
+      "Продвинутый Adblock",
+      "Избавьтесь от назойливой рекламы в пару нажатий",
+      "far fa-shield",
+      "LZTUpAdblockManager",
+      { onClick: createAdblockManagerTempMenu, rightArrow: true },
+    );
 
   return [
     appearSection.createElement(),
+
+    new separator().createElement(),
+
     new container(
       [
-        new menu_checkbox('hide_alert_counter', `Скрыть счётчик уведомлений в навбаре`)
-        .createElement(
+        new sortableContainer(await generateReportButtonsItems()).createElement(
+          async e => {
+            console.log("target", e, e.target);
+            const items = e.target.children;
+            console.log("items", items);
+            const actualReportButtonsData = await gmWrapper/* default */.Z.getValue(
+              NewStorageName/* default */.Z.ReportButtons,
+            );
+            const newReportButtonsData = [];
+
+            console.log(actualReportButtonsData);
+            // actualReportButtonsData.reverse();
+
+            for (let i = 0; i < items.length; i++) {
+              const item = items[i];
+              const button = actualReportButtonsData.find(
+                b => b.uuid === item.dataset.uuid,
+              );
+              console.log("moving items", item, button);
+
+              item.dataset.id = i + 1;
+              button.position = i + 1;
+              newReportButtonsData.push(button);
+            }
+
+            console.log("Finish", newReportButtonsData);
+
+            await gmWrapper/* default */.Z.setValue(
+              NewStorageName/* default */.Z.ReportButtons,
+              newReportButtonsData,
+            );
+            (0,visuals_threads/* updateReportButtons */.Lp)(newReportButtonsData);
+          },
+        ),
+        new components_button/* default */.Z(
+          "Добавить кнопку",
+          "button LZTUpIconButton",
+          "far fa-plus",
+        ).createElement(async e => {
+          const sortableContainer = e.target.parentElement?.querySelector(
+            ".LZTUpSortableContainer",
+          );
+
+          if (!sortableContainer) {
+            return (0,registers/* registerAlert */.de)("Не найден контейнер для добавления!");
+          }
+
+          if (sortableContainer.children.length === MAX_BUTTONS_COUNT) {
+            return (0,registers/* registerAlert */.de)(
+              `Вы не можете добавить больше ${MAX_BUTTONS_COUNT} иконок!`,
+            );
+          }
+
+          const actualReportButtons = await gmWrapper/* default */.Z.getValue(
+            NewStorageName/* default */.Z.ReportButtons,
+          );
+
+          const defaultReportButton = {
+            position: sortableContainer.children.length + 1,
+            text: "Новая кнопка",
+            reason: "Флуд / Оффтоп / Спам / Бесполезная тема",
+            uuid: esm_browser_v4(), // uniq value
+          };
+
+          actualReportButtons.push(defaultReportButton);
+
+          const newItem = new sortableItem(
+            defaultReportButton.text,
+            defaultReportButton.position,
+          ).createElement(
+            appear_sortableItemOnEditCallback,
+            sortableItemOnRemoveCallback,
+          );
+          newItem.dataset.uuid = defaultReportButton.uuid;
+
+          sortableContainer.appendChild(newItem);
+
+          await gmWrapper/* default */.Z.setValue(
+            NewStorageName/* default */.Z.ReportButtons,
+            actualReportButtons,
+          );
+
+          (0,visuals_threads/* updateReportButtons */.Lp)(actualReportButtons);
+        }),
+      ],
+      "Управление быстрыми репортами",
+      "Ниже вы можете легко настроить порядок, причины и названия для кнопок быстрого репорта.",
+    ).createElement(),
+
+    new separator().createElement(),
+
+    new container(
+      [
+        new menu_checkbox(
+          "hide_alert_counter",
+          `Скрыть счётчик уведомлений в навбаре`,
+        ).createElement(
           appearData.hideAlertCounter,
           () => {},
           () => {},
-          async (event) => {
+          async event => {
             appearData.hideAlertCounter = event.target.checked;
             await GM_setValue(StorageName/* default */.Z.Appear, appearData);
-            (0,navbar/* hideBalloonById */.R)(extData/* default */.Z.balloonId.alertCounter, event.target.checked);
-            (0,registers/* registerAlert */.de)(`${event.target.checked ? 'Включено' : 'Выключено'} скрытие счетчика уведомлений в навбаре`, 5000);
-        }),
-        new menu_checkbox('hide_message_counter', `Скрыть счётчик сообщений в навбаре`)
-        .createElement(
+            (0,navbar/* hideBalloonById */.R)(
+              NavbarBalloon/* default */.Z.AlertCounter.getName(),
+              event.target.checked,
+            );
+            (0,registers/* registerAlert */.de)(
+              `${
+                event.target.checked ? "Включено" : "Выключено"
+              } скрытие счетчика уведомлений в навбаре`,
+              5000,
+            );
+          },
+        ),
+        new menu_checkbox(
+          "hide_message_counter",
+          `Скрыть счётчик сообщений в навбаре`,
+        ).createElement(
           appearData.hideMessageCounter,
           () => {},
           () => {},
-          async (event) => {
+          async event => {
             appearData.hideMessageCounter = event.target.checked;
             await GM_setValue(StorageName/* default */.Z.Appear, appearData);
-            (0,navbar/* hideBalloonById */.R)(extData/* default */.Z.balloonId.messageCounter, event.target.checked);
-            (0,registers/* registerAlert */.de)(`${event.target.checked ? 'Включено' : 'Выключено'} скрытие счетчика сообщений в навбаре`, 5000);
-        }),
-        new menu_checkbox('hide_unread_articles_status', `Скрыть статус непрочитанных статей`)
-        .createElement(
+            (0,navbar/* hideBalloonById */.R)(
+              NavbarBalloon/* default */.Z.MessageCounter.getName(),
+              event.target.checked,
+            );
+            (0,registers/* registerAlert */.de)(
+              `${
+                event.target.checked ? "Включено" : "Выключено"
+              } скрытие счетчика сообщений в навбаре`,
+              5000,
+            );
+          },
+        ),
+        new menu_checkbox(
+          "hide_unread_articles_status",
+          `Скрыть статус непрочитанных статей`,
+        ).createElement(
           appearData.hideUnreadArticlesStatus,
           () => {},
           () => {},
-          async (event) => {
+          async event => {
             appearData.hideUnreadArticlesStatus = event.target.checked;
             await GM_setValue(StorageName/* default */.Z.Appear, appearData);
             (0,navbar/* hideUnreadArticlesStatus */.p)(event.target.checked);
-            (0,registers/* registerAlert */.de)(`${event.target.checked ? 'Включено' : 'Выключено'} скрытие статуса непрочитанных статей`, 5000);
-        }),
+            (0,registers/* registerAlert */.de)(
+              `${
+                event.target.checked ? "Включено" : "Выключено"
+              } скрытие статуса непрочитанных статей`,
+              5000,
+            );
+          },
+        ),
       ],
-      'Скрытие элементов',
-      'Скройте лишние элементы сайта'
-    ).createElement('display: block;'),
+      "Скрытие элементов",
+      "Скройте лишние элементы сайта",
+    ).createElement("display: block;"),
+
     new container(
       [
-        new menu_checkbox('new_error_page', `Небольшое изменение страницы "тех. работ" и "ошибок"`)
-        .createElement(
+        new menu_checkbox(
+          "new_error_page",
+          `Небольшое изменение страницы "тех. работ" и "ошибок"`,
+        ).createElement(
           appearData.newErrorPage,
           () => {},
           () => {},
-          async (event) => {
+          async event => {
             appearData.newErrorPage = event.target.checked;
             await GM_setValue(StorageName/* default */.Z.Appear, appearData);
-            (0,registers/* registerAlert */.de)(`${event.target.checked ? 'Включено' : 'Выключено'} Небольшое изменение страницы "тех. работ" и "ошибок"`, 5000);
-        }),
-        new menu_checkbox('disable_self_ad_error', `Убрать саморекламу на измененной странице "тех. работ" и "ошибок"`)
-        .createElement(
+            (0,registers/* registerAlert */.de)(
+              `${
+                event.target.checked ? "Включено" : "Выключено"
+              } Небольшое изменение страницы "тех. работ" и "ошибок"`,
+              5000,
+            );
+          },
+        ),
+        new menu_checkbox(
+          "disable_self_ad_error",
+          `Убрать саморекламу на измененной странице "тех. работ" и "ошибок"`,
+        ).createElement(
           appearData.disableSelfAdOnNewErrorPage,
           () => {},
           () => {},
-          async (event) => {
+          async event => {
             appearData.disableSelfAdOnNewErrorPage = event.target.checked;
             await GM_setValue(StorageName/* default */.Z.Appear, appearData);
-            (0,registers/* registerAlert */.de)(`${event.target.checked ? 'Включена' : 'Выключена'} самореклама на изменнной странице "тех. работ" и "ошибок"`, 5000);
-        }),
+            (0,registers/* registerAlert */.de)(
+              `${
+                event.target.checked ? "Включена" : "Выключена"
+              } самореклама на изменнной странице "тех. работ" и "ошибок"`,
+              5000,
+            );
+          },
+        ),
       ],
-      'Страницы тех. работ и ошибок',
-      'Измените оформление страницы тех. работ и ошибки'
-    ).createElement('display: block;'),
+      "Страницы тех. работ и ошибок",
+      "Измените оформление страницы тех. работ и ошибки",
+    ).createElement("display: block;"),
+    new container(
+      [
+        new menu_checkbox(
+          "summarize_threads",
+          `
+          Суммаризатор тем
+          <span class="far fa-info-circle Tooltip" title="Собирает все самое важное из темы, если содержимое темы более 300 символов"></span>
+          `,
+        ).createElement(
+          appearData.summarizeThreads,
+          () => {},
+          () => {},
+          async event => {
+            appearData.summarizeThreads = event.target.checked;
+            await GM_setValue(StorageName/* default */.Z.Appear, appearData);
+            await (0,threads/* summarizeThreadBlock */.iY)(event.target.checked);
+            (0,registers/* registerAlert */.de)(
+              `${
+                event.target.checked ? "Включен" : "Выключен"
+              } суммаризатор тем`,
+              5000,
+            );
+          },
+        ),
+      ],
+      "Другое",
+      "Другие функции связанные с внешним видом",
+    ).createElement("display: block;"),
   ];
-}
+};
 
 /* harmony default export */ const appear = (getAppearItems);
+
 ;// CONCATENATED MODULE: ./src/ui/menu/items/update.js
 
 
-
 const getUpdateItems = async () => {
-  return [
-    new comment("Раздел обновления расширения").createElement()
-  ];
-}
+  return [new comment("Раздел обновления расширения").createElement()];
+};
 
 /* harmony default export */ const items_update = (getUpdateItems);
+
 ;// CONCATENATED MODULE: ./src/ui/menu/menu.js
 
 
@@ -4468,56 +4953,98 @@ const getUpdateItems = async () => {
 
 
 
-
 async function generateMenu(tabs) {
-  const menuSection = new Section('LZTUpMainSection')
-    .addSectionItem('Локальный Уник', 'Максимальная кастомизация', 'far fa-palette', 'LZTUpUniqItem', { onClick: (_, title) => openSubMenu('LZTUpUniqContainer', title) })
-    .addSectionItem('Розыгрыши', 'Комфорт для розыгрышей', 'far fa-gift', 'LZTUpContestsItem', { onClick: (_, title) => openSubMenu('LZTUpContestsContainer', title) })
-    .addSectionItem('Пользователи', 'Штучки для пользователей', 'far fa-user', 'LZTUpUsersItem', { onClick: (_, title) => openSubMenu('LZTUpUsersContainer', title) })
-    .addSectionItem('Внешний вид', 'Темы, логотипы и другое', 'far fa-drafting-compass', 'LZTUpAppearItem', { onClick: (_, title) => openSubMenu('LZTUpAppearContainer', title) })
-    .addSectionContainer('LZTUpUniqContainer', await items_profile())
-    .addSectionContainer('LZTUpContestsContainer', await items_contests())
-    .addSectionContainer('LZTUpUsersContainer', await items_users())
-    .addSectionContainer('LZTUpAppearContainer', await appear())
+  const menuSection = new Section("LZTUpMainSection")
+    .addSectionItem(
+      "Локальный Уник",
+      "Максимальная кастомизация",
+      "far fa-palette",
+      "LZTUpUniqItem",
+      { onClick: (_, title) => openSubMenu("LZTUpUniqContainer", title) },
+    )
+    .addSectionItem(
+      "Розыгрыши",
+      "Комфорт для розыгрышей",
+      "far fa-gift",
+      "LZTUpContestsItem",
+      { onClick: (_, title) => openSubMenu("LZTUpContestsContainer", title) },
+    )
+    .addSectionItem(
+      "Пользователи",
+      "Штучки для пользователей",
+      "far fa-user",
+      "LZTUpUsersItem",
+      { onClick: (_, title) => openSubMenu("LZTUpUsersContainer", title) },
+    )
+    .addSectionItem(
+      "Внешний вид",
+      "Темы, логотипы и другое",
+      "far fa-drafting-compass",
+      "LZTUpAppearItem",
+      { onClick: (_, title) => openSubMenu("LZTUpAppearContainer", title) },
+    )
+    .addSectionContainer("LZTUpUniqContainer", await items_profile())
+    .addSectionContainer("LZTUpContestsContainer", await items_contests())
+    .addSectionContainer("LZTUpUsersContainer", await items_users())
+    .addSectionContainer("LZTUpAppearContainer", await appear());
 
-  const settingsSection = new Section('LZTUpSettingsSection')
-    .addSectionItem('Настройки', 'Настройки расширения', 'far fa-cog', 'LZTUpSettingsItem', { onClick: (_, title) => openSubMenu('LZTUpSettingsContainer', title) })
-    .addSectionItem('Обновления', 'Установка и проверка обновлений расширения', 'far fa-cloud-download', 'LZTUpUpdateItem', { onClick: (_, title) => openSubMenu('LZTUpUpdateContainer', title) })
-    .addSectionItem('Информация', `Версия: ${GM_info?.script?.version}`, 'far fa-info-circle', 'LZTUpInformationItem', { onClick: (_, title) => openSubMenu('LZTUpInformationContainer', title) })
-    .addSectionContainer('LZTUpSettingsContainer', await settings())
-    .addSectionContainer('LZTUpUpdateContainer', await items_update())
-    .addSectionContainer('LZTUpInformationContainer', await info())
+  const settingsSection = new Section("LZTUpSettingsSection")
+    .addSectionItem(
+      "Настройки",
+      "Настройки расширения",
+      "far fa-cog",
+      "LZTUpSettingsItem",
+      { onClick: (_, title) => openSubMenu("LZTUpSettingsContainer", title) },
+    )
+    .addSectionItem(
+      "Обновления",
+      "Установка и проверка обновлений расширения",
+      "far fa-cloud-download",
+      "LZTUpUpdateItem",
+      { onClick: (_, title) => openSubMenu("LZTUpUpdateContainer", title) },
+    )
+    .addSectionItem(
+      "Информация",
+      `Версия: ${GM_info?.script?.version}`,
+      "far fa-info-circle",
+      "LZTUpInformationItem",
+      {
+        onClick: (_, title) => openSubMenu("LZTUpInformationContainer", title),
+      },
+    )
+    .addSectionContainer("LZTUpSettingsContainer", await settings())
+    .addSectionContainer("LZTUpUpdateContainer", await items_update())
+    .addSectionContainer("LZTUpInformationContainer", await info());
 
-  const sections = [
-    menuSection,
-    settingsSection
-  ]
+  const sections = [menuSection, settingsSection];
 
-  const menuContent = document.createElement('div')
-  menuContent.classList.add('LZTUpModalContent');
+  const menuContent = document.createElement("div");
+  menuContent.classList.add("LZTUpModalContent");
 
-  const tabsContainer = document.createElement('ul');
-  tabsContainer.classList.add('LZTUpTabs');
+  const tabsContainer = document.createElement("ul");
+  tabsContainer.classList.add("LZTUpTabs");
   menuContent.appendChild(tabsContainer);
 
   for (const section of sections) {
     const sectionEl = section.createElement();
     menuContent.appendChild(sectionEl);
     for (const container of section.sectionContainers) {
-      menuContent.append(container)
-      container.querySelectorAll('.Tooltip').forEach(el => XenForo.Tooltip($(el))); // load all tooltips in menu container
+      menuContent.append(container);
+      container
+        .querySelectorAll(".Tooltip")
+        .forEach(el => XenForo.Tooltip($(el))); // load all tooltips in menu container
     }
   }
 
-  logger/* default */.Z.debug('Generated menu tabs: ', tabs);
+  logger/* default */.Z.debug("Generated menu tabs: ", tabs);
 
   for (const tab of tabs) {
-    menuContent.querySelector('.LZTUpTabs')
-      .appendChild(tab.createElement());
+    menuContent.querySelector(".LZTUpTabs").appendChild(tab.createElement());
   }
 
   return menuContent;
 }
+
 
 
 ;// CONCATENATED MODULE: ./src/ui/components/menu/tab.js
@@ -4539,32 +5066,66 @@ class Tab {
   }
 
   createElement() {
-    const tab = document.createElement('li');
-    tab.id = 'LZTUpTab';
+    const tab = document.createElement("li");
+    tab.id = "LZTUpTab";
     tab.className = this.className;
-    const span = document.createElement('span');
+    const span = document.createElement("span");
     span.innerText = this.name;
     tab.appendChild(span);
 
-    tab.addEventListener('click', () => this.setActive());
+    tab.addEventListener("click", () => this.setActive());
     return tab;
   }
 
   setActive() {
-    document.querySelectorAll('#LZTUpTab').forEach(tab => tab.classList.remove('active'));
+    document
+      .querySelectorAll("#LZTUpTab")
+      .forEach(tab => tab.classList.remove("active"));
 
-    document.querySelector(`.${this.className}`).classList.add('active');
+    document.querySelector(`.${this.className}`).classList.add("active");
 
-    document.querySelectorAll('.LZTUpModalContent > .LZTUpSection').forEach(section => section.style.display = 'none');
+    document
+      .querySelectorAll(".LZTUpModalContent > .LZTUpSection")
+      .forEach(section => (section.style.display = "none"));
 
-    document.getElementById(this.sectionClassName).style.display = '';
+    document.getElementById(this.sectionClassName).style.display = "";
   }
 }
 
 
+
 // EXTERNAL MODULE: ./src/xenforo/tooltips.js
 var tooltips = __webpack_require__("./src/xenforo/tooltips.js");
+// EXTERNAL MODULE: ./src/api/lztupgrade/logoAPI.js
+var logoAPI = __webpack_require__("./src/api/lztupgrade/logoAPI.js");
+// EXTERNAL MODULE: ./src/api/lztupgrade/themeAPI.js
+var themeAPI = __webpack_require__("./src/api/lztupgrade/themeAPI.js");
+;// CONCATENATED MODULE: ./src/utils/cache.js
+
+
+
+
+
+
+
+async function updateCachedLogos(logoType) {
+  const cacheItemName = `availabled${(0,utils/* ucFirst */.zf)(logoType)}Logos`;
+  const cacheKey = CacheKeys.getKeyByName(cacheItemName);
+  const logoTargetInt = logoType === SiteType/* default */.Z.Forum ? 1 : 2;
+  const logos = (await logoAPI/* default */.Z.getLogos(logoTargetInt)) || cacheKey.value;
+  return await gmWrapper/* default */.Z.setCache(cacheKey.name, logos);
+}
+
+async function updateCachedThemes() {
+  const themes = (await themeAPI/* default */.Z.getThemes()) || [];
+  return await gmWrapper/* default */.Z.setCache(CacheKeys.availabledThemes.name, themes);
+}
+
+
+
 ;// CONCATENATED MODULE: ./src/callbacks/menuButton.js
+
+
 
 
 
@@ -4579,40 +5140,49 @@ var tooltips = __webpack_require__("./src/xenforo/tooltips.js");
 
 async function menuButtonCallback() {
   const tabs = [
-    new Tab('Главная', 'LZTUpMainTab', 'LZTUpMainSection', true),
-    new Tab('Настройки', 'LZTUpSettingsTab', 'LZTUpSettingsSection', false),
+    new Tab("Главная", "LZTUpMainTab", "LZTUpMainSection", true),
+    new Tab("Настройки", "LZTUpSettingsTab", "LZTUpSettingsSection", false),
   ];
 
   const menuContent = await generateMenu(tabs);
 
-  const overlay = (0,registers/* registerModal */.Y3)(
-    config/* default */.Z.extName,
-    '<div id="LZTUpModalBase"></div>'
-  );
+  (0,registers/* registerModal */.Y3)(config/* default */.Z.extName, '<div id="LZTUpModalBase"></div>');
 
-  const modal = document.querySelector('#LZTUpModalBase');
+  const modal = document.querySelector("#LZTUpModalBase");
   modal.appendChild(menuContent);
   for (const tab of tabs) {
     tab.active ? tab.setActive() : null;
   }
 
   const baseModal = modal.parentElement;
-  baseModal.style.whiteSpace = 'unset';
-  baseModal.parentElement.id = 'LZTUpModalOverlay';
-  baseModal.parentElement.style = 'margin-bottom: 15px;';
+  baseModal.style.whiteSpace = "unset";
+  baseModal.parentElement.id = "LZTUpModalOverlay";
+  baseModal.parentElement.style = "margin-bottom: 15px;";
 
   setMenuTitle(config/* default */.Z.extName);
   (0,tooltips/* updateTooltips */.W)();
   initColorPickers();
 
   // Update Profile Preview
-  const profileDB = new profile/* LZTProfileDB */.M();
-  const profileData = await profileDB.read();
-  const userid = (0,users/* getUserId */.n5)('me');
-  const username = (0,users/* getUsername */.Ms)('me');
-  const previewProfile = new menu_previewProfile(userid, username, profileData);
+  const profileData = await gmWrapper/* default */.Z.getValue(NewStorageName/* default */.Z.Profile);
+  const badgesData = await gmWrapper/* default */.Z.getValue(NewStorageName/* default */.Z.ProfileBadges);
+  const userid = (0,users/* getUserId */.n5)("me");
+  const username = (0,users/* getUsername */.Ms)("me");
+  const previewProfile = new menu_previewProfile(
+    userid,
+    username,
+    profileData,
+    badgesData,
+  );
   await previewProfile.updateAll();
+
+  await Promise.allSettled([
+    updateCachedLogos(SiteType/* default */.Z.Forum),
+    updateCachedLogos(SiteType/* default */.Z.Market),
+    updateCachedThemes(),
+  ]);
 }
+
 
 
 // EXTERNAL MODULE: ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/styles/buttons.scss
@@ -4652,15 +5222,16 @@ var buttons_update = injectStylesIntoStyleTag_default()(buttons/* default */.Z, 
 
 
 
-const menuButton = document.createElement('li');
-const menuButton_link = document.createElement('a');
-menuButton_link.id = 'LZTUpButton';
+const menuButton = document.createElement("li");
+const menuButton_link = document.createElement("a");
+menuButton_link.id = "LZTUpButton";
 menuButton_link.innerText = config/* default */.Z.extName;
 
 menuButton.appendChild(menuButton_link);
 menuButton.onclick = menuButtonCallback;
 
 /* harmony default export */ const buttons_menuButton = (menuButton);
+
 
 /***/ }),
 
@@ -4678,21 +5249,21 @@ class Icon {
    *  @param {string} iconClassName - id of icon
    */
 
-  constructor(className, id = 'LZTUpIcon') {
+  constructor(className, id = "LZTUpIcon") {
     this.className = className;
     this.id = id;
   }
 
   createElement() {
-    const icon = document.createElement('i');
+    const icon = document.createElement("i");
     icon.id = this.id;
     icon.className = this.className;
     return icon;
   }
 }
 
-
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Icon);
+
 
 /***/ }),
 
@@ -4700,47 +5271,49 @@ class Icon {
 /***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
 
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   Fw: () => (/* binding */ isThreadPage),
 /* harmony export */   HI: () => (/* binding */ isContestThread),
 /* harmony export */   IM: () => (/* binding */ isContestsNode),
 /* harmony export */   Ji: () => (/* binding */ isOpenMemberCard),
 /* harmony export */   cD: () => (/* binding */ isProfilePage),
 /* harmony export */   kK: () => (/* binding */ isElement)
 /* harmony export */ });
-/* unused harmony export isThreadPage */
-/* harmony import */ var Configs_extData__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("./src/configs/extData.js");
-
-
 // Returns true if it is a DOM element
 // https://stackoverflow.com/questions/384286/how-do-you-check-if-a-javascript-object-is-a-dom-object
-function isElement(o){
-  return (
-    typeof HTMLElement === 'object' ? o instanceof HTMLElement : //DOM2
-    o && typeof o === 'object' && o !== null && o.nodeType === 1 && typeof o.nodeName === 'string'
-  );
+function isElement(o) {
+  return typeof HTMLElement === "object"
+    ? o instanceof HTMLElement //DOM2
+    : o &&
+        typeof o === "object" &&
+        o !== null &&
+        o.nodeType === 1 &&
+        typeof o.nodeName === "string";
 }
 
 function isContestThread() {
-  return !!document.querySelector('div.contestThreadBlock');
+  return !!document.querySelector("div.contestThreadBlock");
 }
 
 function isContestsNode() {
   const currentPath = window.location.pathname;
-  return currentPath.includes('/forums/contests/');
+  return currentPath.includes("/forums/contests/");
 }
 
 function isProfilePage() {
-  // exec time: <1ms (faster than check meta)
-  return !!document.querySelector('#content.member_view');
+  return !!document.querySelector("#content.member_view");
 }
 
 function isThreadPage() {
-  // exec time: <1ms (faster than check meta)
-  return !!document.querySelector('#content.thread_view');
+  return (
+    !!document.querySelector("#content.thread_view") ||
+    !!document.querySelector("#content.EWRporta2_ArticleView")
+  );
 }
 
 function isOpenMemberCard() {
-  return !!document.querySelector(Configs_extData__WEBPACK_IMPORTED_MODULE_0__/* ["default"] */ .Z.selectors.memberCard);
+  return !!document.querySelector(".xenOverlay.memberCard");
 }
+
 
 
 
@@ -4758,43 +5331,35 @@ __webpack_require__.d(__webpack_exports__, {
   Rf: () => (/* binding */ contestsHidePoll),
   sO: () => (/* binding */ contestsParticipateByBtn),
   s$: () => (/* binding */ contestsTagsVisibility),
-  g4: () => (/* binding */ contestsUpdateCapctha)
+  g4: () => (/* binding */ contestsUpdateCapctha),
+  uu: () => (/* binding */ regOpenContestsBtn),
+  cy: () => (/* binding */ removeOpenContestsBtn)
 });
 
 // EXTERNAL MODULE: ./src/callbacks/contestsParticipate.js + 1 modules
 var contestsParticipate = __webpack_require__("./src/callbacks/contestsParticipate.js");
-// EXTERNAL MODULE: ./src/utils/checkers.js
-var checkers = __webpack_require__("./src/utils/checkers.js");
-;// CONCATENATED MODULE: ./src/visuals/threads.js
-// СОЗДАТЬ ОТДЕЛЬНУЮ ФУНКЦИЮ ДЛЯ ЭТОГО А ТО АХУЕТЬ СКОК ДУБЛИРУЕТСЯ
-function hideThreadContent(isHidden) {
-  const messageContent = document.querySelector('.message.firstPost > .messageInfo > .messageContent > article > blockquote.messageText');
-  if (messageContent !== null) {
-    return messageContent.style.display = isHidden ? 'none' : '';
-  }
-}
-
-function hideThreadPoll(isHidden) {
-  const pollContainer = document.querySelector('div.PollContainer');
-  if (pollContainer !== null) {
-    return pollContainer.style.display = isHidden ? 'none' : '';
-  }
-}
-
-
-;// CONCATENATED MODULE: ./src/utils/tags.js
-function tagsVisibility(isHidden = true) {
-  const tagList = document.querySelector('div.tagBlock');
-  if (tagList !== null) {
-    return tagList.style.display = isHidden ? 'none' : '';
-  };
-}
-
-
+// EXTERNAL MODULE: ./src/visuals/threads.js + 1 modules
+var threads = __webpack_require__("./src/visuals/threads.js");
 // EXTERNAL MODULE: ./src/ui/components/button.js
 var components_button = __webpack_require__("./src/ui/components/button.js");
 // EXTERNAL MODULE: ./src/utils/logger.js
 var logger = __webpack_require__("./src/utils/logger.js");
+// EXTERNAL MODULE: ./src/utils/registers.js
+var registers = __webpack_require__("./src/utils/registers.js");
+// EXTERNAL MODULE: ./src/utils/utils.js
+var utils = __webpack_require__("./src/utils/utils.js");
+;// CONCATENATED MODULE: ./src/utils/tags.js
+function tagsVisibility(isHidden = true) {
+  const tagList = document.querySelector("div.tagBlock");
+  if (tagList !== null) {
+    return (tagList.style.display = isHidden ? "none" : "");
+  }
+}
+
+
+
+// EXTERNAL MODULE: ./src/utils/checkers.js
+var checkers = __webpack_require__("./src/utils/checkers.js");
 ;// CONCATENATED MODULE: ./src/utils/contests.js
 
 
@@ -4803,61 +5368,105 @@ var logger = __webpack_require__("./src/utils/logger.js");
 
 
 
+
+
+const pagesToOpen = 10;
+const openContestsBtnId = `LZTUpOpenContestsButton`;
+
+function regOpenContestsBtn() {
+  if ((0,checkers/* isContestsNode */.IM)() && !document.getElementById(openContestsBtnId)) {
+    const openContestsBtn = new components_button/* default */.Z(
+      `Открыть ${XenForo.htmlspecialchars(pagesToOpen)}`,
+    ).createElement(async () => {
+      (0,utils/* updateFeed */.j1)();
+      const el = await (0,utils/* waitForElm */.Nc)(".forumImprovements--mask.hidden");
+      if (!el) {
+        return;
+      }
+
+      const links = (0,utils/* getThreadLinks */.Eq)();
+      if (!links.length) {
+        return;
+      }
+
+      for (let i = 0; i < Math.min(pagesToOpen, links.length); i++) {
+        window.open(links[i]);
+      }
+    });
+    openContestsBtn.id = openContestsBtnId;
+    (0,registers/* registerNavButton */.Wh)(openContestsBtn);
+  }
+}
+
+function removeOpenContestsBtn() {
+  if ((0,checkers/* isContestsNode */.IM)()) {
+    document.getElementById(openContestsBtnId)?.remove();
+  }
+}
+
 function contestThreadBlockMove(toTop = true) {
   if ((0,checkers/* isContestThread */.HI)()) {
-    const contestsThreadBlock = document.querySelector('div.contestThreadBlock');
-    const messageContent = document.querySelector('li.firstPost > div.messageInfo > div.messageContent > article > blockquote.messageText');
+    const contestsThreadBlock = document.querySelector(
+      "div.contestThreadBlock",
+    );
+    const messageContent = document.querySelector(
+      "li.firstPost > div.messageInfo > div.messageContent > article > blockquote.messageText",
+    );
     if (toTop) {
-      contestsThreadBlock.parentElement.append(messageContent)
-      contestsThreadBlock.style.borderTop = 'none';
-      contestsThreadBlock.style.borderBottom = '1px solid rgb(45, 45, 45)';
+      contestsThreadBlock.parentElement.append(messageContent);
+      contestsThreadBlock.style.borderTop = "none";
+      contestsThreadBlock.style.borderBottom = "1px solid rgb(45, 45, 45)";
     } else {
-      contestsThreadBlock.parentElement.prepend(messageContent)
-      contestsThreadBlock.style.borderTop = '1px solid rgb(45, 45, 45)';
-      contestsThreadBlock.style.borderBottom = 'none';
+      contestsThreadBlock.parentElement.prepend(messageContent);
+      contestsThreadBlock.style.borderTop = "1px solid rgb(45, 45, 45)";
+      contestsThreadBlock.style.borderBottom = "none";
     }
   }
 }
 
 function contestsHideContent(isHidden = true) {
   if ((0,checkers/* isContestThread */.HI)()) {
-    return hideThreadContent(isHidden);
+    return (0,threads/* hideThreadContent */.OL)(isHidden);
   }
 }
 
 function contestsTagsVisibility(isHidden = true) {
   if ((0,checkers/* isContestThread */.HI)()) {
     tagsVisibility(isHidden);
-  };
+  }
 }
 
 function contestsHidePoll(isHidden = true) {
   if ((0,checkers/* isContestThread */.HI)()) {
-    return hideThreadPoll(isHidden);
+    return (0,threads/* hideThreadPoll */.aC)(isHidden);
   }
 }
 
 function contestsUpdateCapctha() {
   if ((0,checkers/* isContestThread */.HI)()) {
-    const participateBtn = document.querySelector('.LztContest--Participate');
+    const participateBtn = document.querySelector(".LztContest--Participate");
     if (!participateBtn) {
       return;
     }
 
-    const updateButton = new components_button/* default */.Z('', 'button LZTUpRefreshButton', 'far fa-sync').createElement((e) => {
+    const updateButton = new components_button/* default */.Z(
+      "",
+      "button LZTUpRefreshButton",
+      "far fa-sync",
+    ).createElement(e => {
       e.preventDefault();
       reRenderCaptcha();
     });
 
-    participateBtn.insertAdjacentElement('afterend', updateButton);
+    participateBtn.insertAdjacentElement("afterend", updateButton);
   }
 }
 
 function contestsAutoFixCaptcha() {
   if ((0,checkers/* isContestThread */.HI)()) {
-    const captchaControl = document.querySelector('.captchaBlock > div');
+    const captchaControl = document.querySelector(".captchaBlock > div");
     if (captchaControl?.childElementCount > 0) {
-      return logger/* default */.Z.debug('Captcha exists');
+      return logger/* default */.Z.debug("Captcha exists");
     }
 
     return reRenderCaptcha();
@@ -4865,41 +5474,99 @@ function contestsAutoFixCaptcha() {
 }
 
 function reRenderCaptcha() {
-  const captchaControl = document.querySelector('.captchaBlock > div');
+  const captchaControl = document.querySelector(".captchaBlock > div");
   if (!captchaControl) {
     return logger/* default */.Z.error("CAPTCHA BLOCK MISSING");
   }
 
   // Rerender captcha
   turnstile.render(`#${captchaControl.id}`, {
-    sitekey: '0x4AAAAAAADMHhlDN2zO9nrC',
-    theme: 'dark',
-    size: 'compact',
-    callback: function(token) {
+    sitekey: "0x4AAAAAAADMHhlDN2zO9nrC",
+    theme: "dark",
+    size: "compact",
+    callback: function (token) {
       console.log(`Challenge Success ${token}`);
-      $('.Captcha--XenForo_ControllerPublic_Thread').prepend('<input type="hidden" name="cf-turnstile-response" value="' + token + '">');
-      let $participateButton = $('.LztContest--Participate');
+      $(".Captcha--XenForo_ControllerPublic_Thread").prepend(
+        '<input type="hidden" name="cf-turnstile-response" value="' +
+          token +
+          '">',
+      );
+      let $participateButton = $(".LztContest--Participate");
       if ($participateButton.length) {
-        $participateButton.attr('href', $participateButton.attr('href') + '?cf-turnstile-response=' + token);
-        $participateButton.removeAttr('disabled').removeClass('disabled');
+        $participateButton.attr(
+          "href",
+          $participateButton.attr("href") + "?cf-turnstile-response=" + token,
+        );
+        $participateButton.removeAttr("disabled").removeClass("disabled");
       }
     },
   });
 }
 
 function contestsParticipateByBtn(status) {
-  const contestBlock = document.querySelector('div.contestThreadBlock');
+  const contestBlock = document.querySelector("div.contestThreadBlock");
   if (!contestBlock) {
     return;
   }
 
   if (status) {
-    document.addEventListener('keydown', contestsParticipate/* participateByBtnCallback */.m);
+    document.addEventListener("keydown", contestsParticipate/* participateByBtnCallback */.m);
   } else {
-    document.removeEventListener('keydown', contestsParticipate/* participateByBtnCallback */.m);
+    document.removeEventListener("keydown", contestsParticipate/* participateByBtnCallback */.m);
   }
 }
 
+
+
+
+/***/ }),
+
+/***/ "./src/utils/gmWrapper.js":
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   Z: () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var Configs_NewStorageName__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("./src/configs/NewStorageName.js");
+
+
+const LZTUp = {};
+
+LZTUp.checkType = variable => {
+  if (!(variable instanceof Configs_NewStorageName__WEBPACK_IMPORTED_MODULE_0__/* ["default"] */ .Z)) {
+    throw new Error(
+      "The variable is not an instance of the 'StorageName' class",
+    );
+  }
+  return true;
+};
+
+LZTUp.getValue = async storageName => {
+  LZTUp.checkType(storageName);
+  return await GM.getValue(storageName.name, storageName.value);
+};
+
+LZTUp.setValue = async (storageName, value) => {
+  LZTUp.checkType(storageName);
+  return await GM.setValue(storageName.name, value);
+};
+
+LZTUp.setCache = async (keyName, value) => {
+  if (keyName instanceof Configs_NewStorageName__WEBPACK_IMPORTED_MODULE_0__/* ["default"] */ .Z) {
+    // It will help to avoid errors when [Object Object] gets into the cache for the place of the desired value
+    keyName = keyName.name;
+  }
+  const cache = await LZTUp.getValue(Configs_NewStorageName__WEBPACK_IMPORTED_MODULE_0__/* ["default"] */ .Z.Cache);
+  cache[keyName] = value;
+  return await GM.setValue(Configs_NewStorageName__WEBPACK_IMPORTED_MODULE_0__/* ["default"] */ .Z.Cache.name, cache);
+};
+
+LZTUp.getCache = async storageName => {
+  const cache = await LZTUp.getValue(Configs_NewStorageName__WEBPACK_IMPORTED_MODULE_0__/* ["default"] */ .Z.Cache);
+  return cache[storageName.name] ?? storageName.value;
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (LZTUp);
 
 
 /***/ }),
@@ -4912,26 +5579,44 @@ function contestsParticipateByBtn(status) {
 /* harmony export */ });
 const Logger = {};
 Logger.log = (...text) => {
-  return console.log("%c[LZT Upgrade]", "background: #0daf77; color: #fff; padding: 5px;", ...text);
-}
+  return console.log(
+    "%c[LZT Upgrade]",
+    "background: #0daf77; color: #fff; padding: 5px;",
+    ...text,
+  );
+};
 
 Logger.error = (...text) => {
-  return console.error("%c[LZT Upgrade]", "background: #0daf77; color: #fff; padding: 5px;", ...text);
-}
+  return console.error(
+    "%c[LZT Upgrade]",
+    "background: #0daf77; color: #fff; padding: 5px;",
+    ...text,
+  );
+};
 
 Logger.warn = (...text) => {
-  return console.warn("%c[LZT Upgrade]", "background: #0daf77; color: #fff; padding: 5px;", ...text);
-}
+  return console.warn(
+    "%c[LZT Upgrade]",
+    "background: #0daf77; color: #fff; padding: 5px;",
+    ...text,
+  );
+};
 
 Logger.info = (...text) => {
-  return console.info("%c[LZT Upgrade]", "background: #0daf77; color: #fff; padding: 5px;", ...text);
-}
+  return console.info(
+    "%c[LZT Upgrade]",
+    "background: #0daf77; color: #fff; padding: 5px;",
+    ...text,
+  );
+};
 
 Logger.debug = (...text) => {
-  if (false) {}
-}
+  if (false)
+    {}
+};
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Logger);
+
 
 /***/ }),
 
@@ -4947,58 +5632,55 @@ Logger.debug = (...text) => {
 
 
 const defaultAvailabledStyles = [
-  'color',
-  'text-shadow',
-  'border-radius',
-  'background',
-  'background-color',
-  'background-image',
-  '-webkit-background-clip',
-  '-webkit-text-fill-color'
-]
+  "color",
+  "text-shadow",
+  "border-radius",
+  "background",
+  "background-color",
+  "background-image",
+  "-webkit-background-clip",
+  "-webkit-text-fill-color",
+];
 
 function clearHTML(element) {
   return DOMPurify.sanitize(element, {
     USE_PROFILES: {
-        svg: true,
-        html: true
+      svg: true,
+      html: true,
     },
-    FORBID_TAGS: [
-        "style"
-    ]
+    FORBID_TAGS: ["style"],
   });
 }
 
 function clearSVG(element) {
   return DOMPurify.sanitize(element, {
     USE_PROFILES: {
-        svg: true
+      svg: true,
     },
-    FORBID_TAGS: [
-        "style"
-    ]
+    FORBID_TAGS: ["style"],
   });
 }
 
 // removes all prohibited styles from the string
 function clearCSS(css, availabledStyles = defaultAvailabledStyles) {
-  let pairs = css.split(';');
+  let pairs = css.split(";");
   const goodCSS = [];
   Utils_logger__WEBPACK_IMPORTED_MODULE_0__/* ["default"] */ .Z.debug(pairs);
   for (const pair of pairs) {
-    const values = pair.split(':');
-    const key = values[0].replace(/\s/, '');
-    Utils_logger__WEBPACK_IMPORTED_MODULE_0__/* ["default"] */ .Z.debug(pair, values, key)
-    if (availabledStyles.includes(key)) {;
-      Utils_logger__WEBPACK_IMPORTED_MODULE_0__/* ["default"] */ .Z.debug('DETECTED AVAILABLED STYLES');
+    const values = pair.split(":");
+    const key = values[0].replace(/\s/, "");
+    Utils_logger__WEBPACK_IMPORTED_MODULE_0__/* ["default"] */ .Z.debug(pair, values, key);
+    if (availabledStyles.includes(key)) {
+      Utils_logger__WEBPACK_IMPORTED_MODULE_0__/* ["default"] */ .Z.debug("DETECTED AVAILABLED STYLES");
       goodCSS.push(pair);
     }
   }
 
-  const cssString = goodCSS.length ? goodCSS.join(';') : '';
+  const cssString = goodCSS.length ? goodCSS.join(";") : "";
   Utils_logger__WEBPACK_IMPORTED_MODULE_0__/* ["default"] */ .Z.debug(`CLEARED FINAL STRING: ${cssString}`);
   return cssString;
 }
+
 
 
 
@@ -5009,30 +5691,40 @@ function clearCSS(css, availabledStyles = defaultAvailabledStyles) {
 
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   O0: () => (/* binding */ registerObserver),
+/* harmony export */   Wh: () => (/* binding */ registerNavButton),
 /* harmony export */   Y3: () => (/* binding */ registerModal),
 /* harmony export */   de: () => (/* binding */ registerAlert),
 /* harmony export */   e7: () => (/* binding */ registerMenuButton)
 /* harmony export */ });
-function registerModal(modalName, elementMain = '') {
-  return XenForo.alert(elementMain, modalName, null, (elem) => {
-    document.querySelector('div.modal.fade').remove();
-  })
+function registerModal(modalName, elementMain = "") {
+  return XenForo.alert(elementMain, modalName, null, () => {
+    document.querySelector("div.modal.fade").remove();
+  });
 }
 
 function registerAlert(text, timeout = 5000) {
-  return XenForo.alert(text, '', timeout);
+  return XenForo.alert(text, "", timeout);
 }
 
 function registerMenuButton(el) {
-  const menu = document.querySelector('#AccountMenu > ul:nth-child(1) > li:nth-child(10)');
-  menu.insertAdjacentElement('afterend', el);
+  const menu = document.querySelector(
+    "#AccountMenu > ul:nth-child(1) > li:nth-child(10)",
+  );
+  menu.insertAdjacentElement("afterend", el);
+  return true;
+}
+
+function registerNavButton(el) {
+  const nav = document.querySelector(".pageNavLinkGroup > .linkGroup");
+  el.style.marginRight = "10px";
+  nav.prepend(el);
   return true;
 }
 
 function registerObserver(callback) {
-  const observer = new MutationObserver((mutationsList, observer) => {
+  const observer = new MutationObserver(mutationsList => {
     for (const mutation of mutationsList) {
-      if (mutation.type === 'childList') {
+      if (mutation.type === "childList") {
         callback(mutation);
       }
     }
@@ -5042,6 +5734,289 @@ function registerObserver(callback) {
   observer.observe(document.body, config);
   return observer;
 }
+
+
+
+
+/***/ }),
+
+/***/ "./src/utils/threads.js":
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+
+// EXPORTS
+__webpack_require__.d(__webpack_exports__, {
+  iY: () => (/* binding */ summarizeThreadBlock)
+});
+
+// UNUSED EXPORTS: getThreadContent, getThreadContentByAjax, getThreadId
+
+// EXTERNAL MODULE: ./src/utils/purify.js
+var purify = __webpack_require__("./src/utils/purify.js");
+;// CONCATENATED MODULE: ./src/ui/components/threadBar.js
+
+
+class ThreadBar {
+  /**
+   *
+   *  @constructor
+   *  @param {string} title - title of the bar
+   *  @param {string} content - content of the element
+   */
+
+  constructor(title, content, customId = "") {
+    this.title = (0,purify/* clearHTML */.G6)(title);
+    this.content = (0,purify/* clearHTML */.G6)(content);
+    this.customId = customId;
+  }
+
+  createElement() {
+    const container = document.createElement("div");
+    container.classList.add("LZTUpThreadBar");
+    container.id = this.customId;
+
+    const title = document.createElement("h2");
+    title.classList.add("LZTUpThreadBarTitle");
+    title.innerHTML = this.title;
+    container.appendChild(title);
+
+    const content = document.createElement("p");
+    content.classList.add("LZTUpThreadBarContent", "muted");
+    content.innerHTML = this.content;
+    container.appendChild(content);
+
+    return {
+      container,
+      title,
+      content,
+    };
+  }
+}
+
+/* harmony default export */ const threadBar = (ThreadBar);
+
+// EXTERNAL MODULE: ./src/utils/checkers.js
+var checkers = __webpack_require__("./src/utils/checkers.js");
+// EXTERNAL MODULE: ./src/configs/endpoints.json
+var endpoints = __webpack_require__("./src/configs/endpoints.json");
+// EXTERNAL MODULE: ./src/api/requestJSON.js
+var requestJSON = __webpack_require__("./src/api/requestJSON.js");
+;// CONCATENATED MODULE: ./src/api/summarize/generationAPI.js
+
+
+
+async function genSummarize(text, session_id) {
+  return await (0,requestJSON/* default */.Z)(
+    endpoints/* genSummarize */.OC,
+    `Не удалось сгенерировать краткий пересказ текста (${endpoints/* genSummarize */.OC})`,
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        text,
+        session_id,
+      }),
+    },
+  );
+}
+
+/* harmony default export */ const generationAPI = ({
+  genSummarize,
+});
+
+// EXTERNAL MODULE: ./src/configs/base.js
+var base = __webpack_require__("./src/configs/base.js");
+;// CONCATENATED MODULE: ./src/api/summarize/checkStatusCode.js
+
+
+const yandexStatus = {
+  StatusInProgress: 1,
+  StatusSuccess: 2,
+  StatusError: 3,
+  StatusFetchError: 999,
+};
+
+class SummarizeStatus extends base/* BaseEnum */.e {
+  static Waiting = new SummarizeStatus("waiting").name;
+  static Error = new SummarizeStatus("error").name;
+  static Success = new SummarizeStatus("success").name;
+}
+
+function checkSummarizeCode(res) {
+  switch (res.status_code) {
+    case yandexStatus.StatusInProgress:
+      return {
+        status: SummarizeStatus.Waiting,
+        title: "Суммаризация...",
+        desc: [
+          {
+            id: 0,
+            content: `Ожидание окончания суммаризации текста`,
+          },
+        ],
+      };
+    case yandexStatus.StatusFetchError:
+      return {
+        status: SummarizeStatus.Error,
+        title: "Ошибка запроса",
+        desc: [
+          {
+            id: 0,
+            content: `Не удалось совершить запрос к Yandex Summarize API`,
+          },
+        ],
+      };
+    case yandexStatus.StatusError:
+      return {
+        status: SummarizeStatus.Error,
+        title: "Ошибка YandexGPT",
+        desc: [
+          {
+            id: 0,
+            content: "Возникла ошибка при суммаризации текста",
+          },
+        ],
+      };
+    case yandexStatus.StatusSuccess:
+      return {
+        status: SummarizeStatus.Success,
+        title: "Успех",
+        desc: res.thesis,
+      };
+    default:
+      return {
+        status: SummarizeStatus.Error,
+        title: "Неизвестная ошибка",
+        desc: [
+          {
+            id: 0,
+            content:
+              "Во время выполнения что-то пошло не так и не удалось определить результат суммаризации",
+          },
+        ],
+      };
+  }
+}
+
+
+
+// EXTERNAL MODULE: ./src/utils/logger.js
+var logger = __webpack_require__("./src/utils/logger.js");
+// EXTERNAL MODULE: ./src/utils/utils.js
+var utils = __webpack_require__("./src/utils/utils.js");
+;// CONCATENATED MODULE: ./src/utils/threads.js
+
+
+
+
+
+
+
+const SummarizeID = "LZTUpSummarizeBlock";
+const SummarizeTitle = "<i class='fas fa-sparkles'></i> Суммаризатор тем";
+const FIND_THREAD_ID = /^\/threads\/([^d]+)\//;
+
+function getThreadId() {
+  const path = window.location.pathname;
+  const threadId = path.match(FIND_THREAD_ID)?.[1];
+  return Number(threadId) || undefined;
+}
+
+function getThreadContent() {
+  return document.querySelector(".message.firstPost > .messageInfo article")
+    ?.innerText;
+}
+
+async function getThreadContentByAjax(threadId) {
+  try {
+    const res = await XenForo.ajax(`/threads/${threadId}`);
+    const resHTML = res.templateHtml;
+
+    const parsedHTML = (0,utils/* getHTMLFromString */.Cy)(resHTML);
+    const text = parsedHTML.querySelector(
+      ".message.firstPost > .messageInfo article",
+    )?.innerText;
+
+    return text;
+  } catch {
+    return undefined;
+  }
+}
+
+async function summarizeThreadBlock(isActive) {
+  if (isActive && (0,checkers/* isThreadPage */.Fw)()) {
+    const summarizeBlock = new threadBar(
+      SummarizeTitle,
+      "Получение данных...",
+      SummarizeID,
+    ).createElement();
+    const pageNavLinkGroup = document.querySelector(".pageNavLinkGroup");
+    pageNavLinkGroup.before(summarizeBlock.container);
+
+    let threadContent = getThreadContent();
+
+    if (threadContent == undefined) {
+      // getting content about a topic if not 1 page is open
+      logger/* default */.Z.log("Getting the content via an Ajax request");
+      const threadId = getThreadId();
+      threadContent = await getThreadContentByAjax(threadId);
+    }
+
+    if (!(threadContent?.length >= 300)) {
+      summarizeBlock.title.innerHTML = `${SummarizeTitle} (Ошибка валидации)`;
+      summarizeBlock.content.innerHTML =
+        "Не удалось выполнить суммаризацию темы. Содержимое темы не найдено или содержит менее 300 символов.";
+      return false;
+    }
+
+    let summarizeInterval;
+    let session_id = "";
+    summarizeInterval = setInterval(async () => {
+      const generatedInfo = await generationAPI.genSummarize(
+        threadContent,
+        session_id,
+      );
+      logger/* default */.Z.log("Summarize Generated Info", generatedInfo);
+
+      if (!generatedInfo) {
+        logger/* default */.Z.log("Clear summarize interval (ext error)");
+        summarizeBlock.title.innerHTML = `${SummarizeTitle} (Внутренняя ошибка)`;
+        summarizeBlock.content.innerText =
+          "Не удалось выполнить суммаризацию темы. Произошла внутренняя ошибка при запросе к Summarize API. Для детальной информации смотри консоль.";
+        clearInterval(summarizeInterval);
+        return false;
+      }
+
+      session_id = generatedInfo.session_id;
+      const result = checkSummarizeCode(generatedInfo);
+      if (result.status !== SummarizeStatus.Waiting) {
+        logger/* default */.Z.log("Clear summarize interval (by status code)");
+        clearInterval(summarizeInterval);
+      }
+
+      const contentEl = document.createElement("ul");
+      if (result.desc.length > 1) {
+        contentEl.classList.add("LZTUpSummarizeThesises");
+      }
+
+      for (const thesis of result.desc) {
+        const thesisEl = document.createElement("li");
+        thesisEl.innerText = thesis.content;
+        contentEl.appendChild(thesisEl);
+      }
+
+      summarizeBlock.title.innerHTML = `${SummarizeTitle} (${result.title})`;
+      summarizeBlock.content.innerHTML = contentEl.outerHTML;
+    }, 500);
+
+    return;
+  }
+
+  document.getElementById(SummarizeID)?.remove();
+}
+
 
 
 
@@ -5074,43 +6049,39 @@ var components_icon = __webpack_require__("./src/ui/components/icon.js");
 ;// CONCATENATED MODULE: ./src/ui/components/buttons/copyButton.js
 
 
-
 class CopyButton {
   constructor(content, tooltipMessage = null, messageOnCopy = null) {
     this.content = XenForo.htmlspecialchars(content); // Clipboard.copy works strangely with numbers so we do this
-    this.tooltipMessage = tooltipMessage || '';
-    this.messageOnCopy = messageOnCopy || 'Успешно скопировано в буфер обмена';
+    this.tooltipMessage = tooltipMessage || "";
+    this.messageOnCopy = messageOnCopy || "Успешно скопировано в буфер обмена";
   }
 
   createElement() {
-    const button = document.createElement('span');
-    button.classList.add('copyButton', 'Tooltip');
+    const button = document.createElement("span");
+    button.classList.add("copyButton", "Tooltip");
     button.title = this.tooltipMessage;
 
-    button.onclick = async (e) => {
+    button.onclick = async e => {
       // We use Clipboard.copy instead to avoid errors when the function is not found and to prevent XSS
       // navigator.clipboard.writeText XSS-safe unlike ClipBoard.copy
       await navigator.clipboard.writeText(this.content);
 
       // from Clipboard.copy function
-      e.target.classList.add('animated');
-      animateCSS(e.target, [
-        'heartBeat',
-        'mainc'
-      ]);
-      XenForo.alert(this.messageOnCopy, '', 5000);
-    }
+      e.target.classList.add("animated");
+      animateCSS(e.target, ["heartBeat", "mainc"]);
+      XenForo.alert(this.messageOnCopy, "", 5000);
+    };
     button.tabIndex = 0;
 
-    const icon = new components_icon/* default */.Z('far fa-clone', '').createElement();
+    const icon = new components_icon/* default */.Z("far fa-clone", "").createElement();
     button.appendChild(icon);
     return button;
   }
 }
 
 /* harmony default export */ const copyButton = (CopyButton);
-;// CONCATENATED MODULE: ./src/ui/components/profileInfoRow.js
 
+;// CONCATENATED MODULE: ./src/ui/components/profileInfoRow.js
 
 
 
@@ -5132,75 +6103,82 @@ class ProfileInfoRow {
   }
 
   createElement() {
-    const row = document.createElement('div');
-    const label = document.createElement('div');
-    const labeled = document.createElement('div');
-    row.classList.add('clear_fix', 'profile_info_row');
+    const row = document.createElement("div");
+    const label = document.createElement("div");
+    const labeled = document.createElement("div");
+    row.classList.add("clear_fix", "profile_info_row");
     row.id = this.elementId;
 
-    label.classList.add('label', 'fl_l');
-    labeled.classList.add('labeled');
+    label.classList.add("label", "fl_l");
+    labeled.classList.add("labeled");
 
-    label.innerText = this.label + ':';
+    label.innerText = this.label + ":";
     if ((0,checkers/* isElement */.kK)(this.content)) {
-      labeled.appendChild(this.content)
+      labeled.appendChild(this.content);
     } else {
       labeled.innerHTML = this.content;
     }
 
     if (this.copyButton instanceof copyButton) {
       const copyButtonEl = this.copyButton.createElement();
-      labeled.appendChild(copyButtonEl)
+      labeled.appendChild(copyButtonEl);
     }
 
-    row.appendChild(label)
-    row.appendChild(labeled)
+    row.appendChild(label);
+    row.appendChild(labeled);
 
     return row;
   }
 }
 
 /* harmony default export */ const profileInfoRow = (ProfileInfoRow);
-// EXTERNAL MODULE: ./src/configs/extData.js
-var extData = __webpack_require__("./src/configs/extData.js");
+
 ;// CONCATENATED MODULE: ./src/utils/users.js
 
 
 
 
-
-const userIdRowElementId = 'LZTUpUserIDRow';
-const userIdMemberCardElementId = 'LZTUpUserIDMemberCard';
+const userIdRowElementId = "LZTUpUserIDRow";
+const userIdMemberCardElementId = "LZTUpUserIDMemberCard";
 
 function getUserId(target) {
   switch (target) {
     case "profile":
       // in any profile
       if ((0,checkers/* isProfilePage */.cD)()) {
-        const userThreadsButton = document.querySelector('#profile_short > .userContentLinks > a:nth-child(1)');
-        if (!userThreadsButton || userThreadsButton.href === '') {
+        const userThreadsButton = document.querySelector(
+          "#profile_short > .userContentLinks > a:nth-child(1)",
+        );
+        if (!userThreadsButton || userThreadsButton.href === "") {
           return null;
         }
 
-        if (!userThreadsButton.href.endsWith('?tab=mythreads')) {
+        if (!userThreadsButton.href.endsWith("?tab=mythreads")) {
           const url = new URL(userThreadsButton.href);
-          return url.searchParams.get('user_id');
+          return url.searchParams.get("user_id");
         }
 
-        return getUserId('me');
+        return getUserId("me");
       }
+    // eslint-disable-next-line no-fallthrough
     case "membercard":
       // in any membercard
       if ((0,checkers/* isOpenMemberCard */.Ji)()) {
-        const memberCard = document.querySelectorAll(extData/* default */.Z.selectors.memberCard);
-        const userThreadsButton = memberCard[memberCard.length - 1].querySelector('.memberCardInner > .bottom > .userContentLinks > a:nth-child(1)');
-        if (!userThreadsButton || userThreadsButton.href === '') {
+        const memberCard = document.querySelectorAll(".xenOverlay.memberCard");
+        const userThreadsButton = memberCard[
+          memberCard.length - 1
+        ].querySelector(
+          ".memberCardInner > .bottom > .userContentLinks > a:nth-child(1)",
+        );
+        if (!userThreadsButton || userThreadsButton.href === "") {
           return null;
         }
 
         const url = new URL(userThreadsButton.href);
-        return url.searchParams.get('user_id');
+        return url.searchParams.get("user_id");
       }
+      return null;
+    // eslint-disable-next-line no-fallthrough
     case "self":
     case "me":
       return XenForo?.visitor?.user_id;
@@ -5214,7 +6192,7 @@ function getUsername(target) {
     // TODO: add get by userid
     case "self":
     case "me":
-      return document.querySelector('.accountUsername span')?.innerText;
+      return document.querySelector(".accountUsername span")?.innerText;
     default:
       return null;
   }
@@ -5223,36 +6201,53 @@ function getUsername(target) {
 function getUserGroup(target) {
   switch (target) {
     case "self":
-    case "me":
-      const userEl = document.querySelector('.accountUsername.username span');
+    case "me": {
+      const userEl = document.querySelector(".accountUsername.username span");
       return userEl.className;
+    }
     default:
       return null;
   }
 }
 
-
 function getUserAvatar(userId) {
-  if (userId === getUserId('me')) {
-    return document.querySelector('img.navTab--visitorAvatar').src;
+  if (userId === getUserId("me")) {
+    return document.querySelector("img.navTab--visitorAvatar").src;
   }
 
-  const avatars = document.querySelectorAll('a.avatar');
-  const avatar = Array.from(avatars)
-    .find(avatar => avatar.classList?.contains(`Av${userId}s`) || avatar.classList?.contains(`Av${userId}m`));
+  const avatars = document.querySelectorAll("a.avatar");
+  const avatar = Array.from(avatars).find(
+    avatar =>
+      avatar.classList?.contains(`Av${userId}s`) ||
+      avatar.classList?.contains(`Av${userId}m`),
+  );
 
   return avatar ? avatars.src : null;
 }
 
 function addUserIdToProfile() {
-  if ((0,checkers/* isProfilePage */.cD)() && document.querySelector(`#${userIdRowElementId}`) === null) {
-    const userId = getUserId('profile') ?? 'Не найден';
-    const profileInfo = document.querySelector('#profile_short > .pairsJustified');
+  if (
+    (0,checkers/* isProfilePage */.cD)() &&
+    document.querySelector(`#${userIdRowElementId}`) === null
+  ) {
+    const userId = getUserId("profile") ?? "Не найден";
+    const profileInfo = document.querySelector(
+      "#profile_short > .pairsJustified",
+    );
 
-    const copyBtn = new copyButton(userId, 'Скопировать ID пользователя', 'ID пользователя успешно скопирован в буфер обмена');
-    const userIdRow = new profileInfoRow(userIdRowElementId, 'ID', userId, copyBtn).createElement();
-    const firstRow = profileInfo.querySelector('.profile_info_row');
-    const insertPlace = firstRow ? 'afterend' : 'afterbegin';
+    const copyBtn = new copyButton(
+      userId,
+      "Скопировать ID пользователя",
+      "ID пользователя успешно скопирован в буфер обмена",
+    );
+    const userIdRow = new profileInfoRow(
+      userIdRowElementId,
+      "ID",
+      userId,
+      copyBtn,
+    ).createElement();
+    const firstRow = profileInfo.querySelector(".profile_info_row");
+    const insertPlace = firstRow ? "afterend" : "afterbegin";
 
     firstRow.insertAdjacentElement(insertPlace, userIdRow);
   }
@@ -5260,22 +6255,30 @@ function addUserIdToProfile() {
 
 function addUserIdToMemberCard() {
   if ((0,checkers/* isOpenMemberCard */.Ji)()) {
-    const memberCards = document.querySelectorAll(extData/* default */.Z.selectors.memberCard);
-    const userId = getUserId('membercard') ?? 'Не найден';
-    const userContentLinks = memberCards[memberCards.length - 1].querySelector(`#memberCard${userId}.memberCardInner > .bottom > .userContentLinks`);
-    const userIdElement = document.createElement('div');
-    userIdElement.classList.add('title');
+    const memberCards = document.querySelectorAll(".xenOverlay.memberCard");
+    const userId = getUserId("membercard") ?? "Не найден";
+    const userContentLinks = memberCards[memberCards.length - 1].querySelector(
+      `#memberCard${userId}.memberCardInner > .bottom`,
+    );
+    const userIdElement = document.createElement("div");
+    userIdElement.classList.add("title");
     userIdElement.id = userIdMemberCardElementId;
     userIdElement.innerText = `ID: ${userId}`;
-    const copyBtn = new copyButton(userId, 'Скопировать ID пользователя', 'ID пользователя успешно скопирован в буфер обмена').createElement();
+    const copyBtn = new copyButton(
+      userId,
+      "Скопировать ID пользователя",
+      "ID пользователя успешно скопирован в буфер обмена",
+    ).createElement();
     userIdElement.appendChild(copyBtn);
-    userContentLinks?.insertAdjacentElement('afterbegin', userIdElement);
+    userContentLinks?.insertAdjacentElement("afterbegin", userIdElement);
   }
 }
 
 function removeUserIdFromProfile() {
   if ((0,checkers/* isProfilePage */.cD)()) {
-    const el = document.querySelector(`.profile_info_row#${userIdRowElementId}`);
+    const el = document.querySelector(
+      `.profile_info_row#${userIdRowElementId}`,
+    );
     if (el) {
       el.remove();
     }
@@ -5293,12 +6296,14 @@ function removeUserIdFromMemberCard() {
 
 function showFullRegDateInProfile(full = false) {
   if ((0,checkers/* isProfilePage */.cD)()) {
-    const dateTime = document.querySelector('.profile_info_row > .labeled > span.DateTime');
+    const dateTime = document.querySelector(
+      ".profile_info_row > .labeled > span.DateTime",
+    );
     if (!dateTime) {
       return;
     }
 
-    const fullDate = dateTime.getAttribute('title')
+    const fullDate = dateTime.getAttribute("title");
     if (!fullDate) {
       return;
     }
@@ -5310,13 +6315,14 @@ function showFullRegDateInProfile(full = false) {
         spaceCounts = -3;
       }
 
-      const oldDate = fullDate.split(' ').slice(0, spaceCounts).join(' ');
-      return dateTime.innerText = oldDate;
+      const oldDate = fullDate.split(" ").slice(0, spaceCounts).join(" ");
+      return (dateTime.innerText = oldDate);
     }
 
-    return dateTime.innerText = fullDate;
+    return (dateTime.innerText = fullDate);
   }
 }
+
 
 
 
@@ -5327,15 +6333,18 @@ function showFullRegDateInProfile(full = false) {
 
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   Bw: () => (/* binding */ removeStylesByEl),
+/* harmony export */   Cy: () => (/* binding */ getHTMLFromString),
 /* harmony export */   Eq: () => (/* binding */ getThreadLinks),
 /* harmony export */   Nc: () => (/* binding */ waitForElm),
 /* harmony export */   P6: () => (/* binding */ getAuthors),
 /* harmony export */   VR: () => (/* binding */ waitForBody),
 /* harmony export */   _v: () => (/* binding */ sleep),
 /* harmony export */   bg: () => (/* binding */ applyStyle),
-/* harmony export */   u3: () => (/* binding */ getTimestamp)
+/* harmony export */   j1: () => (/* binding */ updateFeed),
+/* harmony export */   u3: () => (/* binding */ getTimestamp),
+/* harmony export */   zf: () => (/* binding */ ucFirst)
 /* harmony export */ });
-/* unused harmony exports getNodeLinks, removeStyles */
+/* unused harmony exports getNodeLinks, removeStyles, getMsTimestamp */
 function waitForElm(selector) {
   // https://stackoverflow.com/questions/5525071/how-to-wait-until-an-element-exists
   return new Promise(resolve => {
@@ -5352,7 +6361,7 @@ function waitForElm(selector) {
 
     observer.observe(document.body, {
       childList: true,
-      subtree: true
+      subtree: true,
     });
   });
 }
@@ -5372,31 +6381,34 @@ function waitForBody() {
 
     observer.observe(document, {
       childList: true,
-      subtree: true
+      subtree: true,
     });
-  })
+  });
 }
 
-const sleep = m => new Promise(r => setTimeout(r, m))
+const sleep = m => new Promise(r => setTimeout(r, m));
+
+function ucFirst(str) {
+  if (!str) {
+    return str;
+  }
+
+  return str[0].toUpperCase() + str.slice(1);
+}
 
 function getNodeLinks() {
-  let latestsThreads = $('div.latestThreads');
-  const stickyThreads = $('div.stickyThreads');
-  latestsThreads = stickyThreads.is(':visible') ? $.merge(latestsThreads, stickyThreads) : latestsThreads;
-  return latestsThreads.find('div.discussionListItem--Wrapper');
+  return document.querySelectorAll(".discussionListItem--Wrapper");
 }
 
 function getThreadLinks() {
-  let links = getNodeLinks()
-  .find('a.listBlock.main')
-  .toArray()
-  .map(element => $(element).attr('href'));
-  return links;
+  return Array.from(getNodeLinks()).map(
+    el => el.querySelector(".listBlock.main")?.href,
+  );
 }
 
 function removeStyles(selector) {
   const el = document.querySelector(selector);
-  return removeStylesByEl(el)
+  return removeStylesByEl(el);
 }
 
 function removeStylesByEl(el) {
@@ -5404,57 +6416,71 @@ function removeStylesByEl(el) {
     return;
   }
 
-  el.className = ''
-  el.style = '';
+  el.className = "";
+  el.style = "";
 
   return el;
 }
 
 function applyStyle(el, style) {
-  if (style?.length > 1 && style?.startsWith('.')) {
-    style = style.replace('.', '');
+  if (style?.length > 1 && style?.startsWith(".")) {
+    style = style.replace(".", "");
     return el.classList.add(style);
   } else {
-    return el.style = style;
+    return (el.style = style);
   }
 }
 
+function getMsTimestamp() {
+  return Date.now();
+}
+
 function getTimestamp() {
-  return Math.floor(Date.now() / 1000);
+  return Math.floor(getMsTimestamp() / 1000);
 }
 
 function getAuthors(authorNames, authorUserIds) {
-  if (authorUserIds === '') {
+  if (authorUserIds === "") {
     authorUserIds = null;
   }
 
   switch (typeof authorUserIds) {
-    case "string":
-      const authorsUserIDs = authorUserIds.split(',');
-      const authorsNames = authorNames.split(',');
-      const authors = []
+    case "string": {
+      const authorsUserIDs = authorUserIds.split(",");
+      const authorsNames = authorNames.split(",");
+      const authors = [];
       authorsUserIDs.map((val, idx) => {
         authors.push({
           name: XenForo.htmlspecialchars(authorsNames?.[idx]),
-          userId: Number(val)
-        })
+          userId: Number(val),
+        });
       });
       return authors;
+    }
     case "number":
       return [
         {
           name: XenForo.htmlspecialchars(authorNames),
-          userId: XenForo.htmlspecialchars(authorUserIds)
-        }
+          userId: XenForo.htmlspecialchars(authorUserIds),
+        },
       ];
     default:
       return [
         {
           name: XenForo.htmlspecialchars(authorNames),
-          userId: null
-        }
+          userId: null,
+        },
       ];
   }
+}
+
+function getHTMLFromString(HTMLString) {
+  const parser = new DOMParser();
+  return parser.parseFromString(HTMLString, "text/html");
+}
+
+function updateFeed() {
+  document.querySelector(".UpdateFeedButton")?.click();
 }
 
 
@@ -5486,14 +6512,30 @@ function hideBalloonById(balloonId, isHidden) {
  * @param {boolean} isHidden - status of visibility (true - hidden, false - visible)
  */
 function hideUnreadArticlesStatus(isHidden) {
-  const statusEl = document.querySelector('.hasUnreadArticles');
+  const statusEl = document.querySelector(".hasUnreadArticles");
   if (statusEl) {
-    statusEl.style.display = isHidden ? 'none' : '';
+    statusEl.style.display = isHidden ? "none" : "";
   }
 }
 
 
 
+
+/***/ }),
+
+/***/ "./src/visuals/notify.js":
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   i: () => (/* binding */ hideAdsFromNotify)
+/* harmony export */ });
+function hideAdsFromNotify() {
+  return GM_addStyle(`
+    li.Alert[data-author="Реклама"] {
+      display: none !important;
+    }
+  `);
+}
 
 
 
@@ -5506,17 +6548,210 @@ function hideUnreadArticlesStatus(isHidden) {
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   m: () => (/* binding */ addBackgroundImageInProfile)
 /* harmony export */ });
-/* harmony import */ var Utils_checkers__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("./src/utils/checkers.js");
-/* harmony import */ var Visuals_universal__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("./src/visuals/universal.js");
-
+/* harmony import */ var Utils_checkers__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("./src/utils/checkers.js");
+/* harmony import */ var Visuals_universal__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("./src/visuals/universal.js");
 
 
 
 function addBackgroundImageInProfile(imageUrl) {
-  if ((0,Utils_checkers__WEBPACK_IMPORTED_MODULE_0__/* .isProfilePage */ .cD)()) {
-    return (0,Visuals_universal__WEBPACK_IMPORTED_MODULE_1__/* .addBackgroundImage */ .j)(imageUrl)
+  if ((0,Utils_checkers__WEBPACK_IMPORTED_MODULE_1__/* .isProfilePage */ .cD)()) {
+    return (0,Visuals_universal__WEBPACK_IMPORTED_MODULE_0__/* .addBackgroundImage */ .j)(imageUrl);
   }
 }
+
+
+
+
+/***/ }),
+
+/***/ "./src/visuals/threads.js":
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+
+// EXPORTS
+__webpack_require__.d(__webpack_exports__, {
+  OL: () => (/* binding */ hideThreadContent),
+  cX: () => (/* binding */ hideThreadListAds),
+  aC: () => (/* binding */ hideThreadPoll),
+  Lp: () => (/* binding */ updateReportButtons)
+});
+
+// EXTERNAL MODULE: ./src/xenforo/tooltips.js
+var tooltips = __webpack_require__("./src/xenforo/tooltips.js");
+// EXTERNAL MODULE: ./src/utils/logger.js
+var logger = __webpack_require__("./src/utils/logger.js");
+// EXTERNAL MODULE: ./src/utils/registers.js
+var registers = __webpack_require__("./src/utils/registers.js");
+;// CONCATENATED MODULE: ./src/ui/reportButtons.js
+
+
+
+
+class ReportButtons {
+  /**
+   *
+   *  @constructor
+   *  @param {object} buttons - array of buttons. For more information about badge struct check ui/menu/items/appear.js -> DefaultButton
+   */
+
+  constructor(buttons) {
+    this.buttonsClass = ".LZTUpReportButtons";
+    this.buttonsQuery = `.${this.buttonsClass}`;
+    this.buttons = buttons;
+  }
+
+  createElement(postId) {
+    const reportButtons = document.createElement("div");
+    reportButtons.classList.add("LZTUpReportButtons");
+
+    for (let i = 0; i < this.buttons.length; i++) {
+      const reportButton = document.createElement("span");
+      reportButton.classList.add("LZTUpReportButton");
+      reportButton.tabIndex = 0;
+      reportButton.innerText = XenForo.htmlspecialchars(this.buttons[i].text);
+      reportButton.title = XenForo.htmlspecialchars(this.buttons[i].reason);
+      reportButton.dataset.position = i + 1;
+      reportButton.onclick = async () => {
+        if (!confirm("Вы уверены, что хотите отправить репорт?")) return;
+        // I'm sure it can be done somehow through XenForo.ajax, but I didn't understand how
+        let formData = new FormData();
+        formData.append("message", this.buttons[i].reason);
+        formData.append("is_common_reason", 0);
+        formData.append("_xfToken", XenForo._csrfToken);
+        formData.append("_xfNoRedirect", 1);
+        formData.append("_xfToken", XenForo._csrfToken);
+        formData.append("redirect", window.location.href);
+        await fetch(`posts/${postId}/report`, {
+          method: "POST",
+          body: formData,
+        });
+        (0,registers/* registerAlert */.de)("Жалоба отправлена", 5000);
+      };
+
+      reportButtons.appendChild(reportButton);
+    }
+
+    return reportButtons;
+  }
+
+  findBadgeElement(selector, position) {
+    return document.querySelector(selector + `[data-position="${position}"]`);
+  }
+
+  findAllBadgeElement(selector, position) {
+    return document.querySelectorAll(
+      selector + `[data-position="${position}"]`,
+    );
+  }
+
+  updateText(buttonEl, button) {
+    if (!buttonEl) {
+      return;
+    }
+
+    buttonEl.innerText = XenForo.htmlspecialchars(button.text);
+
+    if (buttonEl._tippy) {
+      return (0,tooltips/* setTooltip */.w)(buttonEl, XenForo.htmlspecialchars(button.reason));
+    }
+
+    return XenForo.Tooltip($(buttonEl)); // ! "$"" needed in XenForo.Tooltip
+  }
+
+  updateButton(button) {
+    const buttonElements = this.findAllBadgeElement(
+      this.buttonsQuery,
+      button.position,
+    );
+    if (!buttonElements.length) {
+      return;
+    }
+
+    for (const buttonEl of buttonElements) {
+      this.updateText(buttonEl, button);
+    }
+  }
+
+  updateButtons() {
+    logger/* default */.Z.debug("updateButtons");
+    for (const button of this.buttons) {
+      if (typeof button !== "object") {
+        logger/* default */.Z.error("Invalid button in array");
+        continue;
+      }
+
+      logger/* default */.Z.debug(button);
+      this.updateButton(button);
+    }
+  }
+}
+
+/* harmony default export */ const reportButtons = (ReportButtons);
+
+;// CONCATENATED MODULE: ./src/visuals/threads.js
+
+
+// СОЗДАТЬ ОТДЕЛЬНУЮ ФУНКЦИЮ ДЛЯ ЭТОГО А ТО АХУЕТЬ СКОК ДУБЛИРУЕТСЯ
+function hideThreadContent(isHidden) {
+  const messageContent = document.querySelector(
+    ".message.firstPost > .messageInfo > .messageContent > article > blockquote.messageText",
+  );
+  if (messageContent !== null) {
+    return (messageContent.style.display = isHidden ? "none" : "");
+  }
+}
+
+function hideThreadPoll(isHidden) {
+  const pollContainer = document.querySelector("div.PollContainer");
+  if (pollContainer !== null) {
+    return (pollContainer.style.display = isHidden ? "none" : "");
+  }
+}
+
+function updateReportButtons(buttonsData) {
+  buttonsData = buttonsData.sort((a, b) => a.position - b.position);
+  const postList = document.querySelectorAll(".messageList > li.message");
+  const postCommentsList = document.querySelectorAll(
+    ".CommentPostList > li.comment",
+  );
+
+  const messageList = [...postList, ...postCommentsList];
+  for (const message of messageList) {
+    const publicControls = message.querySelector(".publicControls");
+    if (!publicControls) {
+      continue;
+    }
+
+    // remove if exists
+    publicControls.querySelector(".LZTUpReportButtons")?.remove();
+
+    let postId = message.id.split("-")?.[1];
+    if (!postId) {
+      console.error(
+        "Failed to add report buttons to message element:",
+        message,
+      );
+    }
+
+    // todo: replace by regex
+    if (postId.includes("comment-")) {
+      postId = postId.replace("comment-", "comments/");
+    }
+
+    const buttons = new reportButtons(buttonsData).createElement(postId);
+    publicControls.prepend(buttons);
+    Array.from(buttons.children).forEach(e => XenForo.Tooltip($(e)));
+  }
+}
+
+function hideThreadListAds() {
+  return GM_addStyle(`
+    .text_Ads {
+      display: none;
+    }
+  `);
+}
+
 
 
 
@@ -5530,28 +6765,29 @@ function addBackgroundImageInProfile(imageUrl) {
 /* harmony export */   j: () => (/* binding */ addBackgroundImage)
 /* harmony export */ });
 /* harmony import */ var Utils_users__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("./src/utils/users.js");
-/* harmony import */ var Utils_checkers__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("./src/utils/checkers.js");
-/* harmony import */ var Configs_SiteType__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__("./src/configs/SiteType.js");
+/* harmony import */ var Utils_checkers__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__("./src/utils/checkers.js");
+/* harmony import */ var Configs_SiteType__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("./src/configs/SiteType.js");
 
 
 
 
-
-const customBackgroundID = 'LZTUpCustomBackground';
+const customBackgroundID = "LZTUpCustomBackground";
 
 function addBackgroundImage(imageUrl, skipUserCheck = false) {
-  // exec time: 0-1ms (1ms in profile)
-
-  if (!skipUserCheck && ((0,Utils_checkers__WEBPACK_IMPORTED_MODULE_1__/* .isProfilePage */ .cD)() && (0,Utils_users__WEBPACK_IMPORTED_MODULE_0__/* .getUserId */ .n5)('profile') !== (0,Utils_users__WEBPACK_IMPORTED_MODULE_0__/* .getUserId */ .n5)('me'))) {
+  if (
+    !skipUserCheck &&
+    (0,Utils_checkers__WEBPACK_IMPORTED_MODULE_2__/* .isProfilePage */ .cD)() &&
+    (0,Utils_users__WEBPACK_IMPORTED_MODULE_0__/* .getUserId */ .n5)("profile") !== (0,Utils_users__WEBPACK_IMPORTED_MODULE_0__/* .getUserId */ .n5)("me")
+  ) {
     // check that this is the profile of the current user
     // don't show background in other users profiles
     return false;
   }
 
-  const body = document.querySelector('body');
+  const body = document.querySelector("body");
   if (!imageUrl) {
-    body.id = '';
-    body.style.backgroundImage = '';
+    body.id = "";
+    body.style.backgroundImage = "";
     return;
   }
 
@@ -5559,14 +6795,14 @@ function addBackgroundImage(imageUrl, skipUserCheck = false) {
   body.style.backgroundImage = `linear-gradient(rgba(54, 54, 54, 0.85), rgba(54, 54, 54, 0.85)), url(${imageUrl})`;
 }
 
-function setLogo(newStyles, site = Configs_SiteType__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .Z.Forum) {
+function setLogo(newStyles, site = Configs_SiteType__WEBPACK_IMPORTED_MODULE_1__/* ["default"] */ .Z.Forum) {
   let logo;
   switch (site) {
-    case Configs_SiteType__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .Z.Forum:
-      logo = document.getElementById('lzt-logo');
+    case Configs_SiteType__WEBPACK_IMPORTED_MODULE_1__/* ["default"] */ .Z.Forum:
+      logo = document.getElementById("lzt-logo");
       break;
-    case Configs_SiteType__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .Z.Market:
-      logo = document.getElementById('lzt-market-logo');
+    case Configs_SiteType__WEBPACK_IMPORTED_MODULE_1__/* ["default"] */ .Z.Market:
+      logo = document.getElementById("lzt-market-logo");
       break;
     default:
       return false;
@@ -5617,24 +6853,25 @@ class UserBanner {
   }
 
   createElement() {
-    const userBanner = document.createElement('em');
+    const userBanner = document.createElement("em");
     userBanner.id = this.elementId;
-    userBanner.classList.add('userBanner', 'wrapped');
-    userBanner.itemprop = 'title';
+    userBanner.classList.add("userBanner", "wrapped");
+    userBanner.itemprop = "title";
 
-    const beforeAfterEl = document.createElement('div');
-    beforeAfterEl.className = 'before';
+    const beforeAfterEl = document.createElement("div");
+    beforeAfterEl.className = "before";
     userBanner.appendChild(beforeAfterEl);
 
-    const bannerContent = document.createElement('strong');
+    const bannerContent = document.createElement("strong");
     bannerContent.innerText = XenForo.htmlspecialchars(this.label);
-    userBanner.appendChild(bannerContent)
+    userBanner.appendChild(bannerContent);
 
-    beforeAfterEl.className = 'after';
-    userBanner.appendChild(beforeAfterEl)
+    beforeAfterEl.className = "after";
+    userBanner.appendChild(beforeAfterEl);
     return userBanner;
   }
 }
+
 
 
 // EXTERNAL MODULE: ./src/ui/avatarUserBadges.js + 1 modules
@@ -5646,66 +6883,71 @@ var avatarUserBadges = __webpack_require__("./src/ui/avatarUserBadges.js");
 
 
 
-
 function updateUserStyle(style) {
-  const username = (0,users/* getUsername */.Ms)('me');
-  const usersEl = document.querySelectorAll('.username span');
+  const username = (0,users/* getUsername */.Ms)("me");
+  const usersEl = document.querySelectorAll(".username span");
   const myUsersEl = usersEl
-                    .values()
-                    .filter(user => user.innerText === username);
+    .values()
+    .filter(user => user.innerText === username);
   for (const userEl of myUsersEl) {
-    userEl.className = ''
-    userEl.style = '';
+    userEl.className = "";
+    userEl.style = "";
 
     (0,utils/* applyStyle */.bg)(userEl, style);
   }
 }
 
 function updateUserBanner(style, text) {
-  if ((0,checkers/* isProfilePage */.cD)() && (0,users/* getUserId */.n5)('profile') === (0,users/* getUserId */.n5)('me')) {
-    const userBannerEl = document.querySelector('em.userBanner#LZTUpCustomBanner');
+  if ((0,checkers/* isProfilePage */.cD)() && (0,users/* getUserId */.n5)("profile") === (0,users/* getUserId */.n5)("me")) {
+    const userBannerEl = document.querySelector(
+      "em.userBanner#LZTUpCustomBanner",
+    );
     if (userBannerEl) {
       // if exists remove extra styles / classes
-      userBannerEl.className = 'userBanner wrapped';
-      userBannerEl.style = '';
+      userBannerEl.className = "userBanner wrapped";
+      userBannerEl.style = "";
       userBannerEl.innerText = text;
       return (0,utils/* applyStyle */.bg)(userBannerEl, style);
     }
 
     // add user banner
-    const avatarScaler = document.querySelector('.avatarScaler');
+    const avatarScaler = document.querySelector(".avatarScaler");
     if (!avatarScaler) {
       return;
     }
 
-    const userBanner = new UserBanner('LZTUpCustomBanner', text).createElement();
+    const userBanner = new UserBanner(
+      "LZTUpCustomBanner",
+      text,
+    ).createElement();
     (0,utils/* applyStyle */.bg)(userBanner, style);
-    return avatarScaler.insertAdjacentElement('afterend', userBanner);
+    return avatarScaler.insertAdjacentElement("afterend", userBanner);
   }
 }
 
 function updateUserBadges(badgeIconsData) {
-  const userid = (0,users/* getUserId */.n5)('me');
+  const userid = (0,users/* getUserId */.n5)("me");
   const badges = new avatarUserBadges/* default */.Z(badgeIconsData, false);
   const avatarsMedium = document.querySelectorAll(`.avatar.Av${userid}m`);
   const avatarsSmall = document.querySelectorAll(`.avatar.Av${userid}s`);
   const avatars = [...avatarsMedium, ...avatarsSmall]
-                  .filter(el => el !== undefined)
-                  .filter(el => el.parentElement?.classList.contains('avatarHolder'));
-  console.log(avatars) // TODO: remove after tests
+    .filter(el => el !== undefined)
+    .filter(el => el.parentElement?.classList.contains("avatarHolder"));
+  console.log(avatars); // TODO: remove after tests
   for (const avatar of avatars) {
-    console.log(avatar) // TODO: remove after tests
+    console.log(avatar); // TODO: remove after tests
     const avatarHolder = avatar.parentElement;
     const badgesEl = badges.createElement();
 
-    console.log(avatarHolder) // TODO: remove after tests
-    avatarHolder.querySelector('.avatarUserBadges')?.remove(); // remove if exists
-    console.log(badgesEl) // TODO: remove after tests
+    console.log(avatarHolder); // TODO: remove after tests
+    avatarHolder.querySelector(".avatarUserBadges")?.remove(); // remove if exists
+    console.log(badgesEl); // TODO: remove after tests
     // avatarHolder.insertAdjacentElement('afterbegin', badgesEl);
-    avatarHolder.prepend(badgesEl)
-    badges.updateBadges()
+    avatarHolder.prepend(badgesEl);
+    badges.updateBadges();
   }
 }
+
 
 
 
@@ -5721,11 +6963,15 @@ function updateUserBadges(badgeIconsData) {
 
 
 function bypassShareTyping() {
-  if (Object.hasOwn(XenForo, 'threadNotify') && Object.hasOwn(XenForo.threadNotify, 'shareTypingActivity')) {
-    Utils_logger__WEBPACK_IMPORTED_MODULE_0__/* ["default"] */ .Z.debug('bypassShareTyping thread: true');
+  if (
+    Object.hasOwn(XenForo, "threadNotify") &&
+    Object.hasOwn(XenForo.threadNotify, "shareTypingActivity")
+  ) {
+    Utils_logger__WEBPACK_IMPORTED_MODULE_0__/* ["default"] */ .Z.debug("bypassShareTyping thread: true");
     XenForo.threadNotify.shareTypingActivity = 0;
   }
 }
+
 
 
 
@@ -5739,16 +6985,17 @@ function bypassShareTyping() {
 /* harmony export */   w: () => (/* binding */ setTooltip)
 /* harmony export */ });
 function updateTooltips() {
-  let lztUpTooltips = $('#LZTUpTooltip.Tooltip');
+  let lztUpTooltips = $("#LZTUpTooltip.Tooltip");
   return XenForo.Tooltip(lztUpTooltips);
 }
 
 function setTooltip(el, text) {
-  el.setAttribute('title', '');
-  el.setAttribute('data-cachedtitle', text);
+  el.setAttribute("title", "");
+  el.setAttribute("data-cachedtitle", text);
 
   return el._tippy.setContent(text);
 }
+
 
 
 
@@ -5757,7 +7004,7 @@ function setTooltip(el, text) {
 /***/ "./src/configs/endpoints.json":
 /***/ ((module) => {
 
-module.exports = JSON.parse('{"RC":"https://lztupgrade.toiloff.ru/api/themes","I1":"https://lztupgrade.toiloff.ru/static/themes","eb":"https://lztupgrade.toiloff.ru/api/logos","NI":"https://lztupgrade.toiloff.ru/api/logo"}');
+module.exports = JSON.parse('{"RC":"https://lztupgrade.toiloff.ru/api/themes","I1":"https://lztupgrade.toiloff.ru/static/themes","eb":"https://lztupgrade.toiloff.ru/api/logos","NI":"https://lztupgrade.toiloff.ru/api/logo","OC":"https://foswly-sa.toil.cc/generation"}');
 
 /***/ })
 
