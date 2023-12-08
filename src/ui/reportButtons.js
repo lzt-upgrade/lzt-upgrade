@@ -27,6 +27,7 @@ class ReportButtons {
       reportButton.title = XenForo.htmlspecialchars(this.buttons[i].reason);
       reportButton.dataset.position = i + 1;
       reportButton.onclick = async () => {
+        if (!confirm("Вы уверены, что хотите отправить репорт?")) return;
         // I'm sure it can be done somehow through XenForo.ajax, but I didn't understand how
         let formData = new FormData();
         formData.append("message", this.buttons[i].reason);
