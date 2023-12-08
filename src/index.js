@@ -56,7 +56,8 @@ import LZTUp from "Utils/gmWrapper";
 import NewStorageName from "Configs/NewStorageName";
 import { summarizeThreadBlock } from "Utils/threads";
 import { getTimestamp } from "Utils/utils";
-import { updateReportButtons } from "Visuals/threads";
+import { updateReportButtons, hideThreadListAds } from "Visuals/threads";
+import { hideAdsFromNotify } from "Visuals/notify";
 
 async function initTheme() {
   // exec time: 35ms
@@ -194,6 +195,10 @@ async function main() {
     console.timeLog("lztup-start", "Add user group to cache");
     await GM_setValue(StorageName.UserGroup, userGroup);
 
+    const adblockData = await LZTUp.getValue(NewStorageName.Adblock);
+    adblockData.hideAlertAds ? hideAdsFromNotify() : null;
+    adblockData.hideThreadListAds ? hideThreadListAds() : null;
+
     // * APPEAR SECTION
     const dbReportButtonsData = await LZTUp.getValue(
       NewStorageName.ReportButtons,
@@ -251,6 +256,7 @@ async function main() {
         mutation.target.classList.contains("chat2-messages") ||
         mutation.target.classList.contains("fe-ac-user") ||
         mutation.target.classList.contains("latestThreads") ||
+        mutation.target.classList.contains("liveAlerts") ||
         mutation.target.parentElement?.classList.contains(
           "conversationMessages",
         ) ||
