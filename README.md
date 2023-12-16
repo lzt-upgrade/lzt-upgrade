@@ -2,6 +2,9 @@
 
 <h1 align = center> LZT Upgrade </h1>
 
+<h1 align = center> UPDATE 2.0 SOON </h1>
+
+
 <p align="center">
   <a href="#user-content-1-доступный-функционал">Функционал</a>
   •
