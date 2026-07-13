@@ -36,7 +36,7 @@ class PreviewProfile {
     avatarBox.innerHTML += `
       <a href="members/${encodeURIComponent(
         this.userid,
-      )}/" class="avatar Av${XenForo.htmlspecialchars(
+      )}/" class="avatar Av${unsafeWindow.XenForo.htmlspecialchars(
         this.userid,
       )}m" data-avatarhtml="true">
         <span class="img m" style="background-image: url(${getUserAvatar(
@@ -48,7 +48,7 @@ class PreviewProfile {
     const info = document.createElement("div");
     info.classList.add("info");
     info.innerHTML = `
-      <span id="LZTUpUsernameStyle" class="UsernameStyle bold">${XenForo.htmlspecialchars(
+      <span id="LZTUpUsernameStyle" class="UsernameStyle bold">${unsafeWindow.XenForo.htmlspecialchars(
         this.username,
       )}</span>
       <div class="bannerOrStatus">
@@ -110,7 +110,7 @@ class PreviewProfile {
       return;
     }
 
-    userBannerEl.innerText = XenForo.htmlspecialchars(text);
+    userBannerEl.innerText = unsafeWindow.XenForo.htmlspecialchars(text);
   }
 
   updateBanner(data) {

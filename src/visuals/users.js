@@ -19,31 +19,28 @@ function updateUserStyle(style) {
 }
 
 function updateUserBanner(style, text) {
-  if (isProfilePage() && getUserId("profile") === getUserId("me")) {
-    const userBannerEl = document.querySelector(
-      "em.userBanner#LZTUpCustomBanner",
-    );
-    if (userBannerEl) {
-      // if exists remove extra styles / classes
-      userBannerEl.className = "userBanner wrapped";
-      userBannerEl.style = "";
-      userBannerEl.innerText = text;
-      return applyStyle(userBannerEl, style);
-    }
-
-    // add user banner
-    const avatarScaler = document.querySelector(".avatarScaler");
-    if (!avatarScaler) {
-      return;
-    }
-
-    const userBanner = new UserBanner(
-      "LZTUpCustomBanner",
-      text,
-    ).createElement();
-    applyStyle(userBanner, style);
-    return avatarScaler.insertAdjacentElement("afterend", userBanner);
+  if (!isProfilePage() || getUserId("profile") !== getUserId("me")) {
+    return;
   }
+
+  const userBannerEl = document.querySelector("em.userBanner");
+  if (userBannerEl) {
+    // if exists remove extra styles / classes
+    userBannerEl.className = "userBanner wrapped";
+    userBannerEl.style = "";
+    userBannerEl.innerText = text;
+    return applyStyle(userBannerEl, style);
+  }
+
+  // add user banner
+  const avatarScaler = document.querySelector(".avatarScaler");
+  if (!avatarScaler) {
+    return;
+  }
+
+  const userBanner = new UserBanner("LZTUpCustomBanner", text).createElement();
+  applyStyle(userBanner, style);
+  return avatarScaler.insertAdjacentElement("afterend", userBanner);
 }
 
 function updateUserBadges(badgeIconsData) {

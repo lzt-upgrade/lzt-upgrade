@@ -9,9 +9,9 @@ export default class InfoLink {
   );
   static Thread = new InfoLink(
     "far fa-comments",
-    '<span style="color: orange">[SOON]</span> Тема на форуме',
+    "Тема на форуме",
     "Новости об обновлениях и отзывы других пользователей без всякого мусора",
-    "https://zelenka.guru/threads/1",
+    "https://lolz.live/threads/6149539",
     "LZTUpInfoThreadItem",
   );
   static TelegramChannel = new InfoLink(
@@ -42,14 +42,6 @@ export default class InfoLink {
     "https://greasyfork.org/ru/scripts/460328-lzt-upgrade",
     "LZTUpInfoGreasyForkItem",
   );
-  static DevTasks = new InfoLink(
-    "far fa-tasks",
-    "Доска задач",
-    "Следите за разработкой расширения",
-    "https://app.weeek.net/ws/438227/shared/board/4prKcWJhKKxLuKNm0CiP7qJEZUH3quST",
-    "LZTUpInfoFollowDevItem",
-  );
-
   constructor(icon, title, desc, href, sectionItemId) {
     this.icon = icon;
     this.title = title;
@@ -66,7 +58,6 @@ export default class InfoLink {
       this.TelegramChat,
       this.Github,
       this.GreasyFork,
-      this.DevTasks,
     ];
   }
 }

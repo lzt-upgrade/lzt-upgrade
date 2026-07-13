@@ -502,7 +502,7 @@ const getProfileItems = async () => {
           0,
           2048,
         ).createElement(event => {
-          let val = XenForo.htmlspecialchars(event.target.value);
+          let val = unsafeWindow.XenForo.htmlspecialchars(event.target.value);
           if (val.length > 2048) {
             return registerAlert(
               "Максимальная длина ссылки на фон 2048 символов. Введите другую ссылку для сохранения.",

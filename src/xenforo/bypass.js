@@ -2,11 +2,11 @@ import Logger from "Utils/logger";
 
 function bypassShareTyping() {
   if (
-    Object.hasOwn(XenForo, "threadNotify") &&
-    Object.hasOwn(XenForo.threadNotify, "shareTypingActivity")
+    Object.hasOwn(unsafeWindow.XenForo, "threadNotify") &&
+    Object.hasOwn(unsafeWindow.XenForo.threadNotify, "shareTypingActivity")
   ) {
     Logger.debug("bypassShareTyping thread: true");
-    XenForo.threadNotify.shareTypingActivity = 0;
+    unsafeWindow.XenForo.threadNotify.shareTypingActivity = 0;
   }
 }
 

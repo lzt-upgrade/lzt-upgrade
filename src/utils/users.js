@@ -7,45 +7,48 @@ const userIdMemberCardElementId = "LZTUpUserIDMemberCard";
 
 function getUserId(target) {
   switch (target) {
-    case "profile":
+    case "profile": {
       // in any profile
-      if (isProfilePage()) {
-        const userThreadsButton = document.querySelector(
-          "#profile_short > .userContentLinks > a:nth-child(1)",
-        );
-        if (!userThreadsButton || userThreadsButton.href === "") {
-          return null;
-        }
+      if (!isProfilePage()) {
+        return null;
+      }
+      const userThreadsButton = document.querySelector(
+        "#profile_short > .userContentLinks > a:nth-child(1)",
+      );
+      if (userThreadsButton?.href === "") {
+        return null;
+      }
 
-        if (!userThreadsButton.href.endsWith("?tab=mythreads")) {
-          const url = new URL(userThreadsButton.href);
-          return url.searchParams.get("user_id");
-        }
-
+      const userId = /\/(\d+)\//.exec(userThreadsButton.href)?.[1];
+      if (!userId) {
         return getUserId("me");
       }
-    // eslint-disable-next-line no-fallthrough
-    case "membercard":
-      // in any membercard
-      if (isOpenMemberCard()) {
-        const memberCard = document.querySelectorAll(".xenOverlay.memberCard");
-        const userThreadsButton = memberCard[
-          memberCard.length - 1
-        ].querySelector(
-          ".memberCardInner > .bottom > .userContentLinks > a:nth-child(1)",
-        );
-        if (!userThreadsButton || userThreadsButton.href === "") {
-          return null;
-        }
 
-        const url = new URL(userThreadsButton.href);
-        return url.searchParams.get("user_id");
+      return +userId;
+    }
+
+    // eslint-disable-next-line no-fallthrough
+    case "membercard": {
+      // in any membercard
+      if (!isOpenMemberCard()) {
+        return null;
       }
-      return null;
+
+      const memberCard = document.querySelectorAll(".xenOverlay.memberCard");
+      const userThreadsButton = memberCard[memberCard.length - 1].querySelector(
+        ".bottomContainer > .controlsBlock > a.button:nth-child(1)",
+      );
+      if (userThreadsButton?.href === "") {
+        return null;
+      }
+
+      return /\/(\d+)\//.exec(userThreadsButton)?.[1];
+    }
+
     // eslint-disable-next-line no-fallthrough
     case "self":
     case "me":
-      return XenForo?.visitor?.user_id;
+      return unsafeWindow.XenForo?.visitor?.user_id;
     default:
       return null;
   }
@@ -118,24 +121,26 @@ function addUserIdToProfile() {
 }
 
 function addUserIdToMemberCard() {
-  if (isOpenMemberCard()) {
-    const memberCards = document.querySelectorAll(".xenOverlay.memberCard");
-    const userId = getUserId("membercard") ?? "Не найден";
-    const userContentLinks = memberCards[memberCards.length - 1].querySelector(
-      `#memberCard${userId}.memberCardInner > .bottom`,
-    );
-    const userIdElement = document.createElement("div");
-    userIdElement.classList.add("title");
-    userIdElement.id = userIdMemberCardElementId;
-    userIdElement.innerText = `ID: ${userId}`;
-    const copyBtn = new CopyButton(
-      userId,
-      "Скопировать ID пользователя",
-      "ID пользователя успешно скопирован в буфер обмена",
-    ).createElement();
-    userIdElement.appendChild(copyBtn);
-    userContentLinks?.insertAdjacentElement("afterbegin", userIdElement);
+  if (!isOpenMemberCard()) {
+    return;
   }
+
+  const memberCards = document.querySelectorAll(".xenOverlay.memberCard");
+  const userId = getUserId("membercard") ?? "Не найден";
+  const userContentLinks = memberCards[memberCards.length - 1].querySelector(
+    `#memberCard${userId}.memberCardInner .controlsBlock`,
+  );
+  const userIdElement = document.createElement("div");
+  userIdElement.classList.add("title");
+  userIdElement.id = userIdMemberCardElementId;
+  userIdElement.innerText = `ID: ${userId}`;
+  const copyBtn = new CopyButton(
+    userId,
+    "Скопировать ID пользователя",
+    "ID пользователя успешно скопирован в буфер обмена",
+  ).createElement();
+  userIdElement.appendChild(copyBtn);
+  userContentLinks?.insertAdjacentElement("afterend", userIdElement);
 }
 
 function removeUserIdFromProfile() {
@@ -161,7 +166,7 @@ function removeUserIdFromMemberCard() {
 function showFullRegDateInProfile(full = false) {
   if (isProfilePage()) {
     const dateTime = document.querySelector(
-      ".profile_info_row > .labeled > span.DateTime",
+      ".profile_info_row > .labeled > time.u-dt",
     );
     if (!dateTime) {
       return;

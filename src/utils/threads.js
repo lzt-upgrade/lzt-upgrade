@@ -19,13 +19,14 @@ function getThreadId() {
 }
 
 function getThreadContent() {
-  return document.querySelector(".message.firstPost > .messageInfo article")
-    ?.innerText;
+  return document
+    .querySelector(".message.firstPost > .messageInfo article")
+    ?.textContent?.trim();
 }
 
 async function getThreadContentByAjax(threadId) {
   try {
-    const res = await XenForo.ajax(`/threads/${threadId}`);
+    const res = await unsafeWindow.XenForo.ajax(`/threads/${threadId}`);
     const resHTML = res.templateHtml;
 
     const parsedHTML = getHTMLFromString(resHTML);
@@ -39,6 +40,14 @@ async function getThreadContentByAjax(threadId) {
   }
 }
 
+function clearSummarizeContent(text) {
+  // replace \n & \t & \r to space
+  // replace ip to void
+  return text
+    .replaceAll(/\s/g, " ")
+    .replaceAll(/((25[0-5]|(2[0-4]|1\d|[1-9]|)\d)\.?\b){4}/g, "");
+}
+
 async function summarizeThreadBlock(isActive) {
   if (isActive && isThreadPage()) {
     const summarizeBlock = new ThreadBar(
@@ -50,6 +59,7 @@ async function summarizeThreadBlock(isActive) {
     pageNavLinkGroup.before(summarizeBlock.container);
 
     let threadContent = getThreadContent();
+    Logger.log("Thread content: " + threadContent);
 
     if (threadContent == undefined) {
       // getting content about a topic if not 1 page is open
@@ -67,6 +77,7 @@ async function summarizeThreadBlock(isActive) {
 
     let summarizeInterval;
     let session_id = "";
+    threadContent = clearSummarizeContent(threadContent);
     summarizeInterval = setInterval(async () => {
       const generatedInfo = await generationAPI.genSummarize(
         threadContent,

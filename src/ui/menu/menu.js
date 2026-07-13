@@ -87,9 +87,9 @@ async function generateMenu(tabs) {
     menuContent.appendChild(sectionEl);
     for (const container of section.sectionContainers) {
       menuContent.append(container);
-      container
-        .querySelectorAll(".Tooltip")
-        .forEach(el => XenForo.Tooltip($(el))); // load all tooltips in menu container
+      // container
+      //   .querySelectorAll(".Tooltip")
+      //   .forEach(el => unsafeWindow.XenForo.Tooltip($(el))); // load all tooltips in menu container
     }
   }
 

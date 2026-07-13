@@ -251,7 +251,9 @@ async function sortableItemOnEditCallback(e, sortableItem) {
       [
         new Input(buttonData.text, "Неправильный отзыв", 1, 12).createElement(
           async event => {
-            let val = XenForo.htmlspecialchars(event.target.value.trim());
+            let val = unsafeWindow.XenForo.htmlspecialchars(
+              event.target.value.trim(),
+            );
 
             if (val.length < 1) {
               return registerAlert(
@@ -275,7 +277,9 @@ async function sortableItemOnEditCallback(e, sortableItem) {
       [
         new Input(buttonData.reason, "Нарушение 3.15", 1, 120).createElement(
           async event => {
-            let val = XenForo.htmlspecialchars(event.target.value.trim());
+            let val = unsafeWindow.XenForo.htmlspecialchars(
+              event.target.value.trim(),
+            );
 
             if (val.length < 1) {
               return registerAlert(

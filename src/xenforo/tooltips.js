@@ -1,6 +1,6 @@
 function updateTooltips() {
-  let lztUpTooltips = $("#LZTUpTooltip.Tooltip");
-  return XenForo.Tooltip(lztUpTooltips);
+  // let lztUpTooltips = $("#LZTUpTooltip.Tooltip");
+  // return unsafeWindow.XenForo.Tooltip(lztUpTooltips);
 }
 
 function setTooltip(el, text) {

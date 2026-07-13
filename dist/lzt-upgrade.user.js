@@ -10,7 +10,6 @@
 // @match *://zelenka.guru/*
 // @match *://lzt.market/*
 // @match *://lolz.market/*
-// @connect lztupgrade.toiloff.ru
 // @connect greasyfork.org
 // @downloadURL https://github.com/lzt-upgrade/lzt-upgrade/raw/master/dist/lzt-upgrade.user.js
 // @grant GM_xmlhttpRequest
@@ -20,6 +19,7 @@
 // @grant GM_getValue
 // @grant GM_deleteValue
 // @grant GM_listValues
+// @grant unsafeWindow
 // @homepageURL https://github.com/lzt-upgrade/lzt-upgrade
 // @icon https://cdn.toil.cc/lztup/brand/logo-mini.png
 // @license MIT
@@ -51,7 +51,7 @@
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, `#LZTUpButton{color:#0daf77;font-weight:600}`, ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ``, ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -94,9 +94,8 @@ ___CSS_LOADER_EXPORT___.push([module.id, `.LZTUpErrorPage{background-color:#2727
 
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
-___CSS_LOADER_EXPORT___.push([module.id, "@import url(https://cdn.jsdelivr.net/gh/lzt-upgrade/coloris-lzt-theme@latest/dist/coloris.min.css);"]);
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, `.clr-picker{display:none}.LZTUpColorPickerWrap{display:flex;align-items:center}.LZTUpColorPickerWrap:not(:first-of-type){margin-top:10px}.LZTUpColorPickerWrap .LZTUpModalDescription{margin-right:10px !important}.LZTUpColorPickerWrap .clr-field input{width:24px;height:24px}.LZTUpColorPickerWrap .clr-field button{width:28px;height:28px}.LZTUpColorPickerWrap .clr-field input,.LZTUpColorPickerWrap .clr-field button{border-radius:4px}.LZTUpSelect option{background:#272727;padding:10px 15px;font-weight:600;border-radius:6px}.LZTUpSelect option:hover{background:#2d2d2d}.LZTUpIconButton{display:flex;flex-direction:row-reverse;align-items:center;justify-content:center}.LZTUpIconButton.fit{max-width:fit-content}.LZTUpIconButton i{margin:0 8px;margin-top:3.5px}.LZTUpRefreshButton{min-width:32px !important;margin-left:32px !important}.LZTUpSortableItem{display:flex;align-items:center;padding:16px;margin:8px 0;border-radius:8px;background:rgba(54,54,54,.75)}.LZTUpSortableItem .LZTUpSortableDraggable{color:#8c8c8c;margin-right:10px;cursor:move}.LZTUpSortableItem .LZTUpSortableContent p{margin:0 !important}.LZTUpSortableItem .LZTUpSortableUtility{display:flex;margin-left:auto}.LZTUpSortableItem .LZTUpSortableUtility div{margin-left:10px;cursor:pointer;transition:.5s color ease}.LZTUpSortableItem .LZTUpSortableUtility .LZTUpSortableEditButton{color:#6a6a6a}.LZTUpSortableItem .LZTUpSortableUtility .LZTUpSortableEditButton:hover{color:#0daf77}.LZTUpSortableItem .LZTUpSortableUtility .LZTUpSortableRemoveButton{color:#964448}.LZTUpSortableItem .LZTUpSortableUtility .LZTUpSortableRemoveButton:hover{color:#f13838}#LZTUpModalMainTitle{text-align:center;padding:16px;font-size:20px;font-weight:bold}.LZTUpModalBackButton{position:absolute;top:18px;left:25px;padding:0px 5px;margin:-4px -5px;cursor:pointer;line-height:25px;height:26px;width:26px;border:0 !important;background:rgba(0,0,0,0);color:#d6d6d6;font-size:18px}.LZTUpModalBackButton:hover{background:rgba(18,76,50,.4);border-radius:8px}.LZTUpTabs{width:100%;box-sizing:border-box;padding:0 10px;border:none !important;margin:15px auto !important;display:flex;align-items:center;justify-content:center}.LZTUpTabs #LZTUpTab{position:relative;padding:10px;margin:0 4px;float:left;font-weight:600;list-style:none;font-size:14px}.LZTUpTabs #LZTUpTab:hover{cursor:pointer}.LZTUpTabs #LZTUpTab.active{box-shadow:inset 0px -2px 0px 0px #0daf77;transform:translateY(-1px);transition:.2s}.LZTUpTabs #LZTUpTab:not(.active):hover{box-shadow:inset 0px -2px 0px 0px #363636}.LZTUpSection{display:flex;flex-wrap:wrap;margin:20px 15px}.LZTUpSection.row{flex-direction:row}.LZTUpSection.row .LZTUpSectionItem{max-width:284px}.LZTUpSection.row .LZTUpSectionTitle,.LZTUpSection.row .LZTUpSectionDesc{max-width:200px}.LZTUpSection.column{flex-direction:column}.LZTUpSection.column .LZTUpSectionTitle,.LZTUpSection.column .LZTUpSectionDesc{max-width:440px}.LZTUpSection.column .LZTUpSectionDesc{white-space:break-spaces}.LZTUpSection.column .LZTUpSectionItem{max-width:580px}.LZTUpSection .LZTUpSectionItem{flex-basis:50%;flex-grow:1;height:64px;display:flex;align-items:center;transition:all .5s ease}.LZTUpSection .LZTUpSectionItem:hover{background:rgba(54,54,54,.75);border-radius:8px;cursor:pointer}.LZTUpSection .LZTUpSectionItem .LZTUpSectionTextContainer{display:flex;flex-direction:column;justify-content:center;flex:1 1 auto;max-width:100%}.LZTUpGrid{margin:20px 0;display:grid;grid-template-columns:repeat(3, 30%);justify-content:center;gap:20px}.LZTUpGrid .LZTUpGridItem{background:#343434;display:flex;flex-direction:column;align-items:center;justify-content:space-between;border-radius:8px;cursor:pointer}.LZTUpGrid .LZTUpGridItem:hover{background:#3a3a3a}.LZTUpGrid .LZTUpGridItem.active{outline:3px solid #228e5d}.LZTUpGrid .LZTUpGridItem.theme:hover{opacity:.9}.LZTUpGrid .LZTUpGridItem.theme .LZTUpGridTextContainer{padding-top:30px}.LZTUpGrid .LZTUpGridItem .LZTUpGridTextContainer{display:flex;flex-direction:column;align-self:start;margin-left:10px;margin-bottom:10px}.LZTUpGrid .LZTUpGridItem .LZTUpGridImage{max-width:96px;max-height:48px;margin:20px 0}.LZTUpGrid .LZTUpGridItem .LZTUpGridTitle{font-weight:bold;word-wrap:break-word}.LZTUpGrid .LZTUpGridItem .LZTUpGridDesc{word-wrap:break-word}.LZTUpGrid .LZTUpGridItem .LZTUpGridDesc .LZTUpGridAuthor{color:#949494}@media screen and (max-width: 720px){.LZTUpGrid{grid-template-columns:repeat(2, 47%)}}#LZTUpIcon{width:28px;height:28px;margin:20px;font-size:28px;color:#0daf77}#LZTUpIcon.gray{color:#949494}#LZTUpIcon.right{text-align:right}#LZTUpModalContainer{margin:15px;max-width:400px}#LZTUpModalChecksContainer,#LZTUpModalReportButtonsContainer,#LZTUpModalCell,.LZTUpModalMesh,.LZTUpModalSeparator{margin:15px;max-width:95%}.LZTUpContainer{display:flex;flex-direction:column;margin:15px;max-width:95%}.LZTUpModalHeading{margin:10px 0 5px 0 !important}.LZTUpModalDescription{margin:0 !important;margin-bottom:5px !important}.LZTUpTextArea{min-height:40px}.LZTUpModalSeparator{border-bottom:1px solid #363636}#LZTUpModalChecksText{margin:0px 25px 5px}.LZTUpSectionTitle,.LZTUpSectionDesc{display:block;margin-right:20px;font-size:15px;font-weight:bold;text-overflow:ellipsis;white-space:nowrap;overflow:hidden}.LZTUpSectionDesc{font-size:13px;font-weight:normal;color:#949494}.LZTUpSectionDesc .mceSmilie{max-height:18px !important}.LZTUpModalSectionTexts{display:flex;flex-direction:column;justify-content:center;flex:1 1 auto}.LZTUpModalSectionTexts .LZTUpSubText{max-width:450px}#LZTUpModalComment{background:#363636;margin:5px 15px;padding:10px 15px;border-radius:10px}#LZTUpModalComment a{color:#00ba78}.LZTUpModalBlock{display:flex}.LZTUpModalBlockButtons{display:flex;flex-wrap:wrap;justify-content:center;margin-top:25px}.LZTUpModalBlockButtons .button{margin:5px;width:250px}.LZTUpSubMenu .previewContainer{display:flex;float:right;margin:25px 15px;padding:10px 10px 15px 10px;background-size:cover;background-position:center;background-attachment:fixed;background-repeat:no-repeat;border-radius:10px;width:92%;max-width:92%}.LZTUpSubMenu .previewContainer .avatar img{width:66px;height:66px}.LZTUpSubMenu .previewContainer .info{padding:0 0 0 20px}.LZTUpSubMenu .previewContainer .info .username{font-weight:600}.LZTUpSubMenu .previewContainer .bannerOrStatus{min-width:150px;margin:10px 0 0;color:#949494}.LZTUpSubMenu .previewContainer .bannerOrStatus em{font-style:inherit}.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge .customUniqIcon{padding:2px 0;text-align:center}.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge .customUniqIcon svg{width:16px !important;height:16px !important}.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge::before{font-family:"Font Awesome 5 Pro";font-weight:600;display:inline-block;font-size:12.32px}.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.admin{background:#964448}.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.admin::before,.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.bot::before{content:""}.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.Designer::before{content:""}.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.headDesigner::before{content:""}.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.editor::before{content:""}.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.sponsor::before{content:""}.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.coder::before{content:""}.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.uniq_default::before,.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.Legend::before,.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.Ikarus::before{content:""}.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.moder{background:#3d6b39}.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.curator{background:rgba(8,156,122,.8509803922)}.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.moder::before,.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.main_moder::before,.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.curator::before{content:""}.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.arbitr::before,.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.main_arbitr::before{content:""}.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.telegramBot::before{content:""}.LZTUpSubMenu .previewContainer .UsernameStyle.style18,.LZTUpSubMenu .previewContainer .UsernameStyle.style360{text-decoration:line-through;color:#aaa}.LZTUpSubMenu .previewContainer .UsernameStyle.style3{color:#f13838}.LZTUpSubMenu .previewContainer .UsernameStyle.style30{color:#ff9afc}.LZTUpSubMenu .previewContainer .UsernameStyle.style353{background:linear-gradient(98.26deg, #ff42f7 2.08%, #ff24cf 100%);-webkit-background-clip:text;-webkit-text-fill-color:rgba(0,0,0,0)}.LZTUpSubMenu .previewContainer .UsernameStyle.style350{background:linear-gradient(90deg, #5c45ff, #feb5f2 100%);-webkit-background-clip:text;-webkit-text-fill-color:rgba(0,0,0,0)}.LZTUpSubMenu .previewContainer .UsernameStyle.style12{color:#01f73c}.LZTUpSubMenu .previewContainer .UsernameStyle.style1,.LZTUpSubMenu .previewContainer .UsernameStyle.style41,.LZTUpSubMenu .previewContainer .UsernameStyle.style142,.LZTUpSubMenu .previewContainer .UsernameStyle.style144{color:#aaa}.LZTUpSubMenu .previewContainer .UsernameStyle.style32,.LZTUpSubMenu .previewContainer .UsernameStyle.style93,.LZTUpSubMenu .previewContainer .UsernameStyle.style21,.LZTUpSubMenu .previewContainer .UsernameStyle.style2{color:#949494}.LZTUpSubMenu .previewContainer .UsernameStyle.style60{color:#ffa8af}.LZTUpSubMenu .previewContainer .UsernameStyle.style9{color:#0075ad}.LZTUpSubMenu .previewContainer .UsernameStyle.style65{color:#a5e3ff}.LZTUpSubMenu .previewContainer .UsernameStyle.style351{color:#ff0076}.LZTUpSubMenu .previewContainer .UsernameStyle.style29{color:#0acc9e}.LZTUpSubMenu .previewContainer .UsernameStyle.style26{background:linear-gradient(90deg, #0095dd 0%, #f1094b 100%, #0095dd);-webkit-background-clip:text;-webkit-text-fill-color:rgba(0,0,0,0)}.LZTUpSubMenu .previewContainer .UsernameStyle.style4{color:#0e9100}.LZTUpSubMenu .previewContainer .UsernameStyle.style22{color:#eee}.LZTUpSubMenu .previewContainer .UsernameStyle.style11{color:#56b5e0}.LZTUpSubMenu .previewContainer .UsernameStyle.style7{color:#ff9304}.LZTUpSubMenu .previewContainer .UsernameStyle.style349,.LZTUpSubMenu .previewContainer .UsernameStyle.style365{color:#0087ff}.LZTUpSubMenu .previewContainer .UsernameStyle.style354{color:aqua}.LZTUpSubMenu .previewContainer .UsernameStyle.style218{color:#f13838}.LZTUpSubMenu .previewContainer .UsernameStyle.style359{color:#e5d9a3}.LZTUpSubMenu .previewContainer .UsernameStyle.style8{color:gold}.LZTUpSubMenu .previewContainer .UsernameStyle.style265{background:linear-gradient(35deg, #006eff, #00ff81 52%, #fff 50%, #93cbff);-webkit-background-clip:text;-webkit-text-fill-color:rgba(0,0,0,0);text-shadow:0 0 7px rgba(0,255,207,.5019607843)}.LZTUpSubMenu .previewContainer .UsernameStyle.style23{color:#b35ede}.LZTUpSubMenu .previewContainer .UsernameStyle.banned,.LZTUpSubMenu .previewContainer .UsernameStyle.is_banned{text-decoration:line-through;background:inherit;-webkit-text-fill-color:inherit;text-shadow:inherit !important;color:#aaa !important}.LZTUpSubMenu .previewContainer .avatarBox{position:relative}.LZTUpSubMenu .previewContainer .avatarBox .avatarUserBadges .badgeDefaultBackground{background:#363636}.LZTUpSubMenu .previewContainer .avatarBox .avatarUserBadges .avatarUserBadge{position:absolute;bottom:-12px;left:20px;border:2px solid #272727;font-size:0;width:22px;height:22px;margin:0;line-height:22px;border-radius:50%;text-align:center;text-shadow:none !important;box-shadow:none !important;border-radius:50% !important;-webkit-background-clip:unset !important;-webkit-text-fill-color:unset !important;overflow:hidden}.LZTUpSubMenu .previewContainer .avatarBox .avatarUserBadges .avatarUserBadge:only-child{left:35px}.LZTUpSubMenu .previewContainer .avatarBox .avatarUserBadges .avatarUserBadge.avatarUserBadge--1{left:20px}.LZTUpSubMenu .previewContainer .avatarBox .avatarUserBadges .avatarUserBadge.avatarUserBadge--2{left:40px}.LZTUpSubMenu .previewContainer .avatarBox,.LZTUpSubMenu .previewContainer .info{display:table-cell;vertical-align:top}`, ""]);
+___CSS_LOADER_EXPORT___.push([module.id, `.clr-picker{display:none;flex-wrap:wrap;position:absolute;width:200px;z-index:1000;border-radius:10px;background-color:#fff;justify-content:flex-end;direction:ltr;box-shadow:0 0 5px rgba(0,0,0,.05),0 5px 20px rgba(0,0,0,.1);-moz-user-select:none;-webkit-user-select:none;user-select:none}.clr-picker.clr-open,.clr-picker[data-inline=true]{display:flex}.clr-picker[data-inline=true]{position:relative}.clr-gradient{position:relative;width:100%;height:100px;margin-bottom:15px;border-radius:3px 3px 0 0;background-image:linear-gradient(rgba(0, 0, 0, 0), #000),linear-gradient(90deg, #fff, currentColor);cursor:pointer}.clr-marker{position:absolute;width:12px;height:12px;margin:-6px 0 0 -6px;border:1px solid #fff;border-radius:50%;background-color:currentColor;cursor:pointer}.clr-picker input[type=range]::-webkit-slider-runnable-track{width:100%;height:16px}.clr-picker input[type=range]::-webkit-slider-thumb{width:16px;height:16px;-webkit-appearance:none}.clr-picker input[type=range]::-moz-range-track{width:100%;height:16px;border:0}.clr-picker input[type=range]::-moz-range-thumb{width:16px;height:16px;border:0}.clr-hue{background-image:linear-gradient(to right, red 0, #ff0 16.66%, #0f0 33.33%, #0ff 50%, #00f 66.66%, #f0f 83.33%, red 100%)}.clr-alpha,.clr-hue{position:relative;width:calc(100% - 40px);height:8px;margin:5px 20px;border-radius:4px}.clr-alpha span{display:block;height:100%;width:100%;border-radius:inherit;background-image:linear-gradient(90deg, rgba(0, 0, 0, 0), currentColor)}.clr-alpha input,.clr-hue input{position:absolute;width:calc(100% + 32px);height:16px;left:-16px;top:-4px;margin:0;background-color:rgba(0,0,0,0);opacity:0;cursor:pointer;appearance:none;-webkit-appearance:none}.clr-alpha div,.clr-hue div{position:absolute;width:16px;height:16px;left:0;top:50%;margin-left:-8px;transform:translateY(-50%);border:2px solid #fff;border-radius:50%;background-color:currentColor;box-shadow:0 0 1px #888;pointer-events:none}.clr-alpha div:before{content:"";position:absolute;height:100%;width:100%;left:0;top:0;border-radius:50%;background-color:currentColor}.clr-format{display:none;order:1;width:calc(100% - 40px);margin:0 20px 20px}.clr-segmented{display:flex;position:relative;width:100%;margin:0;padding:0;border:1px solid #ddd;border-radius:15px;box-sizing:border-box;color:#999;font-size:12px}.clr-segmented input,.clr-segmented legend{position:absolute;width:100%;height:100%;margin:0;padding:0;border:0;left:0;top:0;opacity:0;pointer-events:none}.clr-segmented label{flex-grow:1;margin:0;padding:4px 0;font-size:inherit;font-weight:400;line-height:initial;text-align:center;cursor:pointer}.clr-segmented label:first-of-type{border-radius:10px 0 0 10px}.clr-segmented label:last-of-type{border-radius:0 10px 10px 0}.clr-segmented input:checked+label{color:#fff;background-color:#666}.clr-swatches{order:2;width:calc(100% - 32px);margin:0 16px}.clr-swatches div{display:flex;flex-wrap:wrap;padding-bottom:12px;justify-content:center}.clr-swatches button{position:relative;width:20px;height:20px;margin:0 4px 6px 4px;padding:0;border:0;border-radius:50%;color:inherit;text-indent:-1000px;white-space:nowrap;overflow:hidden;cursor:pointer}.clr-swatches button:after{content:"";display:block;position:absolute;width:100%;height:100%;left:0;top:0;border-radius:inherit;background-color:currentColor;box-shadow:inset 0 0 0 1px rgba(0,0,0,.1)}input.clr-color{order:1;width:calc(100% - 80px);height:32px;margin:15px 20px 20px auto;padding:0 10px;border:1px solid #ddd;border-radius:16px;color:#444;background-color:#fff;font-family:sans-serif;font-size:14px;text-align:center;box-shadow:none}input.clr-color:focus{outline:0;border:1px solid #1e90ff}.clr-clear,.clr-close{display:none;order:2;height:24px;margin:0 20px 20px;padding:0 20px;border:0;border-radius:12px;color:#fff;background-color:#666;font-family:inherit;font-size:12px;font-weight:400;cursor:pointer}.clr-close{display:block;margin:0 20px 20px auto}.clr-preview{position:relative;width:32px;height:32px;margin:15px 0 20px 20px;border-radius:50%;overflow:hidden}.clr-preview:after,.clr-preview:before{content:"";position:absolute;height:100%;width:100%;left:0;top:0;border:1px solid #fff;border-radius:50%}.clr-preview:after{border:0;background-color:currentColor;box-shadow:inset 0 0 0 1px rgba(0,0,0,.1)}.clr-preview button{position:absolute;width:100%;height:100%;z-index:1;margin:0;padding:0;border:0;border-radius:50%;outline-offset:-2px;background-color:rgba(0,0,0,0);text-indent:-9999px;cursor:pointer;overflow:hidden}.clr-alpha div,.clr-color,.clr-hue div,.clr-marker{box-sizing:border-box}.clr-field{display:inline-block;position:relative;color:rgba(0,0,0,0)}.clr-field input{margin:0;direction:ltr}.clr-field.clr-rtl input{text-align:right}.clr-field button{position:absolute;width:30px;height:100%;right:0;top:50%;transform:translateY(-50%);margin:0;padding:0;border:0;color:inherit;text-indent:-1000px;white-space:nowrap;overflow:hidden;pointer-events:none}.clr-field.clr-rtl button{right:auto;left:0}.clr-field button:after{content:"";display:block;position:absolute;width:100%;height:100%;left:0;top:0;border-radius:inherit;background-color:currentColor;box-shadow:inset 0 0 1px rgba(0,0,0,.5)}.clr-alpha,.clr-alpha div,.clr-field button,.clr-preview:before,.clr-swatches button{background-image:repeating-linear-gradient(45deg, #aaa 25%, transparent 25%, transparent 75%, #aaa 75%, #aaa),repeating-linear-gradient(45deg, #aaa 25%, #fff 25%, #fff 75%, #aaa 75%, #aaa);background-position:0 0,4px 4px;background-size:8px 8px}.clr-marker:focus{outline:0}.clr-keyboard-nav .clr-alpha input:focus+div,.clr-keyboard-nav .clr-hue input:focus+div,.clr-keyboard-nav .clr-marker:focus,.clr-keyboard-nav .clr-segmented input:focus+label{outline:0;box-shadow:0 0 0 2px #1e90ff,0 0 2px 2px #fff}.clr-picker[data-alpha=false] .clr-alpha{display:none}.clr-picker[data-minimal=true]{padding-top:16px}.clr-picker[data-minimal=true] .clr-alpha,.clr-picker[data-minimal=true] .clr-color,.clr-picker[data-minimal=true] .clr-gradient,.clr-picker[data-minimal=true] .clr-hue,.clr-picker[data-minimal=true] .clr-preview{display:none}.clr-dark{background-color:#444}.clr-dark .clr-segmented{border-color:#777}.clr-dark .clr-swatches button:after{box-shadow:inset 0 0 0 1px rgba(255,255,255,.3)}.clr-dark input.clr-color{color:#fff;border-color:#777;background-color:#555}.clr-dark input.clr-color:focus{border-color:#1e90ff}.clr-dark .clr-preview:after{box-shadow:inset 0 0 0 1px rgba(255,255,255,.5)}.clr-dark .clr-alpha,.clr-dark .clr-alpha div,.clr-dark .clr-preview:before,.clr-dark .clr-swatches button{background-image:repeating-linear-gradient(45deg, #666 25%, transparent 25%, transparent 75%, #888 75%, #888),repeating-linear-gradient(45deg, #888 25%, #444 25%, #444 75%, #888 75%, #888)}.clr-picker.clr-polaroid{border-radius:6px;box-shadow:0 0 5px rgba(0,0,0,.1),0 5px 30px rgba(0,0,0,.2)}.clr-picker.clr-polaroid:before{content:"";display:block;position:absolute;width:16px;height:10px;left:20px;top:-10px;border:solid rgba(0,0,0,0);border-width:0 8px 10px 8px;border-bottom-color:currentColor;box-sizing:border-box;color:#fff;filter:drop-shadow(0 -4px 3px rgba(0, 0, 0, 0.1));pointer-events:none}.clr-picker.clr-polaroid.clr-dark:before{color:#444}.clr-picker.clr-polaroid.clr-left:before{left:auto;right:20px}.clr-picker.clr-polaroid.clr-top:before{top:auto;bottom:-10px;transform:rotateZ(180deg)}.clr-polaroid .clr-gradient{width:calc(100% - 20px);height:120px;margin:10px;border-radius:3px}.clr-polaroid .clr-alpha,.clr-polaroid .clr-hue{width:calc(100% - 30px);height:10px;margin:6px 15px;border-radius:5px}.clr-polaroid .clr-alpha div,.clr-polaroid .clr-hue div{box-shadow:0 0 5px rgba(0,0,0,.2)}.clr-polaroid .clr-format{width:calc(100% - 20px);margin:0 10px 15px}.clr-polaroid .clr-swatches{width:calc(100% - 12px);margin:0 6px}.clr-polaroid .clr-swatches div{padding-bottom:10px}.clr-polaroid .clr-swatches button{width:22px;height:22px}.clr-polaroid input.clr-color{width:calc(100% - 60px);margin:10px 10px 15px auto}.clr-polaroid .clr-clear{margin:0 10px 15px 10px}.clr-polaroid .clr-close{margin:0 10px 15px auto}.clr-polaroid .clr-preview{margin:10px 0 15px 10px}.clr-picker.clr-large{width:275px}.clr-large .clr-gradient{height:150px}.clr-large .clr-swatches button{width:22px;height:22px}.clr-picker.clr-pill{width:380px;padding-left:180px;box-sizing:border-box}.clr-pill .clr-gradient{position:absolute;width:180px;height:100%;left:0;top:0;margin-bottom:0;border-radius:3px 0 0 3px}.clr-pill .clr-hue{margin-top:20px}.clr-lzt{background-color:#272727}.clr-lzt .clr-segmented{border-color:#343434}.clr-lzt .clr-swatches button:after{box-shadow:inset 0 0 0 1px rgba(52,52,52,.3)}.clr-lzt input.clr-color{color:#fff;border-color:#343434;border:none;background-color:#343434}.clr-lzt input.clr-color:focus{border:1px solid #0daf77}.clr-lzt .clr-preview:after{box-shadow:inset 0 0 0 1px rgba(52,52,52,.3)}.clr-lzt .clr-alpha,.clr-lzt .clr-alpha div,.clr-lzt .clr-preview:before,.clr-lzt .clr-swatches button{background-image:repeating-linear-gradient(45deg, #666 25%, transparent 25%, transparent 75%, #888 75%, #888),repeating-linear-gradient(45deg, #888 25%, #444 25%, #444 75%, #888 75%, #888)}.clr-lzt .clr-segmented label:first-of-type{border-radius:5px 0 0 5px}.clr-lzt .clr-segmented label:last-of-type{border-radius:0 5px 5px 0}.clr-lzt .clr-segmented label:hover{background-color:rgba(102,102,102,.35)}.clr-lzt .clr-clear,.clr-lzt .clr-segmented input:checked+label{background-color:#363636}.clr-clear,.clr-lzt .clr-close{border-radius:5px}.clr-lzt .clr-close{background-color:#0daf77}.clr-clear:hover,.clr-lzt .clr-close:hover{background-color:rgba(13,175,119,.8) !important;transition:background-color .5s}.clr-picker{display:none}.LZTUpColorPickerWrap{display:flex;align-items:center}.LZTUpColorPickerWrap:not(:first-of-type){margin-top:10px}.LZTUpColorPickerWrap .LZTUpModalDescription{margin-right:10px !important}.LZTUpColorPickerWrap .clr-field input{width:24px;height:24px}.LZTUpColorPickerWrap .clr-field button{width:28px;height:28px}.LZTUpColorPickerWrap .clr-field input,.LZTUpColorPickerWrap .clr-field button{border-radius:4px}.LZTUpSelect option{background:#272727;padding:10px 15px;font-weight:600;border-radius:6px}.LZTUpSelect option:hover{background:#2d2d2d}.LZTUpIconButton{display:flex;flex-direction:row-reverse;align-items:center;justify-content:center}.LZTUpIconButton.fit{max-width:fit-content}.LZTUpIconButton i{margin:0 8px;margin-top:3.5px}.LZTUpRefreshButton{min-width:32px !important;margin-left:32px !important}.LZTUpSortableItem{display:flex;align-items:center;padding:16px;margin:8px 0;border-radius:8px;background:rgba(54,54,54,.75)}.LZTUpSortableItem .LZTUpSortableDraggable{color:#8c8c8c;margin-right:10px;cursor:move}.LZTUpSortableItem .LZTUpSortableContent p{margin:0 !important}.LZTUpSortableItem .LZTUpSortableUtility{display:flex;margin-left:auto}.LZTUpSortableItem .LZTUpSortableUtility div{margin-left:10px;cursor:pointer;transition:.5s color ease}.LZTUpSortableItem .LZTUpSortableUtility .LZTUpSortableEditButton{color:#6a6a6a}.LZTUpSortableItem .LZTUpSortableUtility .LZTUpSortableEditButton:hover{color:#0daf77}.LZTUpSortableItem .LZTUpSortableUtility .LZTUpSortableRemoveButton{color:#964448}.LZTUpSortableItem .LZTUpSortableUtility .LZTUpSortableRemoveButton:hover{color:#f13838}#LZTUpModalMainTitle{text-align:center;padding:16px;font-size:20px;font-weight:bold}.LZTUpModalBackButton{position:absolute;top:18px;left:25px;padding:0px 5px;margin:-4px -5px;cursor:pointer;line-height:25px;height:26px;width:26px;border:0 !important;background:rgba(0,0,0,0);color:#d6d6d6;font-size:18px}.LZTUpModalBackButton:hover{background:rgba(18,76,50,.4);border-radius:8px}.LZTUpTabs{width:100%;box-sizing:border-box;padding:0 10px;border:none !important;margin:15px auto !important;display:flex;align-items:center;justify-content:center}.LZTUpTabs #LZTUpTab{position:relative;padding:10px;margin:0 4px;float:left;font-weight:600;list-style:none;font-size:14px}.LZTUpTabs #LZTUpTab:hover{cursor:pointer}.LZTUpTabs #LZTUpTab.active{box-shadow:inset 0px -2px 0px 0px #0daf77;transform:translateY(-1px);transition:.2s}.LZTUpTabs #LZTUpTab:not(.active):hover{box-shadow:inset 0px -2px 0px 0px #363636}.LZTUpSection{display:flex;flex-wrap:wrap;margin:20px 15px}.LZTUpSection.row{flex-direction:row}.LZTUpSection.row .LZTUpSectionItem{max-width:284px}.LZTUpSection.row .LZTUpSectionTitle,.LZTUpSection.row .LZTUpSectionDesc{max-width:200px}.LZTUpSection.column{flex-direction:column}.LZTUpSection.column .LZTUpSectionTitle,.LZTUpSection.column .LZTUpSectionDesc{max-width:440px}.LZTUpSection.column .LZTUpSectionDesc{white-space:break-spaces}.LZTUpSection.column .LZTUpSectionItem{max-width:580px}.LZTUpSection .LZTUpSectionItem{flex-basis:50%;flex-grow:1;height:64px;display:flex;align-items:center;transition:all .5s ease}.LZTUpSection .LZTUpSectionItem:hover{background:rgba(54,54,54,.75);border-radius:8px;cursor:pointer}.LZTUpSection .LZTUpSectionItem .LZTUpSectionTextContainer{display:flex;flex-direction:column;justify-content:center;flex:1 1 auto;max-width:100%}.LZTUpGrid{margin:20px 0;display:grid;grid-template-columns:repeat(3, 30%);justify-content:center;gap:20px}.LZTUpGrid .LZTUpGridItem{background:#343434;display:flex;flex-direction:column;align-items:center;justify-content:space-between;border-radius:8px;cursor:pointer}.LZTUpGrid .LZTUpGridItem:hover{background:#3a3a3a}.LZTUpGrid .LZTUpGridItem.active{outline:3px solid #228e5d}.LZTUpGrid .LZTUpGridItem.theme:hover{opacity:.9}.LZTUpGrid .LZTUpGridItem.theme .LZTUpGridTextContainer{padding-top:30px}.LZTUpGrid .LZTUpGridItem .LZTUpGridTextContainer{display:flex;flex-direction:column;align-self:start;margin-left:10px;margin-bottom:10px}.LZTUpGrid .LZTUpGridItem .LZTUpGridImage{max-width:96px;max-height:48px;margin:20px 0}.LZTUpGrid .LZTUpGridItem .LZTUpGridTitle{font-weight:bold;word-wrap:break-word}.LZTUpGrid .LZTUpGridItem .LZTUpGridDesc{word-wrap:break-word}.LZTUpGrid .LZTUpGridItem .LZTUpGridDesc .LZTUpGridAuthor{color:#949494}@media screen and (max-width: 720px){.LZTUpGrid{grid-template-columns:repeat(2, 47%)}}#LZTUpIcon{width:28px;height:28px;margin:20px;font-size:28px;color:#0daf77}#LZTUpIcon.gray{color:#949494}#LZTUpIcon.right{text-align:right}#LZTUpModalContainer{margin:15px;max-width:400px}#LZTUpModalChecksContainer,#LZTUpModalReportButtonsContainer,#LZTUpModalCell,.LZTUpModalMesh,.LZTUpModalSeparator{margin:15px;max-width:95%}.LZTUpContainer{display:flex;flex-direction:column;margin:15px;max-width:95%}.LZTUpModalHeading{margin:10px 0 5px 0 !important}.LZTUpModalDescription{margin:0 !important;margin-bottom:5px !important}.LZTUpTextArea{min-height:40px}.LZTUpModalSeparator{border-bottom:1px solid #363636}#LZTUpModalChecksText{margin:0px 25px 5px}.LZTUpSectionTitle,.LZTUpSectionDesc{display:block;margin-right:20px;font-size:15px;font-weight:bold;text-overflow:ellipsis;white-space:nowrap;overflow:hidden}.LZTUpSectionDesc{font-size:13px;font-weight:normal;color:#949494}.LZTUpSectionDesc .mceSmilie{max-height:18px !important;max-width:18px !important}.LZTUpModalSectionTexts{display:flex;flex-direction:column;justify-content:center;flex:1 1 auto}.LZTUpModalSectionTexts .LZTUpSubText{max-width:450px}#LZTUpModalComment{background:#363636;margin:5px 15px;padding:10px 15px;border-radius:10px}#LZTUpModalComment a{color:#00ba78}.LZTUpModalBlock{display:flex}.LZTUpModalBlockButtons{display:flex;flex-wrap:wrap;justify-content:center;margin-top:25px}.LZTUpModalBlockButtons .button{margin:5px;width:250px}.LZTUpSubMenu .previewContainer{display:flex;float:right;margin:25px 15px;padding:10px 10px 15px 10px;background-size:cover;background-position:center;background-attachment:fixed;background-repeat:no-repeat;border-radius:10px;width:92%;max-width:92%}.LZTUpSubMenu .previewContainer .avatar img{width:66px;height:66px}.LZTUpSubMenu .previewContainer .info{padding:0 0 0 20px}.LZTUpSubMenu .previewContainer .info .username{font-weight:600}.LZTUpSubMenu .previewContainer .bannerOrStatus{min-width:150px;margin:10px 0 0;color:#949494}.LZTUpSubMenu .previewContainer .bannerOrStatus em{font-style:inherit}.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge .customUniqIcon{padding:2px 0;text-align:center}.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge .customUniqIcon svg{width:16px !important;height:16px !important}.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge::before{font-family:"Font Awesome 5 Pro";font-weight:600;display:inline-block;font-size:12.32px}.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.admin{background:#964448}.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.admin::before,.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.bot::before{content:""}.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.Designer::before{content:""}.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.headDesigner::before{content:""}.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.editor::before{content:""}.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.sponsor::before{content:""}.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.coder::before{content:""}.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.uniq_default::before,.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.Legend::before,.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.Ikarus::before{content:""}.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.moder{background:#3d6b39}.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.curator{background:rgba(8,156,122,.8509803922)}.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.moder::before,.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.main_moder::before,.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.curator::before{content:""}.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.arbitr::before,.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.main_arbitr::before{content:""}.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.telegramBot::before{content:""}.LZTUpSubMenu .previewContainer .UsernameStyle.style18,.LZTUpSubMenu .previewContainer .UsernameStyle.style360{text-decoration:line-through;color:#aaa}.LZTUpSubMenu .previewContainer .UsernameStyle.style3{color:#f13838}.LZTUpSubMenu .previewContainer .UsernameStyle.style30{color:#ff9afc}.LZTUpSubMenu .previewContainer .UsernameStyle.style353{background:linear-gradient(98.26deg, #ff42f7 2.08%, #ff24cf 100%);-webkit-background-clip:text;-webkit-text-fill-color:rgba(0,0,0,0)}.LZTUpSubMenu .previewContainer .UsernameStyle.style350{background:linear-gradient(90deg, #5c45ff, #feb5f2 100%);-webkit-background-clip:text;-webkit-text-fill-color:rgba(0,0,0,0)}.LZTUpSubMenu .previewContainer .UsernameStyle.style12{color:#01f73c}.LZTUpSubMenu .previewContainer .UsernameStyle.style1,.LZTUpSubMenu .previewContainer .UsernameStyle.style41,.LZTUpSubMenu .previewContainer .UsernameStyle.style142,.LZTUpSubMenu .previewContainer .UsernameStyle.style144{color:#aaa}.LZTUpSubMenu .previewContainer .UsernameStyle.style32,.LZTUpSubMenu .previewContainer .UsernameStyle.style93,.LZTUpSubMenu .previewContainer .UsernameStyle.style21,.LZTUpSubMenu .previewContainer .UsernameStyle.style2{color:#949494}.LZTUpSubMenu .previewContainer .UsernameStyle.style60{color:#ffa8af}.LZTUpSubMenu .previewContainer .UsernameStyle.style9{color:#0075ad}.LZTUpSubMenu .previewContainer .UsernameStyle.style65{color:#a5e3ff}.LZTUpSubMenu .previewContainer .UsernameStyle.style351{color:#ff0076}.LZTUpSubMenu .previewContainer .UsernameStyle.style29{color:#0acc9e}.LZTUpSubMenu .previewContainer .UsernameStyle.style26{background:linear-gradient(90deg, #0095dd 0%, #f1094b 100%, #0095dd);-webkit-background-clip:text;-webkit-text-fill-color:rgba(0,0,0,0)}.LZTUpSubMenu .previewContainer .UsernameStyle.style4{color:#0e9100}.LZTUpSubMenu .previewContainer .UsernameStyle.style22{color:#eee}.LZTUpSubMenu .previewContainer .UsernameStyle.style11{color:#56b5e0}.LZTUpSubMenu .previewContainer .UsernameStyle.style7{color:#ff9304}.LZTUpSubMenu .previewContainer .UsernameStyle.style349,.LZTUpSubMenu .previewContainer .UsernameStyle.style365{color:#0087ff}.LZTUpSubMenu .previewContainer .UsernameStyle.style354{color:aqua}.LZTUpSubMenu .previewContainer .UsernameStyle.style218{color:#f13838}.LZTUpSubMenu .previewContainer .UsernameStyle.style359{color:#e5d9a3}.LZTUpSubMenu .previewContainer .UsernameStyle.style8{color:gold}.LZTUpSubMenu .previewContainer .UsernameStyle.style265{background:linear-gradient(35deg, #006eff, #00ff81 52%, #fff 50%, #93cbff);-webkit-background-clip:text;-webkit-text-fill-color:rgba(0,0,0,0);text-shadow:0 0 7px rgba(0,255,207,.5019607843)}.LZTUpSubMenu .previewContainer .UsernameStyle.style23{color:#b35ede}.LZTUpSubMenu .previewContainer .UsernameStyle.banned,.LZTUpSubMenu .previewContainer .UsernameStyle.is_banned{text-decoration:line-through;background:inherit;-webkit-text-fill-color:inherit;text-shadow:inherit !important;color:#aaa !important}.LZTUpSubMenu .previewContainer .avatarBox{position:relative}.LZTUpSubMenu .previewContainer .avatarBox .avatarUserBadges .badgeDefaultBackground{background:#363636}.LZTUpSubMenu .previewContainer .avatarBox .avatarUserBadges .avatarUserBadge{position:absolute;bottom:-12px;left:20px;border:2px solid #272727;font-size:0;width:22px;height:22px;margin:0;line-height:22px;border-radius:50%;text-align:center;text-shadow:none !important;box-shadow:none !important;border-radius:50% !important;-webkit-background-clip:unset !important;-webkit-text-fill-color:unset !important;overflow:hidden}.LZTUpSubMenu .previewContainer .avatarBox .avatarUserBadges .avatarUserBadge:only-child{left:35px}.LZTUpSubMenu .previewContainer .avatarBox .avatarUserBadges .avatarUserBadge.avatarUserBadge--1{left:20px}.LZTUpSubMenu .previewContainer .avatarBox .avatarUserBadges .avatarUserBadge.avatarUserBadge--2{left:40px}.LZTUpSubMenu .previewContainer .avatarBox,.LZTUpSubMenu .previewContainer .info{display:table-cell;vertical-align:top}`, ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -118,7 +117,7 @@ ___CSS_LOADER_EXPORT___.push([module.id, `.clr-picker{display:none}.LZTUpColorPi
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, `#LZTUpCustomBackground{background-size:cover;background-position:center;background-attachment:fixed;background-repeat:no-repeat}.LZTUpThreadBar{background:#272727;padding:15px 20px;margin-top:15px;border-radius:10px;height:auto}.LZTUpThreadBar .LZTUpThreadBarTitle{font-weight:bold;font-size:18px;padding:0;margin:0 0 2px;line-height:33px;overflow:hidden}.LZTUpThreadBar .LZTUpThreadBarContent{font-size:14px}.LZTUpThreadBar .LZTUpThreadBarContent .LZTUpSummarizeThesises{margin-left:16px}.LZTUpThreadBar .LZTUpThreadBarContent .LZTUpSummarizeThesises li{list-style:decimal;margin:2px 0;line-height:20px}.LZTUpReportButtons{display:flex}.LZTUpReportButtons .LZTUpReportButton{padding:3px 10px;margin-right:5px;font-weight:bold;background:#343434;border-radius:4px;cursor:pointer;transition:1s background ease}.LZTUpReportButtons .LZTUpReportButton:hover{background:#218e5d}`, ""]);
+___CSS_LOADER_EXPORT___.push([module.id, `#LZTUpCustomBackground{background-size:cover;background-position:center;background-attachment:fixed;background-repeat:no-repeat}#LZTUpModalOverlay .errCapImage{display:none}.LZTUpThreadBar{background:#272727;padding:15px 20px;margin-top:15px;border-radius:10px;height:auto}.LZTUpThreadBar .LZTUpThreadBarTitle{font-weight:bold;font-size:18px;padding:0;margin:0 0 2px;line-height:33px;overflow:hidden}.LZTUpThreadBar .LZTUpThreadBarContent{font-size:14px}.LZTUpThreadBar .LZTUpThreadBarContent .LZTUpSummarizeThesises{margin-left:16px}.LZTUpThreadBar .LZTUpThreadBarContent .LZTUpSummarizeThesises li{list-style:decimal;margin:2px 0;line-height:20px}.LZTUpReportButtons{display:flex}.LZTUpReportButtons .LZTUpReportButton{padding:3px 10px;margin-right:5px;font-weight:bold;background:#343434;border-radius:4px;cursor:pointer;transition:1s background ease}.LZTUpReportButtons .LZTUpReportButton:hover{background:#218e5d}`, ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -1414,7 +1413,7 @@ async function main() {
     console.timeLog("lztup-start", "Reg big observer");
     // TODO: Попробовать переписать на XenForo.activate hook
     (0,Utils_registers__WEBPACK_IMPORTED_MODULE_27__/* .registerObserver */ .O0)(async mutation => {
-      Utils_logger__WEBPACK_IMPORTED_MODULE_6__/* ["default"] */ .Z.debug(mutation);
+      // Logger.debug(mutation);
       if (
         mutation.target.classList.contains("messageList") ||
         mutation.target.classList.contains("messageSimpleList") ||
@@ -1539,7 +1538,7 @@ async function main() {
   }
 
   loadingInterval = setInterval(async () => {
-    if (XenForo && XenForo._pageLoadTime) {
+    if (unsafeWindow.XenForo?._pageLoadTime) {
       await startExt();
       clearInterval(loadingInterval);
     } else if (startTiming + 20 < (0,Utils_utils__WEBPACK_IMPORTED_MODULE_25__/* .getTimestamp */ .u3)()) {
@@ -1632,7 +1631,9 @@ class AvatarUserBadges {
       const avatarUserBadge = document.createElement("span");
       avatarUserBadge.classList.add("avatarUserBadge", "Tooltip");
       avatarUserBadge.tabIndex = 0;
-      avatarUserBadge.title = XenForo.htmlspecialchars(this.badges[i].text);
+      avatarUserBadge.title = unsafeWindow.XenForo.htmlspecialchars(
+        this.badges[i].text,
+      );
 
       if (this.isPreview) {
         avatarUserBadge.id = this.previewId;
@@ -1700,10 +1701,13 @@ class AvatarUserBadges {
     }
 
     if (badgeEl._tippy) {
-      return (0,tooltips/* setTooltip */.w)(badgeEl, XenForo.htmlspecialchars(badge.text));
+      return (0,tooltips/* setTooltip */.w)(
+        badgeEl,
+        unsafeWindow.XenForo.htmlspecialchars(badge.text),
+      );
     }
 
-    return XenForo.Tooltip($(badgeEl)); // ! "$"" needed in XenForo.Tooltip
+    // return unsafeWindow.XenForo.Tooltip($(badgeEl)); // ! "$"" needed in XenForo.Tooltip
   }
 
   updateColor(badgeEl, badge) {
@@ -2531,7 +2535,7 @@ class PreviewProfile {
     avatarBox.innerHTML += `
       <a href="members/${encodeURIComponent(
         this.userid,
-      )}/" class="avatar Av${XenForo.htmlspecialchars(
+      )}/" class="avatar Av${unsafeWindow.XenForo.htmlspecialchars(
         this.userid,
       )}m" data-avatarhtml="true">
         <span class="img m" style="background-image: url(${(0,users/* getUserAvatar */.Dm)(
@@ -2543,7 +2547,7 @@ class PreviewProfile {
     const info = document.createElement("div");
     info.classList.add("info");
     info.innerHTML = `
-      <span id="LZTUpUsernameStyle" class="UsernameStyle bold">${XenForo.htmlspecialchars(
+      <span id="LZTUpUsernameStyle" class="UsernameStyle bold">${unsafeWindow.XenForo.htmlspecialchars(
         this.username,
       )}</span>
       <div class="bannerOrStatus">
@@ -2605,7 +2609,7 @@ class PreviewProfile {
       return;
     }
 
-    userBannerEl.innerText = XenForo.htmlspecialchars(text);
+    userBannerEl.innerText = unsafeWindow.XenForo.htmlspecialchars(text);
   }
 
   updateBanner(data) {
@@ -2911,7 +2915,7 @@ var config = __webpack_require__("./src/configs/config.js");
 
 function setMenuTitle(title) {
   const modalOverlay = document.querySelector(
-    ".xenOverlay > .errorOverlay#LZTUpModalOverlay",
+    ".xenOverlay > #LZTUpModalOverlay",
   );
   const modalTitle = modalOverlay.querySelector("h2.heading");
   modalTitle.id = "LZTUpModalMainTitle";
@@ -2920,7 +2924,7 @@ function setMenuTitle(title) {
 
 function createGoBackBtn(callback) {
   const modalOverlay = document.querySelector(
-    ".xenOverlay > .errorOverlay#LZTUpModalOverlay",
+    ".xenOverlay > #LZTUpModalOverlay",
   );
 
   const backButton = new components_button/* default */.Z(
@@ -3578,7 +3582,7 @@ const getProfileItems = async () => {
           0,
           2048,
         ).createElement(event => {
-          let val = XenForo.htmlspecialchars(event.target.value);
+          let val = unsafeWindow.XenForo.htmlspecialchars(event.target.value);
           if (val.length > 2048) {
             return (0,registers/* registerAlert */.de)(
               "Максимальная длина ссылки на фон 2048 символов. Введите другую ссылку для сохранения.",
@@ -3676,9 +3680,9 @@ class InfoLink {
   );
   static Thread = new InfoLink(
     "far fa-comments",
-    '<span style="color: orange">[SOON]</span> Тема на форуме',
+    "Тема на форуме",
     "Новости об обновлениях и отзывы других пользователей без всякого мусора",
-    "https://zelenka.guru/threads/1",
+    "https://lolz.live/threads/6149539",
     "LZTUpInfoThreadItem",
   );
   static TelegramChannel = new InfoLink(
@@ -3709,14 +3713,6 @@ class InfoLink {
     "https://greasyfork.org/ru/scripts/460328-lzt-upgrade",
     "LZTUpInfoGreasyForkItem",
   );
-  static DevTasks = new InfoLink(
-    "far fa-tasks",
-    "Доска задач",
-    "Следите за разработкой расширения",
-    "https://app.weeek.net/ws/438227/shared/board/4prKcWJhKKxLuKNm0CiP7qJEZUH3quST",
-    "LZTUpInfoFollowDevItem",
-  );
-
   constructor(icon, title, desc, href, sectionItemId) {
     this.icon = icon;
     this.title = title;
@@ -3733,7 +3729,6 @@ class InfoLink {
       this.TelegramChat,
       this.Github,
       this.GreasyFork,
-      this.DevTasks,
     ];
   }
 }
@@ -4538,7 +4533,9 @@ async function appear_sortableItemOnEditCallback(e, sortableItem) {
       [
         new input(buttonData.text, "Неправильный отзыв", 1, 12).createElement(
           async event => {
-            let val = XenForo.htmlspecialchars(event.target.value.trim());
+            let val = unsafeWindow.XenForo.htmlspecialchars(
+              event.target.value.trim(),
+            );
 
             if (val.length < 1) {
               return (0,registers/* registerAlert */.de)(
@@ -4562,7 +4559,9 @@ async function appear_sortableItemOnEditCallback(e, sortableItem) {
       [
         new input(buttonData.reason, "Нарушение 3.15", 1, 120).createElement(
           async event => {
-            let val = XenForo.htmlspecialchars(event.target.value.trim());
+            let val = unsafeWindow.XenForo.htmlspecialchars(
+              event.target.value.trim(),
+            );
 
             if (val.length < 1) {
               return (0,registers/* registerAlert */.de)(
@@ -5030,9 +5029,9 @@ async function generateMenu(tabs) {
     menuContent.appendChild(sectionEl);
     for (const container of section.sectionContainers) {
       menuContent.append(container);
-      container
-        .querySelectorAll(".Tooltip")
-        .forEach(el => XenForo.Tooltip($(el))); // load all tooltips in menu container
+      // container
+      //   .querySelectorAll(".Tooltip")
+      //   .forEach(el => unsafeWindow.XenForo.Tooltip($(el))); // load all tooltips in menu container
     }
   }
 
@@ -5146,18 +5145,23 @@ async function menuButtonCallback() {
 
   const menuContent = await generateMenu(tabs);
 
+  document.getElementById("LZTUpModalOverlay")?.remove();
   (0,registers/* registerModal */.Y3)(config/* default */.Z.extName, '<div id="LZTUpModalBase"></div>');
 
   const modal = document.querySelector("#LZTUpModalBase");
   modal.appendChild(menuContent);
   for (const tab of tabs) {
-    tab.active ? tab.setActive() : null;
+    if (tab.active) {
+      tab.setActive();
+    }
   }
 
   const baseModal = modal.parentElement;
   baseModal.style.whiteSpace = "unset";
-  baseModal.parentElement.id = "LZTUpModalOverlay";
-  baseModal.parentElement.style = "margin-bottom: 15px;";
+  const overlay = baseModal.parentElement;
+  overlay.className = "formOverlay";
+  overlay.id = "LZTUpModalOverlay";
+  overlay.style = "margin-bottom: 15px;";
 
   setMenuTitle(config/* default */.Z.extName);
   (0,tooltips/* updateTooltips */.W)();
@@ -5222,12 +5226,19 @@ var buttons_update = injectStylesIntoStyleTag_default()(buttons/* default */.Z, 
 
 
 
-const menuButton = document.createElement("li");
-const menuButton_link = document.createElement("a");
-menuButton_link.id = "LZTUpButton";
-menuButton_link.innerText = config/* default */.Z.extName;
+const menuButton = document.createElement("a");
+const menuButtonText = document.createElement("span");
+menuButtonText.innerText = config/* default */.Z.extName;
+const menuButtonIcon = document.createElement("div");
+menuButtonIcon.classList.add("SvgIcon", "line");
+menuButtonIcon.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+    <path d="M9.39504 19.3711L9.97949 20.6856C10.1532 21.0768 10.4368 21.4093 10.7957 21.6426C11.1547 21.8759 11.5736 22.0001 12.0017 22C12.4298 22.0001 12.8488 21.8759 13.2077 21.6426C13.5667 21.4093 13.8502 21.0768 14.0239 20.6856L14.6084 19.3711C14.8164 18.9047 15.1664 18.5159 15.6084 18.26C16.0532 18.0034 16.5677 17.8941 17.0784 17.9478L18.5084 18.1C18.934 18.145 19.3636 18.0656 19.7451 17.8713C20.1265 17.6771 20.4434 17.3763 20.6573 17.0056C20.8714 16.635 20.9735 16.2103 20.951 15.7829C20.9285 15.3555 20.7825 14.9438 20.5306 14.5978L19.6839 13.4344C19.3825 13.0171 19.2214 12.5148 19.2239 12C19.2238 11.4866 19.3864 10.9864 19.6884 10.5711L20.535 9.40778C20.7869 9.06175 20.933 8.65007 20.9554 8.22267C20.9779 7.79528 20.8759 7.37054 20.6617 7C20.4478 6.62923 20.1309 6.32849 19.7495 6.13423C19.3681 5.93997 18.9385 5.86053 18.5128 5.90556L17.0828 6.05778C16.5722 6.11141 16.0576 6.00212 15.6128 5.74556C15.1699 5.48825 14.8199 5.09736 14.6128 4.62889L14.0239 3.31444C13.8502 2.92317 13.5667 2.59072 13.2077 2.3574C12.8488 2.12408 12.4298 1.99993 12.0017 2C11.5736 1.99993 11.1547 2.12408 10.7957 2.3574C10.4368 2.59072 10.1532 2.92317 9.97949 3.31444L9.39504 4.62889C9.18797 5.09736 8.83792 5.48825 8.39504 5.74556C7.95026 6.00212 7.43571 6.11141 6.92504 6.05778L5.4906 5.90556C5.06493 5.86053 4.63534 5.93997 4.25391 6.13423C3.87249 6.32849 3.55561 6.62923 3.34171 7C3.12753 7.37054 3.02549 7.79528 3.04798 8.22267C3.07046 8.65007 3.2165 9.06175 3.46838 9.40778L4.31504 10.5711C4.61698 10.9864 4.77958 11.4866 4.77949 12C4.77958 12.5134 4.61698 13.0137 4.31504 13.4289L3.46838 14.5922C3.2165 14.9382 3.07046 15.3499 3.04798 15.7773C3.02549 16.2047 3.12753 16.6295 3.34171 17C3.55582 17.3706 3.87274 17.6712 4.25411 17.8654C4.63548 18.0596 5.06496 18.1392 5.4906 18.0944L6.9206 17.9422C7.43127 17.8886 7.94581 17.9979 8.3906 18.2544C8.83513 18.511 9.18681 18.902 9.39504 19.3711Z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+    <path d="M11.9999 15C13.6568 15 14.9999 13.6569 14.9999 12C14.9999 10.3431 13.6568 9 11.9999 9C10.3431 9 8.99992 10.3431 8.99992 12C8.99992 13.6569 10.3431 15 11.9999 15Z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>`;
 
-menuButton.appendChild(menuButton_link);
+menuButton.append(menuButtonIcon, menuButtonText);
+menuButton.classList.add("manageItem");
+menuButton.id = "LZTUpButton";
 menuButton.onclick = menuButtonCallback;
 
 /* harmony default export */ const buttons_menuButton = (menuButton);
@@ -5376,7 +5387,7 @@ const openContestsBtnId = `LZTUpOpenContestsButton`;
 function regOpenContestsBtn() {
   if ((0,checkers/* isContestsNode */.IM)() && !document.getElementById(openContestsBtnId)) {
     const openContestsBtn = new components_button/* default */.Z(
-      `Открыть ${XenForo.htmlspecialchars(pagesToOpen)}`,
+      `Открыть ${unsafeWindow.XenForo.htmlspecialchars(pagesToOpen)}`,
     ).createElement(async () => {
       (0,utils/* updateFeed */.j1)();
       const el = await (0,utils/* waitForElm */.Nc)(".forumImprovements--mask.hidden");
@@ -5667,7 +5678,7 @@ function clearCSS(css, availabledStyles = defaultAvailabledStyles) {
   const goodCSS = [];
   Utils_logger__WEBPACK_IMPORTED_MODULE_0__/* ["default"] */ .Z.debug(pairs);
   for (const pair of pairs) {
-    const values = pair.split(":");
+    const values = pair.trim().split(":");
     const key = values[0].replace(/\s/, "");
     Utils_logger__WEBPACK_IMPORTED_MODULE_0__/* ["default"] */ .Z.debug(pair, values, key);
     if (availabledStyles.includes(key)) {
@@ -5697,20 +5708,18 @@ function clearCSS(css, availabledStyles = defaultAvailabledStyles) {
 /* harmony export */   e7: () => (/* binding */ registerMenuButton)
 /* harmony export */ });
 function registerModal(modalName, elementMain = "") {
-  return XenForo.alert(elementMain, modalName, null, () => {
-    document.querySelector("div.modal.fade").remove();
-  });
+  return unsafeWindow.XenForo.alert(elementMain, modalName);
 }
 
 function registerAlert(text, timeout = 5000) {
-  return XenForo.alert(text, "", timeout);
+  return unsafeWindow.XenForo.alert(text, "", timeout);
 }
 
 function registerMenuButton(el) {
   const menu = document.querySelector(
-    "#AccountMenu > ul:nth-child(1) > li:nth-child(10)",
+    "#AccountMenu .menuScrollBlock > .manageItems",
   );
-  menu.insertAdjacentElement("afterend", el);
+  menu.insertAdjacentElement("beforeend", el);
   return true;
 }
 
@@ -5925,13 +5934,14 @@ function getThreadId() {
 }
 
 function getThreadContent() {
-  return document.querySelector(".message.firstPost > .messageInfo article")
-    ?.innerText;
+  return document
+    .querySelector(".message.firstPost > .messageInfo article")
+    ?.textContent?.trim();
 }
 
 async function getThreadContentByAjax(threadId) {
   try {
-    const res = await XenForo.ajax(`/threads/${threadId}`);
+    const res = await unsafeWindow.XenForo.ajax(`/threads/${threadId}`);
     const resHTML = res.templateHtml;
 
     const parsedHTML = (0,utils/* getHTMLFromString */.Cy)(resHTML);
@@ -5945,6 +5955,14 @@ async function getThreadContentByAjax(threadId) {
   }
 }
 
+function clearSummarizeContent(text) {
+  // replace \n & \t & \r to space
+  // replace ip to void
+  return text
+    .replaceAll(/\s/g, " ")
+    .replaceAll(/((25[0-5]|(2[0-4]|1\d|[1-9]|)\d)\.?\b){4}/g, "");
+}
+
 async function summarizeThreadBlock(isActive) {
   if (isActive && (0,checkers/* isThreadPage */.Fw)()) {
     const summarizeBlock = new threadBar(
@@ -5956,6 +5974,7 @@ async function summarizeThreadBlock(isActive) {
     pageNavLinkGroup.before(summarizeBlock.container);
 
     let threadContent = getThreadContent();
+    logger/* default */.Z.log("Thread content: " + threadContent);
 
     if (threadContent == undefined) {
       // getting content about a topic if not 1 page is open
@@ -5973,6 +5992,7 @@ async function summarizeThreadBlock(isActive) {
 
     let summarizeInterval;
     let session_id = "";
+    threadContent = clearSummarizeContent(threadContent);
     summarizeInterval = setInterval(async () => {
       const generatedInfo = await generationAPI.genSummarize(
         threadContent,
@@ -6051,7 +6071,7 @@ var components_icon = __webpack_require__("./src/ui/components/icon.js");
 
 class CopyButton {
   constructor(content, tooltipMessage = null, messageOnCopy = null) {
-    this.content = XenForo.htmlspecialchars(content); // Clipboard.copy works strangely with numbers so we do this
+    this.content = unsafeWindow.XenForo.htmlspecialchars(content); // Clipboard.copy works strangely with numbers so we do this
     this.tooltipMessage = tooltipMessage || "";
     this.messageOnCopy = messageOnCopy || "Успешно скопировано в буфер обмена";
   }
@@ -6062,14 +6082,14 @@ class CopyButton {
     button.title = this.tooltipMessage;
 
     button.onclick = async e => {
-      // We use Clipboard.copy instead to avoid errors when the function is not found and to prevent XSS
+      // We don't use Clipboard.copy instead to avoid errors when the function is not found and to prevent XSS
       // navigator.clipboard.writeText XSS-safe unlike ClipBoard.copy
       await navigator.clipboard.writeText(this.content);
 
       // from Clipboard.copy function
       e.target.classList.add("animated");
       animateCSS(e.target, ["heartBeat", "mainc"]);
-      XenForo.alert(this.messageOnCopy, "", 5000);
+      unsafeWindow.XenForo.alert(this.messageOnCopy, "", 5000);
     };
     button.tabIndex = 0;
 
@@ -6143,45 +6163,48 @@ const userIdMemberCardElementId = "LZTUpUserIDMemberCard";
 
 function getUserId(target) {
   switch (target) {
-    case "profile":
+    case "profile": {
       // in any profile
-      if ((0,checkers/* isProfilePage */.cD)()) {
-        const userThreadsButton = document.querySelector(
-          "#profile_short > .userContentLinks > a:nth-child(1)",
-        );
-        if (!userThreadsButton || userThreadsButton.href === "") {
-          return null;
-        }
+      if (!(0,checkers/* isProfilePage */.cD)()) {
+        return null;
+      }
+      const userThreadsButton = document.querySelector(
+        "#profile_short > .userContentLinks > a:nth-child(1)",
+      );
+      if (userThreadsButton?.href === "") {
+        return null;
+      }
 
-        if (!userThreadsButton.href.endsWith("?tab=mythreads")) {
-          const url = new URL(userThreadsButton.href);
-          return url.searchParams.get("user_id");
-        }
-
+      const userId = /\/(\d+)\//.exec(userThreadsButton.href)?.[1];
+      if (!userId) {
         return getUserId("me");
       }
-    // eslint-disable-next-line no-fallthrough
-    case "membercard":
-      // in any membercard
-      if ((0,checkers/* isOpenMemberCard */.Ji)()) {
-        const memberCard = document.querySelectorAll(".xenOverlay.memberCard");
-        const userThreadsButton = memberCard[
-          memberCard.length - 1
-        ].querySelector(
-          ".memberCardInner > .bottom > .userContentLinks > a:nth-child(1)",
-        );
-        if (!userThreadsButton || userThreadsButton.href === "") {
-          return null;
-        }
 
-        const url = new URL(userThreadsButton.href);
-        return url.searchParams.get("user_id");
+      return +userId;
+    }
+
+    // eslint-disable-next-line no-fallthrough
+    case "membercard": {
+      // in any membercard
+      if (!(0,checkers/* isOpenMemberCard */.Ji)()) {
+        return null;
       }
-      return null;
+
+      const memberCard = document.querySelectorAll(".xenOverlay.memberCard");
+      const userThreadsButton = memberCard[memberCard.length - 1].querySelector(
+        ".bottomContainer > .controlsBlock > a.button:nth-child(1)",
+      );
+      if (userThreadsButton?.href === "") {
+        return null;
+      }
+
+      return /\/(\d+)\//.exec(userThreadsButton)?.[1];
+    }
+
     // eslint-disable-next-line no-fallthrough
     case "self":
     case "me":
-      return XenForo?.visitor?.user_id;
+      return unsafeWindow.XenForo?.visitor?.user_id;
     default:
       return null;
   }
@@ -6254,24 +6277,26 @@ function addUserIdToProfile() {
 }
 
 function addUserIdToMemberCard() {
-  if ((0,checkers/* isOpenMemberCard */.Ji)()) {
-    const memberCards = document.querySelectorAll(".xenOverlay.memberCard");
-    const userId = getUserId("membercard") ?? "Не найден";
-    const userContentLinks = memberCards[memberCards.length - 1].querySelector(
-      `#memberCard${userId}.memberCardInner > .bottom`,
-    );
-    const userIdElement = document.createElement("div");
-    userIdElement.classList.add("title");
-    userIdElement.id = userIdMemberCardElementId;
-    userIdElement.innerText = `ID: ${userId}`;
-    const copyBtn = new copyButton(
-      userId,
-      "Скопировать ID пользователя",
-      "ID пользователя успешно скопирован в буфер обмена",
-    ).createElement();
-    userIdElement.appendChild(copyBtn);
-    userContentLinks?.insertAdjacentElement("afterbegin", userIdElement);
+  if (!(0,checkers/* isOpenMemberCard */.Ji)()) {
+    return;
   }
+
+  const memberCards = document.querySelectorAll(".xenOverlay.memberCard");
+  const userId = getUserId("membercard") ?? "Не найден";
+  const userContentLinks = memberCards[memberCards.length - 1].querySelector(
+    `#memberCard${userId}.memberCardInner .controlsBlock`,
+  );
+  const userIdElement = document.createElement("div");
+  userIdElement.classList.add("title");
+  userIdElement.id = userIdMemberCardElementId;
+  userIdElement.innerText = `ID: ${userId}`;
+  const copyBtn = new copyButton(
+    userId,
+    "Скопировать ID пользователя",
+    "ID пользователя успешно скопирован в буфер обмена",
+  ).createElement();
+  userIdElement.appendChild(copyBtn);
+  userContentLinks?.insertAdjacentElement("afterend", userIdElement);
 }
 
 function removeUserIdFromProfile() {
@@ -6297,7 +6322,7 @@ function removeUserIdFromMemberCard() {
 function showFullRegDateInProfile(full = false) {
   if ((0,checkers/* isProfilePage */.cD)()) {
     const dateTime = document.querySelector(
-      ".profile_info_row > .labeled > span.DateTime",
+      ".profile_info_row > .labeled > time.u-dt",
     );
     if (!dateTime) {
       return;
@@ -6451,7 +6476,7 @@ function getAuthors(authorNames, authorUserIds) {
       const authors = [];
       authorsUserIDs.map((val, idx) => {
         authors.push({
-          name: XenForo.htmlspecialchars(authorsNames?.[idx]),
+          name: unsafeWindow.XenForo.htmlspecialchars(authorsNames?.[idx]),
           userId: Number(val),
         });
       });
@@ -6460,14 +6485,14 @@ function getAuthors(authorNames, authorUserIds) {
     case "number":
       return [
         {
-          name: XenForo.htmlspecialchars(authorNames),
-          userId: XenForo.htmlspecialchars(authorUserIds),
+          name: unsafeWindow.XenForo.htmlspecialchars(authorNames),
+          userId: unsafeWindow.XenForo.htmlspecialchars(authorUserIds),
         },
       ];
     default:
       return [
         {
-          name: XenForo.htmlspecialchars(authorNames),
+          name: unsafeWindow.XenForo.htmlspecialchars(authorNames),
           userId: null,
         },
       ];
@@ -6608,8 +6633,12 @@ class ReportButtons {
       const reportButton = document.createElement("span");
       reportButton.classList.add("LZTUpReportButton");
       reportButton.tabIndex = 0;
-      reportButton.innerText = XenForo.htmlspecialchars(this.buttons[i].text);
-      reportButton.title = XenForo.htmlspecialchars(this.buttons[i].reason);
+      reportButton.innerText = unsafeWindow.XenForo.htmlspecialchars(
+        this.buttons[i].text,
+      );
+      reportButton.title = unsafeWindow.XenForo.htmlspecialchars(
+        this.buttons[i].reason,
+      );
       reportButton.dataset.position = i + 1;
       reportButton.onclick = async () => {
         if (!confirm("Вы уверены, что хотите отправить репорт?")) return;
@@ -6617,9 +6646,9 @@ class ReportButtons {
         let formData = new FormData();
         formData.append("message", this.buttons[i].reason);
         formData.append("is_common_reason", 0);
-        formData.append("_xfToken", XenForo._csrfToken);
+        formData.append("_xfToken", unsafeWindow.XenForo._csrfToken);
         formData.append("_xfNoRedirect", 1);
-        formData.append("_xfToken", XenForo._csrfToken);
+        formData.append("_xfToken", unsafeWindow.XenForo._csrfToken);
         formData.append("redirect", window.location.href);
         await fetch(`posts/${postId}/report`, {
           method: "POST",
@@ -6649,13 +6678,16 @@ class ReportButtons {
       return;
     }
 
-    buttonEl.innerText = XenForo.htmlspecialchars(button.text);
+    buttonEl.innerText = unsafeWindow.XenForo.htmlspecialchars(button.text);
 
     if (buttonEl._tippy) {
-      return (0,tooltips/* setTooltip */.w)(buttonEl, XenForo.htmlspecialchars(button.reason));
+      return (0,tooltips/* setTooltip */.w)(
+        buttonEl,
+        unsafeWindow.XenForo.htmlspecialchars(button.reason),
+      );
     }
 
-    return XenForo.Tooltip($(buttonEl)); // ! "$"" needed in XenForo.Tooltip
+    // return unsafeWindow.XenForo.Tooltip($(buttonEl)); // ! "$"" needed in XenForo.Tooltip
   }
 
   updateButton(button) {
@@ -6740,7 +6772,9 @@ function updateReportButtons(buttonsData) {
 
     const buttons = new reportButtons(buttonsData).createElement(postId);
     publicControls.prepend(buttons);
-    Array.from(buttons.children).forEach(e => XenForo.Tooltip($(e)));
+    // Array.from(buttons.children).forEach(e =>
+    //   unsafeWindow.XenForo.Tooltip($(e)),
+    // );
   }
 }
 
@@ -6863,7 +6897,7 @@ class UserBanner {
     userBanner.appendChild(beforeAfterEl);
 
     const bannerContent = document.createElement("strong");
-    bannerContent.innerText = XenForo.htmlspecialchars(this.label);
+    bannerContent.innerText = unsafeWindow.XenForo.htmlspecialchars(this.label);
     userBanner.appendChild(bannerContent);
 
     beforeAfterEl.className = "after";
@@ -6898,31 +6932,28 @@ function updateUserStyle(style) {
 }
 
 function updateUserBanner(style, text) {
-  if ((0,checkers/* isProfilePage */.cD)() && (0,users/* getUserId */.n5)("profile") === (0,users/* getUserId */.n5)("me")) {
-    const userBannerEl = document.querySelector(
-      "em.userBanner#LZTUpCustomBanner",
-    );
-    if (userBannerEl) {
-      // if exists remove extra styles / classes
-      userBannerEl.className = "userBanner wrapped";
-      userBannerEl.style = "";
-      userBannerEl.innerText = text;
-      return (0,utils/* applyStyle */.bg)(userBannerEl, style);
-    }
-
-    // add user banner
-    const avatarScaler = document.querySelector(".avatarScaler");
-    if (!avatarScaler) {
-      return;
-    }
-
-    const userBanner = new UserBanner(
-      "LZTUpCustomBanner",
-      text,
-    ).createElement();
-    (0,utils/* applyStyle */.bg)(userBanner, style);
-    return avatarScaler.insertAdjacentElement("afterend", userBanner);
+  if (!(0,checkers/* isProfilePage */.cD)() || (0,users/* getUserId */.n5)("profile") !== (0,users/* getUserId */.n5)("me")) {
+    return;
   }
+
+  const userBannerEl = document.querySelector("em.userBanner");
+  if (userBannerEl) {
+    // if exists remove extra styles / classes
+    userBannerEl.className = "userBanner wrapped";
+    userBannerEl.style = "";
+    userBannerEl.innerText = text;
+    return (0,utils/* applyStyle */.bg)(userBannerEl, style);
+  }
+
+  // add user banner
+  const avatarScaler = document.querySelector(".avatarScaler");
+  if (!avatarScaler) {
+    return;
+  }
+
+  const userBanner = new UserBanner("LZTUpCustomBanner", text).createElement();
+  (0,utils/* applyStyle */.bg)(userBanner, style);
+  return avatarScaler.insertAdjacentElement("afterend", userBanner);
 }
 
 function updateUserBadges(badgeIconsData) {
@@ -6964,11 +6995,11 @@ function updateUserBadges(badgeIconsData) {
 
 function bypassShareTyping() {
   if (
-    Object.hasOwn(XenForo, "threadNotify") &&
-    Object.hasOwn(XenForo.threadNotify, "shareTypingActivity")
+    Object.hasOwn(unsafeWindow.XenForo, "threadNotify") &&
+    Object.hasOwn(unsafeWindow.XenForo.threadNotify, "shareTypingActivity")
   ) {
     Utils_logger__WEBPACK_IMPORTED_MODULE_0__/* ["default"] */ .Z.debug("bypassShareTyping thread: true");
-    XenForo.threadNotify.shareTypingActivity = 0;
+    unsafeWindow.XenForo.threadNotify.shareTypingActivity = 0;
   }
 }
 
@@ -6985,8 +7016,8 @@ function bypassShareTyping() {
 /* harmony export */   w: () => (/* binding */ setTooltip)
 /* harmony export */ });
 function updateTooltips() {
-  let lztUpTooltips = $("#LZTUpTooltip.Tooltip");
-  return XenForo.Tooltip(lztUpTooltips);
+  // let lztUpTooltips = $("#LZTUpTooltip.Tooltip");
+  // return unsafeWindow.XenForo.Tooltip(lztUpTooltips);
 }
 
 function setTooltip(el, text) {
@@ -7004,7 +7035,7 @@ function setTooltip(el, text) {
 /***/ "./src/configs/endpoints.json":
 /***/ ((module) => {
 
-module.exports = JSON.parse('{"RC":"https://lztupgrade.toiloff.ru/api/themes","I1":"https://lztupgrade.toiloff.ru/static/themes","eb":"https://lztupgrade.toiloff.ru/api/logos","NI":"https://lztupgrade.toiloff.ru/api/logo","OC":"https://foswly-sa.toil.cc/generation"}');
+module.exports = JSON.parse('{"RC":"http://localhost:5000/api/themes","I1":"http://localhost:5000/static/themes","eb":"http://localhost:5000/api/logos","NI":"http://localhost:5000/api/logo","OC":"http://localhost:5000/generation"}');
 
 /***/ })
 

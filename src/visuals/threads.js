@@ -49,7 +49,9 @@ function updateReportButtons(buttonsData) {
 
     const buttons = new ReportButtons(buttonsData).createElement(postId);
     publicControls.prepend(buttons);
-    Array.from(buttons.children).forEach(e => XenForo.Tooltip($(e)));
+    // Array.from(buttons.children).forEach(e =>
+    //   unsafeWindow.XenForo.Tooltip($(e)),
+    // );
   }
 }
 

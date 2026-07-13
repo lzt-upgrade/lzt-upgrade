@@ -22,7 +22,7 @@ class UserBanner {
     userBanner.appendChild(beforeAfterEl);
 
     const bannerContent = document.createElement("strong");
-    bannerContent.innerText = XenForo.htmlspecialchars(this.label);
+    bannerContent.innerText = unsafeWindow.XenForo.htmlspecialchars(this.label);
     userBanner.appendChild(bannerContent);
 
     beforeAfterEl.className = "after";

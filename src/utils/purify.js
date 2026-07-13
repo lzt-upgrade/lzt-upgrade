@@ -36,7 +36,7 @@ function clearCSS(css, availabledStyles = defaultAvailabledStyles) {
   const goodCSS = [];
   Logger.debug(pairs);
   for (const pair of pairs) {
-    const values = pair.split(":");
+    const values = pair.trim().split(":");
     const key = values[0].replace(/\s/, "");
     Logger.debug(pair, values, key);
     if (availabledStyles.includes(key)) {

@@ -1,18 +1,16 @@
 function registerModal(modalName, elementMain = "") {
-  return XenForo.alert(elementMain, modalName, null, () => {
-    document.querySelector("div.modal.fade").remove();
-  });
+  return unsafeWindow.XenForo.alert(elementMain, modalName);
 }
 
 function registerAlert(text, timeout = 5000) {
-  return XenForo.alert(text, "", timeout);
+  return unsafeWindow.XenForo.alert(text, "", timeout);
 }
 
 function registerMenuButton(el) {
   const menu = document.querySelector(
-    "#AccountMenu > ul:nth-child(1) > li:nth-child(10)",
+    "#AccountMenu .menuScrollBlock > .manageItems",
   );
-  menu.insertAdjacentElement("afterend", el);
+  menu.insertAdjacentElement("beforeend", el);
   return true;
 }
 

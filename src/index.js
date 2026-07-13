@@ -246,7 +246,7 @@ async function main() {
     console.timeLog("lztup-start", "Reg big observer");
     // TODO: Попробовать переписать на XenForo.activate hook
     registerObserver(async mutation => {
-      Logger.debug(mutation);
+      // Logger.debug(mutation);
       if (
         mutation.target.classList.contains("messageList") ||
         mutation.target.classList.contains("messageSimpleList") ||
@@ -371,7 +371,7 @@ async function main() {
   }
 
   loadingInterval = setInterval(async () => {
-    if (XenForo && XenForo._pageLoadTime) {
+    if (unsafeWindow.XenForo?._pageLoadTime) {
       await startExt();
       clearInterval(loadingInterval);
     } else if (startTiming + 20 < getTimestamp()) {

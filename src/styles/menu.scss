@@ -1,4 +1,4 @@
-@import url("https://cdn.jsdelivr.net/gh/lzt-upgrade/coloris-lzt-theme@latest/dist/coloris.min.css");
+@import "./coloris.scss";
 
 // hide color picker on loading page
 .clr-picker {
@@ -369,6 +369,7 @@
   color: rgb(148, 148, 148);
   .mceSmilie {
     max-height: 18px !important;
+    max-width: 18px !important;
   }
 }
 

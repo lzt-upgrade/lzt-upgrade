@@ -104,7 +104,7 @@ function getAuthors(authorNames, authorUserIds) {
       const authors = [];
       authorsUserIDs.map((val, idx) => {
         authors.push({
-          name: XenForo.htmlspecialchars(authorsNames?.[idx]),
+          name: unsafeWindow.XenForo.htmlspecialchars(authorsNames?.[idx]),
           userId: Number(val),
         });
       });
@@ -113,14 +113,14 @@ function getAuthors(authorNames, authorUserIds) {
     case "number":
       return [
         {
-          name: XenForo.htmlspecialchars(authorNames),
-          userId: XenForo.htmlspecialchars(authorUserIds),
+          name: unsafeWindow.XenForo.htmlspecialchars(authorNames),
+          userId: unsafeWindow.XenForo.htmlspecialchars(authorUserIds),
         },
       ];
     default:
       return [
         {
-          name: XenForo.htmlspecialchars(authorNames),
+          name: unsafeWindow.XenForo.htmlspecialchars(authorNames),
           userId: null,
         },
       ];

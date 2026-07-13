@@ -13,7 +13,7 @@ const openContestsBtnId = `LZTUpOpenContestsButton`;
 function regOpenContestsBtn() {
   if (isContestsNode() && !document.getElementById(openContestsBtnId)) {
     const openContestsBtn = new Button(
-      `Открыть ${XenForo.htmlspecialchars(pagesToOpen)}`,
+      `Открыть ${unsafeWindow.XenForo.htmlspecialchars(pagesToOpen)}`,
     ).createElement(async () => {
       updateFeed();
       const el = await waitForElm(".forumImprovements--mask.hidden");

@@ -23,8 +23,12 @@ class ReportButtons {
       const reportButton = document.createElement("span");
       reportButton.classList.add("LZTUpReportButton");
       reportButton.tabIndex = 0;
-      reportButton.innerText = XenForo.htmlspecialchars(this.buttons[i].text);
-      reportButton.title = XenForo.htmlspecialchars(this.buttons[i].reason);
+      reportButton.innerText = unsafeWindow.XenForo.htmlspecialchars(
+        this.buttons[i].text,
+      );
+      reportButton.title = unsafeWindow.XenForo.htmlspecialchars(
+        this.buttons[i].reason,
+      );
       reportButton.dataset.position = i + 1;
       reportButton.onclick = async () => {
         if (!confirm("Вы уверены, что хотите отправить репорт?")) return;
@@ -32,9 +36,9 @@ class ReportButtons {
         let formData = new FormData();
         formData.append("message", this.buttons[i].reason);
         formData.append("is_common_reason", 0);
-        formData.append("_xfToken", XenForo._csrfToken);
+        formData.append("_xfToken", unsafeWindow.XenForo._csrfToken);
         formData.append("_xfNoRedirect", 1);
-        formData.append("_xfToken", XenForo._csrfToken);
+        formData.append("_xfToken", unsafeWindow.XenForo._csrfToken);
         formData.append("redirect", window.location.href);
         await fetch(`posts/${postId}/report`, {
           method: "POST",
@@ -64,13 +68,16 @@ class ReportButtons {
       return;
     }
 
-    buttonEl.innerText = XenForo.htmlspecialchars(button.text);
+    buttonEl.innerText = unsafeWindow.XenForo.htmlspecialchars(button.text);
 
     if (buttonEl._tippy) {
-      return setTooltip(buttonEl, XenForo.htmlspecialchars(button.reason));
+      return setTooltip(
+        buttonEl,
+        unsafeWindow.XenForo.htmlspecialchars(button.reason),
+      );
     }
 
-    return XenForo.Tooltip($(buttonEl)); // ! "$"" needed in XenForo.Tooltip
+    // return unsafeWindow.XenForo.Tooltip($(buttonEl)); // ! "$"" needed in XenForo.Tooltip
   }
 
   updateButton(button) {

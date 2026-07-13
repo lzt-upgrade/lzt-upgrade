@@ -20,18 +20,23 @@ async function menuButtonCallback() {
 
   const menuContent = await generateMenu(tabs);
 
+  document.getElementById("LZTUpModalOverlay")?.remove();
   registerModal(config.extName, '<div id="LZTUpModalBase"></div>');
 
   const modal = document.querySelector("#LZTUpModalBase");
   modal.appendChild(menuContent);
   for (const tab of tabs) {
-    tab.active ? tab.setActive() : null;
+    if (tab.active) {
+      tab.setActive();
+    }
   }
 
   const baseModal = modal.parentElement;
   baseModal.style.whiteSpace = "unset";
-  baseModal.parentElement.id = "LZTUpModalOverlay";
-  baseModal.parentElement.style = "margin-bottom: 15px;";
+  const overlay = baseModal.parentElement;
+  overlay.className = "formOverlay";
+  overlay.id = "LZTUpModalOverlay";
+  overlay.style = "margin-bottom: 15px;";
 
   setMenuTitle(config.extName);
   updateTooltips();

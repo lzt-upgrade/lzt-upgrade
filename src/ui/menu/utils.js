@@ -4,7 +4,7 @@ import Button from "UI/components/button.js";
 
 function setMenuTitle(title) {
   const modalOverlay = document.querySelector(
-    ".xenOverlay > .errorOverlay#LZTUpModalOverlay",
+    ".xenOverlay > #LZTUpModalOverlay",
   );
   const modalTitle = modalOverlay.querySelector("h2.heading");
   modalTitle.id = "LZTUpModalMainTitle";
@@ -13,7 +13,7 @@ function setMenuTitle(title) {
 
 function createGoBackBtn(callback) {
   const modalOverlay = document.querySelector(
-    ".xenOverlay > .errorOverlay#LZTUpModalOverlay",
+    ".xenOverlay > #LZTUpModalOverlay",
   );
 
   const backButton = new Button(

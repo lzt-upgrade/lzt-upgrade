@@ -31,7 +31,8 @@
     "GM_setValue",
     "GM_getValue",
     "GM_deleteValue",
-    "GM_listValues"
+    "GM_listValues",
+    "unsafeWindow"
   ],
-  "connect": ["lztupgrade.toiloff.ru", "greasyfork.org"]
+  "connect": ["greasyfork.org"]
 }

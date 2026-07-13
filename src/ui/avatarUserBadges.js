@@ -30,7 +30,9 @@ class AvatarUserBadges {
       const avatarUserBadge = document.createElement("span");
       avatarUserBadge.classList.add("avatarUserBadge", "Tooltip");
       avatarUserBadge.tabIndex = 0;
-      avatarUserBadge.title = XenForo.htmlspecialchars(this.badges[i].text);
+      avatarUserBadge.title = unsafeWindow.XenForo.htmlspecialchars(
+        this.badges[i].text,
+      );
 
       if (this.isPreview) {
         avatarUserBadge.id = this.previewId;
@@ -98,10 +100,13 @@ class AvatarUserBadges {
     }
 
     if (badgeEl._tippy) {
-      return setTooltip(badgeEl, XenForo.htmlspecialchars(badge.text));
+      return setTooltip(
+        badgeEl,
+        unsafeWindow.XenForo.htmlspecialchars(badge.text),
+      );
     }
 
-    return XenForo.Tooltip($(badgeEl)); // ! "$"" needed in XenForo.Tooltip
+    // return unsafeWindow.XenForo.Tooltip($(badgeEl)); // ! "$"" needed in XenForo.Tooltip
   }
 
   updateColor(badgeEl, badge) {
