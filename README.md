@@ -97,7 +97,7 @@
 Установить скрипт будет даже проще, чем его найти:
 
 1. Установите расширение **[Tampermonkey](https://www.tampermonkey.net/)**
-2. **[«Установите Скрипт»](https://github.com/ilyhalight/lzt-upgrade/raw/master/lzt-upgrade.user.js)**
+2. **[«Установите Скрипт»](https://github.com/ilyhalight/lzt-upgrade/raw/master/dist/lzt-upgrade.user.js)**
 
 ## Благодарности:
 
