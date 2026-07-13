@@ -1,0 +1,7180 @@
+// ==UserScript==
+// @name [Development Build] LZT Upgrade
+// @description A free extension for Lolzteam with many useful features
+// @description:ru Бесплатное расширение для Lolzteam с множеством полезных функций
+// @version 2.0.0dev
+// @author Toil
+// @supportURL https://github.com/lzt-upgrade/lzt-upgrade/issues
+// @match *://lolz.guru/*
+// @match *://lolz.live/*
+// @match *://zelenka.guru/*
+// @match *://lzt.market/*
+// @match *://lolz.market/*
+// @connect greasyfork.org
+// @downloadURL https://github.com/lzt-upgrade/lzt-upgrade/raw/master/dist/lzt-upgrade.user.js
+// @grant GM_xmlhttpRequest
+// @grant GM_info
+// @grant GM_addStyle
+// @grant GM_setValue
+// @grant GM_getValue
+// @grant GM_deleteValue
+// @grant GM_listValues
+// @grant unsafeWindow
+// @homepageURL https://github.com/lzt-upgrade/lzt-upgrade
+// @icon https://cdn.toil.cc/lztup/brand/logo-mini.png
+// @license MIT
+// @namespace lztupgrade
+// @require https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js
+// @require https://raw.githubusercontent.com/lzt-upgrade/coloris-lzt-theme/main/dist/coloris.js
+// @require https://raw.githubusercontent.com/lzt-upgrade/lzt-upgrade/2.0.0/libs/purify3.0.3.min.js
+// @require https://raw.githubusercontent.com/lzt-upgrade/lzt-upgrade/2.0.0/libs/Sortable1.15.0.min.js
+// @run-at document-start
+// @updateURL https://github.com/lzt-upgrade/lzt-upgrade/raw/master/dist/lzt-upgrade.user.js
+// ==/UserScript==
+
+/******/ (() => { // webpackBootstrap
+/******/ 	"use strict";
+/******/ 	var __webpack_modules__ = ({
+
+/***/ "./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/styles/buttons.scss":
+/***/ ((module, __webpack_exports__, __webpack_require__) => {
+
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   Z: () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("./node_modules/css-loader/dist/runtime/noSourceMaps.js");
+/* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("./node_modules/css-loader/dist/runtime/api.js");
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__);
+// Imports
+
+
+var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
+// Module
+___CSS_LOADER_EXPORT___.push([module.id, ``, ""]);
+// Exports
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/styles/errorPage.scss":
+/***/ ((module, __webpack_exports__, __webpack_require__) => {
+
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   Z: () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("./node_modules/css-loader/dist/runtime/noSourceMaps.js");
+/* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("./node_modules/css-loader/dist/runtime/api.js");
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__);
+// Imports
+
+
+var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
+// Module
+___CSS_LOADER_EXPORT___.push([module.id, `.LZTUpErrorPage{background-color:#272727}.LZTUpErrorPage article{color:#d6d6d6}.LZTUpErrorPage article div{display:flex;flex-direction:column;justify-content:center;align-items:center}.LZTUpErrorPage center{display:flex;flex-direction:column;justify-content:center;align-items:center}.LZTUpErrorPage .LZTUpErrorPageSelfAd{border-top:1px solid #363636}.LZTUpErrorPage .LZTUpErrorPageSelfAd .selfAd{font-size:18px;color:#949494;max-width:75%;text-align:center}.LZTUpErrorPage .LZTUpErrorPageSelfAd .buttons{display:flex;flex-direction:row;justify-content:center}.LZTUpErrorPage .LZTUpErrorPageSelfAd .buttons .button{display:flex;align-items:center;background:#0daf77;border-radius:6px;color:#fff;padding:0px 15px;margin:10px;text-decoration:none;line-height:34px;font-size:18px;transition:.5s background ease}.LZTUpErrorPage .LZTUpErrorPageSelfAd .buttons .button:hover{background:rgba(13,175,119,.8) !important}.LZTUpErrorPage .LZTUpErrorPageSelfAd .buttons .button svg{width:24px;height:24px;margin-right:5px;fill:#fff}`, ""]);
+// Exports
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/styles/menu.scss":
+/***/ ((module, __webpack_exports__, __webpack_require__) => {
+
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   Z: () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("./node_modules/css-loader/dist/runtime/noSourceMaps.js");
+/* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("./node_modules/css-loader/dist/runtime/api.js");
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__);
+// Imports
+
+
+var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
+// Module
+___CSS_LOADER_EXPORT___.push([module.id, `.clr-picker{display:none;flex-wrap:wrap;position:absolute;width:200px;z-index:1000;border-radius:10px;background-color:#fff;justify-content:flex-end;direction:ltr;box-shadow:0 0 5px rgba(0,0,0,.05),0 5px 20px rgba(0,0,0,.1);-moz-user-select:none;-webkit-user-select:none;user-select:none}.clr-picker.clr-open,.clr-picker[data-inline=true]{display:flex}.clr-picker[data-inline=true]{position:relative}.clr-gradient{position:relative;width:100%;height:100px;margin-bottom:15px;border-radius:3px 3px 0 0;background-image:linear-gradient(rgba(0, 0, 0, 0), #000),linear-gradient(90deg, #fff, currentColor);cursor:pointer}.clr-marker{position:absolute;width:12px;height:12px;margin:-6px 0 0 -6px;border:1px solid #fff;border-radius:50%;background-color:currentColor;cursor:pointer}.clr-picker input[type=range]::-webkit-slider-runnable-track{width:100%;height:16px}.clr-picker input[type=range]::-webkit-slider-thumb{width:16px;height:16px;-webkit-appearance:none}.clr-picker input[type=range]::-moz-range-track{width:100%;height:16px;border:0}.clr-picker input[type=range]::-moz-range-thumb{width:16px;height:16px;border:0}.clr-hue{background-image:linear-gradient(to right, red 0, #ff0 16.66%, #0f0 33.33%, #0ff 50%, #00f 66.66%, #f0f 83.33%, red 100%)}.clr-alpha,.clr-hue{position:relative;width:calc(100% - 40px);height:8px;margin:5px 20px;border-radius:4px}.clr-alpha span{display:block;height:100%;width:100%;border-radius:inherit;background-image:linear-gradient(90deg, rgba(0, 0, 0, 0), currentColor)}.clr-alpha input,.clr-hue input{position:absolute;width:calc(100% + 32px);height:16px;left:-16px;top:-4px;margin:0;background-color:rgba(0,0,0,0);opacity:0;cursor:pointer;appearance:none;-webkit-appearance:none}.clr-alpha div,.clr-hue div{position:absolute;width:16px;height:16px;left:0;top:50%;margin-left:-8px;transform:translateY(-50%);border:2px solid #fff;border-radius:50%;background-color:currentColor;box-shadow:0 0 1px #888;pointer-events:none}.clr-alpha div:before{content:"";position:absolute;height:100%;width:100%;left:0;top:0;border-radius:50%;background-color:currentColor}.clr-format{display:none;order:1;width:calc(100% - 40px);margin:0 20px 20px}.clr-segmented{display:flex;position:relative;width:100%;margin:0;padding:0;border:1px solid #ddd;border-radius:15px;box-sizing:border-box;color:#999;font-size:12px}.clr-segmented input,.clr-segmented legend{position:absolute;width:100%;height:100%;margin:0;padding:0;border:0;left:0;top:0;opacity:0;pointer-events:none}.clr-segmented label{flex-grow:1;margin:0;padding:4px 0;font-size:inherit;font-weight:400;line-height:initial;text-align:center;cursor:pointer}.clr-segmented label:first-of-type{border-radius:10px 0 0 10px}.clr-segmented label:last-of-type{border-radius:0 10px 10px 0}.clr-segmented input:checked+label{color:#fff;background-color:#666}.clr-swatches{order:2;width:calc(100% - 32px);margin:0 16px}.clr-swatches div{display:flex;flex-wrap:wrap;padding-bottom:12px;justify-content:center}.clr-swatches button{position:relative;width:20px;height:20px;margin:0 4px 6px 4px;padding:0;border:0;border-radius:50%;color:inherit;text-indent:-1000px;white-space:nowrap;overflow:hidden;cursor:pointer}.clr-swatches button:after{content:"";display:block;position:absolute;width:100%;height:100%;left:0;top:0;border-radius:inherit;background-color:currentColor;box-shadow:inset 0 0 0 1px rgba(0,0,0,.1)}input.clr-color{order:1;width:calc(100% - 80px);height:32px;margin:15px 20px 20px auto;padding:0 10px;border:1px solid #ddd;border-radius:16px;color:#444;background-color:#fff;font-family:sans-serif;font-size:14px;text-align:center;box-shadow:none}input.clr-color:focus{outline:0;border:1px solid #1e90ff}.clr-clear,.clr-close{display:none;order:2;height:24px;margin:0 20px 20px;padding:0 20px;border:0;border-radius:12px;color:#fff;background-color:#666;font-family:inherit;font-size:12px;font-weight:400;cursor:pointer}.clr-close{display:block;margin:0 20px 20px auto}.clr-preview{position:relative;width:32px;height:32px;margin:15px 0 20px 20px;border-radius:50%;overflow:hidden}.clr-preview:after,.clr-preview:before{content:"";position:absolute;height:100%;width:100%;left:0;top:0;border:1px solid #fff;border-radius:50%}.clr-preview:after{border:0;background-color:currentColor;box-shadow:inset 0 0 0 1px rgba(0,0,0,.1)}.clr-preview button{position:absolute;width:100%;height:100%;z-index:1;margin:0;padding:0;border:0;border-radius:50%;outline-offset:-2px;background-color:rgba(0,0,0,0);text-indent:-9999px;cursor:pointer;overflow:hidden}.clr-alpha div,.clr-color,.clr-hue div,.clr-marker{box-sizing:border-box}.clr-field{display:inline-block;position:relative;color:rgba(0,0,0,0)}.clr-field input{margin:0;direction:ltr}.clr-field.clr-rtl input{text-align:right}.clr-field button{position:absolute;width:30px;height:100%;right:0;top:50%;transform:translateY(-50%);margin:0;padding:0;border:0;color:inherit;text-indent:-1000px;white-space:nowrap;overflow:hidden;pointer-events:none}.clr-field.clr-rtl button{right:auto;left:0}.clr-field button:after{content:"";display:block;position:absolute;width:100%;height:100%;left:0;top:0;border-radius:inherit;background-color:currentColor;box-shadow:inset 0 0 1px rgba(0,0,0,.5)}.clr-alpha,.clr-alpha div,.clr-field button,.clr-preview:before,.clr-swatches button{background-image:repeating-linear-gradient(45deg, #aaa 25%, transparent 25%, transparent 75%, #aaa 75%, #aaa),repeating-linear-gradient(45deg, #aaa 25%, #fff 25%, #fff 75%, #aaa 75%, #aaa);background-position:0 0,4px 4px;background-size:8px 8px}.clr-marker:focus{outline:0}.clr-keyboard-nav .clr-alpha input:focus+div,.clr-keyboard-nav .clr-hue input:focus+div,.clr-keyboard-nav .clr-marker:focus,.clr-keyboard-nav .clr-segmented input:focus+label{outline:0;box-shadow:0 0 0 2px #1e90ff,0 0 2px 2px #fff}.clr-picker[data-alpha=false] .clr-alpha{display:none}.clr-picker[data-minimal=true]{padding-top:16px}.clr-picker[data-minimal=true] .clr-alpha,.clr-picker[data-minimal=true] .clr-color,.clr-picker[data-minimal=true] .clr-gradient,.clr-picker[data-minimal=true] .clr-hue,.clr-picker[data-minimal=true] .clr-preview{display:none}.clr-dark{background-color:#444}.clr-dark .clr-segmented{border-color:#777}.clr-dark .clr-swatches button:after{box-shadow:inset 0 0 0 1px rgba(255,255,255,.3)}.clr-dark input.clr-color{color:#fff;border-color:#777;background-color:#555}.clr-dark input.clr-color:focus{border-color:#1e90ff}.clr-dark .clr-preview:after{box-shadow:inset 0 0 0 1px rgba(255,255,255,.5)}.clr-dark .clr-alpha,.clr-dark .clr-alpha div,.clr-dark .clr-preview:before,.clr-dark .clr-swatches button{background-image:repeating-linear-gradient(45deg, #666 25%, transparent 25%, transparent 75%, #888 75%, #888),repeating-linear-gradient(45deg, #888 25%, #444 25%, #444 75%, #888 75%, #888)}.clr-picker.clr-polaroid{border-radius:6px;box-shadow:0 0 5px rgba(0,0,0,.1),0 5px 30px rgba(0,0,0,.2)}.clr-picker.clr-polaroid:before{content:"";display:block;position:absolute;width:16px;height:10px;left:20px;top:-10px;border:solid rgba(0,0,0,0);border-width:0 8px 10px 8px;border-bottom-color:currentColor;box-sizing:border-box;color:#fff;filter:drop-shadow(0 -4px 3px rgba(0, 0, 0, 0.1));pointer-events:none}.clr-picker.clr-polaroid.clr-dark:before{color:#444}.clr-picker.clr-polaroid.clr-left:before{left:auto;right:20px}.clr-picker.clr-polaroid.clr-top:before{top:auto;bottom:-10px;transform:rotateZ(180deg)}.clr-polaroid .clr-gradient{width:calc(100% - 20px);height:120px;margin:10px;border-radius:3px}.clr-polaroid .clr-alpha,.clr-polaroid .clr-hue{width:calc(100% - 30px);height:10px;margin:6px 15px;border-radius:5px}.clr-polaroid .clr-alpha div,.clr-polaroid .clr-hue div{box-shadow:0 0 5px rgba(0,0,0,.2)}.clr-polaroid .clr-format{width:calc(100% - 20px);margin:0 10px 15px}.clr-polaroid .clr-swatches{width:calc(100% - 12px);margin:0 6px}.clr-polaroid .clr-swatches div{padding-bottom:10px}.clr-polaroid .clr-swatches button{width:22px;height:22px}.clr-polaroid input.clr-color{width:calc(100% - 60px);margin:10px 10px 15px auto}.clr-polaroid .clr-clear{margin:0 10px 15px 10px}.clr-polaroid .clr-close{margin:0 10px 15px auto}.clr-polaroid .clr-preview{margin:10px 0 15px 10px}.clr-picker.clr-large{width:275px}.clr-large .clr-gradient{height:150px}.clr-large .clr-swatches button{width:22px;height:22px}.clr-picker.clr-pill{width:380px;padding-left:180px;box-sizing:border-box}.clr-pill .clr-gradient{position:absolute;width:180px;height:100%;left:0;top:0;margin-bottom:0;border-radius:3px 0 0 3px}.clr-pill .clr-hue{margin-top:20px}.clr-lzt{background-color:#272727}.clr-lzt .clr-segmented{border-color:#343434}.clr-lzt .clr-swatches button:after{box-shadow:inset 0 0 0 1px rgba(52,52,52,.3)}.clr-lzt input.clr-color{color:#fff;border-color:#343434;border:none;background-color:#343434}.clr-lzt input.clr-color:focus{border:1px solid #0daf77}.clr-lzt .clr-preview:after{box-shadow:inset 0 0 0 1px rgba(52,52,52,.3)}.clr-lzt .clr-alpha,.clr-lzt .clr-alpha div,.clr-lzt .clr-preview:before,.clr-lzt .clr-swatches button{background-image:repeating-linear-gradient(45deg, #666 25%, transparent 25%, transparent 75%, #888 75%, #888),repeating-linear-gradient(45deg, #888 25%, #444 25%, #444 75%, #888 75%, #888)}.clr-lzt .clr-segmented label:first-of-type{border-radius:5px 0 0 5px}.clr-lzt .clr-segmented label:last-of-type{border-radius:0 5px 5px 0}.clr-lzt .clr-segmented label:hover{background-color:rgba(102,102,102,.35)}.clr-lzt .clr-clear,.clr-lzt .clr-segmented input:checked+label{background-color:#363636}.clr-clear,.clr-lzt .clr-close{border-radius:5px}.clr-lzt .clr-close{background-color:#0daf77}.clr-clear:hover,.clr-lzt .clr-close:hover{background-color:rgba(13,175,119,.8) !important;transition:background-color .5s}.clr-picker{display:none}.LZTUpColorPickerWrap{display:flex;align-items:center}.LZTUpColorPickerWrap:not(:first-of-type){margin-top:10px}.LZTUpColorPickerWrap .LZTUpModalDescription{margin-right:10px !important}.LZTUpColorPickerWrap .clr-field input{width:24px;height:24px}.LZTUpColorPickerWrap .clr-field button{width:28px;height:28px}.LZTUpColorPickerWrap .clr-field input,.LZTUpColorPickerWrap .clr-field button{border-radius:4px}.LZTUpSelect option{background:#272727;padding:10px 15px;font-weight:600;border-radius:6px}.LZTUpSelect option:hover{background:#2d2d2d}.LZTUpIconButton{display:flex;flex-direction:row-reverse;align-items:center;justify-content:center}.LZTUpIconButton.fit{max-width:fit-content}.LZTUpIconButton i{margin:0 8px;margin-top:3.5px}.LZTUpRefreshButton{min-width:32px !important;margin-left:32px !important}.LZTUpSortableItem{display:flex;align-items:center;padding:16px;margin:8px 0;border-radius:8px;background:rgba(54,54,54,.75)}.LZTUpSortableItem .LZTUpSortableDraggable{color:#8c8c8c;margin-right:10px;cursor:move}.LZTUpSortableItem .LZTUpSortableContent p{margin:0 !important}.LZTUpSortableItem .LZTUpSortableUtility{display:flex;margin-left:auto}.LZTUpSortableItem .LZTUpSortableUtility div{margin-left:10px;cursor:pointer;transition:.5s color ease}.LZTUpSortableItem .LZTUpSortableUtility .LZTUpSortableEditButton{color:#6a6a6a}.LZTUpSortableItem .LZTUpSortableUtility .LZTUpSortableEditButton:hover{color:#0daf77}.LZTUpSortableItem .LZTUpSortableUtility .LZTUpSortableRemoveButton{color:#964448}.LZTUpSortableItem .LZTUpSortableUtility .LZTUpSortableRemoveButton:hover{color:#f13838}#LZTUpModalMainTitle{text-align:center;padding:16px;font-size:20px;font-weight:bold}.LZTUpModalBackButton{position:absolute;top:18px;left:25px;padding:0px 5px;margin:-4px -5px;cursor:pointer;line-height:25px;height:26px;width:26px;border:0 !important;background:rgba(0,0,0,0);color:#d6d6d6;font-size:18px}.LZTUpModalBackButton:hover{background:rgba(18,76,50,.4);border-radius:8px}.LZTUpTabs{width:100%;box-sizing:border-box;padding:0 10px;border:none !important;margin:15px auto !important;display:flex;align-items:center;justify-content:center}.LZTUpTabs #LZTUpTab{position:relative;padding:10px;margin:0 4px;float:left;font-weight:600;list-style:none;font-size:14px}.LZTUpTabs #LZTUpTab:hover{cursor:pointer}.LZTUpTabs #LZTUpTab.active{box-shadow:inset 0px -2px 0px 0px #0daf77;transform:translateY(-1px);transition:.2s}.LZTUpTabs #LZTUpTab:not(.active):hover{box-shadow:inset 0px -2px 0px 0px #363636}.LZTUpSection{display:flex;flex-wrap:wrap;margin:20px 15px}.LZTUpSection.row{flex-direction:row}.LZTUpSection.row .LZTUpSectionItem{max-width:284px}.LZTUpSection.row .LZTUpSectionTitle,.LZTUpSection.row .LZTUpSectionDesc{max-width:200px}.LZTUpSection.column{flex-direction:column}.LZTUpSection.column .LZTUpSectionTitle,.LZTUpSection.column .LZTUpSectionDesc{max-width:440px}.LZTUpSection.column .LZTUpSectionDesc{white-space:break-spaces}.LZTUpSection.column .LZTUpSectionItem{max-width:580px}.LZTUpSection .LZTUpSectionItem{flex-basis:50%;flex-grow:1;height:64px;display:flex;align-items:center;transition:all .5s ease}.LZTUpSection .LZTUpSectionItem:hover{background:rgba(54,54,54,.75);border-radius:8px;cursor:pointer}.LZTUpSection .LZTUpSectionItem .LZTUpSectionTextContainer{display:flex;flex-direction:column;justify-content:center;flex:1 1 auto;max-width:100%}.LZTUpGrid{margin:20px 0;display:grid;grid-template-columns:repeat(3, 30%);justify-content:center;gap:20px}.LZTUpGrid .LZTUpGridItem{background:#343434;display:flex;flex-direction:column;align-items:center;justify-content:space-between;border-radius:8px;cursor:pointer}.LZTUpGrid .LZTUpGridItem:hover{background:#3a3a3a}.LZTUpGrid .LZTUpGridItem.active{outline:3px solid #228e5d}.LZTUpGrid .LZTUpGridItem.theme:hover{opacity:.9}.LZTUpGrid .LZTUpGridItem.theme .LZTUpGridTextContainer{padding-top:30px}.LZTUpGrid .LZTUpGridItem .LZTUpGridTextContainer{display:flex;flex-direction:column;align-self:start;margin-left:10px;margin-bottom:10px}.LZTUpGrid .LZTUpGridItem .LZTUpGridImage{max-width:96px;max-height:48px;margin:20px 0}.LZTUpGrid .LZTUpGridItem .LZTUpGridTitle{font-weight:bold;word-wrap:break-word}.LZTUpGrid .LZTUpGridItem .LZTUpGridDesc{word-wrap:break-word}.LZTUpGrid .LZTUpGridItem .LZTUpGridDesc .LZTUpGridAuthor{color:#949494}@media screen and (max-width: 720px){.LZTUpGrid{grid-template-columns:repeat(2, 47%)}}#LZTUpIcon{width:28px;height:28px;margin:20px;font-size:28px;color:#0daf77}#LZTUpIcon.gray{color:#949494}#LZTUpIcon.right{text-align:right}#LZTUpModalContainer{margin:15px;max-width:400px}#LZTUpModalChecksContainer,#LZTUpModalReportButtonsContainer,#LZTUpModalCell,.LZTUpModalMesh,.LZTUpModalSeparator{margin:15px;max-width:95%}.LZTUpContainer{display:flex;flex-direction:column;margin:15px;max-width:95%}.LZTUpModalHeading{margin:10px 0 5px 0 !important}.LZTUpModalDescription{margin:0 !important;margin-bottom:5px !important}.LZTUpTextArea{min-height:40px}.LZTUpModalSeparator{border-bottom:1px solid #363636}#LZTUpModalChecksText{margin:0px 25px 5px}.LZTUpSectionTitle,.LZTUpSectionDesc{display:block;margin-right:20px;font-size:15px;font-weight:bold;text-overflow:ellipsis;white-space:nowrap;overflow:hidden}.LZTUpSectionDesc{font-size:13px;font-weight:normal;color:#949494}.LZTUpSectionDesc .mceSmilie{max-height:18px !important;max-width:18px !important}.LZTUpModalSectionTexts{display:flex;flex-direction:column;justify-content:center;flex:1 1 auto}.LZTUpModalSectionTexts .LZTUpSubText{max-width:450px}#LZTUpModalComment{background:#363636;margin:5px 15px;padding:10px 15px;border-radius:10px}#LZTUpModalComment a{color:#00ba78}.LZTUpModalBlock{display:flex}.LZTUpModalBlockButtons{display:flex;flex-wrap:wrap;justify-content:center;margin-top:25px}.LZTUpModalBlockButtons .button{margin:5px;width:250px}.LZTUpSubMenu .previewContainer{display:flex;float:right;margin:25px 15px;padding:10px 10px 15px 10px;background-size:cover;background-position:center;background-attachment:fixed;background-repeat:no-repeat;border-radius:10px;width:92%;max-width:92%}.LZTUpSubMenu .previewContainer .avatar img{width:66px;height:66px}.LZTUpSubMenu .previewContainer .info{padding:0 0 0 20px}.LZTUpSubMenu .previewContainer .info .username{font-weight:600}.LZTUpSubMenu .previewContainer .bannerOrStatus{min-width:150px;margin:10px 0 0;color:#949494}.LZTUpSubMenu .previewContainer .bannerOrStatus em{font-style:inherit}.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge .customUniqIcon{padding:2px 0;text-align:center}.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge .customUniqIcon svg{width:16px !important;height:16px !important}.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge::before{font-family:"Font Awesome 5 Pro";font-weight:600;display:inline-block;font-size:12.32px}.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.admin{background:#964448}.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.admin::before,.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.bot::before{content:""}.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.Designer::before{content:""}.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.headDesigner::before{content:""}.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.editor::before{content:""}.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.sponsor::before{content:""}.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.coder::before{content:""}.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.uniq_default::before,.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.Legend::before,.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.Ikarus::before{content:""}.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.moder{background:#3d6b39}.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.curator{background:rgba(8,156,122,.8509803922)}.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.moder::before,.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.main_moder::before,.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.curator::before{content:""}.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.arbitr::before,.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.main_arbitr::before{content:""}.LZTUpSubMenu .previewContainer #LZTUpPreviewBadge.telegramBot::before{content:""}.LZTUpSubMenu .previewContainer .UsernameStyle.style18,.LZTUpSubMenu .previewContainer .UsernameStyle.style360{text-decoration:line-through;color:#aaa}.LZTUpSubMenu .previewContainer .UsernameStyle.style3{color:#f13838}.LZTUpSubMenu .previewContainer .UsernameStyle.style30{color:#ff9afc}.LZTUpSubMenu .previewContainer .UsernameStyle.style353{background:linear-gradient(98.26deg, #ff42f7 2.08%, #ff24cf 100%);-webkit-background-clip:text;-webkit-text-fill-color:rgba(0,0,0,0)}.LZTUpSubMenu .previewContainer .UsernameStyle.style350{background:linear-gradient(90deg, #5c45ff, #feb5f2 100%);-webkit-background-clip:text;-webkit-text-fill-color:rgba(0,0,0,0)}.LZTUpSubMenu .previewContainer .UsernameStyle.style12{color:#01f73c}.LZTUpSubMenu .previewContainer .UsernameStyle.style1,.LZTUpSubMenu .previewContainer .UsernameStyle.style41,.LZTUpSubMenu .previewContainer .UsernameStyle.style142,.LZTUpSubMenu .previewContainer .UsernameStyle.style144{color:#aaa}.LZTUpSubMenu .previewContainer .UsernameStyle.style32,.LZTUpSubMenu .previewContainer .UsernameStyle.style93,.LZTUpSubMenu .previewContainer .UsernameStyle.style21,.LZTUpSubMenu .previewContainer .UsernameStyle.style2{color:#949494}.LZTUpSubMenu .previewContainer .UsernameStyle.style60{color:#ffa8af}.LZTUpSubMenu .previewContainer .UsernameStyle.style9{color:#0075ad}.LZTUpSubMenu .previewContainer .UsernameStyle.style65{color:#a5e3ff}.LZTUpSubMenu .previewContainer .UsernameStyle.style351{color:#ff0076}.LZTUpSubMenu .previewContainer .UsernameStyle.style29{color:#0acc9e}.LZTUpSubMenu .previewContainer .UsernameStyle.style26{background:linear-gradient(90deg, #0095dd 0%, #f1094b 100%, #0095dd);-webkit-background-clip:text;-webkit-text-fill-color:rgba(0,0,0,0)}.LZTUpSubMenu .previewContainer .UsernameStyle.style4{color:#0e9100}.LZTUpSubMenu .previewContainer .UsernameStyle.style22{color:#eee}.LZTUpSubMenu .previewContainer .UsernameStyle.style11{color:#56b5e0}.LZTUpSubMenu .previewContainer .UsernameStyle.style7{color:#ff9304}.LZTUpSubMenu .previewContainer .UsernameStyle.style349,.LZTUpSubMenu .previewContainer .UsernameStyle.style365{color:#0087ff}.LZTUpSubMenu .previewContainer .UsernameStyle.style354{color:aqua}.LZTUpSubMenu .previewContainer .UsernameStyle.style218{color:#f13838}.LZTUpSubMenu .previewContainer .UsernameStyle.style359{color:#e5d9a3}.LZTUpSubMenu .previewContainer .UsernameStyle.style8{color:gold}.LZTUpSubMenu .previewContainer .UsernameStyle.style265{background:linear-gradient(35deg, #006eff, #00ff81 52%, #fff 50%, #93cbff);-webkit-background-clip:text;-webkit-text-fill-color:rgba(0,0,0,0);text-shadow:0 0 7px rgba(0,255,207,.5019607843)}.LZTUpSubMenu .previewContainer .UsernameStyle.style23{color:#b35ede}.LZTUpSubMenu .previewContainer .UsernameStyle.banned,.LZTUpSubMenu .previewContainer .UsernameStyle.is_banned{text-decoration:line-through;background:inherit;-webkit-text-fill-color:inherit;text-shadow:inherit !important;color:#aaa !important}.LZTUpSubMenu .previewContainer .avatarBox{position:relative}.LZTUpSubMenu .previewContainer .avatarBox .avatarUserBadges .badgeDefaultBackground{background:#363636}.LZTUpSubMenu .previewContainer .avatarBox .avatarUserBadges .avatarUserBadge{position:absolute;bottom:-12px;left:20px;border:2px solid #272727;font-size:0;width:22px;height:22px;margin:0;line-height:22px;border-radius:50%;text-align:center;text-shadow:none !important;box-shadow:none !important;border-radius:50% !important;-webkit-background-clip:unset !important;-webkit-text-fill-color:unset !important;overflow:hidden}.LZTUpSubMenu .previewContainer .avatarBox .avatarUserBadges .avatarUserBadge:only-child{left:35px}.LZTUpSubMenu .previewContainer .avatarBox .avatarUserBadges .avatarUserBadge.avatarUserBadge--1{left:20px}.LZTUpSubMenu .previewContainer .avatarBox .avatarUserBadges .avatarUserBadge.avatarUserBadge--2{left:40px}.LZTUpSubMenu .previewContainer .avatarBox,.LZTUpSubMenu .previewContainer .info{display:table-cell;vertical-align:top}`, ""]);
+// Exports
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/styles/universal.scss":
+/***/ ((module, __webpack_exports__, __webpack_require__) => {
+
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   Z: () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("./node_modules/css-loader/dist/runtime/noSourceMaps.js");
+/* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("./node_modules/css-loader/dist/runtime/api.js");
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__);
+// Imports
+
+
+var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
+// Module
+___CSS_LOADER_EXPORT___.push([module.id, `#LZTUpCustomBackground{background-size:cover;background-position:center;background-attachment:fixed;background-repeat:no-repeat}#LZTUpModalOverlay .errCapImage{display:none}.LZTUpThreadBar{background:#272727;padding:15px 20px;margin-top:15px;border-radius:10px;height:auto}.LZTUpThreadBar .LZTUpThreadBarTitle{font-weight:bold;font-size:18px;padding:0;margin:0 0 2px;line-height:33px;overflow:hidden}.LZTUpThreadBar .LZTUpThreadBarContent{font-size:14px}.LZTUpThreadBar .LZTUpThreadBarContent .LZTUpSummarizeThesises{margin-left:16px}.LZTUpThreadBar .LZTUpThreadBarContent .LZTUpSummarizeThesises li{list-style:decimal;margin:2px 0;line-height:20px}.LZTUpReportButtons{display:flex}.LZTUpReportButtons .LZTUpReportButton{padding:3px 10px;margin-right:5px;font-weight:bold;background:#343434;border-radius:4px;cursor:pointer;transition:1s background ease}.LZTUpReportButtons .LZTUpReportButton:hover{background:#218e5d}`, ""]);
+// Exports
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/styles/xenforo.scss":
+/***/ ((module, __webpack_exports__, __webpack_require__) => {
+
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   Z: () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("./node_modules/css-loader/dist/runtime/noSourceMaps.js");
+/* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("./node_modules/css-loader/dist/runtime/api.js");
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__);
+// Imports
+
+
+var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
+// Module
+___CSS_LOADER_EXPORT___.push([module.id, `.copyButton{cursor:pointer;font-size:16px;font-weight:400;padding:1px 4px;margin:-5px 0 0 6px;display:inline-block;color:#505050}.copyButton:hover{color:#949494}`, ""]);
+// Exports
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/dist/runtime/api.js":
+/***/ ((module) => {
+
+
+
+/*
+  MIT License http://www.opensource.org/licenses/mit-license.php
+  Author Tobias Koppers @sokra
+*/
+module.exports = function (cssWithMappingToString) {
+  var list = [];
+
+  // return the list of modules as css string
+  list.toString = function toString() {
+    return this.map(function (item) {
+      var content = "";
+      var needLayer = typeof item[5] !== "undefined";
+      if (item[4]) {
+        content += "@supports (".concat(item[4], ") {");
+      }
+      if (item[2]) {
+        content += "@media ".concat(item[2], " {");
+      }
+      if (needLayer) {
+        content += "@layer".concat(item[5].length > 0 ? " ".concat(item[5]) : "", " {");
+      }
+      content += cssWithMappingToString(item);
+      if (needLayer) {
+        content += "}";
+      }
+      if (item[2]) {
+        content += "}";
+      }
+      if (item[4]) {
+        content += "}";
+      }
+      return content;
+    }).join("");
+  };
+
+  // import a list of modules into the list
+  list.i = function i(modules, media, dedupe, supports, layer) {
+    if (typeof modules === "string") {
+      modules = [[null, modules, undefined]];
+    }
+    var alreadyImportedModules = {};
+    if (dedupe) {
+      for (var k = 0; k < this.length; k++) {
+        var id = this[k][0];
+        if (id != null) {
+          alreadyImportedModules[id] = true;
+        }
+      }
+    }
+    for (var _k = 0; _k < modules.length; _k++) {
+      var item = [].concat(modules[_k]);
+      if (dedupe && alreadyImportedModules[item[0]]) {
+        continue;
+      }
+      if (typeof layer !== "undefined") {
+        if (typeof item[5] === "undefined") {
+          item[5] = layer;
+        } else {
+          item[1] = "@layer".concat(item[5].length > 0 ? " ".concat(item[5]) : "", " {").concat(item[1], "}");
+          item[5] = layer;
+        }
+      }
+      if (media) {
+        if (!item[2]) {
+          item[2] = media;
+        } else {
+          item[1] = "@media ".concat(item[2], " {").concat(item[1], "}");
+          item[2] = media;
+        }
+      }
+      if (supports) {
+        if (!item[4]) {
+          item[4] = "".concat(supports);
+        } else {
+          item[1] = "@supports (".concat(item[4], ") {").concat(item[1], "}");
+          item[4] = supports;
+        }
+      }
+      list.push(item);
+    }
+  };
+  return list;
+};
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/dist/runtime/noSourceMaps.js":
+/***/ ((module) => {
+
+
+
+module.exports = function (i) {
+  return i[1];
+};
+
+/***/ }),
+
+/***/ "./src/styles/errorPage.scss":
+/***/ ((__unused_webpack_module, __unused_webpack___webpack_exports__, __webpack_require__) => {
+
+/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _node_modules_style_loader_dist_runtime_styleDomAPI_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("./node_modules/style-loader/dist/runtime/styleDomAPI.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_styleDomAPI_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_styleDomAPI_js__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _node_modules_style_loader_dist_runtime_insertBySelector_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__("./node_modules/style-loader/dist/runtime/insertBySelector.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_insertBySelector_js__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_insertBySelector_js__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _node_modules_style_loader_dist_runtime_setAttributesWithoutAttributes_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__("./node_modules/style-loader/dist/runtime/setAttributesWithoutAttributes.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_setAttributesWithoutAttributes_js__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_setAttributesWithoutAttributes_js__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _node_modules_style_loader_dist_runtime_insertStyleElement_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__("./node_modules/style-loader/dist/runtime/insertStyleElement.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_insertStyleElement_js__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_insertStyleElement_js__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _node_modules_style_loader_dist_runtime_styleTagTransform_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__("./node_modules/style-loader/dist/runtime/styleTagTransform.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_styleTagTransform_js__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_styleTagTransform_js__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _node_modules_css_loader_dist_cjs_js_node_modules_sass_loader_dist_cjs_js_errorPage_scss__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__("./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/styles/errorPage.scss");
+
+      
+      
+      
+      
+      
+      
+      
+      
+      
+
+var options = {};
+
+options.styleTagTransform = (_node_modules_style_loader_dist_runtime_styleTagTransform_js__WEBPACK_IMPORTED_MODULE_5___default());
+options.setAttributes = (_node_modules_style_loader_dist_runtime_setAttributesWithoutAttributes_js__WEBPACK_IMPORTED_MODULE_3___default());
+
+      options.insert = _node_modules_style_loader_dist_runtime_insertBySelector_js__WEBPACK_IMPORTED_MODULE_2___default().bind(null, "html");
+    
+options.domAPI = (_node_modules_style_loader_dist_runtime_styleDomAPI_js__WEBPACK_IMPORTED_MODULE_1___default());
+options.insertStyleElement = (_node_modules_style_loader_dist_runtime_insertStyleElement_js__WEBPACK_IMPORTED_MODULE_4___default());
+
+var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_css_loader_dist_cjs_js_node_modules_sass_loader_dist_cjs_js_errorPage_scss__WEBPACK_IMPORTED_MODULE_6__/* ["default"] */ .Z, options);
+
+
+
+
+       /* unused harmony default export */ var __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_css_loader_dist_cjs_js_node_modules_sass_loader_dist_cjs_js_errorPage_scss__WEBPACK_IMPORTED_MODULE_6__/* ["default"] */ .Z && _node_modules_css_loader_dist_cjs_js_node_modules_sass_loader_dist_cjs_js_errorPage_scss__WEBPACK_IMPORTED_MODULE_6__/* ["default"] */ .Z.locals ? _node_modules_css_loader_dist_cjs_js_node_modules_sass_loader_dist_cjs_js_errorPage_scss__WEBPACK_IMPORTED_MODULE_6__/* ["default"] */ .Z.locals : undefined);
+
+
+/***/ }),
+
+/***/ "./src/styles/universal.scss":
+/***/ ((__unused_webpack_module, __unused_webpack___webpack_exports__, __webpack_require__) => {
+
+/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _node_modules_style_loader_dist_runtime_styleDomAPI_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("./node_modules/style-loader/dist/runtime/styleDomAPI.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_styleDomAPI_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_styleDomAPI_js__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _node_modules_style_loader_dist_runtime_insertBySelector_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__("./node_modules/style-loader/dist/runtime/insertBySelector.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_insertBySelector_js__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_insertBySelector_js__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _node_modules_style_loader_dist_runtime_setAttributesWithoutAttributes_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__("./node_modules/style-loader/dist/runtime/setAttributesWithoutAttributes.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_setAttributesWithoutAttributes_js__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_setAttributesWithoutAttributes_js__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _node_modules_style_loader_dist_runtime_insertStyleElement_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__("./node_modules/style-loader/dist/runtime/insertStyleElement.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_insertStyleElement_js__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_insertStyleElement_js__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _node_modules_style_loader_dist_runtime_styleTagTransform_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__("./node_modules/style-loader/dist/runtime/styleTagTransform.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_styleTagTransform_js__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_styleTagTransform_js__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _node_modules_css_loader_dist_cjs_js_node_modules_sass_loader_dist_cjs_js_universal_scss__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__("./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/styles/universal.scss");
+
+      
+      
+      
+      
+      
+      
+      
+      
+      
+
+var options = {};
+
+options.styleTagTransform = (_node_modules_style_loader_dist_runtime_styleTagTransform_js__WEBPACK_IMPORTED_MODULE_5___default());
+options.setAttributes = (_node_modules_style_loader_dist_runtime_setAttributesWithoutAttributes_js__WEBPACK_IMPORTED_MODULE_3___default());
+
+      options.insert = _node_modules_style_loader_dist_runtime_insertBySelector_js__WEBPACK_IMPORTED_MODULE_2___default().bind(null, "html");
+    
+options.domAPI = (_node_modules_style_loader_dist_runtime_styleDomAPI_js__WEBPACK_IMPORTED_MODULE_1___default());
+options.insertStyleElement = (_node_modules_style_loader_dist_runtime_insertStyleElement_js__WEBPACK_IMPORTED_MODULE_4___default());
+
+var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_css_loader_dist_cjs_js_node_modules_sass_loader_dist_cjs_js_universal_scss__WEBPACK_IMPORTED_MODULE_6__/* ["default"] */ .Z, options);
+
+
+
+
+       /* unused harmony default export */ var __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_css_loader_dist_cjs_js_node_modules_sass_loader_dist_cjs_js_universal_scss__WEBPACK_IMPORTED_MODULE_6__/* ["default"] */ .Z && _node_modules_css_loader_dist_cjs_js_node_modules_sass_loader_dist_cjs_js_universal_scss__WEBPACK_IMPORTED_MODULE_6__/* ["default"] */ .Z.locals ? _node_modules_css_loader_dist_cjs_js_node_modules_sass_loader_dist_cjs_js_universal_scss__WEBPACK_IMPORTED_MODULE_6__/* ["default"] */ .Z.locals : undefined);
+
+
+/***/ }),
+
+/***/ "./src/styles/xenforo.scss":
+/***/ ((__unused_webpack_module, __unused_webpack___webpack_exports__, __webpack_require__) => {
+
+/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _node_modules_style_loader_dist_runtime_styleDomAPI_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("./node_modules/style-loader/dist/runtime/styleDomAPI.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_styleDomAPI_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_styleDomAPI_js__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _node_modules_style_loader_dist_runtime_insertBySelector_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__("./node_modules/style-loader/dist/runtime/insertBySelector.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_insertBySelector_js__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_insertBySelector_js__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _node_modules_style_loader_dist_runtime_setAttributesWithoutAttributes_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__("./node_modules/style-loader/dist/runtime/setAttributesWithoutAttributes.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_setAttributesWithoutAttributes_js__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_setAttributesWithoutAttributes_js__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _node_modules_style_loader_dist_runtime_insertStyleElement_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__("./node_modules/style-loader/dist/runtime/insertStyleElement.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_insertStyleElement_js__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_insertStyleElement_js__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _node_modules_style_loader_dist_runtime_styleTagTransform_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__("./node_modules/style-loader/dist/runtime/styleTagTransform.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_styleTagTransform_js__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_styleTagTransform_js__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _node_modules_css_loader_dist_cjs_js_node_modules_sass_loader_dist_cjs_js_xenforo_scss__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__("./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/styles/xenforo.scss");
+
+      
+      
+      
+      
+      
+      
+      
+      
+      
+
+var options = {};
+
+options.styleTagTransform = (_node_modules_style_loader_dist_runtime_styleTagTransform_js__WEBPACK_IMPORTED_MODULE_5___default());
+options.setAttributes = (_node_modules_style_loader_dist_runtime_setAttributesWithoutAttributes_js__WEBPACK_IMPORTED_MODULE_3___default());
+
+      options.insert = _node_modules_style_loader_dist_runtime_insertBySelector_js__WEBPACK_IMPORTED_MODULE_2___default().bind(null, "html");
+    
+options.domAPI = (_node_modules_style_loader_dist_runtime_styleDomAPI_js__WEBPACK_IMPORTED_MODULE_1___default());
+options.insertStyleElement = (_node_modules_style_loader_dist_runtime_insertStyleElement_js__WEBPACK_IMPORTED_MODULE_4___default());
+
+var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_css_loader_dist_cjs_js_node_modules_sass_loader_dist_cjs_js_xenforo_scss__WEBPACK_IMPORTED_MODULE_6__/* ["default"] */ .Z, options);
+
+
+
+
+       /* unused harmony default export */ var __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_css_loader_dist_cjs_js_node_modules_sass_loader_dist_cjs_js_xenforo_scss__WEBPACK_IMPORTED_MODULE_6__/* ["default"] */ .Z && _node_modules_css_loader_dist_cjs_js_node_modules_sass_loader_dist_cjs_js_xenforo_scss__WEBPACK_IMPORTED_MODULE_6__/* ["default"] */ .Z.locals ? _node_modules_css_loader_dist_cjs_js_node_modules_sass_loader_dist_cjs_js_xenforo_scss__WEBPACK_IMPORTED_MODULE_6__/* ["default"] */ .Z.locals : undefined);
+
+
+/***/ }),
+
+/***/ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js":
+/***/ ((module) => {
+
+
+
+var stylesInDOM = [];
+function getIndexByIdentifier(identifier) {
+  var result = -1;
+  for (var i = 0; i < stylesInDOM.length; i++) {
+    if (stylesInDOM[i].identifier === identifier) {
+      result = i;
+      break;
+    }
+  }
+  return result;
+}
+function modulesToDom(list, options) {
+  var idCountMap = {};
+  var identifiers = [];
+  for (var i = 0; i < list.length; i++) {
+    var item = list[i];
+    var id = options.base ? item[0] + options.base : item[0];
+    var count = idCountMap[id] || 0;
+    var identifier = "".concat(id, " ").concat(count);
+    idCountMap[id] = count + 1;
+    var indexByIdentifier = getIndexByIdentifier(identifier);
+    var obj = {
+      css: item[1],
+      media: item[2],
+      sourceMap: item[3],
+      supports: item[4],
+      layer: item[5]
+    };
+    if (indexByIdentifier !== -1) {
+      stylesInDOM[indexByIdentifier].references++;
+      stylesInDOM[indexByIdentifier].updater(obj);
+    } else {
+      var updater = addElementStyle(obj, options);
+      options.byIndex = i;
+      stylesInDOM.splice(i, 0, {
+        identifier: identifier,
+        updater: updater,
+        references: 1
+      });
+    }
+    identifiers.push(identifier);
+  }
+  return identifiers;
+}
+function addElementStyle(obj, options) {
+  var api = options.domAPI(options);
+  api.update(obj);
+  var updater = function updater(newObj) {
+    if (newObj) {
+      if (newObj.css === obj.css && newObj.media === obj.media && newObj.sourceMap === obj.sourceMap && newObj.supports === obj.supports && newObj.layer === obj.layer) {
+        return;
+      }
+      api.update(obj = newObj);
+    } else {
+      api.remove();
+    }
+  };
+  return updater;
+}
+module.exports = function (list, options) {
+  options = options || {};
+  list = list || [];
+  var lastIdentifiers = modulesToDom(list, options);
+  return function update(newList) {
+    newList = newList || [];
+    for (var i = 0; i < lastIdentifiers.length; i++) {
+      var identifier = lastIdentifiers[i];
+      var index = getIndexByIdentifier(identifier);
+      stylesInDOM[index].references--;
+    }
+    var newLastIdentifiers = modulesToDom(newList, options);
+    for (var _i = 0; _i < lastIdentifiers.length; _i++) {
+      var _identifier = lastIdentifiers[_i];
+      var _index = getIndexByIdentifier(_identifier);
+      if (stylesInDOM[_index].references === 0) {
+        stylesInDOM[_index].updater();
+        stylesInDOM.splice(_index, 1);
+      }
+    }
+    lastIdentifiers = newLastIdentifiers;
+  };
+};
+
+/***/ }),
+
+/***/ "./node_modules/style-loader/dist/runtime/insertBySelector.js":
+/***/ ((module) => {
+
+
+
+var memo = {};
+
+/* istanbul ignore next  */
+function getTarget(target) {
+  if (typeof memo[target] === "undefined") {
+    var styleTarget = document.querySelector(target);
+
+    // Special case to return head of iframe instead of iframe itself
+    if (window.HTMLIFrameElement && styleTarget instanceof window.HTMLIFrameElement) {
+      try {
+        // This will throw an exception if access to iframe is blocked
+        // due to cross-origin restrictions
+        styleTarget = styleTarget.contentDocument.head;
+      } catch (e) {
+        // istanbul ignore next
+        styleTarget = null;
+      }
+    }
+    memo[target] = styleTarget;
+  }
+  return memo[target];
+}
+
+/* istanbul ignore next  */
+function insertBySelector(insert, style) {
+  var target = getTarget(insert);
+  if (!target) {
+    throw new Error("Couldn't find a style target. This probably means that the value for the 'insert' parameter is invalid.");
+  }
+  target.appendChild(style);
+}
+module.exports = insertBySelector;
+
+/***/ }),
+
+/***/ "./node_modules/style-loader/dist/runtime/insertStyleElement.js":
+/***/ ((module) => {
+
+
+
+/* istanbul ignore next  */
+function insertStyleElement(options) {
+  var element = document.createElement("style");
+  options.setAttributes(element, options.attributes);
+  options.insert(element, options.options);
+  return element;
+}
+module.exports = insertStyleElement;
+
+/***/ }),
+
+/***/ "./node_modules/style-loader/dist/runtime/setAttributesWithoutAttributes.js":
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+
+
+/* istanbul ignore next  */
+function setAttributesWithoutAttributes(styleElement) {
+  var nonce =  true ? __webpack_require__.nc : 0;
+  if (nonce) {
+    styleElement.setAttribute("nonce", nonce);
+  }
+}
+module.exports = setAttributesWithoutAttributes;
+
+/***/ }),
+
+/***/ "./node_modules/style-loader/dist/runtime/styleDomAPI.js":
+/***/ ((module) => {
+
+
+
+/* istanbul ignore next  */
+function apply(styleElement, options, obj) {
+  var css = "";
+  if (obj.supports) {
+    css += "@supports (".concat(obj.supports, ") {");
+  }
+  if (obj.media) {
+    css += "@media ".concat(obj.media, " {");
+  }
+  var needLayer = typeof obj.layer !== "undefined";
+  if (needLayer) {
+    css += "@layer".concat(obj.layer.length > 0 ? " ".concat(obj.layer) : "", " {");
+  }
+  css += obj.css;
+  if (needLayer) {
+    css += "}";
+  }
+  if (obj.media) {
+    css += "}";
+  }
+  if (obj.supports) {
+    css += "}";
+  }
+  var sourceMap = obj.sourceMap;
+  if (sourceMap && typeof btoa !== "undefined") {
+    css += "\n/*# sourceMappingURL=data:application/json;base64,".concat(btoa(unescape(encodeURIComponent(JSON.stringify(sourceMap)))), " */");
+  }
+
+  // For old IE
+  /* istanbul ignore if  */
+  options.styleTagTransform(css, styleElement, options.options);
+}
+function removeStyleElement(styleElement) {
+  // istanbul ignore if
+  if (styleElement.parentNode === null) {
+    return false;
+  }
+  styleElement.parentNode.removeChild(styleElement);
+}
+
+/* istanbul ignore next  */
+function domAPI(options) {
+  if (typeof document === "undefined") {
+    return {
+      update: function update() {},
+      remove: function remove() {}
+    };
+  }
+  var styleElement = options.insertStyleElement(options);
+  return {
+    update: function update(obj) {
+      apply(styleElement, options, obj);
+    },
+    remove: function remove() {
+      removeStyleElement(styleElement);
+    }
+  };
+}
+module.exports = domAPI;
+
+/***/ }),
+
+/***/ "./node_modules/style-loader/dist/runtime/styleTagTransform.js":
+/***/ ((module) => {
+
+
+
+/* istanbul ignore next  */
+function styleTagTransform(css, styleElement) {
+  if (styleElement.styleSheet) {
+    styleElement.styleSheet.cssText = css;
+  } else {
+    while (styleElement.firstChild) {
+      styleElement.removeChild(styleElement.firstChild);
+    }
+    styleElement.appendChild(document.createTextNode(css));
+  }
+}
+module.exports = styleTagTransform;
+
+/***/ }),
+
+/***/ "./src/api/lztupgrade/logoAPI.js":
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   Z: () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var Configs_endpoints_json__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("./src/configs/endpoints.json");
+/* harmony import */ var API_requestJSON__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("./src/api/requestJSON.js");
+
+
+
+async function getLogos(intTarget = null) {
+  // 1 - forum, 2 - market
+  const target = intTarget ?? "";
+  return await (0,API_requestJSON__WEBPACK_IMPORTED_MODULE_1__/* ["default"] */ .Z)(
+    `${Configs_endpoints_json__WEBPACK_IMPORTED_MODULE_0__/* .getLogos */ .eb}?target=${target}`,
+    `Не удалось получить список логотипов (${Configs_endpoints_json__WEBPACK_IMPORTED_MODULE_0__/* .getLogos */ .eb})`,
+  );
+}
+
+async function getLogoByUID(logoUID) {
+  return await (0,API_requestJSON__WEBPACK_IMPORTED_MODULE_1__/* ["default"] */ .Z)(
+    `${Configs_endpoints_json__WEBPACK_IMPORTED_MODULE_0__/* .getLogoByUID */ .NI}?uid=${logoUID}`,
+    `Не удалось получить логотип по айди (${Configs_endpoints_json__WEBPACK_IMPORTED_MODULE_0__/* .getLogoByUID */ .NI})`,
+  );
+}
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  getLogos,
+  getLogoByUID,
+});
+
+
+/***/ }),
+
+/***/ "./src/api/lztupgrade/themeAPI.js":
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   Z: () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var Configs_endpoints_json__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("./src/configs/endpoints.json");
+/* harmony import */ var API_requestJSON__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("./src/api/requestJSON.js");
+/* harmony import */ var Utils_utils__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__("./src/utils/utils.js");
+
+
+
+
+async function getThemes() {
+  return await (0,API_requestJSON__WEBPACK_IMPORTED_MODULE_1__/* ["default"] */ .Z)(
+    Configs_endpoints_json__WEBPACK_IMPORTED_MODULE_0__/* .getThemes */ .RC,
+    `Не удалось получить список тем (${Configs_endpoints_json__WEBPACK_IMPORTED_MODULE_0__/* .getThemes */ .RC})`,
+  );
+}
+
+function loadTheme(themeName) {
+  // load theme by theme name
+  const timestamp = (0,Utils_utils__WEBPACK_IMPORTED_MODULE_2__/* .getTimestamp */ .u3)();
+
+  return GM_addStyle(`
+    @import url(${Configs_endpoints_json__WEBPACK_IMPORTED_MODULE_0__/* .staticThemes */ .I1}/${themeName}.css?id=${timestamp});
+  `);
+}
+
+async function smartLoadTheme(themeName) {
+  // Waiting for the body to load to overwrite lolz styles
+  return (0,Utils_utils__WEBPACK_IMPORTED_MODULE_2__/* .waitForBody */ .VR)().then(() => {
+    console.log("wait for elm");
+    return loadTheme(themeName);
+  });
+}
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  getThemes,
+  loadTheme,
+  smartLoadTheme,
+});
+
+
+/***/ }),
+
+/***/ "./src/api/requestJSON.js":
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   Z: () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var Utils_logger__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("./src/utils/logger.js");
+
+
+async function requestJSON(endpoint, errText, reqOptions = {}) {
+  try {
+    const res = await fetch(endpoint, reqOptions).catch(err => {
+      console.error(err);
+      throw `Failed to fetch from ${endpoint}`;
+    });
+
+    return await res.json().catch(err => {
+      console.log(err);
+      throw `Failed to parse response JSON`;
+    });
+  } catch (err) {
+    Utils_logger__WEBPACK_IMPORTED_MODULE_0__/* ["default"] */ .Z.log(errText);
+    return false;
+  }
+}
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (requestJSON);
+
+
+/***/ }),
+
+/***/ "./src/cache/logo.js":
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   U: () => (/* binding */ setLogoFromCache)
+/* harmony export */ });
+/* harmony import */ var Configs_SiteType__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("./src/configs/SiteType.js");
+/* harmony import */ var Configs_StorageName__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("./src/configs/StorageName.js");
+/* harmony import */ var Configs_config__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__("./src/configs/config.js");
+/* harmony import */ var API_lztupgrade_logoAPI__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__("./src/api/lztupgrade/logoAPI.js");
+/* harmony import */ var Utils_logger__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__("./src/utils/logger.js");
+/* harmony import */ var Utils_utils__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__("./src/utils/utils.js");
+/* harmony import */ var Visuals_universal__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__("./src/visuals/universal.js");
+
+
+
+
+
+
+
+
+
+async function setLogoFromCache(logoType, logoUID) {
+  const timestampOnStart = (0,Utils_utils__WEBPACK_IMPORTED_MODULE_6__/* .getTimestamp */ .u3)();
+  const cacheName = logoType === Configs_SiteType__WEBPACK_IMPORTED_MODULE_0__/* ["default"] */ .Z.Forum ? "forumLogo" : "marketLogo";
+  let logo = await GM_getValue(Configs_StorageName__WEBPACK_IMPORTED_MODULE_1__/* ["default"] */ .Z.Cache, {})?.[cacheName];
+  let logoCSS = logo?.css ?? "";
+  let logoCacheTime = logo?.cacheTime ?? 0;
+  if (logo?.uid !== logoUID || !logoCSS || logoCacheTime < timestampOnStart) {
+    Utils_logger__WEBPACK_IMPORTED_MODULE_4__/* ["default"] */ .Z.debug(`Requesting logo with id ${logoUID}...`);
+    const newForumLogo = await API_lztupgrade_logoAPI__WEBPACK_IMPORTED_MODULE_3__/* ["default"] */ .Z
+      .getLogoByUID(logoUID)
+      .catch(err => console.error(err));
+
+    console.log(newForumLogo);
+    if (newForumLogo?.css) {
+      const newCacheLogo = {
+        uid: newForumLogo.uid,
+        css: newForumLogo.css,
+        cacheTime: (0,Utils_utils__WEBPACK_IMPORTED_MODULE_6__/* .getTimestamp */ .u3)() + Configs_config__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .Z.cacheTime,
+      };
+
+      logoCSS = newCacheLogo.css;
+      let cacheData = await GM_getValue(Configs_StorageName__WEBPACK_IMPORTED_MODULE_1__/* ["default"] */ .Z.Cache, {});
+      cacheData[cacheName] = newCacheLogo;
+      await GM_setValue(Configs_StorageName__WEBPACK_IMPORTED_MODULE_1__/* ["default"] */ .Z.Cache, cacheData);
+    }
+  }
+
+  (0,Visuals_universal__WEBPACK_IMPORTED_MODULE_5__/* .setLogo */ .E)(logoCSS, logoType);
+}
+
+
+
+
+/***/ }),
+
+/***/ "./src/callbacks/contestsParticipate.js":
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+
+// EXPORTS
+__webpack_require__.d(__webpack_exports__, {
+  p: () => (/* binding */ contestsAutoCloseHandler),
+  m: () => (/* binding */ participateByBtnCallback)
+});
+
+// EXTERNAL MODULE: ./src/utils/utils.js
+var utils = __webpack_require__("./src/utils/utils.js");
+// EXTERNAL MODULE: ./src/utils/logger.js
+var logger = __webpack_require__("./src/utils/logger.js");
+;// CONCATENATED MODULE: ./src/events/participate.js
+
+
+
+function onParticipateHandler(callback, sleepTime = 1000) {
+  return (0,utils/* waitForElm */.Nc)(".LztContest--Participate")
+    .then(el => {
+      logger/* default */.Z.debug("onParticipateHandler: Participate button finded");
+      el.addEventListener("click", async () => {
+        logger/* default */.Z.debug("onParticipateHandler: click contest button");
+        if (el.classList.contains("disabled")) {
+          logger/* default */.Z.debug(
+            "onParticipateHandler: clicked on disabled contest button",
+          );
+          return;
+        }
+
+        logger/* default */.Z.debug(
+          "onParticipateHandler: waiting for alreadyParticipate button",
+        );
+        const elem = await (0,utils/* waitForElm */.Nc)("span.alreadyParticipate");
+        if (!elem) {
+          logger/* default */.Z.debug("onParticipateHandler: no alreadyParticipate button");
+          return;
+        }
+
+        logger/* default */.Z.debug("onParticipateHandler: alreadyParticipate button finded");
+        await (0,utils/* sleep */._v)(sleepTime);
+        callback();
+      });
+    })
+    .catch(() => {
+      logger/* default */.Z.debug("onParticipateHandler: no contest button");
+    });
+}
+
+
+
+;// CONCATENATED MODULE: ./src/callbacks/contestsParticipate.js
+
+
+function contestsAutoCloseHandler(toggle) {
+  if (toggle) {
+    onParticipateHandler(() => {
+      window.close();
+    });
+  }
+}
+
+function participateByBtnCallback(event) {
+  console.log("participateOnBtn", event);
+  if (event.key === "Tab") {
+    event.preventDefault();
+    if (document.querySelector(".alreadyParticipate.hidden")) {
+      document
+        .querySelector(".LztContest--Participate:not(.disabled)")
+        ?.click();
+    }
+  }
+}
+
+
+
+
+/***/ }),
+
+/***/ "./src/callbacks/extensionStart.js":
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   P: () => (/* binding */ getThemeByID)
+/* harmony export */ });
+/* harmony import */ var API_lztupgrade_themeAPI__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("./src/api/lztupgrade/themeAPI.js");
+/* harmony import */ var Utils_logger__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("./src/utils/logger.js");
+
+
+
+async function getThemeByID(themeId) {
+  // Loading theme by ID
+  Utils_logger__WEBPACK_IMPORTED_MODULE_1__/* ["default"] */ .Z.debug(`onExtensionStart: Start loading theme with id ${themeId}`);
+  const availabledThemes = await API_lztupgrade_themeAPI__WEBPACK_IMPORTED_MODULE_0__/* ["default"] */ .Z.getThemes();
+  if (availabledThemes?.length) {
+    Utils_logger__WEBPACK_IMPORTED_MODULE_1__/* ["default"] */ .Z.debug("onExtensionStart: Themes arrray getted: ", availabledThemes);
+    const findedTheme = availabledThemes.find(
+      theme => theme.uid === themeId && theme.active === 1,
+    );
+    return findedTheme?.file;
+  }
+
+  Utils_logger__WEBPACK_IMPORTED_MODULE_1__/* ["default"] */ .Z.debug(`onExtensionStart: Not finded active theme`);
+  return false;
+}
+
+
+
+
+/***/ }),
+
+/***/ "./src/configs/ErrorLink.js":
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   Z: () => (/* binding */ ErrorLink)
+/* harmony export */ });
+class ErrorLink {
+  // Displayed on the modified page with an error
+  static TelegramChannel = new ErrorLink("https://t.me/lzt_upgrade").src;
+  static Github = new ErrorLink("https://github.com/lzt-upgrade/lzt-upgrade")
+    .src;
+
+  constructor(src) {
+    this.src = src;
+  }
+}
+
+
+/***/ }),
+
+/***/ "./src/configs/ForumNode.js":
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   Z: () => (/* binding */ ForumNode)
+/* harmony export */ });
+/* harmony import */ var Configs_base__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("./src/configs/base.js");
+
+
+class ForumNode extends Configs_base__WEBPACK_IMPORTED_MODULE_0__/* .BaseSelectorEnum */ .n {
+  static Contests = new ForumNode(".node766");
+}
+
+
+/***/ }),
+
+/***/ "./src/configs/NavbarBalloon.js":
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   Z: () => (/* binding */ NavbarBalloon)
+/* harmony export */ });
+/* harmony import */ var Configs_base__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("./src/configs/base.js");
+
+
+class NavbarBalloon extends Configs_base__WEBPACK_IMPORTED_MODULE_0__/* .BaseSelectorEnum */ .n {
+  static AlertCounter = new NavbarBalloon("#AlertsMenu_Counter");
+  static MessageCounter = new NavbarBalloon("#ConversationsMenu_Counter");
+}
+
+
+/***/ }),
+
+/***/ "./src/configs/NewStorageName.js":
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   Z: () => (/* binding */ NewStorageName)
+/* harmony export */ });
+/* harmony import */ var Configs_base__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("./src/configs/base.js");
+/* harmony import */ var Configs_config__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("./src/configs/config.js");
+
+
+
+class NewStorageName extends Configs_base__WEBPACK_IMPORTED_MODULE_1__/* .BaseEnum */ .e {
+  static UserGroup = new NewStorageName(
+    "LZTUserGroup",
+    Configs_config__WEBPACK_IMPORTED_MODULE_0__/* ["default"] */ .Z.defaultUserGroup,
+  );
+  static Cache = new NewStorageName("cache", {});
+  static Appear = new NewStorageName("appearData", {});
+  static Adblock = new NewStorageName("adblockData", {});
+  static ReportButtons = new NewStorageName("reportButtons", []);
+  static Contests = new NewStorageName("contestsData", {});
+  static Profile = new NewStorageName("profileData", {});
+  static ProfileBadges = new NewStorageName("profileBadges", []);
+  static Users = new NewStorageName("usersData", {});
+  static Settings = new NewStorageName("settingsData", {});
+
+  constructor(name, value) {
+    super(name);
+    this.value = value;
+  }
+
+  static generateConfigStruct() {
+    const configKeys = [
+      this.Appear,
+      this.Adblock,
+      this.ReportButtons,
+      this.Contests,
+      this.Profile,
+      this.ProfileBadges,
+      this.Users,
+      this.Settings,
+    ];
+
+    const data = [];
+
+    for (const configKey of configKeys) {
+      data.push({
+        original: configKey,
+        name: configKey.name.split("Data")[0],
+        default: configKey.value,
+      });
+    }
+
+    return data;
+  }
+}
+
+
+/***/ }),
+
+/***/ "./src/configs/SiteType.js":
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   Z: () => (/* binding */ SiteType)
+/* harmony export */ });
+/* harmony import */ var Configs_base__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("./src/configs/base.js");
+
+
+class SiteType extends Configs_base__WEBPACK_IMPORTED_MODULE_0__/* .BaseEnum */ .e {
+  static Forum = new SiteType("Forum").name;
+  static Market = new SiteType("Market").name;
+}
+
+
+/***/ }),
+
+/***/ "./src/configs/StorageName.js":
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   Z: () => (/* binding */ StorageName)
+/* harmony export */ });
+/* harmony import */ var Configs_base__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("./src/configs/base.js");
+
+
+class StorageName extends Configs_base__WEBPACK_IMPORTED_MODULE_0__/* .BaseEnum */ .e {
+  static UserGroup = new StorageName("LZTUserGroup").name;
+  static Cache = new StorageName("cache").name;
+  static Appear = new StorageName("appearData").name;
+  static Contests = new StorageName("contestsData").name;
+  static Profile = new StorageName("profileData").name;
+  static ProfileBadges = new StorageName("profileBadges").name;
+  static Users = new StorageName("usersData").name;
+  static Settings = new StorageName("settingsData").name;
+}
+
+
+/***/ }),
+
+/***/ "./src/configs/base.js":
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   e: () => (/* binding */ BaseEnum),
+/* harmony export */   n: () => (/* binding */ BaseSelectorEnum)
+/* harmony export */ });
+class BaseSelectorEnum {
+  constructor(selector) {
+    this.selector = selector;
+  }
+
+  getName() {
+    // remove selector designation
+    return this.selector.replace(".", "").replace("#", "");
+  }
+}
+
+class BaseEnum {
+  constructor(name) {
+    this.name = name;
+  }
+}
+
+
+
+
+/***/ }),
+
+/***/ "./src/configs/config.js":
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   Z: () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+const config = () => {
+  return {
+    extName:  false ? 0 : "LZT Upgrade UNRELEASED",
+    cacheTime: 86_400 * 3, // 3 day
+    defaultUserGroup: "style2",
+  };
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (config());
+
+
+/***/ }),
+
+/***/ "./src/events/categories.js":
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   Z: () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var Utils_utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("./src/utils/utils.js");
+
+
+function onClickCategory(nodeSelector, callback) {
+  const nodeEls = document.querySelectorAll(
+    `li.node${nodeSelector}.forum.level-n`,
+  );
+  if (nodeEls.length) {
+    for (const nodeEl of nodeEls) {
+      nodeEl.addEventListener("click", async () => {
+        await (0,Utils_utils__WEBPACK_IMPORTED_MODULE_0__/* .sleep */ ._v)(750);
+        const el = await (0,Utils_utils__WEBPACK_IMPORTED_MODULE_0__/* .waitForElm */ .Nc)("div.pageNavLinkGroup");
+        if (el) callback();
+      });
+    }
+  }
+}
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (onClickCategory);
+
+
+/***/ }),
+
+/***/ "./src/index.js":
+/***/ ((__webpack_module__, __unused_webpack___webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.a(__webpack_module__, async (__webpack_handle_async_dependencies__, __webpack_async_result__) => { try {
+/* harmony import */ var API_lztupgrade_themeAPI__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("./src/api/lztupgrade/themeAPI.js");
+/* harmony import */ var Configs_config__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("./src/configs/config.js");
+/* harmony import */ var Configs_StorageName__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__("./src/configs/StorageName.js");
+/* harmony import */ var Callbacks_contestsParticipate__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__("./src/callbacks/contestsParticipate.js");
+/* harmony import */ var Callbacks_extensionStart__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__("./src/callbacks/extensionStart.js");
+/* harmony import */ var UI_components_buttons_menuButton__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__("./src/ui/components/buttons/menuButton.js");
+/* harmony import */ var UI_components_buttons_errorPageButton__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__("./src/ui/components/buttons/errorPageButton.js");
+/* harmony import */ var Events_categories__WEBPACK_IMPORTED_MODULE_30__ = __webpack_require__("./src/events/categories.js");
+/* harmony import */ var Utils_logger__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__("./src/utils/logger.js");
+/* harmony import */ var Utils_registers__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__("./src/utils/registers.js");
+/* harmony import */ var Utils_contests__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__("./src/utils/contests.js");
+/* harmony import */ var Utils_users__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__("./src/utils/users.js");
+/* harmony import */ var Xenforo_bypass__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__("./src/xenforo/bypass.js");
+/* harmony import */ var Visuals_users__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__("./src/visuals/users.js");
+/* harmony import */ var Visuals_universal__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__("./src/visuals/universal.js");
+/* harmony import */ var Visuals_profile__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__("./src/visuals/profile.js");
+/* harmony import */ var Utils_checkers__WEBPACK_IMPORTED_MODULE_31__ = __webpack_require__("./src/utils/checkers.js");
+/* harmony import */ var Configs_SiteType__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__("./src/configs/SiteType.js");
+/* harmony import */ var Cache_logo__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__("./src/cache/logo.js");
+/* harmony import */ var Visuals_navbar__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__("./src/visuals/navbar.js");
+/* harmony import */ var Configs_ForumNode__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__("./src/configs/ForumNode.js");
+/* harmony import */ var Styles_errorPage_scss__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__("./src/styles/errorPage.scss");
+/* harmony import */ var Styles_universal_scss__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__("./src/styles/universal.scss");
+/* harmony import */ var Styles_xenforo_scss__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__("./src/styles/xenforo.scss");
+/* harmony import */ var Configs_NavbarBalloon__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__("./src/configs/NavbarBalloon.js");
+/* harmony import */ var Configs_ErrorLink__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__("./src/configs/ErrorLink.js");
+/* harmony import */ var Utils_gmWrapper__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__("./src/utils/gmWrapper.js");
+/* harmony import */ var Configs_NewStorageName__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__("./src/configs/NewStorageName.js");
+/* harmony import */ var Utils_threads__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__("./src/utils/threads.js");
+/* harmony import */ var Utils_utils__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__("./src/utils/utils.js");
+/* harmony import */ var Visuals_threads__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__("./src/visuals/threads.js");
+/* harmony import */ var Visuals_notify__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__("./src/visuals/notify.js");
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// import 'Styles/main.css';
+
+
+
+
+
+
+
+
+
+
+
+
+
+async function initTheme() {
+  // exec time: 35ms
+  console.time("init-theme");
+
+  console.timeLog("init-theme", "getting appearData...");
+  const appearData = await GM_getValue(Configs_StorageName__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .Z.Appear, {});
+  console.timeLog("init-theme", "loading name from cache...");
+  let themeName = await GM_getValue(Configs_StorageName__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .Z.Cache, {}).themeName;
+  console.timeLog("init-theme", "Check themeName valid...");
+  console.log(themeName, appearData.selectedTheme);
+  if (appearData.selectedTheme === 0) {
+    console.timeLog("init-theme", "Skip theme");
+    console.timeEnd("init-theme");
+    return;
+  }
+
+  if (!themeName && appearData.selectedTheme > 0) {
+    Utils_logger__WEBPACK_IMPORTED_MODULE_6__/* ["default"] */ .Z.debug(`Requesting theme with id ${appearData.selectedTheme}...`);
+    themeName = await (0,Callbacks_extensionStart__WEBPACK_IMPORTED_MODULE_4__/* .getThemeByID */ .P)(appearData.selectedTheme).catch(err =>
+      console.error(err),
+    );
+    let cacheData = await GM_getValue(Configs_StorageName__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .Z.Cache, {});
+    cacheData.themeName = themeName;
+    await GM_setValue(Configs_StorageName__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .Z.Cache, cacheData);
+  }
+  console.timeLog("init-theme", "Loading theme...");
+  await API_lztupgrade_themeAPI__WEBPACK_IMPORTED_MODULE_0__/* ["default"] */ .Z.smartLoadTheme(themeName);
+  console.timeEnd("init-theme");
+}
+
+async function main() {
+  let startTiming = (0,Utils_utils__WEBPACK_IMPORTED_MODULE_25__/* .getTimestamp */ .u3)();
+  let loadingInterval;
+  console.time("lztup-start");
+  console.timeLog("lztup-start", "Waiting body...");
+  let LOAD_STATUS = false;
+
+  if (GM_info?.script?.version)
+    Utils_logger__WEBPACK_IMPORTED_MODULE_6__/* ["default"] */ .Z.log(`${Configs_config__WEBPACK_IMPORTED_MODULE_1__/* ["default"] */ .Z.extName} version: ${GM_info?.script?.version}`);
+
+  const appearData = await GM_getValue(Configs_StorageName__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .Z.Appear, {});
+  async function startExt() {
+    if (LOAD_STATUS) {
+      return;
+    }
+
+    LOAD_STATUS = true;
+    console.timeLog("lztup-start", "Body loaded successfully");
+    if (
+      /^(Site\sMaintenance|429\sToo\sMany\sRequests|504\sGateway\sTime-out|Error\s502)$/.test(
+        document.head.querySelector("title").innerText,
+      )
+    ) {
+      if (!appearData.newErrorPage) {
+        console.log(appearData.newErrorPage);
+        return;
+      }
+
+      // custom error page
+      document.body.classList.add("LZTUpErrorPage");
+      let container = document.querySelector("article > div");
+      Utils_logger__WEBPACK_IMPORTED_MODULE_6__/* ["default"] */ .Z.debug(container);
+      if (!container) {
+        container = document.querySelector("center");
+        Utils_logger__WEBPACK_IMPORTED_MODULE_6__/* ["default"] */ .Z.debug("updated container", container);
+      }
+      const duckRain = document.createElement("img");
+      duckRain.src = "https://i.imgur.com/iVmKDr7.gif";
+      duckRain.alt = "Duck rain";
+      container.appendChild(duckRain);
+
+      if (appearData.disableSelfAdOnNewErrorPage) {
+        return;
+      }
+
+      // self ad don't delete me please :(
+      const selfAdBlock = document.createElement("div");
+      selfAdBlock.classList.add("LZTUpErrorPageSelfAd");
+      const selfAdText = document.createElement("p");
+      selfAdText.innerText =
+        "Пока форум недоступен, рекомендуем ознакомиться с нашими соц. сетями";
+      selfAdText.classList.add("selfAd");
+
+      const selfAdButtonBlock = document.createElement("div");
+      selfAdButtonBlock.classList.add("buttons");
+
+      const selfAdTelegram = new UI_components_buttons_errorPageButton__WEBPACK_IMPORTED_MODULE_26__/* ["default"] */ .Z(
+        `
+          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24">
+            <path d="M9.78 18.65l.28-4.23l7.68-6.92c.34-.31-.07-.46-.52-.19L7.74 13.3L3.64 12c-.88-.25-.89-.86.2-1.3l15.97-6.16c.73-.33 1.43.18 1.15 1.3l-2.72 12.81c-.19.91-.74 1.13-1.5.71L12.6 16.3l-1.99 1.93c-.23.23-.42.42-.83.42z"/>
+          </svg>
+          Telegram
+        `,
+        Configs_ErrorLink__WEBPACK_IMPORTED_MODULE_20__/* ["default"] */ .Z.TelegramChannel,
+      ).createElement();
+
+      const selfAdGithub = new UI_components_buttons_errorPageButton__WEBPACK_IMPORTED_MODULE_26__/* ["default"] */ .Z(
+        `
+          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24">
+            <path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5c.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34c-.46-1.16-1.11-1.47-1.11-1.47c-.91-.62.07-.6.07-.6c1 .07 1.53 1.03 1.53 1.03c.87 1.52 2.34 1.07 2.91.83c.09-.65.35-1.09.63-1.34c-2.22-.25-4.55-1.11-4.55-4.92c0-1.11.38-2 1.03-2.71c-.1-.25-.45-1.29.1-2.64c0 0 .84-.27 2.75 1.02c.79-.22 1.65-.33 2.5-.33c.85 0 1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02c.55 1.35.2 2.39.1 2.64c.65.71 1.03 1.6 1.03 2.71c0 3.82-2.34 4.66-4.57 4.91c.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2Z"/>
+          </svg>
+          Github
+        `,
+        Configs_ErrorLink__WEBPACK_IMPORTED_MODULE_20__/* ["default"] */ .Z.Github,
+      ).createElement();
+
+      selfAdButtonBlock.appendChild(selfAdTelegram);
+      selfAdButtonBlock.appendChild(selfAdGithub);
+
+      selfAdBlock.appendChild(selfAdText);
+      selfAdBlock.appendChild(selfAdButtonBlock);
+      container.appendChild(selfAdBlock);
+
+      return;
+    }
+
+    console.timeLog("lztup-start", "GET DEBUG INFO");
+    const username = (0,Utils_users__WEBPACK_IMPORTED_MODULE_8__/* .getUsername */ .Ms)("me");
+    const userid = (0,Utils_users__WEBPACK_IMPORTED_MODULE_8__/* .getUserId */ .n5)("me");
+    const userGroup = (0,Utils_users__WEBPACK_IMPORTED_MODULE_8__/* .getUserGroup */ .xc)("me");
+    const userAvatar = $("img.navTab--visitorAvatar").attr("src");
+
+    Utils_logger__WEBPACK_IMPORTED_MODULE_6__/* ["default"] */ .Z.debug("┏━━━━━━━━ DEBUG INFO ━━━━━━━━━━┓");
+    Utils_logger__WEBPACK_IMPORTED_MODULE_6__/* ["default"] */ .Z.debug(`Script version: ${GM_info?.script?.version}`);
+    Utils_logger__WEBPACK_IMPORTED_MODULE_6__/* ["default"] */ .Z.debug(`Account username: ${username}`);
+    Utils_logger__WEBPACK_IMPORTED_MODULE_6__/* ["default"] */ .Z.debug(`Account userid: ${userid}`);
+    Utils_logger__WEBPACK_IMPORTED_MODULE_6__/* ["default"] */ .Z.debug(`Account userGroup: ${userGroup}`);
+    Utils_logger__WEBPACK_IMPORTED_MODULE_6__/* ["default"] */ .Z.debug(`Account userAvatar: ${userAvatar}`);
+    Utils_logger__WEBPACK_IMPORTED_MODULE_6__/* ["default"] */ .Z.debug("┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┚");
+
+    console.timeLog("lztup-start", "Register menu button");
+    (0,Utils_registers__WEBPACK_IMPORTED_MODULE_27__/* .registerMenuButton */ .e7)(UI_components_buttons_menuButton__WEBPACK_IMPORTED_MODULE_5__/* ["default"] */ .Z);
+
+    console.timeLog("lztup-start", "Add user group to cache");
+    await GM_setValue(Configs_StorageName__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .Z.UserGroup, userGroup);
+
+    const adblockData = await Utils_gmWrapper__WEBPACK_IMPORTED_MODULE_21__/* ["default"] */ .Z.getValue(Configs_NewStorageName__WEBPACK_IMPORTED_MODULE_22__/* ["default"] */ .Z.Adblock);
+    adblockData.hideAlertAds ? (0,Visuals_notify__WEBPACK_IMPORTED_MODULE_28__/* .hideAdsFromNotify */ .i)() : null;
+    adblockData.hideThreadListAds ? (0,Visuals_threads__WEBPACK_IMPORTED_MODULE_24__/* .hideThreadListAds */ .cX)() : null;
+
+    // * APPEAR SECTION
+    const dbReportButtonsData = await Utils_gmWrapper__WEBPACK_IMPORTED_MODULE_21__/* ["default"] */ .Z.getValue(
+      Configs_NewStorageName__WEBPACK_IMPORTED_MODULE_22__/* ["default"] */ .Z.ReportButtons,
+    );
+    console.timeLog("lztup-start", "forumLogo");
+    appearData.forumLogo > 0
+      ? await (0,Cache_logo__WEBPACK_IMPORTED_MODULE_14__/* .setLogoFromCache */ .U)(Configs_SiteType__WEBPACK_IMPORTED_MODULE_13__/* ["default"] */ .Z.Forum, appearData.forumLogo)
+      : null;
+    console.timeLog("lztup-start", "marketLogo");
+    appearData.marketLogo > 0
+      ? await (0,Cache_logo__WEBPACK_IMPORTED_MODULE_14__/* .setLogoFromCache */ .U)(Configs_SiteType__WEBPACK_IMPORTED_MODULE_13__/* ["default"] */ .Z.Market, appearData.marketLogo)
+      : null;
+
+    console.timeLog("lztup-start", "Check Profile badge style");
+    if (dbReportButtonsData.length) {
+      (0,Visuals_threads__WEBPACK_IMPORTED_MODULE_24__/* .updateReportButtons */ .Lp)(dbReportButtonsData);
+    }
+
+    console.timeLog("lztup-start", "hideAlertCounter");
+    appearData.hideAlertCounter
+      ? (0,Visuals_navbar__WEBPACK_IMPORTED_MODULE_29__/* .hideBalloonById */ .R)(Configs_NavbarBalloon__WEBPACK_IMPORTED_MODULE_19__/* ["default"] */ .Z.AlertCounter.getName(), true)
+      : null;
+    console.timeLog("lztup-start", "hideMessageCounter");
+    appearData.hideMessageCounter
+      ? (0,Visuals_navbar__WEBPACK_IMPORTED_MODULE_29__/* .hideBalloonById */ .R)(Configs_NavbarBalloon__WEBPACK_IMPORTED_MODULE_19__/* ["default"] */ .Z.MessageCounter.getName(), true)
+      : null;
+    console.timeLog("lztup-start", "hideUnreadArticlesStatus");
+    appearData.hideUnreadArticlesStatus ? (0,Visuals_navbar__WEBPACK_IMPORTED_MODULE_29__/* .hideUnreadArticlesStatus */ .p)(true) : null;
+    appearData.summarizeThreads ? await (0,Utils_threads__WEBPACK_IMPORTED_MODULE_23__/* .summarizeThreadBlock */ .iY)(true) : null;
+
+    // * PROFILE SECTION
+    console.timeLog("lztup-start", "Loading Profile DB...");
+    const dbProfileData = await GM_getValue(Configs_StorageName__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .Z.Profile, {});
+    const dbBadgeData = await GM_getValue(Configs_StorageName__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .Z.ProfileBadges, []);
+    console.timeLog("lztup-start", "Check Profile User style");
+    if (dbProfileData.usernameStyle) {
+      (0,Visuals_users__WEBPACK_IMPORTED_MODULE_10__/* .updateUserStyle */ .bR)(dbProfileData.usernameStyle);
+    }
+
+    console.timeLog("lztup-start", "Check Profile badge style");
+    if (dbBadgeData.length) {
+      (0,Visuals_users__WEBPACK_IMPORTED_MODULE_10__/* .updateUserBadges */ .Az)(dbBadgeData);
+    }
+
+    console.timeLog("lztup-start", "Reg big observer");
+    // TODO: Попробовать переписать на XenForo.activate hook
+    (0,Utils_registers__WEBPACK_IMPORTED_MODULE_27__/* .registerObserver */ .O0)(async mutation => {
+      // Logger.debug(mutation);
+      if (
+        mutation.target.classList.contains("messageList") ||
+        mutation.target.classList.contains("messageSimpleList") ||
+        mutation.target.classList.contains("messageResponse") ||
+        mutation.target.classList.contains("CommentPostList") ||
+        mutation.target.classList.contains("discussionList") ||
+        mutation.target.classList.contains("chat2-messages") ||
+        mutation.target.classList.contains("fe-ac-user") ||
+        mutation.target.classList.contains("latestThreads") ||
+        mutation.target.classList.contains("liveAlerts") ||
+        mutation.target.parentElement?.classList.contains(
+          "conversationMessages",
+        ) ||
+        mutation.nextSibling?.classList?.contains("modal") ||
+        mutation.previousSibling?.classList?.contains("Alert") ||
+        mutation.previousSibling?.nextSibling?.classList?.contains("Alert") ||
+        mutation.removedNodes?.[0]?.id === "AjaxProgress" ||
+        mutation.target.id === "AlertsDestinationWrapper" ||
+        mutation.target.id === "StackAlerts"
+      ) {
+        const updatedProfileData = await Utils_gmWrapper__WEBPACK_IMPORTED_MODULE_21__/* ["default"] */ .Z.getValue(Configs_NewStorageName__WEBPACK_IMPORTED_MODULE_22__/* ["default"] */ .Z.Profile);
+        const updatedBadgeData = await Utils_gmWrapper__WEBPACK_IMPORTED_MODULE_21__/* ["default"] */ .Z.getValue(
+          Configs_NewStorageName__WEBPACK_IMPORTED_MODULE_22__/* ["default"] */ .Z.ProfileBadges,
+        );
+        const updatedReportButtonsData = await Utils_gmWrapper__WEBPACK_IMPORTED_MODULE_21__/* ["default"] */ .Z.getValue(
+          Configs_NewStorageName__WEBPACK_IMPORTED_MODULE_22__/* ["default"] */ .Z.ReportButtons,
+        );
+        if (updatedProfileData.usernameStyle) {
+          (0,Visuals_users__WEBPACK_IMPORTED_MODULE_10__/* .updateUserStyle */ .bR)(updatedProfileData.usernameStyle);
+        }
+
+        if (updatedBadgeData) {
+          (0,Visuals_users__WEBPACK_IMPORTED_MODULE_10__/* .updateUserBadges */ .Az)(updatedBadgeData);
+        }
+
+        if (updatedReportButtonsData) {
+          (0,Visuals_threads__WEBPACK_IMPORTED_MODULE_24__/* .updateReportButtons */ .Lp)(updatedReportButtonsData);
+        }
+      }
+    });
+
+    console.timeLog("lztup-start", "Check Profile banner");
+    if (dbProfileData.bannerStyle && dbProfileData.bannerText) {
+      (0,Visuals_users__WEBPACK_IMPORTED_MODULE_10__/* .updateUserBanner */ .$)(dbProfileData.bannerStyle, dbProfileData.bannerText);
+    }
+
+    console.timeLog("lztup-start", "Check Profile bg");
+    if (dbProfileData.backgroundImage) {
+      // update background image of page
+      if (dbProfileData.backgroundImageEverywhere) {
+        (0,Visuals_universal__WEBPACK_IMPORTED_MODULE_11__/* .addBackgroundImage */ .j)(dbProfileData.backgroundImage);
+      } else {
+        (0,Visuals_profile__WEBPACK_IMPORTED_MODULE_12__/* .addBackgroundImageInProfile */ .m)(dbProfileData.backgroundImage);
+      }
+    }
+    console.timeLog("lztup-start", "Profile bg loaded");
+
+    console.timeLog("lztup-start", "Loading Contests DB...");
+    const dbContestsData = await GM_getValue(Configs_StorageName__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .Z.Contests, {});
+
+    console.timeLog("lztup-start", "Add reg 10 btn");
+    dbContestsData.openTenContestsBtn ? (0,Utils_contests__WEBPACK_IMPORTED_MODULE_7__/* .regOpenContestsBtn */ .uu)() : null;
+
+    console.timeLog("lztup-start", "Add onclick contests category");
+    (0,Events_categories__WEBPACK_IMPORTED_MODULE_30__/* ["default"] */ .Z)(Configs_ForumNode__WEBPACK_IMPORTED_MODULE_15__/* ["default"] */ .Z.Contests.selector, async () => {
+      const newContestsData = await GM_getValue(Configs_StorageName__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .Z.Contests, {});
+      newContestsData.openTenContestsBtn ? (0,Utils_contests__WEBPACK_IMPORTED_MODULE_7__/* .regOpenContestsBtn */ .uu)() : null;
+    });
+
+    console.timeLog("lztup-start", "hideTagsInThread");
+    dbContestsData.hideTagsInThread ? (0,Utils_contests__WEBPACK_IMPORTED_MODULE_7__/* .contestsTagsVisibility */ .s$)(true) : null;
+    console.timeLog("lztup-start", "autoCloseOnParticipate");
+    dbContestsData.autoCloseOnParticipate
+      ? (0,Callbacks_contestsParticipate__WEBPACK_IMPORTED_MODULE_3__/* .contestsAutoCloseHandler */ .p)(true)
+      : null;
+    console.timeLog("lztup-start", "infoTopInThread");
+    dbContestsData.infoTopInThread ? (0,Utils_contests__WEBPACK_IMPORTED_MODULE_7__/* .contestThreadBlockMove */ .Q6)(true) : null;
+    console.timeLog("lztup-start", "removeContent");
+    dbContestsData.removeContent ? (0,Utils_contests__WEBPACK_IMPORTED_MODULE_7__/* .contestsHideContent */ .Q9)(true) : null;
+    console.timeLog("lztup-start", "removePoll");
+    dbContestsData.removePoll ? (0,Utils_contests__WEBPACK_IMPORTED_MODULE_7__/* .contestsHidePoll */ .Rf)(true) : null;
+    console.timeLog("lztup-start", "updateCaptchaButton");
+    dbContestsData.updateCaptchaButton ? (0,Utils_contests__WEBPACK_IMPORTED_MODULE_7__/* .contestsUpdateCapctha */ .g4)() : null;
+    console.timeLog("lztup-start", "autoFixCaptcha");
+    dbContestsData.autoFixCaptcha ? (0,Utils_contests__WEBPACK_IMPORTED_MODULE_7__/* .contestsAutoFixCaptcha */ .gu)() : null;
+    console.timeLog("lztup-start", "participateByKey");
+    dbContestsData.participateByKey ? (0,Utils_contests__WEBPACK_IMPORTED_MODULE_7__/* .contestsParticipateByBtn */ .sO)(true) : null;
+
+    console.timeLog("lztup-start", "Loading Users DB...");
+    const dbUsersData = await GM_getValue(Configs_StorageName__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .Z.Users, {});
+
+    console.timeLog("lztup-start", "showUserIdInMemberCard");
+    if (dbUsersData.showUserIdInMemberCard) {
+      (0,Utils_users__WEBPACK_IMPORTED_MODULE_8__/* .addUserIdToMemberCard */ .SL)();
+      (0,Utils_registers__WEBPACK_IMPORTED_MODULE_27__/* .registerObserver */ .O0)(mutation => {
+        if (mutation.nextSibling) {
+          if (mutation.nextSibling?.classList?.contains("modal")) {
+            (0,Utils_users__WEBPACK_IMPORTED_MODULE_8__/* .addUserIdToMemberCard */ .SL)();
+          }
+        }
+      });
+    }
+    console.timeLog("lztup-start", "disableShareTyping");
+    dbUsersData.disableShareTyping ? (0,Xenforo_bypass__WEBPACK_IMPORTED_MODULE_9__/* .bypassShareTyping */ .$)() : null;
+    if ((0,Utils_checkers__WEBPACK_IMPORTED_MODULE_31__/* .isProfilePage */ .cD)()) {
+      console.timeLog("lztup-start", "showUserIdInProfile");
+      dbUsersData.showUserIdInProfile ? (0,Utils_users__WEBPACK_IMPORTED_MODULE_8__/* .addUserIdToProfile */ .Rj)() : null;
+      console.timeLog("lztup-start", "showFullRegInProfile");
+      dbUsersData.showFullRegInProfile ? (0,Utils_users__WEBPACK_IMPORTED_MODULE_8__/* .showFullRegDateInProfile */ .M1)(true) : null;
+    }
+
+    console.timeEnd("lztup-start");
+  }
+
+  document.addEventListener("DOMContentLoaded", startExt);
+
+  // all this for fix rare loading bugs
+  document.addEventListener("load", startExt);
+
+  if (document.readyState === "complete") {
+    await startExt();
+  }
+
+  loadingInterval = setInterval(async () => {
+    if (unsafeWindow.XenForo?._pageLoadTime) {
+      await startExt();
+      clearInterval(loadingInterval);
+    } else if (startTiming + 20 < (0,Utils_utils__WEBPACK_IMPORTED_MODULE_25__/* .getTimestamp */ .u3)()) {
+      clearInterval(loadingInterval);
+    }
+  }, 1000);
+}
+
+try {
+  await Promise.allSettled([initTheme(), main()]);
+} catch (e) {
+  console.error(e);
+}
+
+__webpack_async_result__();
+} catch(e) { __webpack_async_result__(e); } }, 1);
+
+/***/ }),
+
+/***/ "./src/ui/avatarUserBadges.js":
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+
+// EXPORTS
+__webpack_require__.d(__webpack_exports__, {
+  Z: () => (/* binding */ avatarUserBadges)
+});
+
+// EXTERNAL MODULE: ./src/utils/purify.js
+var purify = __webpack_require__("./src/utils/purify.js");
+// EXTERNAL MODULE: ./src/xenforo/tooltips.js
+var tooltips = __webpack_require__("./src/xenforo/tooltips.js");
+;// CONCATENATED MODULE: ./src/utils/svg.js
+function setSvgAttr(el, type, color) {
+  return el.setAttribute(type, color);
+}
+
+function changeSVGColor(el, type, color, replaceAll = false) {
+  if (!["stroke", "fill"].includes(type)) {
+    return;
+  }
+
+  if (!replaceAll) {
+    return setSvgAttr(el, type, color);
+  }
+
+  setSvgAttr(el, type, color);
+  const elements = el.querySelectorAll("*");
+  for (const element of elements) {
+    setSvgAttr(element, type, color);
+  }
+}
+
+
+
+// EXTERNAL MODULE: ./src/utils/logger.js
+var logger = __webpack_require__("./src/utils/logger.js");
+// EXTERNAL MODULE: ./src/utils/utils.js
+var utils = __webpack_require__("./src/utils/utils.js");
+;// CONCATENATED MODULE: ./src/ui/avatarUserBadges.js
+
+
+
+
+
+
+class AvatarUserBadges {
+  /**
+   *
+   *  @constructor
+   *  @param {object} badges - array of badges. For more information about badge struct check ui/menu/items/profile.js -> DefaultIcon
+   *  @param {boolean} isPreview - add preview id to badges
+   */
+
+  constructor(badges, isPreview = false) {
+    this.previewId = "LZTUpPreviewBadge";
+    this.customBadgeId = "LZTUpUserBadge";
+    this.badgeQuery = isPreview
+      ? `#${this.previewId}`
+      : `#${this.customBadgeId}`;
+    this.badges = badges;
+    this.isPreview = isPreview;
+  }
+
+  createElement() {
+    const avatarUserBadges = document.createElement("div");
+    avatarUserBadges.classList.add("avatarUserBadges");
+
+    for (let i = 0; i < this.badges.length; i++) {
+      const avatarUserBadge = document.createElement("span");
+      avatarUserBadge.classList.add("avatarUserBadge", "Tooltip");
+      avatarUserBadge.tabIndex = 0;
+      avatarUserBadge.title = unsafeWindow.XenForo.htmlspecialchars(
+        this.badges[i].text,
+      );
+
+      if (this.isPreview) {
+        avatarUserBadge.id = this.previewId;
+      } else {
+        avatarUserBadge.id = this.customBadgeId;
+      }
+
+      if (this.badges.length > 1) {
+        avatarUserBadge.classList.add(`avatarUserBadge--${i + 1}`);
+      }
+
+      avatarUserBadge.dataset.position = i + 1;
+      if (this.badges.length > 1) {
+        avatarUserBadge.dataset.multiple = true;
+      }
+
+      avatarUserBadges.appendChild(avatarUserBadge);
+    }
+
+    return avatarUserBadges;
+  }
+
+  findBadgeElement(selector, position) {
+    return document.querySelector(selector + `[data-position="${position}"]`);
+  }
+
+  findAllBadgeElement(selector, position) {
+    return document.querySelectorAll(
+      selector + `[data-position="${position}"]`,
+    );
+  }
+
+  applyBadge(el, icon) {
+    if (icon?.length > 1 && icon?.startsWith(".")) {
+      icon = icon.replace(".", "");
+      return el.classList.add("userBanner", icon);
+    } else if (icon.startsWith("<svg") && icon.endsWith("svg>")) {
+      el.innerHTML = (0,purify/* clearSVG */.bw)(icon);
+      return el.classList.add("badgeDefaultBackground");
+    } else {
+      return el.classList.add("uniq_default", "badgeDefaultBackground");
+    }
+  }
+
+  updateIcon(badgeEl, badge) {
+    if (!badgeEl) {
+      return;
+    }
+
+    (0,utils/* removeStylesByEl */.Bw)(badgeEl);
+
+    badgeEl.classList.add("avatarUserBadge", "Tooltip");
+
+    // set position of badge
+    if (badgeEl.dataset.multiple === "true") {
+      badgeEl.classList.add(`avatarUserBadge--${badge.position}`);
+    }
+
+    return this.applyBadge(badgeEl, badge.svg);
+  }
+
+  updateText(badgeEl, badge) {
+    if (!badgeEl) {
+      return;
+    }
+
+    if (badgeEl._tippy) {
+      return (0,tooltips/* setTooltip */.w)(
+        badgeEl,
+        unsafeWindow.XenForo.htmlspecialchars(badge.text),
+      );
+    }
+
+    // return unsafeWindow.XenForo.Tooltip($(badgeEl)); // ! "$"" needed in XenForo.Tooltip
+  }
+
+  updateColor(badgeEl, badge) {
+    if (!badgeEl) {
+      return;
+    }
+
+    const svg = badgeEl.querySelector("svg");
+    if (!svg) {
+      return;
+    }
+
+    changeSVGColor(svg, "stroke", badge.strokeColor, true);
+    changeSVGColor(svg, "fill", badge.fillColor, true);
+  }
+
+  updateStyle(badgeEl, badge) {
+    if (!badgeEl || !badge.style || badge.style?.startsWith(".")) {
+      return;
+    }
+
+    return (badgeEl.style = badge.style);
+  }
+
+  updateBadge(badge) {
+    const badgeElements = this.findAllBadgeElement(
+      this.badgeQuery,
+      badge.position,
+    );
+    if (!badgeElements.length) {
+      return;
+    }
+
+    for (const badgeEl of badgeElements) {
+      this.updateIcon(badgeEl, badge);
+      this.updateText(badgeEl, badge);
+      this.updateColor(badgeEl, badge);
+      this.updateStyle(badgeEl, badge);
+    }
+  }
+
+  updateBadges() {
+    logger/* default */.Z.debug("updateBadges");
+    for (const badge of this.badges) {
+      if (typeof badge !== "object") {
+        logger/* default */.Z.error("Invalid badge in array");
+        continue;
+      }
+
+      logger/* default */.Z.debug(badge);
+      this.updateBadge(badge);
+    }
+  }
+}
+
+/* harmony default export */ const avatarUserBadges = (AvatarUserBadges);
+
+
+/***/ }),
+
+/***/ "./src/ui/components/button.js":
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   Z: () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var UI_components_icon_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("./src/ui/components/icon.js");
+
+
+class Button {
+  /**
+   *
+   *  @constructor
+   *  @param {string} buttonText - text of the button
+   *  @param {string} className - class name of the button
+   *  @param {string} iconClassName - class name of the icon (if undefined icon is not added)
+   */
+
+  constructor(buttonText, className = "button", iconClassName = undefined) {
+    this.buttonText = buttonText;
+    this.className = className;
+    this.iconClassName = iconClassName;
+  }
+
+  createElement(callback = () => {}) {
+    const button = document.createElement("button");
+    button.className = this.className;
+    button.innerText = this.buttonText;
+
+    if (this.iconClassName) {
+      const icon = new UI_components_icon_js__WEBPACK_IMPORTED_MODULE_0__/* ["default"] */ .Z(this.iconClassName).createElement();
+      icon.id = "";
+      button.appendChild(icon);
+    }
+
+    button.onclick = callback;
+
+    return button;
+  }
+}
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Button);
+
+
+/***/ }),
+
+/***/ "./src/ui/components/buttons/errorPageButton.js":
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   Z: () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+class ErrorPageButton {
+  /**
+   *
+   *  @constructor
+   *  @param {string} buttonContent - content of the button
+   *  @param {string} buttonHref - link of the button (https://...)
+   *  @param {string} className - class name of the button
+   */
+
+  constructor(buttonContent, buttonHref = "#", className = "button") {
+    this.buttonContent = buttonContent;
+    this.buttonHref = buttonHref;
+    this.className = className;
+  }
+
+  createElement() {
+    const button = document.createElement("a");
+    button.href = this.buttonHref;
+    button.className = this.className;
+    button.innerHTML = this.buttonContent;
+
+    return button;
+  }
+}
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ErrorPageButton);
+
+
+/***/ }),
+
+/***/ "./src/ui/components/buttons/menuButton.js":
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+
+// EXPORTS
+__webpack_require__.d(__webpack_exports__, {
+  Z: () => (/* binding */ buttons_menuButton)
+});
+
+// EXTERNAL MODULE: ./src/utils/registers.js
+var registers = __webpack_require__("./src/utils/registers.js");
+// EXTERNAL MODULE: ./src/ui/components/icon.js
+var components_icon = __webpack_require__("./src/ui/components/icon.js");
+// EXTERNAL MODULE: ./src/utils/purify.js
+var purify = __webpack_require__("./src/utils/purify.js");
+;// CONCATENATED MODULE: ./src/ui/components/menu/section.js
+
+
+
+class SectionDirection {
+  static Row = new SectionDirection("row");
+  static Column = new SectionDirection("column");
+
+  constructor(name) {
+    this.name = name;
+  }
+}
+
+class SectionText {
+  /**
+   *
+   *  @constructor
+   *  @param {string} text - text of the heading (html allowed!!!)
+   */
+
+  constructor(text) {
+    this.text = text;
+    this.className = "LZTUpSectionTitle";
+  }
+
+  createElement() {
+    const el = document.createElement("span");
+    el.classList.add(this.className);
+    el.innerHTML = (0,purify/* clearHTML */.G6)(this.text);
+
+    return el;
+  }
+}
+
+class SectionSubText extends SectionText {
+  /**
+   *
+   *  @constructor
+   *  @param {string} text - text of the desc (html allowed!!!)
+   */
+
+  constructor(text) {
+    super(text);
+    this.className = "LZTUpSectionDesc";
+  }
+
+  createElement() {
+    const el = document.createElement("span");
+    el.classList.add(this.className);
+    el.innerHTML = (0,purify/* clearHTML */.G6)(this.text);
+
+    return el;
+  }
+}
+
+class Section {
+  /**
+   *
+   *  @constructor
+   *  @param {string} id - id of the section
+   *  @param {object} options - additional options (read description below)
+   *
+   *  options params:
+   *  @param {object} [sectionItems] - array of section items
+   *  @param {SectionDirection} [direction] - direction of elements in the section
+   *  @param {boolean} [hidden] - state of visibility section. If true, the section is hidden by default.
+   */
+
+  constructor(id, options = {}) {
+    this.id = id;
+    this.sectionItems = options.sectionItems || [];
+    this.sectionContainers = options.sectionContainers || [];
+    this.direction = options.direction || SectionDirection.Row;
+    this.hidden = options.hidden ?? true;
+  }
+
+  createElement() {
+    const section = document.createElement("div");
+    section.id = this.id;
+    section.classList.add(
+      "LZTUpSection",
+      this.direction === SectionDirection.Row ? "row" : "column",
+    );
+
+    for (const sectionItem of this.sectionItems) {
+      section.appendChild(sectionItem);
+    }
+
+    console.log(this);
+    if (this.hidden) {
+      console.log(this.id, this.hidden);
+      section.style.display = "none";
+    }
+
+    return section;
+  }
+
+  /**
+   *
+   *  @param {string} name - title of the item
+   *  @param {string} desc - description of the item
+   *  @param {string} iconClasses - font awesome icon classes
+   *  @param {string} sectionItemId - id of the section item
+   *  @param {object} options - additional options (read description below)
+   *
+   *  Options:
+   *  @param {function} onClick - callback on click event
+   *  @param {boolean} rightArrow - add a icon of the right arrow in the right side (only for column direction)
+   */
+  addSectionItem(title, desc, iconClasses, sectionItemId, options = {}) {
+    const onClickCallback = options.onClick || function () {};
+    const rightArrow = options.rightArrow || false;
+
+    const sectionItem = document.createElement("div");
+    sectionItem.id = sectionItemId;
+    sectionItem.classList.add("LZTUpSectionItem");
+
+    const sectionIcon = new components_icon/* default */.Z(iconClasses).createElement();
+    const textContainer = document.createElement("div");
+    textContainer.classList.add("LZTUpSectionTextContainer");
+    const textEl = new SectionText(title).createElement();
+    const subTextEl = new SectionSubText(desc).createElement();
+
+    textContainer.append(textEl, subTextEl);
+    sectionItem.append(sectionIcon, textContainer);
+    if (this.direction === SectionDirection.Column && rightArrow) {
+      const sectionArrowIcon = new components_icon/* default */.Z(
+        "far fa-angle-right gray right",
+      ).createElement();
+      sectionItem.append(sectionArrowIcon);
+    }
+
+    sectionItem.onclick = async e => await onClickCallback(e, title);
+
+    this.sectionItems.push(sectionItem);
+    return this;
+  }
+
+  /**
+   *
+   *  @param {string} containerId - name of the container id (open menu on click)
+   *  @param {object} items - list of dom elements for add to container
+   */
+  addSectionContainer(containerId, items) {
+    const container = document.createElement("div");
+    container.id = containerId;
+    container.classList.add("LZTUpSubMenu");
+    container.style.display = "none";
+
+    for (const item of items) {
+      container.appendChild(item);
+    }
+
+    this.sectionContainers.push(container);
+    return this;
+  }
+}
+
+
+
+// EXTERNAL MODULE: ./src/utils/logger.js
+var logger = __webpack_require__("./src/utils/logger.js");
+// EXTERNAL MODULE: ./src/configs/StorageName.js
+var StorageName = __webpack_require__("./src/configs/StorageName.js");
+// EXTERNAL MODULE: ./src/callbacks/contestsParticipate.js + 1 modules
+var contestsParticipate = __webpack_require__("./src/callbacks/contestsParticipate.js");
+;// CONCATENATED MODULE: ./src/ui/components/menu/checkbox.js
+
+
+class Checkbox {
+  /**
+   *
+   *  @constructor
+   *  @param {string} elementId - id of the element
+   *  @param {string} content - content of the element
+   */
+
+  constructor(elementId, content) {
+    this.elementId = elementId;
+    this.content = (0,purify/* clearHTML */.G6)(content);
+  }
+
+  createElement(
+    valueToCheck,
+    callbackChecked = () => {},
+    callbackUnChecked = () => {},
+    defaultCallback = () => {},
+  ) {
+    const checkboxContainer = document.createElement("div");
+    const checkbox = document.createElement("input");
+    const checkboxLabel = document.createElement("label");
+
+    checkbox.type = "checkbox";
+    checkbox.id = this.elementId;
+    checkbox.checked = Boolean(valueToCheck);
+
+    checkboxLabel.htmlFor = this.elementId;
+    checkboxLabel.innerHTML = this.content;
+
+    checkboxContainer.id = "LZTUpModalChecksContainer";
+    checkboxContainer.appendChild(checkbox);
+    checkboxContainer.appendChild(checkboxLabel);
+
+    checkbox.addEventListener("click", async event => {
+      await defaultCallback(event);
+      event.target.checked
+        ? await callbackChecked(event)
+        : await callbackUnChecked(event);
+    });
+
+    return checkboxContainer;
+  }
+}
+
+/* harmony default export */ const menu_checkbox = (Checkbox);
+
+// EXTERNAL MODULE: ./src/utils/contests.js + 1 modules
+var contests = __webpack_require__("./src/utils/contests.js");
+// EXTERNAL MODULE: ./src/utils/utils.js
+var utils = __webpack_require__("./src/utils/utils.js");
+;// CONCATENATED MODULE: ./src/ui/components/menu/heading.js
+class Heading {
+  /**
+   *
+   *  @constructor
+   *  @param {string} text - text of the heading
+   */
+
+  constructor(text) {
+    this.text = text;
+  }
+
+  createElement() {
+    const heading = document.createElement("h2");
+    heading.classList.add("LZTUpModalHeading");
+    heading.innerText = this.text;
+
+    return heading;
+  }
+}
+
+/* harmony default export */ const menu_heading = (Heading);
+
+;// CONCATENATED MODULE: ./src/ui/components/menu/description.js
+class Description {
+  /**
+   *
+   *  @constructor
+   *  @param {string} text - text of the description
+   */
+
+  constructor(text) {
+    this.text = text;
+  }
+
+  createElement() {
+    const desc = document.createElement("p");
+    desc.classList.add("LZTUpModalDescription", "muted");
+    desc.innerText = this.text;
+
+    return desc;
+  }
+}
+
+/* harmony default export */ const menu_description = (Description);
+
+;// CONCATENATED MODULE: ./src/ui/components/menu/container.js
+
+
+
+class Container {
+  /**
+   *
+   *  @constructor
+   *  @param {string} heading - heading of the container
+   *  @param {string} description - description of the container
+   *  @param {object} elements - elements to add to container
+   */
+
+  constructor(elements, heading = "", description = "") {
+    this.elements = elements;
+    this.heading = heading;
+    this.description = description;
+  }
+
+  createElement(style = "") {
+    const container = document.createElement("div");
+    container.classList.add("LZTUpContainer");
+    container.style = style;
+
+    if (this.heading) {
+      const heading = new menu_heading(this.heading).createElement();
+      container.appendChild(heading);
+    }
+
+    if (this.description) {
+      const description = new menu_description(this.description).createElement();
+      container.appendChild(description);
+    }
+
+    for (const element of this.elements) {
+      container.appendChild(element);
+    }
+
+    return container;
+  }
+}
+
+/* harmony default export */ const container = (Container);
+
+;// CONCATENATED MODULE: ./src/ui/menu/items/contests.js
+
+
+
+
+
+
+
+
+const getContestsItems = async () => {
+  const contestsData = await GM_getValue(StorageName/* default */.Z.Contests, {});
+
+  return [
+    new container(
+      [
+        new menu_checkbox(
+          "hide_tags_in_contests",
+          `Скрыть теги в теме розыгрыша`,
+        ).createElement(
+          contestsData.hideTagsInThread,
+          () => {},
+          () => {},
+          async event => {
+            contestsData.hideTagsInThread = event.target.checked;
+            await GM_setValue(StorageName/* default */.Z.Contests, contestsData);
+            (0,contests/* contestsTagsVisibility */.s$)(event.target.checked);
+          },
+        ),
+
+        new menu_checkbox(
+          "remove_content_in_contests",
+          `Скрыть содержимое темы розыгрыша`,
+        ).createElement(
+          contestsData.removeContent,
+          () => {},
+          () => {},
+          async event => {
+            contestsData.removeContent = event.target.checked;
+            await GM_setValue(StorageName/* default */.Z.Contests, contestsData);
+            (0,contests/* contestsHideContent */.Q9)(event.target.checked);
+          },
+        ),
+
+        new menu_checkbox(
+          "remove_poll_in_contests",
+          `Скрыть голосование в теме розыгрыша`,
+        ).createElement(
+          contestsData.removePoll,
+          () => {},
+          () => {},
+          async event => {
+            contestsData.removePoll = event.target.checked;
+            await GM_setValue(StorageName/* default */.Z.Contests, contestsData);
+            (0,contests/* contestsHidePoll */.Rf)(event.target.checked);
+          },
+        ),
+      ],
+      "Скрытие элементов",
+      "Скройте лишние элементы в теме",
+    ).createElement("display: block;"),
+    new container(
+      [
+        new menu_checkbox("open_ten_contests", 'Кнопка "Открыть 10"').createElement(
+          contestsData.openTenContestsBtn,
+          () => {
+            (0,contests/* regOpenContestsBtn */.uu)();
+          },
+          () => {
+            (0,contests/* removeOpenContestsBtn */.cy)();
+          },
+          async event => {
+            contestsData.openTenContestsBtn = event.target.checked;
+            await GM_setValue(StorageName/* default */.Z.Contests, contestsData);
+          },
+        ),
+
+        new menu_checkbox(
+          "auto_close_on_participate",
+          `Автозакрытие страницы при нажатие на кнопку "Участвовать"
+          <span class="fa fa-exclamation-triangle Tooltip" title="При отключение этой функции страница будет перезагружена"></span>
+          `,
+        ).createElement(
+          contestsData.autoCloseOnParticipate,
+          async () => {
+            (0,registers/* registerAlert */.de)(
+              'Включено Автозакрытие страницы при нажатие на кнопку "Участвовать"',
+              5000,
+            );
+            (0,contestsParticipate/* contestsAutoCloseHandler */.p)(true);
+          },
+          async () => {
+            (0,registers/* registerAlert */.de)(
+              'Выключено Автозакрытие страницы при нажатие на кнопку "Участвовать"',
+              5000,
+            );
+            await (0,utils/* sleep */._v)(500);
+            window.location.reload();
+          },
+          async event => {
+            contestsData.autoCloseOnParticipate = event.target.checked;
+            await GM_setValue(StorageName/* default */.Z.Contests, contestsData);
+          },
+        ),
+
+        new menu_checkbox(
+          "info_top_in_contests",
+          `Отображение информации о розыгрыше вверху темы`,
+        ).createElement(
+          contestsData.infoTopInThread,
+          () => {},
+          () => {},
+          async event => {
+            contestsData.infoTopInThread = event.target.checked;
+            await GM_setValue(StorageName/* default */.Z.Contests, contestsData);
+            (0,contests/* contestThreadBlockMove */.Q6)(event.target.checked);
+          },
+        ),
+
+        new menu_checkbox(
+          "update_captcha_button_in_contests",
+          `Кнопка "Обновление капчи"`,
+        ).createElement(
+          contestsData.updateCaptchaButton,
+          async () => {
+            (0,contests/* contestsUpdateCapctha */.g4)();
+          },
+          async () => {
+            document.querySelector(".LZTUpRefreshButton")?.remove();
+          },
+          async event => {
+            contestsData.updateCaptchaButton = event.target.checked;
+            await GM_setValue(StorageName/* default */.Z.Contests, contestsData);
+          },
+        ),
+
+        new menu_checkbox(
+          "auto_fix_captcha_in_contests",
+          `Автофикс капчи
+          <span class="far fa-info-circle Tooltip" title="Автоматически обновляет капчу, если она не появилась"></span>
+          <span class="fa fa-exclamation-triangle Tooltip" title="При отключение этой функции страница будет перезагружена"></span>
+          `,
+        ).createElement(
+          contestsData.autoFixCaptcha,
+          async () => {
+            (0,registers/* registerAlert */.de)("Включен Автофикс капчи", 5000);
+            (0,contests/* contestsAutoFixCaptcha */.gu)();
+          },
+          async () => {
+            (0,registers/* registerAlert */.de)("Выключен Автофикс капчи", 5000);
+            await (0,utils/* sleep */._v)(500);
+            window.location.reload();
+          },
+          async event => {
+            contestsData.autoFixCaptcha = event.target.checked;
+            await GM_setValue(StorageName/* default */.Z.Contests, contestsData);
+          },
+        ),
+
+        new menu_checkbox(
+          "participate_by_key",
+          `Участие по кнопке Tab`,
+        ).createElement(
+          contestsData.participateByKey,
+          () => {},
+          () => {},
+          async event => {
+            (0,registers/* registerAlert */.de)(
+              `Участие по кнопке ${
+                event.target.checked ? "включено" : "выключено"
+              }`,
+              5000,
+            );
+            contestsData.participateByKey = event.target.checked;
+            await GM_setValue(StorageName/* default */.Z.Contests, contestsData);
+            (0,contests/* contestsParticipateByBtn */.sO)(event.target.checked);
+          },
+        ),
+      ],
+      "Полезные фишечки",
+      "Просто полезные фишечки для быстрого участия в розыгрышах",
+    ).createElement("display: block;"),
+  ];
+};
+
+/* harmony default export */ const items_contests = (getContestsItems);
+
+// EXTERNAL MODULE: ./src/utils/users.js + 2 modules
+var users = __webpack_require__("./src/utils/users.js");
+;// CONCATENATED MODULE: ./src/ui/menu/items/users.js
+
+
+
+
+
+
+
+const getUsersItems = async () => {
+  const usersData = await GM_getValue(StorageName/* default */.Z.Users, {});
+
+  return [
+    new container(
+      [
+        new menu_checkbox(
+          "show_userid_in_profile",
+          "Показывать ID в профиле пользователя",
+        ).createElement(
+          usersData.showUserIdInProfile,
+          () => {
+            (0,users/* addUserIdToProfile */.Rj)();
+          },
+          () => {
+            (0,users/* removeUserIdFromProfile */.UD)();
+          },
+          async event => {
+            usersData.showUserIdInProfile = event.target.checked;
+            await GM_setValue(StorageName/* default */.Z.Users, usersData);
+          },
+        ),
+        new menu_checkbox(
+          "show_userid_in_member_card",
+          `Показывать ID в карточке пользователя
+          <span class="fa fa-exclamation-triangle Tooltip" title="При включение/отключение этой функции страница будет перезагружена"></span>
+          `,
+        ).createElement(
+          usersData.showUserIdInMemberCard,
+          () => {},
+          () => {},
+          async event => {
+            usersData.showUserIdInMemberCard = event.target.checked;
+            await GM_setValue(StorageName/* default */.Z.Users, usersData);
+            (0,registers/* registerAlert */.de)(
+              `Показывать ID в карточке пользователя ${
+                event.target.checked ? "включено" : "выключено"
+              }`,
+              5000,
+            );
+            await (0,utils/* sleep */._v)(500);
+            window.location.reload();
+          },
+        ),
+        new menu_checkbox(
+          "show_fullreg_in_profile",
+          "Показывать полную дату регистрации в профиле пользователя",
+        ).createElement(
+          usersData.showFullRegInProfile,
+          () => {},
+          () => {},
+          async event => {
+            usersData.showFullRegInProfile = event.target.checked;
+            await GM_setValue(StorageName/* default */.Z.Users, usersData);
+            (0,users/* showFullRegDateInProfile */.M1)(event.target.checked);
+          },
+        ),
+      ],
+      "Доп. информация о пользователе",
+      "Включите отображение дополнительной информации о пользователе",
+    ).createElement("display:block;"),
+    new container(
+      [
+        new menu_checkbox(
+          "disable_share_typing",
+          `Неписалка в темах
+          <span class="fa fa-exclamation-triangle Tooltip" title="При включение/отключение этой функции страница будет перезагружена"></span>
+          `,
+        ).createElement(
+          usersData.disableShareTyping,
+          () => {},
+          () => {},
+          async event => {
+            usersData.disableShareTyping = event.target.checked;
+            await GM_setValue(StorageName/* default */.Z.Users, usersData);
+            (0,registers/* registerAlert */.de)(
+              `Неписалка в темах ${
+                event.target.checked ? "включена" : "выключена"
+              }`,
+              5000,
+            );
+            await (0,utils/* sleep */._v)(500);
+            window.location.reload();
+          },
+        ),
+      ],
+      "Другое",
+      "Другие функции связанные с пользователями",
+    ).createElement("display:block;"),
+  ];
+};
+
+/* harmony default export */ const items_users = (getUsersItems);
+
+// EXTERNAL MODULE: ./src/configs/NewStorageName.js
+var NewStorageName = __webpack_require__("./src/configs/NewStorageName.js");
+;// CONCATENATED MODULE: ./src/ui/components/menu/comment.js
+
+
+class Comment {
+  /**
+   *
+   *  @constructor
+   *  @param {string} content - content of the element
+   */
+
+  constructor(content) {
+    this.content = (0,purify/* clearHTML */.G6)(content);
+  }
+
+  createElement() {
+    const container = document.createElement("div");
+    container.id = "LZTUpModalComment";
+    container.innerHTML = this.content;
+
+    return container;
+  }
+}
+
+/* harmony default export */ const comment = (Comment);
+
+// EXTERNAL MODULE: ./src/ui/avatarUserBadges.js + 1 modules
+var ui_avatarUserBadges = __webpack_require__("./src/ui/avatarUserBadges.js");
+// EXTERNAL MODULE: ./src/utils/gmWrapper.js
+var gmWrapper = __webpack_require__("./src/utils/gmWrapper.js");
+;// CONCATENATED MODULE: ./src/ui/components/menu/previewProfile.js
+
+
+
+
+
+
+
+class PreviewProfile {
+  /**
+   *
+   *  @constructor
+   *  @param {string|number} userid - user id
+   *  @param {string} username - username
+   *  @param {object} data - data for show preview (ex. data from profileDB)
+   */
+
+  constructor(userid, username, profileData, badgesData, profileElId = null) {
+    this.userid = userid;
+    this.username = username;
+    this.profileData = profileData;
+    this.badgesData = badgesData;
+    this.profileElId = profileElId || "LZTUpPreviewContainer";
+    this.badges = new ui_avatarUserBadges/* default */.Z(badgesData, true);
+  }
+
+  createElement() {
+    const previewContainer = document.createElement("div");
+    previewContainer.id = this.profileElId;
+    previewContainer.classList.add("previewContainer");
+
+    const avatarUserBadges = this.badges.createElement();
+
+    const avatarBox = document.createElement("div");
+    avatarBox.classList.add("avatarBox");
+    avatarBox.appendChild(avatarUserBadges);
+    avatarBox.innerHTML += `
+      <a href="members/${encodeURIComponent(
+        this.userid,
+      )}/" class="avatar Av${unsafeWindow.XenForo.htmlspecialchars(
+        this.userid,
+      )}m" data-avatarhtml="true">
+        <span class="img m" style="background-image: url(${(0,users/* getUserAvatar */.Dm)(
+          this.userid,
+        )})"></span>
+      </a>
+    `;
+
+    const info = document.createElement("div");
+    info.classList.add("info");
+    info.innerHTML = `
+      <span id="LZTUpUsernameStyle" class="UsernameStyle bold">${unsafeWindow.XenForo.htmlspecialchars(
+        this.username,
+      )}</span>
+      <div class="bannerOrStatus">
+        <em id="LZTUpUserBannerStyle" class="UserBannerStyle userBanner"></em>
+      </div>
+    `;
+
+    previewContainer.appendChild(avatarBox);
+    previewContainer.appendChild(info);
+    return previewContainer;
+  }
+
+  clearStyle(selector) {
+    const el = document.querySelector(selector);
+    if (!el) {
+      return;
+    }
+
+    el.className = "";
+    el.style = "";
+
+    return el;
+  }
+
+  async updateUsernameStyle(style) {
+    const usernameEl = this.clearStyle(
+      `#${this.profileElId} #LZTUpUsernameStyle`,
+    );
+    if (!usernameEl) {
+      return;
+    }
+
+    if (!style) {
+      // current user group (newbie, resident, expert and etc)
+      const userGroup = await gmWrapper/* default */.Z.getValue(NewStorageName/* default */.Z.UserGroup);
+      style = `.${userGroup}`;
+    }
+    usernameEl.classList.add("UsernameStyle", "bold");
+    (0,utils/* applyStyle */.bg)(usernameEl, style);
+  }
+
+  updateBannerStyle(style) {
+    const userBannerEl = this.clearStyle(
+      `#${this.profileElId} #LZTUpUserBannerStyle`,
+    );
+    if (!userBannerEl) {
+      return;
+    }
+
+    userBannerEl.classList.add("UserBannerStyle", "userBanner");
+    (0,utils/* applyStyle */.bg)(userBannerEl, style);
+  }
+
+  updateBannerText(text) {
+    const userBannerEl = document.querySelector(
+      `#${this.profileElId} #LZTUpUserBannerStyle`,
+    );
+    if (!userBannerEl) {
+      return;
+    }
+
+    userBannerEl.innerText = unsafeWindow.XenForo.htmlspecialchars(text);
+  }
+
+  updateBanner(data) {
+    const userBannerEl = this.clearStyle(
+      `#${this.profileElId} #LZTUpUserBannerStyle`,
+    );
+    if (!userBannerEl) {
+      logger/* default */.Z.error("Failed to get element by userBanner in PreviewProfile!");
+      return;
+    }
+
+    if (!(data.bannerStyle && data.bannerText)) {
+      return (userBannerEl.style.display = "none");
+    }
+
+    userBannerEl.style.display = "";
+    this.updateBannerStyle(data.bannerStyle);
+    this.updateBannerText(data.bannerText);
+  }
+
+  updateBackground(imageUrl) {
+    const previewContainer = document.querySelector(`#${this.profileElId}`);
+    if (!previewContainer) {
+      logger/* default */.Z.error("Failed to get previewContainer in PreviewProfile!");
+      return;
+    }
+
+    if (imageUrl?.length) {
+      imageUrl = `linear-gradient(rgba(54, 54, 54, 0.85), rgba(54, 54, 54, 0.85)), url(${imageUrl})`;
+    }
+
+    previewContainer.style.backgroundImage = imageUrl;
+  }
+
+  updateBadges() {
+    return this.badges.updateBadges();
+  }
+
+  async updateAll() {
+    await this.updateUsernameStyle(this.profileData.usernameStyle);
+    this.updateBanner(this.profileData);
+    this.updateBackground(this.profileData.backgroundImage);
+    this.badges.badges = this.badgesData;
+    this.updateBadges();
+  }
+}
+
+/* harmony default export */ const menu_previewProfile = (PreviewProfile);
+
+;// CONCATENATED MODULE: ./src/ui/components/menu/textArea.js
+class TextArea {
+  /**
+   *
+   *  @constructor
+   *  @param {string} text - default text of the text area
+   *  @param {string} placeholder - placeholder for the text area
+   *  @param {number} minLength - min length for the text area
+   *  @param {number} maxLength - max length for the text area
+   */
+
+  constructor(text = "", placeholder = "", minLength = 0, maxLength = 0) {
+    this.text = text;
+    this.placeholder = placeholder;
+    this.minLength = minLength;
+    this.maxLength = maxLength;
+  }
+
+  createElement(callback) {
+    const textarea = document.createElement("textarea");
+    textarea.classList.add("LZTUpTextArea", "textCtrl");
+    textarea.innerText = this.text;
+    textarea.placeholder = this.placeholder;
+    textarea.minLength = this.minLength;
+    if (this.maxLength > 0) textarea.maxLength = this.maxLength;
+
+    textarea.onkeyup = callback;
+    textarea.onchange = callback;
+    return textarea;
+  }
+}
+
+/* harmony default export */ const textArea = (TextArea);
+
+;// CONCATENATED MODULE: ./src/ui/components/menu/input.js
+class Input {
+  /**
+   *
+   *  @constructor
+   *  @param {string} text - default text of the input
+   *  @param {string} placeholder - placeholder for the input
+   *  @param {number} minLength - min length for the input
+   *  @param {number} maxLength - max length for the input
+   */
+
+  constructor(text = "", placeholder = "", minLength = 0, maxLength = 0) {
+    this.text = text;
+    this.placeholder = placeholder;
+    this.minLength = minLength;
+    this.maxLength = maxLength;
+  }
+
+  createElement(callback) {
+    const input = document.createElement("input");
+    input.classList.add("textCtrl");
+    input.value = this.text;
+    input.placeholder = this.placeholder;
+    input.minLength = this.minLength;
+    if (this.maxLength > 0) input.maxLength = this.maxLength;
+
+    input.onkeyup = callback;
+    input.onchange = callback;
+    return input;
+  }
+}
+
+/* harmony default export */ const input = (Input);
+
+// EXTERNAL MODULE: ./src/ui/components/button.js
+var components_button = __webpack_require__("./src/ui/components/button.js");
+;// CONCATENATED MODULE: ./src/ui/components/menu/colorPicker.js
+
+
+class ColorPicker {
+  /**
+   *
+   *  @constructor
+   *  @param {string} id - id of the color picker
+   *  @param {string} value - value of the color picker
+   */
+
+  constructor(id, value, description = "") {
+    this.id = id;
+    this.value = value;
+    this.description = description;
+  }
+
+  createElement(callback) {
+    const wrap = document.createElement("div");
+    wrap.classList.add("LZTUpColorPickerWrap");
+
+    const input = document.createElement("input");
+    input.id = this.id;
+    input.classList.add("LZTUpColorPicker");
+    input.value = this.value;
+    input.type = "text";
+    input.dataset.coloris = "";
+    input.oninput = callback;
+
+    if (this.description !== "") {
+      const description = new menu_description(this.description).createElement();
+      wrap.appendChild(description);
+    }
+
+    wrap.appendChild(input);
+    return wrap;
+  }
+}
+
+/* harmony default export */ const colorPicker = (ColorPicker);
+
+;// CONCATENATED MODULE: ./src/ui/components/menu/separator.js
+class Separator {
+  /**
+   *
+   *  @constructor
+   *  @param {string} customStyle - custom style for border-bottom
+   */
+
+  constructor(customStyle = "") {
+    this.customStyle = customStyle;
+  }
+
+  createElement() {
+    const sepator = document.createElement("div");
+    sepator.classList.add("LZTUpModalSeparator");
+    if (this.customStyle !== "") {
+      sepator.style.borderBottom = this.customStyle;
+    }
+    return sepator;
+  }
+}
+
+/* harmony default export */ const separator = (Separator);
+
+;// CONCATENATED MODULE: ./src/ui/components/menu/sortableContainer.js
+class SortableContainer {
+  /**
+   *
+   *  @constructor
+   *  @param {object} elements - elements to add to container
+   */
+
+  constructor(elements) {
+    this.elements = elements;
+  }
+
+  createElement(onMoveCallback = () => {}) {
+    const sortableContainer = document.createElement("div");
+    sortableContainer.classList.add("LZTUpSortableContainer");
+
+    for (const element of this.elements) {
+      sortableContainer.appendChild(element);
+    }
+
+    Sortable.create(sortableContainer, {
+      handle: ".LZTUpSortableDraggable",
+      animation: 150,
+      onMove: onMoveCallback,
+    });
+
+    return sortableContainer;
+  }
+}
+
+/* harmony default export */ const sortableContainer = (SortableContainer);
+
+;// CONCATENATED MODULE: ./src/ui/components/menu/sortableItem.js
+
+
+class SortableItem {
+  /**
+   *
+   *  @constructor
+   *  @param {HTMLElement} content - element to add to container
+   *  @param {number} dataId - data attribute id
+   */
+
+  constructor(content, dataId = null) {
+    this.content = content;
+    this.dataId = dataId;
+  }
+
+  createElement(onClickEdit = () => {}, onClickRemove = () => {}) {
+    const sortableItem = document.createElement("div");
+    sortableItem.classList.add("LZTUpSortableItem");
+    if (this.dataId) {
+      sortableItem.dataset.id = this.dataId;
+    }
+
+    const draggableZone = document.createElement("div");
+    draggableZone.classList.add("LZTUpSortableDraggable");
+    const icon = new components_icon/* default */.Z("far fa-grip-vertical", "").createElement();
+    draggableZone.appendChild(icon);
+
+    const contentContainer = document.createElement("div");
+    contentContainer.classList.add("LZTUpSortableContent");
+
+    const containerDesc = document.createElement("p");
+    containerDesc.innerText = this.content;
+    contentContainer.append(containerDesc);
+
+    const utilityContainer = document.createElement("div");
+    utilityContainer.classList.add("LZTUpSortableUtility");
+
+    const editButton = document.createElement("div");
+    editButton.classList.add("LZTUpSortableEditButton");
+    const editIcon = new components_icon/* default */.Z("far fa-edit", "").createElement();
+    editButton.appendChild(editIcon);
+    editButton.onclick = async e => {
+      console.log("Edit button clicked");
+      await onClickEdit(e, sortableItem);
+    };
+
+    const removeButton = document.createElement("div");
+    removeButton.classList.add("LZTUpSortableRemoveButton");
+    const removeIcon = new components_icon/* default */.Z("far fa-trash", "").createElement();
+    removeButton.appendChild(removeIcon);
+    removeButton.onclick = async e => {
+      const result = confirm("Вы точно хотите удалить иконку?");
+      if (result) {
+        sortableItem.remove();
+        await onClickRemove(e, sortableItem);
+      }
+    };
+
+    utilityContainer.appendChild(editButton);
+    utilityContainer.appendChild(removeButton);
+
+    sortableItem.appendChild(draggableZone);
+    sortableItem.appendChild(contentContainer);
+    sortableItem.appendChild(utilityContainer);
+    return sortableItem;
+  }
+}
+
+/* harmony default export */ const sortableItem = (SortableItem);
+
+// EXTERNAL MODULE: ./src/configs/base.js
+var base = __webpack_require__("./src/configs/base.js");
+;// CONCATENATED MODULE: ./src/configs/MenuElement.js
+
+
+class MenuElement extends base/* BaseSelectorEnum */.n {
+  static TempSubMenu = new MenuElement("#LZTUpTempSubMenu");
+}
+
+// EXTERNAL MODULE: ./src/configs/config.js
+var config = __webpack_require__("./src/configs/config.js");
+;// CONCATENATED MODULE: ./src/ui/menu/utils.js
+
+
+
+
+function setMenuTitle(title) {
+  const modalOverlay = document.querySelector(
+    ".xenOverlay > #LZTUpModalOverlay",
+  );
+  const modalTitle = modalOverlay.querySelector("h2.heading");
+  modalTitle.id = "LZTUpModalMainTitle";
+  modalTitle.innerText = title;
+}
+
+function createGoBackBtn(callback) {
+  const modalOverlay = document.querySelector(
+    ".xenOverlay > #LZTUpModalOverlay",
+  );
+
+  const backButton = new components_button/* default */.Z(
+    "",
+    "LZTUpModalBackButton",
+    "fas fa-long-arrow-left",
+  ).createElement();
+
+  backButton.onclick = () => {
+    document
+      .querySelectorAll("div.LZTUpSubMenu")
+      .forEach(submenu => (submenu.style.display = "none"));
+    callback();
+  };
+
+  modalOverlay.insertAdjacentElement("afterbegin", backButton);
+}
+
+function addGoBackBtn(
+  target = "",
+  text = config/* default */.Z.extName,
+  subMenuToShow = null,
+  onCloseCallback = () => {},
+) {
+  const backButtonSelector = "button.LZTUpModalBackButton";
+
+  if (document.querySelector(backButtonSelector) !== null) {
+    document.querySelector(backButtonSelector).remove();
+  }
+
+  return createGoBackBtn(() => {
+    document.querySelector(backButtonSelector).remove();
+    setMenuTitle(text);
+    switch (target) {
+      case "tempmenu":
+        document.querySelector(MenuElement.TempSubMenu.selector).style.display =
+          "none";
+        subMenuToShow.style.display = "";
+        addGoBackBtn();
+        onCloseCallback();
+        break;
+      default: {
+        document.querySelector(
+          ".LZTUpModalContent > .LZTUpSection",
+        ).style.display = "";
+        const tabs = document.querySelector(".LZTUpTabs");
+        tabs.style.display = "";
+
+        const tab = tabs.querySelectorAll("#LZTUpTab");
+        tab.forEach(element => element.classList.remove("active"));
+        tab[0].classList.add("active");
+        onCloseCallback();
+      }
+    }
+  });
+}
+
+function openSubMenu(containerId, sectionName) {
+  document.querySelector(".LZTUpTabs").style.display = "none";
+
+  const subMenus = document.querySelectorAll(".LZTUpSubMenu");
+  subMenus.forEach(subMenu => (subMenu.style.display = "none"));
+
+  const sections = document.querySelectorAll(
+    ".LZTUpModalContent > .LZTUpSection",
+  );
+  sections.forEach(section => (section.style.display = "none"));
+
+  document.getElementById(containerId).style.display = "";
+  setMenuTitle(sectionName);
+  return addGoBackBtn();
+}
+
+
+
+;// CONCATENATED MODULE: ./src/ui/menu/temporarySection.js
+
+
+
+function openTempMenu(
+  sectionName,
+  fromSectionName,
+  subMenuToShow,
+  onCloseCallback,
+) {
+  const subMenus = document.querySelectorAll(".LZTUpSubMenu");
+  subMenus.forEach(subMenu => (subMenu.style.display = "none"));
+  document.querySelector(MenuElement.TempSubMenu.selector).style.display = "";
+  setMenuTitle(sectionName);
+  addGoBackBtn("tempmenu", fromSectionName, subMenuToShow, onCloseCallback);
+}
+
+function addTemporaryMenuSection(items) {
+  const oldTempMenu = document.querySelector(MenuElement.TempSubMenu.selector);
+  if (oldTempMenu) {
+    oldTempMenu.remove();
+  }
+
+  const container = document.createElement("div");
+  container.id = MenuElement.TempSubMenu.getName();
+  container.classList.add("LZTUpSubMenu");
+
+  for (const item of items) {
+    container.appendChild(item);
+  }
+
+  container.style.display = "none";
+
+  return container;
+}
+
+
+
+;// CONCATENATED MODULE: ./src/utils/colorPicker.js
+// https://github.com/lzt-upgrade/coloris-lzt-theme/blob/47e2a9ebabfc7172bf188cbc06eba73c88b46b09/src/coloris.js#L14
+const colorPickerOptions = {
+  theme: "lzt", // theme
+  themeMode: "dark", // theme mode
+  formatToggle: true, // change the format (RGB, HEX, HSV)
+  closeButton: true, // button to close color picker
+  clearButton: true, // button to clear color picker
+  alpha: true, // alpha channel
+  swatches: [], // colors for select
+};
+
+// use .xenOverlay for modals
+function initColorPickers(parent = ".xenOverlay") {
+  const colorPickers = document.querySelectorAll(".LZTUpColorPicker");
+  for (const colorPicker of colorPickers) {
+    // fix for reopen modal
+    if (!document.querySelector(".clr-picker")) {
+      try {
+        // ! read coloris-lzt-theme init description
+        Coloris.init(parent);
+      } catch (e) {
+        console.error(e);
+      }
+    }
+    try {
+      Coloris(
+        Object.assign(colorPickerOptions, {
+          el: `#${colorPicker.id}`,
+          parent: parent,
+        }),
+      );
+    } catch (e) {
+      console.error(e);
+    }
+  }
+}
+
+
+
+// EXTERNAL MODULE: ./src/visuals/users.js + 1 modules
+var visuals_users = __webpack_require__("./src/visuals/users.js");
+// EXTERNAL MODULE: ./src/visuals/universal.js
+var universal = __webpack_require__("./src/visuals/universal.js");
+// EXTERNAL MODULE: ./src/visuals/profile.js
+var profile = __webpack_require__("./src/visuals/profile.js");
+;// CONCATENATED MODULE: ./src/ui/menu/items/profile.js
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+const MAX_ICONS_COUNT = 2;
+
+async function sortableItemOnEditCallback(e, sortableItem, previewProfile) {
+  const badgeId = Number(sortableItem.dataset.id);
+  const modalContent = document.querySelector(".LZTUpModalContent");
+  const uniqSubMenu = document.querySelector("#LZTUpUniqContainer");
+  const profileData = await gmWrapper/* default */.Z.getValue(NewStorageName/* default */.Z.Profile);
+  const badgesData = await gmWrapper/* default */.Z.getValue(NewStorageName/* default */.Z.ProfileBadges);
+  const thisBadgeArray = badgesData.filter(icon => icon.position === badgeId);
+  let badgeData = thisBadgeArray[0];
+
+  const tempPreviewProfile = createPreviewProfile(
+    profileData,
+    badgesData,
+    "LZTUpTempPreviewContainer",
+  );
+
+  async function updateBadgesData(badgeData) {
+    // badgeData its current badge (which we are editing)
+    const actualBadgeData = await gmWrapper/* default */.Z.getValue(NewStorageName/* default */.Z.ProfileBadges);
+    const currentBadge = actualBadgeData.find(
+      badge => badge.position === badgeId,
+    );
+    const currentBadgeId = actualBadgeData.indexOf(currentBadge);
+    actualBadgeData[currentBadgeId] = badgeData;
+    return actualBadgeData;
+  }
+
+  const el = addTemporaryMenuSection([
+    tempPreviewProfile.createElement(),
+
+    new container(
+      [
+        new textArea(badgeData.svg, "<svg>...</svg>", 0, 3000).createElement(
+          async event => {
+            let val = (0,purify/* clearSVG */.bw)(event.target.value.trim());
+
+            if (val.length > 3000) {
+              return (0,registers/* registerAlert */.de)(
+                "Максимальная длина иконки 3000 символов. Уменьшите введенный текст для сохранения.",
+              );
+            }
+
+            badgeData.svg = val;
+            tempPreviewProfile.badges.badges =
+              await updateBadgesData(badgeData);
+            tempPreviewProfile.updateBadges();
+          },
+        ),
+      ],
+      "Иконка на аватарке",
+      "Максимум 3000 символов.",
+    ).createElement(),
+
+    new container(
+      [
+        new textArea(
+          badgeData.style,
+          "background: #fff",
+          0,
+          1500,
+        ).createElement(async event => {
+          let val = (0,purify/* clearCSS */.zB)(event.target.value.trim());
+
+          if (val.length > 1500) {
+            return (0,registers/* registerAlert */.de)(
+              "Максимальная длина стиля иконки 1500 символов. Уменьшите введенный текст для сохранения.",
+            );
+          }
+
+          if (val.length > 1 && val.startsWith(".")) {
+            event.target.value = val.replace(/\s/g, "");
+            val = event.target.value;
+          }
+
+          badgeData.style = val;
+          tempPreviewProfile.badges.badges = await updateBadgesData(badgeData);
+          tempPreviewProfile.updateBadges();
+        }),
+      ],
+      "Стиль иконки",
+      "Максимум 1500 символов.",
+    ).createElement(),
+
+    new container(
+      [
+        new input(badgeData.text, "Идут два сталкера", 0, 24).createElement(
+          async event => {
+            let val = event.target.value;
+
+            if (val.length > 24) {
+              return (0,registers/* registerAlert */.de)(
+                "Максимальная длина текста в лычке 24 символа. Уменьшите введенный текст для сохранения.",
+              );
+            }
+
+            badgeData.text = val;
+            tempPreviewProfile.badges.badges =
+              await updateBadgesData(badgeData);
+            tempPreviewProfile.updateBadges();
+          },
+        ),
+      ],
+      "Текст при наведение на иконку",
+      "Максимум 24 символа.",
+    ).createElement(),
+
+    new container(
+      [
+        new colorPicker(
+          "LZTUpColorPickerFill",
+          badgeData.fillColor,
+          "Цвет иконки (fill):",
+        ).createElement(async event => {
+          let val = event.target.value;
+
+          badgeData.fillColor = val;
+          tempPreviewProfile.badges.badges = await updateBadgesData(badgeData);
+          tempPreviewProfile.updateBadges();
+        }),
+        new colorPicker(
+          "LZTUpColorPickerStroke",
+          badgeData.strokeColor,
+          "Цвет иконки (stroke):",
+        ).createElement(async event => {
+          let val = event.target.value;
+
+          badgeData.strokeColor = val;
+          tempPreviewProfile.badges.badges = await updateBadgesData(badgeData);
+          tempPreviewProfile.updateBadges();
+        }),
+      ],
+      "Изменение цвета иконки",
+    ).createElement(),
+
+    new container([
+      new components_button/* default */.Z(
+        "Сохранить",
+        "button primary LZTUpIconButton fit",
+        "far fa-save",
+      ).createElement(async () => {
+        const badges = await updateBadgesData(badgeData);
+        await gmWrapper/* default */.Z.setValue(NewStorageName/* default */.Z.ProfileBadges, badges);
+        (0,visuals_users/* updateUserBadges */.Az)(badges);
+        tempPreviewProfile.badges.badges = badges;
+        tempPreviewProfile.updateBadges();
+        (0,registers/* registerAlert */.de)("Иконка успешно сохранена.");
+      }),
+    ]).createElement(),
+  ]);
+
+  modalContent.appendChild(el);
+  initColorPickers();
+  openTempMenu(
+    "Управление иконкой",
+    "Локальный Уник",
+    uniqSubMenu,
+    async () => {
+      const sortable = uniqSubMenu.querySelectorAll(
+        ".LZTUpSortableContainer > .LZTUpSortableItem",
+      );
+
+      const actualBadgesData = await gmWrapper/* default */.Z.getValue(
+        NewStorageName/* default */.Z.ProfileBadges,
+      );
+
+      for (let i = 0; i < actualBadgesData.length; i++) {
+        const content = sortable[i].querySelector(".LZTUpSortableContent");
+        content.innerHTML = (0,purify/* clearHTML */.G6)(actualBadgesData[i].text);
+      }
+
+      previewProfile.badges.badges = actualBadgesData;
+      previewProfile.updateBadges();
+    },
+  );
+  await tempPreviewProfile.updateAll(profileData); // update temp preview profile menu after init
+}
+
+function createPreviewProfile(profileData, badgesData, profileElId = null) {
+  const userid = (0,users/* getUserId */.n5)("me");
+  const username = (0,users/* getUsername */.Ms)("me");
+  return new menu_previewProfile(
+    userid,
+    username,
+    profileData,
+    badgesData,
+    profileElId,
+  );
+}
+
+const getProfileItems = async () => {
+  function generateBadgeItems(previewProfile, profileBadgesData) {
+    console.log("Generating badge items");
+    const items = [];
+
+    for (const badge of profileBadgesData.sort(
+      (a, b) => a.position - b.position,
+    )) {
+      console.log(badge.text, badge.position);
+      items.push(
+        new sortableItem(badge.text, badge.position).createElement(
+          (e, sortableItem) =>
+            sortableItemOnEditCallback(e, sortableItem, previewProfile),
+          sortableItemOnRemoveCallback,
+        ),
+      );
+    }
+
+    console.log(items);
+
+    return items;
+  }
+
+  async function reloadUserBadges(
+    updatedProfileData,
+    updatedBadgesData,
+    profileElId = "LZTUpPreviewContainer",
+  ) {
+    // TODO: replace with profileBadgesData
+    const avatarUserBadgesParent = document.querySelector(
+      `#${profileElId} > .avatarBox > .avatarUserBadges`,
+    );
+    if (avatarUserBadgesParent) {
+      for (const userBadge of avatarUserBadgesParent.children) {
+        userBadge.remove();
+      }
+
+      const avatarUserBadges = new ui_avatarUserBadges/* default */.Z(
+        updatedBadgesData,
+        true,
+      ).createElement();
+      avatarUserBadgesParent.innerHTML = avatarUserBadges.innerHTML;
+
+      previewProfile.data = updatedProfileData;
+      previewProfile.badgesData = updatedBadgesData;
+      await previewProfile.updateAll();
+    }
+  }
+
+  async function sortableItemOnRemoveCallback(e, sortableItemEl) {
+    const uniqSubMenu = document.querySelector("#LZTUpUniqContainer");
+    let badgeIcons = await gmWrapper/* default */.Z.getValue(NewStorageName/* default */.Z.ProfileBadges);
+    let newBadgeIcons = [];
+
+    const badgeEl = document.querySelector(
+      `#LZTUpPreviewBadge[data-position="${sortableItemEl.dataset.id}"]`,
+    );
+    if (badgeEl) {
+      badgeEl.remove();
+    }
+
+    const remainBadgeEl = document.querySelector("#LZTUpPreviewBadge");
+    if (remainBadgeEl) {
+      remainBadgeEl.dataset.position = 1;
+      remainBadgeEl.dataset.multiple = "false";
+      if (remainBadgeEl?.classList.contains("avatarUserBadge--1")) {
+        remainBadgeEl.classList.remove("avatarUserBadge--1");
+      }
+
+      if (remainBadgeEl?.classList.contains("avatarUserBadge--2")) {
+        remainBadgeEl.classList.remove("avatarUserBadge--2");
+      }
+    }
+
+    for (const badge of badgeIcons) {
+      if (String(badge.position) === sortableItemEl.dataset.id) {
+        continue;
+      }
+
+      // if removed 1st badge set 2nd badge to 1st position
+      const item = uniqSubMenu.querySelector(
+        ".LZTUpSortableContainer > .LZTUpSortableItem",
+      );
+      if (item) {
+        item.dataset.id = 1;
+      }
+
+      badge.position = 1;
+      newBadgeIcons.push(badge);
+    }
+
+    await gmWrapper/* default */.Z.setValue(NewStorageName/* default */.Z.ProfileBadges, newBadgeIcons);
+    previewProfile.badgesData = newBadgeIcons;
+    await previewProfile.updateAll();
+    (0,visuals_users/* updateUserBadges */.Az)(newBadgeIcons);
+  }
+
+  const profileData = await gmWrapper/* default */.Z.getValue(NewStorageName/* default */.Z.Profile);
+  console.log("TEST 123", profileData);
+  const badgesData = await gmWrapper/* default */.Z.getValue(NewStorageName/* default */.Z.ProfileBadges);
+  const userGroup = await gmWrapper/* default */.Z.getValue(NewStorageName/* default */.Z.UserGroup);
+  const currentDomain = window.location.hostname;
+
+  const previewProfile = createPreviewProfile(profileData, badgesData);
+
+  return [
+    new comment(`На этой вкладке вы можете выбрать стиль вашего ника и лычки. Этот стиль виден только вам.
+      Чтобы уник был виден всем, рекомендуем <a href="https://${currentDomain}/account/upgrades?upgrade_id=14" target="_blank">купить</a> настоящий уник.`).createElement(),
+
+    previewProfile.createElement(),
+
+    new container(
+      [
+        new textArea(
+          profileData.usernameStyle,
+          "color: #0daf77",
+          0,
+          1500,
+        ).createElement(event => {
+          let val = event.target.value.trim();
+          if (val.length > 1500) {
+            return (0,registers/* registerAlert */.de)(
+              "Максимальная длина стиля ника 1500 символов. Уменьшите введенный текст для сохранения.",
+            );
+          }
+
+          if (val.length > 1 && val.startsWith(".")) {
+            event.target.value = val.replace(/\s/g, "");
+            val = event.target.value;
+          } else {
+            val = (0,purify/* clearCSS */.zB)(val);
+          }
+
+          previewProfile.updateUsernameStyle(val);
+          profileData.usernameStyle = val;
+          console.log("TEST use", profileData);
+        }),
+      ],
+      "Стиль ника",
+      "Максимум 1500 символов. При отсутствии кода используется цвет вашей группы с форума.",
+    ).createElement(),
+
+    new container(
+      [
+        new textArea(
+          profileData.bannerStyle,
+          "background: #fff",
+          0,
+          1500,
+        ).createElement(event => {
+          let val = event.target.value.trim();
+          if (val.length > 1500) {
+            return (0,registers/* registerAlert */.de)(
+              "Максимальная длина стиля лычки 1500 символов. Уменьшите введенный текст для сохранения.",
+            );
+          }
+
+          if (val.length > 1 && val.startsWith(".")) {
+            event.target.value = val.replace(/\s/g, "");
+            val = event.target.value;
+          } else {
+            val = (0,purify/* clearCSS */.zB)(val);
+          }
+
+          profileData.bannerStyle = val;
+          previewProfile.updateBanner(profileData);
+        }),
+      ],
+      "Стиль лычки",
+      "Максимум 1500 символов. При отсутствии текста или стиля лычка отключается.",
+    ).createElement(),
+
+    new container(
+      [
+        new input(
+          profileData.bannerText,
+          "Внимание анекдот",
+          0,
+          24,
+        ).createElement(event => {
+          let val = event.target.value;
+          if (val.length > 24) {
+            return (0,registers/* registerAlert */.de)(
+              "Максимальная длина текста в лычке 24 символа. Уменьшите введенный текст для сохранения.",
+            );
+          }
+
+          profileData.bannerText = val;
+          previewProfile.updateBanner(profileData);
+        }),
+      ],
+      "Текст в лычке",
+      "Максимум 24 символа. При отсутствии текста или стиля лычка отключается.",
+    ).createElement(),
+
+    new separator().createElement(), // * ADD SEPARATOR
+
+    new container(
+      [
+        new sortableContainer(
+          generateBadgeItems(previewProfile, badgesData),
+        ).createElement(async e => {
+          // move items
+          const items = e.target.children;
+          const actualBadgesData = await gmWrapper/* default */.Z.getValue(
+            NewStorageName/* default */.Z.ProfileBadges,
+          );
+          actualBadgesData.reverse();
+          for (let i = 0; i < items.length; i++) {
+            logger/* default */.Z.debug("moving items");
+            items[i].dataset.id = i + 1;
+            actualBadgesData[i].position = i + 1;
+          }
+
+          await gmWrapper/* default */.Z.setValue(NewStorageName/* default */.Z.ProfileBadges, actualBadgesData);
+          await reloadUserBadges(profileData, actualBadgesData); // TODO: ВЫЗОВЕТ ОШИБКУ ИЛИ БУДЕТ НЕПРАВИЛЬНО РАБОТАТЬ!!! Переделать на actualBadgesData
+          (0,visuals_users/* updateUserBadges */.Az)(actualBadgesData);
+        }),
+
+        new components_button/* default */.Z(
+          "Добавить иконку",
+          "button LZTUpIconButton",
+          "far fa-plus",
+        ).createElement(async e => {
+          const sortableContainer = e.target.parentElement?.querySelector(
+            ".LZTUpSortableContainer",
+          );
+
+          if (!sortableContainer) {
+            return (0,registers/* registerAlert */.de)("Не найден контейнер для добавления!");
+          }
+
+          if (sortableContainer.children.length === MAX_ICONS_COUNT) {
+            return (0,registers/* registerAlert */.de)("Вы не можете добавить больше 2 иконок!");
+          }
+
+          const actualBadgesData = await gmWrapper/* default */.Z.getValue(
+            NewStorageName/* default */.Z.ProfileBadges,
+          );
+
+          const defaultIcon = {
+            position: sortableContainer.children.length + 1,
+            style: "",
+            text: "Новая иконка",
+            svg: "",
+            fillColor: "",
+            StrokeColor: "",
+          };
+
+          actualBadgesData.push(defaultIcon);
+
+          const newItem = new sortableItem(
+            defaultIcon.text,
+            defaultIcon.position,
+          ).createElement(
+            (e, sortableItem) =>
+              sortableItemOnEditCallback(e, sortableItem, previewProfile),
+            sortableItemOnRemoveCallback,
+          );
+
+          sortableContainer.appendChild(newItem);
+
+          await gmWrapper/* default */.Z.setValue(NewStorageName/* default */.Z.ProfileBadges, actualBadgesData);
+
+          await reloadUserBadges(profileData, actualBadgesData);
+          (0,visuals_users/* updateUserBadges */.Az)(actualBadgesData);
+        }),
+      ],
+      "Управление иконками",
+      "Ниже вы можете легко настроить иконки уника и их порядок (изменения автоматически применяются).",
+    ).createElement(),
+
+    new separator().createElement(), // * ADD SEPARATOR
+
+    new container(
+      [
+        new input(
+          profileData.backgroundImage,
+          "Ссылка на изображение",
+          0,
+          2048,
+        ).createElement(event => {
+          let val = unsafeWindow.XenForo.htmlspecialchars(event.target.value);
+          if (val.length > 2048) {
+            return (0,registers/* registerAlert */.de)(
+              "Максимальная длина ссылки на фон 2048 символов. Введите другую ссылку для сохранения.",
+            );
+          }
+
+          console.log("execute background");
+          profileData.backgroundImage = val;
+          console.log("TEST bacl", profileData);
+          previewProfile.updateBackground(profileData.backgroundImage);
+        }),
+      ],
+      "Фон профиля",
+      "Поддерживаются только прямые ссылки на изображения.",
+    ).createElement(),
+
+    new menu_checkbox(
+      "profile_background_everywhere",
+      `Заменить фон на всех страницах форума`,
+    ).createElement(
+      profileData.backgroundImageEverywhere,
+      async () => {
+        (0,universal/* addBackgroundImage */.j)(profileData.backgroundImage);
+      },
+      async () => {
+        (0,universal/* addBackgroundImage */.j)("");
+        (0,profile/* addBackgroundImageInProfile */.m)(profileData.backgroundImage);
+      },
+      async event => {
+        const actualProfileData = await gmWrapper/* default */.Z.getValue(NewStorageName/* default */.Z.Profile);
+        actualProfileData.backgroundImageEverywhere =
+          profileData.backgroundImageEverywhere = event.target.checked;
+        await gmWrapper/* default */.Z.setValue(NewStorageName/* default */.Z.Profile, actualProfileData);
+        (0,registers/* registerAlert */.de)(
+          `${
+            event.target.checked ? "Включен" : "Выключен"
+          } кастомный фон на всех страницах`,
+          5000,
+        );
+      },
+    ),
+
+    new container([
+      new components_button/* default */.Z(
+        "Сохранить",
+        "button primary LZTUpIconButton fit",
+        "far fa-save",
+      ).createElement(async () => {
+        const oldProfileData = await gmWrapper/* default */.Z.getValue(NewStorageName/* default */.Z.Profile);
+        await gmWrapper/* default */.Z.setValue(NewStorageName/* default */.Z.Profile, profileData);
+
+        (0,registers/* registerAlert */.de)("Настройки локального уника успешно сохранены.");
+
+        if (profileData.usernameStyle) {
+          // update all user styles in page
+          (0,visuals_users/* updateUserStyle */.bR)(profileData.usernameStyle);
+        } else if (
+          oldProfileData.usernameStyle !== "" &&
+          profileData.usernameStyle == ""
+        ) {
+          (0,visuals_users/* updateUserStyle */.bR)(`.${userGroup}`);
+        }
+
+        if (profileData.bannerStyle && profileData.bannerText) {
+          // update banner in profile
+          (0,visuals_users/* updateUserBanner */.$)(profileData.bannerStyle, profileData.bannerText);
+        }
+
+        if (profileData.backgroundImage) {
+          // update background image of page
+          if (profileData.backgroundImageEverywhere) {
+            (0,universal/* addBackgroundImage */.j)(profileData.backgroundImage);
+          } else {
+            (0,profile/* addBackgroundImageInProfile */.m)(profileData.backgroundImage);
+          }
+        }
+        previewProfile.data = profileData;
+        await previewProfile.updateAll();
+      }),
+    ]).createElement(),
+  ];
+};
+
+/* harmony default export */ const items_profile = (getProfileItems);
+
+;// CONCATENATED MODULE: ./src/configs/InfoLink.js
+class InfoLink {
+  // Displayed on the modified page with an error
+  static Donate = new InfoLink(
+    "far fa-donate",
+    "Поддержать разработку",
+    'Можете немного закинуть, если хотите <img src="/styles/default/xenforo/smilies/ok_lol.png" class="mceSmilie" alt=":ok_lol:" title="Lol">',
+    "https://lzt.market/balance/transfer?user_id=667866",
+    "LZTUpInfoDonateItem",
+  );
+  static Thread = new InfoLink(
+    "far fa-comments",
+    "Тема на форуме",
+    "Новости об обновлениях и отзывы других пользователей без всякого мусора",
+    "https://lolz.live/threads/6149539",
+    "LZTUpInfoThreadItem",
+  );
+  static TelegramChannel = new InfoLink(
+    "fab fa-telegram-plane",
+    "Telegram канал",
+    "Все новости расширения и анонсы новых функций",
+    "https://t.me/lzt_upgrade",
+    "LZTUpInfoTGChannelItem",
+  );
+  static TelegramChat = new InfoLink(
+    "fab fa-telegram-plane",
+    "Telegram чат",
+    "Чатик для общения с другими пользователями расширения",
+    "https://t.me/lzt_upgrade_chat",
+    "LZTUpInfoTGChatItem",
+  );
+  static Github = new InfoLink(
+    "fab fa-github",
+    "Github",
+    "Исходники расширения + все версии расширения",
+    "https://github.com/lzt-upgrade/lzt-upgrade",
+    "LZTUpInfoGithubItem",
+  );
+  static GreasyFork = new InfoLink(
+    "far fa-code-branch",
+    "Greasy Fork",
+    "Альтернативный источник для установки расширения",
+    "https://greasyfork.org/ru/scripts/460328-lzt-upgrade",
+    "LZTUpInfoGreasyForkItem",
+  );
+  constructor(icon, title, desc, href, sectionItemId) {
+    this.icon = icon;
+    this.title = title;
+    this.desc = desc;
+    this.href = href;
+    this.sectionItemId = sectionItemId;
+  }
+
+  static getLinks() {
+    return [
+      this.Donate,
+      this.Thread,
+      this.TelegramChannel,
+      this.TelegramChat,
+      this.Github,
+      this.GreasyFork,
+    ];
+  }
+}
+
+;// CONCATENATED MODULE: ./src/ui/menu/items/info.js
+
+
+
+const getInfoItems = async () => {
+  const infoSection = new Section("LZTUpInfoSection", {
+    direction: SectionDirection.Column,
+    hidden: false,
+  });
+  console.log(InfoLink.getLinks());
+  for (const infoLink of InfoLink.getLinks()) {
+    infoSection.addSectionItem(
+      infoLink.title,
+      infoLink.desc,
+      infoLink.icon,
+      infoLink.sectionItemId,
+      { onClick: () => window.open(infoLink.href) },
+    );
+  }
+
+  return [infoSection.createElement()];
+};
+
+/* harmony default export */ const info = (getInfoItems);
+
+;// CONCATENATED MODULE: ./src/utils/files.js
+
+
+function downloadJSONFile(data, name) {
+  const blob = new Blob([data], {
+    type: "application/json",
+  });
+  const link = document.createElement("a");
+  link.href = window.URL.createObjectURL(blob);
+  link.download = `${name}.json`;
+  link.click();
+  return link;
+}
+
+async function uploadJSONFile() {
+  const input = document.createElement("input");
+  input.type = "file";
+  input.accept = "application/json";
+  input.click();
+
+  const file = await new Promise(resolve => {
+    input.onchange = () => {
+      resolve(input.files[0]);
+    };
+  });
+
+  const reader = new FileReader();
+  reader.readAsText(file);
+
+  return await new Promise(resolve => {
+    reader.onload = () => {
+      resolve(reader.result);
+    };
+    reader.onerror = e => {
+      logger/* default */.Z.error("Ошибка загрузки файла настроек", e);
+      resolve(false);
+    };
+  });
+}
+
+
+
+;// CONCATENATED MODULE: ./src/ui/menu/items/settings.js
+
+
+
+
+
+
+
+
+
+
+async function saveSettings() {
+  let configStruct = NewStorageName/* default */.Z.generateConfigStruct();
+
+  const config = {};
+
+  // it's necessary that the data have time to turn out
+  await Promise.all(
+    configStruct.map(async item => {
+      config[item.name] = (await gmWrapper/* default */.Z.getValue(item.original)) || item.default;
+    }),
+  );
+
+  downloadJSONFile(JSON.stringify(config), "LZTUpgradeConfig");
+  (0,registers/* registerAlert */.de)("Файл настроек выгружен", 5000);
+}
+
+async function uploadSettings() {
+  const config = await uploadJSONFile(); // upload json config file from user pc
+
+  if (!config) {
+    (0,registers/* registerAlert */.de)("Ошибка загрузки файла настроек", 5000);
+    return;
+  }
+
+  try {
+    let configStruct = NewStorageName/* default */.Z.generateConfigStruct();
+    const configObj = JSON.parse(config); // read text as json
+
+    // it is necessary that the data has time to load
+    await Promise.all(
+      configStruct.map(async item => {
+        await gmWrapper/* default */.Z.setValue(
+          item.original,
+          configObj[item.name] || item.default,
+        );
+      }),
+    );
+
+    (0,registers/* registerAlert */.de)(
+      "Настройки загружены. Выполняю перезагрузку страницы...",
+      5000,
+    );
+    await (0,utils/* sleep */._v)(500);
+    window.location.reload();
+  } catch (err) {
+    logger/* default */.Z.error("Ошибка загрузки файла настроек", err);
+    (0,registers/* registerAlert */.de)("Ошибка загрузки файла настроек", 5000);
+  }
+}
+
+async function clearCache() {
+  await gmWrapper/* default */.Z.setValue(StorageName/* default */.Z.Cache, StorageName/* default */.Z.Cache.value);
+  (0,registers/* registerAlert */.de)("Кеш успешно очищен", 5000);
+  await (0,utils/* sleep */._v)(1000);
+  window.location.reload();
+}
+
+const getSettingsItems = async () => {
+  const settingsSection = new Section("LZTUpInfoSection", {
+    direction: SectionDirection.Column,
+    hidden: false,
+  })
+    .addSectionItem(
+      "Сохранить настройки в файл",
+      "",
+      "far fa-file-download",
+      "LZTUpSaveSettingsItem",
+      { onClick: saveSettings },
+    )
+    .addSectionItem(
+      "Загрузить настройки из файла",
+      "",
+      "far fa-upload",
+      "LZTUpUploadSettingsItem",
+      { onClick: uploadSettings },
+    )
+    .addSectionItem(
+      "Очистить кеш",
+      "",
+      "far fa-database",
+      "LZTUpClearCacheItem",
+      { onClick: clearCache },
+    );
+
+  return [settingsSection.createElement()];
+};
+
+/* harmony default export */ const settings = (getSettingsItems);
+
+// EXTERNAL MODULE: ./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js
+var injectStylesIntoStyleTag = __webpack_require__("./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
+var injectStylesIntoStyleTag_default = /*#__PURE__*/__webpack_require__.n(injectStylesIntoStyleTag);
+// EXTERNAL MODULE: ./node_modules/style-loader/dist/runtime/styleDomAPI.js
+var styleDomAPI = __webpack_require__("./node_modules/style-loader/dist/runtime/styleDomAPI.js");
+var styleDomAPI_default = /*#__PURE__*/__webpack_require__.n(styleDomAPI);
+// EXTERNAL MODULE: ./node_modules/style-loader/dist/runtime/insertBySelector.js
+var insertBySelector = __webpack_require__("./node_modules/style-loader/dist/runtime/insertBySelector.js");
+var insertBySelector_default = /*#__PURE__*/__webpack_require__.n(insertBySelector);
+// EXTERNAL MODULE: ./node_modules/style-loader/dist/runtime/setAttributesWithoutAttributes.js
+var setAttributesWithoutAttributes = __webpack_require__("./node_modules/style-loader/dist/runtime/setAttributesWithoutAttributes.js");
+var setAttributesWithoutAttributes_default = /*#__PURE__*/__webpack_require__.n(setAttributesWithoutAttributes);
+// EXTERNAL MODULE: ./node_modules/style-loader/dist/runtime/insertStyleElement.js
+var insertStyleElement = __webpack_require__("./node_modules/style-loader/dist/runtime/insertStyleElement.js");
+var insertStyleElement_default = /*#__PURE__*/__webpack_require__.n(insertStyleElement);
+// EXTERNAL MODULE: ./node_modules/style-loader/dist/runtime/styleTagTransform.js
+var styleTagTransform = __webpack_require__("./node_modules/style-loader/dist/runtime/styleTagTransform.js");
+var styleTagTransform_default = /*#__PURE__*/__webpack_require__.n(styleTagTransform);
+// EXTERNAL MODULE: ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/styles/menu.scss
+var menu = __webpack_require__("./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/styles/menu.scss");
+;// CONCATENATED MODULE: ./src/styles/menu.scss
+
+      
+      
+      
+      
+      
+      
+      
+      
+      
+
+var options = {};
+
+options.styleTagTransform = (styleTagTransform_default());
+options.setAttributes = (setAttributesWithoutAttributes_default());
+
+      options.insert = insertBySelector_default().bind(null, "html");
+    
+options.domAPI = (styleDomAPI_default());
+options.insertStyleElement = (insertStyleElement_default());
+
+var update = injectStylesIntoStyleTag_default()(menu/* default */.Z, options);
+
+
+
+
+       /* harmony default export */ const styles_menu = (menu/* default */.Z && menu/* default */.Z.locals ? menu/* default */.Z.locals : undefined);
+
+;// CONCATENATED MODULE: ./src/ui/components/menu/grid.js
+
+
+class GridText {
+  /**
+   *
+   *  @constructor
+   *  @param {string} text - text of the heading
+   */
+
+  constructor(text) {
+    this.text = text;
+    this.className = "LZTUpGridTitle";
+  }
+
+  createElement() {
+    const el = document.createElement("span");
+    el.classList.add(this.className);
+    el.innerText = this.text;
+
+    return el;
+  }
+}
+
+class GridSubText extends GridText {
+  /**
+   *
+   *  @constructor
+   *  @param {string} text - text of the desc (html allowed!!!)
+   */
+
+  constructor(text, className = null) {
+    super(text);
+    this.className = className ?? "LZTUpGridDesc";
+  }
+
+  createElement() {
+    const el = document.createElement("span");
+    el.classList.add(this.className);
+    el.innerHTML = (0,purify/* clearHTML */.G6)(this.text);
+
+    return el;
+  }
+}
+
+class GridAuthorLink {
+  /**
+   *
+   *  @constructor
+   *  @param {string} text - link text (html allowed!!!)
+   *  @param {string} userId - userId of user to link
+   */
+
+  constructor(text, userId) {
+    this.text = text;
+    this.userId = Number(userId) > 0 ? Number(userId) : "";
+    this.className = "LZTUpGridAuthor";
+  }
+
+  createElement() {
+    const currentDomain = window.location.hostname;
+
+    const el = document.createElement("a");
+    el.classList.add(this.className);
+    el.href = `https://${currentDomain}/members/${this.userId}`;
+    el.innerHTML = (0,purify/* clearHTML */.G6)(this.text);
+
+    return el;
+  }
+}
+
+class GridImage {
+  /**
+   *
+   *  @constructor
+   *  @param {string} imageLink - raw link to image
+   *  @param {string} altText - alt text if image isn't loaded
+   */
+
+  constructor(imageLink, altText = null) {
+    this.imageLink = imageLink;
+    this.altText = altText ?? "[IMG]";
+    this.className = "LZTUpGridImage";
+  }
+
+  createElement() {
+    const el = document.createElement("img");
+    el.classList.add(this.className);
+    el.alt = this.altText;
+    el.src = this.imageLink;
+    // for higher priority image loading
+    el.importance = true;
+
+    return el;
+  }
+}
+
+class Grid {
+  /**
+   *
+   *  @constructor
+   *  @param {string} id - id of the grid
+   *  @param {object} options - additional options (read description below)
+   *
+   *  options params:
+   *  @param {object} [gridItems] - array of grid items
+   */
+
+  constructor(id, options = {}) {
+    this.id = id;
+    this.gridItems = options.gridItems || [];
+  }
+
+  createElement() {
+    const grid = document.createElement("div");
+    grid.id = this.id;
+    grid.classList.add("LZTUpGrid");
+
+    for (const gridItem of this.gridItems) {
+      grid.appendChild(gridItem);
+    }
+
+    return grid;
+  }
+
+  /**
+   *
+   *  @param {string} name - title of the item
+   *  @param {string} imageLink - image of the item
+   *  @param {string} gridId - id of the grid item
+   *  @param {object} options - additional options (read description below)
+   *
+   *  Options:
+   *  @param {function} onClick - callback on click event
+   *  @param {string} imageLink - image of the item
+   *  @param {string} altText - alt text if image isn't loaded
+   *  @param {boolean} activeState - status of item
+   *  @param {object} authors - author info ([{}, {}...])
+   *  @param {string} backgroundColor - color of background
+   *  @param {string} textColor - color of text
+   *  @param {string} additionalClass - additional class of grid item
+   *
+   *  Authors:
+   *  @param {string} name - username of the author
+   *  @param {string} userId - link to the author
+   */
+  addGridItem(title, gridId, options = {}) {
+    const onClickCallback = options.onClick || function () {};
+    const imageLink = options.imageLink ?? "";
+    const imageAlt = options.altText;
+    const activeState = options.active ?? false;
+    const authors = options.authors ?? [];
+    const backgroundColor = options.backgroundColor ?? "";
+    const textColor = options.textColor ?? "";
+    const additionalClass = options.additionalClass ?? "";
+
+    const gridItem = document.createElement("div");
+    gridItem.id = gridId;
+    gridItem.classList.add("LZTUpGridItem");
+    if (activeState) {
+      gridItem.classList.add("active");
+    }
+    if (additionalClass) {
+      gridItem.classList.add(additionalClass);
+    }
+
+    gridItem.style.background = backgroundColor;
+    gridItem.style.color = textColor;
+
+    if (imageLink) {
+      const gridImage = new GridImage(imageLink, imageAlt).createElement();
+      gridItem.append(gridImage);
+    }
+
+    const textContainer = document.createElement("div");
+    textContainer.classList.add("LZTUpGridTextContainer");
+    const textEl = new GridText(title).createElement();
+
+    const authorsEl = authors.map(author => {
+      return new GridAuthorLink(author.name, author.userId).createElement()
+        .outerHTML;
+    });
+
+    const authorsInfoEl = new GridSubText(authorsEl.join(", ")).createElement();
+
+    textContainer.append(textEl, authorsInfoEl);
+    gridItem.append(textContainer);
+    gridItem.onclick = async e => {
+      this.setActive(gridItem);
+      await onClickCallback(e, gridItem);
+    };
+
+    this.gridItems.push(gridItem);
+    return this;
+  }
+
+  setActive(item) {
+    for (const gridItem of this.gridItems) {
+      gridItem.classList.remove("active");
+    }
+
+    item.classList.add("active");
+    return this;
+  }
+}
+
+
+
+// EXTERNAL MODULE: ./src/configs/SiteType.js
+var SiteType = __webpack_require__("./src/configs/SiteType.js");
+// EXTERNAL MODULE: ./src/visuals/navbar.js
+var navbar = __webpack_require__("./src/visuals/navbar.js");
+// EXTERNAL MODULE: ./src/configs/NavbarBalloon.js
+var NavbarBalloon = __webpack_require__("./src/configs/NavbarBalloon.js");
+// EXTERNAL MODULE: ./src/utils/threads.js + 3 modules
+var threads = __webpack_require__("./src/utils/threads.js");
+;// CONCATENATED MODULE: ./src/configs/CacheKeys.js
+
+
+class CacheKeys extends base/* BaseEnum */.e {
+  static availabledForumLogos = new CacheKeys("availabledForumLogos", []);
+  static availabledMarketLogos = new CacheKeys("availabledMarketLogos", []);
+  static availabledThemes = new CacheKeys("availabledThemes", []);
+  static themeName = new CacheKeys("themeName", "");
+
+  constructor(name, value) {
+    super(name);
+    this.value = value;
+  }
+
+  static getKeys() {
+    return [
+      this.availabledForumLogos,
+      this.availabledMarketLogos,
+      this.availabledThemes,
+    ];
+  }
+
+  static getKeyByName(name) {
+    return this.getKeys().find(k => k.name === name);
+  }
+}
+
+// EXTERNAL MODULE: ./src/visuals/threads.js + 1 modules
+var visuals_threads = __webpack_require__("./src/visuals/threads.js");
+;// CONCATENATED MODULE: ./node_modules/uuid/dist/esm-browser/native.js
+const randomUUID = typeof crypto !== 'undefined' && crypto.randomUUID && crypto.randomUUID.bind(crypto);
+/* harmony default export */ const esm_browser_native = ({
+  randomUUID
+});
+;// CONCATENATED MODULE: ./node_modules/uuid/dist/esm-browser/rng.js
+// Unique ID creation requires a high quality random # generator. In the browser we therefore
+// require the crypto API and do not support built-in fallback to lower quality random number
+// generators (like Math.random()).
+let getRandomValues;
+const rnds8 = new Uint8Array(16);
+function rng() {
+  // lazy load so that environments that need to polyfill have a chance to do so
+  if (!getRandomValues) {
+    // getRandomValues needs to be invoked in a context where "this" is a Crypto implementation.
+    getRandomValues = typeof crypto !== 'undefined' && crypto.getRandomValues && crypto.getRandomValues.bind(crypto);
+
+    if (!getRandomValues) {
+      throw new Error('crypto.getRandomValues() not supported. See https://github.com/uuidjs/uuid#getrandomvalues-not-supported');
+    }
+  }
+
+  return getRandomValues(rnds8);
+}
+;// CONCATENATED MODULE: ./node_modules/uuid/dist/esm-browser/stringify.js
+
+/**
+ * Convert array of 16 byte values to UUID string format of the form:
+ * XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
+ */
+
+const byteToHex = [];
+
+for (let i = 0; i < 256; ++i) {
+  byteToHex.push((i + 0x100).toString(16).slice(1));
+}
+
+function unsafeStringify(arr, offset = 0) {
+  // Note: Be careful editing this code!  It's been tuned for performance
+  // and works in ways you may not expect. See https://github.com/uuidjs/uuid/pull/434
+  return byteToHex[arr[offset + 0]] + byteToHex[arr[offset + 1]] + byteToHex[arr[offset + 2]] + byteToHex[arr[offset + 3]] + '-' + byteToHex[arr[offset + 4]] + byteToHex[arr[offset + 5]] + '-' + byteToHex[arr[offset + 6]] + byteToHex[arr[offset + 7]] + '-' + byteToHex[arr[offset + 8]] + byteToHex[arr[offset + 9]] + '-' + byteToHex[arr[offset + 10]] + byteToHex[arr[offset + 11]] + byteToHex[arr[offset + 12]] + byteToHex[arr[offset + 13]] + byteToHex[arr[offset + 14]] + byteToHex[arr[offset + 15]];
+}
+
+function stringify(arr, offset = 0) {
+  const uuid = unsafeStringify(arr, offset); // Consistency check for valid UUID.  If this throws, it's likely due to one
+  // of the following:
+  // - One or more input array values don't map to a hex octet (leading to
+  // "undefined" in the uuid)
+  // - Invalid input values for the RFC `version` or `variant` fields
+
+  if (!validate(uuid)) {
+    throw TypeError('Stringified UUID is invalid');
+  }
+
+  return uuid;
+}
+
+/* harmony default export */ const esm_browser_stringify = ((/* unused pure expression or super */ null && (stringify)));
+;// CONCATENATED MODULE: ./node_modules/uuid/dist/esm-browser/v4.js
+
+
+
+
+function v4(options, buf, offset) {
+  if (esm_browser_native.randomUUID && !buf && !options) {
+    return esm_browser_native.randomUUID();
+  }
+
+  options = options || {};
+  const rnds = options.random || (options.rng || rng)(); // Per 4.4, set bits for version and `clock_seq_hi_and_reserved`
+
+  rnds[6] = rnds[6] & 0x0f | 0x40;
+  rnds[8] = rnds[8] & 0x3f | 0x80; // Copy bytes to buffer, if provided
+
+  if (buf) {
+    offset = offset || 0;
+
+    for (let i = 0; i < 16; ++i) {
+      buf[offset + i] = rnds[i];
+    }
+
+    return buf;
+  }
+
+  return unsafeStringify(rnds);
+}
+
+/* harmony default export */ const esm_browser_v4 = (v4);
+;// CONCATENATED MODULE: ./src/ui/menu/items/appear.js
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+const MAX_BUTTONS_COUNT = 4;
+const APPEAR_MENU_ID = "LZTUpAppearContainer";
+const MODAL_SELECTOR = ".LZTUpModalContent";
+
+async function createLogoManagerTempMenu(logoType) {
+  const cacheItemName = `availabled${(0,utils/* ucFirst */.zf)(logoType)}Logos`;
+  const cacheKey = CacheKeys.getKeyByName(cacheItemName);
+  const storageItemName = `${logoType.toLowerCase()}Logo`;
+  const appearData = await gmWrapper/* default */.Z.getValue(NewStorageName/* default */.Z.Appear);
+  const activeLogo = appearData?.[storageItemName] ?? 0;
+  const logos = await gmWrapper/* default */.Z.getCache(cacheKey);
+  const defaultLogoPreview =
+    logoType === SiteType/* default */.Z.Forum
+      ? "https://raw.githubusercontent.com/ilyhalight/lzt-upgrade/master/public/static/img/logos/forum/default.svg"
+      : "https://raw.githubusercontent.com/ilyhalight/lzt-upgrade/master/public/static/img/logos/market/default.svg";
+  logos.unshift({
+    uid: 0,
+    name: "По умолчанию",
+    preview: defaultLogoPreview,
+    target: 1,
+    css: "",
+    author: "Lolzteam",
+    author_userid: "",
+    active: 1,
+    created_at: 1696777530,
+  });
+
+  const modalContent = document.querySelector(MODAL_SELECTOR);
+  const mainMenu = document.getElementById(APPEAR_MENU_ID);
+
+  const logoGrid = new Grid("LZTUpLogoGrid");
+  // TODO: add logo filters for the market and forum in the API (TO BACKEND) (?target=market or ?target=forum)
+  for (const logo of logos) {
+    const authors = (0,utils/* getAuthors */.P6)(logo.author, logo.author_userid);
+    logoGrid.addGridItem(logo.name, `LZTUpLogo${logo.uid}`, {
+      onClick: async () => {
+        (0,universal/* setLogo */.E)(logo.css, logoType);
+        appearData[storageItemName] = logo.uid;
+        await gmWrapper/* default */.Z.setValue(NewStorageName/* default */.Z.Appear, appearData);
+        logger/* default */.Z.debug(`Change logo to ${logo.name} (by ${logo.author})`);
+        await gmWrapper/* default */.Z.setCache(storageItemName, {
+          uid: logo.uid,
+          css: logo.css,
+          cacheTime: (0,utils/* getTimestamp */.u3)() + config/* default */.Z.cacheTime,
+        });
+      },
+      imageLink: logo.preview,
+      altText: logo.name,
+      active: logo.uid === activeLogo,
+      authors,
+    });
+  }
+
+  const el = addTemporaryMenuSection([
+    new container(
+      [logoGrid.createElement()],
+      "Выберите логотип",
+      `Выберите логотип, который у вас будет отображаться как логотип ${
+        logoType === SiteType/* default */.Z.Forum ? "форума" : "маркета"
+      }.`,
+    ).createElement(),
+  ]);
+
+  modalContent.appendChild(el);
+  openTempMenu("Выбор логотипа", "Внешний вид", mainMenu, () => {});
+}
+
+async function createThemeManagerTempMenu() {
+  const appearData = await gmWrapper/* default */.Z.getValue(NewStorageName/* default */.Z.Appear);
+  const selectedTheme = appearData?.selectedTheme ?? 0;
+  const themes = await gmWrapper/* default */.Z.getCache(CacheKeys.availabledThemes);
+  themes.unshift({
+    uid: 0,
+    name: "Обычная",
+    file: "",
+    author: "Lolzteam",
+    author_userid: null,
+    accent_color: "",
+    text_color: "",
+    active: 1,
+  });
+
+  const modalContent = document.querySelector(MODAL_SELECTOR);
+  const mainMenu = document.getElementById(APPEAR_MENU_ID);
+
+  const themeGrid = new Grid("LZTUpThemeGrid");
+  for (const theme of themes) {
+    const authors = (0,utils/* getAuthors */.P6)(theme.author, theme.author_userid);
+    themeGrid.addGridItem(theme.name, `LZTUpTheme${theme.uid}`, {
+      onClick: async () => {
+        appearData.selectedTheme = theme.uid;
+        await gmWrapper/* default */.Z.setValue(NewStorageName/* default */.Z.Appear, appearData);
+        logger/* default */.Z.debug(`Change theme to ${theme.name} (by ${theme.author})`);
+        (0,registers/* registerAlert */.de)(`Тема изменена на ${theme.name}`, 5000);
+        await gmWrapper/* default */.Z.setCache(CacheKeys.themeName.name, theme.file);
+        await (0,utils/* sleep */._v)(500);
+        window.location.reload();
+      },
+      active: theme.uid === selectedTheme,
+      authors,
+      backgroundColor: theme.accent_color,
+      textColor: theme.text_color,
+      additionalClass: "theme",
+    });
+  }
+
+  const el = addTemporaryMenuSection([
+    new container(
+      [themeGrid.createElement()],
+      "Выберите тему",
+      `Выберите тему, которая у вас будет отображаться как тема сайта.`,
+    ).createElement(),
+  ]);
+
+  modalContent.appendChild(el);
+  openTempMenu("Выбор темы", "Внешний вид", mainMenu, () => {});
+}
+
+async function createAdblockManagerTempMenu() {
+  const adblockData = await gmWrapper/* default */.Z.getValue(NewStorageName/* default */.Z.Adblock);
+
+  const modalContent = document.querySelector(MODAL_SELECTOR);
+  const mainMenu = document.getElementById(APPEAR_MENU_ID);
+
+  const el = addTemporaryMenuSection([
+    new container(
+      [
+        new container([
+          new menu_checkbox(
+            "hide_alert_ads",
+            "Отключить рекламу в уведомлениях",
+          ).createElement(
+            adblockData.hideAlertAds,
+            () => {},
+            () => {},
+            async event => {
+              adblockData.hideAlertAds = event.target.checked;
+            },
+          ),
+          new menu_checkbox(
+            "hide_thread_list_ads",
+            "Отключить рекламу в списке тем",
+          ).createElement(
+            adblockData.hideThreadListAds,
+            () => {},
+            () => {},
+            async event => {
+              adblockData.hideThreadListAds = event.target.checked;
+            },
+          ),
+        ]).createElement("display: block;"),
+        new components_button/* default */.Z(
+          "Сохранить",
+          "button primary LZTUpIconButton fit",
+          "far fa-save",
+        ).createElement(async () => {
+          await gmWrapper/* default */.Z.setValue(NewStorageName/* default */.Z.Adblock, adblockData);
+
+          (0,registers/* registerAlert */.de)("Настройки продвинутого Adblock успешно сохранены.");
+          window.location.reload();
+        }),
+      ],
+      "Выберите типы рекламы",
+      `Выберите все типы рекламы, которые хотите отключить. Для применения настроек нажмите на кнопку сохранить. При сохранение настроек страница автоматически перезагрузится.`,
+    ).createElement(),
+  ]);
+
+  modalContent.appendChild(el);
+  openTempMenu("Выбор темы", "Внешний вид", mainMenu, () => {});
+}
+
+async function generateReportButtonsItems() {
+  console.log("Generating buttons items");
+  const items = [];
+
+  const reportButtonsData = await gmWrapper/* default */.Z.getValue(NewStorageName/* default */.Z.ReportButtons);
+
+  console.log(reportButtonsData.sort((a, b) => a.position - b.position));
+
+  for (const button of reportButtonsData.sort(
+    (a, b) => a.position - b.position,
+  )) {
+    console.log(button.text, button.position);
+    const item = new sortableItem(button.text, button.position).createElement(
+      appear_sortableItemOnEditCallback,
+      sortableItemOnRemoveCallback,
+    );
+    item.dataset.uuid = button.uuid;
+    items.push(item);
+  }
+
+  console.log(items);
+
+  return items;
+}
+
+async function appear_sortableItemOnEditCallback(e, sortableItem) {
+  const buttonUUID = sortableItem.dataset.uuid;
+  const modalContent = document.querySelector(MODAL_SELECTOR);
+  const appearSubMenu = document.getElementById(APPEAR_MENU_ID);
+  const reportButtonsData = await gmWrapper/* default */.Z.getValue(NewStorageName/* default */.Z.ReportButtons);
+  let buttonData =
+    reportButtonsData.find(button => button.uuid === buttonUUID) || [];
+
+  async function updateButtonData(buttonData) {
+    // buttonData its current button (which we are editing)
+    const actualReportButtonsData = await gmWrapper/* default */.Z.getValue(
+      NewStorageName/* default */.Z.ReportButtons,
+    );
+    const currentReportButton = actualReportButtonsData.find(
+      button => button.uuid === buttonUUID,
+    );
+    const currentBadgeId = actualReportButtonsData.indexOf(currentReportButton);
+    actualReportButtonsData[currentBadgeId] = buttonData;
+    return actualReportButtonsData;
+  }
+
+  const el = addTemporaryMenuSection([
+    new container(
+      [
+        new input(buttonData.text, "Неправильный отзыв", 1, 12).createElement(
+          async event => {
+            let val = unsafeWindow.XenForo.htmlspecialchars(
+              event.target.value.trim(),
+            );
+
+            if (val.length < 1) {
+              return (0,registers/* registerAlert */.de)(
+                "Минимальная длина текста 1 символ. Увеличьте введенный текст для сохранения.",
+              );
+            } else if (val.length > 12) {
+              return (0,registers/* registerAlert */.de)(
+                "Максимальная длина текста 12 символов. Уменьшите введенный текст для сохранения.",
+              );
+            }
+
+            buttonData.text = val;
+          },
+        ),
+      ],
+      "Текст кнопки",
+      "Этот текст видите только вы. Минимальная длина - 1 символ, максимальная - 12 символов.",
+    ).createElement(),
+
+    new container(
+      [
+        new input(buttonData.reason, "Нарушение 3.15", 1, 120).createElement(
+          async event => {
+            let val = unsafeWindow.XenForo.htmlspecialchars(
+              event.target.value.trim(),
+            );
+
+            if (val.length < 1) {
+              return (0,registers/* registerAlert */.de)(
+                "Минимальная длина причины репорта 1 символ. Увеличьте введенный текст для сохранения.",
+              );
+            } else if (val.length > 120) {
+              return (0,registers/* registerAlert */.de)(
+                "Максимальная длина причины репорта 120 символов. Уменьшите введенный текст для сохранения.",
+              );
+            }
+
+            buttonData.reason = val;
+          },
+        ),
+      ],
+      "Причина репорта",
+      "Внимание! Причина репорта видна ВСЕМ. Не используйте в ней какие-либо оскорбления. Минимальная длина - 1 символ, максимальная - 120 символов.",
+    ).createElement(),
+
+    new container([
+      new components_button/* default */.Z(
+        "Сохранить",
+        "button primary LZTUpIconButton fit",
+        "far fa-save",
+      ).createElement(async () => {
+        const buttons = await updateButtonData(buttonData);
+        await gmWrapper/* default */.Z.setValue(NewStorageName/* default */.Z.ReportButtons, buttons);
+        (0,visuals_threads/* updateReportButtons */.Lp)(buttons);
+        (0,registers/* registerAlert */.de)("Кнопка быстрого репорта успешно сохранена.");
+      }),
+    ]).createElement(),
+  ]);
+
+  modalContent.appendChild(el);
+  openTempMenu(
+    "Управление быстрыми репортами",
+    "Внешний вид",
+    appearSubMenu,
+    async () => {
+      const sortable = appearSubMenu.querySelectorAll(
+        ".LZTUpSortableContainer > .LZTUpSortableItem",
+      );
+
+      const actualReportButtonsData = await gmWrapper/* default */.Z.getValue(
+        NewStorageName/* default */.Z.ReportButtons,
+      );
+
+      for (let i = 0; i < actualReportButtonsData.length; i++) {
+        const content = sortable[i].querySelector(".LZTUpSortableContent");
+        content.innerHTML = (0,purify/* clearHTML */.G6)(actualReportButtonsData[i].text);
+      }
+    },
+  );
+}
+
+async function sortableItemOnRemoveCallback(e, sortableItemEl) {
+  const appearSubMenu = document.getElementById("LZTUpAppearContainer");
+  let reportButtonsData = await gmWrapper/* default */.Z.getValue(NewStorageName/* default */.Z.ReportButtons);
+  let newReportButtons = [];
+  let counter = 1;
+
+  for (let i = 0; i < reportButtonsData.length; i++) {
+    const button = reportButtonsData[i];
+    if (button.uuid === sortableItemEl.dataset.uuid) {
+      continue;
+    }
+
+    const item = appearSubMenu.querySelector(
+      ".LZTUpSortableContainer > .LZTUpSortableItem",
+    );
+    if (item) {
+      item.dataset.id = counter;
+    }
+
+    button.position = counter;
+    newReportButtons.push(button);
+    counter++;
+  }
+
+  await gmWrapper/* default */.Z.setValue(NewStorageName/* default */.Z.ReportButtons, newReportButtons);
+  (0,visuals_threads/* updateReportButtons */.Lp)(newReportButtons);
+}
+
+const getAppearItems = async () => {
+  const appearData = await GM_getValue(StorageName/* default */.Z.Appear, {});
+
+  const appearSection = new Section("LZTUpInfoSection", {
+    direction: SectionDirection.Column,
+    hidden: false,
+  })
+    .addSectionItem(
+      "Логотип",
+      "Выберите логотип для форума из списка",
+      "far fa-comments",
+      "LZTUpLogoManager",
+      {
+        onClick: async () => await createLogoManagerTempMenu(SiteType/* default */.Z.Forum),
+        rightArrow: true,
+      },
+    )
+    .addSectionItem(
+      "Логотип маркета",
+      "Выберите логотип для маркета из списка",
+      "far fa-shopping-cart",
+      "LZTUpMarketLogoManager",
+      {
+        onClick: async () => await createLogoManagerTempMenu(SiteType/* default */.Z.Market),
+        rightArrow: true,
+      },
+    )
+    .addSectionItem(
+      "Менеджер тем",
+      "Выберите тему для форума из списка",
+      "far fa-paint-brush",
+      "LZTUpThemeManager",
+      { onClick: createThemeManagerTempMenu, rightArrow: true },
+    )
+    .addSectionItem(
+      "Продвинутый Adblock",
+      "Избавьтесь от назойливой рекламы в пару нажатий",
+      "far fa-shield",
+      "LZTUpAdblockManager",
+      { onClick: createAdblockManagerTempMenu, rightArrow: true },
+    );
+
+  return [
+    appearSection.createElement(),
+
+    new separator().createElement(),
+
+    new container(
+      [
+        new sortableContainer(await generateReportButtonsItems()).createElement(
+          async e => {
+            console.log("target", e, e.target);
+            const items = e.target.children;
+            console.log("items", items);
+            const actualReportButtonsData = await gmWrapper/* default */.Z.getValue(
+              NewStorageName/* default */.Z.ReportButtons,
+            );
+            const newReportButtonsData = [];
+
+            console.log(actualReportButtonsData);
+            // actualReportButtonsData.reverse();
+
+            for (let i = 0; i < items.length; i++) {
+              const item = items[i];
+              const button = actualReportButtonsData.find(
+                b => b.uuid === item.dataset.uuid,
+              );
+              console.log("moving items", item, button);
+
+              item.dataset.id = i + 1;
+              button.position = i + 1;
+              newReportButtonsData.push(button);
+            }
+
+            console.log("Finish", newReportButtonsData);
+
+            await gmWrapper/* default */.Z.setValue(
+              NewStorageName/* default */.Z.ReportButtons,
+              newReportButtonsData,
+            );
+            (0,visuals_threads/* updateReportButtons */.Lp)(newReportButtonsData);
+          },
+        ),
+        new components_button/* default */.Z(
+          "Добавить кнопку",
+          "button LZTUpIconButton",
+          "far fa-plus",
+        ).createElement(async e => {
+          const sortableContainer = e.target.parentElement?.querySelector(
+            ".LZTUpSortableContainer",
+          );
+
+          if (!sortableContainer) {
+            return (0,registers/* registerAlert */.de)("Не найден контейнер для добавления!");
+          }
+
+          if (sortableContainer.children.length === MAX_BUTTONS_COUNT) {
+            return (0,registers/* registerAlert */.de)(
+              `Вы не можете добавить больше ${MAX_BUTTONS_COUNT} иконок!`,
+            );
+          }
+
+          const actualReportButtons = await gmWrapper/* default */.Z.getValue(
+            NewStorageName/* default */.Z.ReportButtons,
+          );
+
+          const defaultReportButton = {
+            position: sortableContainer.children.length + 1,
+            text: "Новая кнопка",
+            reason: "Флуд / Оффтоп / Спам / Бесполезная тема",
+            uuid: esm_browser_v4(), // uniq value
+          };
+
+          actualReportButtons.push(defaultReportButton);
+
+          const newItem = new sortableItem(
+            defaultReportButton.text,
+            defaultReportButton.position,
+          ).createElement(
+            appear_sortableItemOnEditCallback,
+            sortableItemOnRemoveCallback,
+          );
+          newItem.dataset.uuid = defaultReportButton.uuid;
+
+          sortableContainer.appendChild(newItem);
+
+          await gmWrapper/* default */.Z.setValue(
+            NewStorageName/* default */.Z.ReportButtons,
+            actualReportButtons,
+          );
+
+          (0,visuals_threads/* updateReportButtons */.Lp)(actualReportButtons);
+        }),
+      ],
+      "Управление быстрыми репортами",
+      "Ниже вы можете легко настроить порядок, причины и названия для кнопок быстрого репорта.",
+    ).createElement(),
+
+    new separator().createElement(),
+
+    new container(
+      [
+        new menu_checkbox(
+          "hide_alert_counter",
+          `Скрыть счётчик уведомлений в навбаре`,
+        ).createElement(
+          appearData.hideAlertCounter,
+          () => {},
+          () => {},
+          async event => {
+            appearData.hideAlertCounter = event.target.checked;
+            await GM_setValue(StorageName/* default */.Z.Appear, appearData);
+            (0,navbar/* hideBalloonById */.R)(
+              NavbarBalloon/* default */.Z.AlertCounter.getName(),
+              event.target.checked,
+            );
+            (0,registers/* registerAlert */.de)(
+              `${
+                event.target.checked ? "Включено" : "Выключено"
+              } скрытие счетчика уведомлений в навбаре`,
+              5000,
+            );
+          },
+        ),
+        new menu_checkbox(
+          "hide_message_counter",
+          `Скрыть счётчик сообщений в навбаре`,
+        ).createElement(
+          appearData.hideMessageCounter,
+          () => {},
+          () => {},
+          async event => {
+            appearData.hideMessageCounter = event.target.checked;
+            await GM_setValue(StorageName/* default */.Z.Appear, appearData);
+            (0,navbar/* hideBalloonById */.R)(
+              NavbarBalloon/* default */.Z.MessageCounter.getName(),
+              event.target.checked,
+            );
+            (0,registers/* registerAlert */.de)(
+              `${
+                event.target.checked ? "Включено" : "Выключено"
+              } скрытие счетчика сообщений в навбаре`,
+              5000,
+            );
+          },
+        ),
+        new menu_checkbox(
+          "hide_unread_articles_status",
+          `Скрыть статус непрочитанных статей`,
+        ).createElement(
+          appearData.hideUnreadArticlesStatus,
+          () => {},
+          () => {},
+          async event => {
+            appearData.hideUnreadArticlesStatus = event.target.checked;
+            await GM_setValue(StorageName/* default */.Z.Appear, appearData);
+            (0,navbar/* hideUnreadArticlesStatus */.p)(event.target.checked);
+            (0,registers/* registerAlert */.de)(
+              `${
+                event.target.checked ? "Включено" : "Выключено"
+              } скрытие статуса непрочитанных статей`,
+              5000,
+            );
+          },
+        ),
+      ],
+      "Скрытие элементов",
+      "Скройте лишние элементы сайта",
+    ).createElement("display: block;"),
+
+    new container(
+      [
+        new menu_checkbox(
+          "new_error_page",
+          `Небольшое изменение страницы "тех. работ" и "ошибок"`,
+        ).createElement(
+          appearData.newErrorPage,
+          () => {},
+          () => {},
+          async event => {
+            appearData.newErrorPage = event.target.checked;
+            await GM_setValue(StorageName/* default */.Z.Appear, appearData);
+            (0,registers/* registerAlert */.de)(
+              `${
+                event.target.checked ? "Включено" : "Выключено"
+              } Небольшое изменение страницы "тех. работ" и "ошибок"`,
+              5000,
+            );
+          },
+        ),
+        new menu_checkbox(
+          "disable_self_ad_error",
+          `Убрать саморекламу на измененной странице "тех. работ" и "ошибок"`,
+        ).createElement(
+          appearData.disableSelfAdOnNewErrorPage,
+          () => {},
+          () => {},
+          async event => {
+            appearData.disableSelfAdOnNewErrorPage = event.target.checked;
+            await GM_setValue(StorageName/* default */.Z.Appear, appearData);
+            (0,registers/* registerAlert */.de)(
+              `${
+                event.target.checked ? "Включена" : "Выключена"
+              } самореклама на изменнной странице "тех. работ" и "ошибок"`,
+              5000,
+            );
+          },
+        ),
+      ],
+      "Страницы тех. работ и ошибок",
+      "Измените оформление страницы тех. работ и ошибки",
+    ).createElement("display: block;"),
+    new container(
+      [
+        new menu_checkbox(
+          "summarize_threads",
+          `
+          Суммаризатор тем
+          <span class="far fa-info-circle Tooltip" title="Собирает все самое важное из темы, если содержимое темы более 300 символов"></span>
+          `,
+        ).createElement(
+          appearData.summarizeThreads,
+          () => {},
+          () => {},
+          async event => {
+            appearData.summarizeThreads = event.target.checked;
+            await GM_setValue(StorageName/* default */.Z.Appear, appearData);
+            await (0,threads/* summarizeThreadBlock */.iY)(event.target.checked);
+            (0,registers/* registerAlert */.de)(
+              `${
+                event.target.checked ? "Включен" : "Выключен"
+              } суммаризатор тем`,
+              5000,
+            );
+          },
+        ),
+      ],
+      "Другое",
+      "Другие функции связанные с внешним видом",
+    ).createElement("display: block;"),
+  ];
+};
+
+/* harmony default export */ const appear = (getAppearItems);
+
+;// CONCATENATED MODULE: ./src/ui/menu/items/update.js
+
+
+const getUpdateItems = async () => {
+  return [new comment("Раздел обновления расширения").createElement()];
+};
+
+/* harmony default export */ const items_update = (getUpdateItems);
+
+;// CONCATENATED MODULE: ./src/ui/menu/menu.js
+
+
+
+
+
+
+
+
+
+
+
+
+async function generateMenu(tabs) {
+  const menuSection = new Section("LZTUpMainSection")
+    .addSectionItem(
+      "Локальный Уник",
+      "Максимальная кастомизация",
+      "far fa-palette",
+      "LZTUpUniqItem",
+      { onClick: (_, title) => openSubMenu("LZTUpUniqContainer", title) },
+    )
+    .addSectionItem(
+      "Розыгрыши",
+      "Комфорт для розыгрышей",
+      "far fa-gift",
+      "LZTUpContestsItem",
+      { onClick: (_, title) => openSubMenu("LZTUpContestsContainer", title) },
+    )
+    .addSectionItem(
+      "Пользователи",
+      "Штучки для пользователей",
+      "far fa-user",
+      "LZTUpUsersItem",
+      { onClick: (_, title) => openSubMenu("LZTUpUsersContainer", title) },
+    )
+    .addSectionItem(
+      "Внешний вид",
+      "Темы, логотипы и другое",
+      "far fa-drafting-compass",
+      "LZTUpAppearItem",
+      { onClick: (_, title) => openSubMenu("LZTUpAppearContainer", title) },
+    )
+    .addSectionContainer("LZTUpUniqContainer", await items_profile())
+    .addSectionContainer("LZTUpContestsContainer", await items_contests())
+    .addSectionContainer("LZTUpUsersContainer", await items_users())
+    .addSectionContainer("LZTUpAppearContainer", await appear());
+
+  const settingsSection = new Section("LZTUpSettingsSection")
+    .addSectionItem(
+      "Настройки",
+      "Настройки расширения",
+      "far fa-cog",
+      "LZTUpSettingsItem",
+      { onClick: (_, title) => openSubMenu("LZTUpSettingsContainer", title) },
+    )
+    .addSectionItem(
+      "Обновления",
+      "Установка и проверка обновлений расширения",
+      "far fa-cloud-download",
+      "LZTUpUpdateItem",
+      { onClick: (_, title) => openSubMenu("LZTUpUpdateContainer", title) },
+    )
+    .addSectionItem(
+      "Информация",
+      `Версия: ${GM_info?.script?.version}`,
+      "far fa-info-circle",
+      "LZTUpInformationItem",
+      {
+        onClick: (_, title) => openSubMenu("LZTUpInformationContainer", title),
+      },
+    )
+    .addSectionContainer("LZTUpSettingsContainer", await settings())
+    .addSectionContainer("LZTUpUpdateContainer", await items_update())
+    .addSectionContainer("LZTUpInformationContainer", await info());
+
+  const sections = [menuSection, settingsSection];
+
+  const menuContent = document.createElement("div");
+  menuContent.classList.add("LZTUpModalContent");
+
+  const tabsContainer = document.createElement("ul");
+  tabsContainer.classList.add("LZTUpTabs");
+  menuContent.appendChild(tabsContainer);
+
+  for (const section of sections) {
+    const sectionEl = section.createElement();
+    menuContent.appendChild(sectionEl);
+    for (const container of section.sectionContainers) {
+      menuContent.append(container);
+      // container
+      //   .querySelectorAll(".Tooltip")
+      //   .forEach(el => unsafeWindow.XenForo.Tooltip($(el))); // load all tooltips in menu container
+    }
+  }
+
+  logger/* default */.Z.debug("Generated menu tabs: ", tabs);
+
+  for (const tab of tabs) {
+    menuContent.querySelector(".LZTUpTabs").appendChild(tab.createElement());
+  }
+
+  return menuContent;
+}
+
+
+
+;// CONCATENATED MODULE: ./src/ui/components/menu/tab.js
+class Tab {
+  /**
+   *
+   *  @constructor
+   *  @param {string} name - name of the tab
+   *  @param {string} className - class name of the tab
+   *  @param {string} sectionClassName - class name of the section
+   *  @param {boolean} active - status of tab
+   */
+
+  constructor(name, className, sectionClassName, active) {
+    this.name = name;
+    this.className = className;
+    this.sectionClassName = sectionClassName;
+    this.active = active;
+  }
+
+  createElement() {
+    const tab = document.createElement("li");
+    tab.id = "LZTUpTab";
+    tab.className = this.className;
+    const span = document.createElement("span");
+    span.innerText = this.name;
+    tab.appendChild(span);
+
+    tab.addEventListener("click", () => this.setActive());
+    return tab;
+  }
+
+  setActive() {
+    document
+      .querySelectorAll("#LZTUpTab")
+      .forEach(tab => tab.classList.remove("active"));
+
+    document.querySelector(`.${this.className}`).classList.add("active");
+
+    document
+      .querySelectorAll(".LZTUpModalContent > .LZTUpSection")
+      .forEach(section => (section.style.display = "none"));
+
+    document.getElementById(this.sectionClassName).style.display = "";
+  }
+}
+
+
+
+// EXTERNAL MODULE: ./src/xenforo/tooltips.js
+var tooltips = __webpack_require__("./src/xenforo/tooltips.js");
+// EXTERNAL MODULE: ./src/api/lztupgrade/logoAPI.js
+var logoAPI = __webpack_require__("./src/api/lztupgrade/logoAPI.js");
+// EXTERNAL MODULE: ./src/api/lztupgrade/themeAPI.js
+var themeAPI = __webpack_require__("./src/api/lztupgrade/themeAPI.js");
+;// CONCATENATED MODULE: ./src/utils/cache.js
+
+
+
+
+
+
+
+async function updateCachedLogos(logoType) {
+  const cacheItemName = `availabled${(0,utils/* ucFirst */.zf)(logoType)}Logos`;
+  const cacheKey = CacheKeys.getKeyByName(cacheItemName);
+  const logoTargetInt = logoType === SiteType/* default */.Z.Forum ? 1 : 2;
+  const logos = (await logoAPI/* default */.Z.getLogos(logoTargetInt)) || cacheKey.value;
+  return await gmWrapper/* default */.Z.setCache(cacheKey.name, logos);
+}
+
+async function updateCachedThemes() {
+  const themes = (await themeAPI/* default */.Z.getThemes()) || [];
+  return await gmWrapper/* default */.Z.setCache(CacheKeys.availabledThemes.name, themes);
+}
+
+
+
+;// CONCATENATED MODULE: ./src/callbacks/menuButton.js
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+async function menuButtonCallback() {
+  const tabs = [
+    new Tab("Главная", "LZTUpMainTab", "LZTUpMainSection", true),
+    new Tab("Настройки", "LZTUpSettingsTab", "LZTUpSettingsSection", false),
+  ];
+
+  const menuContent = await generateMenu(tabs);
+
+  document.getElementById("LZTUpModalOverlay")?.remove();
+  (0,registers/* registerModal */.Y3)(config/* default */.Z.extName, '<div id="LZTUpModalBase"></div>');
+
+  const modal = document.querySelector("#LZTUpModalBase");
+  modal.appendChild(menuContent);
+  for (const tab of tabs) {
+    if (tab.active) {
+      tab.setActive();
+    }
+  }
+
+  const baseModal = modal.parentElement;
+  baseModal.style.whiteSpace = "unset";
+  const overlay = baseModal.parentElement;
+  overlay.className = "formOverlay";
+  overlay.id = "LZTUpModalOverlay";
+  overlay.style = "margin-bottom: 15px;";
+
+  setMenuTitle(config/* default */.Z.extName);
+  (0,tooltips/* updateTooltips */.W)();
+  initColorPickers();
+
+  // Update Profile Preview
+  const profileData = await gmWrapper/* default */.Z.getValue(NewStorageName/* default */.Z.Profile);
+  const badgesData = await gmWrapper/* default */.Z.getValue(NewStorageName/* default */.Z.ProfileBadges);
+  const userid = (0,users/* getUserId */.n5)("me");
+  const username = (0,users/* getUsername */.Ms)("me");
+  const previewProfile = new menu_previewProfile(
+    userid,
+    username,
+    profileData,
+    badgesData,
+  );
+  await previewProfile.updateAll();
+
+  await Promise.allSettled([
+    updateCachedLogos(SiteType/* default */.Z.Forum),
+    updateCachedLogos(SiteType/* default */.Z.Market),
+    updateCachedThemes(),
+  ]);
+}
+
+
+
+// EXTERNAL MODULE: ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/styles/buttons.scss
+var buttons = __webpack_require__("./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/styles/buttons.scss");
+;// CONCATENATED MODULE: ./src/styles/buttons.scss
+
+      
+      
+      
+      
+      
+      
+      
+      
+      
+
+var buttons_options = {};
+
+buttons_options.styleTagTransform = (styleTagTransform_default());
+buttons_options.setAttributes = (setAttributesWithoutAttributes_default());
+
+      buttons_options.insert = insertBySelector_default().bind(null, "html");
+    
+buttons_options.domAPI = (styleDomAPI_default());
+buttons_options.insertStyleElement = (insertStyleElement_default());
+
+var buttons_update = injectStylesIntoStyleTag_default()(buttons/* default */.Z, buttons_options);
+
+
+
+
+       /* harmony default export */ const styles_buttons = (buttons/* default */.Z && buttons/* default */.Z.locals ? buttons/* default */.Z.locals : undefined);
+
+;// CONCATENATED MODULE: ./src/ui/components/buttons/menuButton.js
+
+
+
+
+
+const menuButton = document.createElement("a");
+const menuButtonText = document.createElement("span");
+menuButtonText.innerText = config/* default */.Z.extName;
+const menuButtonIcon = document.createElement("div");
+menuButtonIcon.classList.add("SvgIcon", "line");
+menuButtonIcon.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+    <path d="M9.39504 19.3711L9.97949 20.6856C10.1532 21.0768 10.4368 21.4093 10.7957 21.6426C11.1547 21.8759 11.5736 22.0001 12.0017 22C12.4298 22.0001 12.8488 21.8759 13.2077 21.6426C13.5667 21.4093 13.8502 21.0768 14.0239 20.6856L14.6084 19.3711C14.8164 18.9047 15.1664 18.5159 15.6084 18.26C16.0532 18.0034 16.5677 17.8941 17.0784 17.9478L18.5084 18.1C18.934 18.145 19.3636 18.0656 19.7451 17.8713C20.1265 17.6771 20.4434 17.3763 20.6573 17.0056C20.8714 16.635 20.9735 16.2103 20.951 15.7829C20.9285 15.3555 20.7825 14.9438 20.5306 14.5978L19.6839 13.4344C19.3825 13.0171 19.2214 12.5148 19.2239 12C19.2238 11.4866 19.3864 10.9864 19.6884 10.5711L20.535 9.40778C20.7869 9.06175 20.933 8.65007 20.9554 8.22267C20.9779 7.79528 20.8759 7.37054 20.6617 7C20.4478 6.62923 20.1309 6.32849 19.7495 6.13423C19.3681 5.93997 18.9385 5.86053 18.5128 5.90556L17.0828 6.05778C16.5722 6.11141 16.0576 6.00212 15.6128 5.74556C15.1699 5.48825 14.8199 5.09736 14.6128 4.62889L14.0239 3.31444C13.8502 2.92317 13.5667 2.59072 13.2077 2.3574C12.8488 2.12408 12.4298 1.99993 12.0017 2C11.5736 1.99993 11.1547 2.12408 10.7957 2.3574C10.4368 2.59072 10.1532 2.92317 9.97949 3.31444L9.39504 4.62889C9.18797 5.09736 8.83792 5.48825 8.39504 5.74556C7.95026 6.00212 7.43571 6.11141 6.92504 6.05778L5.4906 5.90556C5.06493 5.86053 4.63534 5.93997 4.25391 6.13423C3.87249 6.32849 3.55561 6.62923 3.34171 7C3.12753 7.37054 3.02549 7.79528 3.04798 8.22267C3.07046 8.65007 3.2165 9.06175 3.46838 9.40778L4.31504 10.5711C4.61698 10.9864 4.77958 11.4866 4.77949 12C4.77958 12.5134 4.61698 13.0137 4.31504 13.4289L3.46838 14.5922C3.2165 14.9382 3.07046 15.3499 3.04798 15.7773C3.02549 16.2047 3.12753 16.6295 3.34171 17C3.55582 17.3706 3.87274 17.6712 4.25411 17.8654C4.63548 18.0596 5.06496 18.1392 5.4906 18.0944L6.9206 17.9422C7.43127 17.8886 7.94581 17.9979 8.3906 18.2544C8.83513 18.511 9.18681 18.902 9.39504 19.3711Z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+    <path d="M11.9999 15C13.6568 15 14.9999 13.6569 14.9999 12C14.9999 10.3431 13.6568 9 11.9999 9C10.3431 9 8.99992 10.3431 8.99992 12C8.99992 13.6569 10.3431 15 11.9999 15Z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>`;
+
+menuButton.append(menuButtonIcon, menuButtonText);
+menuButton.classList.add("manageItem");
+menuButton.id = "LZTUpButton";
+menuButton.onclick = menuButtonCallback;
+
+/* harmony default export */ const buttons_menuButton = (menuButton);
+
+
+/***/ }),
+
+/***/ "./src/ui/components/icon.js":
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   Z: () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+class Icon {
+  /**
+   *
+   *  @constructor
+   *  @param {string} className - class name of icon
+   *  @param {string} iconClassName - id of icon
+   */
+
+  constructor(className, id = "LZTUpIcon") {
+    this.className = className;
+    this.id = id;
+  }
+
+  createElement() {
+    const icon = document.createElement("i");
+    icon.id = this.id;
+    icon.className = this.className;
+    return icon;
+  }
+}
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Icon);
+
+
+/***/ }),
+
+/***/ "./src/utils/checkers.js":
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   Fw: () => (/* binding */ isThreadPage),
+/* harmony export */   HI: () => (/* binding */ isContestThread),
+/* harmony export */   IM: () => (/* binding */ isContestsNode),
+/* harmony export */   Ji: () => (/* binding */ isOpenMemberCard),
+/* harmony export */   cD: () => (/* binding */ isProfilePage),
+/* harmony export */   kK: () => (/* binding */ isElement)
+/* harmony export */ });
+// Returns true if it is a DOM element
+// https://stackoverflow.com/questions/384286/how-do-you-check-if-a-javascript-object-is-a-dom-object
+function isElement(o) {
+  return typeof HTMLElement === "object"
+    ? o instanceof HTMLElement //DOM2
+    : o &&
+        typeof o === "object" &&
+        o !== null &&
+        o.nodeType === 1 &&
+        typeof o.nodeName === "string";
+}
+
+function isContestThread() {
+  return !!document.querySelector("div.contestThreadBlock");
+}
+
+function isContestsNode() {
+  const currentPath = window.location.pathname;
+  return currentPath.includes("/forums/contests/");
+}
+
+function isProfilePage() {
+  return !!document.querySelector("#content.member_view");
+}
+
+function isThreadPage() {
+  return (
+    !!document.querySelector("#content.thread_view") ||
+    !!document.querySelector("#content.EWRporta2_ArticleView")
+  );
+}
+
+function isOpenMemberCard() {
+  return !!document.querySelector(".xenOverlay.memberCard");
+}
+
+
+
+
+/***/ }),
+
+/***/ "./src/utils/contests.js":
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+
+// EXPORTS
+__webpack_require__.d(__webpack_exports__, {
+  Q6: () => (/* binding */ contestThreadBlockMove),
+  gu: () => (/* binding */ contestsAutoFixCaptcha),
+  Q9: () => (/* binding */ contestsHideContent),
+  Rf: () => (/* binding */ contestsHidePoll),
+  sO: () => (/* binding */ contestsParticipateByBtn),
+  s$: () => (/* binding */ contestsTagsVisibility),
+  g4: () => (/* binding */ contestsUpdateCapctha),
+  uu: () => (/* binding */ regOpenContestsBtn),
+  cy: () => (/* binding */ removeOpenContestsBtn)
+});
+
+// EXTERNAL MODULE: ./src/callbacks/contestsParticipate.js + 1 modules
+var contestsParticipate = __webpack_require__("./src/callbacks/contestsParticipate.js");
+// EXTERNAL MODULE: ./src/visuals/threads.js + 1 modules
+var threads = __webpack_require__("./src/visuals/threads.js");
+// EXTERNAL MODULE: ./src/ui/components/button.js
+var components_button = __webpack_require__("./src/ui/components/button.js");
+// EXTERNAL MODULE: ./src/utils/logger.js
+var logger = __webpack_require__("./src/utils/logger.js");
+// EXTERNAL MODULE: ./src/utils/registers.js
+var registers = __webpack_require__("./src/utils/registers.js");
+// EXTERNAL MODULE: ./src/utils/utils.js
+var utils = __webpack_require__("./src/utils/utils.js");
+;// CONCATENATED MODULE: ./src/utils/tags.js
+function tagsVisibility(isHidden = true) {
+  const tagList = document.querySelector("div.tagBlock");
+  if (tagList !== null) {
+    return (tagList.style.display = isHidden ? "none" : "");
+  }
+}
+
+
+
+// EXTERNAL MODULE: ./src/utils/checkers.js
+var checkers = __webpack_require__("./src/utils/checkers.js");
+;// CONCATENATED MODULE: ./src/utils/contests.js
+
+
+
+
+
+
+
+
+
+const pagesToOpen = 10;
+const openContestsBtnId = `LZTUpOpenContestsButton`;
+
+function regOpenContestsBtn() {
+  if ((0,checkers/* isContestsNode */.IM)() && !document.getElementById(openContestsBtnId)) {
+    const openContestsBtn = new components_button/* default */.Z(
+      `Открыть ${unsafeWindow.XenForo.htmlspecialchars(pagesToOpen)}`,
+    ).createElement(async () => {
+      (0,utils/* updateFeed */.j1)();
+      const el = await (0,utils/* waitForElm */.Nc)(".forumImprovements--mask.hidden");
+      if (!el) {
+        return;
+      }
+
+      const links = (0,utils/* getThreadLinks */.Eq)();
+      if (!links.length) {
+        return;
+      }
+
+      for (let i = 0; i < Math.min(pagesToOpen, links.length); i++) {
+        window.open(links[i]);
+      }
+    });
+    openContestsBtn.id = openContestsBtnId;
+    (0,registers/* registerNavButton */.Wh)(openContestsBtn);
+  }
+}
+
+function removeOpenContestsBtn() {
+  if ((0,checkers/* isContestsNode */.IM)()) {
+    document.getElementById(openContestsBtnId)?.remove();
+  }
+}
+
+function contestThreadBlockMove(toTop = true) {
+  if ((0,checkers/* isContestThread */.HI)()) {
+    const contestsThreadBlock = document.querySelector(
+      "div.contestThreadBlock",
+    );
+    const messageContent = document.querySelector(
+      "li.firstPost > div.messageInfo > div.messageContent > article > blockquote.messageText",
+    );
+    if (toTop) {
+      contestsThreadBlock.parentElement.append(messageContent);
+      contestsThreadBlock.style.borderTop = "none";
+      contestsThreadBlock.style.borderBottom = "1px solid rgb(45, 45, 45)";
+    } else {
+      contestsThreadBlock.parentElement.prepend(messageContent);
+      contestsThreadBlock.style.borderTop = "1px solid rgb(45, 45, 45)";
+      contestsThreadBlock.style.borderBottom = "none";
+    }
+  }
+}
+
+function contestsHideContent(isHidden = true) {
+  if ((0,checkers/* isContestThread */.HI)()) {
+    return (0,threads/* hideThreadContent */.OL)(isHidden);
+  }
+}
+
+function contestsTagsVisibility(isHidden = true) {
+  if ((0,checkers/* isContestThread */.HI)()) {
+    tagsVisibility(isHidden);
+  }
+}
+
+function contestsHidePoll(isHidden = true) {
+  if ((0,checkers/* isContestThread */.HI)()) {
+    return (0,threads/* hideThreadPoll */.aC)(isHidden);
+  }
+}
+
+function contestsUpdateCapctha() {
+  if ((0,checkers/* isContestThread */.HI)()) {
+    const participateBtn = document.querySelector(".LztContest--Participate");
+    if (!participateBtn) {
+      return;
+    }
+
+    const updateButton = new components_button/* default */.Z(
+      "",
+      "button LZTUpRefreshButton",
+      "far fa-sync",
+    ).createElement(e => {
+      e.preventDefault();
+      reRenderCaptcha();
+    });
+
+    participateBtn.insertAdjacentElement("afterend", updateButton);
+  }
+}
+
+function contestsAutoFixCaptcha() {
+  if ((0,checkers/* isContestThread */.HI)()) {
+    const captchaControl = document.querySelector(".captchaBlock > div");
+    if (captchaControl?.childElementCount > 0) {
+      return logger/* default */.Z.debug("Captcha exists");
+    }
+
+    return reRenderCaptcha();
+  }
+}
+
+function reRenderCaptcha() {
+  const captchaControl = document.querySelector(".captchaBlock > div");
+  if (!captchaControl) {
+    return logger/* default */.Z.error("CAPTCHA BLOCK MISSING");
+  }
+
+  // Rerender captcha
+  turnstile.render(`#${captchaControl.id}`, {
+    sitekey: "0x4AAAAAAADMHhlDN2zO9nrC",
+    theme: "dark",
+    size: "compact",
+    callback: function (token) {
+      console.log(`Challenge Success ${token}`);
+      $(".Captcha--XenForo_ControllerPublic_Thread").prepend(
+        '<input type="hidden" name="cf-turnstile-response" value="' +
+          token +
+          '">',
+      );
+      let $participateButton = $(".LztContest--Participate");
+      if ($participateButton.length) {
+        $participateButton.attr(
+          "href",
+          $participateButton.attr("href") + "?cf-turnstile-response=" + token,
+        );
+        $participateButton.removeAttr("disabled").removeClass("disabled");
+      }
+    },
+  });
+}
+
+function contestsParticipateByBtn(status) {
+  const contestBlock = document.querySelector("div.contestThreadBlock");
+  if (!contestBlock) {
+    return;
+  }
+
+  if (status) {
+    document.addEventListener("keydown", contestsParticipate/* participateByBtnCallback */.m);
+  } else {
+    document.removeEventListener("keydown", contestsParticipate/* participateByBtnCallback */.m);
+  }
+}
+
+
+
+
+/***/ }),
+
+/***/ "./src/utils/gmWrapper.js":
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   Z: () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var Configs_NewStorageName__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("./src/configs/NewStorageName.js");
+
+
+const LZTUp = {};
+
+LZTUp.checkType = variable => {
+  if (!(variable instanceof Configs_NewStorageName__WEBPACK_IMPORTED_MODULE_0__/* ["default"] */ .Z)) {
+    throw new Error(
+      "The variable is not an instance of the 'StorageName' class",
+    );
+  }
+  return true;
+};
+
+LZTUp.getValue = async storageName => {
+  LZTUp.checkType(storageName);
+  return await GM.getValue(storageName.name, storageName.value);
+};
+
+LZTUp.setValue = async (storageName, value) => {
+  LZTUp.checkType(storageName);
+  return await GM.setValue(storageName.name, value);
+};
+
+LZTUp.setCache = async (keyName, value) => {
+  if (keyName instanceof Configs_NewStorageName__WEBPACK_IMPORTED_MODULE_0__/* ["default"] */ .Z) {
+    // It will help to avoid errors when [Object Object] gets into the cache for the place of the desired value
+    keyName = keyName.name;
+  }
+  const cache = await LZTUp.getValue(Configs_NewStorageName__WEBPACK_IMPORTED_MODULE_0__/* ["default"] */ .Z.Cache);
+  cache[keyName] = value;
+  return await GM.setValue(Configs_NewStorageName__WEBPACK_IMPORTED_MODULE_0__/* ["default"] */ .Z.Cache.name, cache);
+};
+
+LZTUp.getCache = async storageName => {
+  const cache = await LZTUp.getValue(Configs_NewStorageName__WEBPACK_IMPORTED_MODULE_0__/* ["default"] */ .Z.Cache);
+  return cache[storageName.name] ?? storageName.value;
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (LZTUp);
+
+
+/***/ }),
+
+/***/ "./src/utils/logger.js":
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   Z: () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+const Logger = {};
+Logger.log = (...text) => {
+  return console.log(
+    "%c[LZT Upgrade]",
+    "background: #0daf77; color: #fff; padding: 5px;",
+    ...text,
+  );
+};
+
+Logger.error = (...text) => {
+  return console.error(
+    "%c[LZT Upgrade]",
+    "background: #0daf77; color: #fff; padding: 5px;",
+    ...text,
+  );
+};
+
+Logger.warn = (...text) => {
+  return console.warn(
+    "%c[LZT Upgrade]",
+    "background: #0daf77; color: #fff; padding: 5px;",
+    ...text,
+  );
+};
+
+Logger.info = (...text) => {
+  return console.info(
+    "%c[LZT Upgrade]",
+    "background: #0daf77; color: #fff; padding: 5px;",
+    ...text,
+  );
+};
+
+Logger.debug = (...text) => {
+  if (false)
+    {}
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Logger);
+
+
+/***/ }),
+
+/***/ "./src/utils/purify.js":
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   G6: () => (/* binding */ clearHTML),
+/* harmony export */   bw: () => (/* binding */ clearSVG),
+/* harmony export */   zB: () => (/* binding */ clearCSS)
+/* harmony export */ });
+/* harmony import */ var Utils_logger__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("./src/utils/logger.js");
+
+
+const defaultAvailabledStyles = [
+  "color",
+  "text-shadow",
+  "border-radius",
+  "background",
+  "background-color",
+  "background-image",
+  "-webkit-background-clip",
+  "-webkit-text-fill-color",
+];
+
+function clearHTML(element) {
+  return DOMPurify.sanitize(element, {
+    USE_PROFILES: {
+      svg: true,
+      html: true,
+    },
+    FORBID_TAGS: ["style"],
+  });
+}
+
+function clearSVG(element) {
+  return DOMPurify.sanitize(element, {
+    USE_PROFILES: {
+      svg: true,
+    },
+    FORBID_TAGS: ["style"],
+  });
+}
+
+// removes all prohibited styles from the string
+function clearCSS(css, availabledStyles = defaultAvailabledStyles) {
+  let pairs = css.split(";");
+  const goodCSS = [];
+  Utils_logger__WEBPACK_IMPORTED_MODULE_0__/* ["default"] */ .Z.debug(pairs);
+  for (const pair of pairs) {
+    const values = pair.trim().split(":");
+    const key = values[0].replace(/\s/, "");
+    Utils_logger__WEBPACK_IMPORTED_MODULE_0__/* ["default"] */ .Z.debug(pair, values, key);
+    if (availabledStyles.includes(key)) {
+      Utils_logger__WEBPACK_IMPORTED_MODULE_0__/* ["default"] */ .Z.debug("DETECTED AVAILABLED STYLES");
+      goodCSS.push(pair);
+    }
+  }
+
+  const cssString = goodCSS.length ? goodCSS.join(";") : "";
+  Utils_logger__WEBPACK_IMPORTED_MODULE_0__/* ["default"] */ .Z.debug(`CLEARED FINAL STRING: ${cssString}`);
+  return cssString;
+}
+
+
+
+
+/***/ }),
+
+/***/ "./src/utils/registers.js":
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   O0: () => (/* binding */ registerObserver),
+/* harmony export */   Wh: () => (/* binding */ registerNavButton),
+/* harmony export */   Y3: () => (/* binding */ registerModal),
+/* harmony export */   de: () => (/* binding */ registerAlert),
+/* harmony export */   e7: () => (/* binding */ registerMenuButton)
+/* harmony export */ });
+function registerModal(modalName, elementMain = "") {
+  return unsafeWindow.XenForo.alert(elementMain, modalName);
+}
+
+function registerAlert(text, timeout = 5000) {
+  return unsafeWindow.XenForo.alert(text, "", timeout);
+}
+
+function registerMenuButton(el) {
+  const menu = document.querySelector(
+    "#AccountMenu .menuScrollBlock > .manageItems",
+  );
+  menu.insertAdjacentElement("beforeend", el);
+  return true;
+}
+
+function registerNavButton(el) {
+  const nav = document.querySelector(".pageNavLinkGroup > .linkGroup");
+  el.style.marginRight = "10px";
+  nav.prepend(el);
+  return true;
+}
+
+function registerObserver(callback) {
+  const observer = new MutationObserver(mutationsList => {
+    for (const mutation of mutationsList) {
+      if (mutation.type === "childList") {
+        callback(mutation);
+      }
+    }
+  });
+
+  const config = { childList: true, subtree: true };
+  observer.observe(document.body, config);
+  return observer;
+}
+
+
+
+
+/***/ }),
+
+/***/ "./src/utils/threads.js":
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+
+// EXPORTS
+__webpack_require__.d(__webpack_exports__, {
+  iY: () => (/* binding */ summarizeThreadBlock)
+});
+
+// UNUSED EXPORTS: getThreadContent, getThreadContentByAjax, getThreadId
+
+// EXTERNAL MODULE: ./src/utils/purify.js
+var purify = __webpack_require__("./src/utils/purify.js");
+;// CONCATENATED MODULE: ./src/ui/components/threadBar.js
+
+
+class ThreadBar {
+  /**
+   *
+   *  @constructor
+   *  @param {string} title - title of the bar
+   *  @param {string} content - content of the element
+   */
+
+  constructor(title, content, customId = "") {
+    this.title = (0,purify/* clearHTML */.G6)(title);
+    this.content = (0,purify/* clearHTML */.G6)(content);
+    this.customId = customId;
+  }
+
+  createElement() {
+    const container = document.createElement("div");
+    container.classList.add("LZTUpThreadBar");
+    container.id = this.customId;
+
+    const title = document.createElement("h2");
+    title.classList.add("LZTUpThreadBarTitle");
+    title.innerHTML = this.title;
+    container.appendChild(title);
+
+    const content = document.createElement("p");
+    content.classList.add("LZTUpThreadBarContent", "muted");
+    content.innerHTML = this.content;
+    container.appendChild(content);
+
+    return {
+      container,
+      title,
+      content,
+    };
+  }
+}
+
+/* harmony default export */ const threadBar = (ThreadBar);
+
+// EXTERNAL MODULE: ./src/utils/checkers.js
+var checkers = __webpack_require__("./src/utils/checkers.js");
+// EXTERNAL MODULE: ./src/configs/endpoints.json
+var endpoints = __webpack_require__("./src/configs/endpoints.json");
+// EXTERNAL MODULE: ./src/api/requestJSON.js
+var requestJSON = __webpack_require__("./src/api/requestJSON.js");
+;// CONCATENATED MODULE: ./src/api/summarize/generationAPI.js
+
+
+
+async function genSummarize(text, session_id) {
+  return await (0,requestJSON/* default */.Z)(
+    endpoints/* genSummarize */.OC,
+    `Не удалось сгенерировать краткий пересказ текста (${endpoints/* genSummarize */.OC})`,
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        text,
+        session_id,
+      }),
+    },
+  );
+}
+
+/* harmony default export */ const generationAPI = ({
+  genSummarize,
+});
+
+// EXTERNAL MODULE: ./src/configs/base.js
+var base = __webpack_require__("./src/configs/base.js");
+;// CONCATENATED MODULE: ./src/api/summarize/checkStatusCode.js
+
+
+const yandexStatus = {
+  StatusInProgress: 1,
+  StatusSuccess: 2,
+  StatusError: 3,
+  StatusFetchError: 999,
+};
+
+class SummarizeStatus extends base/* BaseEnum */.e {
+  static Waiting = new SummarizeStatus("waiting").name;
+  static Error = new SummarizeStatus("error").name;
+  static Success = new SummarizeStatus("success").name;
+}
+
+function checkSummarizeCode(res) {
+  switch (res.status_code) {
+    case yandexStatus.StatusInProgress:
+      return {
+        status: SummarizeStatus.Waiting,
+        title: "Суммаризация...",
+        desc: [
+          {
+            id: 0,
+            content: `Ожидание окончания суммаризации текста`,
+          },
+        ],
+      };
+    case yandexStatus.StatusFetchError:
+      return {
+        status: SummarizeStatus.Error,
+        title: "Ошибка запроса",
+        desc: [
+          {
+            id: 0,
+            content: `Не удалось совершить запрос к Yandex Summarize API`,
+          },
+        ],
+      };
+    case yandexStatus.StatusError:
+      return {
+        status: SummarizeStatus.Error,
+        title: "Ошибка YandexGPT",
+        desc: [
+          {
+            id: 0,
+            content: "Возникла ошибка при суммаризации текста",
+          },
+        ],
+      };
+    case yandexStatus.StatusSuccess:
+      return {
+        status: SummarizeStatus.Success,
+        title: "Успех",
+        desc: res.thesis,
+      };
+    default:
+      return {
+        status: SummarizeStatus.Error,
+        title: "Неизвестная ошибка",
+        desc: [
+          {
+            id: 0,
+            content:
+              "Во время выполнения что-то пошло не так и не удалось определить результат суммаризации",
+          },
+        ],
+      };
+  }
+}
+
+
+
+// EXTERNAL MODULE: ./src/utils/logger.js
+var logger = __webpack_require__("./src/utils/logger.js");
+// EXTERNAL MODULE: ./src/utils/utils.js
+var utils = __webpack_require__("./src/utils/utils.js");
+;// CONCATENATED MODULE: ./src/utils/threads.js
+
+
+
+
+
+
+
+const SummarizeID = "LZTUpSummarizeBlock";
+const SummarizeTitle = "<i class='fas fa-sparkles'></i> Суммаризатор тем";
+const FIND_THREAD_ID = /^\/threads\/([^d]+)\//;
+
+function getThreadId() {
+  const path = window.location.pathname;
+  const threadId = path.match(FIND_THREAD_ID)?.[1];
+  return Number(threadId) || undefined;
+}
+
+function getThreadContent() {
+  return document
+    .querySelector(".message.firstPost > .messageInfo article")
+    ?.textContent?.trim();
+}
+
+async function getThreadContentByAjax(threadId) {
+  try {
+    const res = await unsafeWindow.XenForo.ajax(`/threads/${threadId}`);
+    const resHTML = res.templateHtml;
+
+    const parsedHTML = (0,utils/* getHTMLFromString */.Cy)(resHTML);
+    const text = parsedHTML.querySelector(
+      ".message.firstPost > .messageInfo article",
+    )?.innerText;
+
+    return text;
+  } catch {
+    return undefined;
+  }
+}
+
+function clearSummarizeContent(text) {
+  // replace \n & \t & \r to space
+  // replace ip to void
+  return text
+    .replaceAll(/\s/g, " ")
+    .replaceAll(/((25[0-5]|(2[0-4]|1\d|[1-9]|)\d)\.?\b){4}/g, "");
+}
+
+async function summarizeThreadBlock(isActive) {
+  if (isActive && (0,checkers/* isThreadPage */.Fw)()) {
+    const summarizeBlock = new threadBar(
+      SummarizeTitle,
+      "Получение данных...",
+      SummarizeID,
+    ).createElement();
+    const pageNavLinkGroup = document.querySelector(".pageNavLinkGroup");
+    pageNavLinkGroup.before(summarizeBlock.container);
+
+    let threadContent = getThreadContent();
+    logger/* default */.Z.log("Thread content: " + threadContent);
+
+    if (threadContent == undefined) {
+      // getting content about a topic if not 1 page is open
+      logger/* default */.Z.log("Getting the content via an Ajax request");
+      const threadId = getThreadId();
+      threadContent = await getThreadContentByAjax(threadId);
+    }
+
+    if (!(threadContent?.length >= 300)) {
+      summarizeBlock.title.innerHTML = `${SummarizeTitle} (Ошибка валидации)`;
+      summarizeBlock.content.innerHTML =
+        "Не удалось выполнить суммаризацию темы. Содержимое темы не найдено или содержит менее 300 символов.";
+      return false;
+    }
+
+    let summarizeInterval;
+    let session_id = "";
+    threadContent = clearSummarizeContent(threadContent);
+    summarizeInterval = setInterval(async () => {
+      const generatedInfo = await generationAPI.genSummarize(
+        threadContent,
+        session_id,
+      );
+      logger/* default */.Z.log("Summarize Generated Info", generatedInfo);
+
+      if (!generatedInfo) {
+        logger/* default */.Z.log("Clear summarize interval (ext error)");
+        summarizeBlock.title.innerHTML = `${SummarizeTitle} (Внутренняя ошибка)`;
+        summarizeBlock.content.innerText =
+          "Не удалось выполнить суммаризацию темы. Произошла внутренняя ошибка при запросе к Summarize API. Для детальной информации смотри консоль.";
+        clearInterval(summarizeInterval);
+        return false;
+      }
+
+      session_id = generatedInfo.session_id;
+      const result = checkSummarizeCode(generatedInfo);
+      if (result.status !== SummarizeStatus.Waiting) {
+        logger/* default */.Z.log("Clear summarize interval (by status code)");
+        clearInterval(summarizeInterval);
+      }
+
+      const contentEl = document.createElement("ul");
+      if (result.desc.length > 1) {
+        contentEl.classList.add("LZTUpSummarizeThesises");
+      }
+
+      for (const thesis of result.desc) {
+        const thesisEl = document.createElement("li");
+        thesisEl.innerText = thesis.content;
+        contentEl.appendChild(thesisEl);
+      }
+
+      summarizeBlock.title.innerHTML = `${SummarizeTitle} (${result.title})`;
+      summarizeBlock.content.innerHTML = contentEl.outerHTML;
+    }, 500);
+
+    return;
+  }
+
+  document.getElementById(SummarizeID)?.remove();
+}
+
+
+
+
+/***/ }),
+
+/***/ "./src/utils/users.js":
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+
+// EXPORTS
+__webpack_require__.d(__webpack_exports__, {
+  SL: () => (/* binding */ addUserIdToMemberCard),
+  Rj: () => (/* binding */ addUserIdToProfile),
+  Dm: () => (/* binding */ getUserAvatar),
+  xc: () => (/* binding */ getUserGroup),
+  n5: () => (/* binding */ getUserId),
+  Ms: () => (/* binding */ getUsername),
+  UD: () => (/* binding */ removeUserIdFromProfile),
+  M1: () => (/* binding */ showFullRegDateInProfile)
+});
+
+// UNUSED EXPORTS: removeUserIdFromMemberCard
+
+// EXTERNAL MODULE: ./src/utils/checkers.js
+var checkers = __webpack_require__("./src/utils/checkers.js");
+// EXTERNAL MODULE: ./src/utils/purify.js
+var purify = __webpack_require__("./src/utils/purify.js");
+// EXTERNAL MODULE: ./src/ui/components/icon.js
+var components_icon = __webpack_require__("./src/ui/components/icon.js");
+;// CONCATENATED MODULE: ./src/ui/components/buttons/copyButton.js
+
+
+class CopyButton {
+  constructor(content, tooltipMessage = null, messageOnCopy = null) {
+    this.content = unsafeWindow.XenForo.htmlspecialchars(content); // Clipboard.copy works strangely with numbers so we do this
+    this.tooltipMessage = tooltipMessage || "";
+    this.messageOnCopy = messageOnCopy || "Успешно скопировано в буфер обмена";
+  }
+
+  createElement() {
+    const button = document.createElement("span");
+    button.classList.add("copyButton", "Tooltip");
+    button.title = this.tooltipMessage;
+
+    button.onclick = async e => {
+      // We don't use Clipboard.copy instead to avoid errors when the function is not found and to prevent XSS
+      // navigator.clipboard.writeText XSS-safe unlike ClipBoard.copy
+      await navigator.clipboard.writeText(this.content);
+
+      // from Clipboard.copy function
+      e.target.classList.add("animated");
+      animateCSS(e.target, ["heartBeat", "mainc"]);
+      unsafeWindow.XenForo.alert(this.messageOnCopy, "", 5000);
+    };
+    button.tabIndex = 0;
+
+    const icon = new components_icon/* default */.Z("far fa-clone", "").createElement();
+    button.appendChild(icon);
+    return button;
+  }
+}
+
+/* harmony default export */ const copyButton = (CopyButton);
+
+;// CONCATENATED MODULE: ./src/ui/components/profileInfoRow.js
+
+
+
+
+class ProfileInfoRow {
+  /**
+   *
+   *  @constructor
+   *  @param {string} elementId - id of the row
+   *  @param {string} label - label of row
+   *  @param {string} content - content of row
+   */
+
+  constructor(elementId, label, content, copyButton) {
+    this.elementId = elementId;
+    this.label = label;
+    this.content = (0,purify/* clearHTML */.G6)(content);
+    this.copyButton = copyButton;
+  }
+
+  createElement() {
+    const row = document.createElement("div");
+    const label = document.createElement("div");
+    const labeled = document.createElement("div");
+    row.classList.add("clear_fix", "profile_info_row");
+    row.id = this.elementId;
+
+    label.classList.add("label", "fl_l");
+    labeled.classList.add("labeled");
+
+    label.innerText = this.label + ":";
+    if ((0,checkers/* isElement */.kK)(this.content)) {
+      labeled.appendChild(this.content);
+    } else {
+      labeled.innerHTML = this.content;
+    }
+
+    if (this.copyButton instanceof copyButton) {
+      const copyButtonEl = this.copyButton.createElement();
+      labeled.appendChild(copyButtonEl);
+    }
+
+    row.appendChild(label);
+    row.appendChild(labeled);
+
+    return row;
+  }
+}
+
+/* harmony default export */ const profileInfoRow = (ProfileInfoRow);
+
+;// CONCATENATED MODULE: ./src/utils/users.js
+
+
+
+
+const userIdRowElementId = "LZTUpUserIDRow";
+const userIdMemberCardElementId = "LZTUpUserIDMemberCard";
+
+function getUserId(target) {
+  switch (target) {
+    case "profile": {
+      // in any profile
+      if (!(0,checkers/* isProfilePage */.cD)()) {
+        return null;
+      }
+      const userThreadsButton = document.querySelector(
+        "#profile_short > .userContentLinks > a:nth-child(1)",
+      );
+      if (userThreadsButton?.href === "") {
+        return null;
+      }
+
+      const userId = /\/(\d+)\//.exec(userThreadsButton.href)?.[1];
+      if (!userId) {
+        return getUserId("me");
+      }
+
+      return +userId;
+    }
+
+    // eslint-disable-next-line no-fallthrough
+    case "membercard": {
+      // in any membercard
+      if (!(0,checkers/* isOpenMemberCard */.Ji)()) {
+        return null;
+      }
+
+      const memberCard = document.querySelectorAll(".xenOverlay.memberCard");
+      const userThreadsButton = memberCard[memberCard.length - 1].querySelector(
+        ".bottomContainer > .controlsBlock > a.button:nth-child(1)",
+      );
+      if (userThreadsButton?.href === "") {
+        return null;
+      }
+
+      return /\/(\d+)\//.exec(userThreadsButton)?.[1];
+    }
+
+    // eslint-disable-next-line no-fallthrough
+    case "self":
+    case "me":
+      return unsafeWindow.XenForo?.visitor?.user_id;
+    default:
+      return null;
+  }
+}
+
+function getUsername(target) {
+  switch (target) {
+    // TODO: add get by userid
+    case "self":
+    case "me":
+      return document.querySelector(".accountUsername span")?.innerText;
+    default:
+      return null;
+  }
+}
+
+function getUserGroup(target) {
+  switch (target) {
+    case "self":
+    case "me": {
+      const userEl = document.querySelector(".accountUsername.username span");
+      return userEl.className;
+    }
+    default:
+      return null;
+  }
+}
+
+function getUserAvatar(userId) {
+  if (userId === getUserId("me")) {
+    return document.querySelector("img.navTab--visitorAvatar").src;
+  }
+
+  const avatars = document.querySelectorAll("a.avatar");
+  const avatar = Array.from(avatars).find(
+    avatar =>
+      avatar.classList?.contains(`Av${userId}s`) ||
+      avatar.classList?.contains(`Av${userId}m`),
+  );
+
+  return avatar ? avatars.src : null;
+}
+
+function addUserIdToProfile() {
+  if (
+    (0,checkers/* isProfilePage */.cD)() &&
+    document.querySelector(`#${userIdRowElementId}`) === null
+  ) {
+    const userId = getUserId("profile") ?? "Не найден";
+    const profileInfo = document.querySelector(
+      "#profile_short > .pairsJustified",
+    );
+
+    const copyBtn = new copyButton(
+      userId,
+      "Скопировать ID пользователя",
+      "ID пользователя успешно скопирован в буфер обмена",
+    );
+    const userIdRow = new profileInfoRow(
+      userIdRowElementId,
+      "ID",
+      userId,
+      copyBtn,
+    ).createElement();
+    const firstRow = profileInfo.querySelector(".profile_info_row");
+    const insertPlace = firstRow ? "afterend" : "afterbegin";
+
+    firstRow.insertAdjacentElement(insertPlace, userIdRow);
+  }
+}
+
+function addUserIdToMemberCard() {
+  if (!(0,checkers/* isOpenMemberCard */.Ji)()) {
+    return;
+  }
+
+  const memberCards = document.querySelectorAll(".xenOverlay.memberCard");
+  const userId = getUserId("membercard") ?? "Не найден";
+  const userContentLinks = memberCards[memberCards.length - 1].querySelector(
+    `#memberCard${userId}.memberCardInner .controlsBlock`,
+  );
+  const userIdElement = document.createElement("div");
+  userIdElement.classList.add("title");
+  userIdElement.id = userIdMemberCardElementId;
+  userIdElement.innerText = `ID: ${userId}`;
+  const copyBtn = new copyButton(
+    userId,
+    "Скопировать ID пользователя",
+    "ID пользователя успешно скопирован в буфер обмена",
+  ).createElement();
+  userIdElement.appendChild(copyBtn);
+  userContentLinks?.insertAdjacentElement("afterend", userIdElement);
+}
+
+function removeUserIdFromProfile() {
+  if ((0,checkers/* isProfilePage */.cD)()) {
+    const el = document.querySelector(
+      `.profile_info_row#${userIdRowElementId}`,
+    );
+    if (el) {
+      el.remove();
+    }
+  }
+}
+
+function removeUserIdFromMemberCard() {
+  if (isOpenMemberCard()) {
+    const el = document.querySelector(`.title#${userIdMemberCardElementId}`);
+    if (el) {
+      el.remove();
+    }
+  }
+}
+
+function showFullRegDateInProfile(full = false) {
+  if ((0,checkers/* isProfilePage */.cD)()) {
+    const dateTime = document.querySelector(
+      ".profile_info_row > .labeled > time.u-dt",
+    );
+    if (!dateTime) {
+      return;
+    }
+
+    const fullDate = dateTime.getAttribute("title");
+    if (!fullDate) {
+      return;
+    }
+
+    if (!full) {
+      let spaceCounts = -2;
+      if (XenForo?.visitor?.language_id === 1) {
+        // lang === english
+        spaceCounts = -3;
+      }
+
+      const oldDate = fullDate.split(" ").slice(0, spaceCounts).join(" ");
+      return (dateTime.innerText = oldDate);
+    }
+
+    return (dateTime.innerText = fullDate);
+  }
+}
+
+
+
+
+/***/ }),
+
+/***/ "./src/utils/utils.js":
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   Bw: () => (/* binding */ removeStylesByEl),
+/* harmony export */   Cy: () => (/* binding */ getHTMLFromString),
+/* harmony export */   Eq: () => (/* binding */ getThreadLinks),
+/* harmony export */   Nc: () => (/* binding */ waitForElm),
+/* harmony export */   P6: () => (/* binding */ getAuthors),
+/* harmony export */   VR: () => (/* binding */ waitForBody),
+/* harmony export */   _v: () => (/* binding */ sleep),
+/* harmony export */   bg: () => (/* binding */ applyStyle),
+/* harmony export */   j1: () => (/* binding */ updateFeed),
+/* harmony export */   u3: () => (/* binding */ getTimestamp),
+/* harmony export */   zf: () => (/* binding */ ucFirst)
+/* harmony export */ });
+/* unused harmony exports getNodeLinks, removeStyles, getMsTimestamp */
+function waitForElm(selector) {
+  // https://stackoverflow.com/questions/5525071/how-to-wait-until-an-element-exists
+  return new Promise(resolve => {
+    if (document.querySelector(selector)) {
+      return resolve(document.querySelector(selector));
+    }
+
+    const observer = new MutationObserver(() => {
+      if (document.querySelector(selector)) {
+        resolve(document.querySelector(selector));
+        observer.disconnect();
+      }
+    });
+
+    observer.observe(document.body, {
+      childList: true,
+      subtree: true,
+    });
+  });
+}
+
+function waitForBody() {
+  return new Promise(resolve => {
+    if (document.body) {
+      return resolve(document.body);
+    }
+
+    const observer = new MutationObserver(() => {
+      if (document.body) {
+        resolve(document.body);
+        observer.disconnect();
+      }
+    });
+
+    observer.observe(document, {
+      childList: true,
+      subtree: true,
+    });
+  });
+}
+
+const sleep = m => new Promise(r => setTimeout(r, m));
+
+function ucFirst(str) {
+  if (!str) {
+    return str;
+  }
+
+  return str[0].toUpperCase() + str.slice(1);
+}
+
+function getNodeLinks() {
+  return document.querySelectorAll(".discussionListItem--Wrapper");
+}
+
+function getThreadLinks() {
+  return Array.from(getNodeLinks()).map(
+    el => el.querySelector(".listBlock.main")?.href,
+  );
+}
+
+function removeStyles(selector) {
+  const el = document.querySelector(selector);
+  return removeStylesByEl(el);
+}
+
+function removeStylesByEl(el) {
+  if (!el) {
+    return;
+  }
+
+  el.className = "";
+  el.style = "";
+
+  return el;
+}
+
+function applyStyle(el, style) {
+  if (style?.length > 1 && style?.startsWith(".")) {
+    style = style.replace(".", "");
+    return el.classList.add(style);
+  } else {
+    return (el.style = style);
+  }
+}
+
+function getMsTimestamp() {
+  return Date.now();
+}
+
+function getTimestamp() {
+  return Math.floor(getMsTimestamp() / 1000);
+}
+
+function getAuthors(authorNames, authorUserIds) {
+  if (authorUserIds === "") {
+    authorUserIds = null;
+  }
+
+  switch (typeof authorUserIds) {
+    case "string": {
+      const authorsUserIDs = authorUserIds.split(",");
+      const authorsNames = authorNames.split(",");
+      const authors = [];
+      authorsUserIDs.map((val, idx) => {
+        authors.push({
+          name: unsafeWindow.XenForo.htmlspecialchars(authorsNames?.[idx]),
+          userId: Number(val),
+        });
+      });
+      return authors;
+    }
+    case "number":
+      return [
+        {
+          name: unsafeWindow.XenForo.htmlspecialchars(authorNames),
+          userId: unsafeWindow.XenForo.htmlspecialchars(authorUserIds),
+        },
+      ];
+    default:
+      return [
+        {
+          name: unsafeWindow.XenForo.htmlspecialchars(authorNames),
+          userId: null,
+        },
+      ];
+  }
+}
+
+function getHTMLFromString(HTMLString) {
+  const parser = new DOMParser();
+  return parser.parseFromString(HTMLString, "text/html");
+}
+
+function updateFeed() {
+  document.querySelector(".UpdateFeedButton")?.click();
+}
+
+
+
+
+/***/ }),
+
+/***/ "./src/visuals/navbar.js":
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   R: () => (/* binding */ hideBalloonById),
+/* harmony export */   p: () => (/* binding */ hideUnreadArticlesStatus)
+/* harmony export */ });
+/**
+ *
+ * @param {str} balloonId - id of balloon element. Ex: #AlertsMenu_Counter
+ * @param {boolean} isHidden - status of visibility (true - hidden, false - visible)
+ */
+function hideBalloonById(balloonId, isHidden) {
+  const balloon = document.getElementById(balloonId);
+  if (balloon) {
+    balloon.style.opacity = Number(!isHidden);
+  }
+}
+
+/**
+ *
+ * @param {boolean} isHidden - status of visibility (true - hidden, false - visible)
+ */
+function hideUnreadArticlesStatus(isHidden) {
+  const statusEl = document.querySelector(".hasUnreadArticles");
+  if (statusEl) {
+    statusEl.style.display = isHidden ? "none" : "";
+  }
+}
+
+
+
+
+/***/ }),
+
+/***/ "./src/visuals/notify.js":
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   i: () => (/* binding */ hideAdsFromNotify)
+/* harmony export */ });
+function hideAdsFromNotify() {
+  return GM_addStyle(`
+    li.Alert[data-author="Реклама"] {
+      display: none !important;
+    }
+  `);
+}
+
+
+
+
+/***/ }),
+
+/***/ "./src/visuals/profile.js":
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   m: () => (/* binding */ addBackgroundImageInProfile)
+/* harmony export */ });
+/* harmony import */ var Utils_checkers__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("./src/utils/checkers.js");
+/* harmony import */ var Visuals_universal__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("./src/visuals/universal.js");
+
+
+
+function addBackgroundImageInProfile(imageUrl) {
+  if ((0,Utils_checkers__WEBPACK_IMPORTED_MODULE_1__/* .isProfilePage */ .cD)()) {
+    return (0,Visuals_universal__WEBPACK_IMPORTED_MODULE_0__/* .addBackgroundImage */ .j)(imageUrl);
+  }
+}
+
+
+
+
+/***/ }),
+
+/***/ "./src/visuals/threads.js":
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+
+// EXPORTS
+__webpack_require__.d(__webpack_exports__, {
+  OL: () => (/* binding */ hideThreadContent),
+  cX: () => (/* binding */ hideThreadListAds),
+  aC: () => (/* binding */ hideThreadPoll),
+  Lp: () => (/* binding */ updateReportButtons)
+});
+
+// EXTERNAL MODULE: ./src/xenforo/tooltips.js
+var tooltips = __webpack_require__("./src/xenforo/tooltips.js");
+// EXTERNAL MODULE: ./src/utils/logger.js
+var logger = __webpack_require__("./src/utils/logger.js");
+// EXTERNAL MODULE: ./src/utils/registers.js
+var registers = __webpack_require__("./src/utils/registers.js");
+;// CONCATENATED MODULE: ./src/ui/reportButtons.js
+
+
+
+
+class ReportButtons {
+  /**
+   *
+   *  @constructor
+   *  @param {object} buttons - array of buttons. For more information about badge struct check ui/menu/items/appear.js -> DefaultButton
+   */
+
+  constructor(buttons) {
+    this.buttonsClass = ".LZTUpReportButtons";
+    this.buttonsQuery = `.${this.buttonsClass}`;
+    this.buttons = buttons;
+  }
+
+  createElement(postId) {
+    const reportButtons = document.createElement("div");
+    reportButtons.classList.add("LZTUpReportButtons");
+
+    for (let i = 0; i < this.buttons.length; i++) {
+      const reportButton = document.createElement("span");
+      reportButton.classList.add("LZTUpReportButton");
+      reportButton.tabIndex = 0;
+      reportButton.innerText = unsafeWindow.XenForo.htmlspecialchars(
+        this.buttons[i].text,
+      );
+      reportButton.title = unsafeWindow.XenForo.htmlspecialchars(
+        this.buttons[i].reason,
+      );
+      reportButton.dataset.position = i + 1;
+      reportButton.onclick = async () => {
+        if (!confirm("Вы уверены, что хотите отправить репорт?")) return;
+        // I'm sure it can be done somehow through XenForo.ajax, but I didn't understand how
+        let formData = new FormData();
+        formData.append("message", this.buttons[i].reason);
+        formData.append("is_common_reason", 0);
+        formData.append("_xfToken", unsafeWindow.XenForo._csrfToken);
+        formData.append("_xfNoRedirect", 1);
+        formData.append("_xfToken", unsafeWindow.XenForo._csrfToken);
+        formData.append("redirect", window.location.href);
+        await fetch(`posts/${postId}/report`, {
+          method: "POST",
+          body: formData,
+        });
+        (0,registers/* registerAlert */.de)("Жалоба отправлена", 5000);
+      };
+
+      reportButtons.appendChild(reportButton);
+    }
+
+    return reportButtons;
+  }
+
+  findBadgeElement(selector, position) {
+    return document.querySelector(selector + `[data-position="${position}"]`);
+  }
+
+  findAllBadgeElement(selector, position) {
+    return document.querySelectorAll(
+      selector + `[data-position="${position}"]`,
+    );
+  }
+
+  updateText(buttonEl, button) {
+    if (!buttonEl) {
+      return;
+    }
+
+    buttonEl.innerText = unsafeWindow.XenForo.htmlspecialchars(button.text);
+
+    if (buttonEl._tippy) {
+      return (0,tooltips/* setTooltip */.w)(
+        buttonEl,
+        unsafeWindow.XenForo.htmlspecialchars(button.reason),
+      );
+    }
+
+    // return unsafeWindow.XenForo.Tooltip($(buttonEl)); // ! "$"" needed in XenForo.Tooltip
+  }
+
+  updateButton(button) {
+    const buttonElements = this.findAllBadgeElement(
+      this.buttonsQuery,
+      button.position,
+    );
+    if (!buttonElements.length) {
+      return;
+    }
+
+    for (const buttonEl of buttonElements) {
+      this.updateText(buttonEl, button);
+    }
+  }
+
+  updateButtons() {
+    logger/* default */.Z.debug("updateButtons");
+    for (const button of this.buttons) {
+      if (typeof button !== "object") {
+        logger/* default */.Z.error("Invalid button in array");
+        continue;
+      }
+
+      logger/* default */.Z.debug(button);
+      this.updateButton(button);
+    }
+  }
+}
+
+/* harmony default export */ const reportButtons = (ReportButtons);
+
+;// CONCATENATED MODULE: ./src/visuals/threads.js
+
+
+// СОЗДАТЬ ОТДЕЛЬНУЮ ФУНКЦИЮ ДЛЯ ЭТОГО А ТО АХУЕТЬ СКОК ДУБЛИРУЕТСЯ
+function hideThreadContent(isHidden) {
+  const messageContent = document.querySelector(
+    ".message.firstPost > .messageInfo > .messageContent > article > blockquote.messageText",
+  );
+  if (messageContent !== null) {
+    return (messageContent.style.display = isHidden ? "none" : "");
+  }
+}
+
+function hideThreadPoll(isHidden) {
+  const pollContainer = document.querySelector("div.PollContainer");
+  if (pollContainer !== null) {
+    return (pollContainer.style.display = isHidden ? "none" : "");
+  }
+}
+
+function updateReportButtons(buttonsData) {
+  buttonsData = buttonsData.sort((a, b) => a.position - b.position);
+  const postList = document.querySelectorAll(".messageList > li.message");
+  const postCommentsList = document.querySelectorAll(
+    ".CommentPostList > li.comment",
+  );
+
+  const messageList = [...postList, ...postCommentsList];
+  for (const message of messageList) {
+    const publicControls = message.querySelector(".publicControls");
+    if (!publicControls) {
+      continue;
+    }
+
+    // remove if exists
+    publicControls.querySelector(".LZTUpReportButtons")?.remove();
+
+    let postId = message.id.split("-")?.[1];
+    if (!postId) {
+      console.error(
+        "Failed to add report buttons to message element:",
+        message,
+      );
+    }
+
+    // todo: replace by regex
+    if (postId.includes("comment-")) {
+      postId = postId.replace("comment-", "comments/");
+    }
+
+    const buttons = new reportButtons(buttonsData).createElement(postId);
+    publicControls.prepend(buttons);
+    // Array.from(buttons.children).forEach(e =>
+    //   unsafeWindow.XenForo.Tooltip($(e)),
+    // );
+  }
+}
+
+function hideThreadListAds() {
+  return GM_addStyle(`
+    .text_Ads {
+      display: none;
+    }
+  `);
+}
+
+
+
+
+/***/ }),
+
+/***/ "./src/visuals/universal.js":
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   E: () => (/* binding */ setLogo),
+/* harmony export */   j: () => (/* binding */ addBackgroundImage)
+/* harmony export */ });
+/* harmony import */ var Utils_users__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("./src/utils/users.js");
+/* harmony import */ var Utils_checkers__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__("./src/utils/checkers.js");
+/* harmony import */ var Configs_SiteType__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("./src/configs/SiteType.js");
+
+
+
+
+const customBackgroundID = "LZTUpCustomBackground";
+
+function addBackgroundImage(imageUrl, skipUserCheck = false) {
+  if (
+    !skipUserCheck &&
+    (0,Utils_checkers__WEBPACK_IMPORTED_MODULE_2__/* .isProfilePage */ .cD)() &&
+    (0,Utils_users__WEBPACK_IMPORTED_MODULE_0__/* .getUserId */ .n5)("profile") !== (0,Utils_users__WEBPACK_IMPORTED_MODULE_0__/* .getUserId */ .n5)("me")
+  ) {
+    // check that this is the profile of the current user
+    // don't show background in other users profiles
+    return false;
+  }
+
+  const body = document.querySelector("body");
+  if (!imageUrl) {
+    body.id = "";
+    body.style.backgroundImage = "";
+    return;
+  }
+
+  body.id = customBackgroundID;
+  body.style.backgroundImage = `linear-gradient(rgba(54, 54, 54, 0.85), rgba(54, 54, 54, 0.85)), url(${imageUrl})`;
+}
+
+function setLogo(newStyles, site = Configs_SiteType__WEBPACK_IMPORTED_MODULE_1__/* ["default"] */ .Z.Forum) {
+  let logo;
+  switch (site) {
+    case Configs_SiteType__WEBPACK_IMPORTED_MODULE_1__/* ["default"] */ .Z.Forum:
+      logo = document.getElementById("lzt-logo");
+      break;
+    case Configs_SiteType__WEBPACK_IMPORTED_MODULE_1__/* ["default"] */ .Z.Market:
+      logo = document.getElementById("lzt-market-logo");
+      break;
+    default:
+      return false;
+  }
+
+  if (!logo) {
+    return false;
+  }
+
+  logo.style = newStyles;
+  return true;
+}
+
+
+
+
+/***/ }),
+
+/***/ "./src/visuals/users.js":
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+
+// EXPORTS
+__webpack_require__.d(__webpack_exports__, {
+  Az: () => (/* binding */ updateUserBadges),
+  $: () => (/* binding */ updateUserBanner),
+  bR: () => (/* binding */ updateUserStyle)
+});
+
+// EXTERNAL MODULE: ./src/utils/utils.js
+var utils = __webpack_require__("./src/utils/utils.js");
+// EXTERNAL MODULE: ./src/utils/users.js + 2 modules
+var users = __webpack_require__("./src/utils/users.js");
+// EXTERNAL MODULE: ./src/utils/checkers.js
+var checkers = __webpack_require__("./src/utils/checkers.js");
+;// CONCATENATED MODULE: ./src/ui/components/userBanner.js
+class UserBanner {
+  /**
+   *
+   *  @constructor
+   *  @param {string} elementId - id of the row
+   *  @param {string} label - label of user banner
+   */
+
+  constructor(elementId, label) {
+    this.elementId = elementId;
+    this.label = label;
+  }
+
+  createElement() {
+    const userBanner = document.createElement("em");
+    userBanner.id = this.elementId;
+    userBanner.classList.add("userBanner", "wrapped");
+    userBanner.itemprop = "title";
+
+    const beforeAfterEl = document.createElement("div");
+    beforeAfterEl.className = "before";
+    userBanner.appendChild(beforeAfterEl);
+
+    const bannerContent = document.createElement("strong");
+    bannerContent.innerText = unsafeWindow.XenForo.htmlspecialchars(this.label);
+    userBanner.appendChild(bannerContent);
+
+    beforeAfterEl.className = "after";
+    userBanner.appendChild(beforeAfterEl);
+    return userBanner;
+  }
+}
+
+
+
+// EXTERNAL MODULE: ./src/ui/avatarUserBadges.js + 1 modules
+var avatarUserBadges = __webpack_require__("./src/ui/avatarUserBadges.js");
+;// CONCATENATED MODULE: ./src/visuals/users.js
+
+
+
+
+
+
+function updateUserStyle(style) {
+  const username = (0,users/* getUsername */.Ms)("me");
+  const usersEl = document.querySelectorAll(".username span");
+  const myUsersEl = usersEl
+    .values()
+    .filter(user => user.innerText === username);
+  for (const userEl of myUsersEl) {
+    userEl.className = "";
+    userEl.style = "";
+
+    (0,utils/* applyStyle */.bg)(userEl, style);
+  }
+}
+
+function updateUserBanner(style, text) {
+  if (!(0,checkers/* isProfilePage */.cD)() || (0,users/* getUserId */.n5)("profile") !== (0,users/* getUserId */.n5)("me")) {
+    return;
+  }
+
+  const userBannerEl = document.querySelector("em.userBanner");
+  if (userBannerEl) {
+    // if exists remove extra styles / classes
+    userBannerEl.className = "userBanner wrapped";
+    userBannerEl.style = "";
+    userBannerEl.innerText = text;
+    return (0,utils/* applyStyle */.bg)(userBannerEl, style);
+  }
+
+  // add user banner
+  const avatarScaler = document.querySelector(".avatarScaler");
+  if (!avatarScaler) {
+    return;
+  }
+
+  const userBanner = new UserBanner("LZTUpCustomBanner", text).createElement();
+  (0,utils/* applyStyle */.bg)(userBanner, style);
+  return avatarScaler.insertAdjacentElement("afterend", userBanner);
+}
+
+function updateUserBadges(badgeIconsData) {
+  const userid = (0,users/* getUserId */.n5)("me");
+  const badges = new avatarUserBadges/* default */.Z(badgeIconsData, false);
+  const avatarsMedium = document.querySelectorAll(`.avatar.Av${userid}m`);
+  const avatarsSmall = document.querySelectorAll(`.avatar.Av${userid}s`);
+  const avatars = [...avatarsMedium, ...avatarsSmall]
+    .filter(el => el !== undefined)
+    .filter(el => el.parentElement?.classList.contains("avatarHolder"));
+  console.log(avatars); // TODO: remove after tests
+  for (const avatar of avatars) {
+    console.log(avatar); // TODO: remove after tests
+    const avatarHolder = avatar.parentElement;
+    const badgesEl = badges.createElement();
+
+    console.log(avatarHolder); // TODO: remove after tests
+    avatarHolder.querySelector(".avatarUserBadges")?.remove(); // remove if exists
+    console.log(badgesEl); // TODO: remove after tests
+    // avatarHolder.insertAdjacentElement('afterbegin', badgesEl);
+    avatarHolder.prepend(badgesEl);
+    badges.updateBadges();
+  }
+}
+
+
+
+
+/***/ }),
+
+/***/ "./src/xenforo/bypass.js":
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   $: () => (/* binding */ bypassShareTyping)
+/* harmony export */ });
+/* harmony import */ var Utils_logger__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("./src/utils/logger.js");
+
+
+function bypassShareTyping() {
+  if (
+    Object.hasOwn(unsafeWindow.XenForo, "threadNotify") &&
+    Object.hasOwn(unsafeWindow.XenForo.threadNotify, "shareTypingActivity")
+  ) {
+    Utils_logger__WEBPACK_IMPORTED_MODULE_0__/* ["default"] */ .Z.debug("bypassShareTyping thread: true");
+    unsafeWindow.XenForo.threadNotify.shareTypingActivity = 0;
+  }
+}
+
+
+
+
+/***/ }),
+
+/***/ "./src/xenforo/tooltips.js":
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   W: () => (/* binding */ updateTooltips),
+/* harmony export */   w: () => (/* binding */ setTooltip)
+/* harmony export */ });
+function updateTooltips() {
+  // let lztUpTooltips = $("#LZTUpTooltip.Tooltip");
+  // return unsafeWindow.XenForo.Tooltip(lztUpTooltips);
+}
+
+function setTooltip(el, text) {
+  el.setAttribute("title", "");
+  el.setAttribute("data-cachedtitle", text);
+
+  return el._tippy.setContent(text);
+}
+
+
+
+
+/***/ }),
+
+/***/ "./src/configs/endpoints.json":
+/***/ ((module) => {
+
+module.exports = JSON.parse('{"RC":"http://localhost:5000/api/themes","I1":"http://localhost:5000/static/themes","eb":"http://localhost:5000/api/logos","NI":"http://localhost:5000/api/logo","OC":"http://localhost:5000/generation"}');
+
+/***/ })
+
+/******/ 	});
+/************************************************************************/
+/******/ 	// The module cache
+/******/ 	var __webpack_module_cache__ = {};
+/******/ 	
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/ 		// Check if module is in cache
+/******/ 		var cachedModule = __webpack_module_cache__[moduleId];
+/******/ 		if (cachedModule !== undefined) {
+/******/ 			return cachedModule.exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = __webpack_module_cache__[moduleId] = {
+/******/ 			id: moduleId,
+/******/ 			// no module.loaded needed
+/******/ 			exports: {}
+/******/ 		};
+/******/ 	
+/******/ 		// Execute the module function
+/******/ 		__webpack_modules__[moduleId](module, module.exports, __webpack_require__);
+/******/ 	
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/ 	
+/************************************************************************/
+/******/ 	/* webpack/runtime/async module */
+/******/ 	(() => {
+/******/ 		var webpackQueues = typeof Symbol === "function" ? Symbol("webpack queues") : "__webpack_queues__";
+/******/ 		var webpackExports = typeof Symbol === "function" ? Symbol("webpack exports") : "__webpack_exports__";
+/******/ 		var webpackError = typeof Symbol === "function" ? Symbol("webpack error") : "__webpack_error__";
+/******/ 		var resolveQueue = (queue) => {
+/******/ 			if(queue && queue.d < 1) {
+/******/ 				queue.d = 1;
+/******/ 				queue.forEach((fn) => (fn.r--));
+/******/ 				queue.forEach((fn) => (fn.r-- ? fn.r++ : fn()));
+/******/ 			}
+/******/ 		}
+/******/ 		var wrapDeps = (deps) => (deps.map((dep) => {
+/******/ 			if(dep !== null && typeof dep === "object") {
+/******/ 				if(dep[webpackQueues]) return dep;
+/******/ 				if(dep.then) {
+/******/ 					var queue = [];
+/******/ 					queue.d = 0;
+/******/ 					dep.then((r) => {
+/******/ 						obj[webpackExports] = r;
+/******/ 						resolveQueue(queue);
+/******/ 					}, (e) => {
+/******/ 						obj[webpackError] = e;
+/******/ 						resolveQueue(queue);
+/******/ 					});
+/******/ 					var obj = {};
+/******/ 					obj[webpackQueues] = (fn) => (fn(queue));
+/******/ 					return obj;
+/******/ 				}
+/******/ 			}
+/******/ 			var ret = {};
+/******/ 			ret[webpackQueues] = x => {};
+/******/ 			ret[webpackExports] = dep;
+/******/ 			return ret;
+/******/ 		}));
+/******/ 		__webpack_require__.a = (module, body, hasAwait) => {
+/******/ 			var queue;
+/******/ 			hasAwait && ((queue = []).d = -1);
+/******/ 			var depQueues = new Set();
+/******/ 			var exports = module.exports;
+/******/ 			var currentDeps;
+/******/ 			var outerResolve;
+/******/ 			var reject;
+/******/ 			var promise = new Promise((resolve, rej) => {
+/******/ 				reject = rej;
+/******/ 				outerResolve = resolve;
+/******/ 			});
+/******/ 			promise[webpackExports] = exports;
+/******/ 			promise[webpackQueues] = (fn) => (queue && fn(queue), depQueues.forEach(fn), promise["catch"](x => {}));
+/******/ 			module.exports = promise;
+/******/ 			body((deps) => {
+/******/ 				currentDeps = wrapDeps(deps);
+/******/ 				var fn;
+/******/ 				var getResult = () => (currentDeps.map((d) => {
+/******/ 					if(d[webpackError]) throw d[webpackError];
+/******/ 					return d[webpackExports];
+/******/ 				}))
+/******/ 				var promise = new Promise((resolve) => {
+/******/ 					fn = () => (resolve(getResult));
+/******/ 					fn.r = 0;
+/******/ 					var fnQueue = (q) => (q !== queue && !depQueues.has(q) && (depQueues.add(q), q && !q.d && (fn.r++, q.push(fn))));
+/******/ 					currentDeps.map((dep) => (dep[webpackQueues](fnQueue)));
+/******/ 				});
+/******/ 				return fn.r ? promise : getResult();
+/******/ 			}, (err) => ((err ? reject(promise[webpackError] = err) : outerResolve(exports)), resolveQueue(queue)));
+/******/ 			queue && queue.d < 0 && (queue.d = 0);
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/compat get default export */
+/******/ 	(() => {
+/******/ 		// getDefaultExport function for compatibility with non-harmony modules
+/******/ 		__webpack_require__.n = (module) => {
+/******/ 			var getter = module && module.__esModule ?
+/******/ 				() => (module['default']) :
+/******/ 				() => (module);
+/******/ 			__webpack_require__.d(getter, { a: getter });
+/******/ 			return getter;
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/define property getters */
+/******/ 	(() => {
+/******/ 		// define getter functions for harmony exports
+/******/ 		__webpack_require__.d = (exports, definition) => {
+/******/ 			for(var key in definition) {
+/******/ 				if(__webpack_require__.o(definition, key) && !__webpack_require__.o(exports, key)) {
+/******/ 					Object.defineProperty(exports, key, { enumerable: true, get: definition[key] });
+/******/ 				}
+/******/ 			}
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/hasOwnProperty shorthand */
+/******/ 	(() => {
+/******/ 		__webpack_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/nonce */
+/******/ 	(() => {
+/******/ 		__webpack_require__.nc = undefined;
+/******/ 	})();
+/******/ 	
+/************************************************************************/
+/******/ 	
+/******/ 	// startup
+/******/ 	// Load entry module and return exports
+/******/ 	// This entry module used 'module' so it can't be inlined
+/******/ 	var __webpack_exports__ = __webpack_require__("./src/index.js");
+/******/ 	
+/******/ })()
+;

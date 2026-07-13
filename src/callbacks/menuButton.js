@@ -1,0 +1,65 @@
+import { registerModal } from "Utils/registers";
+import { generateMenu } from "UI/menu/menu";
+import { setMenuTitle } from "UI/menu/utils";
+import { Tab } from "UI/components/menu/tab";
+import { updateTooltips } from "Xenforo/tooltips";
+import config from "Configs/config";
+import PreviewProfile from "UI/components/menu/previewProfile";
+import { initColorPickers } from "Utils/colorPicker";
+import { getUserId, getUsername } from "Utils/users";
+import LZTUp from "Utils/gmWrapper";
+import NewStorageName from "Configs/NewStorageName";
+import { updateCachedLogos, updateCachedThemes } from "Utils/cache";
+import SiteType from "Configs/SiteType";
+
+async function menuButtonCallback() {
+  const tabs = [
+    new Tab("Главная", "LZTUpMainTab", "LZTUpMainSection", true),
+    new Tab("Настройки", "LZTUpSettingsTab", "LZTUpSettingsSection", false),
+  ];
+
+  const menuContent = await generateMenu(tabs);
+
+  document.getElementById("LZTUpModalOverlay")?.remove();
+  registerModal(config.extName, '<div id="LZTUpModalBase"></div>');
+
+  const modal = document.querySelector("#LZTUpModalBase");
+  modal.appendChild(menuContent);
+  for (const tab of tabs) {
+    if (tab.active) {
+      tab.setActive();
+    }
+  }
+
+  const baseModal = modal.parentElement;
+  baseModal.style.whiteSpace = "unset";
+  const overlay = baseModal.parentElement;
+  overlay.className = "formOverlay";
+  overlay.id = "LZTUpModalOverlay";
+  overlay.style = "margin-bottom: 15px;";
+
+  setMenuTitle(config.extName);
+  updateTooltips();
+  initColorPickers();
+
+  // Update Profile Preview
+  const profileData = await LZTUp.getValue(NewStorageName.Profile);
+  const badgesData = await LZTUp.getValue(NewStorageName.ProfileBadges);
+  const userid = getUserId("me");
+  const username = getUsername("me");
+  const previewProfile = new PreviewProfile(
+    userid,
+    username,
+    profileData,
+    badgesData,
+  );
+  await previewProfile.updateAll();
+
+  await Promise.allSettled([
+    updateCachedLogos(SiteType.Forum),
+    updateCachedLogos(SiteType.Market),
+    updateCachedThemes(),
+  ]);
+}
+
+export { menuButtonCallback };

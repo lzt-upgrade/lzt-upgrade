@@ -1,0 +1,62 @@
+{
+  "name": "lzt-upgrade",
+  "version": "2.0.0",
+  "description": "Some useful utilities for Lolzteam",
+  "source": "src/index.js",
+  "main": "src/index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build:default": "webpack build -c webpack.config.js",
+    "build:min": "webpack build -c webpack.config.js --env build_type=minify",
+    "build": "npm run build:default && npm run build:min",
+    "dev": "webpack serve --node-env development",
+    "lint": "npx eslint .",
+    "lint-fix": "npx eslint . --fix",
+    "format": "prettier --write --ignore-unknown \"src/**/*.{html,css,scss,cjs,js,ts,json}\"",
+    "prepare": "husky install"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ilyhalight/lzt-upgrade.git"
+  },
+  "keywords": [
+    "lolzteam",
+    "lolz",
+    "utility",
+    "zelenka",
+    "lzt",
+    "lolzhelper",
+    "lztnext",
+    "lztuprade",
+    "lztup",
+    "forum"
+  ],
+  "author": "Toil",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ilyhalight/lzt-upgrade/issues"
+  },
+  "homepage": "https://github.com/ilyhalight/lzt-upgrade#readme",
+  "devDependencies": {
+    "css-loader": "^6.8.1",
+    "eslint": "^8.53.0",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-plugin-prettier": "^5.0.1",
+    "eslint-webpack-plugin": "^4.0.1",
+    "husky": "^8.0.0",
+    "lint-staged": "^15.0.2",
+    "prettier": "3.0.3",
+    "sass": "^1.67.0",
+    "sass-loader": "^13.3.2",
+    "style-loader": "^3.3.3",
+    "webpack": "^5.88.2",
+    "webpack-cli": "^5.1.4",
+    "webpack-dev-server": "^4.15.1",
+    "webpack-userscript": "^3.2.2"
+  },
+  "dependencies": {
+    "tslib": "^2.6.2",
+    "uuid": "^9.0.1"
+  }
+}

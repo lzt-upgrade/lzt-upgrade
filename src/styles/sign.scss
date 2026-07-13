@@ -1,0 +1,17 @@
+#LZTUpCustomSigns {
+  display: inline-block;
+}
+
+#LZTUpCustomSign {
+  display: inline-block;
+  margin-right: 3px;
+  img {
+    max-height: 18px;
+    max-width: 18px;
+    margin-bottom: -3px;
+  }
+}
+
+.messageText > #LZTUpCustomSign > img {
+  margin: 0px;
+}

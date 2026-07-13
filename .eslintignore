@@ -1,0 +1,10 @@
+libs
+dist
+node_modules
+
+web-server
+public
+other-scripts
+needed
+lzt-upgrade.user.js
+src/indexedDB/*

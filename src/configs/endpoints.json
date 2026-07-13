@@ -1,0 +1,9 @@
+{
+  "getThemes": "http://localhost:5000/api/themes",
+  "staticThemes": "http://localhost:5000/static/themes",
+  "getLogos": "http://localhost:5000/api/logos",
+  "getLogoByUID": "http://localhost:5000/api/logo",
+  "getUserSigns": "http://localhost:5000/api/users/signs",
+  "getSigns": "http://localhost:5000/api/signs",
+  "genSummarize": "http://localhost:5000/generation"
+}
